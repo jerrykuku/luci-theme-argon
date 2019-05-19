@@ -1309,24 +1309,42 @@ header > .container > .pull-right > * {
 }
 
 /* fix Main Login*/
-
+.node-main-login > header {
+	background: none !important;
+	box-shadow:none !important;
+}
+.node-main-login > header > .container{
+	margin: 2rem auto;
+	max-width: 1140px;
+}
+.node-main-login > header > .container > .brand{
+	font-size:2rem;
+	text-transform: uppercase;
+}
+.node-main-login > .main{
+	top:0;
+	height:100% !important;
+}
 .node-main-login > .main > .main-left {
     display: none;
 }
 
 .node-main-login > .main > .main-right {
-    width: 100%;
-	background-color: #172b4d!important;
+	width: 100%;
+    background-image: url(../img/login.jpg);
+    background-size: cover;
+    background-color: #000;
+    background-position: top center;
 }
 
 .node-main-login > .main > .main-right > #maincontent {
-	margin-top:5rem;
-	background-color: #172b4d!important;
+	padding-top: 23vh;
+	background-color: transparent !important;
 }
 
 .node-main-login > .main fieldset {
     padding: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
     display: inline;
     background: none;
     border: none;
@@ -1350,6 +1368,7 @@ header > .container > .pull-right > * {
 .node-main-login > .main .container {
     display: inline-block;
     padding: 2rem 2rem;
+	position:relative;
     margin-top: 2rem !important;
     background-color: #f7fafc!important;
 	border-radius: .375rem;
@@ -1358,9 +1377,16 @@ header > .container > .pull-right > * {
 }
 
 .node-main-login > .main .container h2{
-	color:#5e72e4;
-    text-align:center;
-	letter-spacing:4px;
+	color: #fff;
+    text-align: center;
+    letter-spacing: 4px;
+    display: block;
+    margin: -60px 00px 15px;
+    padding: 30px 0;
+    border: 0;
+    border-radius: 5px;
+    background: linear-gradient(87deg,#5e72e4 0,#825ee4 100%)!important;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
 }
 .node-main-login > .main .container .cbi-map-descr{
     text-align:center;
@@ -1415,6 +1441,16 @@ header > .container > .pull-right > * {
     min-width: 15rem;
 }
 
+.node-main-login .errorbox{
+	position: absolute;
+    color: #fff;
+    width: calc(100% - 4rem);
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    box-sizing: border-box;
+    margin-top: 6rem;
+    border-radius: 5px;
+}
 .node-main-login footer {
     bottom: 0;
     position: absolute;
@@ -1738,6 +1774,11 @@ body.lang_pl.node-main-login .cbi-value-title {
     .cbi-page-actions > div > input {
         display: none;
     }
+	
+	.node-main-login > header > .container > .brand{
+		text-align: center;
+		display: block;
+	}
 
     .node-main-login > .main .container {
         padding: 0.5rem 1rem 2rem 1rem;
@@ -1748,18 +1789,25 @@ body.lang_pl.node-main-login .cbi-value-title {
     }
 
     .node-main-login > .main form > div:nth-last-child(1) {
-        margin-top: 2rem;
+        margin-top: 0rem;
     }
 
     .node-main-login > .main .cbi-value-title {
         width: 100% !important;
-        font-size: 1.2rem;
+		margin-top: 0rem;
+		font-size: 1rem;
+		margin-bottom: 0;
+		padding: 0 0.5rem;
     }
 
     .node-main-login > .main fieldset {
         margin: 0;
         padding: 0.5rem;
     }
+	.node-main-login .errorbox{
+		width: calc(100% - 2rem);
+		padding: 1rem 2rem;
+	}
 
     h2 {
         font-size: 1.5rem;
