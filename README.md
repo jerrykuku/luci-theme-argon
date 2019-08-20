@@ -21,9 +21,9 @@ make -j1 V=s
 ![](/Screenshots/pc/screenshot1.png)
 ![](/Screenshots/pc/screenshot2.png)
 
-![](/Screenshots/phone/Screenshot_1.png)
-![](/Screenshots/phone/Screenshot_2.png)
-![](/Screenshots/phone/Screenshot_3.png)
+![](/Screenshots/phone/Screenshot_1.jpg)
+![](/Screenshots/phone/Screenshot_2.jpg)
+![](/Screenshots/phone/Screenshot_3.jpg)
 
 ## Thanks to 
 luci-theme-material: https://github.com/LuttyYang/luci-theme-material/
