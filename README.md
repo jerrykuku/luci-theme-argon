@@ -25,6 +25,11 @@ make -j1 V=s
 <img src="/Screenshots/phone/Screenshot_2.jpg" width="375" height="792">
 <img src="/Screenshots/phone/Screenshot_3.jpg" width="375" height="792">
 
+## Update log
+1. Minimal background file size.
+2. Automatically detect the number of background images.
+3. Delete unused image and file.
+
 
 ## Thanks to 
 luci-theme-material: https://github.com/LuttyYang/luci-theme-material/
