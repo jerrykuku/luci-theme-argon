@@ -15,7 +15,10 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git
 make menuconfig #choose LUCI->Theme->Luci-theme-argon
 make -j1 V=s
 ```
-
+## Update log 20191109
+1. Minimal background file size.
+2. Automatically detect the number of background images.
+3. Delete unused image and file.
 
 ## Screenshots
 ![](/Screenshots/pc/screenshot1.png)
@@ -24,6 +27,8 @@ make -j1 V=s
 <img src="/Screenshots/phone/Screenshot_1.jpg" width="375" height="792">
 <img src="/Screenshots/phone/Screenshot_2.jpg" width="375" height="792">
 <img src="/Screenshots/phone/Screenshot_3.jpg" width="375" height="792">
+
+
 
 
 ## Thanks to 
