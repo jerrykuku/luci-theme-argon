@@ -26,7 +26,8 @@
 	local util = require "luci.util"
 	local http = require "luci.http"
 	local disp = require "luci.dispatcher"
-	local fs = require "luci.fs"
+	local fs	= require "nixio.fs"
+	local nutil = require "nixio.util"
 
 	local boardinfo = util.ubus("system", "board")
 
@@ -45,6 +46,15 @@
 
 	local c = tree
 	local i, r
+	
+	function glob(...)
+		local iter, code, msg = fs.glob(...)
+		if iter then
+			return nutil.consume(iter)
+		else
+			return nil, code, msg
+		end
+	end
 	
 	-- tag all nodes leading to this page
 	for i, r in ipairs(request) do
@@ -183,7 +193,7 @@
 	math.randomseed(os.time())
 	
 	local bgcount = 0
-	for f in ipairs(fs.glob("/www/luci-static/argon/img/*")) do
+	for f in ipairs(glob("/www/luci-static/argon/img/*")) do
 		bgcount = bgcount + 1
 	end
 	
