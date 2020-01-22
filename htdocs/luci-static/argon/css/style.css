@@ -68,7 +68,10 @@
     --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
 }
 
-
+::selection {
+    background-color: var(--primary);
+    color: #ffffff;
+}
 
 @font-face {
     font-family: 'icomoon';
