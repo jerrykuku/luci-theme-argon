@@ -1578,7 +1578,7 @@ div > .table > .tbody > .tr:nth-of-type(2n) {
 .main > .main-left > .sidenav-header > .brand {
     font-size: 1.8rem;
     color: #5e72e4;
-    font-family: "TypoGraphica";
+    font-family: "TypoGraphica", sans-serif;
     text-decoration: none;
     padding-left: 2rem;
     cursor: default;
