@@ -195,7 +195,7 @@ html, body {
     margin: 0px;
     padding: 0px;
     height: 100%;
-    font-family: Open Sans,sans-serif Microsoft Yahei, WenQuanYi Micro Hei, sans-serif, "Helvetica Neue", Helvetica, Hiragino Sans GB;
+    font-family: Open Sans, Microsoft Yahei, WenQuanYi Micro Hei, "Helvetica Neue", Helvetica, Hiragino Sans GB, sans-serif;
 }
 
 /*** Main Loading ***/
