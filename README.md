@@ -27,10 +27,10 @@ opkg install https://github.com/jerrykuku/luci-theme-argon/releases/download/V1.
 1. New Code For OpenWRT 19.07 for test.
 
 ## Screenshots
-![](/Screenshots/pc/pc1.jpg)
-![](/Screenshots/pc/pc2.jpg)
-![](/Screenshots/pc/pc3.jpg)
-![](/Screenshots/pc/phone.jpg)
+![](/Screenshots/pc1.jpg)
+![](/Screenshots/pc2.jpg)
+![](/Screenshots/pc3.jpg)
+![](/Screenshots/phone.jpg)
 
 ## Thanks to 
 luci-theme-material: https://github.com/LuttyYang/luci-theme-material/
