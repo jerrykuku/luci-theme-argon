@@ -1,4 +1,4 @@
-# luci-theme-argon
+# luci-theme-argon ([中文](/README_ZH.md))
 A new Luci theme for LEDE/OpenWRT  
 Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Argon Template  
 
@@ -6,7 +6,7 @@ Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Ar
 The old version is still in another branch call old. If you need that you can checkout that branch.
 
 ## Notice
-Adapt to official 19.07 stable version (not snapshot).
+Adapt to official 19.07 stable version (not snapshot) LuCI openwrt-19.07 branch (git-20.006.26738-35aa527).
 You can checkout branch 18.06 for  OpenWRT 18.06 
 
 ## How to use
