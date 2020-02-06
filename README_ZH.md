@@ -8,12 +8,15 @@
 [7]: https://img.shields.io/badge/release-v2.1-blue.svg?
 [8]: https://github.com/jerrykuku/luci-theme-argon/releases
 [9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
-
+[10]: https://img.shields.io/badge/Contact-telegram-blue
+[11]: https://t.me/jerryk6
 [![license][1]][2]
 [![PRs Welcome][3]][4]
 [![Issue Welcome][5]][6]
 [![Release Version][7]][8]
-[![Release Version][9]][8]
+[![Release Count][9]][8]
+[![Contact Me][10]][11]
+
 
 ![](/Screenshots/pc1.jpg)
 ![](/Screenshots/phone.jpg)
