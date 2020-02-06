@@ -246,7 +246,7 @@
 		<div id="maincontent">
 			<div class="container">
 				<%- if luci.sys.process.info("uid") == 0 and luci.sys.user.getuser("root") and not luci.sys.user.getpasswd("root") then -%>
-					<div class="alert-message warning">
+					<div class="alert-message error">
 						<h4><%:No password set!%></h4>
 						<p><%:There is no password set on this router. Please configure a root password to protect the web interface and enable SSH.%></p>
 						<% if disp.lookup("admin/system/admin") then %>
@@ -256,7 +256,7 @@
 				<%- end -%>
 
 				<noscript>
-					<div class="alert-message warning">
+					<div class="alert-message error">
 						<h4><%:JavaScript required!%></h4>
 						<p><%:You must enable JavaScript in your browser or LuCI will not work properly.%></p>
 					</div>
