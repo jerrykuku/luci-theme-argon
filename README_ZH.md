@@ -1,4 +1,22 @@
 # luci-theme-argon ([Eng](/README.md))
+[1]: https://img.shields.io/badge/license-MIT-brightgreen.svg
+[2]: /LICENSE
+[3]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
+[4]: https://github.com/jerrykuku/luci-theme-argon/pulls
+[5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
+[6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
+[7]: https://img.shields.io/badge/release-v2.1-blue.svg?
+[8]: https://github.com/jerrykuku/luci-theme-argon/releases
+[9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
+
+[![license][1]][2]
+[![PRs Welcome][3]][4]
+[![Issue Welcome][5]][6]
+[![Release Version][7]][8]
+[![Release Version][9]][8]
+
+![](/Screenshots/pc1.jpg)
+![](/Screenshots/phone.jpg)
 全新的 Openwrt 主题，基于luci-theme-material 和 开源免费的 Argon 模板进行移植。 
 
 ## 注意
@@ -42,10 +60,8 @@ opkg install luci-theme-argon_2.1-20200206_all.ipk
 2. v2.1 适配官方主线快照。
 
 ## 截图
-![](/Screenshots/pc1.jpg)
 ![](/Screenshots/pc2.jpg)
 ![](/Screenshots/pc3.jpg)
-![](/Screenshots/phone.jpg)
 
 ## 感谢
 luci-theme-material: https://github.com/LuttyYang/luci-theme-material/
