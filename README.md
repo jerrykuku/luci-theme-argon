@@ -6,10 +6,8 @@ Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Ar
 The old version is still in another branch call old. If you need that you can checkout that branch.
 
 ## Notice
-v2.01 Adapt to official 19.07 stable version (not snapshot) LuCI openwrt-19.07 branch (git-20.006.26738-35aa527). 
-
-v2.1 Adapt to official mainline snapshot. 
-
+v2.01 Adapt to official 19.07 stable version (not snapshot) LuCI openwrt-19.07 branch (git-20.006.26738-35aa527).  
+v2.1 Adapt to official mainline snapshot.  
 You can checkout branch 18.06 for  OpenWRT 18.06 or lean 19.07.
 
 ## How to use
