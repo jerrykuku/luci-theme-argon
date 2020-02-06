@@ -1,4 +1,24 @@
 # luci-theme-argon ([中文](/README_ZH.md))
+
+[1]: https://img.shields.io/badge/license-MIT-brightgreen.svg
+[2]: /LICENSE
+[3]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
+[4]: https://github.com/jerrykuku/luci-theme-argon/pulls
+[5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
+[6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
+[7]: https://img.shields.io/badge/release-v2.1-blue.svg?
+[8]: https://github.com/jerrykuku/luci-theme-argon/releases
+[9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
+
+[![license][1]][2]
+[![PRs Welcome][3]][4]
+[![Issue Welcome][5]][6]
+[![Release Version][7]][8]
+[![Release Version][9]][8]
+
+![](/Screenshots/pc1.jpg)
+![](/Screenshots/phone.jpg)
+
 A new Luci theme for LEDE/OpenWRT  
 Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Argon Template  
 
@@ -10,7 +30,7 @@ v2.01 Adapt to official 19.07 stable version (not snapshot) LuCI openwrt-19.07 b
 v2.1 Adapt to official mainline snapshot.  
 You can checkout branch 18.06 for  OpenWRT 18.06 or lean 19.07.
 
-## How to use
+## How to build
 
 Enter in your openwrt/package/lean  or  other
 
@@ -42,11 +62,10 @@ opkg install luci-theme-argon_2.1-20200206_all.ipk
 1. v2.01  Fix display error, when not set password.
 2. v2.1 Adapt to official mainline snapshot.
 
-## Screenshots
-![](/Screenshots/pc1.jpg)
+## More Screenshots
+
 ![](/Screenshots/pc2.jpg)
 ![](/Screenshots/pc3.jpg)
-![](/Screenshots/phone.jpg)
 
 ## Thanks to 
 luci-theme-material: https://github.com/LuttyYang/luci-theme-material/
