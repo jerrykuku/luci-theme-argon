@@ -2,8 +2,10 @@
 全新的 Openwrt 主题，基于luci-theme-material 和 开源免费的 Argon 模板进行移植。 
 
 ## 注意
-当前master版本基于官方 OpenWrt 19.07.1 稳定版固件进行移植适配。
-集成前请确认当前的luci 版本是比较新的版本，如果不是新版的LUCI 建议拉取18.06分支。
+当前master版本基于官方 OpenWrt 19.07.1 稳定版固件进行移植适配。  
+v2.1 适配主线快照版本。  
+v2.01 适配官方稳定版 [Luci版本 LuCI openwrt-19.07 branch (git-20.006.26738-35aa527)]  
+v1.3 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版本]
 
 
 ## 如何使用
@@ -17,13 +19,27 @@ make menuconfig #choose LUCI->Theme->Luci-theme-argon
 make -j1 V=s
 ```
 ## 安装
+### For Lean openwrt
 ```
-opkg install https://github.com/jerrykuku/luci-theme-argon/releases/download/V1.3/luci-theme-argon_1.3-01-20191111_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.3/luci-theme-argon_1.3-01-20191111_all.ipk
+opkg install luci-theme-argon_1.3-01-20191111_all.ipk
 ```
 
-## 更新日志 20200203
-1. 修复了一些首页不能显示的问题。
+### For openwrt 19.07 stable LuCI branch (git-20.006.26738-35aa527)
+```
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.01/luci-theme-argon_2.01-20200203_all.ipk
+opkg install luci-theme-argon_2.01-20200203_all.ipk
+```
 
+### For openwrt 19.07 Snapshots LuCI master (git-20.033.77428-3d63732)
+```
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.1/luci-theme-argon_2.1-20200206_all.ipk
+opkg install luci-theme-argon_2.1-20200206_all.ipk
+```
+
+## 更新日志 2020.02.06
+1. v2.01 修复了当未设置密码时提示错位的问题，同时修正部分下拉框文字颜色问题。  
+2. v2.1 适配官方主线快照。
 
 ## 截图
 ![](/Screenshots/pc1.jpg)
