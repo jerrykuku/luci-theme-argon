@@ -24,7 +24,7 @@ make -j1 V=s
 ## Install 
 ### For Lean openwrt
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/V1.3/luci-theme-argon_1.3-01-20191111_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.3/luci-theme-argon_1.3-01-20191111_all.ipk
 opkg install luci-theme-argon_1.3-01-20191111_all.ipk
 ```
 
