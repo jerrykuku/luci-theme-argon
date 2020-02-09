@@ -35,12 +35,23 @@ You can checkout branch 18.06 for  OpenWRT 18.06 or lean 19.07.
 ## How to build
 
 Enter in your openwrt/package/lean  or  other
+####Lean lede
+```
+cd lede/package/lean  
+rm -rf luci-theme-argon  
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  
+make menuconfig #choose LUCI->Theme->Luci-theme-argon  
+make -j1 V=s  
+```
 
+####Openwrt SnapShots
 ```
-git clone https://github.com/jerrykuku/luci-theme-argon.git
-make menuconfig #choose LUCI->Theme->Luci-theme-argon
-make -j1 V=s
+cd openwrt/package
+git clone https://github.com/jerrykuku/luci-theme-argon.git  
+make menuconfig #choose LUCI->Theme->Luci-theme-argon  
+make -j1 V=s  
 ```
+
 ## Install 
 ### For Lean openwrt
 ```
