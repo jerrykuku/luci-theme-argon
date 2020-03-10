@@ -167,6 +167,9 @@
 .icon-error:before {
     content: "\e905";
 }
+.icon-docker:before {
+    content: "\e90f";
+}
 
 * {
     margin: 0;
@@ -1685,6 +1688,10 @@ div > .table > .tbody > .tr:nth-of-type(2n) {
 .main > .main-left > .nav > .slide > .menu[data-title= Bandwidth_Monitor ]:before{
     content: "\e90d";
     color: #2dce89!important;
+}
+.main > .main-left > .nav > .slide > .menu[data-title= docker ]:before{
+    content: "\e90f";
+    color: #6699ff!important;
 }
 .main > .main-left > .nav > .slide > .menu[data-title= Logout ]:before{
     content: "\e907";
