@@ -224,7 +224,7 @@
         <meta name="msapplication-TileImage" content="<%=media%>/logo.png"/>
         <link rel="icon" href="<%=media%>/logo.png" sizes="144x144">
         <link rel="apple-touch-icon-precomposed" href="<%=media%>/logo.png" sizes="144x144">
-	<link rel="stylesheet" href="<%=media%>/css/purecss.css">  
+	<link rel="stylesheet" href="<%=media%>/css/purecss.css?v=1.4">  
 	<link rel="stylesheet" href="<%=media%>/css/style.css?v=<%=math.random(1,100000)%>"> 
 	<link rel="shortcut icon" href="<%=media%>/favicon.ico"> 
 	<% if node and node.css then %>
@@ -237,7 +237,7 @@
 	<script src="<%=resource%>/xhr.js?v=git-19.190.55614-35357e4"></script>
 	<script src="<%=media%>/js/jquery.min.js?v=git-19.190.55614-35357e4"></script>
 </head>
-<body class="lang_<%=luci.i18n.context.lang%> <%- if node then %><%= striptags( node.title ) %><%- end %> <% if luci.dispatcher.context.authsession then %>logged-in<% end %>">
+<body class="<%- if node then %><%= striptags( node.title ) %><%- end %> <% if luci.dispatcher.context.authsession then %>logged-in<% end %> lang_<%=luci.i18n.context.lang%>  ">
 
 <div class="main">
     <div style="" class="loading">
