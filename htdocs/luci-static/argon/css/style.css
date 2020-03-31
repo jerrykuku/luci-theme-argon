@@ -3821,6 +3821,14 @@ header>.container>.pull-right>* {
         color: #cccccc;
     }
 
+    .main-left::-webkit-scrollbar-thumb {
+        background-color: #252526 !important
+    }
+    
+    .main-left::-webkit-scrollbar-track {
+        background-color: #333;
+    }
+
     .node-main-login>.main .container {
         background-color: #1e1e1e !important;
     }
