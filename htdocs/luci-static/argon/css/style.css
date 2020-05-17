@@ -1133,6 +1133,7 @@ input[name="nslookup"] {
 
 
 #xhr_poll_status {
+    cursor: pointer;
     display: inline-block;
 
 }
@@ -3488,7 +3489,10 @@ header>.container>.pull-right>* {
     font-size: 0.875rem;
 }
 
-
+/* fix nlbw/display*/
+#detail-bubble.in{
+    z-index: 500;
+}
 
 @media screen and (max-width: 1600px) {
     .main-left {
