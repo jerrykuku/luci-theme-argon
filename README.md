@@ -59,13 +59,7 @@ wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releas
 opkg install luci-theme-argon_1.5.1-01-20200331_all.ipk
 ```
 
-### For openwrt 19.07 stable LuCI branch (git-20.006.26738-35aa527)
-```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.01/luci-theme-argon_2.01-20200203_all.ipk
-opkg install luci-theme-argon_2.01-20200203_all.ipk
-```
-
-### For openwrt 19.07 Snapshots LuCI master (git-20.033.77428-3d63732)
+### For openwrt 19.07 Snapshots LuCI master 
 ```
 wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.1/luci-theme-argon_2.1-20200206_all.ipk
 opkg install luci-theme-argon_2.1-20200206_all.ipk
