@@ -28,7 +28,6 @@ Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Ar
 The old version is still in another branch call old. If you need that you can checkout that branch.
 
 ## Notice
-v2.01 Adapt to official 19.07 stable version (not snapshot) LuCI openwrt-19.07 branch (git-20.006.26738-35aa527).  
 v2.1 Adapt to official mainline snapshot.  
 You can checkout branch 18.06 for  OpenWRT 18.06 or lean 19.07.
 
@@ -59,21 +58,16 @@ wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releas
 opkg install luci-theme-argon_1.5.1-01-20200331_all.ipk
 ```
 
-### For openwrt 19.07 stable LuCI branch (git-20.006.26738-35aa527)
-```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.01/luci-theme-argon_2.01-20200203_all.ipk
-opkg install luci-theme-argon_2.01-20200203_all.ipk
-```
-
 ### For openwrt 19.07 Snapshots LuCI master (git-20.033.77428-3d63732)
 ```
 wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.1/luci-theme-argon_2.1-20200206_all.ipk
 opkg install luci-theme-argon_2.1-20200206_all.ipk
 ```
 
-## Update log 2020.03.31 [18.06]
-1. v1.5.1 Fix display error.
-2. v1.5.1 Add darkmode following the system.
+## Update log 2020.07.03 [18.06]
+1. v1.5.3 change Header display style.
+2. v1.5.3 change page title display style.
+3. v1.5.3 fix display bug in diagnostics.
 
 ## More Screenshots
 
