@@ -2308,8 +2308,7 @@ form.inline+form.inline,
 .cbi-value-field .cbi-button-add,
 .cbi-value-field .cbi-button-remove,
 .cbi-value-field .cbi-button-neutral {
-    height: 2.5rem;
-    line-height: 2.5rem;
+
     min-width: 2.5rem !important;
 }
 
@@ -2654,11 +2653,11 @@ select[multiple="multiple"] {
 .cbi-value-field,
 .cbi-value-description {
     display: table-cell;
-    line-height: 1.25;
+    line-height: 1.6;
+    font-size: 0.875rem;
 
 }
 
-div.cbi-value-field {}
 
 
 .cbi-value-helpicon>img {
