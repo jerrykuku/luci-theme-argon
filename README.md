@@ -18,8 +18,6 @@
 [![Release Count][9]][8]
 [![Contact Me][10]][11]
 
-![](/Screenshots/pc1.jpg)
-![](/Screenshots/phone.jpg)
 
 A new Luci theme for LEDE/OpenWRT  
 Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Argon Template  
@@ -28,8 +26,9 @@ Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Ar
 The old version is still in another branch call old. If you need that you can checkout that branch.
 
 ## Notice
-v2.1 Adapt to official mainline snapshot.  
-You can checkout branch 18.06 for  OpenWRT 18.06 or lean 19.07.
+
+This branch only matches lean openwrt.
+
 
 ## How to build
 
@@ -43,14 +42,6 @@ make menuconfig #choose LUCI->Theme->Luci-theme-argon
 make -j1 V=s  
 ```
 
-####Openwrt SnapShots
-```
-cd openwrt/package
-git clone https://github.com/jerrykuku/luci-theme-argon.git  
-make menuconfig #choose LUCI->Theme->Luci-theme-argon  
-make -j1 V=s  
-```
-
 ## Install 
 ### For Lean openwrt
 ```
@@ -58,21 +49,12 @@ wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releas
 opkg install luci-theme-argon_1.5.1-01-20200331_all.ipk
 ```
 
-### For openwrt 19.07 Snapshots LuCI master (git-20.033.77428-3d63732)
-```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.1/luci-theme-argon_2.1-20200206_all.ipk
-opkg install luci-theme-argon_2.1-20200206_all.ipk
-```
-
 ## Update log 2020.07.03 [18.06]
-1. v1.5.3 change Header display style.
+1. v1.5.3 change header display style.
 2. v1.5.3 change page title display style.
 3. v1.5.3 fix display bug in diagnostics.
+4. v1.5.3 Reduce the background image to one.
 
-## More Screenshots
-
-![](/Screenshots/pc2.jpg)
-![](/Screenshots/pc3.jpg)
 
 ## Thanks to 
 luci-theme-material: https://github.com/LuttyYang/luci-theme-material/
