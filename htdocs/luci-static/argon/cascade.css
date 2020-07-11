@@ -933,6 +933,9 @@ h5 {
 .cbi-map-descr + fieldset {
   margin-top: 1rem;
 }
+.cbi-map > abbr,
+.cbi-map > h2 > abbr,
+.cbi-map > abbr,
 .cbi-map-descr > abbr {
   cursor: help;
   text-decoration: underline;
