@@ -49,11 +49,8 @@ wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releas
 opkg install luci-theme-argon_1.5.1-01-20200331_all.ipk
 ```
 
-## Update log 2020.07.03 [18.06]
-1. v1.5.3 change header display style.
-2. v1.5.3 change page title display style.
-3. v1.5.3 fix display bug in diagnostics.
-4. v1.5.3 Reduce the background image to one.
+## Update log 2020.07.16 [18.06]
+1. v1.5.4 add a control icon.
 
 
 ## Thanks to 
