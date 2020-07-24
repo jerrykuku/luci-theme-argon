@@ -2922,7 +2922,7 @@ input[name="nslookup"] {
   .cbi-section em {
     color: darkslateblue;
   }
-  .bg-primary {
+  header.bg-primary {
     background-color: #1e1e1e !important;
   }
   .cbi-map-descr {
