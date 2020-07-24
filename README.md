@@ -61,8 +61,8 @@ opkg install luci-theme-argon_1.5.1-01-20200331_all.ipk
 ![](/Screenshots/pc/screenshot1.jpg)
 ![](/Screenshots/pc/screenshot2.jpg)
 ![](/Screenshots/pc/screenshot3.jpg)
-![](/Screenshots/phone/screenshot_1.jpg)
-![](/Screenshots/phone/screenshot_2.jpg)
+![](/Screenshots/phone/Screenshot_1.jpg)
+![](/Screenshots/phone/Screenshot_2.jpg)
 
 ## Thanks to 
 luci-theme-material: https://github.com/LuttyYang/luci-theme-material/
