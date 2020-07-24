@@ -227,6 +227,7 @@ li {
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   color: #8898aa;
   border: 0;
+  border-radius: 0;
   border-bottom: 1px solid #dee2e6;
   background-color: transparent;
   background-clip: padding-box;
