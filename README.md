@@ -49,9 +49,20 @@ wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releas
 opkg install luci-theme-argon_1.5.1-01-20200331_all.ipk
 ```
 
-## Update log 2020.07.16 [18.06]
-1. v1.5.4 add a control icon.
+## Update log 2020.07.24 [18.06] V1.6.1 
 
+- New login theme, Request background imge from bing.com, Auto change everyday. 
+- New theme icon 
+- Add more menu category  icon 
+- Fix font-size and padding margin 
+- Restructure css file 
+
+## Screenshots 
+![](/Screenshots/pc/screenshot1.jpg)
+![](/Screenshots/pc/screenshot2.jpg)
+![](/Screenshots/pc/screenshot3.jpg)
+![](/Screenshots/phone/screenshot_1.jpg)
+![](/Screenshots/phone/screenshot_2.jpg)
 
 ## Thanks to 
 luci-theme-material: https://github.com/LuttyYang/luci-theme-material/

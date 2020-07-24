@@ -67,13 +67,21 @@ wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releas
 opkg install luci-theme-argon_2.1-20200206_all.ipk
 ```
 
-## 更新日志 2020.03.31[18.06]
-1. v1.5.1 修复了一些之前的显示错误。  
-2. v1.5.1 增加自动深色模式，跟随系统设置。
+## Update log 2020.07.24 [18.06] V1.6.1 
+
+- 全新的登录界面,图片背景跟随Bing.com，每天自动切换 
+- 全新的主题icon 
+- 增加多个导航icon 
+- 细致的微调了 字号大小边距等等 
+- 重构了css文件 
+
 
 ## 截图
-![](/Screenshots/pc2.jpg)
-![](/Screenshots/pc3.jpg)
+![](/Screenshots/pc/screenshot1.jpg)
+![](/Screenshots/pc/screenshot2.jpg)
+![](/Screenshots/pc/screenshot3.jpg)
+![](/Screenshots/phone/screenshot_1.jpg)
+![](/Screenshots/phone/screenshot_2.jpg)
 
 ## 感谢
 luci-theme-material: https://github.com/LuttyYang/luci-theme-material/
