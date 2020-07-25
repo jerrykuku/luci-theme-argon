@@ -5,7 +5,7 @@
 [4]: https://github.com/jerrykuku/luci-theme-argon/pulls
 [5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
 [6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v1.6.1-blue.svg?
+[7]: https://img.shields.io/badge/release-v1.6.2-blue.svg?
 [8]: https://github.com/jerrykuku/luci-theme-argon/releases
 [9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
 [10]: https://img.shields.io/badge/Contact-telegram-blue
@@ -24,9 +24,8 @@
 
 ## 注意
 当前master版本基于官方 OpenWrt 19.07.1 稳定版固件进行移植适配。  
-v2.1 适配主线快照版本。  
-v2.01 适配官方稳定版 [Luci版本 LuCI openwrt-19.07 branch (git-20.006.26738-35aa527)]  
-v1.5.1 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版本]
+v2.2 适配官方主线快照版本。  
+v1.6.2 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版本]
 
 
 ## 如何使用
@@ -48,32 +47,24 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git
 make menuconfig #choose LUCI->Theme->Luci-theme-argon  
 make -j1 V=s  
 ```
-## 安装
-### For Lean openwrt
+
+## 安装 
+
+### For Lean openwrt 18.06 LuCI
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/1.5.1/luci-theme-argon_1.5.1-01-20200331_all.ipk
-opkg install luci-theme-argon_1.5.1-01-20200331_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.2/luci-theme-argon_1.6.2-20200725_all.ipk
+opkg install luci-theme-argon*.ipk
 ```
 
-### For openwrt 19.07 stable LuCI branch (git-20.006.26738-35aa527)
-```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.01/luci-theme-argon_2.01-20200203_all.ipk
-opkg install luci-theme-argon_2.01-20200203_all.ipk
-```
 
-### For openwrt 19.07 Snapshots LuCI master (git-20.033.77428-3d63732)
-```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.1/luci-theme-argon_2.1-20200206_all.ipk
-opkg install luci-theme-argon_2.1-20200206_all.ipk
-```
-
-## Update log 2020.07.24 [18.06] V1.6.1 
+## Update log 2020.07.25 [18.06] V1.6.2 
 
 - 全新的登录界面,图片背景跟随Bing.com，每天自动切换 
 - 全新的主题icon 
 - 增加多个导航icon 
 - 细致的微调了 字号大小边距等等 
 - 重构了css文件 
+- 自动适应的暗黑模式
 
 
 ## 截图
