@@ -50,17 +50,17 @@ make -j1 V=s
 ## 安装
 ### For Lean openwrt
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.2/luci-theme-argon_1.6.2-20200725_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.3/luci-theme-argon_1.6.3-20200725_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
 ### For openwrt official 19.07 Snapshots LuCI master 
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2/luci-theme-argon_2.2-20200725_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2.1/luci-theme-argon_2.2.1-20200725_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
-## 更新日志 2020.07.25 v2.2
+## 更新日志 2020.07.25 v2.2.1 
 
 - 全新的登录界面,图片背景跟随Bing.com，每天自动切换 
 - 全新的主题icon 
@@ -68,6 +68,7 @@ opkg install luci-theme-argon*.ipk
 - 细致的微调了 字号大小边距等等 
 - 重构了css文件 
 - 自动适应的暗黑模式
+- 登录背景添加毛玻璃效果 【v2.2.1】
 
 ## 更多截图
 
