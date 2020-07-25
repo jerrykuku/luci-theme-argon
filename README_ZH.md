@@ -5,7 +5,7 @@
 [4]: https://github.com/jerrykuku/luci-theme-argon/pulls
 [5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
 [6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v1.6.2-blue.svg?
+[7]: https://img.shields.io/badge/release-v1.6.3-blue.svg?
 [8]: https://github.com/jerrykuku/luci-theme-argon/releases
 [9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
 [10]: https://img.shields.io/badge/Contact-telegram-blue
@@ -52,12 +52,12 @@ make -j1 V=s
 
 ### For Lean openwrt 18.06 LuCI
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.2/luci-theme-argon_1.6.2-20200725_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.3/luci-theme-argon_1.6.3-20200725_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
 
-## Update log 2020.07.25 [18.06] V1.6.2 
+## Update log 2020.07.25 [18.06] V1.6.3 
 
 - 全新的登录界面,图片背景跟随Bing.com，每天自动切换 
 - 全新的主题icon 
@@ -65,6 +65,7 @@ opkg install luci-theme-argon*.ipk
 - 细致的微调了 字号大小边距等等 
 - 重构了css文件 
 - 自动适应的暗黑模式
+- 登录背景添加毛玻璃效果 【v1.6.3】
 
 
 ## 截图
