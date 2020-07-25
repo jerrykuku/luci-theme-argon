@@ -2476,7 +2476,7 @@ input[name="nslookup"] {
   padding-top: 0.1rem;
 }
 [data-page="admin-system-opkg"] #maincontent > .container {
-  margin: 2rem;
+  margin: 2rem 2rem 1rem;
   margin-bottom: 1rem;
 }
 .td.version,
