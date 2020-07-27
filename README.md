@@ -42,19 +42,26 @@ make -j1 V=s
 
 ### For Lean openwrt 18.06 LuCI
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.3/luci-theme-argon_1.6.3-20200725_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.4/luci-theme-argon_1.6.4-20200727_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
-## Update log 2020.07.25 [18.06] V1.6.3 
+## Update log 2020.07.27 [18.06] V1.6.4 
 
-- New login theme, Request background imge from bing.com, Auto change everyday. 
-- New theme icon 
-- Add more menu category  icon 
-- Fix font-size and padding margin 
-- Restructure css file 
-- Auto adapt to dark mode
+- New: login background image can be customized now, upload image to /www/luci-static/argon/background/ (only jpg, png and gif are allowed). Uploaded images will be displayed if they are present. If you have multiple images in /www/luci-static/argon/background/, they will be displayed randomly upon each login.【v1.6.4】
+- New: force dark mode. Dark mode can now be enabled without client being in "dark mode". To enable: ssh into your router and enter "touch /etc/dark", to disable enter "rm -rf touch /etc/dark" (automatic dark mode).【v1.6.4】
+- New: Argon Version displayed in footer will match ipk version from now on.【v1.6.4】
+- Fix: Font colors. 【v1.6.4】
+
 - Add blur effect for login form 【v1.6.3】
+
+- New login theme, Request background imge from bing.com, Auto change everyday. 【v1.6.1】
+- New theme icon 【v1.6.1】
+- Add more menu category  icon 【v1.6.1】
+- Fix font-size and padding margin 【v1.6.1】
+- Restructure css file 【v1.6.1】
+- Auto adapt to dark mode 【v1.6.1】
+
 
 ## Screenshots 
 ![](/Screenshots/pc/screenshot1.jpg)
