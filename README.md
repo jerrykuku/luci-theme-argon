@@ -46,7 +46,7 @@ wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releas
 opkg install luci-theme-argon*.ipk
 ```
 
-## Update log 2020.07.27 [18.06] V1.6.4 
+## Update log 2020.07.27 [18.06] V1.6.5 
 
 - New: login background image can be customized now, upload image to /www/luci-static/argon/background/ (only jpg, png and gif are allowed). Uploaded images will be displayed if they are present. If you have multiple images in /www/luci-static/argon/background/, they will be displayed randomly upon each login.【v1.6.4】
 - New: force dark mode. Dark mode can now be enabled without client being in "dark mode". To enable: ssh into your router and enter "touch /etc/dark", to disable enter "rm -rf touch /etc/dark" (automatic dark mode).【v1.6.4】
