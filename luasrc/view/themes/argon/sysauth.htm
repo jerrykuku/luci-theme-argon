@@ -45,6 +45,7 @@
 	end
 
 	local bgcount = 0
+	local currentBg = {}
 	local bgs,attr = {}
 	local theme_dir = media .. "/background/"
 	for i, f in ipairs(glob("/www" .. theme_dir .. "*")) do
@@ -61,8 +62,11 @@
 		end
 	end
 
-	local currentBg =  bgs[math.random(1,bgcount)]
-	local mute = "mute"
+
+	if bgcount > 0 then
+		currentBg =  bgs[math.random(1,bgcount)]
+		local mute = "mute"
+	end
 %>
 <div class="login-page">
 	<% if (bgcount > 0 and currentBg.type == "mp4") then %>
