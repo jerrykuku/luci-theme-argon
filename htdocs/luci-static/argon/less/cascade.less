@@ -73,6 +73,8 @@
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
+    --blur-radis:10px;
+    --blur-opacity:0.5;
     --font-family-sans-serif: "Google Sans", "Microsoft Yahei", "WenQuanYi Micro Hei", "sans-serif", "Helvetica Neue", "Helvetica", "Hiragino Sans GB";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     --font-family-normal: Open Sans, PingFangSC-Regular, Microsoft Yahei, WenQuanYi Micro Hei, "Helvetica Neue", Helvetica, Hiragino Sans GB, sans-serif;
@@ -104,6 +106,8 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color:transparent;
+
 }
 
 ::selection {
@@ -159,6 +163,21 @@ li {
         video {
             width: 100%;
             height: auto;
+        }
+    }
+
+    .volume-control{
+        position: fixed;
+        right: 1rem;
+        top: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        z-index: 5000;
+        cursor: pointer;
+        background-size: contain;
+        background-image: url(../img/volume_high.svg);
+        &.mute{
+            background-image: url(../img/volume_off.svg);
         }
     }
 
@@ -340,6 +359,12 @@ li {
             padding: 0px 0px 30px;
             z-index: 10;
             color: #525461;
+            position: relative;
+            .ftc{
+                position: absolute;
+                bottom: 30px;
+                width: 100%;
+            }
 
             .luci-link {
                 display: block;
@@ -358,9 +383,9 @@ li {
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     .login-page .login-container .login-form {
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        background-color: rgba(244, 245, 247, 0.7);
+        -webkit-backdrop-filter: blur(var(--blur-radis));
+        backdrop-filter: blur(var(--blur-radis));
+        background-color: rgba(244, 245, 247, var(--blur-opacity));
 
     }
 }
@@ -435,6 +460,7 @@ header {
 ***************************/
 
 footer {
+    
     text-align: right;
     padding: 1rem;
     color: #aaa;
@@ -3306,6 +3332,30 @@ input[name="nslookup"] {
 
     .main>.main-left>.nav>.slide>.slide-menu>li>a {
         font-size: 0.7rem;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    ::-webkit-scrollbar,
+    ::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #9e9e9e;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #757575;
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: #424242;
     }
 }
 
