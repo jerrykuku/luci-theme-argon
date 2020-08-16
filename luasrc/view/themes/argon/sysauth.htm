@@ -65,13 +65,14 @@
 
 	if bgcount > 0 then
 		currentBg =  bgs[math.random(1,bgcount)]
-		local mute = "mute"
 	end
+
+
 %>
 <div class="login-page">
 	<% if (bgcount > 0 and currentBg.type == "mp4") then %>
 	<div class="video">
-		<video autoplay="" loop="" muted="" id="video">
+		<video autoplay loop muted id="video">
 			<source src="<%=currentBg.url%>" type="video/mp4">
 		</video>
 	</div>
