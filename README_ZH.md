@@ -60,7 +60,7 @@ wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releas
 opkg install luci-theme-argon*.ipk
 ```
 
-## 更新日志 2020.07.25 v2.2.1 
+## 更新日志 2020.08.16 v2.2.1 
 
 - 背景文件策略调整为，同时接受 jpg png gif mp4, 自行上传文件至 /www/luci-static/argon/background 图片和视频同时随机。【v2.2.2】
 - 增加强制暗色模式，进入ssh 输入 "touch /etc/dark" 进行开启。【v2.2.2】

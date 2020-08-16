@@ -63,7 +63,7 @@ wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releas
 opkg install luci-theme-argon*.ipk
 ```
 
-## Update log 2020.07.25 v2.2.2 
+## Update log 2020.08.16 v2.2.2 
 
 - Add custom login background,put your image (allow png jpg gif) or MP4 video into /www/luci-static/argon/background, random change【v2.2.2】
 - Add force dark mode, login ssh and type "touch /etc/dark" to open dark mode.【v2.2.2】
