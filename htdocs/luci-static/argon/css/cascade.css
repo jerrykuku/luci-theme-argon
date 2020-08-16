@@ -73,8 +73,10 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --blur-radis: 10px;
+  --blur-radius: 10px;
   --blur-opacity: 0.5;
+  --blur-radius-dark: 10px;
+  --blur-opacity-dark: 0.5;
   --font-family-sans-serif: "Google Sans", "Microsoft Yahei", "WenQuanYi Micro Hei", "sans-serif", "Helvetica Neue", "Helvetica", "Hiragino Sans GB";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --font-family-normal: Open Sans, PingFangSC-Regular, Microsoft Yahei, WenQuanYi Micro Hei, "Helvetica Neue", Helvetica, Hiragino Sans GB, sans-serif;
@@ -349,8 +351,8 @@ li {
 }
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .login-page .login-container .login-form {
-    -webkit-backdrop-filter: blur(var(--blur-radis));
-    backdrop-filter: blur(var(--blur-radis));
+    -webkit-backdrop-filter: blur(var(--blur-radius));
+    backdrop-filter: blur(var(--blur-radius));
     background-color: rgba(244, 245, 247, var(--blur-opacity));
   }
 }
@@ -3316,9 +3318,9 @@ input[name="nslookup"] {
   }
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     .login-page .login-container .login-form {
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-      background-color: rgba(0, 0, 0, 0.7);
+      -webkit-backdrop-filter: blur(var(--blur-radius-dark));
+      backdrop-filter: blur(var(--blur-radius-dark));
+      background-color: rgba(0, 0, 0, var(--blur-opacity-dark));
     }
   }
 }
