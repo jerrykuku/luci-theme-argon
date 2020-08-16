@@ -43,7 +43,7 @@
 	<div class="ftc">
 		<a class="luci-link" href="https://github.com/openwrt/luci">Powered by <%= ver.luciname %>
 			(<%= ver.luciversion %>)</a> /
-		<a href="https://github.com/jerrykuku/luci-theme-argon">ArgonTheme v1.6.5</a> /
+		<a href="https://github.com/jerrykuku/luci-theme-argon">ArgonTheme v1.6.6</a> /
 		<%= ver.distversion %>
 		<% if #categories > 1 then %>
 		<ul class="breadcrumb pull-right" id="modemenu">
@@ -63,7 +63,6 @@
 	// thanks for Jo-Philipp Wich <jow@openwrt.org>
 	var luciLocation = <%= luci.http.write_json(luci.dispatcher.context.path) %>;
 	var winHeight = $(window).height();
-	
 	$(window).resize(function () {
 		var winWidth = $(window).width()
 		if(winWidth < 600){
