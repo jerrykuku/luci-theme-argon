@@ -229,9 +229,9 @@
 	<% if css then %>
 	<style title="text/css"><%=css %></style>
 	<% end -%>
-	<script src="<%=resource%>/cbi.js?v=1.6.6"></script>
-	<script src="<%=resource%>/xhr.js?v=1.6.6"></script>
-	<script src="<%=media%>/js/jquery.min.js?v=1.6.6"></script>
+	<script src="<%=resource%>/cbi.js<%# ?v=PKG_VERSION %>"></script>
+	<script src="<%=resource%>/xhr.js<%# ?v=PKG_VERSION %>"></script>
+	<script src="<%=media%>/js/jquery.min.js<%# ?v=PKG_VERSION %>"></script>
 </head>
 
 <body

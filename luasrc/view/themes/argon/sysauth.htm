@@ -114,19 +114,21 @@
 					<input type="submit" value="<%:Login%>" class="cbi-button cbi-button-apply" />
 				</div>
 			</form>
-
+			<script type="text/javascript">//<![CDATA[
+				var input = document.getElementsByName('luci_password')[0];
+				if (input)
+					input.focus();
+			//]]></script>
 			<%
 			if (bgcount == 0 ) then
 				local bingjson = "{}"
-				local bing = string.gsub(luci.sys.exec("content=`wget --no-check-certificate -q -O - 'http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US'`;echo $content"), "\n", "")
+				local http = require "socket.http"
+				local bing = http.request("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US")
 				if (bing and bing ~= '') then
 					bingjson = bing
 				end
 			%>
 			<script type="text/javascript">//<![CDATA[
-				var input = document.getElementsByName('luci_password')[0];
-				if (input)
-					input.focus();
 				try {
 					var bing = <%=bingjson%>;
 					var bg = "https://www.bing.com" + bing.images[0].url;

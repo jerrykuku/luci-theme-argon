@@ -52,6 +52,7 @@ opkg install luci-theme-argon*.ipk
 - Add a volume mute button for video background, default is muted【v1.6.6】
 - fix login page when keyboard show the bottom text overlay the button on mobile【v1.6.6】
 - fix select color in dark mode,and add a style for scrollbar【v1.6.6】
+- jquery update to v3.5.1【v1.6.6】
 
 - New: login background image can be customized now, upload image to /www/luci-static/argon/background/ (only jpg, png and gif are allowed). Uploaded images will be displayed if they are present. If you have multiple images in /www/luci-static/argon/background/, they will be displayed randomly upon each login.【v1.6.4】
 - New: force dark mode. Dark mode can now be enabled without client being in "dark mode". To enable: ssh into your router and enter "touch /etc/dark", to disable enter "rm -rf touch /etc/dark" (automatic dark mode).【v1.6.4】
