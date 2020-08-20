@@ -5,7 +5,7 @@
 [4]: https://github.com/jerrykuku/luci-theme-argon/pulls
 [5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
 [6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v1.6.6-blue.svg?
+[7]: https://img.shields.io/badge/release-v1.6.8-blue.svg?
 [8]: https://github.com/jerrykuku/luci-theme-argon/releases
 [9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
 [10]: https://img.shields.io/badge/Contact-telegram-blue
@@ -24,8 +24,8 @@
 
 ## 注意
 当前master版本基于官方 OpenWrt 19.07.1 稳定版固件进行移植适配。  
-v2.2 适配官方主线快照版本。  
-v1.6.6 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版本]
+v2.2.3 适配官方主线快照版本。  
+v1.6.8 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版本]
 
 
 ## 如何使用
@@ -52,14 +52,15 @@ make -j1 V=s
 
 ### For Lean openwrt 18.06 LuCI
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.6/luci-theme-argon_1.6.6-20200815_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.8/luci-theme-argon_1.6.8-20200820_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
 
-## Update log 2020.08.15 [18.06] V1.6.6 
+## Update log 2020.08.20 [18.06] V1.6.8 
 
-本次更新又带来了好玩的东西，详情看如下更新
+- 去掉了对wget的依赖，默认是用luasocket,为避免更新出错，请提前opkg install luasocket【v1.6.8】
+- 更新了图标库，为未定义的菜单增加了一个默认的图标。【v1.6.8】
 
 - 背景文件策略调整为，同时接受 jpg png gif mp4, 图片和视频同时随机。【v1.6.6】
 - 视频背景加了一个音量开关，喜欢带声音的可以自行点击开启，默认为静音模式【v1.6.6】

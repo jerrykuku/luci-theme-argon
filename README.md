@@ -6,7 +6,7 @@
 [4]: https://github.com/jerrykuku/luci-theme-argon/pulls
 [5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
 [6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v1.6.6-blue.svg?
+[7]: https://img.shields.io/badge/release-v1.6.8-blue.svg?
 [8]: https://github.com/jerrykuku/luci-theme-argon/releases
 [9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
 [10]: https://img.shields.io/badge/Contact-telegram-blue
@@ -42,11 +42,14 @@ make -j1 V=s
 
 ### For Lean openwrt 18.06 LuCI
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.6/luci-theme-argon_1.6.6-20200815_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.8/luci-theme-argon_1.6.8-20200820_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
-## Update log 2020.08.15 [18.06] V1.6.6 
+## Update log 2020.08.20 [18.06] V1.6.8
+- Remove depends on wget, add depends Luasocket【v1.6.8】
+- Update font icon, add a default icon of undefined menu【v1.6.8】
+
 
 - Now backgorund allow png jpg gif and mp4 files, random change。【v1.6.6】
 - Add a volume mute button for video background, default is muted【v1.6.6】
