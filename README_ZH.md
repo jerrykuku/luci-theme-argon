@@ -50,7 +50,7 @@ make -j1 V=s
 ## 安装
 ### For Lean openwrt
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.6/luci-theme-argon_1.6.6-20200815_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.8/luci-theme-argon_1.6.8-20200820_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
