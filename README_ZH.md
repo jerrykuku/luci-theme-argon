@@ -56,11 +56,13 @@ opkg install luci-theme-argon*.ipk
 
 ### For openwrt official 19.07 Snapshots LuCI master 
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2.2/luci-theme-argon_2.2.2-20200816_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2.3/luci-theme-argon_2.2.3-20200820_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
-## 更新日志 2020.08.16 v2.2.2 
+## 更新日志 2020.08.20 v2.2.3 
+- 修正了在暗色模式下，固件刷写弹窗内的显示错误。【v2.2.3】
+- 更新了图标库，为未定义的菜单增加了一个默认的图标。【v2.2.3】
 
 - 背景文件策略调整为，同时接受 jpg png gif mp4, 自行上传文件至 /www/luci-static/argon/background 图片和视频同时随机。【v2.2.2】
 - 增加强制暗色模式，进入ssh 输入 "touch /etc/dark" 进行开启。【v2.2.2】

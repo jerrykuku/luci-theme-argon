@@ -59,11 +59,13 @@ opkg install luci-theme-argon*.ipk
 
 ### For openwrt official 19.07 Snapshots LuCI master 
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2.2/luci-theme-argon_2.2.2-20200816_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2.3/luci-theme-argon_2.2.3-20200820_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
-## Update log 2020.08.16 v2.2.2 
+## Update log 2020.08.20 v2.2.3 
+- Fix Firmware flash page display error in dark mode【v2.2.3】
+- Update font icon, add a default icon of undefined menu【v2.2.3】
 
 - Add custom login background,put your image (allow png jpg gif) or MP4 video into /www/luci-static/argon/background, random change【v2.2.2】
 - Add force dark mode, login ssh and type "touch /etc/dark" to open dark mode.【v2.2.2】
