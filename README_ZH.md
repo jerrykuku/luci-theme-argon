@@ -18,8 +18,9 @@
 [![Contact Me][10]][11]
 
 
-![](/Screenshots/pc1.jpg)
-![](/Screenshots/phone.jpg)
+![](/Screenshots/screenshot_pc.jpg)
+![](/Screenshots/screenshot_phone.jpg)
+
 全新的 Openwrt 主题，基于luci-theme-material 和 开源免费的 Argon 模板进行移植。 
 
 ## 注意
