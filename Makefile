@@ -8,10 +8,15 @@ include $(TOPDIR)/rules.mk
 
 LUCI_TITLE:=Argon Theme
 LUCI_DEPENDS:=
-PKG_VERSION:=2.2.4
-PKG_RELEASE:=20200821
+PKG_VERSION:=2.2.5
+PKG_RELEASE:=20200908
 
 include $(TOPDIR)/feeds/luci/luci.mk
+
+define Package/luci-theme-argon/install
+	$(INSTALL_DIR) $(1)/etc/uci-defaults
+	$(INSTALL_BIN) ./files/30_luci-theme-argon $(1)/etc/uci-defaults/luci-theme-argon
+endef
 
 define Package/luci-theme-argon/postinst
 #!/bin/sh
