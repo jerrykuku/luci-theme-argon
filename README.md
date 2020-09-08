@@ -28,8 +28,11 @@ Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Ar
 
 This branch only matches lean openwrt LuCI 18.06.
 
-## Update log 2020.08.21 [18.06] V1.6.9
+## Update log 2020.09.21 [18.06] V1.7.0
 
+- 【v1.7.0】Fix some color issue in dark mode.
+- 【v1.7.0】Automatically set as the default theme when compiling.
+- 【v1.7.0】Modify the file structure to adapt to luci-app-argon-config.
 - 【v1.6.9】Fix the problem that the login background cannot be displayed on some phones.
 - 【v1.6.9】Change Syslog background color to white.
 - 【v1.6.9】Remove the dependency of luasocket.
@@ -37,7 +40,7 @@ This branch only matches lean openwrt LuCI 18.06.
 - 【v1.6.8】Update font icon, add a default icon of undefined menu.
 - 【v1.6.6】Now backgorund allow png jpg gif and mp4 files, random change.
 - 【v1.6.6】Add a volume mute button for video background, default is muted.
-- 【v1.6.6】 login page when keyboard show the bottom text overlay the button on mobile.
+- 【v1.6.6】login page when keyboard show the bottom text overlay the button on mobile.
 - 【v1.6.6】fix select color in dark mode,and add a style for scrollbar.
 - 【v1.6.6】jquery update to v3.5.1.
 - 【v1.6.4】New: login background image can be customized now, upload image to /www/luci-static/argon/background/ (only jpg, png and gif are allowed). Uploaded images will be displayed if they are present. If you have multiple images in /www/luci-static/argon/background/, they will be displayed randomly upon each login.
@@ -71,7 +74,7 @@ make -j1 V=s
 ### For Lean openwrt 18.06 LuCI
 
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.9/luci-theme-argon_1.6.9-20200821_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.7.0/luci-theme-argon_1.7.0-20200908_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 

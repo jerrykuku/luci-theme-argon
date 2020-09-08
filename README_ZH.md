@@ -28,8 +28,11 @@
 v2.x.x 适配官方主线快照版本。  
 v1.x.x 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版本]
 
-## 更新日志 2020.08.21 [18.06] V1.6.9
+## 更新日志 2020.09.08 [18.06] V1.7.0
 
+- 【v1.7.0】修复暗色模式下部分颜色错误.
+- 【v1.7.0】当随系统编译时，将自动设置为默认主题.
+- 【v1.7.0】修改文件结构，以适应luci-app-argon-config.
 - 【v1.6.9】修复了在某些手机下图片背景第一次加载不能显示的问题。
 - 【v1.6.9】修改系统和内核日志的背景颜色为白色。
 - 【v1.6.9】取消 luasocket 的依赖，无需再担心依赖问题。
@@ -80,7 +83,7 @@ make -j1 V=s
 ### Lean openwrt 18.06 LuCI
 
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.8/luci-theme-argon_1.6.8-20200820_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.7.0/luci-theme-argon_1.7.0-20200908_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
