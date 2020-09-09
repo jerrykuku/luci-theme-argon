@@ -55,6 +55,7 @@
 
 	local mode = 'normal'
 	local dark_css = fs.readfile('/www/luci-static/argon/css/dark.css')
+	local bar_color = '#5e72e4'
 	local primary, dark_primary, blur_radius, blur_radius_dark, blur_opacity, mode
 	if fs.access('/etc/config/argon') then
 		primary = uci:get_first('argon', 'global', 'primary')
@@ -64,6 +65,7 @@
 		blur_opacity = uci:get_first('argon', 'global', 'transparency')
 		blur_opacity_dark = uci:get_first('argon', 'global', 'transparency_dark')
 		mode = uci:get_first('argon', 'global', 'mode')
+		bar_color = mode == 'dark' and dark_primary or primary
 	end
 -%>
 
@@ -83,7 +85,7 @@
 	<meta name="x5-page-mode" content="app">
 	<meta name="browsermode" content="application">
 	<meta name="msapplication-tap-highlight" content="no">
-	<meta name="msapplication-TileColor" content="#5e72e4">
+	<meta name="msapplication-TileColor" content="<%=bar_color%>">
 
 	<meta name="application-name" content="<%=striptags( (boardinfo.hostname or "?") ) %> - LuCI">
 	<meta name="apple-mobile-web-app-title" content="<%=striptags( (boardinfo.hostname or "?") ) %> - LuCI">
@@ -96,9 +98,9 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="<%=media%>/icon/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="<%=media%>/icon/favicon-16x16.png">
 	<link rel="manifest" href="<%=media%>/icon/manifest.json">
-	<meta name="msapplication-TileColor" content="#5e72e4">
+	<meta name="msapplication-TileColor" content="<%=bar_color%>">
 	<meta name="msapplication-TileImage" content="<%=media%>/icon/ms-icon-144x144.png">
-	<meta name="theme-color" content="#5e72e4">
+	<meta name="theme-color" content="<%=bar_color%>">
 	<link rel="stylesheet" href="<%=media%>/css/cascade.css?v=<%=math.random(1,100000)%>">
 	<style title="text/css">
 	<% if mode == 'normal' then %>
