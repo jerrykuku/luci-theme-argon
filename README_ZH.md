@@ -5,7 +5,7 @@
 [4]: https://github.com/jerrykuku/luci-theme-argon/pulls
 [5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
 [6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v2.2.4-blue.svg?
+[7]: https://img.shields.io/badge/release-v2.2.5-blue.svg?
 [8]: https://github.com/jerrykuku/luci-theme-argon/releases
 [9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
 [10]: https://img.shields.io/badge/Contact-telegram-blue
@@ -23,14 +23,21 @@
 全新的 Openwrt 主题，基于luci-theme-material 和 开源免费的 Argon 模板进行移植。 
 
 ## 注意
-
+强烈建议使用Chrome 浏览器。主题中使用了一些新的css3特性，目前只有Chrome有最佳的兼容性。
+主线版本 IE 系列目前还有Bug有待解决。
+FireFox 默认不开启backdrop-filter，开启方法见这里：https://developer.mozilla.org/zh-CN/docs/Web/CSS/backdrop-filter
 当前master版本基于官方 OpenWrt 19.07.1  稳定版固件进行移植适配。  
 v2.x.x 适配主线快照版本。  
 v1.x.x 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版本]
 
 
-## 更新日志 2020.08.21 v2.2.4
+## 更新日志 2020.09.13 v2.2.5
 
+- 【v2.2.5】全新的设置app.你可以设置argon 主题的登录页面的模糊和透明度，并管理背景图片与视频。[建议使用 Chrome][点击下载](https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.8-beta/luci-app-argon-config_0.8-beta_all.ipk)
+- 【v2.2.5】当编译固件时，将自动设置为默认主题。
+- 【v2.2.5】修改文件结构，以适应luci-app-argon-config，旧的开启暗色模式方法将不再适用，请搭配luci-app-argon-config使用。
+- 【v2.2.5】适配Koolshare lede 2.3.6。
+- 【v2.2.5】修复了一些Bug。
 - 【v2.2.4】修复了在某些手机下图片背景第一次加载不能显示的问题。
 - 【v2.2.4】取消 luasocket 的依赖，无需再担心依赖问题。
 - 【v2.2.3】修正了在暗色模式下，固件刷写弹窗内的显示错误。
@@ -78,14 +85,14 @@ make -j1 V=s
 ### Lean源码
 
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.9/luci-theme-argon_1.6.9-20200821_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.7.0/luci-theme-argon_1.7.0-20200909_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
 ### For openwrt official 19.07 Snapshots LuCI master 
 
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2.4/luci-theme-argon_2.2.4-20200821_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2.5/luci-theme-argon_2.2.5-20200913_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 

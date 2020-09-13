@@ -6,7 +6,7 @@
 [4]: https://github.com/jerrykuku/luci-theme-argon/pulls
 [5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
 [6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v2.2.4-blue.svg?
+[7]: https://img.shields.io/badge/release-v2.2.5-blue.svg?
 [8]: https://github.com/jerrykuku/luci-theme-argon/releases
 [9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
 [10]: https://img.shields.io/badge/Contact-telegram-blue
@@ -25,12 +25,20 @@ A new Luci theme for LEDE/OpenWRT
 Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Argon Template  
 
 ## Notice 
+It is strongly recommended to use the Chrome browser. Some new css3 features are used in the theme, and currently only Chrome has the best compatibility.
+The mainline version of IE series currently has bugs to be resolved.
+FireFox does not enable the backdrop-filter by default, see here for the opening method: https://developer.mozilla.org/zh-CN/docs/Web/CSS/backdrop-filter
 
 v2.x.x Adapt to official mainline snapshot.  
 You can checkout branch 18.06 for OpenWRT 18.06 or lean 19.07.
 
-## Update log 2020.08.21 v2.2.4
+## 更新日志 2020.09.13 v2.2.5
 
+- 【v2.2.5】New config app for argon theme. You can set the blur and transparency of the login page of argon theme, and manage the background pictures and videos.[Chrome is recommended] [Download](https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.8-beta/luci-app-argon-config_0.8-beta_all.ipk)
+- 【v2.2.5】Automatically set as the default theme when compiling.
+- 【v2.2.5】Modify the file structure to adapt to luci-app-argon-config. The old method of turning on dark mode is no longer applicable, please use it with luci-app-argon-config.
+- 【v2.2.5】Adapt to Koolshare lede 2.3.6。
+- 【v2.2.5】Fix some Bug。
 - 【v2.2.4】Fix the problem that the login background cannot be displayed on some phones.
 - 【v2.2.4】Remove the dependency of luasocket.
 - 【v2.2.3】Fix Firmware flash page display error in dark mode.
@@ -78,14 +86,14 @@ make -j1 V=s
 ### For Lean openwrt 18.06 LuCI
 
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.6.9/luci-theme-argon_1.6.9-20200821_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.7.0/luci-theme-argon_1.7.0-20200909_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
 ### For openwrt official 19.07 Snapshots LuCI master
 
 ```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2.4/luci-theme-argon_2.2.4-20200821_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2.5/luci-theme-argon_2.2.5-20200913_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
