@@ -1,28 +1,41 @@
-# luci-theme-argon ([中文](/README_ZH.md))
+<div align="center">
+  <img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon_title1.png"  >
+  <h1 align="center">
+    A new LuCI theme for OpenWrt
+  </h1>
+    <h3 align="center">
+    Argon is a clean HTML5 theme for LuCI. Users may<br>setup their own favorite logins, including beautiful<br>pics and customized mp4 videos.
+  </h3>
 
-[1]: https://img.shields.io/badge/license-MIT-brightgreen.svg
-[2]: /LICENSE
-[3]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
-[4]: https://github.com/jerrykuku/luci-theme-argon/pulls
-[5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
-[6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v2.2.5-blue.svg?
-[8]: https://github.com/jerrykuku/luci-theme-argon/releases
-[9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
-[10]: https://img.shields.io/badge/Contact-telegram-blue
-[11]: https://t.me/jerryk6
-[![license][1]][2]
-[![PRs Welcome][3]][4]
-[![Issue Welcome][5]][6]
-[![Release Version][7]][8]
-[![Release Count][9]][8]
-[![Contact Me][10]][11]
+  <a href="/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="">
+  </a>
 
-![](/Screenshots/screenshot_pc.jpg)
-![](/Screenshots/screenshot_phone.jpg)
+  <a href="https://github.com/jerrykuku/luci-theme-argon/pulls">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="">
+  </a>
+  
+  <a href="https://github.com/jerrykuku/luci-theme-argon/issues/new">
+    <img src="https://img.shields.io/badge/Issues-welcome-brightgreen.svg">
+  </a>
+  
+  <a href="https://github.com/jerrykuku/luci-theme-argon/releases">
+    <img src="https://img.shields.io/badge/release-v2.2.5-blue.svg?">
+  </a>
+  
+  <a href="https://github.com/jerrykuku/luci-theme-argon/releases">
+    <img src="https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total">
+  </a>
+  
+  <a href="https://t.me/jerryk6">
+    <img src="https://img.shields.io/badge/Contact-telegram-blue">
+  </a>
+</div>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon2.gif">
+</div>
 
-A new Luci theme for LEDE/OpenWRT  
-Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Argon Template  
+English | [简体中文](README_ZH.md)
 
 ## Notice 
 It is strongly recommended to use the Chrome browser. Some new css3 features are used in the theme, and currently only Chrome has the best compatibility.
@@ -96,6 +109,8 @@ opkg install luci-theme-argon*.ipk
 wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2.5/luci-theme-argon_2.2.5-20200914_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
+![](/Screenshots/screenshot_pc.jpg)
+![](/Screenshots/screenshot_phone.jpg)
 
 ## Thanks to
 
