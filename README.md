@@ -4,7 +4,7 @@
     A new LuCI theme for OpenWrt
   </h1>
     <h3 align="center">
-    Argon is a clean HTML5 theme for LuCI. Users may<br>setup their own favorite logins, including beautiful<br>pics and customized mp4 videos.
+    Argon is a clean HTML5 theme for LuCI. Users may<br>setup their own favorite logins, including beautiful<br>pics and customized mp4 videos.<br><br>
   </h3>
 
   <a href="/LICENSE">
@@ -31,11 +31,12 @@
     <img src="https://img.shields.io/badge/Contact-telegram-blue">
   </a>
 </div>
+<br>
 <div align="center">
   <img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon2.gif">
 </div>
 
-English | [简体中文](README_ZH.md)
+<br>English | [简体中文](README_ZH.md)
 
 ## Notice 
 It is strongly recommended to use the Chrome browser. Some new css3 features are used in the theme, and currently only Chrome has the best compatibility.
@@ -45,7 +46,7 @@ FireFox does not enable the backdrop-filter by default, see here for the opening
 v2.x.x Adapt to official mainline snapshot.  
 You can checkout branch 18.06 for OpenWRT 18.06 or lean 19.07.
 
-## 更新日志 2020.09.13 v2.2.5
+## Update Log 2020.09.13 v2.2.5
 
 - 【v2.2.5】New config app for argon theme. You can set the blur and transparency of the login page of argon theme, and manage the background pictures and videos.[Chrome is recommended] [Download](https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.8-beta/luci-app-argon-config_0.8-beta_all.ipk)
 - 【v2.2.5】Automatically set as the default theme when compiling.
