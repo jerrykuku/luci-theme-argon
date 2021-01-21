@@ -5,13 +5,13 @@
 	Copyright 2020 Jerrykuku <jerrykuku@qq.com>
 
 	Have a bug? Please create an issue here on GitHub!
-	https://github.com/jerrykuku/luci-theme-edge/issues 
+	https://github.com/jerrykuku/luci-theme-edge/issues
 
-	luci-theme-material: 
+	luci-theme-material:
 	Copyright 2015 Lutty Yang <lutty@wcan.in>
-	
+
 	Agron Theme
-	https://demos.creative-tim.com/edge-dashboard/index.html 
+	https://demos.creative-tim.com/edge-dashboard/index.html
 
 	Licensed to the public under the Apache License 2.0
 -%>
@@ -27,10 +27,10 @@
     local fs	= require "nixio.fs"
     local nutil = require "nixio.util"
     local uci = require 'luci.model.uci'.cursor()
-    
+
 	-- send as HTML5
 	http.prepare_content("text/html")
-    
+
     math.randomseed(tonumber(tostring(os.time()):reverse():sub(1, 9)))
 
     -- Custom settings
@@ -48,7 +48,7 @@
 		mode = uci:get_first('argon', 'global', 'mode')
 		bar_color = mode == 'dark' and dark_primary or primary
     end
-    
+
 -%>
 <!DOCTYPE html>
 <html lang="<%=luci.i18n.context.lang%>">
@@ -114,10 +114,9 @@
     <script src="<%=resource%>/cbi.js<%# ?v=PKG_VERSION %>"></script>
     <script src="<%=resource%>/xhr.js<%# ?v=PKG_VERSION %>"></script>
     <script src="<%=media%>/js/jquery.min.js<%# ?v=PKG_VERSION %>"></script>
-    
+
 </head>
 
 <body
     class="lang_<%=luci.i18n.context.lang%> <% if node then %><%= striptags( node.title ) %><% end %> <% if luci.dispatcher.context.authsession then %>logged-in<% end %>"
     data-page="<%= table.concat(disp.context.requestpath, "-") %>">
-    
