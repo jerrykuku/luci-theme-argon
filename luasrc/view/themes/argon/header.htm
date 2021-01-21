@@ -5,19 +5,19 @@
 	Copyright 2020 Jerrykuku <jerrykuku@qq.com>
 
 	Have a bug? Please create an issue here on GitHub!
-	https://github.com/jerrykuku/luci-theme-argon/issues 
+	https://github.com/jerrykuku/luci-theme-argon/issues
 
-	luci-theme-material: 
+	luci-theme-material:
 	Copyright 2015 Lutty Yang <lutty@wcan.in>
-	
-	Agron Theme
-	https://demos.creative-tim.com/argon-dashboard/index.html 
+
+	Argon Theme
+	https://demos.creative-tim.com/argon-dashboard/index.html
 
 	Licensed to the public under the Apache License 2.0
 -%>
 
 <%
-    local sys  = require "luci.sys"
+	local sys = require "luci.sys"
 	local util = require "luci.util"
 	local http = require "luci.http"
 	local disp = require "luci.dispatcher"
@@ -25,15 +25,16 @@
 	local boardinfo = util.ubus("system", "board")
 
 	local node = disp.context.dispatched
-    
-    local fs	= require "nixio.fs"
+
+	local fs = require "nixio.fs"
 	local nutil = require "nixio.util"
 	local uci = require 'luci.model.uci'.cursor()
-    
+
 	-- send as HTML5
 	http.prepare_content("text/html")
+
 	math.randomseed(os.time())
-	
+
 	-- Custom settings
 	local mode = 'normal'
 	local dark_css = fs.readfile('/www/luci-static/argon/css/dark.css')
@@ -54,7 +55,7 @@
 <html lang="<%=luci.i18n.context.lang%>">
 
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <title>
         <%=striptags( (boardinfo.hostname or "?") .. ( (node and node.title) and ' - ' .. translate(node.title) or '')) %>
         - LuCI</title>
