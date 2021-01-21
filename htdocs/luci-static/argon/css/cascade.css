@@ -666,11 +666,12 @@ header .fill .status {
   right: 1.25rem;
   float: right;
 }
-header .fill .status span[data-indicator="poll-status"] {
-  display: block;
+header .fill .status span[data-indicator] {
+  display: inline-block;
   font-size: 0.8rem;
   font-weight: bold;
   padding: 0.3rem 0.8rem;
+  margin: 0 0.5rem;
   white-space: nowrap;
   text-decoration: none;
   text-transform: uppercase;
