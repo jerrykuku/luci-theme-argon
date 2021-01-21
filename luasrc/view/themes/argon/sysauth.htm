@@ -21,7 +21,7 @@
 	Licensed to the public under the Apache License 2.0
 -%>
 
-<%+header_login%>
+<%+themes/argon/out_header_login%>
 <%
 	local util = require "luci.util"
 	local boardinfo = util.ubus("system", "board")
@@ -156,4 +156,4 @@
 				}
 			//]]></script>
 			<% end %>
-<%+footer%>
+<%+themes/argon/out_footer_login%>
