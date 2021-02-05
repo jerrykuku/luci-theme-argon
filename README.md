@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon_title1.png"  >
+  <img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon_title2.png"  >
   <h1 align="center">
     A new LuCI theme for OpenWrt
   </h1>
