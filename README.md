@@ -28,8 +28,12 @@ Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Ar
 
 This branch only matches lean openwrt LuCI 18.06.
 
-## Update log 2020.09.08 [18.06] V1.7.0
+## Update log 2020.09.08 [18.06] V1.7.1
 
+- 【v1.7.1】Fixed an issue where the text at the bottom of the login page would obscure the button at a very small resolution.
+- 【v1.7.1】Solve the problem that the return cannot be obtained for a long time when the network speed is slow.
+- 【v1.7.1】Adjusted some styles.
+- 【v1.7.1】Added an animation effect to the progress bar.
 - 【v1.7.0】Fix some color issue in dark mode.
 - 【v1.7.0】Automatically set as the default theme when compiling.
 - 【v1.7.0】Modify the file structure to adapt to luci-app-argon-config.
