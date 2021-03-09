@@ -28,6 +28,7 @@
 	local fs	= require "nixio.fs"
 	local nutil = require "nixio.util"
 	local uci = require 'luci.model.uci'.cursor()
+	local theme_dir = media .. "/background/"
 	function glob(...)
 		local iter, code, msg = fs.glob(...)
 		if iter then
@@ -41,13 +42,10 @@
 		return str:match(".+%.(%w+)$")
 	end
 
-	local bgcount = 0
-	local currentBg = {}
-	local bgs,attr = {}
-	local theme_dir = media .. "/background/"
-	local bing_background = fs.access('/etc/config/argon') and uci:get_first('argon', 'global', 'bing_background') or 0
-	if ( bing_background == 0 ) then
-		for i, f in ipairs(glob("/www" .. theme_dir .. "*")) do
+	function fetchMedia(path)
+		local bgArr = {}
+		local numBg = 0
+		for i, f in ipairs(glob(path)) do
 			attr = fs.stat(f)
 			if attr then
 				local ext = getExtension(fs.basename(f))
@@ -55,22 +53,29 @@
 					local bg = {}
 					bg.type = ext
 					bg.url = theme_dir .. fs.basename(f)
-					table.insert(bgs,bg)
-					bgcount = bgcount + 1
+					table.insert(bgArr,bg)
+					numBg = numBg + 1
 				end
 			end
 		end
-		
+		return bgArr,numBg
+	end
+
+	local bgcount = 0
+	local currentBg = {}
+	local bgs = {}
+	local theme_dir = media .. "/background/"
+	local bing_background = fs.access('/etc/config/argon') and uci:get_first('argon', 'global', 'bing_background') or 0
+	bgs,bgcount=fetchMedia("/www" .. theme_dir .. "*")
+%>
+<div class="login-page">
+	
+	<%
+	local bg_url = media .. "/img/bg1.jpg"
+	if ( bing_background == "0" ) then
 		if bgcount > 0 then
 			currentBg =  bgs[math.random(1,bgcount)]
 		end
-	end
-	
-%>
-<div class="login-page">
-	<%
-	local bg_url = media .. "/img/bg1.jpg"
-	if ( bing_background == 0 ) then
 		if ( bgcount > 0 and currentBg.type == "mp4" ) then
 	%>
 	<div class="video">
