@@ -1630,7 +1630,7 @@ td > table > tbody > tr > td,
 }
 .cbi-value-title {
   display: table-cell;
-  float: left;
+  /*float: left;*/
   width: 23rem;
   padding-top: 0.25rem;
   padding-right: 2rem;
@@ -2820,6 +2820,7 @@ input[type="checkbox"] {
   cursor: pointer;
   transition: all 0.2s;
   margin: 1rem 0 0 0;
+  margin-bottom: -3.5px;
 }
 input[type="checkbox"]:checked {
   border: 1px solid #5e72e4;
