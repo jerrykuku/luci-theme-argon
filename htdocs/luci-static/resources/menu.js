@@ -25,6 +25,8 @@ return baseclass.extend({
 
 		document.querySelector('a.showSide')
 			.addEventListener('click', ui.createHandlerFn(this, 'handleSidebarToggle'));
+		document.querySelector('.darkMask')
+			.addEventListener('click', ui.createHandlerFn(this, 'handleSidebarToggle'));
 	},
 
 	handleMenuExpand: function (ev) {
@@ -141,16 +143,22 @@ return baseclass.extend({
 	},
 
 	handleSidebarToggle: function (ev) {
-		var btn = ev.currentTarget,
-			bar = document.querySelector('#mainmenu');
+		var showside = document.querySelector('a.showSide'),
+			sidebar = document.querySelector('#mainmenu'),
+			darkmask = document.querySelector('.darkMask'),
+			scrollbar = document.querySelector('.main-right');
 
-		if (btn.classList.contains('active')) {
-			btn.classList.remove('active');
-			bar.classList.remove('active');
+		if (showside.classList.contains('active')) {
+			showside.classList.remove('active');
+			sidebar.classList.remove('active');
+			scrollbar.classList.remove('active');
+			darkmask.classList.remove('active');
 		}
 		else {
-			btn.classList.add('active');
-			bar.classList.add('active');
+			showside.classList.add('active');
+			sidebar.classList.add('active');
+			scrollbar.classList.add('active');
+			darkmask.classList.add('active');
 		}
 	}
 });
