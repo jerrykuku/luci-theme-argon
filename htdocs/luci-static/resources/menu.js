@@ -9,9 +9,15 @@ return baseclass.extend({
 
 	render: function (tree) {
 		var node = tree,
-			url = '';
+			url = '',
+			children = ui.menu.getChildren(tree);
 
-		this.renderModeMenu(node);
+		for (var i = 0; i < children.length; i++) {
+			var isActive = (L.env.requestpath.length ? children[i].name == L.env.requestpath[0] : i == 0);
+
+			if (isActive)
+				this.renderMainMenu(children[i], children[i].name);
+		}
 
 		if (L.env.dispatchpath.length >= 3) {
 			for (var i = 0; i < 3 && node; i++) {
@@ -25,14 +31,17 @@ return baseclass.extend({
 
 		document.querySelector('a.showSide')
 			.addEventListener('click', ui.createHandlerFn(this, 'handleSidebarToggle'));
+		document.querySelector('.darkMask')
+			.addEventListener('click', ui.createHandlerFn(this, 'handleSidebarToggle'));
 	},
 
 	handleMenuExpand: function (ev) {
 		var a = ev.target, slide = a.parentNode, slide_menu = a.nextElementSibling;
 
 		document.querySelectorAll('.main .main-left .nav > li >ul.active').forEach(function (ul) {
-			if (ul !== slide) {
+			if (ul !== slide_menu) {
 				ul.classList.remove('active');
+				ul.previousElementSibling.classList.remove('active');
 			}
 
 		});
@@ -41,6 +50,7 @@ return baseclass.extend({
 			return;
 
 		slide_menu.classList.add('active');
+		a.classList.add('active');
 		a.blur();
 		ev.preventDefault();
 		ev.stopPropagation();
@@ -58,17 +68,19 @@ return baseclass.extend({
 			var isActive = ((L.env.dispatchpath[l] == children[i].name) && (L.env.dispatchpath[l - 1] == tree.name)),
 				submenu = this.renderMainMenu(children[i], url + '/' + children[i].name, l),
 				hasChildren = submenu.children.length,
-				activeClass = hasChildren ? 'slide' : null;
+				slideClass = hasChildren ? 'slide' : null,
+				menuClass = hasChildren ? 'menu' : null;
 			if (isActive) {
 				ul.classList.add('active');
-				activeClass += " active";
+				slideClass += " active";
+				menuClass += " active";
 			}
 
-			ul.appendChild(E('li', { 'class': activeClass }, [
+			ul.appendChild(E('li', { 'class': slideClass }, [
 				E('a', {
 					'href': L.url(url, children[i].name),
 					'click': (l == 1) ? ui.createHandlerFn(this, 'handleMenuExpand') : null,
-					'class': hasChildren ? 'menu' : null,
+					'class': menuClass,
 					'data-title': hasChildren ? children[i].title.replace(" ", "_") : children[i].title.replace(" ", "_"),
 				}, [_(children[i].title)]),
 				submenu
@@ -81,31 +93,6 @@ return baseclass.extend({
 
 		}
 		return ul;
-	},
-
-	renderModeMenu: function (tree) {
-		var menu = document.querySelector('#modemenu'),
-			children = ui.menu.getChildren(tree);
-
-		for (var i = 0; i < children.length; i++) {
-			var isActive = (L.env.requestpath.length ? children[i].name == L.env.requestpath[0] : i == 0);
-
-			if (i > 0)
-				menu.appendChild(E([], ['\u00a0|\u00a0']));
-
-			menu.appendChild(E('li', {}, [
-				E('a', {
-					'href': L.url(children[i].name),
-					'class': isActive ? 'active' : null
-				}, [_(children[i].title)])
-			]));
-
-			if (isActive)
-				this.renderMainMenu(children[i], children[i].name);
-		}
-
-		if (menu.children.length > 1)
-			menu.style.display = '';
 	},
 
 	renderTabMenu: function (tree, url, level) {
@@ -141,16 +128,22 @@ return baseclass.extend({
 	},
 
 	handleSidebarToggle: function (ev) {
-		var btn = ev.currentTarget,
-			bar = document.querySelector('#mainmenu');
+		var showside = document.querySelector('a.showSide'),
+			sidebar = document.querySelector('#mainmenu'),
+			darkmask = document.querySelector('.darkMask'),
+			scrollbar = document.querySelector('.main-right');
 
-		if (btn.classList.contains('active')) {
-			btn.classList.remove('active');
-			bar.classList.remove('active');
+		if (showside.classList.contains('active')) {
+			showside.classList.remove('active');
+			sidebar.classList.remove('active');
+			scrollbar.classList.remove('active');
+			darkmask.classList.remove('active');
 		}
 		else {
-			btn.classList.add('active');
-			bar.classList.add('active');
+			showside.classList.add('active');
+			sidebar.classList.add('active');
+			scrollbar.classList.add('active');
+			darkmask.classList.add('active');
 		}
 	}
 });

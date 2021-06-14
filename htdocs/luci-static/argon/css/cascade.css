@@ -3150,9 +3150,18 @@ pre.command-output {
     z-index: 100;
     width: 0;
   }
+   .main-left.active {
+    width: 13rem;
+  }
   .main-right {
     width: 100%;
   }
+   .main-right.active {
+     overflow-y: hidden;
+   }
+   .darkMask.active {
+     display: block;
+   }
   .showSide {
     padding: 0.1rem;
     position: relative;
