@@ -33,8 +33,9 @@ return baseclass.extend({
 		var a = ev.target, slide = a.parentNode, slide_menu = a.nextElementSibling;
 
 		document.querySelectorAll('.main .main-left .nav > li >ul.active').forEach(function (ul) {
-			if (ul !== slide) {
+			if (ul !== slide_menu) {
 				ul.classList.remove('active');
+				ul.previousElementSibling.classList.remove('active');
 			}
 
 		});
@@ -43,6 +44,7 @@ return baseclass.extend({
 			return;
 
 		slide_menu.classList.add('active');
+		a.classList.add('active');
 		a.blur();
 		ev.preventDefault();
 		ev.stopPropagation();
@@ -60,17 +62,19 @@ return baseclass.extend({
 			var isActive = ((L.env.dispatchpath[l] == children[i].name) && (L.env.dispatchpath[l - 1] == tree.name)),
 				submenu = this.renderMainMenu(children[i], url + '/' + children[i].name, l),
 				hasChildren = submenu.children.length,
-				activeClass = hasChildren ? 'slide' : null;
+				slideClass = hasChildren ? 'slide' : null,
+				menuClass = hasChildren ? 'menu' : null;
 			if (isActive) {
 				ul.classList.add('active');
-				activeClass += " active";
+				slideClass += " active";
+				menuClass += " active";
 			}
 
-			ul.appendChild(E('li', { 'class': activeClass }, [
+			ul.appendChild(E('li', { 'class': slideClass }, [
 				E('a', {
 					'href': L.url(url, children[i].name),
 					'click': (l == 1) ? ui.createHandlerFn(this, 'handleMenuExpand') : null,
-					'class': hasChildren ? 'menu' : null,
+					'class': menuClass,
 					'data-title': hasChildren ? children[i].title.replace(" ", "_") : children[i].title.replace(" ", "_"),
 				}, [_(children[i].title)]),
 				submenu
