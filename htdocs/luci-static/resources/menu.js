@@ -9,9 +9,15 @@ return baseclass.extend({
 
 	render: function (tree) {
 		var node = tree,
-			url = '';
+			url = '',
+			children = ui.menu.getChildren(tree);
 
-		this.renderModeMenu(node);
+		for (var i = 0; i < children.length; i++) {
+			var isActive = (L.env.requestpath.length ? children[i].name == L.env.requestpath[0] : i == 0);
+
+			if (isActive)
+				this.renderMainMenu(children[i], children[i].name);
+		}
 
 		if (L.env.dispatchpath.length >= 3) {
 			for (var i = 0; i < 3 && node; i++) {
@@ -87,31 +93,6 @@ return baseclass.extend({
 
 		}
 		return ul;
-	},
-
-	renderModeMenu: function (tree) {
-		var menu = document.querySelector('#modemenu'),
-			children = ui.menu.getChildren(tree);
-
-		for (var i = 0; i < children.length; i++) {
-			var isActive = (L.env.requestpath.length ? children[i].name == L.env.requestpath[0] : i == 0);
-
-			if (i > 0)
-				menu.appendChild(E([], ['\u00a0|\u00a0']));
-
-			menu.appendChild(E('li', {}, [
-				E('a', {
-					'href': L.url(children[i].name),
-					'class': isActive ? 'active' : null
-				}, [_(children[i].title)])
-			]));
-
-			if (isActive)
-				this.renderMainMenu(children[i], children[i].name);
-		}
-
-		if (menu.children.length > 1)
-			menu.style.display = '';
 	},
 
 	renderTabMenu: function (tree, url, level) {
