@@ -240,7 +240,7 @@ h4 {
   background-color: #1e1e1f;
 }
 .cbi-button {
-  color: #ccc !important;
+  color: #ccc;
   background-color: #483d8b;
   background-color: var(--dark-primary);
 }
