@@ -1,119 +1,79 @@
+# luci-app-go-aliyundrive-webdav
 <div align="center">
-  <img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon_title2.png"  >
-  <h1 align="center">
-    A new LuCI theme for OpenWrt
-  </h1>
-    <h3 align="center">
-    Argon is a clean HTML5 theme for LuCI. Users may<br>setup their own favorite logins, including beautiful<br>pics and customized mp4 videos.<br><br>
-  </h3>
-
-  <a href="/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="">
-  </a>
-
-  <a href="https://github.com/jerrykuku/luci-theme-argon/pulls">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="">
-  </a>
-  
-  <a href="https://github.com/jerrykuku/luci-theme-argon/issues/new">
-    <img src="https://img.shields.io/badge/Issues-welcome-brightgreen.svg">
-  </a>
-  
-  <a href="https://github.com/jerrykuku/luci-theme-argon/releases">
-    <img src="https://img.shields.io/badge/release-v2.2.5-blue.svg?">
-  </a>
-  
-  <a href="https://github.com/jerrykuku/luci-theme-argon/releases">
-    <img src="https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total">
-  </a>
-  
-  <a href="https://t.me/jerryk6">
-    <img src="https://img.shields.io/badge/Contact-telegram-blue">
-  </a>
-</div>
-<br>
-<div align="center">
-  <img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon2.gif">
+<a href="/LICENSE.txt">
+    <img src="https://img.shields.io/github/license/jerrykuku/luci-app-go-aliyundrive-webdav?style=flat-square" alt="">
+  </a><a href="https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav/pulls">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="">
+  </a><a href="hhttps://github.com/jerrykuku/luci-app-go-aliyundrive-webdav/issues/new">
+    <img src="https://img.shields.io/badge/Issues-welcome-brightgreen.svg?style=flat-square">
+  </a><a href="https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav/releases">
+    <img src="https://img.shields.io/badge/release-v1.0.1-blue.svg?style=flat-square">
+  </a><a href="hhttps://github.com/jerrykuku/luci-app-go-aliyundrive-webdav/releases">
+    <img src="https://img.shields.io/github/downloads/jerrykuku/luci-app-go-aliyundrive-webdav/total?style=flat-square">
+  </a><a href="https://t.me/jerryk6">
+    <img src="https://img.shields.io/badge/Contact-telegram-blue?style=flat-square">
+  </a>  
 </div>
 
-<br>English | [简体中文](README_ZH.md)
+# 介绍
+本项目是go-aliyun-webdav 的Luci 控制面板。  
+[项目链接](https://github.com/LinkLeong/go-aliyun-webdav)
 
-## Notice 
-It is strongly recommended to use the Chrome browser. Some new css3 features are used in the theme, and currently only Chrome has the best compatibility.
-The mainline version of IE series currently has bugs to be resolved.
-FireFox does not enable the backdrop-filter by default, see here for the opening method: https://developer.mozilla.org/zh-CN/docs/Web/CSS/backdrop-filter
-
-v2.x.x Adapt to official mainline snapshot.  
-You can checkout branch 18.06 for OpenWRT 18.06 or lean 19.07.
-
-## Update Log 2020.09.13 v2.2.5
-
-- 【v2.2.5】New config app for argon theme. You can set the blur and transparency of the login page of argon theme, and manage the background pictures and videos.[Chrome is recommended] [Download](https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.8-beta/luci-app-argon-config_0.8-beta_all.ipk)
-- 【v2.2.5】Automatically set as the default theme when compiling.
-- 【v2.2.5】Modify the file structure to adapt to luci-app-argon-config. The old method of turning on dark mode is no longer applicable, please use it with luci-app-argon-config.
-- 【v2.2.5】Adapt to Koolshare lede 2.3.6。
-- 【v2.2.5】Fix some Bug。
-- 【v2.2.4】Fix the problem that the login background cannot be displayed on some phones.
-- 【v2.2.4】Remove the dependency of luasocket.
-- 【v2.2.3】Fix Firmware flash page display error in dark mode.
-- 【v2.2.3】Update font icon, add a default icon of undefined menu.
-- 【v2.2.2】Add custom login background,put your image (allow png jpg gif) or MP4 video into /www/luci-static/argon/background, random change.
-- 【v2.2.2】Add force dark mode, login ssh and type "touch /etc/dark" to open dark mode.
-- 【v2.2.2】Add a volume mute button for video background, default is muted.
-- 【v2.2.2】fix login page when keyboard show the bottom text overlay the button on mobile.
-- 【v2.2.2】fix select color in dark mode,and add a style for scrollbar.
-- 【v2.2.2】jquery update to v3.5.1.
-- 【v2.2.2】change request bing api method form wget to luasocket (DEPENDS).
-- 【v2.2.1】Add blur effect for login form.
-- 【v2.2.1】New login theme, Request background imge from bing.com, Auto change everyday.
-- 【v2.2.1】New theme icon.
-- 【v2.2.1】Add more menu category  icon.
-- 【v2.2.1】Fix font-size and padding margin.
-- 【v2.2.1】Restructure css file.
-- 【v2.2.1】Auto adapt to dark mode.
-
-## How to build
-
-Enter in your openwrt/package/lean or other
-
-### Lean lede
-
+### 如何编译
+假设你的Lean openwrt（最新版本19.07） 在 lede 目录下
 ```
-cd lede/package/lean  
-rm -rf luci-theme-argon  
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  
-make menuconfig #choose LUCI->Theme->Luci-theme-argon  
-make -j1 V=s  
+cd lede/package/lean/  
+
+git clone https://github.com/jerrykuku/go-aliyundrive-webdav.git #主程序
+
+git clone https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav.git  
+
+make menuconfig
+
+#选择 LUci->Application->luci-app-go-aliyundrive-webdav
+
+make -j$(($(nproc) + 1)) V=s #随固件编译
+
+make package/lean/luci-app-go-aliyundrive-webdav/compile V=s #单独编译插件
 ```
 
-### Openwrt official SnapShots
+# 客户端兼容性
+| 客户端 | 下载 | 上传 | 备注 |
+| :-----| ----: | :----: | :----: |
+| Rclone | 可用 | 可用 | 推荐，支持各个系统 |
+| Mac原生 | 可用 | 可用 | 适配有问题，不建议使用 | 
+| Windows原生 | 可用 | 有点小问题 | 不建议，适配有点问题，上传报错 |
+| RaiDrive | 可用 | 可用 | Windows平台下建议用这个 |
 
-```
-cd openwrt/package
-git clone https://github.com/jerrykuku/luci-theme-argon.git  
-make menuconfig #choose LUCI->Theme->Luci-theme-argon  
-make -j1 V=s  
-```
 
-## How to Install 
+# 浏览器获取refreshToken方式
+1. 先通过浏览器（建议chrome）打开阿里云盘官网并登录：https://www.aliyundrive.com/drive/
+2. 登录成功后，按F12打开开发者工具，点击Application，点击Local Storage，点击 Local Storage下的 [https://www.aliyundrive.com/](https://www.aliyundrive.com/)，点击右边的token，此时可以看到里面的数据，其中就有refresh_token，把其值复制出来即可。（格式为小写字母和数字，不要复制双引号。例子：ca6bf2175d73as2188efg81f87e55f11）
+3. 第二步有点繁琐，大家结合下面的截图就看懂了
+ ![image](https://user-images.githubusercontent.com/32785355/119246278-e6760880-bbb2-11eb-877c-aca16cf75d89.png)
 
-### For Lean openwrt 18.06 LuCI
+# 功能说明
+## 支持的功能
+1. 查看文件夹、查看文件
+2. 文件移动目录
+3. 文件重命名
+4. 文件下载
+5. 文件删除
+6. 文件上传
+7. 支持WebDav权限校验（默认账户密码：admin/123456）
+8. 文件在线编辑
+9.  Webdav下的流媒体播放等功能
+## 已知问题
+1. 没有做文件sha1校验，不保证上传文件的100%准确性（一般场景下，是没问题的）
+2. 通过文件名和文件大小判断是否重复。也就是说如果一个文件即使发生了更新，但其大小没有任何改变，是不会自动上传的
+3. 不支持文件名包含 `/` 字符 
+4. 部分客户端兼容性不好 
 
-```
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.7.0/luci-theme-argon_1.7.0-20200909_all.ipk
-opkg install luci-theme-argon*.ipk
-```
 
-### For openwrt official 19.07 Snapshots LuCI master
-
-```
-opkg install luci-compat
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.2.5/luci-theme-argon_2.2.5-20200914_all.ipk
-opkg install luci-theme-argon*.ipk
-```
-![](/Screenshots/screenshot_pc.jpg)
-![](/Screenshots/screenshot_phone.jpg)
-
-## Thanks to
-
-luci-theme-material: https://github.com/LuttyYang/luci-theme-material/
+# 免责声明
+1. 本软件为免费开源项目，无任何形式的盈利行为。
+2. 本软件服务于阿里云盘，旨在让阿里云盘功能更强大。如有侵权，请与我联系，会及时处理。
+3. 本软件皆调用官方接口实现，无任何“Hack”行为，无破坏官方接口行为。
+5. 本软件仅做流量转发，不拦截、存储、篡改任何用户数据。
+6. 严禁使用本软件进行盈利、损坏官方、散落任何违法信息等行为。
+7. 本软件不作任何稳定性的承诺，如因使用本软件导致的文件丢失、文件破坏等意外情况，均与本软件无关。
