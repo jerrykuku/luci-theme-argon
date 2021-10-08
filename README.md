@@ -7,7 +7,7 @@
   </a><a href="hhttps://github.com/jerrykuku/luci-app-go-aliyundrive-webdav/issues/new">
     <img src="https://img.shields.io/badge/Issues-welcome-brightgreen.svg?style=flat-square">
   </a><a href="https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav/releases">
-    <img src="https://img.shields.io/badge/release-v1.0.1-blue.svg?style=flat-square">
+    <img src="https://img.shields.io/github/v/release/jerrykuku/luci-app-go-aliyundrive-webdav.svg?style=flat-square">
   </a><a href="hhttps://github.com/jerrykuku/luci-app-go-aliyundrive-webdav/releases">
     <img src="https://img.shields.io/github/downloads/jerrykuku/luci-app-go-aliyundrive-webdav/total?style=flat-square">
   </a><a href="https://t.me/jerryk6">
