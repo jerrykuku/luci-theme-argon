@@ -20,7 +20,7 @@
   </a>
   
   <a href="https://github.com/jerrykuku/luci-theme-argon/releases">
-    <img src="https://img.shields.io/badge/release-v2.2.5-blue.svg?">
+    <img src="https://img.shields.io/badge/release-v2.2.8-blue.svg?">
   </a>
   
   <a href="https://github.com/jerrykuku/luci-theme-argon/releases">
@@ -46,8 +46,9 @@ FireFox does not enable the backdrop-filter by default, see here for the opening
 v2.x.x Adapt to official mainline snapshot.  
 You can checkout branch 18.06 for OpenWRT 18.06 or lean 19.07.
 
-## Update Log 2020.09.13 v2.2.5
+## Update Log 2021.10.11 v2.2.8
 
+- 【v2.2.8】Fix the problem that the Minify Css option is turned on when compiling, which causes the frosted glass effect to be invalid and the logo font is lost.  
 - 【v2.2.5】New config app for argon theme. You can set the blur and transparency of the login page of argon theme, and manage the background pictures and videos.[Chrome is recommended] [Download](https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.8-beta/luci-app-argon-config_0.8-beta_all.ipk)
 - 【v2.2.5】Automatically set as the default theme when compiling.
 - 【v2.2.5】Modify the file structure to adapt to luci-app-argon-config. The old method of turning on dark mode is no longer applicable, please use it with luci-app-argon-config.

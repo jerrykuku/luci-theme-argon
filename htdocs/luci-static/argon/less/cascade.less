@@ -25,9 +25,9 @@
 /*
  *	Include base and custom css
  */
+@import url("pure-min.less");
+@import url("fonts.less");
 
-@import url("fonts.css?v=3");
-@import url("pure-min.css?v=1");
 
 :root {
     --primary: #5e72e4;
@@ -364,13 +364,14 @@ hr {
         background-color: #000;
         background-color: var(--darker);
         overflow: hidden;
+
         video {
             width: 100%;
             height: auto;
         }
     }
 
-    .volume-control{
+    .volume-control {
         position: fixed;
         right: 1rem;
         top: 1rem;
@@ -380,12 +381,13 @@ hr {
         cursor: pointer;
         background-size: contain;
         background-image: url(../img/volume_high.svg);
-        &.mute{
+
+        &.mute {
             background-image: url(../img/volume_off.svg);
         }
     }
 
-    .main-bg{
+    .main-bg {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -427,6 +429,9 @@ hr {
             max-width: 420px;
             background-color: #fff;
             background-color: var(--white);
+            -webkit-backdrop-filter: blur(var(--blur-radius));
+            backdrop-filter: blur(var(--blur-radius));
+            background-color: rgba(244, 245, 247, var(--blur-opacity));
 
             .brand {
                 display: flex;
@@ -509,7 +514,7 @@ hr {
                         box-sizing: border-box;
                         transition: all .3s cubic-bezier(.68, -.55, .265, 1.55);
                         color: #525461;
-                        color:var(--default);
+                        color: var(--default);
                         border: 0;
                         border-radius: 0;
                         border-bottom: 1px solid #fff;
@@ -585,7 +590,8 @@ hr {
             color: var(--default);
             position: absolute;
             bottom: 0;
-            .ftc{
+
+            .ftc {
                 position: absolute;
                 bottom: 30px;
                 width: 100%;
@@ -595,15 +601,6 @@ hr {
                 display: block;
             }
         }
-    }
-}
-
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    .login-page .login-container .login-form {
-        -webkit-backdrop-filter: blur(var(--blur-radius));
-        backdrop-filter: blur(var(--blur-radius));
-        background-color: rgba(244, 245, 247, var(--blur-opacity));
-
     }
 }
 
@@ -861,7 +858,8 @@ div[style="width:100%;height:300px;border:1px solid #000;background:#fff"] {
     }
 
     h4 {
-        padding: 0rem 1.5rem 0.75rem 0rem;
+        padding: 0.25rem 1rem 0.25rem 1rem;
+        border-radius: 4px;
     }
 
     .btn {
@@ -991,7 +989,7 @@ div[style="width:100%;height:300px;border:1px solid #000;background:#fff"] {
                             display: block;
                         }
 
-                        
+
                         li {
                             position: relative;
                             border-radius: 0.375rem;
@@ -3818,7 +3816,7 @@ pre.command-output {
         display: inline-block;
     }
 
-    
+
 
     .main>.main-left>.nav>.slide>.slide-menu>li>a {
         font-size: 0.8rem;

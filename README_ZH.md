@@ -5,7 +5,7 @@
 [4]: https://github.com/jerrykuku/luci-theme-argon/pulls
 [5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
 [6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v2.2.5-blue.svg?
+[7]: https://img.shields.io/badge/release-v2.2.8-blue.svg?
 [8]: https://github.com/jerrykuku/luci-theme-argon/releases
 [9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
 [10]: https://img.shields.io/badge/Contact-telegram-blue
@@ -31,8 +31,9 @@ v2.x.x 适配主线快照版本。
 v1.x.x 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版本]
 
 
-## 更新日志 2020.09.13 v2.2.5
+## 更新日志 2021.10.11 v2.2.8
 
+- 【v2.2.8】修复编译时打开Minify Css选项，导致磨砂玻璃效果无效，logo字体丢失的问题  
 - 【v2.2.5】全新的设置app.你可以设置argon 主题的登录页面的模糊和透明度，并管理背景图片与视频。[建议使用 Chrome][点击下载](https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.8-beta/luci-app-argon-config_0.8-beta_all.ipk)
 - 【v2.2.5】当编译固件时，将自动设置为默认主题。
 - 【v2.2.5】修改文件结构，以适应luci-app-argon-config，旧的开启暗色模式方法将不再适用，请搭配luci-app-argon-config使用。

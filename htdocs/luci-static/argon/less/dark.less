@@ -1,4 +1,4 @@
-//  compress: false , sourceMap: false
+//  compress: true , sourceMap: false
 /**
  *  Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Argon Template
  *
@@ -37,6 +37,9 @@ body {
 
     .login-form {
         background-color: #1e1e1e;
+        -webkit-backdrop-filter: blur(var(--blur-radius-dark));
+        backdrop-filter: blur(var(--blur-radius-dark));
+        background-color: rgba(0, 0, 0, var(--blur-opacity-dark));
 
         .brand {
             color: #adb5bd;
@@ -808,14 +811,7 @@ input,
     color: #ccc !important;
 }
 
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    .login-page .login-container .login-form {
-        -webkit-backdrop-filter: blur(var(--blur-radius-dark));
-        backdrop-filter: blur(var(--blur-radius-dark));
-        background-color: rgba(0, 0, 0, var(--blur-opacity-dark));
 
-    }
-}
 
 
 @media screen and (max-width: 480px) {
