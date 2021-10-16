@@ -8,28 +8,18 @@
   </h3>
 
   <a href="/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="">
-  </a>
-
-  <a href="https://github.com/jerrykuku/luci-theme-argon/pulls">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="">
-  </a>
-  
-  <a href="https://github.com/jerrykuku/luci-theme-argon/issues/new">
-    <img src="https://img.shields.io/badge/Issues-welcome-brightgreen.svg">
-  </a>
-  
-  <a href="https://github.com/jerrykuku/luci-theme-argon/releases">
-    <img src="https://img.shields.io/badge/release-v2.2.8-blue.svg?">
-  </a>
-  
-  <a href="https://github.com/jerrykuku/luci-theme-argon/releases">
-    <img src="https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total">
-  </a>
-  
-  <a href="https://t.me/jerryk6">
-    <img src="https://img.shields.io/badge/Contact-telegram-blue">
-  </a>
+    <img src="https://img.shields.io/github/license/jerrykuku/luci-theme-argon?style=flat-square" alt="">
+  </a><a href="https://github.com/jerrykuku/luci-theme-argon/pulls">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="">
+  </a><a href="https://github.com/jerrykuku/luci-theme-argon/issues/new">
+    <img src="https://img.shields.io/badge/Issues-welcome-brightgreen.svg?style=flat-square">
+  </a><a href="https://github.com/jerrykuku/luci-theme-argon/releases">
+    <img src="https://img.shields.io/github/release/jerrykuku/luci-theme-argon.svg?style=flat-square">
+  </a><a href="hhttps://github.com/jerrykuku/luci-theme-argon/releases">
+    <img src="https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total?style=flat-square">
+  </a><a href="https://t.me/jerryk6">
+    <img src="https://img.shields.io/badge/Contact-telegram-blue?style=flat-square">
+  </a> 
 </div>
 <br>
 <div align="center">
