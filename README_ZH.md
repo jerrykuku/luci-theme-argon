@@ -1,26 +1,30 @@
-# luci-theme-argon ([English](/README.md))
-[1]: https://img.shields.io/badge/license-MIT-brightgreen.svg
-[2]: /LICENSE
-[3]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
-[4]: https://github.com/jerrykuku/luci-theme-argon/pulls
-[5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
-[6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v2.2.8-blue.svg?
-[8]: https://github.com/jerrykuku/luci-theme-argon/releases
-[9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
-[10]: https://img.shields.io/badge/Contact-telegram-blue
-[11]: https://t.me/jerryk6
-[![license][1]][2]
-[![PRs Welcome][3]][4]
-[![Issue Welcome][5]][6]
-[![Release Version][7]][8]
-[![Release Count][9]][8]
-[![Contact Me][10]][11]
+<div align="center">
+  <img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon_title2.png"  >
+  <h1 align="center">
+   全新的 Openwrt 主题
+  </h1>
+    <h3 align="center">
+    Argon 是一个干净整洁的Openwrt主题，用户可以自定义登录界面，<br>包含图片或者视频，同时支持深色浅色的自动与手动切换
+  </h3>
+
+  <a href="/LICENSE">
+    <img src="https://img.shields.io/github/license/jerrykuku/luci-theme-argon?style=flat-square" alt="">
+  </a><a href="https://github.com/jerrykuku/luci-theme-argon/pulls">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="">
+  </a><a href="https://github.com/jerrykuku/luci-theme-argon/issues/new">
+    <img src="https://img.shields.io/badge/Issues-welcome-brightgreen.svg?style=flat-square">
+  </a><a href="https://github.com/jerrykuku/luci-theme-argon/releases">
+    <img src="https://img.shields.io/github/release/jerrykuku/luci-theme-argon.svg?style=flat-square">
+  </a><a href="hhttps://github.com/jerrykuku/luci-theme-argon/releases">
+    <img src="https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total?style=flat-square">
+  </a><a href="https://t.me/jerryk6">
+    <img src="https://img.shields.io/badge/Contact-telegram-blue?style=flat-square">
+  </a> 
+</div>
 
 ![](/Screenshots/screenshot_pc.jpg)
 ![](/Screenshots/screenshot_phone.jpg)
 
-全新的 Openwrt 主题，基于luci-theme-material 和 开源免费的 Argon 模板进行移植。 
 
 ## 注意
 强烈建议使用Chrome 浏览器。主题中使用了一些新的css3特性，目前只有Chrome有最佳的兼容性。
@@ -31,8 +35,11 @@ v2.x.x 适配主线快照版本。
 v1.x.x 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版本]
 
 
-## 更新日志 2021.10.11 v2.2.8
+## 更新日志 2021.10.16 v2.2.9
 
+- 【v2.2.9】修复了在手机模式下无法弹出菜单的bug  
+- 【v2.2.9】统一css间距的设置  
+- 【v2.2.9】重构了登录页面的代码  
 - 【v2.2.8】修复编译时打开Minify Css选项，导致磨砂玻璃效果无效，logo字体丢失的问题  
 - 【v2.2.5】全新的设置app.你可以设置argon 主题的登录页面的模糊和透明度，并管理背景图片与视频。[建议使用 Chrome][点击下载](https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.8-beta/luci-app-argon-config_0.8-beta_all.ipk)
 - 【v2.2.5】当编译固件时，将自动设置为默认主题。

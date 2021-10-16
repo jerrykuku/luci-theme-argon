@@ -146,8 +146,10 @@
 			<header class="bg-primary">
 				<div class="fill">
 					<div class="container">
-						<a class="showSide"></a>
-						<a class="brand" href="#"><%=brand_name%></a>
+						<div class="flex1">
+							<a class="showSide"></a>
+							<a class="brand" href="#"><%=brand_name%></a>
+						</div>
 						<div class="status" id="indicators">
 						<span id="xhr_poll_status" style="display:none" onclick="XHR.running() ? XHR.halt() : XHR.run()">
 							<span class="label success" id="xhr_poll_status_on"><span class="mobile-hide"><%:Auto Refresh%></span> <%:on%></span>

@@ -23,11 +23,15 @@
 
 <%+themes/argon/out_header_login%>
 <%
-	local util = require "luci.util"
-	local boardinfo = util.ubus("system", "board")
-	local fs = require "nixio.fs"
-	local nutil = require "nixio.util"
+	local util		= require "luci.util"
+	local fs		= require "nixio.fs"
+	local nutil		= require "nixio.util"
+	local json		= require "luci.jsonc"
+	local sys		= require "luci.sys"
+	local uci		= require 'luci.model.uci'.cursor()
 
+	-- Fetch Local Background Media
+	
 	function glob(...)
 		local iter, code, msg = fs.glob(...)
 		if iter then
@@ -37,37 +41,55 @@
 		end
 	end
 
-	function getExtension(str)
-		return str:match(".+%.(%w+)$")
-	end
 
-	local bgcount = 0
-	local currentBg = {}
-	local bgs,attr = {}
-	local theme_dir = media .. "/background/"
-	for i, f in ipairs(glob("/www" .. theme_dir .. "*")) do
-		attr = fs.stat(f)
-		if attr then
-			local ext = getExtension(fs.basename(f))
-			if ext == "jpg" or ext == "png" or ext == "gif" or ext == "mp4" then
-				local bg = {}
-				bg.type = ext
-				bg.url = theme_dir .. fs.basename(f)
-				table.insert(bgs,bg)
-				bgcount = bgcount + 1
+	function fetchMedia(path,themeDir)
+		local backgroundTable 	= {}
+		local backgroundCount 	= 0
+		for i, f in ipairs(glob(path)) do
+			attr = fs.stat(f)
+			if attr then
+				local ext = fs.basename(f):match(".+%.(%w+)$")
+				if ext == "jpg" or ext == "png" or ext == "gif" or ext == "mp4" then
+					local bg = {}
+					bg.type = ext
+					bg.url = themeDir .. fs.basename(f)
+					table.insert(backgroundTable,bg)
+					backgroundCount = backgroundCount + 1
+				end
 			end
 		end
+		return backgroundTable,backgroundCount
 	end
 
-	if bgcount > 0 then
-		currentBg = bgs[math.random(1,bgcount)]
+	local boardinfo			= util.ubus("system", "board")
+	local bingUrl 			= "http://www.bing.com/"
+	local bingApiUrl 		= bingUrl .. "HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US"
+	local themeDir			= media .. "/background/"
+	local bgUrl 			= media .. "/img/bg1.jpg"
+	local useBing			= fs.access('/etc/config/argon') and "1" or "0"
+	local backgroundTable, backgroundCount 		= fetchMedia("/www" .. themeDir .. "*",themeDir)
+	local backgroundType 	= "Image"
+
+	if ( backgroundCount > 0 ) then
+		local currentBg = backgroundTable[math.random(1,backgroundCount)]
+		bgUrl 			= currentBg.url
+		if (currentBg.type == "mp4" ) then
+			backgroundType 	= "Video"
+		end
+	else
+		local bing = sys.exec("wget --timeout=0.5 -qO- '%s'" %bingApiUrl)
+		if (bing and bing ~= '') then
+			bgUrl 	= bingUrl .. json.parse(bing).images[1].url
+		end
 	end
 %>
+<!-- Login Page Start -->
 <div class="login-page">
-	<% if (bgcount > 0 and currentBg.type == "mp4") then %>
+	<% if ( backgroundType == "Video" ) then %>
+	<!-- Video Player Start -->
 	<div class="video">
 		<video autoplay loop muted id="video">
-			<source src="<%=currentBg.url%>" type="video/mp4">
+			<source src="<%=bgUrl%>" type="video/mp4">
 		</video>
 	</div>
 	<div class="volume-control mute"></div>
@@ -82,28 +104,21 @@
 			}
 		})
 	</script>
-	<% else 
-	local bg_url = media .. "/img/bg1.jpg"
-	local bing = "123"
-	if (bgcount == 0 ) then
-		local sys = require "luci.sys"
-		local json = require "luci.jsonc"
-		local remote_bg_url="http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US"
-		--bing = sys.httpget(remote_bg_url)
-		bing = sys.exec("wget --timeout=0.5 -qO- '%s'" %remote_bg_url)
-		if (bing and bing ~= '') then
-			bg_url = "https://www.bing.com" .. json.parse(bing).images[1].url
-		end
-	elseif (bgcount > 0 and currentBg["type"] ~= "mp4") then
-		bg_url = currentBg.url
-	end
-	%>
-	<div class="main-bg" id="main-bg" style="background-image:url(<%=bg_url%>)"></div>
+	<!-- Video Player End -->
+	<% else %>
+	<!-- Image Background Start -->
+	<div class="main-bg" id="main-bg" style="background-image:url(<%=bgUrl%>)"></div>
+	<!-- Image Background End -->
 	<% end %>
+	<!-- Login Container Start -->
 	<div class="login-container">
 		<div class="login-form">
-			<a class="brand" href="/"><img src="<%=media%>/img/argon.svg" class="icon"><span
-					class="brand-text"><%=striptags( (boardinfo.hostname or "?") .. ( (node and node.title) and ' - ' .. translate(node.title) or '')) %></span></a>
+			<!-- Logo Start -->
+			<a class="brand" href="/"><img src="<%=media%>/img/argon.svg" class="icon">
+				<span class="brand-text"><%=striptags( (boardinfo.hostname or "?") .. ( (node and node.title) and ' - ' .. translate(node.title) or '')) %></span>
+			</a>
+			<!-- Logo End -->
+			<!-- Login Form Start -->
 			<form class="form-login" method="post" action="<%=pcdata(luci.http.getenv("REQUEST_URI"))%>">
 
 				<%- if fuser then %>
@@ -124,7 +139,7 @@
 					<input type="submit" value="<%:Login%>" class="cbi-button cbi-button-apply" />
 				</div>
 			</form>
-
+			<!-- Login Form End -->
 			<script type="text/javascript">//<![CDATA[
 				var input = document.getElementsByName('luci_password')[0];
 				if (input)
