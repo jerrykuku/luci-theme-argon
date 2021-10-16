@@ -40,9 +40,10 @@ return baseclass.extend({
 
 		document.querySelectorAll('.main .main-left .nav > li >ul.active').forEach(function (ul) {
 			if (ul !== slide_menu) {
-				//ul.classList.remove('active');
-				ul.previousElementSibling.classList.remove('active');
-				$(ul).stop(true).slideUp("fast");
+				$(ul).stop(true).slideUp("fast", function () {
+					ul.classList.remove('active');
+					ul.previousElementSibling.classList.remove('active');
+				});
 			}
 
 		});
@@ -50,9 +51,11 @@ return baseclass.extend({
 		if (!slide_menu)
 			return;
 		
-		slide_menu.classList.add('active');
-		a.classList.add('active');
-		$(slide).find(".slide-menu").slideDown("fast");
+		
+		$(slide).find(".slide-menu").slideDown("fast",function(){
+			slide_menu.classList.add('active');
+			a.classList.add('active');
+		});
 		a.blur();
 		ev.preventDefault();
 		ev.stopPropagation();
