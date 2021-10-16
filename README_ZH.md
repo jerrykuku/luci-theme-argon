@@ -8,7 +8,7 @@
   </h3>
 
   <a href="/LICENSE">
-    <img src="https://img.shields.io/github/license/jerrykuku/luci-theme-argon?style=flat-square" alt="">
+    <img src="https://img.shields.io/github/license/jerrykuku/luci-theme-argon?style=flat-square&a=1" alt="">
   </a><a href="https://github.com/jerrykuku/luci-theme-argon/pulls">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="">
   </a><a href="https://github.com/jerrykuku/luci-theme-argon/issues/new">
