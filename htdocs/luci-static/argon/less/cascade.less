@@ -783,10 +783,8 @@ header {
         }
 
         .status {
-
-
-            span[data-indicator="poll-status"] {
-                display: block;
+            span{
+                display: inline-block;
                 font-size: 0.8rem;
                 font-weight: bold;
                 padding: 0.3rem 0.8rem;
@@ -798,11 +796,20 @@ header {
                 cursor: pointer;
                 transition: all 0.3s;
                 box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 2px 0 rgba(0, 0, 0, .12);
+                margin: 0 0.25rem;
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
+
+            span[data-indicator="poll-status"] {
+                color: #32325d;
+                background-color: #fff !important;
             }
 
             span[data-style="active"] {
-                color: #32325d !important;
-                background-color: #fff;
+
+                background-color: var(--green);
 
             }
 
@@ -982,7 +989,6 @@ div[style="width:100%;height:300px;border:1px solid #000;background:#fff"] {
                     padding: 0;
 
                     ul {
-
                         display: none;
                         overflow: hidden;
                     }
