@@ -40,6 +40,7 @@ v1.x.x 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版�
 - 【v2.2.9】修复了在手机模式下无法弹出菜单的bug  
 - 【v2.2.9】统一css间距的设置  
 - 【v2.2.9】重构了登录页面的代码  
+- 【v2.2.9】为导航菜单添加滑动效果  
 - 【v2.2.8】修复编译时打开Minify Css选项，导致磨砂玻璃效果无效，logo字体丢失的问题  
 - 【v2.2.5】全新的设置app.你可以设置argon 主题的登录页面的模糊和透明度，并管理背景图片与视频。[建议使用 Chrome][点击下载](https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.8-beta/luci-app-argon-config_0.8-beta_all.ipk)
 - 【v2.2.5】当编译固件时，将自动设置为默认主题。
