@@ -66,7 +66,7 @@
 	local bingApiUrl 		= bingUrl .. "HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US"
 	local themeDir			= media .. "/background/"
 	local bgUrl 			= media .. "/img/bg1.jpg"
-	local useBing			= fs.access('/etc/config/argon') and "1" or "0"
+	local useBing			= fs.access('/etc/config/argon-config') and "1" or "0"
 	local backgroundTable, backgroundCount 		= fetchMedia("/www" .. themeDir .. "*",themeDir)
 	local backgroundType 	= "Image"
 

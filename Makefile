@@ -6,10 +6,15 @@
 
 include $(TOPDIR)/rules.mk
 
-LUCI_TITLE:=Argon Theme
-LUCI_DEPENDS:=
+PKG_NAME:=luci-theme-argon
 PKG_VERSION:=2.2.9
-PKG_RELEASE:=20211016-1
+PKG_RELEASE:=20211217-1
+
+PKG_MAINTAINER:=jerrykuku <jerrykuku@qq.com>
+
+LUCI_TITLE:=Argon Theme
+LUCI_PKGARCH:=all
+LUCI_DEPENDS:=
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
