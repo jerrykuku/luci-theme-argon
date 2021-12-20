@@ -106,11 +106,11 @@
 		local bing = "123"
 		local sys = require "luci.sys"
 		local json = require "luci.jsonc"
-		local remote_bg_url="http://www4.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US"
+		local remote_bg_url="http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US"
 		--bing = sys.httpget(remote_bg_url)
 		bing = sys.exec("wget --timeout=0.5 -qO- '%s'" %remote_bg_url)
 		if (bing and bing ~= '') then
-			bg_url = "https://www4.bing.com" .. json.parse(bing).images[1].url
+			bg_url = "https://www.bing.com" .. json.parse(bing).images[1].url
 		end
 	end
 	%>
