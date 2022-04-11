@@ -82,7 +82,7 @@
 			mimeType 		= "video/" .. currentBg.type
 		end
 	else
-		local bing = sys.exec("wget --timeout=0.5 -qO- '%s'" %bingApiUrl)
+		local bing = sys.exec("curl --fail --show-error --max-time 1 '%s'" %bingApiUrl)
 		if (bing and bing ~= '') then
 			bgUrl 	= bingUrl .. json.parse(bing).images[1].url
 		end
