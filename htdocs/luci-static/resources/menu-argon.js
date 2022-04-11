@@ -83,7 +83,7 @@ return baseclass.extend({
 			tmpTitle = tmpTitleUpperCase == "KMS SERVER" ? "KMS服务" : tmpTitle;
 			tmpTitle = tmpTitleUpperCase == "UPNP" ? "即插即用" : tmpTitle;
 			tmpTitle = tmpTitleUpperCase == "QOS" ? "服务质量" : tmpTitle;
-			tmpTitle = tmpTitleUpperCase == "FIREWALL_(IPTABLES)" ? "防火墙" : tmpTitle;
+			tmpTitle = tmpTitleUpperCase == "FIREWALL (IPTABLES)" ? "防火墙" : tmpTitle;
 			if (isActive) {
 				ul.classList.add('active');
 				slideClass += " active";
