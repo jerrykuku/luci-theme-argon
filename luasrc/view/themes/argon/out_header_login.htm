@@ -5,6 +5,8 @@
 -%>
 
 <%
+	local ver = require "luci.version"
+
 	if not luci.dispatcher.context.template_header_sent then
 		include("themes/" .. theme .. "/header_login")
 		luci.dispatcher.context.template_header_sent = true
@@ -13,8 +15,8 @@
 	local applyconf = luci.config and luci.config.apply
 %>
 
-<script type="text/javascript" src="<%=resource%>/promis.min.js"></script>
-<script type="text/javascript" src="<%=resource%>/luci.js"></script>
+<script type="text/javascript" src="<%=resource%>/promis.min.js?v=<%=ver.luciversion%>"></script>
+<script type="text/javascript" src="<%=resource%>/luci.js?v=<%=ver.luciversion%>"></script>
 <script type="text/javascript">
 	L = new LuCI(<%= luci.http.write_json({
 		token          = token,

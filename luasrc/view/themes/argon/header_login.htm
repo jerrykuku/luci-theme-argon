@@ -21,6 +21,7 @@
 	local util = require "luci.util"
 	local http = require "luci.http"
 	local disp = require "luci.dispatcher"
+    local ver = require "luci.version"
 
 	local boardinfo = util.ubus("system", "board")
 
@@ -111,10 +112,10 @@
         <%=css %>
     </style>
     <% end -%>
-    <script src="<%=url('admin/translations', luci.i18n.context.lang)%><%# ?v=PKG_VERSION %>"></script>
-    <script src="<%=resource%>/cbi.js<%# ?v=PKG_VERSION %>"></script>
-    <script src="<%=resource%>/xhr.js<%# ?v=PKG_VERSION %>"></script>
-    <script src="<%=media%>/js/jquery.min.js<%# ?v=PKG_VERSION %>"></script>
+    <script src="<%=url('admin/translations', luci.i18n.context.lang)%>?v=<%=ver.luciversion%>"></script>
+    <script src="<%=resource%>/cbi.js?v=<%=ver.luciversion%>"></script>
+    <script src="<%=resource%>/xhr.js?v=<%=ver.luciversion%>"></script>
+    <script src="<%=media%>/js/jquery.min.js?v=3.5.1"></script>
 
 </head>
 
