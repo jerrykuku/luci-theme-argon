@@ -65,11 +65,8 @@
 	end
 
 	local boardinfo			= util.ubus("system", "board")
-	local bingUrl 			= "http://www.bing.com/"
-	local bingApiUrl 		= bingUrl .. "HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US"
 	local themeDir			= media .. "/background/"
 	local bgUrl 			= media .. "/img/bg1.jpg"
-	local useBing			= fs.access('/etc/config/argon') and "1" or "0"
 	local backgroundTable, backgroundCount 		= fetchMedia("/www" .. themeDir .. "*",themeDir)
 	local backgroundType 	= "Image"
 	local mimeType 			= ""
@@ -82,9 +79,9 @@
 			mimeType 		= "video/" .. currentBg.type
 		end
 	else
-		local bing = sys.exec("curl --fail --show-error --max-time 1 '%s'" %bingApiUrl)
+		local bing = sys.exec("/usr/bin/argon_bing")
 		if (bing and bing ~= '') then
-			bgUrl 	= bingUrl .. json.parse(bing).images[1].url
+			bgUrl 	= bing
 		end
 	end
 %>
