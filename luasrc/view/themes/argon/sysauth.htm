@@ -79,7 +79,7 @@
 			mimeType 		= "video/" .. currentBg.type
 		end
 	else
-		local bing = sys.exec("/usr/bin/argon_bing")
+		local bing = sys.exec("/usr/libexec/argon/bing_wallpaper")
 		if (bing and bing ~= '') then
 			bgUrl 	= bing
 		end
