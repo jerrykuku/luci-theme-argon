@@ -112,13 +112,8 @@
         <%=css %>
     </style>
     <% end -%>
-    <script src="<%=url('admin/translations', luci.i18n.context.lang)%>?v=<%=ver.luciversion%>"></script>
-    <script src="<%=resource%>/cbi.js?v=<%=ver.luciversion%>"></script>
-    <script src="<%=resource%>/xhr.js?v=<%=ver.luciversion%>"></script>
     <script src="<%=media%>/js/jquery.min.js?v=3.5.1"></script>
 
 </head>
 
-<body
-    class="lang_<%=luci.i18n.context.lang%> <% if node then %><%= striptags( node.title ) %><% end %> <% if luci.dispatcher.context.authsession then %>logged-in<% end %>"
-    data-page="<%= table.concat(disp.context.requestpath, "-") %>">
+<body>
