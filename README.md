@@ -29,6 +29,8 @@ Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Ar
 This branch only matches lean openwrt LuCI 18.06.
 
 ## Update log 2022.04.21 [18.06] V1.7.3
+
+- 【v1.7.3】Fix the problem that the left navigation is unresponsive for a long time when accessing the status/firewall page.
 - 【v1.7.3】Fix the problem that the login page is inaccessible when the bing wallpaper fails to be obtained.
 - 【v1.7.2】Since access to the bing api requires a stable network on the router, the bing api is modified as an option, and the default is the built-in wallpaper display. After logging in, enter the argon-config [new version] to modify it.
 - 【v1.7.2】Fixed an issue where the built-in switch could not display the interface icon and rate.
