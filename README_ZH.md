@@ -5,7 +5,7 @@
 [4]: https://github.com/jerrykuku/luci-theme-argon/pulls
 [5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
 [6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v1.7.2-blue.svg?
+[7]: https://img.shields.io/badge/release-v1.7.3-blue.svg?
 [8]: https://github.com/jerrykuku/luci-theme-argon/releases
 [9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
 [10]: https://img.shields.io/badge/Contact-telegram-blue
@@ -28,8 +28,9 @@
 v2.x.x 适配官方主线快照版本。  
 v1.x.x 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版本]
 
-## 更新日志 2021.03.09 [18.06] V1.7.2
+## 更新日志 2022.04.21 [18.06] V1.7.3
 
+- 【v1.7.3】修复当bing壁纸获取失败时，导致登录页面无法访问的问题。
 - 【v1.7.2】由于访问bing api需要路由器有稳定的网络，故将bing api修改为可选项，默认为内置壁纸显示，登录后进入argon-config【新版】进行修改。
 - 【v1.7.2】修复了一个内置交换机无法显示接口图标和速率的问题。
 - 【v1.7.1】修复登录页面在极小分辨率下底部文字会遮挡按钮的问题.
