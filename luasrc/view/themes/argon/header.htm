@@ -277,7 +277,7 @@
 </head>
 
 <body
-	class="<%- if node then %><%= striptags( node.title ) %><%- end %> <% if luci.dispatcher.context.authsession then %>logged-in<% end %> lang_<%=luci.i18n.context.lang%>  ">
+	class="<%- if node then %><%= striptags( node.title ) %><%- end %> <% if luci.dispatcher.context.authsession then %>logged-in<% end %> lang_<%=luci.i18n.context.lang%> <%=mode %>  ">
 
 	<div class="main">
 		<div class="main-left">
