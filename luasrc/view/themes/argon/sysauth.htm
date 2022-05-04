@@ -52,6 +52,9 @@
 			attr = fs.stat(f)
 			if attr then
 				local ext = fs.basename(f):match(".+%.(%w+)$")
+				if ext ~= nil then
+					ext = ext:lower()
+				end
 				if ext ~= nil and string.match(allTypes, " "..ext.." ") ~= nil then
 					local bg = {}
 					bg.type = ext
