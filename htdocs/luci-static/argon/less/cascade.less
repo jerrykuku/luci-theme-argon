@@ -1539,9 +1539,11 @@ tr>th,
     text-align: center !important;
 }
 
-.cbi-section-table-row>.cbi-value-field .control-group {
+.control-group {
     display: inline-flex;
     width: 100%;
+    flex-wrap: wrap;
+    gap: 2px;
 }
 
 div>table>tbody>tr:nth-of-type(2n),
@@ -2643,6 +2645,7 @@ body.modal-overlay-active #modal_overlay {
 .cbi-page-actions {
     padding-top: 1rem;
     text-align: right;
+    justify-content: flex-end;
 }
 
 .cbi-page-actions>form[method="post"] {
