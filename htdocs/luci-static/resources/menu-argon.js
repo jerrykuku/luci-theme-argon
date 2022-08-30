@@ -88,7 +88,7 @@ return baseclass.extend({
 			tmpTitle = tmpTitleUpperCase == "UPNP" ? "即插即用" : tmpTitle;
 			tmpTitle = tmpTitleUpperCase == "QOS" ? "服务质量" : tmpTitle;
 			tmpTitle = tmpTitleUpperCase == "FIREWALL (IPTABLES)" ? "防火墙" : tmpTitle;
-			tmpTitle = tmpTitleUpperCase == "QOS_OVER NFTABLES" ? "服务质量" : tmpTitle;
+			tmpTitle = tmpTitleUpperCase == "QOS OVER NFTABLES" ? "服务质量" : tmpTitle;
 			if (isActive) {
 				ul.classList.add('active');
 				slideClass += " active";
