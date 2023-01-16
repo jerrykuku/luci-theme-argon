@@ -102,7 +102,6 @@ html {
 body {
     font-size: 0.875rem;
     background-color: #f4f5f7;
-    
     background-color: var(--background-color);
     color: #32325d;
     color: var(--gray-dark);
@@ -786,7 +785,7 @@ header {
         }
 
         .status {
-            span{
+            span {
                 display: inline-block;
                 font-size: 0.8rem;
                 font-weight: bold;
@@ -800,7 +799,8 @@ header {
                 transition: all 0.3s;
                 box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 2px 0 rgba(0, 0, 0, .12);
                 margin: 0 0.25rem;
-                &:last-child{
+
+                &:last-child {
                     margin-right: 0;
                 }
             }
@@ -1005,7 +1005,7 @@ div[style="width:100%;height:300px;border:1px solid #000;background:#fff"] {
                         padding: 0rem 0.5rem;
 
                         &.active {
-                             display: block;
+                            display: block;
 
                         }
 
@@ -1545,10 +1545,10 @@ tr>th,
     display: inline-flex;
     width: 100%;
     flex-wrap: wrap;
-    gap: 2px;
+    gap: 0px;
 }
 
-.control-group > * {
+.control-group>* {
     vertical-align: middle;
 }
 
@@ -2198,6 +2198,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
     align-items: center;
     width: 100%;
     min-width: 16rem;
+    gap: 0;
 }
 
 .cbi-dynlist>.add-item input {
@@ -2228,8 +2229,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
 .cbi-dynlist>.add-item:not([ondrop])>input {
     overflow: hidden;
-    width: 100%;
-    min-width: 15rem;
+    min-width: 15.5rem;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
