@@ -2459,39 +2459,34 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 /* progressbar */
 .cbi-progressbar {
     position: relative;
-    min-width: 11rem;
-    height: 1.5rem !important;
-    margin: 0 0;
-    border: thin solid #999;
-    background: #eee;
-    border-radius: 4px;
+    display: flex;
+    width: 100%;
+    font-size: 0.75rem;
+    background-color: #e9ecef;
+    border-radius: 0.5rem;
+    height: 1rem;
     overflow: hidden;
 }
 
 .cbi-progressbar>div {
-    width: 0;
+    display: block;
+    position: absolute;
     height: 100%;
-    transition: width .25s ease-in;
-    background: #5bc0de;
-    background: var(--bar-bg);
+    background-color: var(--bar-bg);
+    border-radius: 0.5rem;
+    transition: width 0.3s;
 }
 
 .cbi-progressbar::after {
-    font-family: var(--font-family-monospace);
-    font-size: 0.75rem;
-    font-weight: bold;
-    font-size-adjust: .38;
-    line-height: 1.5rem;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
     content: attr(title);
+    position: absolute;
+    font-size: 0.75rem;
+    color: var(--bs-heading-color);
+    width: 100%;
+    height: 100%;
     text-align: center;
-    white-space: pre;
-    text-overflow: ellipsis;
+    line-height: 1rem;
+    z-index: 2;
 }
 
 #modal_overlay {
