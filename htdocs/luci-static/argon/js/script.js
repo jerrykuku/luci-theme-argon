@@ -18,7 +18,7 @@
  *  luci-theme-material:
  *      https://github.com/LuttyYang/luci-theme-material/
  *
- *  Agron Theme
+ *  Argon Theme
  *	    https://demos.creative-tim.com/argon-dashboard/index.html
  *
  *  Login background
@@ -124,6 +124,9 @@
 
 // define what element should be observed by the observer
 // and what types of mutations trigger the callback
+    const observer = new MutationObserver(() => {
+    console.log("callback that runs when observer is triggered");
+    });
     if ($("#cbi-dhcp-lan-ignore").length > 0) {
         observer.observe(document.getElementById("cbi-dhcp-lan-ignore"), {
             subtree: true,
@@ -166,6 +169,11 @@
     /**
      * get current node and open it
      */
+    if (getCurrentNodeByUrl()) {
+        mainNodeName = "node-" + luciLocation[0] + "-" + luciLocation[1];
+        mainNodeName = mainNodeName.replace(/[ \t\n\r\/]+/g, "_").toLowerCase();
+        $("body").addClass(mainNodeName);
+    }
     
     $(".cbi-button-up").val("");
     $(".cbi-button-down").val("");
