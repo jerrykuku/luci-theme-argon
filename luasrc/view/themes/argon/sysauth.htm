@@ -15,7 +15,7 @@
 	MUI:
 	https://github.com/muicss/mui
 	
-	Agron Theme
+	Argon Theme
 	https://demos.creative-tim.com/argon-dashboard/index.html
 
 	Licensed to the public under the Apache License 2.0
@@ -61,8 +61,6 @@
 	end
 
 	local boardinfo			= util.ubus("system", "board")
-	local bingUrl 			= "http://www.bing.com/"
-	local bingApiUrl 		= bingUrl .. "HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US"
 	local themeDir			= media .. "/background/"
 	local bgUrl 			= media .. "/img/bg1.jpg"
 	local useBing			= fs.access('/etc/config/argon') and uci:get_first('argon', 'global', 'bing_background') or "0"
@@ -70,9 +68,9 @@
 	local backgroundType 	= "Image"
 
 	function getBing()
-		local bing = sys.exec("wget --timeout=0.5 -qO- '%s'" %bingApiUrl)
+		local bing = sys.exec("/usr/libexec/argon/bing_wallpaper")
 		if (bing and bing ~= '') then
-			bgUrl 	= bingUrl .. json.parse(bing).images[1].url
+			bgUrl 	= bing
 		end
 	end
 

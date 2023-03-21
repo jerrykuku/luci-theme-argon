@@ -15,7 +15,7 @@
 	MUI:
 	https://github.com/muicss/mui
 	
-	Agron Theme
+	Argon Theme
 	https://demos.creative-tim.com/argon-dashboard/index.html
 
 	Licensed to the public under the Apache License 2.0
@@ -44,7 +44,7 @@
 	local node = disp.context.dispatched
 
 	local categories = disp.node_childs(tree)
-	local currentNode = luci.dispatcher.context.path
+
 	local c = tree
 	local i, r
 	
@@ -108,22 +108,16 @@
 		end
 	end
 
-	local function render_submenu(prefix,parent, node)
+	local function render_submenu(prefix, node)
 		local childs = disp.node_childs(node)
 		if #childs > 0 then
-			local active = (currentNode[2] == parent) and "active" or ""
-			local display = (currentNode[2] == parent) and 'style="display: block;"' or ""
-			
-			write('<ul class="slide-menu %s" %s>' %{
-				active,
-				display
-			})
+			write('<ul class="slide-menu">')
+
 			for i, r in ipairs(childs) do
 				local nnode = node.nodes[r]
 				local title = pcdata(striptags(translate(nnode.title)))
-				local subactive = (currentNode[3] == r) and 'class="active"' or ""
-				write('<li %s><a data-title="%s" href="%s">%s</a></li>' %{
-					subactive,
+
+				write('<li><a data-title="%s" href="%s">%s</a></li>' %{
 					title,
 					nodeurl(prefix, r, nnode.query),
 					title
@@ -138,21 +132,20 @@
 		local childs = disp.node_childs(cattree)
 		if #childs > 0 then
 			write('<ul class="nav">')
-			
+
 			for i, r in ipairs(childs) do
 				local nnode = cattree.nodes[r]
 				local grandchildren = disp.node_childs(nnode)
+
 				if #grandchildren > 0 then
-					local active = (currentNode[2] == r) and "active" or ""
 					local title = pcdata(striptags(translate(nnode.title)))
                                         local en_title = pcdata(striptags(string.gsub(nnode.title," ","_")))
-					write('<li class="slide"><a class="menu %s" data-title="%s" href="#">%s</a>' %{
-						active,
+					write('<li class="slide"><a class="menu" data-title="%s" href="#">%s</a>' %{
 						en_title,
 						title
 					})
 
-					render_submenu(category .. "/" .. r,r, nnode)
+					render_submenu(category .. "/" .. r, nnode)
 					write('</li>')
 				else
 					local title = pcdata(striptags(translate(nnode.title)))
