@@ -1787,6 +1787,10 @@ width:100%
 .cbi-section-table-row>.cbi-value-field .cbi-input-password{
 min-width:100px
 }
+.cbi-section-table-row.cbi-rowstyle-1 div,
+.cbi-section-table-row.cbi-rowstyle-2 div{
+min-width:100%;
+}
 .cbi-section-table-row > .cbi-value-field [data-dynlist] > input,
 .cbi-section-table-row > .cbi-value-field input.cbi-input-password {
   width: calc(100% - 1.5rem);
