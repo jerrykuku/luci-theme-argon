@@ -14,7 +14,7 @@
 
 	MUI:
 	https://github.com/muicss/mui
-	
+
 	Argon Theme
 	https://demos.creative-tim.com/argon-dashboard/index.html
 
@@ -29,10 +29,10 @@
 	local sys 	= require "luci.sys"
 	local json 	= require "luci.jsonc"
 	local uci 	= require 'luci.model.uci'.cursor()
-	
-	-- Fetch Local Background Media
 
-	function glob(...)
+	-- Fetch Local Background Media
+	
+	local function glob(...)
 		local iter, code, msg = fs.glob(...)
 		if iter then
 			return nutil.consume(iter)
@@ -41,14 +41,21 @@
 		end
 	end
 
-	function fetchMedia(path,themeDir)
+
+	local imageTypes = " jpg png gif webp "
+	local videoTypes = " mp4 webm "
+	local allTypes = imageTypes .. videoTypes
+	local function fetchMedia(path,themeDir)
 		local backgroundTable 	= {}
 		local backgroundCount 	= 0
 		for i, f in ipairs(glob(path)) do
 			attr = fs.stat(f)
 			if attr then
 				local ext = fs.basename(f):match(".+%.(%w+)$")
-				if ext == "jpg" or ext == "png" or ext == "gif" or ext == "mp4" then
+				if ext ~= nil then
+					ext = ext:lower()
+				end
+				if ext ~= nil and string.match(allTypes, " "..ext.." ") ~= nil then
 					local bg = {}
 					bg.type = ext
 					bg.url = themeDir .. fs.basename(f)
@@ -59,44 +66,58 @@
 		end
 		return backgroundTable,backgroundCount
 	end
+	local function selectBackground(themeDir)
+		local bgUrl 			= media .. "/img/bg1.jpg"
+		local backgroundType 	= "Image"
+		local mimeType 			= ""
 
-	local boardinfo			= util.ubus("system", "board")
-	local themeDir			= media .. "/background/"
-	local bgUrl 			= media .. "/img/bg1.jpg"
-	local useBing			= fs.access('/etc/config/argon') and uci:get_first('argon', 'global', 'bing_background') or "0"
-	local backgroundTable, backgroundCount 		= fetchMedia("/www" .. themeDir .. "*",themeDir)
-	local backgroundType 	= "Image"
-
-	function getBing()
-		local bing = sys.exec("/usr/libexec/argon/bing_wallpaper")
-		if (bing and bing ~= '') then
-			bgUrl 	= bing
+		if fs.access("/etc/config/argon") then
+			if uci:get_first('argon', 'global', 'bing_background') == "1" then
+				local bing = sys.exec("/usr/libexec/argon/bing_wallpaper")
+				if (bing and bing ~= '') then
+					return bing, "Image", ""
+				end
+			end
 		end
-	end
 
-	if ( useBing == "0" ) then
+		local backgroundTable, backgroundCount 		= fetchMedia("/www" .. themeDir .. "*",themeDir)
 		if ( backgroundCount > 0 ) then
 			local currentBg = backgroundTable[math.random(1,backgroundCount)]
 			bgUrl 			= currentBg.url
-			if (currentBg.type == "mp4" ) then
+			if (string.match(videoTypes, " "..currentBg.type.." ") ~= nil) then
 				backgroundType 	= "Video"
+				mimeType 		= "video/" .. currentBg.type
 			end
 		end
-	else
-		pcall(getBing)
+
+		return bgUrl,backgroundType,mimeType
 	end
+
+	local boardinfo			= util.ubus("system", "board")
+	local themeDir			= media .. "/background/"
+	local bgUrl,backgroundType,mimeType = selectBackground(themeDir)
 %>
 <!-- Login Page Start -->
 <div class="login-page">
-	
 	<% if ( backgroundType == "Video" ) then %>
 	<!-- Video Player Start -->
-	<div class="video ar-flex ar-justify-content-center ar-align-items-center">
+	<div class="video">
 		<video autoplay loop muted id="video">
-			<source src="<%=bgUrl%>" type="video/mp4">
+			<source src="<%=bgUrl%>" type="<%=mimeType%>">
 		</video>
 	</div>
 	<div class="volume-control mute"></div>
+	<script>
+		$(".volume-control").click(function(){
+			if($(this).hasClass("mute")){
+				$(this).removeClass("mute")
+				$("#video").prop('muted', false);
+			}else{
+				$(this).addClass("mute")
+				$("#video").prop('muted', true);
+			}
+		})
+	</script>
 	<!-- Video Player End -->
 	<% else %>
 	<!-- Image Background Start -->
@@ -106,8 +127,12 @@
 	<!-- Login Container Start -->
 	<div class="login-container">
 		<div class="login-form">
-			<a class="brand" href="/"><img src="<%=media%>/img/argon.svg" class="icon"><span
-					class="brand-text"><%=striptags( (boardinfo.hostname or "?") .. ( (node and node.title) and ' - ' .. translate(node.title) or '')) %></span></a>
+			<!-- Logo Start -->
+			<a class="brand" href="/"><img src="<%=media%>/img/argon.svg" class="icon">
+			<span class="brand-text"><%=striptags( (boardinfo.hostname or "?") .. ( (node and node.title) and ' - ' .. translate(node.title) or '')) %></span>
+			</a>
+			<!-- Logo End -->
+			<!-- Login Form Start -->
 			<form class="form-login" method="post" action="<%=pcdata(luci.http.getenv("REQUEST_URI"))%>">
 
 				<%- if fuser then %>
@@ -128,7 +153,7 @@
 					<input type="submit" value="<%:Login%>" class="cbi-button cbi-button-apply" />
 				</div>
 			</form>
-
+			<!-- Login Form End -->
 			<script type="text/javascript">//<![CDATA[
 				var input = document.getElementsByName('luci_password')[0];
 				if (input)
