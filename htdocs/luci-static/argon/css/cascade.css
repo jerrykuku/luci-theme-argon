@@ -1256,6 +1256,15 @@ small {
   color: #fb6340;
   border: 1px dashed #fb6340;
 }
+::file-selector-button {
+  color: #fff;
+  border-radius: .25rem;
+  border: 1px solid #2e6da4;
+  padding: .4rem .5rem;
+  background-color: #337ab7;
+  box-sizing: border-box;
+  cursor: pointer;
+}
 fieldset > fieldset {
   margin: 0;
   padding: 0;
