@@ -219,7 +219,7 @@ table>thead>tr>th {
 }
 
 .cbi-rowstyle-2 {
-  background-color: #1e1e1e;
+  background-color: #2c2c2c !important;
 }
 
 .cbi-rowstyle-1 {
@@ -238,7 +238,12 @@ table>thead>tr>th {
 
 .cbi-button {
   color: #ccc;
-  background-color: #252526;
+  background-color: #2c2c2c;
+}
+
+.cbi-rowstyle-2 .cbi-button-up,
+.cbi-rowstyle-2 .cbi-button-down {
+  background-color: #252526 !important;
 }
 
 .cbi-section-node {
