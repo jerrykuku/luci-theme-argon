@@ -395,7 +395,7 @@ select {
 }
 
 .ifacebox {
-  background-color: none;
+  background-color: #1e1e1e;
   border: 1px solid #1e1e1e;
 }
 
