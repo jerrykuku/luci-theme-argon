@@ -1852,6 +1852,41 @@ td>table>tbody>tr>td,
     flex-basis: 12%;
 }
 
+/* Fix background color of table-titles */
+.cbi-section-node>.cbi-section-table>tbody>.cbi-section-table-titles th {
+    background-color: var(--lighter);
+    border: none;
+}
+
+/* Fix background color of table-descr */
+.cbi-section-node>.cbi-section-table>tbody>.cbi-section-table-descr th {
+    border: none;
+}
+
+/* Fix background color not change when the H tag is in the table rowstyle-1 */
+.cbi-section-node>.cbi-section-table>tbody>.cbi-rowstyle-1 th {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    border-bottom: none;
+}
+
+/* Fix background color not change when the H tag is in the table rowstyle-2 */
+.cbi-section-node>.cbi-section-table>tbody>.cbi-rowstyle-2 th {
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    border-bottom: none;
+}
+
+/* Change the color of the H label in the table to make it more visible */
+th h1, td h1,
+th h2, td h2,
+th h3, td h3,
+th h4, td h4,
+th h5, td h5,
+th h6, td h6 {
+    background: var(--lighter);
+}
+
 /* language fix */
 body.lang_pl.node-main-login .cbi-value-title {
     width: 12rem;
