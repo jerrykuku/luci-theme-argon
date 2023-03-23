@@ -1559,6 +1559,10 @@ th h5, td h5,
 th h6, td h6 {
   background: var(--lighter);
 }
+/* Add background color for the "now in use" item */
+.cbi-section-table > tbody > ._now_use {
+  background: #5e72e473 !important;
+}
 /* language fix */
 body.lang_pl.node-main-login .cbi-value-title {
   width: 12rem;
