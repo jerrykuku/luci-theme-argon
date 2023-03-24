@@ -262,6 +262,12 @@ div>.table>.tbody>.tr:nth-of-type(2n) {
   background-color: #252526;
 }
 
+/* file selector button */
+::file-selector-button {
+  border: 1px solid darkseagreen !important;
+  background-color: darkseagreen !important;
+}
+
 /* Fix background color of table-titles */
 .cbi-section-node>.cbi-section-table>tbody>.cbi-section-table-titles th {
   background-color: #1e1e1e;
@@ -569,11 +575,6 @@ fieldset[id^="cbi-apply-"] {
 .cbi-value-error input {
   color: darkorange;
   border: 1px dashed darkorange !important;
-}
-
-::file-selector-button {
-  border: 1px solid darkseagreen !important;
-  background-color: darkseagreen !important;
 }
 
 .node-services-vssr .block h4 span {
