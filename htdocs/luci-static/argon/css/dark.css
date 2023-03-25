@@ -567,8 +567,24 @@ fieldset[id^="cbi-apply-"] {
   background: #252525;
 }
 
-.cbi-section-error {
+/* Define the error text border breathe display animation (dark mode) */
+@keyframes error-border-breathe-dark {
+  0%{
+    border-color: darkorange;
+  }
+  50%{
+    border-color: transparent;
+  }
+  100%{
+    border-color: darkorange;
+  }
+}
+
+/* Add border for error text box, and border breathe display animation to make it more noticeable (dark mode) */
+.cbi-section-error>ul>li {
   color: darkorange;
+  border: 2px solid darkorange ;
+  animation: error-border-breathe-dark 1.5s ease-in-out infinite;
 }
 
 .cbi-input-invalid,

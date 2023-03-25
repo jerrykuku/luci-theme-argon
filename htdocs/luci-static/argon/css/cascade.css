@@ -1245,11 +1245,36 @@ small {
 .cbi-section > legend {
   display: none !important;
 }
-.cbi-section-error {
-  padding: 1.5rem;
-  color: #fb6340;
-  font-weight: 600;
+/* Define the error text border breathe display animation */
+@keyframes error-border-breathe {
+  0%{
+    border-color: #fb6340;
+  }
+  50%{
+    border-color: transparent;
+  }
+  100%{
+    border-color: #fb6340;
+  }
+}
+/* Center display error text box */
+.cbi-section-error > ul{
   text-align: center;
+}
+/* Add border for error text box, and border breathe display animation to make it more noticeable */
+.cbi-section-error > ul > li {
+  font-weight: 600;
+  max-width: 60%;
+  color: #fb6340;
+  line-height: 1rem;
+  display: inline-block;
+  border: 2px solid #fb6340;
+  border-radius: 0.3rem;
+  animation: error-border-breathe 1.5s ease-in-out infinite;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 .cbi-input-invalid, 
 .cbi-value-error input {
