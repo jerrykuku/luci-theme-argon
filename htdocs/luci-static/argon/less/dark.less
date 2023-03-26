@@ -531,6 +531,12 @@ select {
     background-color: #3c3c3c;
 }
 
+/* Fix firewall zone: "unspecified -or- create: " background color (dark mode only) */
+div[onclick$="._fwzone_new').checked=true"] {
+    border: 1px solid #3c3c3c;
+    background-color: transparent !important;
+}
+
 /* Fix/add background color of wireless signal strength badge for dark mode */
 td>.ifacebadge,
 .td>.ifacebadge {
