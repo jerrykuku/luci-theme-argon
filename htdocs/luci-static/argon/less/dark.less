@@ -605,6 +605,25 @@ td.cbi-value-field var {
     background-color: darkolivegreen !important;
 }
 
+/* Define the warning background-color breathe display animation (dark mode) */
+@keyframes warning-background-color-breathe-dark {
+    0%{
+        color: #fff;
+        background-color: darkorange;
+    }
+    50%{
+        color: #ccc;
+        background-color: #333333;
+    }
+    100%{
+        color: #fff;
+        background-color: darkorange;
+    }
+}
+.warning {
+    animation: warning-background-color-breathe-dark 1.5s ease-in-out infinite !important;
+}
+
 .notice {
     background-color: #483d8b !important;
     background-color: var(--dark-primary) !important;

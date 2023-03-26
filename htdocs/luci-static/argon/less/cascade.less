@@ -2331,10 +2331,26 @@ div>.table>.tbody>.tr:nth-of-type(2n) {
     color: #fff !important;
 }
 
+/* Define the warning background-color breathe display animation */
+@keyframes warning-background-color-breathe {
+    0%{
+        color: #fff;
+        background-color: #fb6340;
+    }
+    50%{
+        color: #32325d;
+        background-color: #fff;
+    }
+    100%{
+        color: #fff;
+        background-color: #fb6340;
+    }
+}
 .warning {
-    background-color: #fb6340 !important;
-    background-color: var(--warning) !important;
-    color: #fff !important;
+    background-color: #fb6340;
+    background-color: var(--warning);
+    color: #fff;
+    animation: warning-background-color-breathe 1.5s ease-in-out infinite !important;
 }
 
 .notice {
