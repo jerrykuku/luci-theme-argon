@@ -947,6 +947,34 @@ form.inline + form.inline,
 .cbi-value-field .cbi-button-neutral {
   min-width: 2.5rem !important;
 }
+/* Replace LuCI's default file and folder type icons */
+img[src="/luci-static/resources/cbi/reload.gif"] {
+  content: url("/luci-static/argon/img/reload.webp");
+}
+img[src="/luci-static/resources/cbi/file.gif"] {
+  content: url("/luci-static/argon/img/file.webp");
+}
+img[src="/luci-static/resources/cbi/add.gif"] {
+  content: url("/luci-static/argon/img/add.webp");
+}
+img[src="/luci-static/resources/cbi/remove.gif"] {
+  content: url("/luci-static/argon/img/remove.webp");
+}
+img[src="/luci-static/resources/cbi/edit.gif"] {
+  content: url("/luci-static/argon/img/edit.webp");
+}
+img[src="/luci-static/resources/cbi/fieldadd.gif"] {
+  content: url("/luci-static/argon/img/fieldadd.webp");
+}
+img[src="/luci-static/resources/cbi/link.gif"] {
+  content: url("/luci-static/argon/img/link.webp");
+}
+img[src="/luci-static/resources/cbi/find.gif"] {
+  content: url("/luci-static/argon/img/find.webp");
+}
+img[src="/luci-static/resources/cbi/folder.gif"] {
+  content: url("/luci-static/argon/img/folder.webp");
+}
 /* input */
 .cbi-value input[type="password"],
 .cbi-value input[type="text"] {
