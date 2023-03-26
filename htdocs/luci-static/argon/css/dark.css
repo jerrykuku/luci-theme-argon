@@ -534,6 +534,12 @@ td.cbi-value-field var {
   background-color: var(--dark-primary) !important;
 }
 
+/* Improved the aleart-message background color during device restart (dark mode only) */
+.errorbox,
+.alert-message {
+  background-color: #333333;
+}
+
 .cbi-input-find,
 .cbi-input-save,
 .cbi-button-add,
