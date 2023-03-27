@@ -373,6 +373,20 @@ th h6, td h6 {
     background: var(--gray-dark);
 }
 
+/* Improved the background color of each itemes in "UNSAVED CHANGES" (dark mode only) */
+.uci-change-list del,
+.uci-change-legend-label del {
+    background-color: #fb74008c;
+}
+.uci-change-list var,
+.uci-change-legend-label var {
+    background-color: #333333;
+}
+.uci-change-list ins,
+.uci-change-legend-label ins {
+    background-color: #00ff0a45 !important;
+}
+
 #content_syslog {
     box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, .35)
 }
