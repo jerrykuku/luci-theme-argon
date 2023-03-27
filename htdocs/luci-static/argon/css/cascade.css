@@ -1627,7 +1627,7 @@ th h5, td h5,
 th h6, td h6 {
   background: var(--lighter);
 }
-/* Add background color for the "now in use" item */
+/* OCD: Change the background color of the "now in use" node in PassWall  */
 .cbi-section-table > tbody > ._now_use {
   background: #5e72e473 !important;
 }
