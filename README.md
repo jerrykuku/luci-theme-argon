@@ -6,7 +6,7 @@
 [4]: https://github.com/jerrykuku/luci-theme-argon/pulls
 [5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
 [6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v1.7.3-blue.svg?
+[7]: https://img.shields.io/badge/release-v1.7.7-blue.svg?
 [8]: https://github.com/jerrykuku/luci-theme-argon/releases
 [9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
 [10]: https://img.shields.io/badge/Contact-telegram-blue
@@ -28,7 +28,7 @@ Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material and Ar
 
 This branch only matches lean openwrt LuCI 18.06.
 
-## Update log 2022.04.21 [18.06] V1.7.3
+## Update log 2023.04.04 [18.06] V1.7.7
 
 - 【v1.7.3】Fix the problem that the left navigation is unresponsive for a long time when accessing the status/firewall page.
 - 【v1.7.3】Fix the problem that the login page is inaccessible when the bing wallpaper fails to be obtained.
