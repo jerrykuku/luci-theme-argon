@@ -7,39 +7,33 @@ on:
         type: choice
         options:
         - AX1800
-        - AXT1800
-        - MT2500
-        - MT3000
-        - SF1200
-        - SFT1200
-      sourcecode:
-        description: 'Source code URL'     
-        required: true
-      pkgname:
-        description: 'Openwrt package name'  
-        required: true
-      email:
-        description: 'Git accuont email address'  
-        required: false
-      password:
-        description: 'Git account password'  
-        required: false
         
 jobs:
   setpackage:
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout
-      uses: actions/checkout@master
-
+      uses: actions/checkout@v2
+      with:
+        path: buildsource/luci-theme-argon
+        
+    - name: Prepare
+      run: |
+        cd $GITHUB_WORKSPACE
+        sudo -E apt-get update
+        sudo -E apt-get install git  asciidoc bash bc binutils bzip2 fastjar flex gawk gcc genisoimage gettext git intltool jikespg libgtk2.0-dev libncurses5-dev libssl-dev make mercurial patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux wget xsltproc zlib1g-dev zlib1g-dev -y
+        wget -q -O openwrt-sdk.tar.xz https://downloads.openwrt.org/releases/21.02.3/targets/x86/generic/openwrt-sdk-21.02.3-x86-generic_gcc-8.4.0_musl.Linux-x86_64.tar.xz
+        mkdir openwrt-sdk
+        tar -Jxf openwrt-sdk.tar.xz -C ./openwrt-sdk --strip=1
+        echo src-git packages https://git.openwrt.org/feed/packages.git^78bcd00c13587571b5c79ed2fc3363aa674aaef7 >./openwrt-sdk/feeds.conf.default
+        echo src-git routing https://git.openwrt.org/feed/routing.git^a0d61bddb3ce4ca54bd76af86c28f58feb6cc044 >>./openwrt-sdk/feeds.conf.default
+        echo src-git telephony https://git.openwrt.org/feed/telephony.git^0183c1adda0e7581698b0ea4bff7c08379acf447 >>./openwrt-sdk/feeds.conf.default
+        echo src-git luci https://git.openwrt.org/feed/routing.git^a0d61bddb3ce4ca54bd76af86c28f58feb6cc044 >>./openwrt-sdk/feeds.conf.default
+        sed -i '246,258d' ./openwrt-sdk/include/package-ipkg.mk
+        ls -l
+        
     - name: build ipk
       id: build
-      env:
-        SOURCECODEURL: ${{ github.event.inputs.sourcecode }}
-        PKGNAME: ${{ github.event.inputs.pkgname }}
-        BOARD: ${{ github.event.inputs.device }}
-        EMAIL: ${{ github.event.inputs.email }}
-        PASSWORD: ${{ github.event.inputs.password }}
       run: |
         cd $GITHUB_WORKSPACE
         ls
