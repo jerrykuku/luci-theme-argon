@@ -1,8 +1,6 @@
-name: Test Build
-
 on: 
   workflow_dispatch:
-   inputs:
+    inputs:
       device:
         description: 'Select device'     
         required: true
@@ -13,19 +11,35 @@ on:
         - MT2500
         - MT3000
         - SF1200
-        - SFT1200 
+        - SFT1200
+      sourcecode:
+        description: 'Source code URL'     
+        required: true
+      pkgname:
+        description: 'Openwrt package name'  
+        required: true
+      email:
+        description: 'Git accuont email address'  
+        required: false
+      password:
+        description: 'Git account password'  
+        required: false
+        
 jobs:
-  build:
+  setpackage:
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+      uses: actions/checkout@master
 
     - name: build ipk
       id: build
+      env:
+        SOURCECODEURL: ${{ github.event.inputs.sourcecode }}
+        PKGNAME: ${{ github.event.inputs.pkgname }}
+        BOARD: ${{ github.event.inputs.device }}
+        EMAIL: ${{ github.event.inputs.email }}
+        PASSWORD: ${{ github.event.inputs.password }}
       run: |
+        cd $GITHUB_WORKSPACE
         ls
-        description: 'Source code URL'     
-        
