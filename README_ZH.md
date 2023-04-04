@@ -5,7 +5,7 @@
 [4]: https://github.com/jerrykuku/luci-theme-argon/pulls
 [5]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg
 [6]: https://github.com/jerrykuku/luci-theme-argon/issues/new
-[7]: https://img.shields.io/badge/release-v1.7.3-blue.svg?
+[7]: https://img.shields.io/badge/release-v1.7.7-blue.svg?
 [8]: https://github.com/jerrykuku/luci-theme-argon/releases
 [9]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total
 [10]: https://img.shields.io/badge/Contact-telegram-blue
@@ -28,7 +28,7 @@
 v2.x.x 适配官方主线快照版本。  
 v1.x.x 适配18.06 和 Lean Openwrt [如果你是lean代码 请选择这个版本]
 
-## 更新日志 2022.04.21 [18.06] V1.7.3
+## 更新日志 2023.04.04 [18.06] V1.7.7
 
 - 【v1.7.3】修复访问状态/防火墙页面时，左边导航长时间无响应问题。
 - 【v1.7.3】修复当bing壁纸获取失败时，导致登录页面无法访问的问题。
