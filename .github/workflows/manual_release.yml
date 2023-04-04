@@ -22,9 +22,7 @@ jobs:
     - name: Prepare
       run: |
         cd $GITHUB_WORKSPACE
-        sudo -E apt-get update
-        sudo -E apt-get install git  asciidoc bash bc binutils bzip2 fastjar flex gawk gcc genisoimage gettext git intltool jikespg libgtk2.0-dev libncurses5-dev libssl-dev make mercurial patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux wget xsltproc zlib1g-dev zlib1g-dev -y
-        wget -q -O openwrt-sdk.tar.xz https://fw.gl-inet.com/releases/v21.02-SNAPSHOT/sdk/openwrt-sdk-ipq807x-ipq60xx_gcc-5.5.0_musl_eabi.Linux-x86_64.tar.xz
+        wget -q -O openwrt-sdk.tar.xz https://downloads.openwrt.org/releases/21.02.3/targets/x86/generic/openwrt-sdk-21.02.3-x86-generic_gcc-8.4.0_musl.Linux-x86_64.tar.xz
         mkdir -p $GITHUB_WORKSPACE/openwrt-sdk
         tar -Jxf openwrt-sdk.tar.xz -C $GITHUB_WORKSPACE/openwrt-sdk --strip=1
         sed -i '246,258d' $GITHUB_WORKSPACE/openwrt-sdk/include/package-ipkg.mk
