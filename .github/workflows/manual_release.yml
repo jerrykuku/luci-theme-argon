@@ -11,7 +11,7 @@ env:
   PKG_NAME: luci-theme-argon
   
 jobs:
-  setpackage:
+  BuildIPK:
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout
