@@ -6,8 +6,10 @@ on:
         required: true
         type: choice
         options:
-        - AX1800
-        
+        - X86_64
+env:
+  PKG_NAME: luci-theme-argon
+  
 jobs:
   setpackage:
     runs-on: ubuntu-20.04
@@ -15,12 +17,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        path: ${GITHUB_REPOSITORY#*/}
+        path: buildsource/$PKG_NAME
         
     - name: Prepare
       run: |
-        ls -l
-        echo ${GITHUB_REPOSITORY#*/}
         cd $GITHUB_WORKSPACE
         sudo -E apt-get update
         sudo -E apt-get install git  asciidoc bash bc binutils bzip2 fastjar flex gawk gcc genisoimage gettext git intltool jikespg libgtk2.0-dev libncurses5-dev libssl-dev make mercurial patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux wget xsltproc zlib1g-dev zlib1g-dev -y
@@ -32,10 +32,26 @@ jobs:
         echo src-git telephony https://git.openwrt.org/feed/telephony.git^0183c1adda0e7581698b0ea4bff7c08379acf447 >>./openwrt-sdk/feeds.conf.default
         echo src-git luci https://git.openwrt.org/feed/routing.git^a0d61bddb3ce4ca54bd76af86c28f58feb6cc044 >>./openwrt-sdk/feeds.conf.default
         sed -i '246,258d' ./openwrt-sdk/include/package-ipkg.mk
-        ls -l
         
     - name: build ipk
       id: build
       run: |
         cd $GITHUB_WORKSPACE
-        ls
+        cd openwrt-sdk
+        sed -i "1i\src-link githubaction $GITHUB_WORKSPACE/buildsource" feeds.conf.default
+        ls -l
+        cat feeds.conf.default
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+        echo CONFIG_ALL=y >.config
+        make defconfig
+        make V=s ./package/feeds/githubaction/$PKG_NAME/compile
+
+        find bin -type f -exec ls -lh {} \;
+        find bin -type f -name "*.ipk" -exec cp -f {} "$GITHUB_WORKSPACE" \; 
+        
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ${{ github.event.inputs.pkgname }}_related_ipks
+        path: |
+          ./*ipk*
