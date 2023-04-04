@@ -25,13 +25,9 @@ jobs:
         sudo -E apt-get update
         sudo -E apt-get install git  asciidoc bash bc binutils bzip2 fastjar flex gawk gcc genisoimage gettext git intltool jikespg libgtk2.0-dev libncurses5-dev libssl-dev make mercurial patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux wget xsltproc zlib1g-dev zlib1g-dev -y
         wget -q -O openwrt-sdk.tar.xz https://fw.gl-inet.com/releases/v21.02-SNAPSHOT/sdk/openwrt-sdk-ipq807x-ipq60xx_gcc-5.5.0_musl_eabi.Linux-x86_64.tar.xz
-        mkdir openwrt-sdk
-        tar -Jxf openwrt-sdk.tar.xz -C ./openwrt-sdk --strip=1
-        echo src-git packages https://git.openwrt.org/feed/packages.git^78bcd00c13587571b5c79ed2fc3363aa674aaef7 >./openwrt-sdk/feeds.conf.default
-        echo src-git routing https://git.openwrt.org/feed/routing.git^a0d61bddb3ce4ca54bd76af86c28f58feb6cc044 >>./openwrt-sdk/feeds.conf.default
-        echo src-git telephony https://git.openwrt.org/feed/telephony.git^0183c1adda0e7581698b0ea4bff7c08379acf447 >>./openwrt-sdk/feeds.conf.default
-        echo src-git luci https://git.openwrt.org/feed/routing.git^a0d61bddb3ce4ca54bd76af86c28f58feb6cc044 >>./openwrt-sdk/feeds.conf.default
-        sed -i '246,258d' ./openwrt-sdk/include/package-ipkg.mk
+        mkdir -p $GITHUB_WORKSPACE/openwrt-sdk
+        tar -Jxf openwrt-sdk.tar.xz -C $GITHUB_WORKSPACE/openwrt-sdk --strip=1
+        sed -i '246,258d' $GITHUB_WORKSPACE/openwrt-sdk/include/package-ipkg.mk
         
     - name: build ipk
       id: build
