@@ -19,6 +19,7 @@ jobs:
         
     - name: Prepare
       run: |
+        ls -l
         echo ${GITHUB_REPOSITORY#*/}
         cd $GITHUB_WORKSPACE
         sudo -E apt-get update
