@@ -28,6 +28,7 @@ jobs:
         uses: openwrt/gh-action-sdk@master
         env:
           ARCH: ${{ matrix.arch }}
+          NO_DEFAULT_FEEDS: true
 
       - name: Store packages
         uses: actions/upload-artifact@v2
