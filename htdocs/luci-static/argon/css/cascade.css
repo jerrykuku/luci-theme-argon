@@ -947,6 +947,34 @@ form.inline + form.inline,
 .cbi-value-field .cbi-button-neutral {
   min-width: 2.5rem !important;
 }
+/* Replace LuCI's default file and folder type icons */
+img[src="/luci-static/resources/cbi/reload.gif"] {
+  content: url("/luci-static/argon/img/reload.webp");
+}
+img[src="/luci-static/resources/cbi/file.gif"] {
+  content: url("/luci-static/argon/img/file.webp");
+}
+img[src="/luci-static/resources/cbi/add.gif"] {
+  content: url("/luci-static/argon/img/add.webp");
+}
+img[src="/luci-static/resources/cbi/remove.gif"] {
+  content: url("/luci-static/argon/img/remove.webp");
+}
+img[src="/luci-static/resources/cbi/edit.gif"] {
+  content: url("/luci-static/argon/img/edit.webp");
+}
+img[src="/luci-static/resources/cbi/fieldadd.gif"] {
+  content: url("/luci-static/argon/img/fieldadd.webp");
+}
+img[src="/luci-static/resources/cbi/link.gif"] {
+  content: url("/luci-static/argon/img/link.webp");
+}
+img[src="/luci-static/resources/cbi/find.gif"] {
+  content: url("/luci-static/argon/img/find.webp");
+}
+img[src="/luci-static/resources/cbi/folder.gif"] {
+  content: url("/luci-static/argon/img/folder.webp");
+}
 /* input */
 .cbi-value input[type="password"],
 .cbi-value input[type="text"] {
@@ -1245,10 +1273,41 @@ small {
 .cbi-section > legend {
   display: none !important;
 }
-.cbi-section-error {
-  padding: 1.5rem;
-  color: #fb6340;
+/* Define the error text border breathe display animation */
+@keyframes error-border-breathe {
+  0%{
+    border-color: #fb6340;
+  }
+  50%{
+    border-color: transparent;
+  }
+  100%{
+    border-color: #fb6340;
+  }
+}
+/* Center display error text box */
+.cbi-section-error > ul{
+  text-align: center;
+}
+/* Add border for error text box, and border breathe display animation to make it more noticeable */
+.cbi-section-error > ul > li {
   font-weight: 600;
+  max-width: 60%;
+  color: #fb6340;
+  line-height: 1rem;
+  display: inline-block;
+  border: 2px solid #fb6340;
+  border-radius: 0.3rem;
+  animation: error-border-breathe 1.5s ease-in-out infinite;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.cbi-input-invalid, 
+.cbi-value-error input {
+  color: #fb6340;
+  border: 1px dashed #fb6340;
 }
 fieldset > fieldset {
   margin: 0;
@@ -1400,6 +1459,30 @@ td > table > tbody > tr > td,
 .a-to-btn {
   text-decoration: none;
 }
+/* file selector button */
+::file-selector-button {
+  color: #fff;
+  border-radius: .25rem;
+  border: 1px solid #2e6da4;
+  padding: .4rem .5rem;
+  background-color: #337ab7;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+::file-selector-button:hover,
+::file-selector-button:focus,
+::file-selector-button:active {
+  outline: 0;
+  text-decoration: none;
+}
+::file-selector-button:hover,
+::file-selector-button:focus {
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+::file-selector-button:active {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
 /* table */
 .cbi-section-table .cbi-section-table-titles .cbi-section-table-cell {
   width: auto !important;
@@ -1513,6 +1596,40 @@ td > table > tbody > tr > td,
 #cbi-network-switch_vlan .th,
 #cbi-network-switch_vlan .td {
   flex-basis: 12%;
+}
+/* Fix background color of table-titles */
+.cbi-section-node > .cbi-section-table > tbody > .cbi-section-table-titles th {
+  background-color: var(--lighter);
+  border: none;
+}
+/* Fix background color of table-descr */
+.cbi-section-node > .cbi-section-table > tbody > .cbi-section-table-descr th {
+  border: none;
+}
+/* Fix background color not change when the H tag is in the table rowstyle-1 */
+.cbi-section-node > .cbi-section-table > tbody > .cbi-rowstyle-1 th {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  border-bottom: none;
+}
+/* Fix background color not change when the H tag is in the table rowstyle-2 */
+.cbi-section-node > .cbi-section-table > tbody > .cbi-rowstyle-2 th {
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+  border-bottom: none;
+}
+/* Change the color of the H label in the table to make it more visible */
+th h1, td h1,
+th h2, td h2,
+th h3, td h3,
+th h4, td h4,
+th h5, td h5,
+th h6, td h6 {
+  background: var(--lighter);
+}
+/* OCD: Change the background color of the "now in use" node in PassWall  */
+.cbi-section-table > tbody > ._now_use {
+  background: #5e72e473 !important;
 }
 /* language fix */
 body.lang_pl.node-main-login .cbi-value-title {
@@ -1808,10 +1925,26 @@ div > .table > .tbody > .tr:nth-of-type(2n) {
   background-color: var(--danger) !important;
   color: #fff !important;
 }
+/* Define the warning background-color breathe display animation */
+@keyframes warning-background-color-breathe {
+  0%{
+    color: #fff;
+    background-color: #fb6340;
+  }
+  50%{
+    color: #32325d;
+    background-color: #fff;
+  }
+  100%{
+    color: #fff;
+    background-color: #fb6340;
+  }
+}
 .warning {
-  background-color: #fb6340 !important;
-  background-color: var(--warning) !important;
-  color: #fff !important;
+  background-color: #fb6340;
+  background-color: var(--warning);
+  color: #fff;
+  animation: warning-background-color-breathe 1.5s ease-in-out infinite !important;
 }
 .notice {
   background-color: #5e72e4 !important;
@@ -2314,6 +2447,16 @@ select[multiple="multiple"] {
   display: table-cell;
   line-height: 1.6;
   font-size: 0.875rem;
+}
+.cbi-section > .cbi-section-node > .cbi-value > .cbi-value-field font {
+  word-wrap: break-word;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  padding: 0.7rem;
+  padding-left: 0;
+  float: left;
+  text-align: right;
+  display: table-cell;
 }
 .cbi-value-helpicon > img {
   display: none;
