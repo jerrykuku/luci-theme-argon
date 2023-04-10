@@ -15,7 +15,7 @@ fetch_pic_url() {
         ;;
     unsplash)
         curl --fail --show-error --max-time 1 \
-            "https://source.unsplash.com/random/1920x1080" 2>/dev/null |
+            "https://source.unsplash.com/1920x1080/daily?wallpapers" 2>/dev/null |
             sed -E 's#^.*href="([^?]+)\?.*$#\1?fm=jpg\&w=1920\&h=1080#'
         ;;
     unsplash_*)
