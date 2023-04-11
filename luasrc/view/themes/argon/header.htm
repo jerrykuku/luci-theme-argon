@@ -319,3 +319,28 @@
 					</noscript>
 
 					<% if category then render_tabmenu(category, cattree) end %>
+
+	<script>
+		// thanks for Jo-Philipp Wich <jow@openwrt.org>
+		var luciLocation = <%= luci.http.write_json(luci.dispatcher.context.path) %>;
+		var winHeight = $(window).height();
+		$(window).resize(function () {
+			var winWidth = $(window).width()
+			if(winWidth < 600){
+				var newHeight = $(this).height();
+				var keyboradHeight = newHeight - winHeight;
+				$(".ftc").css("bottom", keyboradHeight + 30);
+			}
+			if($(document.body).height() < 525 ){
+				if($(".ftc").css('display') != 'none'){
+					$(".ftc").hide()
+				}
+			}else{
+				if($(".ftc").css('display') == 'none'){
+					$(".ftc").show()
+				}
+			}
+		})
+	</script>
+
+	<script src="<%=media%>/js/script.js"></script>
