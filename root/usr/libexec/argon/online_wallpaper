@@ -18,13 +18,13 @@ fetch_pic_url() {
     unsplash)
         curl -fks --max-time 1 \
             "https://source.unsplash.com/1920x1080/daily?wallpapers" |
-            sed -E 's#^.*href="([^?]+)\?.*$#\1?fm=jpg\&w=1920\&h=1080#'
+            sed -E 's#^.*href="([^?]+)\?.*$#\1?fm=jpg\&fit=crop\&w=1920\&h=1080#'
         ;;
     unsplash_*)
         local collection_id=${WEB_PIC_SRC#unsplash_}
         curl -fks --max-time 1 \
             "https://source.unsplash.com/collection/${collection_id}/1920x1080" |
-            sed -E 's#^.*href="([^?]+)\?.*$#\1?fm=jpg\&w=1920\&h=1080#'
+            sed -E 's#^.*href="([^?]+)\?.*$#\1?fm=jpg\&fit=crop\&w=1920\&h=1080#'
         ;;
     esac
 }
