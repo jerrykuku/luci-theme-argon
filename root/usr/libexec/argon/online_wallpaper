@@ -36,7 +36,7 @@ try_update() {
     if flock -n 200 >/dev/null 2>&1; then
         local picurl=$(fetch_pic_url)
         if [ -n "$picurl" ]; then
-            echo "${picurl}" >"$CACHE"
+            echo "${picurl}" | tee "$CACHE"
         else
             if [ -s "$CACHE" ]; then
                 cat "$CACHE"
