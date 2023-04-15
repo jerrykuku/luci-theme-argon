@@ -2981,7 +2981,10 @@ select[multiple="multiple"] {
 
 }
 
-.cbi-section>.cbi-section-node>.cbi-value>.cbi-value-field font {
+/* Fix text position of the luci-app-filebrowser running state */
+#cbi-filebrowser>.cbi-section>.cbi-section>.cbi-value>.cbi-value-field,
+/* Fix text position of the luci-apps running state of the [Control] type */
+form>.cbi-map>.cbi-section>.cbi-section-node>.cbi-value>.cbi-value-field font {
     word-wrap: break-word;
     font-size: 0.875rem;
     line-height: 1.6;
