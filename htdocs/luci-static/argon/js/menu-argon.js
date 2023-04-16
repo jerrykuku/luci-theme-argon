@@ -126,7 +126,7 @@
         window.location = $($(this).find("a")[0]).attr("href");
         return false;
     });
-    
+
     /**
      * fix submenu click
      */

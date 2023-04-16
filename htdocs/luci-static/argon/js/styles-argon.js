@@ -75,42 +75,6 @@
     });
 
     /**
-     * Sidebar expand
-     */
-    var showSide = false;
-    $(".showSide").click(function () {
-        if (showSide) {
-            $(".darkMask").stop(true).fadeOut("fast");
-            $(".main-left").width(0);
-            $(".main-right").css("overflow-y", "auto");
-            showSide = false;
-        } else {
-            $(".darkMask").stop(true).fadeIn("fast");
-            $(".main-left").width("15rem");
-            $(".main-right").css("overflow-y", "hidden");
-            showSide = true;
-        }
-    });
-
-    $(".darkMask").click(function () {
-        if (showSide) {
-            showSide = false;
-            $(".darkMask").stop(true).fadeOut("fast");
-            $(".main-left").width(0);
-            $(".main-right").css("overflow-y", "auto");
-        }
-    });
-
-    $(window).resize(function () {
-        if ($(window).width() > 921) {
-            $(".main-left").css("width", "");
-            $(".darkMask").stop(true);
-            $(".darkMask").css("display", "none");
-            showSide = false;
-        }
-    });
-
-    /**
      * fix legend position
      */
     $("legend").each(function () {
