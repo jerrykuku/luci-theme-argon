@@ -1,5 +1,5 @@
 <%#
-	Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-material Argon Template
+	Argon is a clean HTML5 theme for LuCI. It is based on luci-theme-bootstrap and MUI and Argon Template
 
 	luci-theme-argon
 	Copyright 2020 Jerrykuku <jerrykuku@qq.com>
@@ -7,9 +7,14 @@
 	Have a bug? Please create an issue here on GitHub!
 	https://github.com/jerrykuku/luci-theme-argon/issues
 
-	luci-theme-material:
-	Copyright 2015 Lutty Yang <lutty@wcan.in>
+	luci-theme-bootstrap:
+	Copyright 2008 Steven Barth <steven@midlink.org>
+	Copyright 2008-2016 Jo-Philipp Wich <jow@openwrt.org>
+	Copyright 2012 David Menting <david@nut-bolt.nl>
 
+	MUI:
+	https://github.com/muicss/mui
+	
 	Argon Theme
 	https://demos.creative-tim.com/argon-dashboard/index.html
 
@@ -21,19 +26,28 @@
 	local util = require "luci.util"
 	local http = require "luci.http"
 	local disp = require "luci.dispatcher"
-	local ver  = require "luci.version"
 
-	local boardinfo = util.ubus("system", "board")
-
-	local node = disp.context.dispatched
-
-	local fs = require "nixio.fs"
+    local fs	= require "nixio.fs"
 	local nutil = require "nixio.util"
 	local uci = require 'luci.model.uci'.cursor()
+	local boardinfo = util.ubus("system", "board")
+	
+	local request  = disp.context.path
+	local request2 = disp.context.request
 
-	-- send as HTML5
-	http.prepare_content("text/html")
+	local category = request[1]
+	local cattree  = category and disp.node(category)
 
+	local leaf = request2[#request2]
+
+	local tree = disp.node()
+	local node = disp.context.dispatched
+
+	local categories = disp.node_childs(tree)
+
+	local c = tree
+	local i, r
+	
 	math.randomseed(tonumber(tostring(os.time()):reverse():sub(1, 9)))
 
 	-- Custom settings
@@ -112,8 +126,11 @@
         <%=css %>
     </style>
     <% end -%>
+    <script src="<%=resource%>/cbi.js<%# ?v=PKG_VERSION %>"></script>
+    <script src="<%=resource%>/xhr.js<%# ?v=PKG_VERSION %>"></script>
     <script src="<%=media%>/js/jquery.min.js?v=3.5.1"></script>
 
 </head>
 
-<body>
+<body class="<%- if node then %><%= striptags( node.title ) %><%- end %> <% if luci.dispatcher.context.authsession then %>logged-in<% end %> lang_<%=luci.i18n.context.lang%>  ">
+	
