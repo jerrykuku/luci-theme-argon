@@ -2804,6 +2804,10 @@ input[name="nslookup"] {
   border-right: 0 !important;
   background-color: #5e72e4 !important;
   background-color: var(--primary) !important;
+  height: 100% !important;
+  background-image: url(../img/trafficbar.png);
+  background-position: left top;
+  animation: sparkle 1500ms linear infinite;
 }
 .node-system-leds .cbi-section em {
   display: block;
