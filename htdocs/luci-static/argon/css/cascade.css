@@ -2480,7 +2480,6 @@ form > .cbi-map > .cbi-section > .cbi-section-node > .cbi-value > .cbi-value-fie
   padding: 0.7rem;
   padding-left: 0;
   width: 23rem;
-  float: left;
   text-align: right;
   display: table-cell;
 }
