@@ -318,8 +318,9 @@ th h6, td h6 {
   background-color: #00ff0a45 !important;
 }
 
-/* OCD: Compatible the background color of the "Add the node via the link" pop-up window in PassWall (dark mode only) */
-#add_link_div {
+/* OCD: Compatible the background color of the "Add the node via the link" & "USE(node)" pop-up window in PassWall (dark mode only) */
+#add_link_div,
+#set_node_div {
   background-color: #333333f0 !important;
   box-shadow: #00000094 10px 10px 30px 5px !important;
 }
@@ -579,7 +580,8 @@ td.cbi-value-field var {
     background-color: darkorange;
   }
 }
-.warning {
+.warning,
+.warning * {
   animation: warning-background-color-breathe-dark 1.5s ease-in-out infinite !important;
 }
 

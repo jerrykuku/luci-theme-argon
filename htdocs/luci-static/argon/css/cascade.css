@@ -1940,7 +1940,8 @@ div > .table > .tbody > .tr:nth-of-type(2n) {
     background-color: #fb6340;
   }
 }
-.warning {
+.warning,
+.warning * {
   background-color: #fb6340;
   background-color: var(--warning);
   color: #fff;
@@ -2448,13 +2449,15 @@ select[multiple="multiple"] {
   line-height: 1.6;
   font-size: 0.875rem;
 }
-.cbi-section > .cbi-section-node > .cbi-value > .cbi-value-field font {
+/* Fix text position of the luci-app-filebrowser running state */
+#cbi-filebrowser > .cbi-section > .cbi-section > .cbi-value > .cbi-value-field,
+/* Fix text position of the luci-apps running state of the [Control] type */
+form > .cbi-map > .cbi-section > .cbi-section-node > .cbi-value > .cbi-value-field font {
   word-wrap: break-word;
   font-size: 0.875rem;
   line-height: 1.6;
   padding: 0.7rem;
   padding-left: 0;
-  float: left;
   text-align: right;
   display: table-cell;
 }
