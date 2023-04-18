@@ -2438,7 +2438,7 @@ select[multiple="multiple"] {
   overflow-y: visible;
 }
 .cbi-section-node .cbi-value {
-  padding: 0.3rem 1rem 0.3rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem !important;
 }
 .cbi-tabcontainer > .cbi-value:nth-of-type(2n) {
   background-color: #f9f9f9;
