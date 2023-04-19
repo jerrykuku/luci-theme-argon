@@ -1216,7 +1216,7 @@ ul li .cbi-input-checkbox {
 }
 .cbi-section-create {
   margin: 0;
-  padding-left: 1rem;
+  padding-left: 0.5rem;
   align-items: center;
 }
 .cbi-section-create > * {
@@ -2705,7 +2705,7 @@ td > .ifacebadge,
   min-width: 7rem;
 }
 .cbi-section-create > .cbi-button-add {
-  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
 }
 .cbi-section-remove {
   padding: 0.5rem;
