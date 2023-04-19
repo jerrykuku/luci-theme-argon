@@ -1370,6 +1370,7 @@ input[name="nslookup"] {
   height: 1.6rem !important;
   line-height: 1.6rem;
   border-radius: 0.25rem;
+  overflow: hidden;
 }
 #swaptotal > div > div,
 #swapfree > div > div,
