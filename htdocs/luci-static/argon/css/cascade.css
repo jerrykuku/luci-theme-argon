@@ -2706,7 +2706,7 @@ td > .ifacebadge,
   min-width: 7rem;
 }
 .cbi-section-create > .cbi-button-add {
-  margin: 0.5rem 0.5rem 0.5rem 0;
+  margin: 0.75rem 0.75rem 0.75rem 0.25rem;
 }
 .cbi-section-remove {
   padding: 0.5rem;
