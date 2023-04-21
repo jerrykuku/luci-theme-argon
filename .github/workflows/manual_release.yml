@@ -1,0 +1,58 @@
+on: 
+  workflow_dispatch:
+    inputs:
+      device:
+        description: 'Select device'     
+        required: true
+        type: choice
+        options:
+        - X86_64
+env:
+  PKG_NAME: luci-theme-argon
+  
+jobs:
+  BuildIPK:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        path: buildsource/$PKG_NAME
+        
+    - name: Installing dependencies
+      run: |
+        cd $GITHUB_WORKSPACE
+        sudo -E apt-get update
+        sudo -E apt-get install git  asciidoc bash bc binutils bzip2 fastjar flex gawk gcc genisoimage gettext git intltool jikespg libgtk2.0-dev libncurses5-dev libssl-dev make mercurial patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux wget xsltproc zlib1g-dev zlib1g-dev -y
+        
+    - name: Deploy SDK
+      run: |
+        cd $GITHUB_WORKSPACE
+        wget -q -O openwrt-sdk.tar.xz https://downloads.openwrt.org/releases/21.02.3/targets/x86/generic/openwrt-sdk-21.02.3-x86-generic_gcc-8.4.0_musl.Linux-x86_64.tar.xz
+        mkdir -p $GITHUB_WORKSPACE/openwrt-sdk
+        tar -Jxf openwrt-sdk.tar.xz -C $GITHUB_WORKSPACE/openwrt-sdk --strip=1
+        sed -i '246,258d' $GITHUB_WORKSPACE/openwrt-sdk/include/package-ipkg.mk
+        
+    - name: Build ipk
+      id: build
+      run: |
+        cd $GITHUB_WORKSPACE
+        cd openwrt-sdk
+        sed -i "1i\src-link githubaction $GITHUB_WORKSPACE/buildsource" feeds.conf.default
+        ls -l
+        cat feeds.conf.default
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+        echo CONFIG_ALL=y >.config
+        make defconfig
+        make V=s ./package/feeds/luci/luci-base/compile
+        make V=s ./package/feeds/githubaction/$PKG_NAME/compile
+
+        find bin -type f -exec ls -lh {} \;
+        find bin -type f -name "*.ipk" -exec cp -f {} "$GITHUB_WORKSPACE" \; 
+        
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ${{ github.event.inputs.pkgname }}_related_ipks
+        path: |
+          ./*ipk*
