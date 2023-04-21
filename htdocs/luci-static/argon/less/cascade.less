@@ -1060,7 +1060,7 @@ footer {
 }
 
 .cbi-button:active {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.19), 0 5px 5px rgba(0, 0, 0, 0.23);
 }
 
 .cbi-button:disabled {
@@ -1296,13 +1296,14 @@ input[type="checkbox"] {
     -webkit-appearance: none !important;
     border: 1px solid #dee2e6;
 
-    width: 16px !important;
-    height: 16px !important;
+    width: 17px !important;
+    height: 17px !important;
     padding: 0;
     cursor: pointer;
     transition: all 0.2s;
 
-    margin: 0.9rem 0.25rem 0 0.25rem;
+    margin: 0.5rem 0.25rem 0.7rem 0.25rem;
+    vertical-align: middle;
 }
 
 input[type="checkbox"]:checked {
@@ -1317,7 +1318,8 @@ input[type="checkbox"]:checked {
 }
 
 ul li .cbi-input-checkbox {
-    margin: 0.5rem 0.25rem !important;
+    margin: 0.5rem 0.25rem 0.7rem 0.25rem !important;
+    vertical-align: middle !important;
 }
 
 .cbi-input-radio {
@@ -1450,7 +1452,7 @@ ul li .cbi-input-checkbox {
 
 .cbi-section-create {
     margin: 0;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     align-items: center;
 
 }
@@ -1634,6 +1636,7 @@ input[name="nslookup"] {
     height: 1.6rem !important;
     line-height: 1.6rem;
     border-radius: .25rem;
+    overflow: hidden;
 }
 
 #swaptotal>div>div,
@@ -1768,7 +1771,7 @@ td>table>tbody>tr>td,
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 ::file-selector-button:active {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.19), 0 5px 5px rgba(0, 0, 0, 0.23);
 }
 
 /* table */
@@ -2638,7 +2641,7 @@ td>table>tbody>tr>td {
 
 .cbi-tabmenu {
     color: white;
-    padding: 0.5rem 1rem 0 1rem;
+    padding: 0.5rem 0.5rem 0 0.5rem;
     white-space: nowrap;
     overflow-x: auto;
     border-bottom: 1px solid #ddd !important;
@@ -2965,7 +2968,7 @@ select[multiple="multiple"] {
 
 
 .cbi-section-node .cbi-value {
-    padding: 0.3rem 1rem 0.3rem 1rem;
+    padding: 0.5rem 1rem 0.5rem 1rem !important;
 }
 
 
@@ -3017,7 +3020,6 @@ form>.cbi-map>.cbi-section>.cbi-section-node>.cbi-value>.cbi-value-field font {
     padding: .7rem;
     padding-left: 0;
     width: 23rem;
-    float: left;
     text-align: right;
     display: table-cell;
 }
@@ -3263,21 +3265,25 @@ td>.ifacebadge,
     margin-top: 0.3rem;
 }
 
-.cbi-value-field .cbi-input-checkbox,
-.cbi-value-field .cbi-input-radio {
-    margin: 0.9rem 0.25rem 0 0.25rem;
+.cbi-value-field .cbi-input-checkbox {
+    margin: 0.5rem 0.25rem 0.7rem 0.25rem;
+    vertical-align: middle;
     height: 1rem;
     line-height: 1.6;
 }
 
 .cbi-input-checkbox {
-    margin: 0.9rem 0.25rem 0 0.25rem;
+    margin: 0.5rem 0.25rem 0.7rem 0.25rem;
+    vertical-align: middle;
 }
 
 .cbi-value-field .cbi-input-radio {
     margin: 0rem 0.25rem;
 }
 
+.cbi-input-radio {
+    margin: 0rem 0.25rem;
+}
 
 .cbi-value-field>input+.cbi-value-description {
     padding: 0;
@@ -3305,7 +3311,7 @@ td>.ifacebadge,
 }
 
 .cbi-section-create>.cbi-button-add {
-    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+    margin: 0.75rem 0.75rem 0.75rem 0.25rem;
 }
 
 .cbi-section-remove {
@@ -3442,6 +3448,10 @@ input[name="nslookup"] {
             border-right: 0 !important;
             background-color: #5e72e4 !important;
             background-color: var(--primary) !important;
+            height: 100% !important;
+            background-image: url(../img/trafficbar.png);
+            background-position: left top;
+            animation: sparkle 1500ms linear infinite;
         }
     }
 
@@ -3721,15 +3731,8 @@ input[name="nslookup"] {
         font-size: 1.7rem;
     }
 
-
-
     header>.fill>.container>.brand {
         display: inline-block;
-    }
-
-    .cbi-value-title {
-        width: 9rem;
-        padding-right: 1rem;
     }
 
     .node-network-diagnostics>.main .cbi-map fieldset>div * {
@@ -3880,13 +3883,6 @@ input[name="nslookup"] {
         display: inline-block;
         width: 100%;
         position: relative;
-    }
-
-    .cbi-value-field .cbi-input-checkbox,
-    .cbi-value-field .cbi-input-radio {
-        margin: 0rem 0.25rem 0 0.25rem;
-        height: 1rem;
-        line-height: 1.6;
     }
 
     .cbi-page-actions>div>input {
