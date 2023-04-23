@@ -2,7 +2,16 @@
 # Copyright (c) 2022-2023 SMALLPROGRAM <https://github.com/smallprogram>
 # Description: Auto compile
 #
-name: "Auto compile with openwrt sdk (18.06)"
+
+#
+# Fork and compile the latest version yourself using Github Actions
+#   1.Into the repository of your own fork
+#   2.Into the repository [Settings]
+#   3.[Code and automation - Actions] ↓ [General] → [Workflow permissions] ↓  Check the [Read and write permissions] and [Save]
+#   4.Let's take [Actions]
+#
+
+name: "Auto compile with OpenWrt SDK"
 on:
   repository_dispatch:
   workflow_dispatch:
@@ -22,7 +31,7 @@ env:
 
 jobs:
   job_check:
-    if: github.repository == 'jerrykuku/luci-theme-argon'
+    if: github.repository == ${{ github.repository }}
     name: Check Version
     runs-on: ubuntu-latest
     outputs:
@@ -38,7 +47,7 @@ jobs:
       - name: Check version
         id: check_version
         env:
-          url_release: https://api.github.com/repos/jerrykuku/luci-theme-argon/releases/latest
+          url_release: https://api.github.com/repos/${{ github.repository }}/releases/latest
         run: |
           latest_version=$(awk -F ':=' '/PKG_VERSION|PKG_RELEASE/ {print $2}' Makefile | sed ':a;N;s/\n$//;s/\n/-/;ba')
           latest_release=$(wget -qO- -t1 -T2 ${{env.url_release}} | awk -F '"' '/tag_name/{print $4}')
@@ -59,7 +68,7 @@ jobs:
 
 
   job_build_argon:
-    name: Build Argon
+    name: Build Argon (18.06)
     needs: job_check
     if: needs.job_check.outputs.has_update == 'true'
     runs-on: ubuntu-latest
@@ -77,28 +86,28 @@ jobs:
         uses: actions/cache@v3
         with:
           path: sdk
-          key: openwrt-sdk-18.06-x86_64
+          key: openwrt-sdk-21.02-x86-64
 
       - name: Initialization environment
         if: steps.cache-sdk.outputs.cache-hit != 'true'
         env:
-          url_sdk: https://archive.openwrt.org/releases/18.06.9/targets/x86/64/openwrt-sdk-18.06.9-x86-64_gcc-7.3.0_musl.Linux-x86_64.tar.xz
+          url_sdk: https://archive.openwrt.org/releases/21.02.5/targets/x86/64/openwrt-sdk-21.02.5-x86-64_gcc-8.4.0_musl.Linux-x86_64.tar.xz
         run: |
           wget ${{ env.url_sdk }}
           file_name=$(echo ${{env.url_sdk}} | awk -F/ '{print $NF}')
           mkdir sdk && tar -xJf $file_name -C ./sdk --strip-components=1
-          cd sdk
-          echo "src-git base https://github.com/openwrt/openwrt.git;openwrt-18.06" > feeds.conf
-          echo "src-git-full packages https://github.com/openwrt/packages.git;openwrt-18.06" >> feeds.conf
+          cd sdk  
+          echo "src-git base https://github.com/openwrt/openwrt.git;openwrt-21.02" > feeds.conf
+          echo "src-git-full packages https://github.com/openwrt/packages.git;openwrt-21.02" >> feeds.conf
           echo "src-git-full luci https://git.openwrt.org/project/luci.git;openwrt-18.06" >> feeds.conf
-          echo "src-git-full routing https://git.openwrt.org/feed/routing.git;openwrt-18.06"  >> feeds.conf
-          git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/downloads/luci-theme-argon
+          echo "src-git-full routing https://git.openwrt.org/feed/routing.git;openwrt-21.02"  >> feeds.conf
+          git clone -b 18.06 https://github.com/${{ github.repository }}.git package/downloads/luci-theme-argon
           ./scripts/feeds update -a
           echo "CONFIG_PACKAGE_luci-theme-argon=m" > .config
           ./scripts/feeds install -d n luci-theme-argon
           make download -j8
 
-      - name: Configure Argon
+      - name: Configure Argon (18.06)
         run: |
           cd sdk
           ./scripts/feeds install luci-theme-argon
@@ -110,7 +119,7 @@ jobs:
           echo "CONFIG_PACKAGE_luci-theme-argon=m" >> .config
           make defconfig
 
-      - name: Compile Argon
+      - name: Compile Argon (18.06)
         id: compile
         run: |
           cd sdk
@@ -122,7 +131,7 @@ jobs:
           echo "status=success" >> $GITHUB_OUTPUT
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
 
-      - name: Upload Argon ipks to release
+      - name: Upload Argon (18.06) ipks to release
         uses: softprops/action-gh-release@v1
         if: steps.compile.outputs.status == 'success'
         env:
