@@ -393,7 +393,8 @@ th h6, td h6 {
   background-color: #181819;
 }
 
-.cbi-tabcontainer>.cbi-value:nth-of-type(2n) {
+.cbi-tabcontainer>.cbi-value:nth-of-type(2n),
+.cbi-tabcontainer>.cbi-value:nth-of-type(2n)>textarea {
   background-color: #252526;
 }
 
@@ -444,7 +445,8 @@ select {
   color: #ccc;
 }
 
-.cbi-input-textarea {
+/*textarea for dark mode*/
+textarea {
   background-color: #1e1e1e;
   color: #ccc;
 }

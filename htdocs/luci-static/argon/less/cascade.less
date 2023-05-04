@@ -1193,23 +1193,19 @@ select {
     text-align: center;
 }
 
-
-
 /*textarea*/
-
-.cbi-input-textarea {
-    width: 100%;
-    min-height: 14rem;
-    padding: 0.8rem;
-    font-size: 0.8rem;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+textarea {
+    border: none !important;
+    outline: none;
+    min-height: 14rem !important;
+    padding: 0.8rem !important;
+    background-color: #fff;
+    font-family: var(--font-family-monospace) !important;
+    font-size: inherit;
     color: black;
 }
 
-
-
 /* change */
-
 .uci-change-list {
     font-family: monospace;
 }
@@ -2972,7 +2968,8 @@ select[multiple="multiple"] {
 }
 
 
-.cbi-tabcontainer>.cbi-value:nth-of-type(2n) {
+.cbi-tabcontainer>.cbi-value:nth-of-type(2n),
+.cbi-tabcontainer>.cbi-value:nth-of-type(2n)>textarea {
     background-color: #f9f9f9;
 }
 
@@ -3099,39 +3096,17 @@ td>.ifacebadge {
     margin: 0 0.3rem;
 }
 
-/*textarea*/
-
-.cbi-input-textarea {
-    width: 100%;
-    border: 0;
-    outline: none;
-    min-height: 14rem;
-    padding: 0.8rem;
-    font-size: 0.8rem;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: black;
-}
-
 #syslog {
     width: 100%;
     min-height: 15rem;
     padding: 1rem;
     line-height: 1.4em;
-    font-size: small;
     color: #1e1e1e;
     border-radius: 0;
     background-color: #fff;
     border: none;
     outline: none;
 }
-
-
-
-
-
-
-
-
 
 
 .ifacebadge {
@@ -3621,10 +3596,6 @@ input[name="nslookup"] {
 
     fieldset {
         padding: 0;
-    }
-
-    .cbi-input-textarea {
-        font-size: small;
     }
 
     .node-status-iptables>.main fieldset li>a {
