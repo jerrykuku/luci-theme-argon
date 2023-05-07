@@ -1749,7 +1749,7 @@ body.lang_pl.node-main-login .cbi-value-title {
 }
 .cbi-rowstyle-2 .cbi-button-up,
 .cbi-rowstyle-2 .cbi-button-down {
-  background-color: #FFF !important;
+  background-color: var(--lighter);
 }
 .cbi-button-up,
 .cbi-button-down,

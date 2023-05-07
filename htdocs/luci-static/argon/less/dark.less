@@ -135,6 +135,17 @@ header::after {
                 }
             }
 
+            /* Uncustomize the bottom line color when hover the main navigation menu tabs (dark mode only) */
+            li.slide {
+                ul {
+                    li {
+                        a::after {
+                            background-color: #cccccc !important;
+                        }
+                    }
+                }
+            }
+
             li {
                 a {
                     color: #cccccc !important;
@@ -179,8 +190,7 @@ h3 {
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
-    color: #483d8b;
-    color: var(--dark-primary);
+    color: #8898aa;
 }
 
 
@@ -200,8 +210,7 @@ input:-webkit-autofill {
 
 
 .cbi-section em {
-    color: #483d8b;
-    color: var(--dark-primary);
+    color: #8898aa;
 }
 
 
@@ -310,6 +319,12 @@ table>thead>tr>th {
     background-color: #2c2c2c;
 }
 
+/* Uncustom color of sort button (dark mode only) */
+.cbi-button-up,
+.cbi-button-down {
+    color: #ccc !important;
+}
+
 .cbi-rowstyle-2 .cbi-button-up,
 .cbi-rowstyle-2 .cbi-button-down {
     background-color: #252526 !important;
@@ -322,9 +337,7 @@ table>thead>tr>th {
 }
 
 abbr {
-    color: #483d8b;
-    color: var(--dark-primary);
-
+    color: #8898aa;
 }
 
 div>table>tbody>tr:nth-of-type(2n),
@@ -419,15 +432,15 @@ th h6, td h6 {
     background-color: #252526;
 }
 
-.tabs>li[class~="active"]>a {
+.tabs>li[class~="active"]>a,
+.tabs>li:hover a {
     color: #ccc;
 }
 
 .tabs>li[class~="active"],
 .tabs>li:hover {
-    border-bottom: 0.18751rem solid #483d8b;
-    border-bottom: 0.18751rem solid var(--dark-primary);
-    color: #ccc;
+    border-bottom: .18751rem solid #ccc;
+    color: #ccc !important;
     background-color: #181819;
 }
 
@@ -448,17 +461,26 @@ th h6, td h6 {
     border-bottom: 0px solid #ddd !important;
 }
 
-.cbi-tabmenu li[class~="cbi-tab"] a {
+.cbi-tabmenu>li[class~="cbi-tab"] a {
     color: #ccc;
 }
 
+.cbi-tabmenu>li[class~="cbi-tab"] {
+    border-bottom: 0.18751rem solid #ccc;
+}
+
 .cbi-tabmenu>li:hover {
+    border-bottom: 0.18751rem solid #ccc;
     color: #ccc;
     background: #2d2d2d;
 }
 
 .cbi-tabmenu>li[class~="cbi-tab"] {
     background-color: #181819;
+}
+
+.cbi-tab-descr {
+    color: #ccc;
 }
 
 .cbi-tabcontainer>.cbi-value:nth-of-type(2n),
