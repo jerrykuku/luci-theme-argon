@@ -247,6 +247,12 @@ table>thead>tr>th {
   background-color: #2c2c2c;
 }
 
+/* Uncustom color of sort button (dark mode only) */
+.cbi-button-up,
+.cbi-button-down {
+  color: #ccc !important;
+}
+
 .cbi-rowstyle-2 .cbi-button-up,
 .cbi-rowstyle-2 .cbi-button-down {
   background-color: #252526 !important;
