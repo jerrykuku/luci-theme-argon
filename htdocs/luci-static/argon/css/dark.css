@@ -75,6 +75,11 @@ header::after {
   background: none !important;
 }
 
+/* Uncustomize the bottom line color when hover the main navigation menu tabs (dark mode only) */
+.main .main-left .nav li.slide ul li a::after {
+  background-color: #cccccc !important;
+}
+
 .main .main-left .nav .slide .menu.active {
   background-color: #483d8b !important;
   background-color: var(--dark-primary) !important;
@@ -350,21 +355,21 @@ th h6, td h6 {
   background-color: #252526;
 }
 
-.tabs>li[class~="active"]>a {
+.tabs>li[class~="active"]>a,
+.tabs>li:hover a {
   color: #ccc;
 }
 
 .tabs>li[class~="active"],
 .tabs>li:hover {
-  border-bottom: .18751rem solid #483d8b;
-  border-bottom: .18751rem solid var(--dark-primary);
-  color: #ccc;
+  border-bottom: .18751rem solid #ccc;
+  color: #ccc !important;
   background-color: #181819;
 }
 
 .cbi-tabmenu>li>a,
 .tabs>li>a {
-  color: #ccc;
+  color: #ccc !important;
 }
 
 .cbi-tabmenu>li>a:hover,
@@ -380,11 +385,16 @@ th h6, td h6 {
   border-bottom: 0 solid #ddd !important;
 }
 
-.cbi-tabmenu li[class~="cbi-tab"] a {
+.cbi-tabmenu>li[class~="cbi-tab"] a {
   color: #ccc;
 }
 
+.cbi-tabmenu>li[class~="cbi-tab"] {
+  border-bottom: 0.18751rem solid #ccc;
+}
+
 .cbi-tabmenu>li:hover {
+  border-bottom: 0.18751rem solid #ccc;
   color: #ccc;
   background: #2d2d2d;
 }
