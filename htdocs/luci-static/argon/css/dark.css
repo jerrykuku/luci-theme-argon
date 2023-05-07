@@ -126,8 +126,7 @@ h3 {
 a:-webkit-any-link {
   color: -webkit-link;
   cursor: pointer;
-  color: #483d8b;
-  color: var(--dark-primary);
+  color: #8898aa;
 }
 
 input:-webkit-autofill {
@@ -145,8 +144,7 @@ input:-webkit-autofill {
 }
 
 .cbi-section em {
-  color: #483d8b;
-  color: var(--dark-primary);
+  color: #8898aa;
 }
 
 header.bg-primary {
@@ -265,8 +263,7 @@ table>thead>tr>th {
 }
 
 abbr {
-  color: #483d8b;
-  color: var(--dark-primary);
+  color: #8898aa;
 }
 
 div>table>tbody>tr:nth-of-type(2n),
@@ -407,6 +404,10 @@ th h6, td h6 {
 
 .cbi-tabmenu>li[class~="cbi-tab"] {
   background-color: #181819;
+}
+
+.cbi-tab-descr {
+  color: #ccc;
 }
 
 .cbi-tabcontainer>.cbi-value:nth-of-type(2n),
