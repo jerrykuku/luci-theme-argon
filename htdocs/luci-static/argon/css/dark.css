@@ -60,7 +60,7 @@ header::after {
 }
 
 .main .main-left .nav .slide .slide-menu .active a {
-  color: #cccccc;
+  color: #fff !important;
 }
 
 .main .main-left .nav .slide .slide-menu .active a::after {
@@ -83,7 +83,7 @@ header::after {
 .main .main-left .nav .slide .menu.active {
   background-color: #483d8b !important;
   background-color: var(--dark-primary) !important;
-  color: #cccccc !important;
+  color: #fff !important;
 }
 
 .main .main-left .nav .slide .menu.active a::after {
@@ -97,7 +97,7 @@ header::after {
 .main .main-left .nav li a:hover {
   background-color: #483d8b !important;
   background-color: var(--dark-primary) !important;
-  color: #cccccc !important;
+  color: #fff !important;
 }
 
 .main .main-left::-webkit-scrollbar-thumb {
