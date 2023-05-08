@@ -426,25 +426,26 @@ th h6, td h6 {
     background-color: #252526;
 }
 
-.tabs>li[class~="active"]>a,
-.tabs>li:hover a {
-    color: #ccc;
-}
-
+.tabs>li:hover,
 .tabs>li[class~="active"],
-.tabs>li:hover {
-    border-bottom: .18751rem solid #ccc;
-    color: #ccc !important;
-    background-color: #181819;
+.cbi-tabmenu>li:hover,
+.cbi-tabmenu>li[class~="cbi-tab"] {
+    border-bottom: .18751rem solid var(--dark-primary);
+    background-color: #3c3c3c;
 }
 
-.cbi-tabmenu>li>a,
-.tabs>li>a {
-    color: #ccc;
+.tabs>li>a,
+.cbi-tabmenu>li>a {
+    color: #ccc !important;
+}
 
-    &:hover {
-        color: #ccc;
-    }
+.cbi-tabmenu>li>a:hover,
+.cbi-tabmenu>li:hover>a,
+.cbi-tabmenu>.cbi-tab>a,
+.tabs>li>a:hover,
+.tabs>li:hover>a,
+.tabs>li[class~="active"]>a {
+    color: #fff !important;
 }
 
 .cbi-tabmenu>li {
@@ -453,24 +454,6 @@ th h6, td h6 {
 
 .cbi-tabmenu {
     border-bottom: 0px solid #ddd !important;
-}
-
-.cbi-tabmenu>li[class~="cbi-tab"] a {
-    color: #ccc;
-}
-
-.cbi-tabmenu>li[class~="cbi-tab"] {
-    border-bottom: 0.18751rem solid #ccc;
-}
-
-.cbi-tabmenu>li:hover {
-    border-bottom: 0.18751rem solid #ccc;
-    color: #ccc;
-    background: #2d2d2d;
-}
-
-.cbi-tabmenu>li[class~="cbi-tab"] {
-    background-color: #181819;
 }
 
 .cbi-tab-descr {
