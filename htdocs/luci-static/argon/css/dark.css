@@ -63,8 +63,9 @@ header::after {
   color: #fff !important;
 }
 
+.main .main-left .nav .slide .slide-menu a::after,
 .main .main-left .nav .slide .slide-menu .active a::after {
-  background-color: #cccccc !important;
+  background-color: var(--dark-primary) !important;
 }
 
 .main .main-left .nav .slide .slide-menu li a {
@@ -73,11 +74,6 @@ header::after {
 
 .main .main-left .nav .slide .slide-menu li a:hover {
   background: none !important;
-}
-
-/* Uncustomize the bottom line color when hover the main navigation menu tabs (dark mode only) */
-.main .main-left .nav li.slide ul li a::after {
-  background-color: #cccccc !important;
 }
 
 .main .main-left .nav .slide .menu.active {

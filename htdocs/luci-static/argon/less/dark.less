@@ -103,12 +103,17 @@ header::after {
         .nav {
             .slide {
                 .slide-menu {
+
+                    a::after {
+                        background-color: var(--dark-primary) !important;
+                    }
+
                     .active {
                         a {
                             color: #fff !important;
 
                             &::after {
-                                background-color: #cccccc !important;
+                                background-color: var(--dark-primary) !important;
                             }
                         }
                     }
@@ -131,17 +136,6 @@ header::after {
 
                     a::after {
                         background-color: #cccccc !important;
-                    }
-                }
-            }
-
-            /* Uncustomize the bottom line color when hover the main navigation menu tabs (dark mode only) */
-            li.slide {
-                ul {
-                    li {
-                        a::after {
-                            background-color: #cccccc !important;
-                        }
                     }
                 }
             }
