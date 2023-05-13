@@ -81,6 +81,9 @@ body {
 
     footer {
         color: #adb5bd;
+        a {
+            color: #adb5bd;
+        }
     }
 
 }
@@ -181,12 +184,10 @@ h3 {
     background: #333333;
 }
 
-a:-webkit-any-link {
-    color: -webkit-link;
-    cursor: pointer;
-    color: #8898aa;
+a:-webkit-any-link:not(.main-left a):not(li a):not(.brand):not(.login-container footer .ftc a) {
+    color: var(--dark_webkit-any-link) !important;
+    text-shadow: 1px 1px 2px #000 !important;
 }
-
 
 input:-webkit-autofill {
     background-color: #3c3c3c !important;
@@ -202,12 +203,10 @@ input:-webkit-autofill {
     border-color: var(--dark-primary) !important;
 }
 
-
 .cbi-section em {
-    color: #8898aa;
+    color: var(--dark_webkit-any-link);
+    text-shadow: 1px 1px 2px #000;
 }
-
-
 
 header.bg-primary {
     background-color: #1e1e1e !important;

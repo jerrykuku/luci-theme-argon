@@ -158,9 +158,14 @@ body {
 a:link,
 a:visited,
 a:active {
-  color: #5e72e4;
-  color: var(--primary);
+  color: var(--default);
   text-decoration: none;
+}
+a:-webkit-any-link:not(.main-left a):not(li a):not(.brand):not(.login-container footer .ftc a) {
+  color: -webkit-link;
+  cursor: pointer;
+  color: var(--primary);
+  text-shadow: 1px 1px 2px #ccc;
 }
 a:hover {
   text-decoration: underline;
@@ -496,13 +501,9 @@ header .fill .container .brand {
 footer {
   text-align: right;
   padding: 1rem;
-  color: #aaa;
-  color: var(--footer-color);
   font-size: 0.8rem;
 }
 footer a {
-  color: #aaa;
-  color: var(--footer-color);
   text-decoration: none;
 }
 /***********************
@@ -2824,7 +2825,8 @@ input[name="nslookup"] {
   padding: 0.75rem 1.5rem;
   font-size: 0.7rem;
   font-weight: 600;
-  color: #525f7f;
+  color: var(--primary);
+  text-shadow: 1px 1px 2px #ccc;
   text-align: center;
 }
 .cbi-section h4 {

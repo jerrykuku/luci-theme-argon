@@ -42,7 +42,8 @@ body {
   opacity: .9;
 }
 
-.login-page .login-container footer {
+.login-page .login-container footer,
+.login-page .login-container footer a {
   color: #adb5bd;
 }
 
@@ -119,10 +120,9 @@ h3 {
   background: #333333;
 }
 
-a:-webkit-any-link {
-  color: -webkit-link;
-  cursor: pointer;
-  color: #8898aa;
+a:-webkit-any-link:not(.main-left a):not(li a):not(.brand):not(.login-container footer .ftc a) {
+  color: var(--dark_webkit-any-link) !important;
+  text-shadow: 1px 1px 2px #000 !important;
 }
 
 input:-webkit-autofill {
@@ -140,7 +140,8 @@ input:-webkit-autofill {
 }
 
 .cbi-section em {
-  color: #8898aa;
+  color: var(--dark_webkit-any-link);
+  text-shadow: 1px 1px 2px #000;
 }
 
 header.bg-primary {
