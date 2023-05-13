@@ -330,26 +330,34 @@ li {
                 display: flex;
                 -webkit-box-align: center;
                 align-items: center;
-                margin: 50px auto 100px 50px;
+                margin: 50px auto 15px auto;
                 color: #525461;
                 color: var(--default);
 
                 .icon {
                     width: 50px;
                     height: auto;
-                    margin-right: 25px;
-                }
-
-                .brand-text {
-                    font-size: 1.25rem;
-                    font-weight: 700;
-                    font-family: "TypoGraphica";
-
                 }
 
                 &:hover {
                     text-decoration: none;
                 }
+            }
+
+            .brand-text {
+                font-size: 1.8rem;
+                font-weight: 700;
+                margin-bottom: 85px;
+                font-family: "TypoGraphica";
+                width: 420px;
+                padding: 0 0.5rem 0 0.5rem;
+                text-align: center;
+                word-break: break-word;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
             }
 
             .form-login {
