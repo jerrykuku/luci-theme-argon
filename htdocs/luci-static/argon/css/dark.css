@@ -15,6 +15,10 @@ body {
   color: #adb5bd;
 }
 
+.login-page .login-container .login-form .form-login .input-group .border {
+  border-bottom: 1px var(--dark-primary) solid;
+}
+
 .login-page .login-container .login-form .form-login .input-group input {
   background-color: transparent !important;
   color: #adb5bd;
