@@ -182,9 +182,15 @@ body {
 a:link,
 a:visited,
 a:active {
-    color: #5e72e4;
-    color: var(--primary);
+    color: var(--default);
     text-decoration: none;
+}
+
+a:-webkit-any-link:not(.main-left a):not(li a):not(.brand):not(.login-container footer .ftc a) {
+    color: -webkit-link;
+    cursor: pointer;
+    color: var(--primary);
+    text-shadow: 1px 1px 2px #ccc;
 }
 
 a:hover {
@@ -324,26 +330,34 @@ li {
                 display: flex;
                 -webkit-box-align: center;
                 align-items: center;
-                margin: 50px auto 100px 50px;
+                margin: 50px auto 15px auto;
                 color: #525461;
                 color: var(--default);
 
                 .icon {
                     width: 50px;
                     height: auto;
-                    margin-right: 25px;
-                }
-
-                .brand-text {
-                    font-size: 1.25rem;
-                    font-weight: 700;
-                    font-family: "TypoGraphica";
-
                 }
 
                 &:hover {
                     text-decoration: none;
                 }
+            }
+
+            .brand-text {
+                font-size: 1.8rem;
+                font-weight: 700;
+                margin-bottom: 85px;
+                font-family: "TypoGraphica";
+                width: 420px;
+                padding: 0 0.5rem 0 0.5rem;
+                text-align: center;
+                word-break: break-word;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
             }
 
             .form-login {
@@ -583,13 +597,9 @@ footer {
 
     text-align: right;
     padding: 1rem;
-    color: #aaa;
-    color: var(--footer-color);
     font-size: 0.8rem;
 
     a {
-        color: #aaa;
-        color: var(--footer-color);
         text-decoration: none;
     }
 }
@@ -1193,23 +1203,19 @@ select {
     text-align: center;
 }
 
-
-
 /*textarea*/
-
-.cbi-input-textarea {
-    width: 100%;
-    min-height: 14rem;
-    padding: 0.8rem;
-    font-size: 0.8rem;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+textarea {
+    border: none !important;
+    outline: none;
+    min-height: 14rem !important;
+    padding: 0.8rem !important;
+    background-color: #fff;
+    font-family: var(--font-family-monospace) !important;
+    font-size: inherit;
     color: black;
 }
 
-
-
 /* change */
-
 .uci-change-list {
     font-family: monospace;
 }
@@ -2111,7 +2117,7 @@ body.lang_pl.node-main-login .cbi-value-title {
 
 .cbi-rowstyle-2 .cbi-button-up,
 .cbi-rowstyle-2 .cbi-button-down {
-    background-color: #FFF !important;
+    background-color: var(--lighter);
 
 }
 
@@ -2972,7 +2978,8 @@ select[multiple="multiple"] {
 }
 
 
-.cbi-tabcontainer>.cbi-value:nth-of-type(2n) {
+.cbi-tabcontainer>.cbi-value:nth-of-type(2n),
+.cbi-tabcontainer>.cbi-value:nth-of-type(2n)>textarea {
     background-color: #f9f9f9;
 }
 
@@ -3099,39 +3106,17 @@ td>.ifacebadge {
     margin: 0 0.3rem;
 }
 
-/*textarea*/
-
-.cbi-input-textarea {
-    width: 100%;
-    border: 0;
-    outline: none;
-    min-height: 14rem;
-    padding: 0.8rem;
-    font-size: 0.8rem;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: black;
-}
-
 #syslog {
     width: 100%;
     min-height: 15rem;
     padding: 1rem;
     line-height: 1.4em;
-    font-size: small;
     color: #1e1e1e;
     border-radius: 0;
     background-color: #fff;
     border: none;
     outline: none;
 }
-
-
-
-
-
-
-
-
 
 
 .ifacebadge {
@@ -3477,7 +3462,8 @@ input[name="nslookup"] {
         padding: 0.75rem 1.5rem;
         font-size: 0.7rem;
         font-weight: 600;
-        color: #525f7f;
+        color: var(--primary);
+        text-shadow: 1px 1px 2px #ccc;
         text-align: center;
     }
 
@@ -3621,10 +3607,6 @@ input[name="nslookup"] {
 
     fieldset {
         padding: 0;
-    }
-
-    .cbi-input-textarea {
-        font-size: small;
     }
 
     .node-status-iptables>.main fieldset li>a {

@@ -48,6 +48,10 @@ body {
                     color: #adb5bd;
                 }
 
+                .border {
+                    border-bottom: 1px var(--dark-primary) solid;
+                }
+
                 input {
                     background-color: transparent !important;
                     color: #adb5bd;
@@ -81,6 +85,9 @@ body {
 
     footer {
         color: #adb5bd;
+        a {
+            color: #adb5bd;
+        }
     }
 
 }
@@ -103,12 +110,17 @@ header::after {
         .nav {
             .slide {
                 .slide-menu {
+
+                    a::after {
+                        background-color: var(--dark-primary) !important;
+                    }
+
                     .active {
                         a {
-                            color: #cccccc;
+                            color: #fff !important;
 
                             &::after {
-                                background-color: #cccccc !important;
+                                background-color: var(--dark-primary) !important;
                             }
                         }
                     }
@@ -127,7 +139,7 @@ header::after {
                 .menu.active {
                     background-color: #483d8b !important;
                     background-color: var(--dark-primary) !important;
-                    color: #cccccc !important;
+                    color: #fff !important;
 
                     a::after {
                         background-color: #cccccc !important;
@@ -143,7 +155,7 @@ header::after {
                 a:hover {
                     background-color: #483d8b !important;
                     background-color: var(--dark-primary) !important;
-                    color: #cccccc !important;
+                    color: #fff !important;
 
 
                 }
@@ -176,13 +188,10 @@ h3 {
     background: #333333;
 }
 
-a:-webkit-any-link {
-    color: -webkit-link;
-    cursor: pointer;
-    color: #483d8b;
-    color: var(--dark-primary);
+a:-webkit-any-link:not(.main-left a):not(li a):not(.brand):not(.login-container footer .ftc a) {
+    color: var(--dark_webkit-any-link) !important;
+    text-shadow: 1px 1px 2px #000 !important;
 }
-
 
 input:-webkit-autofill {
     background-color: #3c3c3c !important;
@@ -198,13 +207,10 @@ input:-webkit-autofill {
     border-color: var(--dark-primary) !important;
 }
 
-
 .cbi-section em {
-    color: #483d8b;
-    color: var(--dark-primary);
+    color: var(--dark_webkit-any-link);
+    text-shadow: 1px 1px 2px #000;
 }
-
-
 
 header.bg-primary {
     background-color: #1e1e1e !important;
@@ -322,9 +328,7 @@ table>thead>tr>th {
 }
 
 abbr {
-    color: #483d8b;
-    color: var(--dark-primary);
-
+    color: #8898aa;
 }
 
 div>table>tbody>tr:nth-of-type(2n),
@@ -419,25 +423,26 @@ th h6, td h6 {
     background-color: #252526;
 }
 
-.tabs>li[class~="active"]>a {
-    color: #ccc;
-}
-
+.tabs>li:hover,
 .tabs>li[class~="active"],
-.tabs>li:hover {
-    border-bottom: 0.18751rem solid #483d8b;
-    border-bottom: 0.18751rem solid var(--dark-primary);
-    color: #ccc;
-    background-color: #181819;
+.cbi-tabmenu>li:hover,
+.cbi-tabmenu>li[class~="cbi-tab"] {
+    border-bottom: .18751rem solid var(--dark-primary);
+    background-color: #3c3c3c;
 }
 
-.cbi-tabmenu>li>a,
-.tabs>li>a {
-    color: #ccc;
+.tabs>li>a,
+.cbi-tabmenu>li>a {
+    color: #ccc !important;
+}
 
-    &:hover {
-        color: #ccc;
-    }
+.cbi-tabmenu>li>a:hover,
+.cbi-tabmenu>li:hover>a,
+.cbi-tabmenu>.cbi-tab>a,
+.tabs>li>a:hover,
+.tabs>li:hover>a,
+.tabs>li[class~="active"]>a {
+    color: #fff !important;
 }
 
 .cbi-tabmenu>li {
@@ -448,20 +453,12 @@ th h6, td h6 {
     border-bottom: 0px solid #ddd !important;
 }
 
-.cbi-tabmenu li[class~="cbi-tab"] a {
+.cbi-tab-descr {
     color: #ccc;
 }
 
-.cbi-tabmenu>li:hover {
-    color: #ccc;
-    background: #2d2d2d;
-}
-
-.cbi-tabmenu>li[class~="cbi-tab"] {
-    background-color: #181819;
-}
-
-.cbi-tabcontainer>.cbi-value:nth-of-type(2n) {
+.cbi-tabcontainer>.cbi-value:nth-of-type(2n),
+.cbi-tabcontainer>.cbi-value:nth-of-type(2n)>textarea {
     background-color: #252526;
 }
 
@@ -512,12 +509,11 @@ select {
     color: #ccc;
 }
 
-.cbi-input-textarea {
+/*textarea for dark mode*/
+textarea {
     background-color: #1e1e1e;
     color: #ccc;
 }
-
-
 
 .cbi-section-remove:nth-of-type(2n),
 .cbi-section-node:nth-of-type(2n) {
