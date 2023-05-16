@@ -1315,8 +1315,6 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-    border: 1px solid #5e72e4;
-    border: 1px solid var(--primary);
     background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 8 8\'%3e%3cpath fill=\'%23fff\' d=\'M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z\'/%3e%3c/svg%3e') !important;
     background-color: #5e72e4;
     background-color: var(--primary);
@@ -1345,8 +1343,6 @@ ul li .cbi-input-checkbox {
 }
 
 .cbi-input-radio:checked {
-    border: 1px solid #5e72e4;
-    border: 1px solid var(--primary);
     background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'-4 -4 8 8\'%3e%3ccircle r=\'3\' fill=\'%23fff\'/%3e%3c/svg%3e') !important;
     background-color: #5e72e4;
     background-color: var(--primary);
@@ -2169,7 +2165,8 @@ input {
     margin: 0.25rem;
 }
 
-select:not([multiple="multiple"]):focus,
+select:not([multiple="multiple"]):hover,
+input:hover,
 input:focus {
     border-color: #5e72e4;
     border-color: var(--primary);

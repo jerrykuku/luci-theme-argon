@@ -199,6 +199,16 @@ input:-webkit-autofill {
     background-color: #3c3c3c !important;
 }
 
+input[type="checkbox"]:checked {
+    background-color: #483d8b !important;
+    background-color: var(--dark-primary) !important;
+}
+
+.cbi-input-radio:checked {
+    background-color: #483d8b !important;
+    background-color: var(--dark-primary) !important;
+}
+
 .cbi-value-field .cbi-input-apply,
 .cbi-button-apply,
 .cbi-button-edit {
@@ -476,7 +486,8 @@ input {
     box-shadow: 0 3px 2px rgba(0, 0, 0, .05);
 }
 
-select:not([multiple="multiple"]):focus,
+select:not([multiple="multiple"]):hover,
+input:hover,
 input:focus {
     border-color: #483d8b !important;
     border-color: var(--dark-primary) !important;
