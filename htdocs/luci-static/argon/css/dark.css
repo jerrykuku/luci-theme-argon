@@ -208,6 +208,7 @@ table>thead>tr>td {
 #conns>div>div>div>small,
 #memtotal>div>div>div>small {
   color: #ccc !important;
+  text-shadow: 1px 1px 2px #000 !important;
 }
 
 .node-system-packages>.main .cbi-section-node:first-child .cbi-value-last {

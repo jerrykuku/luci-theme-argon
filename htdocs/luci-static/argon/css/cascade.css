@@ -1395,6 +1395,14 @@ input[name="nslookup"] {
   background-position: left top;
   animation: sparkle 1500ms linear infinite;
 }
+#swaptotal > div > div > div > small,
+#swapfree > div > div > div > small,
+#memfree > div > div > div > small,
+#membuff > div > div > div > small,
+#conns > div > div > div > small,
+#memtotal > div > div > div > small {
+  text-shadow: 1px 1px 2px #ccc;
+}
 /* fix multiple table */
 table table,
 .table .table {
@@ -2715,11 +2723,6 @@ div.cbi-value var,
 td.cbi-value-field var {
   font-style: italic;
   color: #0069D6;
-}
-small {
-  font-size: 90%;
-  white-space: normal;
-  line-height: 1.42857143;
 }
 .cbi-optionals {
   padding: 1rem 1rem 0 1rem;
