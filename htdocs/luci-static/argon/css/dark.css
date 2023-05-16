@@ -89,6 +89,14 @@ header::after {
   box-shadow: 0 0 1px #000 !important;
 }
 
+.main .main-left .nav .slide .menu[data-title=Status]:before {
+  color: var(--dark-primary) !important;
+}
+
+.main .main-left .nav .slide .menu[data-title=Control]:before {
+  color: var(--dark-primary) !important;
+}
+
 .main .main-left .nav li a {
   color: #cccccc !important;
 }
