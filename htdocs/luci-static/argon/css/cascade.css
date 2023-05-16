@@ -2483,8 +2483,8 @@ form > .cbi-map > .cbi-section > .cbi-section-node > .cbi-value > .cbi-value-fie
   content: "\f059";
 }
 .cbi-value-description {
+  color: #999999;
   font-size: small;
-  opacity: 0.5;
   padding: 0.5rem;
 }
 .cbi-value-title {
