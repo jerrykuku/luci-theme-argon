@@ -111,10 +111,6 @@ header::after {
             .slide {
                 .slide-menu {
 
-                    a::after {
-                        background-color: var(--dark-primary) !important;
-                    }
-
                     .active {
                         a {
                             color: #fff !important;
@@ -128,21 +124,27 @@ header::after {
                     li {
                         a {
                             color: #cccccc;
-                        }
 
-                        a:hover {
-                            background: none !important;
+                            &:hover {
+                                background: none !important;
+                            }
+
+                            &::after {
+                                background-color: var(--dark-primary) !important;
+                                box-shadow: 0 0 1px #000  !important;
+                            }
+
                         }
                     }
                 }
 
-                .menu.active {
-                    background-color: #483d8b !important;
-                    background-color: var(--dark-primary) !important;
-                    color: #fff !important;
-
-                    a::after {
-                        background-color: #cccccc !important;
+                .menu {
+                    &:hover,
+                    &.active {
+                        background-color: #483d8b !important;
+                        background-color: var(--dark-primary) !important;
+                        color: #fff !important;
+                        box-shadow: 0 0 1px #000 !important;
                     }
                 }
             }

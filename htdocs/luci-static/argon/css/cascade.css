@@ -683,6 +683,7 @@ footer a {
   color: #fff;
   background: #5e72e4;
   background: var(--primary);
+  box-shadow: 0 0 1px #ccc;
 }
 .main .main-left .nav li.slide .menu:hover a,
 .main .main-left .nav li.slide .menu.active a {
@@ -774,6 +775,7 @@ footer a {
   background-color: #5e72e4;
   background-color: var(--primary);
   transition: all 0.2s;
+  box-shadow: 0 0 1px #ccc;
 }
 .main .main-left .nav li.slide .slide-menu li a:hover::after {
   color: #000;

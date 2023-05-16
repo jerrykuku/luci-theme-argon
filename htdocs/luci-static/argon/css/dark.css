@@ -68,27 +68,25 @@ header::after {
   color: #fff !important;
 }
 
-.main .main-left .nav .slide .slide-menu a::after,
-.main .main-left .nav .slide .slide-menu .active a::after {
-  background-color: var(--dark-primary) !important;
-}
-
 .main .main-left .nav .slide .slide-menu li a {
   color: #cccccc;
+}
+
+.main .main-left .nav .slide .slide-menu li a::after {
+  background-color: var(--dark-primary) !important;
+  box-shadow: 0 0 1px #000  !important;
 }
 
 .main .main-left .nav .slide .slide-menu li a:hover {
   background: none !important;
 }
 
+.main .main-left .nav .slide .menu:hover,
 .main .main-left .nav .slide .menu.active {
   background-color: #483d8b !important;
   background-color: var(--dark-primary) !important;
   color: #fff !important;
-}
-
-.main .main-left .nav .slide .menu.active a::after {
-  background-color: #cccccc !important;
+  box-shadow: 0 0 1px #000 !important;
 }
 
 .main .main-left .nav li a {
