@@ -409,16 +409,6 @@ th h6, td h6 {
     background-color: #00ff0a45 !important;
 }
 
-/* OCD: Compatible the background color of the "Add the node via the link" & "USE(node)" pop-up window in PassWall (dark mode only) */
-#add_link_div,
-#set_node_div {
-    background-color: #333333f0 !important;
-    box-shadow: #00000094 10px 10px 30px 5px !important;
-}
-#add_link_div>.cbi-value>.cbi-value-field>#nodes_link {
-    background: #ccc;
-}
-
 #content_syslog {
     box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, .35)
 }
@@ -751,6 +741,16 @@ fieldset[id^="cbi-apply-"] {
 
 .node-services-vssr .block h4 span{
     color: #ccc !important;
+}
+
+/* PassWall */
+#cbi-passwall #add_link_div,
+#cbi-passwall #set_node_div {
+    background: #333333f0 !important;
+    box-shadow: #00000094 10px 10px 30px 5px !important;
+}
+#cbi-passwall #add_link_div #nodes_link {
+    background: #3c3c3c  !important;
 }
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {

@@ -1648,10 +1648,6 @@ th h5, td h5,
 th h6, td h6 {
   background: var(--lighter);
 }
-/* OCD: Change the background color of the "now in use" node in PassWall  */
-.cbi-section-table > tbody > ._now_use {
-  background: #5e72e473 !important;
-}
 /* language fix */
 body.lang_pl.node-main-login .cbi-value-title {
   width: 12rem;
@@ -2914,6 +2910,20 @@ input[name="nslookup"] {
 }
 .node-nas-usb_printer em {
   display: block;
+}
+/* PassWall */
+#cbi-passwall #add_link_div,
+#cbi-passwall #set_node_div {
+  background: #fffffff0;
+}
+#cbi-passwall #add_link_div #nodes_link {
+  background: var(--lighter);
+}
+#cbi-passwall #add_link_div .cbi-value-title {
+  vertical-align: middle;
+}
+#cbi-passwall .cbi-section-table tbody ._now_use {
+  background: #5e72e473 !important;
 }
 @media screen and (max-width: 1600px) {
   .main .main-left {
