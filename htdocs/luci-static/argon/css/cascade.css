@@ -161,7 +161,7 @@ a:active {
   color: var(--default);
   text-decoration: none;
 }
-a:-webkit-any-link:not(.main-left a):not(li a):not(.brand):not(.pull-right a):not(.alert-message a):not(.login-container footer .ftc a) {
+a:-webkit-any-link:not(li a, .main-left a, .brand, .pull-right a, .alert-message a, .login-container footer .ftc a) {
   color: -webkit-link;
   cursor: pointer;
   color: var(--primary);
