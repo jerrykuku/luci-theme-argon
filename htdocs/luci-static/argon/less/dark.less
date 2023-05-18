@@ -195,7 +195,13 @@ h3 {
     background: #333333;
 }
 
-a:-webkit-any-link:not(li a, .main-left a, .brand, .pull-right a, .alert-message a, .login-container footer .ftc a) {
+a:link,
+a:visited,
+a:active {
+    color: var(--dark_webkit-any-link);
+}
+
+a:-webkit-any-link:not(li a, .main-left a, .brand, .pull-right a, .alert-message a, .login-container footer a) {
     color: var(--dark_webkit-any-link) !important;
     text-shadow: 1px 1px 2px #000 !important;
 }

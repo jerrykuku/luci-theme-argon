@@ -158,10 +158,10 @@ body {
 a:link,
 a:visited,
 a:active {
-  color: var(--default);
+  color: var(--primary);
   text-decoration: none;
 }
-a:-webkit-any-link:not(li a, .main-left a, .brand, .pull-right a, .alert-message a, .login-container footer .ftc a) {
+a:-webkit-any-link:not(li a, .main-left a, .brand, .pull-right a, .alert-message a, .login-container footer a) {
   color: -webkit-link;
   cursor: pointer;
   color: var(--primary);
@@ -430,6 +430,10 @@ li {
   color: var(--default);
   position: absolute;
   bottom: 0;
+}
+.login-page .login-container footer,
+.login-page .login-container footer a {
+  color: var(--default);
 }
 .login-page .login-container footer .ftc {
   position: absolute;
