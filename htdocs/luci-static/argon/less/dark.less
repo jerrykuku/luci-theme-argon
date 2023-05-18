@@ -585,9 +585,11 @@ img[src="/luci-static/resources/icons/loading.gif"] {
 }
 
 div.cbi-value var,
-td.cbi-value-field var {
+td.cbi-value-field var,
+.td.cbi-value-field var {
     color: #483d8b;
-    color: var(--dark-primary);
+    color: var(--dark_webkit-any-link);
+    text-shadow: 1px 1px 2px #000;
 }
 
 #diag-rc-output>pre {
