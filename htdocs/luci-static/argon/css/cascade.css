@@ -2587,7 +2587,7 @@ td > .ifacebadge,
 .ifacebadge > img {
   display: inline-block;
   margin: 0 0.3rem;
-  align-self: flex-start;
+  align-self: center;
 }
 .ifacebadge span {
   line-height: 1.6em;
