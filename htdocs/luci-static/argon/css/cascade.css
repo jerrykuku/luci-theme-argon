@@ -2928,7 +2928,7 @@ input[name="nslookup"] {
   .main .main-right {
     width: calc(100% - 13rem);
   }
-  .cbi-button {
+  .cbi-button:not(.cbi-button-up, .cbi-button-down) {
     /*padding: 0.3rem 1.5rem;*/
     font-size: 0.8rem;
   }
