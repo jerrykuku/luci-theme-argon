@@ -68,27 +68,33 @@ header::after {
   color: #fff !important;
 }
 
-.main .main-left .nav .slide .slide-menu a::after,
-.main .main-left .nav .slide .slide-menu .active a::after {
-  background-color: var(--dark-primary) !important;
-}
-
 .main .main-left .nav .slide .slide-menu li a {
   color: #cccccc;
+}
+
+.main .main-left .nav .slide .slide-menu li a::after {
+  background-color: var(--dark-primary) !important;
+  box-shadow: 0 0 1px #000  !important;
 }
 
 .main .main-left .nav .slide .slide-menu li a:hover {
   background: none !important;
 }
 
+.main .main-left .nav .slide .menu:hover,
 .main .main-left .nav .slide .menu.active {
   background-color: #483d8b !important;
   background-color: var(--dark-primary) !important;
   color: #fff !important;
+  box-shadow: 0 0 1px #000 !important;
 }
 
-.main .main-left .nav .slide .menu.active a::after {
-  background-color: #cccccc !important;
+.main .main-left .nav .slide .menu[data-title=Status]:before {
+  color: var(--dark-primary) !important;
+}
+
+.main .main-left .nav .slide .menu[data-title=Control]:before {
+  color: var(--dark-primary) !important;
 }
 
 .main .main-left .nav li a {
@@ -124,13 +130,29 @@ h3 {
   background: #333333;
 }
 
-a:-webkit-any-link:not(.main-left a):not(li a):not(.brand):not(.login-container footer .ftc a) {
+a:link,
+a:visited,
+a:active {
+  color: var(--dark_webkit-any-link);
+}
+
+a:-webkit-any-link:not(li a, .main-left a, .brand, .pull-right a, .alert-message a, .login-container footer a) {
   color: var(--dark_webkit-any-link) !important;
   text-shadow: 1px 1px 2px #000 !important;
 }
 
 input:-webkit-autofill {
   background-color: #3c3c3c !important;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #483d8b !important;
+  background-color: var(--dark-primary) !important;
+}
+
+.cbi-input-radio:checked {
+  background-color: #483d8b !important;
+  background-color: var(--dark-primary) !important;
 }
 
 .cbi-value-field .cbi-input-apply,
@@ -200,6 +222,7 @@ table>thead>tr>td {
 #conns>div>div>div>small,
 #memtotal>div>div>div>small {
   color: #ccc !important;
+  text-shadow: 1px 1px 2px #000 !important;
 }
 
 .node-system-packages>.main .cbi-section-node:first-child .cbi-value-last {
@@ -322,16 +345,6 @@ th h6, td h6 {
   background-color: #00ff0a45 !important;
 }
 
-/* OCD: Compatible the background color of the "Add the node via the link" & "USE(node)" pop-up window in PassWall (dark mode only) */
-#add_link_div,
-#set_node_div {
-  background-color: #333333f0 !important;
-  box-shadow: #00000094 10px 10px 30px 5px !important;
-}
-#add_link_div>.cbi-value>.cbi-value-field>#nodes_link {
-  background: #ccc;
-}
-
 #content_syslog {
   box-shadow: 0 0 .5rem 0 rgba(0,0,0,0.35);
 }
@@ -404,7 +417,8 @@ input {
   box-shadow: 0 3px 2px rgba(0,0,0,0.05);
 }
 
-select:not([multiple="multiple"]):focus,
+select:not([multiple="multiple"]):hover,
+input:hover,
 input:focus {
   border-color: #483d8b !important;
   border-color: var(--dark-primary) !important;
@@ -508,9 +522,11 @@ img[src="/luci-static/resources/icons/loading.gif"] {
 }
 
 div.cbi-value var,
-td.cbi-value-field var {
+td.cbi-value-field var,
+.td.cbi-value-field var {
   color: #483d8b;
-  color: var(--dark-primary);
+  color: var(--dark_webkit-any-link);
+  text-shadow: 1px 1px 2px #000;
 }
 
 #diag-rc-output>pre {
@@ -660,6 +676,16 @@ fieldset[id^="cbi-apply-"] {
 
 .node-services-vssr .block h4 span {
   color: #ccc !important;
+}
+
+/* PassWall */
+#cbi-passwall #add_link_div,
+#cbi-passwall #set_node_div {
+  background: #333333f0 !important;
+  box-shadow: #00000094 10px 10px 30px 5px !important;
+}
+#cbi-passwall #add_link_div #nodes_link {
+  background: #3c3c3c  !important;
 }
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {

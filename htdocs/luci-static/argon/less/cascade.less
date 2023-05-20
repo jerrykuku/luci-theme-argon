@@ -182,11 +182,11 @@ body {
 a:link,
 a:visited,
 a:active {
-    color: var(--default);
+    color: var(--primary);
     text-decoration: none;
 }
 
-a:-webkit-any-link:not(.main-left a):not(li a):not(.brand):not(.login-container footer .ftc a) {
+a:-webkit-any-link:not(li a, .main-left a, .brand, .pull-right a, .alert-message a, .login-container footer a) {
     color: -webkit-link;
     cursor: pointer;
     color: var(--primary);
@@ -501,6 +501,14 @@ li {
                 display: block;
             }
         }
+
+        footer {
+            color: var(--default);
+
+            a {
+                color: var(--default);
+            }
+        }
     }
 }
 
@@ -799,6 +807,7 @@ footer {
                             color: #fff;
                             background: #5e72e4;
                             background: var(--primary);
+                            box-shadow: 0 0 1px #ccc;
 
                             a {
                                 color: #000;
@@ -913,6 +922,7 @@ footer {
                                     background-color: #5e72e4;
                                     background-color: var(--primary);
                                     transition: all 0.2s;
+                                    box-shadow: 0 0 1px #ccc;
                                 }
 
                                 &:hover::after {
@@ -1313,8 +1323,6 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-    border: 1px solid #5e72e4;
-    border: 1px solid var(--primary);
     background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 8 8\'%3e%3cpath fill=\'%23fff\' d=\'M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z\'/%3e%3c/svg%3e') !important;
     background-color: #5e72e4;
     background-color: var(--primary);
@@ -1343,8 +1351,6 @@ ul li .cbi-input-checkbox {
 }
 
 .cbi-input-radio:checked {
-    border: 1px solid #5e72e4;
-    border: 1px solid var(--primary);
     background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'-4 -4 8 8\'%3e%3ccircle r=\'3\' fill=\'%23fff\'/%3e%3c/svg%3e') !important;
     background-color: #5e72e4;
     background-color: var(--primary);
@@ -1475,7 +1481,8 @@ div.cbi-value var,
 td.cbi-value-field var,
 .td.cbi-value-field var {
     font-style: italic;
-    color: #0069D6;
+    color: var(--primary);
+    text-shadow: 1px 1px 2px #ccc;
 }
 
 small {
@@ -1657,6 +1664,15 @@ input[name="nslookup"] {
     background-image: url(../img/trafficbar.png);
     background-position: left top;
     animation: sparkle 1500ms linear infinite;
+}
+
+#swaptotal>div>div>div>small,
+#swapfree>div>div>div>small,
+#memfree>div>div>div>small,
+#membuff>div>div>div>small,
+#conns>div>div>div>small,
+#memtotal>div>div>div>small {
+    text-shadow: 1px 1px 2px #ccc;
 }
 
 /* fix multiple table */
@@ -1967,11 +1983,6 @@ th h6, td h6 {
     background: var(--lighter);
 }
 
-/* OCD: Change the background color of the "now in use" node in PassWall  */
-.cbi-section-table>tbody>._now_use {
-    background: #5e72e473 !important;
-}
-
 /* language fix */
 body.lang_pl.node-main-login .cbi-value-title {
     width: 12rem;
@@ -2167,7 +2178,8 @@ input {
     margin: 0.25rem;
 }
 
-select:not([multiple="multiple"]):focus,
+select:not([multiple="multiple"]):hover,
+input:hover,
 input:focus {
     border-color: #5e72e4;
     border-color: var(--primary);
@@ -2988,7 +3000,6 @@ select[multiple="multiple"] {
     display: table-cell;
     line-height: 1.6;
     font-size: 0.875rem;
-
 }
 
 /* Fix text position of the luci-app-filebrowser running state */
@@ -3014,8 +3025,9 @@ form>.cbi-map>.cbi-section>.cbi-section-node>.cbi-value>.cbi-value-field font {
 }
 
 .cbi-value-description {
+    color: #8d8d8d;
+    opacity: 0.8;
     font-size: small;
-    opacity: 0.5;
     padding: 0.5rem;
 }
 
@@ -3138,7 +3150,7 @@ td>.ifacebadge,
 .ifacebadge>img {
     display: inline-block;
     margin: 0 0.3rem;
-    align-self: flex-start;
+    align-self: center;
 }
 
 
@@ -3303,18 +3315,6 @@ td>.ifacebadge,
     padding: 0.5rem;
 }
 
-div.cbi-value var,
-td.cbi-value-field var {
-    font-style: italic;
-    color: #0069D6;
-}
-
-small {
-    font-size: 90%;
-    white-space: normal;
-    line-height: 1.42857143;
-}
-
 
 .cbi-optionals {
     padding: 1rem 1rem 0 1rem;
@@ -3459,7 +3459,6 @@ input[name="nslookup"] {
     overflow-y: hidden;
 
     em {
-        padding: 0.75rem 1.5rem;
         font-size: 0.7rem;
         font-weight: 600;
         color: var(--primary);
@@ -3573,6 +3572,20 @@ input[name="nslookup"] {
     display: block;
 }
 
+/* PassWall */
+#cbi-passwall #add_link_div,
+#cbi-passwall #set_node_div {
+    background: #fffffff0;
+}
+#cbi-passwall #add_link_div #nodes_link {
+    background: var(--lighter);
+}
+#cbi-passwall #add_link_div .cbi-value-title {
+    vertical-align: middle;
+}
+#cbi-passwall .cbi-section-table tbody ._now_use {
+    background: #5e72e473 !important;
+}
 
 @media screen and (max-width: 1600px) {
 
@@ -3587,7 +3600,7 @@ input[name="nslookup"] {
     }
 
 
-    .cbi-button {
+    .cbi-button:not(.cbi-button-up, .cbi-button-down) {
         /*padding: 0.3rem 1.5rem;*/
         font-size: 0.8rem;
     }
