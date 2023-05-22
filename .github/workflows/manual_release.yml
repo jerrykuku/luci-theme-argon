@@ -1,58 +1,141 @@
-on: 
+#
+# Copyright (c) 2022-2023 SMALLPROGRAM <https://github.com/smallprogram>
+# Description: Auto compile
+#
+
+#
+# Fork and compile the latest version yourself using Github Actions
+#   1.Into the repository of your own fork
+#   2.Into the repository [Settings]
+#   3.[Code and automation - Actions] ↓ [General] → [Workflow permissions] ↓  Check the [Read and write permissions] and [Save]
+#   4.Let's take [Actions]
+#
+
+name: "Auto compile with OpenWrt SDK"
+on:
+  repository_dispatch:
   workflow_dispatch:
     inputs:
-      device:
-        description: 'Select device'     
-        required: true
-        type: choice
-        options:
-        - X86_64
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'luci-theme-argon/Makefile'
 env:
-  PKG_NAME: luci-theme-argon
+  TZ: Asia/Shanghai
+
 
 jobs:
-  BuildIPK:
-    runs-on: ubuntu-20.04
+  job_check:
+    if: github.repository == ${{ github.repository }}
+    name: Check Version
+    runs-on: ubuntu-latest
+    outputs:
+      argon_version: ${{ steps.check_version.outputs.latest_version }}
+      has_update: ${{ steps.check_version.outputs.has_update }}
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        path: buildsource/$PKG_NAME
+      - name: Checkout
+        uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+          ref: 'master'
 
-    - name: Installing dependencies
-      run: |
-        cd $GITHUB_WORKSPACE
-        sudo -E apt-get update
-        sudo -E apt-get install git  asciidoc bash bc binutils bzip2 fastjar flex gawk gcc genisoimage gettext git intltool jikespg libgtk2.0-dev libncurses5-dev libssl-dev make mercurial patch perl-modules python2.7-dev rsync ruby sdcc subversion unzip util-linux wget xsltproc zlib1g-dev zlib1g-dev -y
+      - name: Check version
+        id: check_version
+        env:
+          url_release: https://api.github.com/repos/${{ github.repository }}/releases/latest
+        run: |
+          latest_version=$(awk -F ':=' '/PKG_VERSION|PKG_RELEASE/ {print $2}' Makefile | sed ':a;N;s/\n$//;s/\n/-/;ba')
+          latest_release=$(wget -qO- -t1 -T2 ${{env.url_release}} | awk -F '"' '/tag_name/{print $4}')
+          has_update=$([ "${latest_version}" != "${latest_release}" ] && echo true || echo false)
+          echo "latest_version=${latest_version}" >> $GITHUB_OUTPUT
+          echo "has_update=${has_update}" >> $GITHUB_OUTPUT
+          echo "latest_version: ${latest_version}"
+          echo "latest_release: ${latest_release}"
+          echo "has_update: ${has_update}"
 
-    - name: Deploy SDK
-      run: |
-        cd $GITHUB_WORKSPACE
-        wget -q -O openwrt-sdk.tar.xz https://downloads.openwrt.org/releases/21.02.3/targets/x86/generic/openwrt-sdk-21.02.3-x86-generic_gcc-8.4.0_musl.Linux-x86_64.tar.xz
-        mkdir -p $GITHUB_WORKSPACE/openwrt-sdk
-        tar -Jxf openwrt-sdk.tar.xz -C $GITHUB_WORKSPACE/openwrt-sdk --strip=1
-        sed -i '246,258d' $GITHUB_WORKSPACE/openwrt-sdk/include/package-ipkg.mk
+      - name: Generate new tag & release
+        if: steps.check_version.outputs.has_update == 'true'
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{steps.check_version.outputs.latest_version}}
 
-    - name: Build ipk
-      id: build
-      run: |
-        cd $GITHUB_WORKSPACE
-        cd openwrt-sdk
-        sed -i "1i\src-link githubaction $GITHUB_WORKSPACE/buildsource" feeds.conf.default
-        ls -l
-        cat feeds.conf.default
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
-        echo CONFIG_ALL=y >.config
-        make defconfig
-        make V=s ./package/feeds/luci/luci-base/compile
-        make V=s ./package/feeds/githubaction/$PKG_NAME/compile
 
-        find bin -type f -exec ls -lh {} \;
-        find bin -type f -name "*.ipk" -exec cp -f {} "$GITHUB_WORKSPACE" \; 
+  job_build_argon:
+    name: Build Argon (master)
+    needs: job_check
+    if: needs.job_check.outputs.has_update == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install packages
+        run: |
+          echo "Install packages"
+          sudo -E apt-get -qq update
+          sudo -E apt-get -qq install build-essential clang flex bison g++ gawk gcc-multilib g++-multilib gettext git libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev file wget
+          sudo -E apt-get -qq autoremove --purge
+          sudo -E apt-get -qq clean
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: ${{ github.event.inputs.pkgname }}_related_ipks
-        path: |
-          ./*ipk*
+      - name: Cache openwrt SDK
+        id: cache-sdk
+        uses: actions/cache@v3
+        with:
+          path: sdk
+          key: openwrt-sdk-21.02-x86-64
+
+      - name: Initialization environment
+        if: steps.cache-sdk.outputs.cache-hit != 'true'
+        env:
+          url_sdk: https://archive.openwrt.org/releases/21.02.5/targets/x86/64/openwrt-sdk-21.02.5-x86-64_gcc-8.4.0_musl.Linux-x86_64.tar.xz
+        run: |
+          wget ${{ env.url_sdk }}
+          file_name=$(echo ${{env.url_sdk}} | awk -F/ '{print $NF}')
+          mkdir sdk && tar -xJf $file_name -C ./sdk --strip-components=1
+          cd sdk  
+          echo "src-git base https://github.com/openwrt/openwrt.git;openwrt-21.02" > feeds.conf
+          echo "src-git-full packages https://github.com/openwrt/packages.git;openwrt-21.02" >> feeds.conf
+          echo "src-git-full luci https://git.openwrt.org/project/luci.git;openwrt-21.02" >> feeds.conf
+          echo "src-git-full routing https://git.openwrt.org/feed/routing.git;openwrt-21.02"  >> feeds.conf
+          git clone -b master https://github.com/${{ github.repository }}.git package/downloads/luci-theme-argon
+          ./scripts/feeds update -a
+          echo "CONFIG_PACKAGE_luci-theme-argon=m" > .config
+          ./scripts/feeds install -d n luci-theme-argon
+          make download -j8
+
+      - name: Configure Argon (master)
+        run: |
+          cd sdk
+          ./scripts/feeds install luci-theme-argon
+          echo "CONFIG_ALL_NONSHARED=n" > .config
+          echo "CONFIG_ALL_KMODS=n" >> .config
+          echo "CONFIG_ALL=n" >> .config
+          echo "CONFIG_AUTOREMOVE=n" >> .config
+          echo "CONFIG_LUCI_LANG_zh_Hans=y" >> .config
+          echo "CONFIG_PACKAGE_luci-theme-argon=m" >> .config
+          make defconfig
+
+      - name: Compile Argon (master)
+        id: compile
+        run: |
+          cd sdk
+          echo "make package/luci-theme-argon/{clean,compile} -j$(nproc)"
+          make package/luci-theme-argon/{clean,compile} -j$(nproc)
+          mv bin/packages/x86_64/base/ ../
+          rm .config .config.old
+          cd ..
+          echo "status=success" >> $GITHUB_OUTPUT
+          echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+
+      - name: Upload Argon (master) ipks to release
+        uses: softprops/action-gh-release@v1
+        if: steps.compile.outputs.status == 'success'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{needs.job_check.outputs.argon_version}}
+          files: ${{ env.FIRMWARE }}/base/luci-theme*.ipk
