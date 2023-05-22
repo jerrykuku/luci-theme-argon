@@ -64,6 +64,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          name: For openwrt official Snapshots LuCI master
           tag_name: ${{steps.check_version.outputs.latest_version}}
 
 
