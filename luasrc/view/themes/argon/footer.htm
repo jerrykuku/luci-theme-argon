@@ -59,25 +59,13 @@
 </div>
 </div>
 	<script>
-		// thanks for Jo-Philipp Wich <jow@openwrt.org>
-		var winHeight = $(window).height();
-		$(window).resize(function () {
-			if($(document.body).height() < 525 ){
-				if($(".ftc").css('display') != 'none'){
-					$(".ftc").hide()
-				}
-			}else{
-				if($(".ftc").css('display') == 'none'){
-					$(".ftc").show()
-				}
-			}
-		})
-	</script>
-
-	<script>
-		if (window.orientation == 90 || window.orientation == -90) {
-			$(".ftc").hide()
-		}
+		window.addEventListener('resize', function() {
+        		if (window.innerHeight < 600) {
+            			document.getElementsByClassName("ftc")[0].style.display = "none";
+        		} else {
+           			 document.getElementsByClassName("ftc")[0].style.display = "block";
+        		}
+    		})
 	</script>
 
 	<script src="<%=media%>/js/styles-argon.js<%# ?v=PKG_VERSION %>"></script>

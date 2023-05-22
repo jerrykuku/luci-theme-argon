@@ -283,6 +283,7 @@ li {
   max-width: 420px;
   background-color: #fff;
   background-color: var(--white);
+  overflow:hidden;
 }
 .login-page .login-container .login-form .brand {
   display: flex;
@@ -308,7 +309,7 @@ li {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 .login-page .login-container .login-form .brand:hover {
@@ -3061,9 +3062,6 @@ input[name="nslookup"] {
   .login-page .login-container {
     margin-left: 0rem !important;
     width: 100%;
-  }
-  .login-page .login-container .login-form {
-    max-width: 480px;
   }
   .login-page .login-container .login-form .form-login .input-group::before {
     color: #525461;
