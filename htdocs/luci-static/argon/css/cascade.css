@@ -226,7 +226,8 @@ li {
 }
 .login-page .video video {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 .login-page .volume-control {
   position: fixed;
@@ -3054,10 +3055,6 @@ input[name="nslookup"] {
   .pull-right {
     float: right;
     margin-top: 0rem !important;
-  }
-  .login-page .video video {
-    width: auto !important;
-    height: 100% !important;
   }
   .login-page .login-container {
     margin-left: 0rem !important;
