@@ -317,7 +317,7 @@ li {
   text-decoration: none;
 }
 .login-page .login-container .login-form .form-login {
-  width: 100%;
+  width: 420px;
   padding: 20px 50px;
   box-sizing: border-box;
 }
@@ -3044,6 +3044,15 @@ input[name="nslookup"] {
   }
   #diag-rc-output > pre {
     font-size: 1rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .login-page .login-container {
+    margin-left: 0rem !important;
+    width: 500px;
+  }
+  .login-page .login-container .login-form {
+    max-width: 500px;
   }
 }
 @media screen and (max-width: 480px) {
