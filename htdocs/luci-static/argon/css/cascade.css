@@ -2528,6 +2528,23 @@ form > .cbi-map > .cbi-section > .cbi-section-node > .cbi-value > .cbi-value-fie
 .cbi-section-table .cbi-section-table-titles .cbi-section-table-cell {
   width: auto !important;
 }
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #9e9e9e;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #424242;
+}
 /* desc */
 .cbi-section-descr {
   padding: 1rem 1.5rem;
@@ -2983,25 +3000,6 @@ input[name="nslookup"] {
   }
   .main > .main-left > .nav > .slide > .slide-menu > li > a {
     font-size: 0.7rem;
-  }
-}
-@media screen and (min-width: 600px) {
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-  ::-webkit-scrollbar,
-  ::-webkit-scrollbar-corner {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #9e9e9e;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #757575;
-  }
-  ::-webkit-scrollbar-thumb:active {
-    background: #424242;
   }
 }
 @media screen and (max-width: 992px) {

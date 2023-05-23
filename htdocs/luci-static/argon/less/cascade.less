@@ -1827,6 +1827,28 @@ td>table>tbody>tr>td,
     margin: 0;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9e9e9e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #757575;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #424242;
+}
+
 /* desc */
 
 
@@ -3673,30 +3695,6 @@ input[name="nslookup"] {
 
     .main>.main-left>.nav>.slide>.slide-menu>li>a {
         font-size: 0.7rem;
-    }
-}
-
-@media screen and (min-width: 600px) {
-    ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-    }
-
-    ::-webkit-scrollbar,
-    ::-webkit-scrollbar-corner {
-        background: transparent;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: #9e9e9e;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: #757575;
-    }
-
-    ::-webkit-scrollbar-thumb:active {
-        background: #424242;
     }
 }
 
