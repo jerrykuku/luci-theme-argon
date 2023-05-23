@@ -59,8 +59,14 @@
 </div>
 </div>
 	<script>
+        	if (window.innerHeight < 660) {
+            		document.getElementsByClassName("ftc")[0].style.display = "none";
+        	} else {
+           		 document.getElementsByClassName("ftc")[0].style.display = "block";
+        	}
+
 		window.addEventListener('resize', function() {
-        		if (window.innerHeight < 600) {
+        		if (window.innerHeight < 660) {
             			document.getElementsByClassName("ftc")[0].style.display = "none";
         		} else {
            			 document.getElementsByClassName("ftc")[0].style.display = "block";
