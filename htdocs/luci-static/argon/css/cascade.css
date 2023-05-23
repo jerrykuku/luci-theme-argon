@@ -2170,7 +2170,7 @@ td > table > tbody > tr > td {
   border-bottom: 0.18751rem solid var(--primary);
   color: #5e72e4;
   color: var(--primary);
-  background-color: #dce1fe;
+  background-color: var(--light-subtabs-background);
   margin-bottom: 0;
   border-radius: 0;
 }
@@ -2231,7 +2231,7 @@ td > table > tbody > tr > td {
   border-bottom: 0.18751rem solid var(--primary);
   color: #5e72e4;
   color: var(--primary);
-  background-color: #dce1fe;
+  background-color: var(--light-subtabs-background);
   margin-bottom: 0;
 }
 .cbi-tabmenu li:hover a {
@@ -2241,7 +2241,7 @@ td > table > tbody > tr > td {
   border-bottom: 0.18751rem solid #5e72e4;
   border-bottom: 0.18751rem solid var(--primary);
   color: var(--primary);
-  background-color: #dce1fe;
+  background-color: var(--light-subtabs-background);
   margin-bottom: 0;
 }
 .cbi-tabmenu li[class~="cbi-tab"] a {
