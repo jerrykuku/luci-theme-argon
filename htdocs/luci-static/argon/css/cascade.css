@@ -2101,6 +2101,8 @@ fieldset.cbi-section p {
   letter-spacing: 0.1rem;
   color: #32325d;
   font-weight: 600;
+  position: sticky;
+  left: 0;
 }
 table {
   border-spacing: 0;
