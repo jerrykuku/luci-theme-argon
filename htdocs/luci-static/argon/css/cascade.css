@@ -964,9 +964,6 @@ form.inline + form.inline,
   border-color: #5e72e4 !important;
   border-color: var(--primary) !important;
 }
-.cbi-button-add {
-  margin-left: 1.5rem;
-}
 .node-services-vssr .ssr-button {
   margin-left: 0.3rem;
 }
