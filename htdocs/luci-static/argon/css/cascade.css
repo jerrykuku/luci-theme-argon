@@ -178,7 +178,7 @@ a:active {
   color: var(--primary);
   text-decoration: none;
 }
-a:-webkit-any-link:not(li a, .main-left a, .brand, .pull-right a, .alert-message a, .login-container footer a) {
+a:-webkit-any-link:not(li a, .main-left a, .brand, .pull-right a, .alert-message a, .login-container footer a, .cbi-button) {
   color: -webkit-link;
   cursor: pointer;
   color: var(--primary);
