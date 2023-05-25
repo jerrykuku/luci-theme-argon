@@ -155,6 +155,23 @@ body {
   color: #ffffff;
   color: var(--white);
 }
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #9e9e9e;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #424242;
+}
 a:link,
 a:visited,
 a:active {
@@ -568,8 +585,7 @@ footer a {
   background-color: var(--menubar-scrollbar-thumb);
 }
 .main .main-left::-webkit-scrollbar-track {
-  background-color: #fff;
-  background-color: var(--menubar-background);
+  background-color: transparent;
 }
 .main .main-left .sidenav-header {
   padding: 1.5rem;
@@ -2154,15 +2170,23 @@ td > table > tbody > tr > td {
   white-space: nowrap;
   overflow-x: auto;
 }
-.tabs::-webkit-scrollbar {
+.tabs::-webkit-scrollbar,
+.cbi-section::-webkit-scrollbar,
+.cbi-section > *::-webkit-scrollbar {
   width: 1px;
   height: 5px;
 }
 .tabs::-webkit-scrollbar-thumb {
-  background-color: #f6f9fc;
+  background-color: #9e9e9e;
+}
+.tabs::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+.tabs::-webkit-scrollbar-thumb:active {
+  background: #424242;
 }
 .tabs::-webkit-scrollbar-track {
-  background-color: #fff;
+  background-color: transparent;
 }
 .tabs li[class~="active"],
 .tabs li:hover {
@@ -2207,10 +2231,16 @@ td > table > tbody > tr > td {
   height: 5px;
 }
 .cbi-tabmenu::-webkit-scrollbar-thumb {
-  background-color: #f6f9fc;
+  background-color: #9e9e9e;
+}
+.cbi-tabmenu::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+.cbi-tabmenu::-webkit-scrollbar-thumb:active {
+  background: #424242;
 }
 .cbi-tabmenu::-webkit-scrollbar-track {
-  background-color: #fff;
+  background-color: transparent;
 }
 .cbi-tabmenu li {
   background: #dce3e9;
@@ -2527,23 +2557,6 @@ form > .cbi-map > .cbi-section > .cbi-section-node > .cbi-value > .cbi-value-fie
 }
 .cbi-section-table .cbi-section-table-titles .cbi-section-table-cell {
   width: auto !important;
-}
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar,
-::-webkit-scrollbar-corner {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #9e9e9e;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #757575;
-}
-::-webkit-scrollbar-thumb:active {
-  background: #424242;
 }
 /* desc */
 .cbi-section-descr {
@@ -3138,10 +3151,9 @@ input[name="nslookup"] {
   .cbi-page-actions > div > input {
     display: none;
   }
-  .tabs::-webkit-scrollbar,
-  .cbi-tabmenu::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
+  ::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px  !important;
   }
   .tabs > li > a {
     font-size: 0.9rem;

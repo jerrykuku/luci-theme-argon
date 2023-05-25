@@ -111,10 +111,6 @@ header::after {
   background-color: #252526 !important;
 }
 
-.main .main-left::-webkit-scrollbar-track {
-  background-color: #333;
-}
-
 .main .main-right {
   background-color: #1e1e1e;
 }
