@@ -2059,7 +2059,7 @@ h3 {
   letter-spacing: 0.1rem;
   padding: 1rem 1.5rem;
   border-radius: 0.375rem;
-  background: #fff;
+  background: var(--lighter);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
 }
 fieldset {
@@ -2866,7 +2866,6 @@ input[name="nslookup"] {
   text-align: center;
 }
 .cbi-section h4 {
-  padding: 0.75rem 1.5rem;
   font-size: 0.7rem;
   font-weight: 600;
   color: #525f7f;
@@ -2939,7 +2938,7 @@ input[name="nslookup"] {
 .node-nas-usb_printer em {
   display: block;
 }
-/* PassWall */
+/* luci-app-passwall */
 #cbi-passwall #add_link_div,
 #cbi-passwall #set_node_div {
   background: #fffffff0;
@@ -2952,6 +2951,28 @@ input[name="nslookup"] {
 }
 #cbi-passwall .cbi-section-table tbody ._now_use {
   background: #5e72e473 !important;
+}
+/* luci-app-commands */
+.commandbox h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.commandbox code {
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+div.commandbox {
+  height: 16em;
+}
+/* luci-app-ssr-plus */
+#cbi-shadowsocksr .cbi-map-descr h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 @media screen and (max-width: 1600px) {
   .main .main-left {
