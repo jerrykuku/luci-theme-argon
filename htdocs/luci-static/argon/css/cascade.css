@@ -575,6 +575,7 @@ footer a {
   position: fixed;
   z-index: 100;
   transition: width 0.2s ease-in-out;
+  overflow-y: overlay;
 }
 .main .main-left::-webkit-scrollbar {
   width: 5px;
