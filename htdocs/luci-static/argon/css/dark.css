@@ -701,7 +701,7 @@ fieldset[id^="cbi-apply-"] {
 
 /* luci-app-openclash */
 #cbi-openclash #eye-icon,
-#cbi-openclash img[title="Ë¢ÐÂ"] {
+#cbi-openclash img[title="åˆ·æ–°"] {
   filter: invert(100%);
 }
 #cbi-openclash #cbi-openclash-config fieldset[control-id="ControlID-46"],
