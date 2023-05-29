@@ -111,10 +111,6 @@ header::after {
   background-color: #252526 !important;
 }
 
-.main .main-left::-webkit-scrollbar-track {
-  background-color: #333;
-}
-
 .main .main-right {
   background-color: #1e1e1e;
 }
@@ -136,7 +132,7 @@ a:active {
   color: var(--dark_webkit-any-link);
 }
 
-a:-webkit-any-link:not(li a, .main-left a, .brand, .pull-right a, .alert-message a, .login-container footer a) {
+a:-webkit-any-link:not(li a, .main-left a, .brand, .pull-right a, .alert-message a, .login-container footer a, .cbi-button) {
   color: var(--dark_webkit-any-link) !important;
   text-shadow: 1px 1px 2px #000 !important;
 }
@@ -243,6 +239,7 @@ table>tbody>tr>th,
 table>tfoot>tr>th,
 table>thead>tr>th {
   background-color: #252526;
+  border-top: none;
   border-bottom: black 1px solid !important;
 }
 
@@ -536,7 +533,7 @@ td.cbi-value-field var,
 
 .node-services-vssr .block {
   background-color: #1e1e1e !important;
-  box-shadow: 0 0 .5rem 0 rgba(0,0,0,0.35);
+  box-shadow: 0 0 .5rem 0 rgba(0,0,0,0.35) !important;
 }
 
 .node-services-vssr .block h4 {
@@ -545,8 +542,8 @@ td.cbi-value-field var,
 
 .node-services-vssr .status-bar {
   color: #ccc;
-  box-shadow: 0 0 .5rem 0 rgba(0,0,0,0.35);
-  background-color: #1e1e1e;
+  background: #333333f0;
+  box-shadow: #00000094 10px 10px 30px 5px;
 }
 
 .node-services-vssr .cbi-section-table-row {
@@ -678,7 +675,7 @@ fieldset[id^="cbi-apply-"] {
   color: #ccc !important;
 }
 
-/* PassWall */
+/* luci-app-passwall */
 #cbi-passwall #add_link_div,
 #cbi-passwall #set_node_div {
   background: #333333f0 !important;
@@ -686,6 +683,44 @@ fieldset[id^="cbi-apply-"] {
 }
 #cbi-passwall #add_link_div #nodes_link {
   background: #3c3c3c  !important;
+}
+
+/* luci-app-bypass */
+#cbi-bypass .status-bar {
+  color: #ccc;
+  background: #333333f0;
+  box-shadow: #00000094 10px 10px 30px 5px;
+}
+
+/* luci-app-clash */
+#cbi-clash .cbi-section .pure-u-1-4 .pure-g,
+#cbi-clash .cbi-section .siz .pure-g {
+  background-color: #1e1e1e !important;
+  box-shadow: 0 0 .5rem 0 rgba(0,0,0,0.35) !important;
+}
+
+/* luci-app-openclash */
+#cbi-openclash #eye-icon,
+#cbi-openclash img[title="刷新"] {
+  filter: invert(100%);
+}
+#cbi-openclash #cbi-openclash-config fieldset[control-id="ControlID-46"],
+#cbi-openclash .CodeMirror-merge-copybuttons-right,
+.CodeMirror-scroll {
+  background-color: #333333 !important;
+}
+#cbi-openclash .cbi-section .cbi-tabmenu li {
+  border-right: 1px solid #3c3c3c !important;
+}
+#cbi-openclash .CodeMirror-merge {
+  border: 1px solid transparent !important;
+}
+#cbi-openclash-config-clog .cbi-section {
+  border: 1px solid #3c3c3c !important;
+}
+#cbi-openclash .CodeMirror-gutters {
+  border-right: 1px solid #3c3c3c !important;
+  background-color: #1e1e1e !important;
 }
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
