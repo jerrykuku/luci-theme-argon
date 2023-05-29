@@ -2173,7 +2173,7 @@ td > table > tbody > tr > td {
 .tabs::-webkit-scrollbar,
 .cbi-section::-webkit-scrollbar,
 .cbi-section > *::-webkit-scrollbar {
-  width: 1px;
+  width: 5px;
   height: 5px;
 }
 .tabs::-webkit-scrollbar-thumb {

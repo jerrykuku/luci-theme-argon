@@ -2629,14 +2629,8 @@ td>table>tbody>tr>td {
     white-space: nowrap;
     overflow-x: auto;
 
-    .cbi-section::-webkit-scrollbar,
-    .cbi-section > *::-webkit-scrollbar {
-        width: 1px;
-        height: 5px;
-    }
-
     &::-webkit-scrollbar {
-        width: 1px;
+        width: 5px;
         height: 5px;
     }
 
@@ -2690,6 +2684,12 @@ td>table>tbody>tr>td {
             border-bottom: 0.18751rem solid var(--primary);
         }
     }
+}
+
+.cbi-section::-webkit-scrollbar,
+.cbi-section > *::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
 }
 
 .cbi-tabmenu {
