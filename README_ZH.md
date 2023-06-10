@@ -26,14 +26,14 @@
 [zh-cn-release-log]: /RELEASE_ZH.md
 [config-link]: https://github.com/jerrykuku/luci-app-argon-config/releases
 [lede]: https://github.com/coolsnowwolf/lede
-[official]: https://github.com/openwrt/openwrt
+[official-luci-18.06]: https://github.com/openwrt/luci/tree/openwrt-18.06
 [immortalwrt]: https://github.com/immortalwrt/immortalwrt
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon_title2.svg">
+<img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon_title4.svg">
 
 # 一个全新的 OpenWrt 主题
-### • 该分支只适配 Lean's LEDE 和 OpenWrt LuCI 18.06 •
+### • 该分支只适配 [Lean's LEDE][lede] / [OpenWrt LuCI 18.06][official-luci-18.06] •
   
 Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，  
 允许用户使用图片或视频自定义其登录界面。  
