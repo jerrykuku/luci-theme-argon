@@ -677,7 +677,7 @@ footer {
         position: fixed;
         z-index: 100;
         transition: width 0.2s ease-in-out;
-        overflow-y: overlay;
+        overflow-y: scroll;
 
         &::-webkit-scrollbar {
             width: 5px;
@@ -1234,7 +1234,7 @@ select {
 
 /*textarea*/
 textarea {
-    border: none !important;
+    border: 1px solid #dee2e6 !important;
     outline: none;
     min-height: 14rem !important;
     padding: 0.8rem !important;
@@ -1242,6 +1242,9 @@ textarea {
     font-family: var(--font-family-monospace) !important;
     font-size: inherit;
     color: black;
+    box-shadow: inset 0 1px 3px rgb(124 124 124 / 30%);
+    border-radius: 0.375rem !important;
+    vertical-align: middle;
 }
 
 /* change */
@@ -2687,7 +2690,8 @@ td>table>tbody>tr>td {
 }
 
 .cbi-section::-webkit-scrollbar,
-.cbi-section > *::-webkit-scrollbar {
+.cbi-section > *::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
     width: 5px;
     height: 5px;
 }
@@ -3619,12 +3623,6 @@ input[name="nslookup"] {
 #cbi-passwall #set_node_div {
     background: #fffffff0;
 }
-#cbi-passwall #add_link_div #nodes_link {
-    background: var(--lighter);
-}
-#cbi-passwall #add_link_div .cbi-value-title {
-    vertical-align: middle;
-}
 #cbi-passwall .cbi-section-table tbody ._now_use {
     background: #5e72e473 !important;
 }
@@ -3651,6 +3649,11 @@ div.commandbox {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* luci-app-mwan3 */
+.node-status-mwan .cbi-tabmenu {
+    padding: 3rem 0.5rem 0 0.5rem;
 }
 
 @media screen and (max-width: 1600px) {
