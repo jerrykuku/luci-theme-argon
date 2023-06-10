@@ -104,7 +104,7 @@ make menuconfig #choose LUCI->Theme->Luci-theme-argon
 make -j1 V=s
 ```
 
-### Install on LuCI 18.06 ( Lean's LEDE )
+### Install for LuCI 18.06 ( Lean's LEDE )
 
 ```bash
 wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.2/luci-theme-argon_1.8.2-20230609_all.ipk
