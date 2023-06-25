@@ -2900,6 +2900,12 @@ input[name="nslookup"] {
 .node-system-flashops fieldset {
   margin-top: 0;
 }
+.node-system-flashops fieldset > ul{
+  padding: 1rem;
+}
+.node-system-flashops fieldset + .cbi-page-actions{
+  margin-top: 1rem;
+}
 .node-status-iptables .cbi-tabmenu,
 .node-system-packages .cbi-tabmenu,
 .node-system-flashops .cbi-tabmenu {
@@ -2978,6 +2984,17 @@ div.commandbox {
 .node-status-mwan .cbi-tabmenu {
   padding: 3rem 0.5rem 0 0.5rem;
 }
+/* luci-app-openclash */
+.node-services-openclash .cbi-tabmenu{
+  font-size: 0;
+}
+.node-services-openclash .cbi-tabmenu > li{
+  margin-right: 4px;
+}
+.node-services-openclash .cbi-tabmenu > li:last-child{
+  margin-right: 0;
+}
+
 @media screen and (max-width: 1600px) {
   .main .main-left {
     width: calc(0% + 13rem);
