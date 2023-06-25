@@ -1045,6 +1045,9 @@ textarea {
   border-radius: 0.375rem !important;
   vertical-align: middle;
 }
+.cbi-value .cbi-value-field textarea {
+  margin: 0.25rem;
+}
 /* change */
 .uci-change-list {
   font-family: monospace;
