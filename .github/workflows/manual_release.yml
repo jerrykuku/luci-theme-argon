@@ -28,7 +28,6 @@ on:
 env:
   TZ: Asia/Shanghai
 
-
 jobs:
   job_check:
     if: github.repository == ${{ github.repository }}
@@ -66,7 +65,6 @@ jobs:
         with:
           name: For Lean's LEDE 18.06 LuCI
           tag_name: ${{steps.check_version.outputs.latest_version}}
-
 
   job_build_argon:
     name: Build Argon (18.06)
