@@ -78,10 +78,10 @@ Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，
 ### 使用 Lean's LEDE 构建
 
 ```bash
-cd lede/package/lean
-rm -rf luci-theme-argon
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci-theme-argon
-make menuconfig #choose LUCI->Theme->Luci-theme-argon
+cd lede
+rm -rf feeds/luci/themes/luci-theme-argon
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/downloads/luci-theme-argon
+make menuconfig #选择 LuCI->Themes->luci-theme-argon
 make -j1 V=s
 ```
 
