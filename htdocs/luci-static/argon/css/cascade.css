@@ -2178,7 +2178,8 @@ td > table > tbody > tr > td {
 .tabs::-webkit-scrollbar,
 .cbi-section::-webkit-scrollbar,
 .cbi-section > *::-webkit-scrollbar,
-textarea::-webkit-scrollbar {
+textarea::-webkit-scrollbar,
+div::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
