@@ -3005,6 +3005,27 @@ div.commandbox {
   font-size: 0.875rem;
 }
 
+/* luci-app-dockerman */
+#cbi-dockerd > .cbi-section > br,
+#cbi-docker > .cbi-section > br {
+  display: none;
+}
+
+/* luci-app-diskman */
+#cbi-diskman > .cbi-section > br {
+  display: none;
+}
+
+/* luci-app-istorex (Quick Start) */
+#app #main #page .app-container_body .btn-f,
+#app #main #page .app-container_body .btn-r {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  width: 30px;
+}
+
 @media screen and (max-width: 1600px) {
   .main .main-left {
     width: calc(0% + 13rem);
