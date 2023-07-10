@@ -77,10 +77,10 @@ It also supports automatic and manual switching between light and dark modes.
 ### Build for Lean's LEDE project
 
 ```bash
-cd lede/package/lean
-rm -rf luci-theme-argon
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci-theme-argon
-make menuconfig #choose LUCI->Theme->Luci-theme-argon
+cd lede
+rm -rf feeds/luci/themes/luci-theme-argon
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/downloads/luci-theme-argon
+make menuconfig #choose LuCI->Themes->luci-theme-argon
 make -j1 V=s
 ```
 

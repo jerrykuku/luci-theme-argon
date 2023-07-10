@@ -1688,7 +1688,7 @@ input[name="nslookup"] {
     background-color: var(--primary) !important;
     background-image: url(../img/trafficbar.png);
     background-position: left top;
-    animation: sparkle 1500ms linear infinite;
+    animation: sparkle 1000ms linear infinite;
 }
 
 #swaptotal>div>div>div>small,
@@ -2694,7 +2694,8 @@ td>table>tbody>tr>td {
 
 .cbi-section::-webkit-scrollbar,
 .cbi-section > *::-webkit-scrollbar,
-textarea::-webkit-scrollbar {
+textarea::-webkit-scrollbar,
+div::-webkit-scrollbar {
     width: 5px;
     height: 5px;
 }
@@ -3486,7 +3487,7 @@ input[name="nslookup"] {
             height: 100% !important;
             background-image: url(../img/trafficbar.png);
             background-position: left top;
-            animation: sparkle 1500ms linear infinite;
+            animation: sparkle 1000ms linear infinite;
         }
     }
 
@@ -3676,6 +3677,34 @@ div.commandbox {
 }
 .node-services-openclash .cbi-tabmenu > li:last-child {
     margin-right: 0;
+}
+
+/* luci-app-ddnsto */
+.node-services-ddnsto .cbi-section-node .cbi-value div {
+    display: table-cell;
+    line-height: 1.6;
+    font-size: 0.875rem;
+}
+
+/* luci-app-dockerman */
+#cbi-dockerd > .cbi-section > br,
+#cbi-docker > .cbi-section > br {
+    display: none;
+}
+
+/* luci-app-diskman */
+#cbi-diskman > .cbi-section > br {
+    display: none;
+}
+
+/* luci-app-istorex (Quick Start) */
+#app #main #page .app-container_body .btn-f,
+#app #main #page .app-container_body .btn-r {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    width: 30px;
 }
 
 @media screen and (max-width: 1600px) {
