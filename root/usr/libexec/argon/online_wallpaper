@@ -35,9 +35,8 @@ fetch_pic_url() {
         local collection_id=${WEB_PIC_SRC#unsplash_}
         if [ -z "$API_KEY" ]; then
             curl -fks --max-time 3 \
-                "https://source.unsplash.com/1920x1080/daily?wallpapers" |
+                "https://source.unsplash.com/collection/${collection_id}/1920x1080" |
                 sed -E 's#^.*href="([^?]+)\?.*$#\1?fm=jpg\&fit=crop\&w=1920\&h=1080#'
-
         else
             curl -fks --max-time 3 \
                 "https://api.unsplash.com/photos/random?client_id=${API_KEY}&collections=${collection_id}" |
