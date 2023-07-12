@@ -21,15 +21,28 @@ fetch_pic_url() {
         [ -n "${picpath}" ] && echo "//www.bing.com${picpath}"
         ;;
     unsplash)
-        curl -fks --max-time 3 \
-            "https://api.unsplash.com/photos/random?client_id=${API_KEY}" |
-            jsonfilter -qe '@["urls"]["regular"]'
+        if [ -z "$API_KEY" ]; then
+            curl -fks --max-time 3 \
+                "https://source.unsplash.com/1920x1080/daily?wallpapers" |
+                sed -E 's#^.*href="([^?]+)\?.*$#\1?fm=jpg\&fit=crop\&w=1920\&h=1080#'
+        else
+            curl -fks --max-time 3 \
+                "https://api.unsplash.com/photos/random?client_id=${API_KEY}" |
+                jsonfilter -qe '@["urls"]["regular"]'
+        fi
         ;;
     unsplash_*)
         local collection_id=${WEB_PIC_SRC#unsplash_}
-        curl -fks --max-time 3 \
-            "https://api.unsplash.com/photos/random?client_id=${API_KEY}&collections=${collection_id}" |
-            jsonfilter -qe '@["urls"]["regular"]'
+        if [ -z "$API_KEY" ]; then
+            curl -fks --max-time 3 \
+                "https://source.unsplash.com/1920x1080/daily?wallpapers" |
+                sed -E 's#^.*href="([^?]+)\?.*$#\1?fm=jpg\&fit=crop\&w=1920\&h=1080#'
+
+        else
+            curl -fks --max-time 3 \
+                "https://api.unsplash.com/photos/random?client_id=${API_KEY}&collections=${collection_id}" |
+                jsonfilter -qe '@["urls"]["regular"]'
+        fi
         ;;
     wallhaven)
         curl -fks --max-time 3 \
@@ -39,9 +52,9 @@ fetch_pic_url() {
     wallhaven_*)
         local tag_id=${WEB_PIC_SRC#wallhaven_}
         local has_api_key=""
-        [ -n "$API_KEY" ] &&  has_api_key="apikey=$API_KEY&" || has_api_key=""
+        [ -n "$API_KEY" ] && has_api_key="apikey=$API_KEY&" || has_api_key=""
         local use_reso="resolutions"
-        [ "$EXACT_RESO" -eq "1" ] use_reso='resolutions' || use_reso='atleast'
+        [ "$EXACT_RESO" -eq "1" ] && use_reso='resolutions' || use_reso='atleast'
         curl -fks --max-time 3 \
             "https://wallhaven.cc/api/v1/search?${has_api_key}q=id%3A${tag_id}&${use_reso}=1920x1080&sorting=random" |
             jsonfilter -qe '@.data[0].path'
