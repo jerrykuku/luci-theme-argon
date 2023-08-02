@@ -15,7 +15,7 @@
 [issues]: https://github.com/jerrykuku/luci-theme-argon/issues/new
 [issues-badge]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg?style=flat-square
 [release]: https://github.com/jerrykuku/luci-theme-argon/releases
-[release-badge]: https://img.shields.io/badge/release-v1.8.2-blue.svg?
+[release-badge]: https://img.shields.io/badge/release-v1.8.3-blue.svg?
 [download]: https://github.com/jerrykuku/luci-theme-argon/releases
 [download-badge]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total?style=flat-square
 [contact]: https://t.me/jerryk6
@@ -41,7 +41,7 @@ Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，
 
 [![license][license-badge]][license]
 [![prs][prs-badge]][prs]
-[![issues][issues-badge]][issues]
+[![议题][issues-badge]][issues]
 [![release][release-badge]][release]
 [![download][download-badge]][download]
 [![contact][contact-badge]][contact]
