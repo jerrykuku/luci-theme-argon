@@ -3026,6 +3026,38 @@ div.commandbox {
   width: 30px;
 }
 
+/* ttyd */
+.TTYD.node-system-terminal .main{
+  height: 100%!important;
+}
+
+.TTYD.node-system-terminal .main .main-right{
+  height: 100%!important;
+  display: flex!important;
+  flex-direction: column!important;
+}
+
+.TTYD.node-system-terminal .main .main-right #maincontent{
+  height: 100%!important;
+  flex: 1!important;
+  display: flex!important;
+  flex-direction: column!important;
+}
+
+.TTYD.node-system-terminal .main .main-right #maincontent .container{
+  flex: 1!important;
+}
+
+.TTYD.node-system-terminal .main .main-right #maincontent .container .cbi-map{
+  display: flex!important;
+  flex-direction: column!important;
+  height: 100%!important;
+}
+
+.TTYD.node-system-terminal .main .main-right #maincontent .container .cbi-map #terminal{
+	 flex: 1!important;
+}
+
 @media screen and (max-width: 1600px) {
   .main .main-left {
     width: calc(0% + 13rem);
