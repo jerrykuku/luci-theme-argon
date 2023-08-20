@@ -15,7 +15,7 @@
 [issues]: https://github.com/jerrykuku/luci-theme-argon/issues/new
 [issues-badge]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg?style=flat-square
 [release]: https://github.com/jerrykuku/luci-theme-argon/releases
-[release-badge]: https://img.shields.io/badge/release-v1.8.2-blue.svg?
+[release-badge]: https://img.shields.io/badge/release-v1.8.3-blue.svg?
 [download]: https://github.com/jerrykuku/luci-theme-argon/releases
 [download-badge]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total?style=flat-square
 [contact]: https://t.me/jerryk6
@@ -41,7 +41,7 @@ It also supports automatic and manual switching between light and dark modes.
 
 [![license][license-badge]][license]
 [![prs][prs-badge]][prs]
-[![issues][issues-badge]][issues]
+[![议题][issues-badge]][issues]
 [![release][release-badge]][release]
 [![download][download-badge]][download]
 [![contact][contact-badge]][contact]
@@ -77,17 +77,17 @@ It also supports automatic and manual switching between light and dark modes.
 ### Build for Lean's LEDE project
 
 ```bash
-cd lede/package/lean
-rm -rf luci-theme-argon
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci-theme-argon
-make menuconfig #choose LUCI->Theme->Luci-theme-argon
+cd lede
+rm -rf feeds/luci/themes/luci-theme-argon
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/downloads/luci-theme-argon
+make menuconfig #choose LuCI->Themes->luci-theme-argon
 make -j1 V=s
 ```
 
 ### Install for LuCI 18.06 ( Lean's LEDE )
 
 ```bash
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.2/luci-theme-argon_1.8.2-20230609_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.3/luci-theme-argon_1.8.3-20230710_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 

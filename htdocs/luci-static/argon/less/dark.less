@@ -793,6 +793,105 @@ fieldset[id^="cbi-apply-"] {
     background-color: #1e1e1e !important;
 }
 
+/* luci-app-dockerman */
+#cbi-dockerd .img-con img {
+    filter: invert(0.4);
+}
+
+/* luci-app-istorex (interface config[NetworkPort]) */
+#cbi-nfs-mount  .app-container_status-label_bg {
+    background: #333333;
+}
+#cbi-nfs-mount td svg {
+    filter: invert(0.3);
+}
+#actioner .actioner-dns {
+    background-color: #333333;
+}
+#actioner .actioner-dns_header,
+#actioner .actioner-container_header {
+    border-bottom: 1px solid #cbcbcb !important;
+}
+#actioner .actioner-dns_footer {
+    border-top: 1px solid #cbcbcb !important;
+}
+
+/* luci-app-istorex (Network Guide) */
+#app #main #page .title,
+#app #main #page .desc {
+    color: #cccccc;
+    background-color: #333333;
+}
+#app #main #page .network-message li:not(span):not(a) {
+    color: #8d8d8d;
+}
+#app #main #page code {
+    background-color: #333333;
+}
+
+/* luci-app-istorex (Quick Start) */
+#app #main #page .network-container_flow-container,
+#app #main #page .app-container_status-container,
+#app #main #page .nas-container .nas-container_card .app-container,
+#app #main #page .app-container {
+    background-color: #333333;
+}
+#app #main #page .flow-data span,
+#app #main #page .app-container_status-label_block span,
+#app #main #page .app-container .item-label span:not(#app #main #page .app-container .progress-value span) {
+    color: #cccccc;
+}
+#app #main #page .app-container_status-info span,
+#app #main #page .app-container_status-info span,
+#app #main #page .app-container_title span {
+    color: #dddddd;
+}
+.app-container_body .app-container_status-label_bg {
+    background-color: #282828 !important;
+}
+#app #main #page .item-label_value .progress {
+    background-color: rgb(118, 118, 118);
+}
+#app #main #page .app-container_nas-menu button[class=""] {
+    background-color: #8b8b8b;
+}
+#app #main #page .app-container_nas-menu button[class="on"] {
+    background-color: #555555;
+}
+#app #main #page .app-container_title .DeviceBlock ul {
+    background-color: #cccccc;
+}
+#actioner div.action,
+#actioner div.actioner-container {
+    background-color: #3c3c3c;
+}
+#actioner div.action .title {
+    color: #cccccc;
+}
+#actioner div.action .desc {
+    color: #cbcbcb;
+}
+#actioner div.action div.roots span,
+#actioner div.action div.move span:not(span.tip),
+#actioner div.action div.left span,
+#actioner div.action div.input_row span,
+#actioner div.label-item label span {
+    color: #cbcbcb;
+}
+#actioner div.action span.tooltip-trigger svg path {
+    fill: #cbcbcb;
+}
+#actioner div.actioner-dns_body div.label-item_value select {
+    height: 43px;
+}
+#actioner div.actioner-container_footer div.close {
+    color: #ffffff;
+}
+#app #main div.app-container div.app-container_title span a svg path,
+#app #main #page span.disk_infoicon svg g {
+    fill: #8b8b8b;
+}
+
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     .login-page .login-container .login-form {
         -webkit-backdrop-filter: blur(var(--blur-radius-dark));
