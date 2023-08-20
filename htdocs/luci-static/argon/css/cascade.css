@@ -318,10 +318,11 @@ li {
 .login-page .login-container .login-form .brand-text {
   font-size: 1.8rem;
   font-weight: 700;
+  letter-spacing: 1px;
   margin-bottom: 85px;
   font-family: "TypoGraphica";
   width: 420px;
-  padding: 0 0.5rem 0 0.5rem;
+  padding: 0 0.5rem 0.1rem 0.5rem;
   text-align: center;
   word-break: break-word;
   overflow: hidden;
