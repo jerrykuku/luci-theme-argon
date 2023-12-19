@@ -118,7 +118,6 @@ body {
 
 textarea {
     padding: 0.2rem;
-
     &:focus-visible {
         outline: none;
         border: 1px solid var(--primary);
@@ -3337,8 +3336,22 @@ label[data-index][data-depends] {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 2px 0 rgba(0, 0, 0, .12);
 }
 
-[data-page="admin-network-diagnostics"] .table {
-    box-shadow: none;
+[data-page="admin-network-diagnostics"] {
+    .table {
+        box-shadow: none;
+    }
+
+    .cbi-section {
+        padding: 0.5rem;
+    }
+
+    textarea {
+        background: transparent;
+        border-radius: 0.25rem;
+        font-family: inherit !important;
+        color: #8898aa;
+        border: 1px solid #dee2e6;
+    }
 }
 
 input[name="ping"],
@@ -3361,20 +3374,22 @@ input[name="nslookup"] {
 }
 
 /* fix system reboot */
-[data-page="admin-system-reboot"] p {
-    padding-left: 1.5rem;
-}
+[data-page="admin-system-reboot"] {
+    p {
+        padding-left: 1.5rem;
+    }
 
-[data-page="admin-system-reboot"] .cbi-button {
-    background: #fb6340 !important;
-    border-color: #fb6340 !important;
-    margin-left: 0 !important;
-}
+    p > span {
+        position: relative;
+        top: .1rem;
+        left: 1rem;
+    }
 
-[data-page="admin-system-reboot"] p>span {
-    position: relative;
-    top: .1rem;
-    left: 1rem;
+    .cbi-button {
+        background: #fb6340 !important;
+        border-color: #fb6340 !important;
+        margin-left: 0 !important;
+    }
 }
 
 [data-page="admin-vpn-passwall"] h4 {
@@ -3394,13 +3409,15 @@ input[name="nslookup"] {
 }
 
 /* samba */
-#cbi-samba [data-tab="template"] .cbi-value-field {
-    display: block;
-}
+#cbi-samba [data-tab="template"] {
+    .cbi-value-field {
+        display: block;
+    }
 
-#cbi-samba [data-tab="template"] .cbi-value-title {
-    width: auto;
-    padding-bottom: .6rem;
+    .cbi-value-title {
+        width: auto;
+        padding-bottom: .6rem;
+    }
 }
 
 /* admin-system-admin-password */
@@ -3854,6 +3871,25 @@ pre.command-output {
     height: 100%;
 }
 
+[data-page="admin-system-fileassistant"] {
+    .fb-container .panel-title {
+        padding: .5rem .75rem !important;
+    }
+
+    .cbi-section.fb-container{
+        padding: 0.5rem;
+    }
+
+    .fb-container .panel-container {
+        border-bottom-color: #dee2e6;
+    }
+}
+
+[data-page^="admin-services-openclash"] {
+    .cbi-tabmenu > li {
+        border-right: none !important;
+    }
+}
 
 /* IE hacks */
 @media all and (-ms-high-contrast: none) {

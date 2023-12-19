@@ -489,6 +489,7 @@ select {
 .cbi-input-textarea {
     background-color: #1e1e1e;
     color: #ccc;
+    border: 1px solid #3c3c3c !important;
 }
 
 textarea {
@@ -922,5 +923,39 @@ input,
                 border-bottom: thin solid #4d4d4d;
             }
         }
+    }
+}
+
+[data-page="admin-system-fileassistant"] {
+    .fb-container .panel-container {
+        border-bottom-color: #3c3c3c !important;
+    }
+}
+
+[data-page="admin-services-openclash-settings"] {
+    .cbi-tabmenu::-webkit-scrollbar-thumb {
+        background-color: #5b5b5b;
+    }
+
+    .cbi-tabmenu::-webkit-scrollbar-track {
+        background-color: rgba(60, 60, 60, 0.75);
+    }
+
+    #container.openclash.config.debug fieldset {
+        border: none !important;
+    }
+
+    #tab {
+        border-color: #3c3c3c;
+    }
+}
+
+[data-page="admin-network-diagnostics"] {
+    textarea {
+        background: transparent;
+        border-radius: 0.25rem;
+        font-family: inherit !important;
+        color: #ccc;
+        border: 1px solid #3c3c3c !important;
     }
 }
