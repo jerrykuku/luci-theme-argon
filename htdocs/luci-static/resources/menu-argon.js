@@ -79,16 +79,6 @@ return baseclass.extend({
 				hasChildren = submenu.children.length,
 				slideClass = hasChildren ? 'slide' : null,
 				menuClass = hasChildren ? 'menu' : 'food';
-			var tmpTitle = children[i].title;
-			var tmpTitleUpperCase = tmpTitle.toUpperCase();
-			tmpTitle = tmpTitleUpperCase == "TERMINAL" ? "网页终端" : tmpTitle;
-			tmpTitle = tmpTitleUpperCase == "NPC" ? "内网穿透" : tmpTitle;
-			tmpTitle = tmpTitleUpperCase == "OPENCLASH" ? "科学上网" : tmpTitle;
-			tmpTitle = tmpTitleUpperCase == "KMS SERVER" ? "KMS服务" : tmpTitle;
-			tmpTitle = tmpTitleUpperCase == "UPNP" ? "即插即用" : tmpTitle;
-			tmpTitle = tmpTitleUpperCase == "QOS" ? "服务质量" : tmpTitle;
-			tmpTitle = tmpTitleUpperCase == "FIREWALL (IPTABLES)" ? "防火墙" : tmpTitle;
-			tmpTitle = tmpTitleUpperCase == "QOS OVER NFTABLES" ? "服务质量" : tmpTitle;
 			if (isActive) {
 				ul.classList.add('active');
 				slideClass += " active";
@@ -101,7 +91,7 @@ return baseclass.extend({
 					'click': (l == 1) ? ui.createHandlerFn(this, 'handleMenuExpand') : null,
 					'class': menuClass,
 					'data-title': hasChildren ? children[i].title.replace(" ", "_") : children[i].title.replace(" ", "_"),
-				}, [_(tmpTitle)]),
+				}, [_(children[i].title)]),
 				submenu
 			]));
 		}
