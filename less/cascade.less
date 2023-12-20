@@ -3368,12 +3368,20 @@ input[name="nslookup"] {
     width: 80%;
 }
 
-
-
 /* fix status */
 .node-status-overview>.main fieldset:nth-child(4) .td:nth-child(2),
 .node-status-processes>.main .table .tr .td:nth-child(3) {
     white-space: normal;
+}
+
+div[style*="display:grid;grid-template-columns:repeat"] {
+    display: flex !important;
+    justify-content: space-evenly !important;
+    padding-bottom: 1rem;
+
+    .ifacebox {
+        text-align: center;
+    }
 }
 
 [data-page="admin-system-attendedsysupgrade"] #view .cbi-button {
