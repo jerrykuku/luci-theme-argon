@@ -3888,6 +3888,37 @@ pre.command-output {
 [data-page^="admin-services-openclash"] {
     .cbi-tabmenu > li {
         border-right: none !important;
+        margin: 0 0.4rem 0 0 !important;
+
+        &:last-child {
+            margin-right: 0 !important;
+        }
+    }
+
+    #tab-content .dom {
+        padding: 0 1rem 1rem 1rem;
+    }
+
+    .cbi-input-file {
+        padding: 0.2813rem;
+        box-sizing: content-box;
+        width: 15rem !important;
+    }
+
+    [id="container.openclash.config.debug"] fieldset {
+        border: none !important;
+        padding: 1rem !important;
+    }
+
+    #diag-rc-output > pre,
+    #dns-rc-output > pre{
+        font-size: 0.875rem;
+        color: #8898aa;
+        border: 1px solid #dee2e6;
+        background-color: transparent;
+        border-radius: 0.25rem;
+        font-family: inherit;
+        box-shadow: none;
     }
 }
 
