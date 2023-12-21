@@ -402,7 +402,7 @@ h3 {
 h4 {
     margin: 0;
     padding: 0.75rem 1.25rem;
-    font-size: 0.7rem;
+    font-size: 0.875rem;
     font-weight: 600;
     color: #525f7f;
     font-weight: bold;
@@ -707,7 +707,7 @@ header,
 
 
 footer {
-    font-size: .8rem;
+    font-size: .875rem;
     overflow: hidden;
     padding: 1rem;
     text-align: right;
@@ -918,7 +918,7 @@ header {
         .status {
             span {
                 display: inline-block;
-                font-size: 0.8rem;
+                font-size: 0.875rem;
                 font-weight: bold;
                 padding: 0.3rem 0.8rem;
                 white-space: nowrap;
@@ -1738,9 +1738,12 @@ td>table>tbody>tr>td,
     }
 }
 
+.btn:not(button) ul:not(.dropdown) li{
+    padding: 0;
+}
+
 .cbi-button-up,
 .cbi-button-down {
-    font-size: 1.2rem;
     display: inline-block;
     min-width: 0;
     padding: .2rem 1rem;
@@ -2585,7 +2588,8 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
     color: var(--main-menu-color);
-    margin-left: -0.55rem !important;
+    margin-left: -0 !important;
+    left: 0;
 
     li {
         color: #000;
@@ -2919,7 +2923,7 @@ body.modal-overlay-active #modal_overlay {
 
 td>.ifacebadge,
 .td>.ifacebadge {
-    font-size: .8rem;
+    font-size: .875rem;
     background-color: #f0f0f0;
 }
 
@@ -3986,7 +3990,7 @@ pre.command-output {
     .btn:not(button),
 
     .label {
-        padding: .2rem .6rem;
+        padding: .5rem .75rem;
     }
 
 
@@ -4045,7 +4049,7 @@ pre.command-output {
     }
 
     table {
-        font-size: .7rem !important;
+        font-size: .875rem !important;
         width: 100% !important;
     }
 
@@ -4073,7 +4077,7 @@ pre.command-output {
     }
 
     .main>.main-left>.nav>.slide>.slide-menu>li>a {
-        font-size: .7rem;
+        font-size: .875rem;
     }
 
     #modal_overlay {
@@ -4097,7 +4101,7 @@ pre.command-output {
 
     .btn:not(button),
     .cbi-button {
-        font-size: 0.8rem;
+        font-size: 0.875rem;
 
     }
 }
@@ -4309,7 +4313,7 @@ pre.command-output {
 
     .btn:not(button),
     .cbi-button {
-        font-size: 0.8rem;
+        font-size: 0.875rem;
     }
 }
 
@@ -4318,7 +4322,7 @@ pre.command-output {
 
 @media screen and (max-width: 768px) {
     body {
-        font-size: .8rem;
+        font-size: .875rem;
     }
 
     .cbi-progressbar::after {
@@ -4377,7 +4381,7 @@ pre.command-output {
 
 
     .main>.main-left>.nav>.slide>.slide-menu>li>a {
-        font-size: 0.8rem;
+        font-size: 0.875rem;
     }
 
 
@@ -4471,8 +4475,6 @@ pre.command-output {
     }
 
     .cbi-dropdown[open]>ul.dropdown {
-        left: 0.2rem !important;
-        right: 0 !important;
         margin-bottom: 1rem;
     }
 
