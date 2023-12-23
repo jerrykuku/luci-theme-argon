@@ -934,10 +934,6 @@ input,
     .fb-container .panel-container {
         border-bottom-color: #3c3c3c !important;
     }
-
-    .fb-container td[class$="-icon"]::before {
-        filter: invert(0.7);
-    }
 }
 
 [data-page^="admin-services-openclash"] {
@@ -954,16 +950,10 @@ input,
     }
 
     #diag-rc-output > pre,
-    #dns-rc-output > pre {
+    #dns-rc-output > pre{
         color: #ccc;
         border: 1px solid #3c3c3c !important;
         background-color: #1e1e1e;
-    }
-
-    img[src$="arrow-clockwise-light.svg"],
-    img[src$="wrench-light.svg"],
-    img[src$="eye-light.svg"] {
-        filter: invert(0.9);
     }
 }
 
@@ -983,76 +973,4 @@ input,
     .tr > .td {
         background-color: #252526 !important;
     }
-}
-
-[data-page="admin-network-network"] {
-    .ifacebox-head[style*="--zone-color-rgb: 144, 240, 144"] {
-        background-color: rgb(73, 126, 73) !important;
-        color: #ccc !important;
-    }
-
-    .ifacebox-head[style*="--zone-color-rgb: 240, 144, 144;"] {
-        background-color: rgb(156, 79, 79) !important;
-        color: #ccc !important;
-    }
-}
-
-[data-page="admin-network-firewall-rules"] {
-    #cbi-firewall-rule {
-        .zonebadge[style*="--zone-color-rgb:240, 144, 144;"] {
-            --zone-color-rgb: 156, 79, 79 !important;
-
-            strong {
-                color: #ccc !important;
-            }
-        }
-
-        .zonebadge[style*="--zone-color-rgb:238, 238, 238;"] {
-            --zone-color-rgb: 112, 112, 112 !important;
-
-            em {
-                color: #ccc !important;
-            }
-        }
-    }
-}
-
-[data-page="admin-network-network"],
-[data-page="admin-network-firewall-rules"] {
-    .cbi-dropdown {
-        .zonebadge[style*="--zone-color-rgb:240, 144, 144;"] {
-            --zone-color-rgb: 156, 79, 79 !important;
-            color: #ccc !important;
-
-            strong {
-                color: #ccc !important;
-            }
-        }
-
-        .zonebadge[style*="--zone-color-rgb:144, 240, 144;"] {
-            --zone-color-rgb: 73, 126, 73 !important;
-            color: #ccc !important;
-
-            strong {
-                color: #ccc !important;
-            }
-        }
-
-        .zonebadge[style*="--zone-color-rgb:238, 238, 238;"] {
-            --zone-color-rgb: 112, 112, 112 !important;
-
-            strong {
-                color: #ccc !important;
-
-                + span {
-                    color: #ccc !important;
-                }
-            }
-        }
-    }
-}
-
-.btn {
-    background-color: rgb(112, 112, 112);
-    color: #fff;
 }
