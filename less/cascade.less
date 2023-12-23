@@ -1003,7 +1003,7 @@ div[style="width:100%;height:300px;border:1px solid #000;background:#fff"] {
     border-radius: 0.25rem !important;
     background-color: #fff;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 2px 0 rgba(0, 0, 0, .12);
-    text-shadow: none;
+    text-shadow: 1px 1px rgba(0, 0, 0, .1);
 
     &.error {
         background-color: #ffd600;
@@ -2520,7 +2520,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
     font-weight: bold;
     display: none;
     color: #777;
-    text-shadow: none;
+    text-shadow: 1px 1px 0 #fff;
 }
 
 .cbi-dropdown>ul>li {
@@ -3382,19 +3382,9 @@ div[style*="display:grid;grid-template-columns:repeat"] {
     display: flex !important;
     justify-content: space-evenly !important;
     padding-bottom: 1rem;
-    flex-wrap: wrap;
 
     .ifacebox {
         text-align: center;
-        flex-basis: 100px;
-    }
-}
-
-@media screen and (max-width:484px) {
-    div[style*="display:grid;grid-template-columns:repeat"] {
-        .ifacebox {
-            flex-basis: 70px;
-        }
     }
 }
 
@@ -3958,7 +3948,6 @@ pre.command-output {
     .cbi-button-up, .cbi-button-down {
         padding: 0.8rem 1.5rem;
         background-color: #f1f1f1;
-        font-size: 0;
     }
 
     select#CORE_VERSION,
