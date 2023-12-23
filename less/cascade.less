@@ -3365,17 +3365,32 @@ div[style*="display:grid;grid-template-columns:repeat"] {
     justify-content: space-evenly !important;
     padding-bottom: 1rem;
     flex-wrap: wrap;
+    font-family: 'argon', 'Consolas', 'sans-serif';
 
     .ifacebox {
         text-align: center;
         flex-basis: 100px;
+
+        .ifacebox-body {
+            font-size: 0.7rem;
+            padding: 0.875rem;
+
+            .cbi-tooltip-container {
+                font-size: inherit !important;
+            }
+        }
     }
 }
 
 @media screen and (max-width: 484px) {
     div[style*="display:grid;grid-template-columns:repeat"] {
         .ifacebox {
-            flex-basis: 70px;
+            flex-basis: 80px;
+
+            .ifacebox-body {
+                padding: 0.875rem 0.5rem;
+                font-size: 0.6rem;
+            }
         }
     }
 }
