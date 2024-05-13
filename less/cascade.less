@@ -3860,7 +3860,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 /* custom commands */
 .commands {
   display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
   gap: 10px;
 }
 
@@ -4401,10 +4401,6 @@ pre.command-output {
   .Firewall .center,
   .Firewall .center::before {
     text-align: left !important;
-  }
-
-  .commands {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
   .btn:not(button),
