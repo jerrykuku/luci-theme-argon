@@ -107,7 +107,7 @@ make -j1 V=s
 ### Install for LuCI 18.06 ( Lean's LEDE )
 
 ```bash
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.2/luci-theme-argon_1.8.2-20230609_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.2/luci-theme-argon_1.8.2-20230609_all.ipk -O luci-theme-argon_1.8.2-20230609_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
@@ -116,14 +116,14 @@ opkg install luci-theme-argon*.ipk
 ```bash
 opkg install luci-compat
 opkg install luci-lib-ipkg
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.3.1/luci-theme-argon_2.3.1_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.3.1/luci-theme-argon_2.3.1_all.ipk -O luci-theme-argon_2.3.1_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
 ### Install luci-app-argon-config
 
 ```bash
-wget --no-check-certificate https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.9/luci-app-argon-config_0.9_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.9/luci-app-argon-config_0.9_all.ipk -O luci-app-argon-config_0.9_all.ipk
 opkg install luci-app-argon-config*.ipk
 ```
 
