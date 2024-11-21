@@ -87,7 +87,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: sdk
-          key: openwrt-sdk-21.02-x86-64
+          key: openwrt-sdk-snapshot-x86-64
 
       - name: Initialization environment
         if: steps.cache-sdk.outputs.cache-hit != 'true'
