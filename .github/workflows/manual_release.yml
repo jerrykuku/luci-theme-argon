@@ -92,16 +92,16 @@ jobs:
       - name: Initialization environment
         if: steps.cache-sdk.outputs.cache-hit != 'true'
         env:
-          url_sdk: https://archive.openwrt.org/releases/21.02.5/targets/x86/64/openwrt-sdk-21.02.5-x86-64_gcc-8.4.0_musl.Linux-x86_64.tar.xz
+          url_sdk: https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-sdk-x86-64_gcc-13.3.0_musl.Linux-x86_64.tar.zst
         run: |
           wget ${{ env.url_sdk }}
           file_name=$(echo ${{env.url_sdk}} | awk -F/ '{print $NF}')
           mkdir sdk && tar -xJf $file_name -C ./sdk --strip-components=1
           cd sdk  
-          echo "src-git base https://github.com/openwrt/openwrt.git;openwrt-21.02" > feeds.conf
-          echo "src-git-full packages https://github.com/openwrt/packages.git;openwrt-21.02" >> feeds.conf
-          echo "src-git-full luci https://git.openwrt.org/project/luci.git;openwrt-21.02" >> feeds.conf
-          echo "src-git-full routing https://git.openwrt.org/feed/routing.git;openwrt-21.02"  >> feeds.conf
+          echo "src-git base https://github.com/openwrt/openwrt.git;main" > feeds.conf
+          echo "src-git-full packages https://github.com/openwrt/packages.git;master" >> feeds.conf
+          echo "src-git-full luci https://github.com/openwrt/luci.git;master" >> feeds.conf
+          echo "src-git-full routing https://git.openwrt.org/feed/routing.git;master"  >> feeds.conf
           git clone -b master https://github.com/${{ github.repository }}.git package/downloads/luci-theme-argon
           ./scripts/feeds update -a
           echo "CONFIG_PACKAGE_luci-theme-argon=m" > .config
@@ -139,4 +139,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{needs.job_check.outputs.argon_version}}
-          files: ${{ env.FIRMWARE }}/base/luci-theme*.ipk
+          files: ${{ env.FIRMWARE }}/base/luci-theme*.*
