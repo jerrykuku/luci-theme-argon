@@ -3029,19 +3029,19 @@ div.commandbox {
 
 /* luci-app-ttyd */
 .TTYD.node-system-terminal .main {
-  height: 100%!important;
+  height: 100% !important;
 }
 .TTYD.node-system-terminal .main .main-right,
 .TTYD.node-system-terminal .main .main-right #maincontent,
 .TTYD.node-system-terminal .main .main-right #maincontent .container .cbi-map {
-  height: 100%!important;
-  display: flex!important;
-  flex-direction: column!important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 .TTYD.node-system-terminal .main .main-right #maincontent,
 .TTYD.node-system-terminal .main .main-right #maincontent .container,
 .TTYD.node-system-terminal .main .main-right #maincontent .container .cbi-map #terminal {
-  flex: 1!important;
+  flex: 1 !important;
 }
 
 @media screen and (max-width: 1600px) {
