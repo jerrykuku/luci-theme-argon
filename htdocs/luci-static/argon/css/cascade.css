@@ -3044,6 +3044,15 @@ div.commandbox {
   flex: 1 !important;
 }
 
+/* luci-app-nlbwmon */
+[class*="node-nlbw-usage"] #intervalSelect {
+  height: unset !important;
+}
+[class*="node-nlbw-usage"] #resetDatabase {
+  bottom: 20px !important;
+  right: 4px !important;
+}
+
 @media screen and (max-width: 1600px) {
   .main .main-left {
     width: calc(0% + 13rem);
