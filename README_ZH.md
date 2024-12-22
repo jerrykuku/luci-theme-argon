@@ -41,7 +41,7 @@ Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，
 
 [![license][license-badge]][license]
 [![prs][prs-badge]][prs]
-[![议题][issues-badge]][issues]
+[![issues][issues-badge]][issues]
 [![release][release-badge]][release]
 [![download][download-badge]][download]
 [![contact][contact-badge]][contact]
