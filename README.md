@@ -41,7 +41,7 @@ It also supports automatic and manual switching between light and dark modes.
 
 [![license][license-badge]][license]
 [![prs][prs-badge]][prs]
-[![议题][issues-badge]][issues]
+[![issues][issues-badge]][issues]
 [![release][release-badge]][release]
 [![download][download-badge]][download]
 [![contact][contact-badge]][contact]
