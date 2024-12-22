@@ -4,10 +4,10 @@
 #
 
 #
-# Fork 和 compile the latest version yourself using Github Actions
+# Fork and compile the latest version yourself using Github Actions
 #   1.Into the repository of your own fork
 #   2.Into the repository [Settings]
-# 3.[Code 和 automation - Actions] ↓ [General] → [Workflow permissions] ↓ Check the [Read 和 write permissions] 和 [Save]
+# 3.[Code and automation - Actions] ↓ [General] → [Workflow permissions] ↓ Check the [Read 和 write permissions] and [Save]
 #   4.Let's take [Actions]
 #
 
@@ -19,7 +19,7 @@ on:
       ssh:
         description: 'SSH connection to Actions'
         required: false
-        默认: 'false'
+        default: 'false'
   push:
     branches:
       - '18.06'
