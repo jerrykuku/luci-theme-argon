@@ -7,7 +7,7 @@
 # Fork and compile the latest version yourself using Github Actions
 #   1.Into the repository of your own fork
 #   2.Into the repository [Settings]
-#   3.[Code and automation - Actions] ↓ [General] → [Workflow permissions] ↓  Check the [Read and write permissions] and [Save]
+# 3.[Code and automation - Actions] ↓ [General] → [Workflow permissions] ↓ Check the [Read 和 write permissions] and [Save]
 #   4.Let's take [Actions]
 #
 
@@ -32,7 +32,7 @@ jobs:
   job_check:
     if: github.repository == ${{ github.repository }}
     name: Check Version
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       argon_version: ${{ steps.check_version.outputs.latest_version }}
       has_update: ${{ steps.check_version.outputs.has_update }}
@@ -70,7 +70,7 @@ jobs:
     name: Build Argon (18.06)
     needs: job_check
     if: needs.job_check.outputs.has_update == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Install packages
         run: |

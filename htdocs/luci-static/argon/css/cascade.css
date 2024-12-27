@@ -1252,7 +1252,6 @@ ul li .cbi-input-checkbox {
 }
 .cbi-section-create {
   margin: 0;
-  padding-left: 0.5rem;
   align-items: center;
 }
 .cbi-section-create > * {
@@ -1626,20 +1625,25 @@ td > table > tbody > tr > td,
   top: 0;
   display: none;
 }
-#cbi-firewall-redirect table *,
-#cbi-network-switch_vlan table *,
-#cbi-firewall-zone table * {
+#cbi-firewall-redirect table *:not([type="button"]),
+#cbi-firewall-rule table *:not([type="button"]),
+#cbi-network-switch_vlan table *:not([type="button"]),
+#cbi-firewall-zone table *:not([type="button"]) {
   font-size: small;
 }
 #cbi-firewall-redirect table input[type="text"],
 #cbi-network-switch_vlan table input[type="text"],
-#cbi-firewall-zone table input[type="text"] {
-  width: 5rem;
+#cbi-firewall-zone table input[type="text"],
+#cbi-firewall-rule table input[type="text"] {
+  width: inherit !important;
+  text-align: center;
 }
 #cbi-firewall-redirect table select,
 #cbi-network-switch_vlan table select,
 #cbi-firewall-zone table select {
   min-width: 3.5rem;
+  text-align: center;
+  text-align-last: center;
 }
 #cbi-network-switch_vlan .th,
 #cbi-network-switch_vlan .td {
@@ -2133,7 +2137,7 @@ table > thead > tr > th {
   padding-left: 1.5rem;
   color: #8898aa;
   background-color: #f6f9fc;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   letter-spacing: 1px;
@@ -2199,8 +2203,8 @@ div::-webkit-scrollbar {
 .tabs li[class~="active"],
 .tabs li:hover {
   cursor: pointer;
-  border-bottom: 0.18751rem solid #5e72e4;
-  border-bottom: 0.18751rem solid var(--primary);
+  border-bottom: 0.18751rem solid #5e72e4 !important;
+  border-bottom: 0.18751rem solid var(--primary) !important;
   color: #5e72e4;
   color: var(--primary);
   background-color: var(--light-subtabs-background);
@@ -2222,10 +2226,6 @@ div::-webkit-scrollbar {
   text-decoration: none;
   color: #404040;
   padding: 0.5rem 0.8rem;
-}
-.tabs li:hover {
-  border-bottom: 0.18751rem solid #5e72e4;
-  border-bottom: 0.18751rem solid var(--primary);
 }
 .cbi-tabmenu {
   color: white;
@@ -2257,7 +2257,7 @@ div::-webkit-scrollbar {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   padding: 0.5rem 0rem;
-  border-bottom: 0.18751rem solid rgba(0, 0, 0, 0);
+  border-bottom: 0.18751rem solid rgba(0, 0, 0, 0) !important;
 }
 .cbi-tabmenu li a {
   text-decoration: none;
@@ -2266,8 +2266,8 @@ div::-webkit-scrollbar {
 }
 .cbi-tabmenu li:hover {
   cursor: pointer;
-  border-bottom: 0.18751rem solid #5e72e4;
-  border-bottom: 0.18751rem solid var(--primary);
+  border-bottom: 0.18751rem solid #5e72e4 !important;
+  border-bottom: 0.18751rem solid var(--primary) !important;
   color: #5e72e4;
   color: var(--primary);
   background-color: var(--light-subtabs-background);
@@ -2277,8 +2277,8 @@ div::-webkit-scrollbar {
   color: #525f7f;
 }
 .cbi-tabmenu li[class~="cbi-tab"] {
-  border-bottom: 0.18751rem solid #5e72e4;
-  border-bottom: 0.18751rem solid var(--primary);
+  border-bottom: 0.18751rem solid #5e72e4 !important;
+  border-bottom: 0.18751rem solid var(--primary) !important;
   color: var(--primary);
   background-color: var(--light-subtabs-background);
   margin-bottom: 0;
@@ -2756,7 +2756,7 @@ td > .ifacebadge,
   min-width: 7rem;
 }
 .cbi-section-create > .cbi-button-add {
-  margin: 0.75rem 0.75rem 0.75rem 0.25rem;
+  margin: 0.75rem 0.75rem 0.75rem 0.75rem;
 }
 .cbi-section-remove {
   padding: 0.5rem;
@@ -3029,19 +3029,28 @@ div.commandbox {
 
 /* luci-app-ttyd */
 .TTYD.node-system-terminal .main {
-  height: 100%!important;
+  height: 100% !important;
 }
 .TTYD.node-system-terminal .main .main-right,
 .TTYD.node-system-terminal .main .main-right #maincontent,
 .TTYD.node-system-terminal .main .main-right #maincontent .container .cbi-map {
-  height: 100%!important;
-  display: flex!important;
-  flex-direction: column!important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 .TTYD.node-system-terminal .main .main-right #maincontent,
 .TTYD.node-system-terminal .main .main-right #maincontent .container,
 .TTYD.node-system-terminal .main .main-right #maincontent .container .cbi-map #terminal {
-  flex: 1!important;
+  flex: 1 !important;
+}
+
+/* luci-app-nlbwmon */
+[class*="node-nlbw-usage"] #intervalSelect {
+  height: unset !important;
+}
+[class*="node-nlbw-usage"] #resetDatabase {
+  bottom: 20px !important;
+  right: 4px !important;
 }
 
 @media screen and (max-width: 1600px) {
@@ -3221,8 +3230,7 @@ div.commandbox {
   }
   select,
   input {
-    width: 100% !important;
-    min-width: auto;
+    min-width: max-content;
     margin: 0.25rem 0;
   }
   input {

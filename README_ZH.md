@@ -15,7 +15,7 @@
 [issues]: https://github.com/jerrykuku/luci-theme-argon/issues/new
 [issues-badge]: https://img.shields.io/badge/Issues-welcome-brightgreen.svg?style=flat-square
 [release]: https://github.com/jerrykuku/luci-theme-argon/releases
-[release-badge]: https://img.shields.io/badge/release-v1.8.3-blue.svg?
+[release-badge]: https://img.shields.io/badge/release-v1.8.4-blue.svg?
 [download]: https://github.com/jerrykuku/luci-theme-argon/releases
 [download-badge]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total?style=flat-square
 [contact]: https://t.me/jerryk6
@@ -33,7 +33,7 @@
 <img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon_title4.svg">
 
 # 一个全新的 OpenWrt 主题
-### • 该分支只适配 [Lean's LEDE][lede] / [OpenWrt LuCI 18.06][official-luci-18.06] •
+### • 该分支只适配 [Lean's LEDE ( LuCI 18.06 )][lede] / [OpenWrt LuCI 18.06][official-luci-18.06] •
   
 Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，  
 允许用户使用图片或视频自定义其登录界面。  
@@ -41,7 +41,7 @@ Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，
 
 [![license][license-badge]][license]
 [![prs][prs-badge]][prs]
-[![议题][issues-badge]][issues]
+[![issues][issues-badge]][issues]
 [![release][release-badge]][release]
 [![download][download-badge]][download]
 [![contact][contact-badge]][contact]
@@ -72,15 +72,20 @@ Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，
 
 - 强烈建议使用 Chrome 和 Edge 浏览器。该主题中使用了一些新的 css3 功能，目前只有 Chrome 和 Edge 浏览器有最好的兼容性。
 - FireFox 默认不启用 backdrop-filter，[见这里](https://developer.mozilla.org/zh-CN/docs/Web/CSS/backdrop-filter)的打开方法。
+- __LEDE 自 2024-10-17，已将LuCI升级为23.05，本项目18.06分支的主题已不再兼容；如果你还需要继续编译或安装18.06分支的主题，请在编译LEDE固件前修改LEDE源码中的[feeds.conf.default](https://github.com/coolsnowwolf/lede/blob/master/feeds.conf.default)，将其更改回以前的18.06 LuCI，详见:[#428 (comment)](https://github.com/jerrykuku/luci-theme-argon/issues/428#issuecomment-2425167489)__
 
 ## 快速开始
 
-### 使用 Lean's LEDE 构建
+### 使用 Lean's LEDE ( LuCI 18.06 ) 构建
 
 ```bash
 cd lede
+sed -i '/^#src-git luci https:\/\/github.com\/coolsnowwolf\/luci$/s/^#//' feeds.conf.default && sed -i '/^src-git luci https:\/\/github.com\/coolsnowwolf\/luci\.git;openwrt-23\.05$/s/^/#/' feeds.conf.default
+./scripts/feeds clean
+./scripts/feeds update -a
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/downloads/luci-theme-argon
+./scripts/feeds install -a
 make menuconfig #选择 LuCI->Themes->luci-theme-argon
 make -j1 V=s
 ```
@@ -88,15 +93,15 @@ make -j1 V=s
 ### 在 18.06 的 LuCI 上安装 ( Lean's LEDE )
 
 ```bash
-wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.3/luci-theme-argon_1.8.3-20230710_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.4/luci-theme-argon_1.8.4-20241221_all.ipk
 opkg install luci-theme-argon*.ipk
 ```
 
-### 安装 luci-app-argon-config
+### 安装扩展功能的设置插件 - luci-app-argon-config  
 
 ```bash
-wget --no-check-certificate https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.9/luci-app-argon-config_0.9_all.ipk
-wget --no-check-certificate https://github.com/jerrykuku/luci-app-argon-config/releases/download/v0.9/luci-i18n-argon-config-zh-cn_git-22.114.24542-d1474ba_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.3/luci-app-argon-config_0.9-20220424_all.ipk
+wget --no-check-certificate https://github.com/jerrykuku/luci-theme-argon/releases/download/v1.8.3/luci-i18n-argon-config-zh-cn_0.9-20220424_all.ipk
 opkg install luci-app-argon-config*.ipk
 opkg install luci-i18n-argon-config*.ipk
 ```
