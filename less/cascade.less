@@ -3301,21 +3301,20 @@ span[data-tooltip] .label {
 }
 
 .cbi-tooltip {
-  position: absolute;
+  position: absolute; 
   z-index: 1000;
-  top: -1000px;
-  left: -1000px;
-  padding: 2px 5px;
-  transition: opacity .25s ease-out;
-  white-space: pre;
-  pointer-events: none;
-  opacity: 0;
+  left: -10000px;
+  box-shadow: 0 0 2px #8b8b8b;
   border-radius: 3px;
   background: #fff;
-  box-shadow: 0 0 2px #444;
+  white-space: pre;
+  padding: 2px 5px;
+  opacity: 0;
+  transition: opacity .25s ease-in;
+  transform: translate(-50%, 10%);
 }
 
-.cbi-tooltip-container:hover .cbi-tooltip {
+.cbi-tooltip-container:hover .cbi-tooltip:not(:empty) {
   left: auto;
   transition: opacity .25s ease-in;
   opacity: 1;
