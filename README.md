@@ -77,7 +77,7 @@ The table below will provide a detailed introduction:
 | Branch | Version | Description                        | Matching source                                           |
 | ------ | ------- | ---------------------------------- | --------------------------------------------------------- |
 | master | v2.x.x  | Support the latest version of LuCI | [Official OpenWrt][official] • [ImmortalWrt][immortalwrt] |
-| 18.06  | v1.x.x  | Support the 18.06 version of LuCI  | [Lean's LEDE][lede]                                         |
+| 18.06 (deprecated) | v1.x.x  | Support the 18.06 version of LuCI   | [Lean's LEDE][lede]                                         |
 
 ## Version History
 
@@ -85,7 +85,7 @@ The latest version is v2.3.1 [Click here][en-us-release-log] to view the full ve
 
 ## Getting started
 
-### Build for Lean's LEDE project
+### Build for Lean's LEDE project (deprecated)
 
 ```bash
 cd lede/package/lean
