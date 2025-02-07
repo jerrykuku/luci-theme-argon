@@ -69,6 +69,10 @@ It also supports automatic and manual switching between light and dark modes.
 - Automatically switch between light and dark modes with the system, and can also be set to a fixed mode.
 - Settings plugin with extensions [luci-app-argon-config][config-link]
 
+> **Upcoming Version **
+>
+> "The current theme uses Less for CSS construction, and the method for switching between light and dark modes is relatively primitive. Meanwhile, the official theme has already switched to the UT template. I am exploring a way to build the theme template using modern front-end development tools, initially settling on a solution using Vite + UnoCSS. This approach will utilize a proxy server for debugging and also support HMR (Hot Module Replacement), significantly improving development speed. Currently, the basic development framework has been set up, but due to a busy schedule, I still need some time to migrate the existing styles. Stay tuned!"
+
 ## Branch Introduction
 
 There are currently two main branches that are adapted to different versions of the **OpenWrt** source code.  
