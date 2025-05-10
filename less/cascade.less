@@ -4034,6 +4034,43 @@ pre.command-output {
 
   .cbi-section.fb-container {
     padding: 0.5rem;
+    label.cbi-value-title {
+      line-height: 1.5rem;
+      padding: 0.5rem 0.75rem;
+      width: 60px;
+      text-align: left;
+    }
+    div.cbi-value-field {
+      width: 100%;
+      display: block;
+      padding-left: 60px;
+    }
+    div#list-content {
+      table.cbi-section-table {
+        thead {
+          td.cbi-section-table-cell {
+            width: 232px;
+          }
+        }
+      }
+
+      tbody{
+        tr:nth-child(1) {
+          td.parent-icon {
+            strong {
+              margin-left: 0!important;
+            }
+          }
+        }
+        td.cbi-value-field.file-icon,
+        td.cbi-value-field.folder-icon{
+          strong {
+            vertical-align: middle;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
   }
 
   .fb-container .panel-container {
