@@ -3527,6 +3527,14 @@ div[style*="display:grid;grid-template-columns:repeat"] {
   }
 }
 
+[data-page="admin-system-poweroffdevice"] {
+  .container {
+    h2 + p {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
 [data-page="admin-vpn-passwall"] h4 {
   background: transparent;
 }
@@ -4030,6 +4038,18 @@ pre.command-output {
 
   .fb-container .panel-container {
     border-bottom-color: #dee2e6;
+    display: flex;
+    .panel-title {
+      flex: 1;
+    }
+  }
+
+  .fb-container .upload-container {
+    display: flex!important;
+    .upload-file {
+      flex: 1;
+      margin-right: 0!important;
+    }
   }
 }
 
