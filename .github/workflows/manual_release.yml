@@ -11,14 +11,14 @@
 #   4.Let's take [Actions]
 #
 
-name: "Auto compile with OpenWrt SDK"
+name: "Auto compile with OpenWrt SDK  2"
 on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
-        required: false
+        required: truth
         default: 'false'
   push:
     branches:
