@@ -1595,6 +1595,13 @@ tr > th,
   line-height: 1.3rem;
 }
 
+[data-page="admin-services-ddns"] {
+  #syslog {
+    overflow: auto;
+    font-size: 12px!important;
+  }
+}
+
 [data-page="admin-network-network"] {
   .cbi-value-field {
     .cbi-dynlist {
@@ -4066,7 +4073,7 @@ pre.command-output {
 
     div#list-content {
       table.cbi-section-table {
-        thead {
+        thead, tbody {
           td.cbi-section-table-cell {
             width: 232px;
           }
@@ -4188,6 +4195,19 @@ pre.command-output {
       margin: 0;
       border: none;
     }
+  }
+
+  div[id^="cbid.npc."][id$=".server_addr"]:not([id="cbid.npc.config.server_addr"]),
+  div[id^="cbid.npc."][id$=".vkey"]:not([id="cbid.npc.config.vkey"]),
+  div[id^="cbid.npc."][id$=".protocol"]:not([id="cbid.npc.config.protocol"]),
+  div[id^="cbid.npc."][id$=".dns"]:not([id="cbid.npc.config.dns"]) {
+    + br {
+      display: none;
+    }
+  }
+
+  div.cbi-value.nowrap {
+    white-space: normal;
   }
 }
 
