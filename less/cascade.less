@@ -4147,14 +4147,6 @@ pre.command-output {
       box-shadow: none;
       padding: 0 10px 10px 10px;
       background: transparent;
-
-      &:nth-child(2n) {
-        padding-right: 0;
-      }
-
-      &:nth-child(2n+1) {
-        padding-left: 0;
-      }
     }
 
     .myip-main-card {
@@ -4170,15 +4162,44 @@ pre.command-output {
     }
   }
 
+  .sub-card .card-title{
+    margin-top: 5px;
+  }
+
   .oc .main-cards-container {
     margin: 0 !important;
+    gap: 0 !important;
   }
 
-  .config-file-bottom .card-actions{
-    margin-bottom: 2px !important;
+  .oc .config-file-bottom {
+    margin-bottom: 5px;
+    .card-actions{
+      margin-bottom: 2px !important;
+    }
   }
 
-  .config-upload-content{
+  .oc .card-content {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .oc .card-controls {
+    align-self: center;
+  }
+
+  .oc .core-main-controls {
+    justify-content: center !important;
+  }
+
+  .oc .plugin-toggle-container {
+    margin-left: inherit!important;
+  }
+
+  .oc .core-status-toggle {
+    flex: 0!important;
+  }
+
+  .oc .config-upload-content{
     background: #fff !important;
   }
 
