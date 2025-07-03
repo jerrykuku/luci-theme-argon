@@ -4051,6 +4051,10 @@ pre.command-output {
 }
 
 [data-page="admin-system-fileassistant"] {
+  #upload-toggle {
+    display: none !important;
+  }
+
   .fb-container .panel-title {
     padding: .5rem .75rem !important;
   }
@@ -4120,6 +4124,64 @@ pre.command-output {
 }
 
 [data-page^="admin-services-openclash"] {
+  .oc {
+    --bg-light: #fff;
+    --bg-gray: #fff;
+    border-radius: 8px;
+    .developer-container {
+      background: transparent;
+    }
+  }
+
+  #cbi-openclash > fieldset {
+    background: none;
+    padding: 0;
+
+    > table > tbody > tr > td {
+      border: none;
+      padding: 0;
+    }
+
+    .main-card {
+      border: none;
+      box-shadow: none;
+      padding: 0 10px 10px 10px;
+      background: transparent;
+
+      &:nth-child(2n) {
+        padding-right: 0;
+      }
+
+      &:nth-child(2n+1) {
+        padding-left: 0;
+      }
+    }
+
+    .myip-main-card {
+      margin: 0;
+      padding: 10px;
+      border: none;
+      background: transparent;
+
+      .myip-section-title {
+        margin: 0;
+        border-width: 1px;
+      }
+    }
+  }
+
+  .oc .main-cards-container {
+    margin: 0 !important;
+  }
+
+  .config-file-bottom .card-actions{
+    margin-bottom: 2px !important;
+  }
+
+  .config-upload-content{
+    background: #fff !important;
+  }
+
   .cbi-tabmenu > li {
     border-right: none !important;
     margin: 0 0.4rem 0 0 !important;
