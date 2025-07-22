@@ -15,6 +15,8 @@
 - **Accessibility**: Improve web accessibility by allowing user scaling
 - **Code Structure**: Optimize code structure with logical grouping comments
 
+## v2.3.1 [ 2023.04.20 ]
+
 - Fixed the issue where the dropdown menu was being clipped.
 - Fixed the problem where the exit icon was replaced with the app store icon.
 - Fixed the issue where some colors were out of control in dark mode.
