@@ -2456,6 +2456,10 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   }
 }
 
+.cbi-dynlist>.item.drag-over, .cbi-dynlist>.add-item:has(.drag-over) {
+	border-top: 1px solid var(--red);
+	margin-top: -1px;
+}
 
 .cbi-dynlist[name="sshkeys"] > .item {
   max-width: none;
