@@ -1,6 +1,9 @@
 #!/bin/sh
 # author jjm2473
 
+. /lib/functions.sh
+. /usr/share/libubox/jshn.sh
+
 # the script will be excuted when `argon.@global[0].bing_background == '1'`
 # defaults to 'bing' to be compatible with old config
 WEB_PIC_SRC="$(uci -q get argon.@global[0].online_wallpaper || echo 'bing')"
@@ -85,21 +88,42 @@ try_update() {
 	fi
 }
 
-get_url() {
-	if [ -f "$CACHE" ]; then
-		local idle_t="$(($(date '+%s') - $(date -r "$CACHE" '+%s' 2>/dev/null || echo '0')))"
-		if [ -s "$CACHE" ]; then
-			if [ "$idle_t" -le 43200 ]; then
-				cat "$CACHE"
-				return
-			fi
-		else
-			if [ "$idle_t" -le 120 ]; then
-				return
+case "$1" in
+"list")
+	json_init
+	json_add_object "get_url"
+	json_close_object
+	json_dump
+	json_cleanup
+	;;
+"call")
+	case "$2" in
+	"get_url")
+		read -r input
+		if [ -f "$CACHE" ]; then
+			idle_t="$(($(date '+%s') - $(date -r "$CACHE" '+%s' 2>/dev/null || echo '0')))"
+			if [ -s "$CACHE" ]; then
+				if [ "$idle_t" -le "43200" ]; then
+					json_init
+					json_add_string "url" "$(cat "$CACHE")"
+					json_dump
+					json_cleanup
+					return 0
+				fi
+			else
+				if [ "$idle_t" -le 120 ]; then
+					echo '{ "url": "" }'
+					return 1
+				fi
 			fi
 		fi
-	fi
-	try_update
-}
 
-get_url
+		json_init
+		json_add_string "url" "$(try_update)"
+		json_dump
+		json_cleanup
+		return 0
+		;;
+	esac
+	;;
+esac
