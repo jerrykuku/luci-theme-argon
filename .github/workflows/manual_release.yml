@@ -17,17 +17,16 @@ on:
   workflow_dispatch:
     inputs:
       ssh:
-        description: 'SSH connection to Actions'
+        description: "SSH connection to Actions"
         required: false
-        default: 'false'
+        default: "false"
   push:
     branches:
-      - 'master'
+      - "master"
     paths:
-      - 'luci-theme-argon/Makefile'
+      - "luci-theme-argon/Makefile"
 env:
   TZ: Asia/Shanghai
-
 
 jobs:
   job_check:
@@ -42,7 +41,7 @@ jobs:
         uses: actions/checkout@main
         with:
           fetch-depth: 0
-          ref: 'master'
+          ref: "master"
 
       - name: Check version
         id: check_version
@@ -66,7 +65,6 @@ jobs:
         with:
           name: For openwrt official Snapshots LuCI master
           tag_name: ${{steps.check_version.outputs.latest_version}}
-
 
   job_build_argon:
     name: Build Argon (master)
@@ -92,7 +90,7 @@ jobs:
       - name: Initialization environment
         if: steps.cache-sdk.outputs.cache-hit != 'true'
         env:
-          url_sdk: https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-sdk-x86-64_gcc-13.3.0_musl.Linux-x86_64.tar.zst
+          url_sdk: https://archive.openwrt.org/releases/24.10.0/targets/x86/64/openwrt-sdk-24.10.0-x86-64_gcc-13.3.0_musl.Linux-x86_64.tar.zst
         run: |
           wget ${{ env.url_sdk }}
           file_name=$(echo ${{env.url_sdk}} | awk -F/ '{print $NF}')
