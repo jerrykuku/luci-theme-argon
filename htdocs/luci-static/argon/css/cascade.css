@@ -3856,6 +3856,16 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
 [data-page^="command-cfg"] .showSide {
   display: none;
 }
+#mwan3-service-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#mwan3-service-status > .alert-message {
+  position: static;
+  transform: none;
+}
 /* responsive */
 @media all and (-ms-high-contrast: none) {
   .main > .main-left > .nav > .slide > .menu::before {
