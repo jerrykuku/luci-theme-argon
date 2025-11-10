@@ -2093,10 +2093,10 @@ td > table > tbody > tr > td,
   max-width: 3rem;
 }
 .cbi-input-file {
-  appearance: none;
+  appearance: auto !important;
 }
 .cbi-input-file::-webkit-file-upload-button {
-  display: none;
+  display: inline-block !important;
 }
 .cbi-input-invalid {
   color: #f5365c !important;
@@ -3752,7 +3752,6 @@ pre.command-output {
 }
 [data-page^="admin-services-openclash"] .cbi-input-file {
   padding: 0.2813rem;
-  box-sizing: content-box;
   width: 15rem !important;
 }
 [data-page^="admin-services-openclash"] [id="container.openclash.config.debug"] fieldset {
@@ -3886,6 +3885,16 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
 [data-page^="command-cfg"] .mobile-hide,
 [data-page^="command-cfg"] .showSide {
   display: none;
+}
+#mwan3-service-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#mwan3-service-status > .alert-message {
+  position: static;
+  transform: none;
 }
 /* responsive */
 @media all and (-ms-high-contrast: none) {

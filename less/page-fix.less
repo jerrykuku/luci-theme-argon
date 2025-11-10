@@ -797,7 +797,6 @@
 
     .cbi-input-file {
         padding: 0.2813rem;
-        box-sizing: content-box;
         width: 15rem !important;
     }
 
@@ -989,4 +988,17 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 [data-page^="command-cfg"] .mobile-hide,
 [data-page^="command-cfg"] .showSide {
     display: none;
+}
+
+// overview & mwan3
+#mwan3-service-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#mwan3-service-status > .alert-message { 
+    position: static;
+    transform: none;
 }
