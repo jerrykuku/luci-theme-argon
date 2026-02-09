@@ -2654,6 +2654,18 @@ body.modal-overlay-active #modal_overlay {
   background: url(/luci-static/resources/icons/loading.svg) no-repeat center;
   background-size: 16px;
 }
+.alert-message.spinning,
+.modal.alert-message.spinning {
+  padding-left: 1.25rem !important;
+  padding-top: 3rem !important;
+}
+.alert-message.spinning::before,
+.modal.alert-message.spinning::before {
+  left: 50%;
+  top: 1rem;
+  bottom: auto;
+  transform: translateX(-50%);
+}
 /* luci */
 .hidden {
   display: none;
@@ -3625,6 +3637,12 @@ pre.command-output {
 [data-page="admin-status-nftables"] .nft-chain-hook {
   padding: 0.5rem 1.25rem;
 }
+[data-page="admin-status-nftables"] .alert-message {
+  opacity: 1;
+}
+[data-page="admin-status-nftables"] .alert-message.fade-out {
+  opacity: 0;
+}
 [data-page="admin-services-nlbw-display"] .cbi-section[data-tab="export"] {
   padding: 1.5rem !important;
 }
@@ -3651,6 +3669,12 @@ pre.command-output {
 }
 #cbi-dockerd .cbi-section.cbi-tblsection {
   padding: 0;
+}
+#cbi-smartdns #service_status {
+  padding: 16px;
+}
+#cbi-smartdns .cbi-section-node {
+  padding: 16px;
 }
 #cbi-docker .cbi-section .cbi-section-node {
   box-sizing: border-box;

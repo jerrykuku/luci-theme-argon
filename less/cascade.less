@@ -1772,6 +1772,20 @@ body.modal-overlay-active #modal_overlay {
   background-size: 16px;
 }
 
+// Fix loading spinner alignment in alert-message dialogs
+.alert-message.spinning,
+.modal.alert-message.spinning {
+  padding-left: 1.25rem !important;
+  padding-top: 3rem !important;
+  
+  &::before {
+    left: 50%;
+    top: 1rem;
+    bottom: auto;
+    transform: translateX(-50%);
+  }
+}
+
 
 
 /* luci */
