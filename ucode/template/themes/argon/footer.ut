@@ -19,7 +19,8 @@
 		</div>
 		<footer class="mobile-hide" style="text-wrap: auto">
 			<div class="footer-content" style="display: flex; flex-wrap: wrap; gap: 0.5em; justify-content: end;">
-				<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank">Powered by {{ version.luciname }} ({{ version.luciversion }})</a>
+				Powered by
+				<a class="luci-link" href="{{ version.disturl }}" target="_blank">{{ version.distname }} {{ version.distversion }}-{{ version.distrevision }}</a>
 
 				<span class="footer-separator">|</span>
 
@@ -27,7 +28,7 @@
 
 				<span class="footer-separator">|</span>
 
-				<a class="luci-link" href="{{ version.disturl }}" target="_blank">{{ version.distname }} {{ version.distversion }}-{{ version.distrevision }}</a>
+				<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank">{{ version.luciname }} ({{ version.luciversion }})</a>
 
 				<ul class="breadcrumb pull-right" id="modemenu" style="display:none"></ul>
 			</div>
