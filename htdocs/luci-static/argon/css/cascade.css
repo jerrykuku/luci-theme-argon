@@ -29,7 +29,7 @@
   --main-menu-color: #202124;
   --red: #f5365c;
   --orange: #fb6340;
-  --yellow: #ffd600;
+  --yellow: #ffcc00;
   --green: #2dce89;
   --teal: #11cdef;
   --cyan: #2bffc6;
@@ -39,7 +39,7 @@
   --lighter: #e9ecef;
   --success: #2dce89;
   --info: #11cdef;
-  --warning: #fb6340;
+  --warning: #ffcc00;
   --danger: #f5365c;
   --light: #adb5bd;
   --dark: #212529;
@@ -1380,6 +1380,7 @@ footer > a {
 .alert.error,
 .alert-message.error {
   background-color: var(--warning);
+  padding: 0.25rem 1.25rem;
 }
 .alert h4,
 .alert-message h4 {
