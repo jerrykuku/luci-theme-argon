@@ -599,18 +599,23 @@
     .nft-chain-hook {
         padding: 0.5rem 1.25rem;
     }
-}
 
-// Status - Network Bandwidth Monitor
-[data-page="admin-nlbw-display"] {
-    .cbi-section[data-tab="export"] {
-        padding: 1.5rem !important;
+    // Fixed the issue of .alert-message not closing properly.
+    .alert-message { 
+        opacity: 1;
+    }
+    .alert-message.fade-out {
+        opacity: 0;
     }
 }
 
-[data-page="admin-nlbw-backup"] {
-    form {
-        padding-left: 1.5rem;
+// Status - Network Bandwidth Monitor
+[data-page="admin-services-nlbw-display"] {
+    .cbi-section[data-tab="export"] {
+        padding: 1.5rem !important;
+    }
+    .cbi-section > .right {
+        margin: 15px 15px 0px 0px;
     }
 }
 
@@ -652,6 +657,17 @@
         padding: 0;
     }
 
+}
+
+// Services - SmartDNS
+#cbi-smartdns {
+    #service_status {
+        padding: 16px;
+    }
+    
+    .cbi-section-node {
+        padding: 16px;
+    }
 }
 
 
