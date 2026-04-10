@@ -257,6 +257,11 @@ select[multiple="multiple"] {
   margin: 5em auto;
 }
 
+.alert-message {
+  transform: none;
+  position: static;
+}
+
 .alert-message>h4 {
   font-size: 110%;
   font-weight: bold;
@@ -268,6 +273,11 @@ select[multiple="multiple"] {
 
 .alert-message .btn {
   padding: .3rem .6rem;
+}
+
+#maincontent .alert-message {
+  position: fixed;
+  transform: translate(-50%, -50%);
 }
 
 .container .alert,
