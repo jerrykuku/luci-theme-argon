@@ -1587,12 +1587,12 @@ table > thead > tr > th,
   align-self: flex-end;
   flex: 1 1 auto;
 }
-tr > td,
-tr > th,
-.tr > .td,
-.tr > .th,
-.cbi-section-table-row::before,
-#cbi-wireless > #wifi_assoclist_table > .tr:nth-child(2) {
+body:not([data-page="admin-dashboard"]) tr > td,
+body:not([data-page="admin-dashboard"]) tr > th,
+body:not([data-page="admin-dashboard"]) .tr > .td,
+body:not([data-page="admin-dashboard"]) .tr > .th,
+body:not([data-page="admin-dashboard"]) .cbi-section-table-row::before,
+body:not([data-page="admin-dashboard"]) #cbi-wireless > #wifi_assoclist_table > .tr:nth-child(2) {
   border-top: thin solid #ddd;
   padding: 1.1em 1.25rem;
 }
