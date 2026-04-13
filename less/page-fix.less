@@ -74,9 +74,9 @@
         margin: 0 1rem;
         padding: 1rem;
         resize: none;
-        color: #8898aa;
+        color: var(--text-muted);
         border-radius: 0.25rem;
-        border: 1px solid #dee2e6;
+        border: 1px solid var(--border-color);
 
         &:focus-visible {
             outline: none;
@@ -97,11 +97,11 @@
             padding: 1rem;
             resize: none;
             background-color: transparent;
-            background: var(--white);
+            background: var(--surface-color);
             outline: none;
-            color: #8898aa;
+            color: var(--text-muted);
             border-radius: 0.25rem;
-            border: 1px solid #dee2e6;
+            border: 1px solid var(--border-color);
             transition: all 0.2s ease;
 
             &:focus-visible {
@@ -182,7 +182,7 @@
         line-height: 1.5;
         margin-bottom: 0;
         letter-spacing: 0.1rem;
-        color: #32325d;
+        color: var(--gray-dark);
         font-weight: bold;
         padding: 1rem 0 1rem 1rem;
     }
@@ -190,7 +190,7 @@
     .cbi-section-descr {
         font-weight: 600;
         padding: 1rem 0 1rem 1rem;
-        color: #525f7f;
+        color: var(--gray-dark-400);
     }
 
     .cbi-page-actions {
@@ -220,7 +220,7 @@
     }
 
     .cbi-section-table {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+        box-shadow: var(--shadow-surface);
     }
 }
 
@@ -282,7 +282,7 @@
     }
 
     .fb-container .panel-container {
-        border-bottom-color: #dee2e6;
+        border-bottom-color: var(--border-color);
         display: flex;
 
         .panel-title {
@@ -359,8 +359,8 @@
     }
 
     .cbi-button {
-        background: #fb6340 !important;
-        border-color: #fb6340 !important;
+        background: var(--warning) !important;
+        border-color: var(--warning) !important;
         margin-left: 0 !important;
     }
 
@@ -439,7 +439,7 @@
 
     #modal_overlay>.modal.cbi-modal>div>p>textarea {
         height: 20em !important;
-        border: 1px solid #dee2e6 !important;
+        border: 1px solid var(--border-color) !important;
         border-radius: 4px;
     }
 }
@@ -464,14 +464,14 @@
     .cbi-section {
         padding: 1rem;
         font-family: monospace;
-        background: #fff !important;
+        background: var(--surface-color) !important;
     }
 
     textarea {
         background: transparent;
         border-radius: 0.25rem;
-        color: #8898aa;
-        border: 1px solid #dee2e6;
+        color: var(--text-muted);
+        border: 1px solid var(--border-color);
         padding: 0.5rem;
     }
 
@@ -480,8 +480,8 @@
         flex-direction: row;
 
         .td {
-            background-color: #fff !important;
-            border-bottom: 1px solid #dee2e6 !important;
+            background-color: var(--surface-color) !important;
+            border-bottom: 1px solid var(--border-color) !important;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -559,7 +559,7 @@
             span {
                 font-size: 0;
                 background: none!important;
-                color: #ced4da!important;
+                color: var(--gray-dark-400)!important;
 
                 &:after {
                     transition: all .3s;
@@ -713,8 +713,8 @@
 // Services - OpenClash
 [data-page^="admin-services-openclash"] {
     .oc {
-        --bg-light: #fff;
-        --bg-gray: #fff;
+        --bg-light: var(--surface-color);
+        --bg-gray: var(--surface-color);
         border-radius: 8px;
 
         .developer-container {
@@ -796,7 +796,7 @@
     }
 
     .oc .config-upload-content {
-        background: #fff !important;
+        background: var(--surface-color) !important;
     }
 
     .oc .subscription-info-container {
@@ -829,8 +829,8 @@
     #diag-rc-output>pre,
     #dns-rc-output>pre {
         font-size: 0.875rem;
-        color: #8898aa;
-        border: 1px solid #dee2e6;
+        color: var(--text-muted);
+        border: 1px solid var(--border-color);
         background-color: transparent;
         border-radius: 0.25rem;
         font-family: 'Google Sans' !important;
@@ -849,7 +849,7 @@
     .cbi-button-up,
     .cbi-button-down {
         padding: 0.8rem 1.5rem;
-        background-color: #f1f1f1;
+        background-color: var(--surface-color-soft);
         font-size: 0;
     }
 
@@ -881,23 +881,23 @@
 #cbi-wireless {
     >#wifi_assoclist_table {
         >.tr {
-            box-shadow: inset 1px -1px 0 #ddd, inset -1px -1px 0 #ddd;
+            box-shadow: inset 1px -1px 0 var(--divider-color), inset -1px -1px 0 var(--divider-color);
 
             &.placeholder {
                 >.td {
                     right: 2rem;
                     bottom: 2rem;
                     left: 2rem;
-                    border-top: thin solid #ddd !important;
+                    border-top: thin solid var(--divider-color) !important;
                 }
             }
 
             &.table-titles {
-                box-shadow: inset 1px 0 0 #ddd, inset -1px 0 0 #ddd;
+                box-shadow: inset 1px 0 0 var(--divider-color), inset -1px 0 0 var(--divider-color);
 
                 >.th {
-                    border-bottom: thin solid #ddd;
-                    box-shadow: 0 -1px 0 0 #ddd;
+                    border-bottom: thin solid var(--divider-color);
+                    box-shadow: 0 -1px 0 0 var(--divider-color);
                 }
             }
         }
@@ -928,26 +928,6 @@
 .node-status-overview>.main fieldset:nth-child(4) .td:nth-child(2),
 .node-status-processes>.main .table .tr .td:nth-child(3) {
     white-space: normal;
-}
-
-div[style*="display:grid;grid-template-columns:repeat"] {
-    display: flex !important;
-    justify-content: space-evenly !important;
-    flex-wrap: wrap;
-
-    .ifacebox {
-        text-align: center;
-        flex-basis: 100px;
-
-        .ifacebox-body {
-            font-size: 0.7rem;
-            padding: 0.875rem;
-
-            .cbi-tooltip-container {
-                font-size: inherit !important;
-            }
-        }
-    }
 }
 
 /* firewall */

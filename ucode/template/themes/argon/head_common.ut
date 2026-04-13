@@ -1,0 +1,45 @@
+{#
+	Shared head section for Argon theme.
+	Requires variables from parent template:
+	- mode, primary, dark_primary, bar_color, has_argon_config
+	- blur_radius, blur_opacity, blur_radius_dark, blur_opacity_dark
+	- media, hostname
+-#}
+
+<!-- Theme and Colors -->
+{% if (mode == 'normal'): %}
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="{{ primary }}">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="{{ dark_primary }}">
+{% elif (mode == 'dark'): %}
+<meta name="theme-color" content="{{ dark_primary }}">
+{% else: %}
+<meta name="theme-color" content="{{ primary }}">
+{% endif -%}
+<meta name="msapplication-TileColor" content="{{ bar_color }}">
+<meta name="msapplication-TileImage" content="{{ media }}/icon/ms-icon-144x144.png">
+<meta name="application-name" content="{{ hostname }} - LuCI">
+
+<!-- Icons and Manifest -->
+<link rel="icon" type="image/x-icon" href="{{ media }}/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ media }}/icon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ media }}/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ media }}/icon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ media }}/icon/android-icon-192x192.png">
+<link rel="apple-touch-icon" sizes="60x60" href="{{ media }}/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="{{ media }}/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="{{ media }}/icon/apple-icon-144x144.png">
+<link rel="manifest" href="{{ media }}/icon/manifest.json" crossorigin="use-credentials">
+
+<link rel="stylesheet" href="{{ media }}/css/cascade.css{# ?v=PKG_VERSION #}">
+<style title="text/css">
+	{% if (has_argon_config): %}
+	:root {
+		--primary: {{ primary }};
+		--dark-primary: {{ dark_primary }};
+		--blur-radius:{{ blur_radius }}px;
+		--blur-opacity:{{ blur_opacity }};
+		--blur-radius-dark:{{ blur_radius_dark }}px;
+		--blur-opacity-dark:{{ blur_opacity_dark }};
+	}
+	{% endif -%}
+</style>

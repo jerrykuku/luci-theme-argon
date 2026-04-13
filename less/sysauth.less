@@ -81,10 +81,10 @@
         width: 26rem;
         flex-direction: column;
 
-        background-color: var(--white);
+        background-color: var(--surface-color);
         backdrop-filter: blur(var(--blur-radius));
-        background-color: rgba(244, 245, 247, var(--blur-opacity));
-        box-shadow: rgba(0, 0, 0, 0.75) 0 0 35px -5px;
+        background-color: var(--login-form-bg-color);
+        box-shadow: var(--shadow-login-panel);
 
         // Login form
         .login-form {
@@ -174,11 +174,11 @@
                         background-color: transparent;
                         background-clip: padding-box;
                         border: 0;
-                        border-bottom: 1px solid var(--white);
+                        border-bottom: 1px solid var(--border-color);
                         border-radius: 0;
                         outline: none;
                         box-sizing: border-box;
-                        box-shadow: 0 3px 2px rgba(233, 236, 239, 0.05);
+                        box-shadow: var(--shadow-input-subtle);
                         transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
                         &:focus+.border {
@@ -218,7 +218,7 @@
                 border-radius: 6px;
                 outline: none;
                 cursor: pointer;
-                box-shadow: rgba(0, 0, 0, 0.1) 0 0 50px 0;
+                box-shadow: var(--shadow-login-button);
                 transition: all 0.3s ease !important;
 
                 &:hover,

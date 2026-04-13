@@ -4,6 +4,16 @@
 // Main layout components for LuCI admin interface
 // ==========================================================================
 
+.menu-icon-base() {
+    font-family: 'argon' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
 // 1. Main Container Layout
 // ==========================================================================
@@ -28,7 +38,7 @@
     overflow-x: auto;
     word-break: break-word;
     background-color: var(--menu-bg-color);
-    box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 15px -5px;
+    box-shadow: var(--shadow-sidebar);
     transition: all 0.2s;
 
     // Sidebar Header
@@ -71,27 +81,27 @@
 
             // Active state
             &.active {
-                color: #fff;
+                color: var(--white);
                 background: var(--primary);
 
                 &::before {
-                    color: #fff !important;
+                    color: var(--white) !important;
                 }
 
                 &::after {
                     transform: rotate(90deg);
-                    color: #fff !important;
+                    color: var(--white) !important;
                 }
             }
 
             // Hover state
             &:hover {
                 cursor: pointer;
-                color: #fff;
+                color: var(--white);
                 background: var(--primary);
 
                 &::before {
-                    color: #fff !important;
+                    color: var(--white) !important;
                 }
             }
 
@@ -100,14 +110,7 @@
                 position: absolute;
                 left: 0.8rem;
                 padding-top: 3px;
-                font-family: 'argon' !important;
-                font-style: normal;
-                font-weight: normal;
-                font-variant: normal;
-                text-transform: none;
-                line-height: 1;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
+                .menu-icon-base();
                 content: "\e915";
                 color: var(--primary);
                 transition: all 0.3s;
@@ -236,27 +239,27 @@
 
                 // Active state
                 &.active {
-                    color: #fff;
+                    color: var(--white);
                     background: var(--primary);
 
                     &::before {
-                        color: #fff !important;
+                        color: var(--white) !important;
                     }
 
                     &::after {
                         transform: rotate(90deg);
-                        color: #fff !important;
+                        color: var(--white) !important;
                     }
                 }
 
                 // Hover state
                 &:hover {
                     cursor: pointer;
-                    color: #fff;
+                    color: var(--white);
                     background: var(--primary);
 
                     &::before {
-                        color: #fff !important;
+                        color: var(--white) !important;
                     }
                 }
 
@@ -265,14 +268,7 @@
                     position: absolute;
                     left: 0.8rem;
                     padding-top: 3px;
-                    font-family: 'argon' !important;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-variant: normal;
-                    text-transform: none;
-                    line-height: 1;
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
+                    .menu-icon-base();
                     content: "\e915";
                     color: var(--primary);
                     transition: all 0.3s;
@@ -283,16 +279,9 @@
                     position: absolute;
                     right: 0.5rem;
                     top: 0.8rem;
-                    font-family: 'argon' !important;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-variant: normal;
-                    text-transform: none;
-                    line-height: 1;
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
+                    .menu-icon-base();
                     content: '\e90f';
-                    color: #ced4da;
+                    color: var(--gray-dark-400);
                     text-rendering: auto;
                     transition: all 0.3s;
                 }
@@ -306,42 +295,42 @@
 
             .menu[data-title="System"]:before {
                 content: "\e90a";
-                color: #fb6340;
+                color: var(--orange);
             }
 
             .menu[data-title="Services"]:before {
                 content: "\e909";
-                color: #11cdef;
+                color: var(--teal);
             }
 
             .menu[data-title="NAS"]:before {
                 content: "\e90c";
-                color: #f3a4b5;
+                color: var(--pink);
             }
 
             .menu[data-title="VPN"]:before {
                 content: "\e90b";
-                color: #8965e0;
+                color: var(--purple);
             }
 
             .menu[data-title="Network"]:before {
                 content: "\e908";
-                color: #8965e0;
+                color: var(--purple);
             }
 
             .menu[data-title="Bandwidth_Monitor"]:before {
                 content: "\e90d";
-                color: #2dce89;
+                color: var(--green);
             }
 
             .menu[data-title="Docker"]:before {
                 content: "\e911";
-                color: #6699ff;
+                color: var(--azure);
             }
 
             .menu[data-title="Statistics"]:before {
                 content: "\e913";
-                color: #8965e0;
+                color: var(--purple);
             }
 
             .menu[data-title="Control"]:before {
@@ -351,7 +340,7 @@
 
             .menu[data-title="Asterisk"]:before {
                 content: "\e914";
-                color: #fb6340;
+                color: var(--orange);
             }
 
             // Logout link styling
@@ -359,7 +348,7 @@
             .food[data-title="Log_out"] {
                 &::before {
                     content: "\e907";
-                    color: #adb5bd;
+                    color: var(--light);
                 }
             }
         }
@@ -376,11 +365,11 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: #f6f9fc;
+        background-color: var(--scrollbar-thumb);
     }
 
     &::-webkit-scrollbar-track {
-        background-color: #fff;
+        background-color: var(--scrollbar-track);
     }
 }
 
@@ -426,11 +415,11 @@
             }
 
             hr {
-                border-top: 1px solid rgba(0, 0, 0, 1);
+                border-top: 1px solid var(--border-color);
             }
 
             .dashboard-bg {
-                background-color: #fff;
+                background-color: var(--surface-color);
             }
 
             .settings-info {
@@ -494,7 +483,7 @@ header {
                 .showSide {
                     display: none;
                     font-size: 1.4rem;
-                    color: #fff;
+                    color: var(--white);
 
                     &:hover {
                         text-decoration: none;
@@ -506,7 +495,7 @@ header {
                     padding-left: 1rem;
                     font-size: 1.5rem;
                     font-family: "TypoGraphica";
-                    color: #fff;
+                    color: var(--white);
                     text-decoration: none;
                     cursor: default;
                     vertical-align: text-bottom;
@@ -536,7 +525,7 @@ header {
                 border-radius: 4px;
                 cursor: pointer;
                 transition: all 0.3s;
-                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+                box-shadow: var(--shadow-overlay);
 
                 &:last-child {
                     margin-right: 0;
@@ -544,7 +533,7 @@ header {
             }
 
             span[data-indicator="poll-status"] {
-                color: #fff;
+                color: var(--white);
             }
 
             span[data-style="active"] {
@@ -552,8 +541,8 @@ header {
             }
 
             span[data-style="inactive"] {
-                color: #ffffff !important;
-                background-color: #32325d;
+                color: var(--status-inactive-text) !important;
+                background-color: var(--status-inactive-bg);
             }
         }
     }
@@ -565,13 +554,13 @@ header {
 footer {
     padding: 1rem;
     font-size: 0.875rem;
-    color: #aaa;
+    color: var(--footer-text);
     text-align: right;
     white-space: nowrap;
     overflow: hidden;
 
     >a {
-        color: #aaa;
+        color: var(--footer-text);
         text-decoration: none;
     }
 }
@@ -592,8 +581,8 @@ footer {
         transform: translateX(-50%) translateY(-50%);
         padding: 1rem;
         border-radius: 0.5rem;
-        background: #ffffff;
-        box-shadow: 0 0 1rem 0 rgba(136, 152, 170, .15);
+        background: var(--surface-color-panel);
+        box-shadow: 0 0 1rem 0 var(--shadow-color);
     }
 
     &>div:first-child {

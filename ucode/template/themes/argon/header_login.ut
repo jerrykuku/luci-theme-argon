@@ -17,7 +17,7 @@
 -#}
 
 {%
-	import { readfile, access } from 'fs';
+	import { access } from 'fs';
 	import { cursor } from 'uci';
 	import { srand } from 'math';
 
@@ -33,23 +33,31 @@
 
 	//Custom settings
 	let mode = 'normal';
+	let theme_mode = 'auto';
 	let bar_color = '#5e72e4';
-	let primary, dark_primary, blur_radius, blur_radius_dark, blur_opacity, blur_opacity_dark;
-	const dark_css = readfile('/www/luci-static/argon/css/dark.css');
-	if (access('/etc/config/argon')) {
-		primary = cfg.get_first('argon', 'global', 'primary');
-		dark_primary = cfg.get_first('argon', 'global', 'dark_primary');
-		blur_radius = cfg.get_first('argon', 'global', 'blur');
-		blur_radius_dark = cfg.get_first('argon', 'global', 'blur_dark');
-		blur_opacity = cfg.get_first('argon', 'global', 'transparency');
-		blur_opacity_dark = cfg.get_first('argon', 'global', 'transparency_dark');
-		mode = cfg.get_first('argon', 'global', 'mode');
+	let primary = '#5e72e4';
+	let dark_primary = '#483d8b';
+	let blur_radius = 10;
+	let blur_radius_dark = 10;
+	let blur_opacity = 0.5;
+	let blur_opacity_dark = 0.5;
+	const has_argon_config = access('/etc/config/argon');
+	if (has_argon_config) {
+		primary = cfg.get_first('argon', 'global', 'primary') ?? primary;
+		dark_primary = cfg.get_first('argon', 'global', 'dark_primary') ?? dark_primary;
+		blur_radius = cfg.get_first('argon', 'global', 'blur') ?? blur_radius;
+		blur_radius_dark = cfg.get_first('argon', 'global', 'blur_dark') ?? blur_radius_dark;
+		blur_opacity = cfg.get_first('argon', 'global', 'transparency') ?? blur_opacity;
+		blur_opacity_dark = cfg.get_first('argon', 'global', 'transparency_dark') ?? blur_opacity_dark;
+		const configured_mode = cfg.get_first('argon', 'global', 'mode');
+		mode = (configured_mode == 'dark' || configured_mode == 'light' || configured_mode == 'normal') ? configured_mode : 'normal';
 		bar_color = (mode == 'dark') ? dark_primary : primary;
 	}
+	theme_mode = (mode == 'dark' || mode == 'light') ? mode : 'auto';
 
 -%}
 <!DOCTYPE html>
-<html lang="{{ dispatcher.lang }}">
+<html lang="{{ dispatcher.lang }}" data-theme="{{ theme_mode }}">
 
 <head>
 	<meta charset="utf-8">
@@ -72,45 +80,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta name="apple-mobile-web-app-title" content="{{ hostname }} - LuCI">
 
-	<!-- Theme and Colors -->
-	<meta name="theme-color" content="{{ bar_color }}">
-	<meta name="msapplication-TileColor" content="{{ bar_color }}">
-	<meta name="msapplication-TileImage" content="{{ media }}/icon/ms-icon-144x144.png">
-	<meta name="application-name" content="{{ hostname }} - LuCI">
-
-	<!-- Icons and Manifest -->
-	<link rel="icon" type="image/x-icon" href="{{ media }}/favicon.ico">
-	<link rel="icon" type="image/png" sizes="16x16" href="{{ media }}/icon/favicon-16x16.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ media }}/icon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="{{ media }}/icon/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="192x192" href="{{ media }}/icon/android-icon-192x192.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="{{ media }}/icon/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="{{ media }}/icon/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="{{ media }}/icon/apple-icon-144x144.png">
-	<link rel="manifest" href="{{ media }}/icon/manifest.json" crossorigin="use-credentials">
-
-	<link rel="stylesheet" href="{{ media }}/css/cascade.css{# ?v=PKG_VERSION #}">
-	<style title="text/css">
-		{% if (mode == 'normal'): %}
-			@media (prefers-color-scheme: dark) {
-				{{ dark_css }}
-			}
-		{% endif %}
-		{% if (mode == 'dark'): %}
-			{{ dark_css }}
-		{% endif -%}
-		{% if (access('/etc/config/argon')): %}
-		:root {
-			--primary: {{ primary }};
-			--dark-primary: {{ dark_primary }};
-			--blur-radius:{{ blur_radius }}px;
-			--blur-opacity:{{ blur_opacity }};
-			--blur-radius-dark:{{ blur_radius_dark }}px;
-			--blur-opacity-dark:{{ blur_opacity_dark }};
-		}
-		{% endif -%}
-	</style>
-	<link rel="shortcut icon" href="{{ media }}/favicon.ico">
+	{% include("themes/" + theme + "/head_common") %}
 	{% if (node?.css): %}
 	<link rel="stylesheet" href="{{ resource }}/{{ node.css}}">
 	{% endif -%}

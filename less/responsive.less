@@ -23,6 +23,30 @@
     }
 }
 
+// Normalize plugin inline-grid output to responsive cards
+div[style*="display:grid;grid-template-columns:repeat"] {
+    --legacy-ifacebox-basis: 100px;
+    --legacy-ifacebox-font-size: 0.7rem;
+    --legacy-ifacebox-padding: 0.875rem;
+    display: flex !important;
+    justify-content: space-evenly !important;
+    flex-wrap: wrap;
+
+    .ifacebox {
+        text-align: center;
+        flex-basis: var(--legacy-ifacebox-basis);
+
+        .ifacebox-body {
+            font-size: var(--legacy-ifacebox-font-size);
+            padding: var(--legacy-ifacebox-padding);
+
+            .cbi-tooltip-container {
+                font-size: inherit !important;
+            }
+        }
+    }
+}
+
 // 2. Large Desktop Screens (1600px and below)
 // ==========================================================================
 
@@ -35,7 +59,7 @@
 
     // Sidebar width
     .main-left {
-        width: calc(0% + 13rem);
+        width: 13rem;
     }
 
     // Button and label sizing
@@ -84,7 +108,7 @@
 
     // Sidebar width
     .main-left {
-        width: calc(0% + 13rem);
+        width: 13rem;
     }
 
     // Tab styling
@@ -181,7 +205,7 @@
     }
 
     .main-left {
-        width: calc(0% + 13rem);
+        width: 13rem;
     }
 
     // Login page specific
@@ -247,7 +271,7 @@
     }
 
     .tr.placeholder {
-        border-bottom: thin solid #ddd;
+        border-bottom: thin solid var(--divider-color);
     }
 
     .tr.placeholder>.td,
@@ -298,7 +322,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: var(--shadow-overlay);
     }
 
     .td.cbi-value-field,
@@ -325,8 +349,8 @@
         font-size: 0.9rem;
         display: block;
         flex: 1 1 100%;
-        border-bottom: thin solid rgba(0, 0, 0, 0.26);
-        background: #e9ecef;
+        border-bottom: thin solid var(--border-color);
+        background: var(--surface-color-soft);
     }
 
     .td[data-title],
@@ -353,7 +377,7 @@
         position: static !important;
         margin: 0 0 2rem 0;
         padding: 2rem;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: var(--shadow-overlay);
 
         input {
             width: 100% !important;
@@ -520,8 +544,8 @@
         margin: 5em auto;
         padding: 1em;
         border-radius: 3px !important;
-        background: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+        background: var(--modal-bg);
+        box-shadow: var(--shadow-overlay);
     }
 
     // Dropdown adjustments
@@ -547,14 +571,9 @@
 
     // Interface box adjustments for overview page
     div[style*="display:grid;grid-template-columns:repeat"] {
-        .ifacebox {
-            flex-basis: 80px;
-
-            .ifacebox-body {
-                padding: 0.875rem 0.5rem;
-                font-size: 0.6rem;
-            }
-        }
+        --legacy-ifacebox-basis: 80px;
+        --legacy-ifacebox-font-size: 0.6rem;
+        --legacy-ifacebox-padding: 0.875rem 0.5rem;
     }
 
     // Login page mobile adjustments
@@ -566,12 +585,11 @@
             .form-login {
                 .input-group {
                     &::before {
-                        color: #525461;
+                        color: var(--gray-dark-400);
                     }
 
                     input {
-                        color: #525461;
-                        border-bottom: white 1px solid;
+                        color: var(--gray-dark-400);
                         border-bottom: var(--white) 1px solid;
                         border-radius: 0;
                     }
