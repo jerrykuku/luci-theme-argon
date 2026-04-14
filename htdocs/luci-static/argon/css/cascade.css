@@ -2720,25 +2720,25 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .cbi-dropdown[multiple][open] > ul.dropdown > li > form {
   display: block;
 }
+.cbi-dropdown[open] > ul.dropdown > li {
+  border-bottom: thin solid var(--dropdown-separator);
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
 .cbi-dropdown[open] > ul.dropdown > li .hide-open {
   display: none;
 }
 .cbi-dropdown[open] > ul.dropdown > li .hide-close {
   display: initial;
 }
-.cbi-dropdown[open] > ul.dropdown > li {
-  border-bottom: thin solid var(--dropdown-separator);
-  padding: 0.5rem 0.75rem;
-  cursor: pointer;
-}
 .cbi-dropdown[open] > ul.dropdown > li label {
   margin-left: 0.5rem;
 }
-.cbi-dropdown[open] > ul.dropdown > li[selected] {
+.cbi-dropdown[open] > ul.dropdown > li[selected],
+.cbi-dropdown[open] > ul.dropdown > li.focus {
   background: var(--surface-color-muted);
 }
 .cbi-dropdown[open] > ul.dropdown > li.focus {
-  background: var(--surface-color-muted);
   outline: none;
 }
 .cbi-dropdown[open] > ul.dropdown > li:last-child {
