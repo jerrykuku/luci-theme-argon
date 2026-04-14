@@ -312,6 +312,10 @@ html[data-theme='dark'] {
 }
 
 
+// ==========================================================================
+// Form Control Foundation
+// Shared base contract for button / input / select / dropdown trigger.
+// ==========================================================================
 .btn,
 button,
 select,
@@ -504,6 +508,10 @@ select[multiple="multiple"] {
   margin-left: 0;
 }
 
+// ==========================================================================
+// Section & Map Foundation
+// Keep grouped to preserve source-order assumptions for LuCI core markup.
+// ==========================================================================
 .cbi-map {
   display: flex;
   flex-direction: column;
@@ -1522,6 +1530,10 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   min-width: 13rem;
 }
 
+// ==========================================================================
+// Dropdown Component
+// Base -> Trigger -> Lists -> Open State -> Mode State
+// ==========================================================================
 .cbi-dynlist,
 .cbi-dropdown {
   position: relative;
@@ -1534,17 +1546,20 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   align-items: center;
 }
 
+// Dropdown used as button wrapper.
 .cbi-dropdown.btn>ul:not(.dropdown),
 .cbi-dropdown.cbi-button>ul:not(.dropdown) {
   margin: 0 0.75rem;
 }
 
+// Select-like sizing behavior.
 .cbi-dropdown[placeholder*="select"] {
   max-width: 25rem;
   height: auto;
   margin-top: -3px;
 }
 
+// Option list container.
 .cbi-dropdown>ul {
   display: flex;
   overflow-x: hidden;
@@ -1561,6 +1576,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
 }
 
+// Action dropdown paddings.
 .cbi-dropdown.cbi-button-apply,
 .cbi-dropdown.cbi-button-action {
   padding: 0;
@@ -1582,6 +1598,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
 }
 
+// Expand/collapse trigger icon area.
 .cbi-dropdown>.open {
   display: flex;
   align-items: center;
@@ -1601,11 +1618,13 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 }
 
 
+// Placeholder and "more" entries.
 .cbi-dropdown>.more,
 .cbi-dropdown>ul>li[placeholder] {
   display: none;
 }
 
+// Option row base.
 .cbi-dropdown>ul>li {
   display: none;
   overflow: hidden;
@@ -1620,6 +1639,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
 }
 
+// Visibility helpers for open/closed mode.
 .cbi-dropdown>ul>li .hide-open {
   display: initial;
 }
@@ -1636,6 +1656,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   max-width: 1px;
 }
 
+// Embedded form controls in option rows.
 .cbi-dropdown>ul>li>form {
   display: none;
   margin: 0;
@@ -1659,6 +1680,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   padding: 0 .5rem;
 }
 
+// Open-state dropdown panel.
 .cbi-dropdown[open]>ul.dropdown {
   position: absolute;
   z-index: 1100;
@@ -1682,6 +1704,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 }
 
 
+// Mode visibility matrix.
 .cbi-dropdown>ul>li[display],
 .cbi-dropdown[open]>ul.preview,
 .cbi-dropdown[open]>ul.dropdown>li,
@@ -1695,6 +1718,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
 }
 
+// Open-state detail rules.
 .cbi-dropdown[empty]>ul>li,
 .cbi-dropdown[optional][open]>ul.dropdown>li[placeholder],
 .cbi-dropdown[multiple][open]>ul.dropdown>li>form {
@@ -1746,6 +1770,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   opacity: .6;
 }
 
+// Badge width behavior differs between closed and open states.
 .cbi-dropdown .zonebadge {
   width: 100%;
 }
