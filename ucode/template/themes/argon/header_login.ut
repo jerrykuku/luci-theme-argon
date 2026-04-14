@@ -60,23 +60,7 @@
 <html lang="{{ dispatcher.lang }}" data-theme="{{ theme_mode }}">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{{ hostname }}{{ node?.title ? ` - ${striptags(node.title)}` : '' }} - LuCI</title>
-
-	<!-- SEO and Description -->
-	<meta name="robots" content="noindex, nofollow">
-
-	<!-- Security -->
-	<!-- Note: X-Frame-Options / X-Content-Type-Options are best set as HTTP response headers. -->
-	<meta name="referrer" content="strict-origin-when-cross-origin">
-
-	<!-- Mobile and PWA -->
-	<meta name="format-detection" content="telephone=no, email=no">
-	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta name="apple-mobile-web-app-title" content="{{ hostname }} - LuCI">
+	{% include("themes/" + theme + "/head_meta") %}
 
 	{% include("themes/" + theme + "/head_common") %}
 	{% if (node?.css): %}
