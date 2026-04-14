@@ -20,9 +20,9 @@
 <!-- added style="text-wrap: auto" but on this page it is still not the best solution. I will take it to consideration next time :) -->
 <footer style="text-wrap: auto">
 	<div>
-		<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank">Powered by {{ version.luciname }} ({{ version.luciversion }})</a>
-		<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme {# vPKG_VERSION #}</a>
-		<a class="luci-link" href="{{ version.disturl }}" target="_blank">{{ version.distname }} {{ version.distversion }}-{{ version.distrevision }}</a>
+		<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank" rel="noopener noreferrer">Powered by {{ version.luciname }} ({{ version.luciversion }})</a>
+		<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank" rel="noopener noreferrer">ArgonTheme {# vPKG_VERSION #}</a>
+		<a class="luci-link" href="{{ version.disturl }}" target="_blank" rel="noopener noreferrer">{{ version.distname }} {{ version.distversion }}-{{ version.distrevision }}</a>
 	</div>
 </footer>
 </div>
