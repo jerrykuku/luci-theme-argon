@@ -359,6 +359,11 @@
     }
 }
 
+#mainmenu,
+#tabmenu {
+    display: none;
+}
+
 // 3. Right Content Area Layout
 // ==========================================================================
 
@@ -548,6 +553,18 @@ footer {
     >a {
         color: var(--footer-text);
         text-decoration: none;
+    }
+
+    .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+        justify-content: end;
+        text-wrap: auto;
+    }
+
+    #modemenu {
+        display: none;
     }
 }
 

@@ -31,7 +31,7 @@
 <link rel="manifest" href="{{ media }}/icon/manifest.json" crossorigin="use-credentials">
 
 <link rel="stylesheet" href="{{ media }}/css/cascade.css{# ?v=PKG_VERSION #}">
-<style title="text/css">
+<style type="text/css">
 	{% if (has_argon_config): %}
 	:root {
 		--primary: {{ primary }};

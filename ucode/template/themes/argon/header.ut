@@ -85,7 +85,7 @@
 	<link rel="stylesheet" href="{{ resource }}/{{ node.css}}">
 	{% endif -%}
 	{% if (css): %}
-	<style title="text/css">
+	<style type="text/css">
 		{{ css }}
 	</style>
 	{% endif -%}
@@ -99,7 +99,7 @@
 	data-page="{{ entityencode(join('-', ctx.request_path), true) }}">
 
 	<div class="main">
-		<div class="main-left" id="mainmenu" style="display:none">
+		<div class="main-left" id="mainmenu">
 			<div class="sidenav-header d-flex align-items-center">
 				<a class="brand" href="#">{{ hostname }}</a>
 				<div class="ml-auto">
@@ -147,4 +147,4 @@
 					</div>
 				</noscript>
 
-					<div id="tabmenu" style="display:none"></div>
+					<div id="tabmenu"></div>

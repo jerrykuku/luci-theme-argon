@@ -1460,6 +1460,10 @@ select[multiple="multiple"] {
 .main-left::-webkit-scrollbar-track {
   background-color: var(--scrollbar-track);
 }
+#mainmenu,
+#tabmenu {
+  display: none;
+}
 .main-right {
   height: 100%;
   flex-grow: 1;
@@ -1604,6 +1608,16 @@ footer {
 footer > a {
   color: var(--footer-text);
   text-decoration: none;
+}
+footer .footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  justify-content: end;
+  text-wrap: auto;
+}
+footer #modemenu {
+  display: none;
 }
 #view {
   border-radius: 0.25rem;

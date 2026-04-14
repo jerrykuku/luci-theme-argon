@@ -17,8 +17,8 @@
 -#}
 
 		</div>
-		<footer class="mobile-hide" style="text-wrap: auto">
-			<div class="footer-content" style="display: flex; flex-wrap: wrap; gap: 0.5em; justify-content: end;">
+		<footer class="mobile-hide">
+			<div class="footer-content">
 				<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank" rel="noopener noreferrer">Powered by {{ version.luciname }} ({{ version.luciversion }})</a>
 
 				<span class="footer-separator">|</span>
@@ -29,27 +29,16 @@
 
 				<a class="luci-link" href="{{ version.disturl }}" target="_blank" rel="noopener noreferrer">{{ version.distname }} {{ version.distversion }}-{{ version.distrevision }}</a>
 
-				<ul class="breadcrumb pull-right" id="modemenu" style="display:none"></ul>
+				<ul class="breadcrumb pull-right" id="modemenu"></ul>
 			</div>
 		</footer>
 	</div>
 </div>
 <script>
 	// thanks for Jo-Philipp Wich <jow@openwrt.org>
-	var luciLocation = {{ ctx.path }};
-	var winHeight = window.innerHeight;
-	window.addEventListener('resize', function () {
-		var winWidth = window.innerWidth;
-		if(winWidth < 600){
-			var newHeight = window.innerHeight;
-			var keyboardHeight = Math.max(0, winHeight - newHeight);
-			var ftcElement = document.querySelector(".ftc");
-			if (ftcElement) {
-				ftcElement.style.bottom = (keyboardHeight + 30) + "px";
-			}
-		}
-	});
+	window.luciLocation = {{ ctx.path }};
 </script>
-<script type="text/javascript">L.require('menu-argon')</script>
+<script src="{{ media }}/js/main-init.js?v={{ version.luciversion }}"></script>
+<script>L.require('menu-argon')</script>
 </body>
 </html>
