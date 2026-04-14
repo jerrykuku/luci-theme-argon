@@ -941,6 +941,10 @@ select[multiple="multiple"] {
 .login-page .volume-control.mute {
   background-image: url(../img/volume_off.svg);
 }
+.login-page .volume-control:focus-visible {
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--primary);
+}
 .login-page .main-bg {
   position: absolute;
   top: 0;
@@ -1114,6 +1118,7 @@ select[multiple="multiple"] {
   text-align: center;
   line-height: 1.6rem;
   font-size: 0.75rem;
+  text-wrap: auto;
 }
 .login-page .login-container footer .ftc {
   position: absolute;

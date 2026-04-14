@@ -71,6 +71,11 @@
         &.mute {
             background-image: url(../img/volume_off.svg);
         }
+
+        &:focus-visible {
+            border-radius: 0.25rem;
+            box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--primary);
+        }
     }
 
     // Main background image
@@ -257,6 +262,7 @@
             text-align: center;
             line-height: 1.6rem;
             font-size: 0.75rem;
+            text-wrap: auto;
 
             .ftc {
                 position: absolute;
