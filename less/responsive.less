@@ -482,12 +482,14 @@ div[style*="display:grid;grid-template-columns:repeat"] {
     }
 
     // Login page adjustments
-    .node-main-login .main .main-right #maincontent .container .cbi-map .cbi-section .cbi-section-node .cbi-value .cbi-value-field {
-        width: 16rem;
-    }
+    .node-main-login {
+        .main .main-right #maincontent .container .cbi-map .cbi-section .cbi-section-node .cbi-value .cbi-value-field {
+            width: 16rem;
+        }
 
-    .node-main-login footer {
-        display: none;
+        footer {
+            display: none;
+        }
     }
 
     // Tab scrollbar hiding
@@ -557,7 +559,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 
     // Login page mobile adjustments
     .login-page .login-container {
-        margin-left: 0rem;
+        margin-left: 0;
         width: 100%;
 
         .login-form {
