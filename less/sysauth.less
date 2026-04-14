@@ -24,6 +24,18 @@
     .argon-icon-base();
 }
 
+.sr-only() {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .login-page {
     display: flex;
     height: 100%;
@@ -49,6 +61,9 @@
         right: 1rem;
         width: 1.5rem;
         height: 1.5rem;
+        padding: 0;
+        border: 0;
+        outline: none;
         z-index: 5000;
         cursor: pointer;
         background: url(../img/volume_high.svg) no-repeat center/contain;
@@ -121,6 +136,10 @@
                 padding: 1.25rem 3.125rem;
                 box-sizing: border-box;
 
+                .sr-only {
+                    .sr-only();
+                }
+
                 .errorbox {
                     padding-bottom: 2rem;
                     text-align: center;
@@ -178,6 +197,10 @@
                         }
                     }
 
+                    input::placeholder {
+                        color: var(--text-subtle);
+                    }
+
                     .cbi-input-password {
                         position: relative;
                         margin-bottom: 2rem;
@@ -214,7 +237,7 @@
                 transition: all 0.3s ease !important;
 
                 &:hover,
-                &:focus {
+                &:focus-visible {
                     opacity: 0.9;
                 }
             }
@@ -244,6 +267,17 @@
             .luci-link {
                 display: block;
             }
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .login-page {
+        .main-bg,
+        .login-container .login-form .form-login .input-group .border,
+        .login-container .login-form .form-login .input-group input,
+        .login-container .login-form .cbi-button-apply {
+            transition: none !important;
         }
     }
 }
