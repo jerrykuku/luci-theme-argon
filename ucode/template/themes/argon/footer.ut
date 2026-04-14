@@ -19,15 +19,15 @@
 		</div>
 		<footer class="mobile-hide" style="text-wrap: auto">
 			<div class="footer-content" style="display: flex; flex-wrap: wrap; gap: 0.5em; justify-content: end;">
-				<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank">Powered by {{ version.luciname }} ({{ version.luciversion }})</a>
+				<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank" rel="noopener noreferrer">Powered by {{ version.luciname }} ({{ version.luciversion }})</a>
 
 				<span class="footer-separator">|</span>
 
-				<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme {# vPKG_VERSION #}</a>
+				<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank" rel="noopener noreferrer">ArgonTheme {# vPKG_VERSION #}</a>
 
 				<span class="footer-separator">|</span>
 
-				<a class="luci-link" href="{{ version.disturl }}" target="_blank">{{ version.distname }} {{ version.distversion }}-{{ version.distrevision }}</a>
+				<a class="luci-link" href="{{ version.disturl }}" target="_blank" rel="noopener noreferrer">{{ version.distname }} {{ version.distversion }}-{{ version.distrevision }}</a>
 
 				<ul class="breadcrumb pull-right" id="modemenu" style="display:none"></ul>
 			</div>
@@ -42,10 +42,10 @@
 		var winWidth = window.innerWidth;
 		if(winWidth < 600){
 			var newHeight = window.innerHeight;
-			var keyboradHeight = newHeight - winHeight;
+			var keyboardHeight = Math.max(0, winHeight - newHeight);
 			var ftcElement = document.querySelector(".ftc");
 			if (ftcElement) {
-				ftcElement.style.bottom = (keyboradHeight + 30) + "px";
+				ftcElement.style.bottom = (keyboardHeight + 30) + "px";
 			}
 		}
 	});

@@ -62,17 +62,15 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ hostname }}{{ node?.title ? ` - ${striptags(node.title)}` : '' }} - LuCI</title>
 
 	<!-- SEO and Description -->
 	<meta name="robots" content="noindex, nofollow">
 
 	<!-- Security -->
-	<meta http-equiv="X-Content-Type-Options" content="nosniff">
-	<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-	<meta http-equiv="X-XSS-Protection" content="1; mode=block">
-	<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+	<!-- Note: X-Frame-Options / X-Content-Type-Options are best set as HTTP response headers. -->
+	<meta name="referrer" content="strict-origin-when-cross-origin">
 
 	<!-- Mobile and PWA -->
 	<meta name="format-detection" content="telephone=no, email=no">
