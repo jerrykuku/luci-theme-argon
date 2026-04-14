@@ -526,6 +526,15 @@ select[multiple="multiple"] {
   font-size: small;
   line-height: 1.5;
   padding: 0 1.25rem;
+
+  +fieldset {
+    margin-top: 1rem;
+  }
+
+  >abbr {
+    cursor: help;
+    text-decoration: underline;
+  }
 }
 
 .cbi-section {
@@ -538,26 +547,18 @@ select[multiple="multiple"] {
       display: none;
     }
   }
-
 }
 
-.cbi-section-descr:not(:empty) {
-  font-size: small;
-  line-height: 1.5;
-  padding: 0rem 1rem;
-}
+.cbi-section-descr {
+  &:not(:empty) {
+    font-size: small;
+    line-height: 1.5;
+    padding: 0rem 1rem;
+  }
 
-.cbi-section-descr:empty {
-  display: none !important;
-}
-
-.cbi-map-descr+fieldset {
-  margin-top: 1rem;
-}
-
-.cbi-map-descr>abbr {
-  cursor: help;
-  text-decoration: underline;
+  &:empty {
+    display: none !important;
+  }
 }
 
 .cbi-section>legend {
@@ -579,7 +580,6 @@ fieldset>fieldset,
   display: block;
   width: 100%;
   margin: 0;
-  margin-bottom: 0;
   padding: 0.8755rem 1.25rem;
   color: var(--gray-dark);
 
