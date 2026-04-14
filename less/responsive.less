@@ -5,6 +5,8 @@
 // Mobile-first responsive design for LuCI admin interface
 // ==========================================================================
 
+@sidebar-collapsed-width: 13rem;
+
 // 1. Browser-Specific Fixes
 // ==========================================================================
 
@@ -59,7 +61,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 
     // Sidebar width
     .main-left {
-        width: 13rem;
+        width: @sidebar-collapsed-width;
     }
 
     // Button and label sizing
@@ -104,11 +106,6 @@ div[style*="display:grid;grid-template-columns:repeat"] {
     // Header adjustments
     header>.fill>.container {
         cursor: default;
-    }
-
-    // Sidebar width
-    .main-left {
-        width: 13rem;
     }
 
     // Tab styling
@@ -202,10 +199,6 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 
     .main>.loading>span {
         top: 25%;
-    }
-
-    .main-left {
-        width: 13rem;
     }
 
     // Login page specific
@@ -391,11 +384,6 @@ div[style*="display:grid;grid-template-columns:repeat"] {
         text-align: left !important;
     }
 
-    // Button sizing
-    .btn:not(button),
-    .cbi-button {
-        font-size: 0.875rem;
-    }
 }
 
 // 5. Tablet Portrait (768px and below)
@@ -420,7 +408,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
         width: 0;
 
         &.active {
-            width: 13rem;
+            width: @sidebar-collapsed-width;
         }
     }
 
@@ -462,10 +450,6 @@ div[style*="display:grid;grid-template-columns:repeat"] {
         display: inline-block;
     }
 
-    // Navigation font size
-    .main>.main-left>.nav>.slide>.slide-menu>li>a {
-        font-size: 0.875rem;
-    }
 }
 
 // 6. Mobile Portrait (600px and below)
@@ -563,11 +547,6 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 // ==========================================================================
 
 @media screen and (max-width: 480px) {
-
-    // Hide mobile elements
-    .mobile-hide {
-        display: none;
-    }
 
     // Interface box adjustments for overview page
     div[style*="display:grid;grid-template-columns:repeat"] {

@@ -4224,9 +4224,6 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
   header > .fill > .container {
     cursor: default;
   }
-  .main-left {
-    width: 13rem;
-  }
   .tabs > li > a,
   .cbi-tabmenu > li > a {
     padding: 0.2rem 0.8rem;
@@ -4290,9 +4287,6 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
   }
   .main > .loading > span {
     top: 25%;
-  }
-  .main-left {
-    width: 13rem;
   }
   body:not(.logged-in) .showSide {
     visibility: hidden;
@@ -4436,10 +4430,6 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
   .Firewall .center::before {
     text-align: left !important;
   }
-  .btn:not(button),
-  .cbi-button {
-    font-size: 0.875rem;
-  }
 }
 @media screen and (max-width: 768px) {
   body {
@@ -4485,9 +4475,6 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
   }
   header > .fill > .container > .flex1 > .brand {
     display: inline-block;
-  }
-  .main > .main-left > .nav > .slide > .slide-menu > li > a {
-    font-size: 0.875rem;
   }
 }
 @media screen and (max-width: 600px) {
@@ -4552,9 +4539,6 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
   }
 }
 @media screen and (max-width: 480px) {
-  .mobile-hide {
-    display: none;
-  }
   div[style*="display:grid;grid-template-columns:repeat"] {
     --legacy-ifacebox-basis: 80px;
     --legacy-ifacebox-font-size: 0.6rem;

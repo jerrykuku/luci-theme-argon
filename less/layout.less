@@ -15,6 +15,56 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.nav-link-base() {
+    display: block;
+    position: relative;
+    margin: 0.1rem 0.5rem;
+    padding: 0.675rem 0 0.675rem 2.5rem;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    cursor: default;
+    transition: all 0.2s;
+}
+
+.nav-link-interactive() {
+    &.active {
+        color: var(--white);
+        background: var(--primary);
+
+        &::before {
+            color: var(--white) !important;
+        }
+
+        &::after {
+            transform: rotate(90deg);
+            color: var(--white) !important;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+        color: var(--white);
+        background: var(--primary);
+
+        &::before {
+            color: var(--white) !important;
+        }
+    }
+}
+
+.nav-link-icon-before() {
+    &::before {
+        position: absolute;
+        left: 0.8rem;
+        padding-top: 3px;
+        .menu-icon-base();
+        content: "\e915";
+        color: var(--primary);
+        transition: all 0.3s;
+    }
+}
+
 // 1. Main Container Layout
 // ==========================================================================
 
@@ -69,52 +119,9 @@
 
         // Top-level navigation links
         &>li>a:first-child {
-            display: block;
-            position: relative;
-            margin: 0.1rem 0.5rem;
-            padding: 0.675rem 0 0.675rem 2.5rem;
-            font-size: 1rem;
-            text-decoration: none;
-            border-radius: 0.25rem;
-            cursor: default;
-            transition: all 0.2s;
-
-            // Active state
-            &.active {
-                color: var(--white);
-                background: var(--primary);
-
-                &::before {
-                    color: var(--white) !important;
-                }
-
-                &::after {
-                    transform: rotate(90deg);
-                    color: var(--white) !important;
-                }
-            }
-
-            // Hover state
-            &:hover {
-                cursor: pointer;
-                color: var(--white);
-                background: var(--primary);
-
-                &::before {
-                    color: var(--white) !important;
-                }
-            }
-
-            // Icon before text
-            &::before {
-                position: absolute;
-                left: 0.8rem;
-                padding-top: 3px;
-                .menu-icon-base();
-                content: "\e915";
-                color: var(--primary);
-                transition: all 0.3s;
-            }
+            .nav-link-base();
+            .nav-link-interactive();
+            .nav-link-icon-before();
         }
 
         &>.slide>.menu::before {
@@ -227,52 +234,9 @@
 
             // Main menu items
             .menu {
-                display: block;
-                position: relative;
-                margin: 0.1rem 0.5rem;
-                padding: 0.675rem 0 0.675rem 2.5rem;
-                font-size: 1rem;
-                text-decoration: none;
-                border-radius: 0.25rem;
-                cursor: default;
-                transition: all 0.2s;
-
-                // Active state
-                &.active {
-                    color: var(--white);
-                    background: var(--primary);
-
-                    &::before {
-                        color: var(--white) !important;
-                    }
-
-                    &::after {
-                        transform: rotate(90deg);
-                        color: var(--white) !important;
-                    }
-                }
-
-                // Hover state
-                &:hover {
-                    cursor: pointer;
-                    color: var(--white);
-                    background: var(--primary);
-
-                    &::before {
-                        color: var(--white) !important;
-                    }
-                }
-
-                // Icon before text
-                &::before {
-                    position: absolute;
-                    left: 0.8rem;
-                    padding-top: 3px;
-                    .menu-icon-base();
-                    content: "\e915";
-                    color: var(--primary);
-                    transition: all 0.3s;
-                }
+                .nav-link-base();
+                .nav-link-interactive();
+                .nav-link-icon-before();
 
                 &.menu-icon-svg::before {
                     content: "";
