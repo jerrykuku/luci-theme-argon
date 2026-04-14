@@ -4303,7 +4303,7 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
   }
   .cbi-value input[name^="pw"],
   .cbi-value input[data-update="change"]:nth-child(2) {
-    width: 13rem !important;
+    width: 13rem;
     min-width: 13rem;
   }
   #diag-rc-output > pre,
@@ -4454,14 +4454,14 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
     padding: 0.1rem;
     position: relative;
     z-index: 99;
-    display: inline-block !important;
+    display: inline-block;
   }
   .showSide::before {
-    font-family: 'argon' !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
+    font-family: 'argon';
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -4501,12 +4501,12 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
   }
   .cbi-value-field,
   .cbi-value-description {
-    display: block !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
   }
   [data-page="admin-system-admin-password"] .cbi-value-field {
-    display: table-cell !important;
+    display: table-cell;
   }
   .modal.cbi-modal {
     max-width: 100%;
@@ -4540,7 +4540,7 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
     --legacy-ifacebox-padding: 0.875rem 0.5rem;
   }
   .login-page .login-container {
-    margin-left: 0rem !important;
+    margin-left: 0rem;
     width: 100%;
   }
   .login-page .login-container .login-form .form-login .input-group::before {
@@ -4552,7 +4552,7 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
     border-radius: 0;
   }
 }
-@media screen and (min-width: 37.5rem) {
+@media screen and (min-width: 37.5625rem) {
   ::-webkit-scrollbar {
     width: 0.625rem;
     height: 0.625rem;

@@ -228,7 +228,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
     // Password field specific sizing
     .cbi-value input[name^="pw"],
     .cbi-value input[data-update="change"]:nth-child(2) {
-        width: 13rem !important;
+        width: 13rem;
         min-width: 13rem;
     }
 
@@ -429,14 +429,14 @@ div[style*="display:grid;grid-template-columns:repeat"] {
         padding: 0.1rem;
         position: relative;
         z-index: 99;
-        display: inline-block !important;
+        display: inline-block;
 
         &::before {
-            font-family: 'argon' !important;
-            font-style: normal !important;
-            font-weight: normal !important;
-            font-variant: normal !important;
-            text-transform: none !important;
+            font-family: 'argon';
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
             line-height: 1;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -502,13 +502,13 @@ div[style*="display:grid;grid-template-columns:repeat"] {
     // Form field layout
     .cbi-value-field,
     .cbi-value-description {
-        display: block !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+        display: block;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     [data-page="admin-system-admin-password"] .cbi-value-field {
-        display: table-cell !important;
+        display: table-cell;
     }
 
     // Modal adjustments
@@ -557,7 +557,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 
     // Login page mobile adjustments
     .login-page .login-container {
-        margin-left: 0rem !important;
+        margin-left: 0rem;
         width: 100%;
 
         .login-form {
@@ -581,7 +581,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 // 8. Desktop Scrollbar Styling (600px and above)
 // ==========================================================================
 
-@media screen and (min-width: 37.5rem) {
+@media screen and (min-width: 37.5625rem) {
     ::-webkit-scrollbar {
         width: 0.625rem;
         height: 0.625rem;
