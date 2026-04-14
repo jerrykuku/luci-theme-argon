@@ -21,13 +21,13 @@
     }
 
     .showSide::before {
-        top: -12px;
+        top: -0.75rem;
     }
 }
 
 // Normalize plugin inline-grid output to responsive cards
 div[style*="display:grid;grid-template-columns:repeat"] {
-    --legacy-ifacebox-basis: 100px;
+    --legacy-ifacebox-basis: 6.25rem;
     --legacy-ifacebox-font-size: 0.7rem;
     --legacy-ifacebox-padding: 0.875rem;
     display: flex !important;
@@ -52,7 +52,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 // 2. Large Desktop Screens (1600px and below)
 // ==========================================================================
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 100rem) {
 
     // Header adjustments
     header>.fill>.container>#logo {
@@ -101,7 +101,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 // 3. Standard Desktop Screens (1366px and below)
 // ==========================================================================
 
-@media screen and (max-width: 1366px) {
+@media screen and (max-width: 85.375rem) {
 
     // Header adjustments
     header>.fill>.container {
@@ -180,7 +180,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 // 4. Small Desktop/Large Tablet (1152px and below)
 // ==========================================================================
 
-@media screen and (max-width: 1152px) {
+@media screen and (max-width: 72rem) {
 
     // Header adjustments
     header>.fill>.container>#logo {
@@ -362,7 +362,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 
     .td.cbi-section-actions>*>*,
     .td.cbi-section-actions>*>form>* {
-        margin: 2.1px 3px;
+        margin: 0.13125rem 0.1875rem;
     }
 
     // Firewall form adjustments
@@ -389,7 +389,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 // 5. Tablet Portrait (768px and below)
 // ==========================================================================
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 48rem) {
 
     // Base font size
     body {
@@ -455,7 +455,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 // 6. Mobile Portrait (600px and below)
 // ==========================================================================
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 37.5rem) {
 
     // Hide mobile elements
     .mobile-hide {
@@ -494,8 +494,8 @@ div[style*="display:grid;grid-template-columns:repeat"] {
     .tabs,
     .cbi-tabmenu {
         &::-webkit-scrollbar {
-            width: 0px;
-            height: 0px;
+            width: 0;
+            height: 0;
         }
     }
 
@@ -522,12 +522,12 @@ div[style*="display:grid;grid-template-columns:repeat"] {
         align-items: center;
         flex-wrap: wrap;
         width: 100%;
-        min-width: 270px;
-        max-width: 600px;
-        min-height: 32px;
+        min-width: 16.875rem;
+        max-width: 37.5rem;
+        min-height: 2rem;
         margin: 5em auto;
         padding: 1em;
-        border-radius: 3px !important;
+        border-radius: 0.1875rem !important;
         background: var(--modal-bg);
         box-shadow: var(--shadow-overlay);
     }
@@ -546,11 +546,11 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 // 7. Small Mobile (480px and below)
 // ==========================================================================
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 30rem) {
 
     // Interface box adjustments for overview page
     div[style*="display:grid;grid-template-columns:repeat"] {
-        --legacy-ifacebox-basis: 80px;
+        --legacy-ifacebox-basis: 5rem;
         --legacy-ifacebox-font-size: 0.6rem;
         --legacy-ifacebox-padding: 0.875rem 0.5rem;
     }
@@ -569,7 +569,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 
                     input {
                         color: var(--gray-dark-400);
-                        border-bottom: var(--white) 1px solid;
+                        border-bottom: var(--white) 0.0625rem solid;
                         border-radius: 0;
                     }
                 }
@@ -581,10 +581,10 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 // 8. Desktop Scrollbar Styling (600px and above)
 // ==========================================================================
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 37.5rem) {
     ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
+        width: 0.625rem;
+        height: 0.625rem;
     }
 
     ::-webkit-scrollbar,
@@ -594,7 +594,7 @@ div[style*="display:grid;grid-template-columns:repeat"] {
 
     ::-webkit-scrollbar-thumb {
         background: var(--primary);
-        border-radius: 10px;
+        border-radius: 0.625rem;
 
         &:hover {
             background: var(--primary);

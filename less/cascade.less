@@ -66,7 +66,7 @@
   --dropdown-bg: #ffffff;
   --dropdown-text: #000000;
   --dropdown-separator: #ccc;
-  --dropdown-shadow: 0 0 4px #918e8c;
+  --dropdown-shadow: 0 0 0.25rem #918e8c;
   --select-arrow-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath fill='%238898aa' d='M5.293 9.293a1 1 0 0 1 1.414 0L12 14.586l5.293-5.293a1 1 0 1 1 1.414 1.414l-6 6a1 1 0 0 1-1.414 0l-6-6a1 1 0 0 1 0-1.414'/%3E%3C/svg%3E");
   --muted-btn-bg: #8898aa;
   --muted-btn-border: #8898aa;
@@ -94,15 +94,15 @@
   --diag-bg: #101010;
   --svg-border: #d4d4d4;
   --commandbox-border: #ccc;
-  --zonebadge-empty-bg: repeating-linear-gradient(45deg, rgba(204, 204, 204, .5), rgba(204, 204, 204, .5) 5px, rgba(255, 255, 255, .5) 5px, rgba(255, 255, 255, .5) 10px);
-  --commandbox-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
-  --shadow-focus: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, .1);
-  --shadow-surface: 0 4px 8px rgba(0, 0, 0, .03);
-  --shadow-overlay: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 2px 0 rgba(0, 0, 0, .12);
-  --shadow-sidebar: rgba(0, 0, 0, .75) 0 0 15px -5px;
-  --shadow-login-panel: rgba(0, 0, 0, .75) 0 0 35px -5px;
-  --shadow-input-subtle: 0 3px 2px rgba(233, 236, 239, .05);
-  --shadow-login-button: rgba(0, 0, 0, .1) 0 0 50px 0;
+  --zonebadge-empty-bg: repeating-linear-gradient(45deg, rgba(204, 204, 204, .5), rgba(204, 204, 204, .5) 0.3125rem, rgba(255, 255, 255, .5) 0.3125rem, rgba(255, 255, 255, .5) 0.625rem);
+  --commandbox-shadow: inset 0 0.0625rem 0 rgba(255, 255, 255, .2), 0 0.0625rem 0.125rem rgba(0, 0, 0, .05);
+  --shadow-focus: 0 0.1875rem 0.5625rem rgba(50, 50, 9, 0), 0.1875rem 0.25rem 0.5rem rgba(94, 114, 228, .1);
+  --shadow-surface: 0 0.25rem 0.5rem rgba(0, 0, 0, .03);
+  --shadow-overlay: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, .16), 0 0 0.125rem 0 rgba(0, 0, 0, .12);
+  --shadow-sidebar: rgba(0, 0, 0, .75) 0 0 0.9375rem -0.3125rem;
+  --shadow-login-panel: rgba(0, 0, 0, .75) 0 0 2.1875rem -0.3125rem;
+  --shadow-input-subtle: 0 0.1875rem 0.125rem rgba(233, 236, 239, .05);
+  --shadow-login-button: rgba(0, 0, 0, .1) 0 0 3.125rem 0;
   --shadow-color: rgba(136, 152, 170, .15);
 
   --success: var(--green);
@@ -115,9 +115,9 @@
   --darker: black;
   --background-color: #f4f5f7;
   --login-form-bg-color: rgba(244, 245, 247, var(--blur-opacity));
-  --blur-radius: 10px;
+  --blur-radius: 0.625rem;
   --blur-opacity: 0.5;
-  --blur-radius-dark: 10px;
+  --blur-radius-dark: 0.625rem;
   --blur-opacity-dark: 0.5;
   --font-family-sans-serif: "Google Sans", "Microsoft Yahei", "WenQuanYi Micro Hei", "sans-serif", "Helvetica Neue", "Helvetica", "Hiragino Sans GB";
   --dropdown-arrow-icon: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik01LjI5MyA5LjI5M2ExIDEgMCAwIDEgMS40MTQgMEwxMiAxNC41ODZsNS4yOTMtNS4yOTNhMSAxIDAgMSAxIDEuNDE0IDEuNDE0bC02IDZhMSAxIDAgMCAxLTEuNDE0IDBsLTYtNmExIDEgMCAwIDEgMC0xLjQxNCIvPjwvc3ZnPg==");
@@ -192,15 +192,15 @@
   --diag-bg: #0f1114;
   --svg-border: #4a4a4a;
   --commandbox-border: #4a4a4a;
-  --zonebadge-empty-bg: repeating-linear-gradient(45deg, rgba(102, 102, 102, .45), rgba(102, 102, 102, .45) 5px, rgba(55, 55, 55, .45) 5px, rgba(55, 55, 55, .45) 10px);
-  --commandbox-shadow: inset 0 1px 0 rgba(0, 0, 0, .2), 0 1px 2px rgba(255, 255, 255, .05);
-  --shadow-focus: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, .1);
-  --shadow-surface: 0 4px 8px rgba(0, 0, 0, .18);
-  --shadow-overlay: 0 2px 2px 0 rgba(0, 0, 0, .3), 0 0 2px 0 rgba(0, 0, 0, .22);
-  --shadow-sidebar: rgba(0, 0, 0, .65) 0 0 15px -5px;
-  --shadow-login-panel: rgba(0, 0, 0, .65) 0 0 35px -5px;
-  --shadow-input-subtle: 0 3px 2px rgba(0, 0, 0, .2);
-  --shadow-login-button: rgba(0, 0, 0, .3) 0 0 50px 0;
+  --zonebadge-empty-bg: repeating-linear-gradient(45deg, rgba(102, 102, 102, .45), rgba(102, 102, 102, .45) 0.3125rem, rgba(55, 55, 55, .45) 0.3125rem, rgba(55, 55, 55, .45) 0.625rem);
+  --commandbox-shadow: inset 0 0.0625rem 0 rgba(0, 0, 0, .2), 0 0.0625rem 0.125rem rgba(255, 255, 255, .05);
+  --shadow-focus: 0 0.1875rem 0.5625rem rgba(50, 50, 9, 0), 0.1875rem 0.25rem 0.5rem rgba(94, 114, 228, .1);
+  --shadow-surface: 0 0.25rem 0.5rem rgba(0, 0, 0, .18);
+  --shadow-overlay: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, .3), 0 0 0.125rem 0 rgba(0, 0, 0, .22);
+  --shadow-sidebar: rgba(0, 0, 0, .65) 0 0 0.9375rem -0.3125rem;
+  --shadow-login-panel: rgba(0, 0, 0, .65) 0 0 2.1875rem -0.3125rem;
+  --shadow-input-subtle: 0 0.1875rem 0.125rem rgba(0, 0, 0, .2);
+  --shadow-login-button: rgba(0, 0, 0, .3) 0 0 3.125rem 0;
   --shadow-color: rgba(0, 0, 0, .35);
 }
 
@@ -321,7 +321,7 @@ input,
   height: 2.5rem;
   padding: .5rem .75rem;
   color: var(--text-muted);
-  border: 1px solid var(--border-color);
+  border: 0.0625rem solid var(--border-color);
   border-radius: .25rem;
   outline: 0;
   background-image: none;
@@ -423,8 +423,8 @@ select[multiple="multiple"] {
 .modal.alert-message {
   position: static;
   width: 90%;
-  min-width: 270px;
-  max-width: 600px;
+  min-width: 16.875rem;
+  max-width: 37.5rem;
   left: auto;
   top: auto;
   transform: none;
@@ -689,7 +689,7 @@ tr>th,
 
 .cbi-section-table-row>.cbi-value-field .cbi-input-text,
 .cbi-section-table-row>.cbi-value-field .cbi-input-password {
-  min-width: 80px;
+  min-width: 5rem;
 }
 
 .cbi-section-table-row>.cbi-value-field [data-dynlist]>input,
@@ -814,7 +814,7 @@ td>table>tbody>tr>td,
   font-size: 0;
   color: transparent !important;
   background: url(../icon/arrow.svg) no-repeat center;
-  background-size: 12px 20px;
+  background-size: 0.75rem 1.25rem;
 }
 
 .cbi-button-up {
@@ -975,10 +975,10 @@ td>table>tbody>tr>td,
 
     .more {
       display: block;
-      width: 1px;
+      width: 0.0625rem;
       height: 100%;
       overflow: hidden;
-      text-indent: 5000px;
+      text-indent: 312.5rem;
       background-color: var(--white)
     }
   }
@@ -991,7 +991,7 @@ td>table>tbody>tr>td,
 
 .cbi-value-field .cbi-button-add {
   font-weight: bold;
-  padding: 1px 6px;
+  padding: 0.0625rem 0.375rem;
   display: inline-block;
   align-items: center;
 }
@@ -1005,8 +1005,8 @@ td>table>tbody>tr>td,
   overflow-x: auto;
 
   &::-webkit-scrollbar {
-    width: 1px;
-    height: 5px;
+    width: 0.0625rem;
+    height: 0.3125rem;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -1059,8 +1059,8 @@ td>table>tbody>tr>td,
   overflow-x: auto;
 
   &::-webkit-scrollbar {
-    width: 1px;
-    height: 5px;
+    width: 0.0625rem;
+    height: 0.3125rem;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -1276,15 +1276,15 @@ td>table>tbody>tr>td,
 .cbi-section-error {
   font-weight: bold;
   line-height: 1.42857143;
-  margin: 18px;
-  padding: 6px;
+  margin: 1.125rem;
+  padding: 0.375rem;
   border: thin solid var(--danger);
-  border-radius: 3px;
+  border-radius: 0.1875rem;
   background-color: var(--danger-soft-bg);
 }
 
 .cbi-section-error ul {
-  margin: 0 0 0 20px;
+  margin: 0 0 0 1.25rem;
 }
 
 .cbi-section-error ul li {
@@ -1379,7 +1379,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   white-space: nowrap;
   word-break: break-word;
   color: var(--text-muted);
-  border: 1px solid var(--border-color);
+  border: 0.0625rem solid var(--border-color);
   border-radius: .25rem 0 0 .25rem;
   outline: 0;
   background-image: none;
@@ -1391,7 +1391,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
   line-height: 1.3;
   flex-direction: column;
-  min-height: 30px;
+  min-height: 1.875rem;
   cursor: text;
   gap: 0.875rem;
 
@@ -1418,7 +1418,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
       line-height: 1.5rem;
 
       color: var(--white);
-      border: 1px solid var(--danger);
+      border: 0.0625rem solid var(--danger);
       border-radius: 0 0.25rem 0.25rem 0;
       outline: 0;
 
@@ -1485,7 +1485,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
       color: var(--white);
       background-color: var(--primary);
-      border: 1px solid var(--primary);
+      border: 0.0625rem solid var(--primary);
     }
 
 
@@ -1502,14 +1502,14 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 }
 
 .cbi-dynlist>.item.drag-over {
-  border-top: 1px solid var(--red);
-  margin-top: -1px;
+  border-top: 0.0625rem solid var(--red);
+  margin-top: -0.0625rem;
 }
 
 @supports selector(:has(*)) {
   .cbi-dynlist>.add-item:has(.drag-over) {
-    border-top: 1px solid var(--red);
-    margin-top: -1px;
+    border-top: 0.0625rem solid var(--red);
+    margin-top: -0.0625rem;
   }
 }
 
@@ -1542,7 +1542,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .cbi-dropdown[placeholder*="select"] {
   max-width: 25rem;
   height: auto;
-  margin-top: -3px;
+  margin-top: -0.1875rem;
 }
 
 .cbi-dropdown>ul {
@@ -1613,7 +1613,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   align-self: center;
   flex-grow: 1;
   flex-shrink: 1;
-  min-height: 20px;
+  min-height: 1.25rem;
   padding: 0.125rem .25em;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1633,7 +1633,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 }
 
 .cbi-dropdown[empty]>ul {
-  max-width: 1px;
+  max-width: 0.0625rem;
 }
 
 .cbi-dropdown>ul>li>form {
@@ -1666,7 +1666,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   width: auto;
   min-width: 100%;
   max-width: none;
-  max-height: 200px !important;
+  max-height: 12.5rem !important;
   border: 0 solid var(--dropdown-separator);
   background: var(--dropdown-bg);
   box-shadow: var(--dropdown-shadow);
@@ -1791,9 +1791,9 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   position: fixed;
   z-index: 900;
   top: 0;
-  right: 10000px;
+  right: 625rem;
   bottom: 0;
-  left: -10000px;
+  left: -625rem;
   overflow-y: scroll;
   transition: opacity .125s ease-in;
   opacity: 0;
@@ -1806,9 +1806,9 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   align-items: center;
   flex-wrap: wrap;
   width: 90%;
-  min-width: 270px;
-  max-width: 600px;
-  min-height: 32px;
+  min-width: 16.875rem;
+  max-width: 37.5rem;
+  min-height: 2rem;
   margin: 5em auto;
   padding: 1rem;
   border-radius: 0.25rem !important;
@@ -1833,11 +1833,11 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
     color: var(--dark-primary);
     outline: 0;
     border-radius: 0.25rem;
-    border: 1px solid var(--lighter);
+    border: 0.0625rem solid var(--lighter);
     transition: all 0.2s ease;
 
     &:focus {
-      border: 1px solid var(--primary);
+      border: 0.0625rem solid var(--primary);
       box-shadow: var(--shadow-focus);
     }
   }
@@ -1916,7 +1916,7 @@ body.modal-overlay-active #modal_overlay {
 
 .spinning {
   position: relative;
-  padding-left: 32px !important;
+  padding-left: 2rem !important;
 }
 
 .spinning::before {
@@ -1925,10 +1925,10 @@ body.modal-overlay-active #modal_overlay {
   bottom: 0;
 
   left: .2em;
-  width: 32px;
+  width: 2rem;
   content: "";
   background: url(/luci-static/resources/icons/loading.svg) no-repeat center;
-  background-size: 16px;
+  background-size: 1rem;
 }
 
 
@@ -2002,7 +2002,7 @@ body.modal-overlay-active #modal_overlay {
   padding: .25rem .8rem;
 
   background: var(--table-row-even);
-  border-radius: 4px;
+  border-radius: 0.25rem;
 }
 
 td>.ifacebadge,
@@ -2052,7 +2052,7 @@ td>.ifacebadge,
     .ifacebadge {
       align-items: center;
       flex: 1 1 auto;
-      min-width: 220px;
+      min-width: 13.75rem;
       padding: .5em;
       background-color: var(--surface-color);
 
@@ -2074,7 +2074,7 @@ td>.ifacebadge,
   padding: .8rem;
   color: var(--text-muted);
   border-radius: 0.25rem;
-  border: 1px solid var(--border-color);
+  border: 0.0625rem solid var(--border-color);
   min-width: 16rem;
 }
 
@@ -2119,7 +2119,7 @@ td>.ifacebadge,
 .uci-change-list ins,
 .uci-change-legend-label ins {
   display: block;
-  padding: 2px;
+  padding: 0.125rem;
   text-decoration: none;
   border: thin solid var(--change-add-border);
   background-color: var(--change-add-bg);
@@ -2129,7 +2129,7 @@ td>.ifacebadge,
 .uci-change-legend-label del {
   font-style: normal;
   display: block;
-  padding: 2px;
+  padding: 0.125rem;
   text-decoration: none;
   border: thin solid var(--change-del-border);
   background-color: var(--change-del-bg);
@@ -2139,7 +2139,7 @@ td>.ifacebadge,
 .uci-change-legend-label var {
   font-style: normal;
   display: block;
-  padding: 2px;
+  padding: 0.125rem;
   text-decoration: none;
   border: thin solid var(--change-neutral-border);
   background-color: var(--table-row-even);
@@ -2154,12 +2154,12 @@ td>.ifacebadge,
 }
 
 .uci-change-legend {
-  padding: 5px;
+  padding: 0.3125rem;
 }
 
 .uci-change-legend-label {
   float: left;
-  width: 150px;
+  width: 9.375rem;
 }
 
 .uci-change-legend-label>ins,
@@ -2167,9 +2167,9 @@ td>.ifacebadge,
 .uci-change-legend-label>var {
   display: block;
   float: left;
-  width: 10px;
-  height: 10px;
-  margin-right: 4px;
+  width: 0.625rem;
+  height: 0.625rem;
+  margin-right: 0.25rem;
 }
 
 .uci-change-legend-label var ins,
@@ -2189,8 +2189,8 @@ td>.ifacebadge,
     padding: 0.5rem;
 
     .uci-change-legend {
-      line-height: 15px;
-      padding: 10px 20px 0 20px;
+      line-height: 0.9375rem;
+      padding: 0.625rem 1.25rem 0 1.25rem;
 
       .uci-change-legend-label {
         padding: 0;
@@ -2202,22 +2202,22 @@ td>.ifacebadge,
 
         >ins,
         >del {
-          width: 14px;
-          height: 14px;
+          width: 0.875rem;
+          height: 0.875rem;
         }
 
         >var {
           position: relative;
-          width: 14px;
-          height: 14px;
+          width: 0.875rem;
+          height: 0.875rem;
 
           ins,
           del {
             position: absolute;
-            left: 2px;
-            top: 2px;
-            right: 2px;
-            bottom: 2px;
+            left: 0.125rem;
+            top: 0.125rem;
+            right: 0.125rem;
+            bottom: 0.125rem;
           }
         }
       }
@@ -2261,8 +2261,8 @@ td>.ifacebadge,
   display: inline-flex;
   overflow: hidden;
   flex-direction: column;
-  border-radius: 4px;
-  min-width: 100px;
+  border-radius: 0.25rem;
+  min-width: 6.25rem;
   background-color: var(--table-row-odd);
   // border-bottom: thin solid #ccc;
   // box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 1px 2px rgba(0, 0, 0, .2);
@@ -2294,7 +2294,7 @@ td>.ifacebadge,
 .zonebadge {
   display: inline-block;
   padding: .2rem .5rem;
-  border-radius: 4px;
+  border-radius: 0.25rem;
 }
 
 .zonebadge .ifacebadge {
@@ -2389,7 +2389,7 @@ span[data-tooltip] .label {
 .cbi-tooltip {
   position: absolute;
   z-index: 1000;
-  left: -10000px;
+  left: -625rem;
   box-shadow: var(--shadow-focus);
   border-radius: 0.25rem;
   background: var(--surface-color);
@@ -2446,7 +2446,7 @@ span[data-tooltip] .label {
   text-decoration: none;
   text-transform: uppercase;
   color: var(--white) !important;
-  border-radius: 3px;
+  border-radius: 0.1875rem;
   background-color: var(--label-bg);
   text-shadow: none;
 }
@@ -2494,7 +2494,7 @@ label[data-index][data-depends] {
   display: block;
   overflow-y: hidden;
   width: 100%;
-  padding: 8.5px;
+  padding: 0.53125rem;
   white-space: pre;
   color: var(--diag-text);
   background-color: var(--diag-bg);
@@ -2566,7 +2566,7 @@ input[name="nslookup"] {
 /* custom commands */
 .commands {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
   gap: 0.75rem;
 }
 
@@ -2581,7 +2581,7 @@ input[name="nslookup"] {
   h3 {
     line-height: normal !important;
     overflow: hidden;
-    margin: 6px 0 !important;
+    margin: 0.375rem 0 !important;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
@@ -2593,23 +2593,23 @@ input[name="nslookup"] {
   code {
     overflow: hidden;
     max-width: fit-content;
-    padding: 2px 3px;
+    padding: 0.125rem 0.1875rem;
     white-space: nowrap;
     text-overflow: ellipsis;
 
     &:hover {
       overflow-y: auto;
-      max-height: 50px;
+      max-height: 3.125rem;
       white-space: normal;
     }
   }
 
   p:first-of-type {
-    margin-top: -6px;
+    margin-top: -0.375rem;
   }
 
   p:nth-of-type(2) {
-    margin-top: 2px;
+    margin-top: 0.125rem;
   }
 }
 
@@ -2618,8 +2618,8 @@ input[name="nslookup"] {
 #command-rc-output .alert-message {
   line-height: 1.42857143;
   position: absolute;
-  top: 40px;
-  right: 32px;
+  top: 2.5rem;
+  right: 2rem;
   max-width: 40%;
   margin: 0;
   animation: anim-fade-in 1.5s forwards;

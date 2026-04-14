@@ -12,19 +12,19 @@
     resize: none;
     color: var(--text-muted);
     border-radius: 0.25rem;
-    border: 1px solid var(--border-color);
+    border: 0.0625rem solid var(--border-color);
 }
 
 .textarea-focus-border() {
     &:focus-visible {
         outline: none;
         box-shadow: none;
-        border: 1px solid var(--primary);
+        border: 0.0625rem solid var(--primary);
     }
 }
 
 .panel-padding-16() {
-    padding: 16px;
+    padding: 1rem;
 }
 
 .boxed-panel-padding-16() {
@@ -182,7 +182,7 @@
         font-size: 1.2rem;
         width: 100%;
         display: block;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.05);
         line-height: 1.5;
         margin-bottom: 0;
         letter-spacing: 0.1rem;
@@ -244,14 +244,14 @@
         label.cbi-value-title {
             line-height: 1.5rem;
             padding: 0.5rem 0.75rem;
-            width: 60px;
+            width: 3.75rem;
             text-align: left;
         }
 
         div.cbi-value-field {
             width: 100%;
             display: block;
-            padding-left: 60px;
+            padding-left: 3.75rem;
         }
 
         div#list-content {
@@ -260,7 +260,7 @@
                 thead,
                 tbody {
                     td.cbi-section-table-cell {
-                        width: 232px;
+                        width: 14.5rem;
                     }
                 }
             }
@@ -278,7 +278,7 @@
                 td.cbi-value-field.folder-icon {
                     strong {
                         vertical-align: middle;
-                        margin-left: 5px;
+                        margin-left: 0.3125rem;
                     }
                 }
             }
@@ -312,7 +312,7 @@
     }
 
     input[name="filter_i18n"] {
-        top: 2px;
+        top: 0.125rem;
         vertical-align: text-top;
     }
 
@@ -331,7 +331,7 @@
     .controls {
         div:nth-child(5) {
             >label {
-                margin-bottom: 5px;
+                margin-bottom: 0.3125rem;
             }
 
             >div {
@@ -339,7 +339,7 @@
                     margin-top: 1rem;
 
                     input {
-                        top: -2px;
+                        top: -0.125rem;
                         right: 0;
                         vertical-align: middle;
                     }
@@ -442,8 +442,8 @@
 
     #modal_overlay>.modal.cbi-modal>div>p>textarea {
         height: 20em !important;
-        border: 1px solid var(--border-color) !important;
-        border-radius: 4px;
+        border: 0.0625rem solid var(--border-color) !important;
+        border-radius: 0.25rem;
     }
 }
 
@@ -474,7 +474,7 @@
         background: transparent;
         border-radius: 0.25rem;
         color: var(--text-muted);
-        border: 1px solid var(--border-color);
+        border: 0.0625rem solid var(--border-color);
         padding: 0.5rem;
     }
 
@@ -484,7 +484,7 @@
 
         .td {
             background-color: var(--surface-color) !important;
-            border-bottom: 1px solid var(--border-color) !important;
+            border-bottom: 0.0625rem solid var(--border-color) !important;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -506,10 +506,10 @@
 
                 .more {
                     display: block;
-                    width: 1px;
+                    width: 0.0625rem;
                     height: 100%;
                     overflow: hidden;
-                    text-indent: 5000px;
+                    text-indent: 312.5rem;
                     background-color: var(--white)
                 }
             }
@@ -618,7 +618,7 @@
         padding: 1.5rem !important;
     }
     .cbi-section > .right {
-        margin: 15px 15px 0px 0px;
+        margin: 0.9375rem 0.9375rem 0 0;
     }
 }
 
@@ -629,7 +629,7 @@
 [data-page="admin-services-ddns"] {
     #syslog {
         overflow: auto;
-        font-size: 12px !important;
+        font-size: 0.75rem !important;
     }
 }
 
@@ -716,7 +716,7 @@
     .oc {
         --bg-light: var(--surface-color);
         --bg-gray: var(--surface-color);
-        border-radius: 8px;
+        border-radius: 0.5rem;
 
         .developer-container {
             background: transparent;
@@ -724,7 +724,7 @@
 
         .announcement-card {
             width: auto!important;
-            margin: 10px!important;
+            margin: 0.625rem!important;
         }
     }
 
@@ -740,25 +740,25 @@
         .main-card {
             border: none;
             box-shadow: none;
-            padding: 0 10px 10px 10px;
+            padding: 0 0.625rem 0.625rem 0.625rem;
             background: transparent;
         }
 
         .myip-main-card {
             margin: 0;
-            padding: 10px;
+            padding: 0.625rem;
             border: none;
             background: transparent;
 
             .myip-section-title {
                 margin: 0;
-                border-width: 1px;
+                border-width: 0.0625rem;
             }
         }
     }
 
     .sub-card .card-title {
-        margin-top: 5px;
+        margin-top: 0.3125rem;
     }
 
     .oc .main-cards-container {
@@ -767,10 +767,10 @@
     }
 
     .oc .config-file-bottom {
-        margin-bottom: 5px;
+        margin-bottom: 0.3125rem;
 
         .card-actions {
-            margin-bottom: 2px !important;
+            margin-bottom: 0.125rem !important;
         }
     }
 
@@ -831,7 +831,7 @@
     #dns-rc-output>pre {
         font-size: 0.875rem;
         color: var(--text-muted);
-        border: 1px solid var(--border-color);
+        border: 0.0625rem solid var(--border-color);
         background-color: transparent;
         border-radius: 0.25rem;
         font-family: 'Google Sans' !important;
@@ -882,7 +882,7 @@
 #cbi-wireless {
     >#wifi_assoclist_table {
         >.tr {
-            box-shadow: inset 1px -1px 0 var(--divider-color), inset -1px -1px 0 var(--divider-color);
+            box-shadow: inset 0.0625rem -0.0625rem 0 var(--divider-color), inset -0.0625rem -0.0625rem 0 var(--divider-color);
 
             &.placeholder {
                 >.td {
@@ -894,11 +894,11 @@
             }
 
             &.table-titles {
-                box-shadow: inset 1px 0 0 var(--divider-color), inset -1px 0 0 var(--divider-color);
+                box-shadow: inset 0.0625rem 0 0 var(--divider-color), inset -0.0625rem 0 0 var(--divider-color);
 
                 >.th {
                     border-bottom: thin solid var(--divider-color);
-                    box-shadow: 0 -1px 0 0 var(--divider-color);
+                    box-shadow: 0 -0.0625rem 0 0 var(--divider-color);
                 }
             }
         }
