@@ -26,21 +26,6 @@
 </footer>
 </div>
 </div>
-	<script>
-		// thanks for Jo-Philipp Wich <jow@openwrt.org>
-		var luciLocation = {{ ctx.path }};
-		var winHeight = window.innerHeight;
-		window.addEventListener('resize', function () {
-			var winWidth = window.innerWidth;
-			if(winWidth < 600){
-				var newHeight = window.innerHeight;
-				var keyboardHeight = Math.max(0, winHeight - newHeight);
-				var ftcElement = document.querySelector(".ftc");
-				if (ftcElement) {
-					ftcElement.style.bottom = (keyboardHeight + 30) + "px";
-				}
-			}
-		});
-	</script>
+<script src="{{ media }}/js/login-init.js?v={{ version.luciversion }}"></script>
 </body>
 </html>

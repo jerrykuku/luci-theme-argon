@@ -93,7 +93,7 @@
 				<source src="{{ bgArry.bgUrl }}" type="{{ bgArry.mimeType }}">
 			</video>
 		</div>
-		<button type="button" class="volume-control mute" aria-label="{{ _('Unmute background video') }}" aria-pressed="false"></button>
+		<button type="button" class="volume-control mute" aria-label="{{ _('Unmute background video') }}" aria-pressed="false" data-label-mute="{{ _('Mute background video') }}" data-label-unmute="{{ _('Unmute background video') }}"></button>
 		<!-- Video Player End -->
 	{% else %}
 	<!-- Image Background Start -->
@@ -132,37 +132,4 @@
 					</div>
 				</form>
 			<!-- Login Form End -->
-			<script type="text/javascript">//<![CDATA[
-				(function () {
-					var input = document.getElementById('cbi-input-password');
-					if (input)
-						input.focus();
-
-					var mainBg = document.getElementById('main-bg');
-					if (mainBg) {
-						var bgUrl = mainBg.getAttribute('data-bg-url');
-						if (bgUrl)
-							mainBg.style.backgroundImage = 'url("' + bgUrl.replace(/"/g, '\\"') + '")';
-					}
-
-					var volumeControl = document.querySelector('.volume-control');
-					var video = document.getElementById('video');
-					if (volumeControl && video) {
-						volumeControl.addEventListener('click', function () {
-							var isMuted = this.classList.contains('mute');
-							if (isMuted) {
-								this.classList.remove('mute');
-								video.muted = false;
-								this.setAttribute('aria-pressed', 'true');
-								this.setAttribute('aria-label', '{{ _('Mute background video') }}');
-							} else {
-								this.classList.add('mute');
-								video.muted = true;
-								this.setAttribute('aria-pressed', 'false');
-								this.setAttribute('aria-label', '{{ _('Unmute background video') }}');
-							}
-						});
-					}
-				})();
-			//]]></script>
 {% include("themes/" + theme + "/footer_login") %}
