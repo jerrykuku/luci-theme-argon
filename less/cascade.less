@@ -94,14 +94,14 @@
   --diag-bg: #101010;
   --svg-border: #d4d4d4;
   --commandbox-border: #ccc;
-  --zonebadge-empty-bg: repeating-linear-gradient(45deg, rgba(204, 204, 204, .5), rgba(204, 204, 204, .5) 0.3125rem, rgba(255, 255, 255, .5) 0.3125rem, rgba(255, 255, 255, .5) 0.625rem);
-  --commandbox-shadow: inset 0 0.0625rem 0 rgba(255, 255, 255, .2), 0 0.0625rem 0.125rem rgba(0, 0, 0, .05);
-  --shadow-focus: 0 0.1875rem 0.5625rem rgba(50, 50, 9, 0), 0.1875rem 0.25rem 0.5rem rgba(94, 114, 228, .1);
+  --zonebadge-empty-bg: repeating-linear-gradient(45deg, rgba(204, 204, 204, .5), rgba(204, 204, 204, .5) 5px, rgba(255, 255, 255, .5) 5px, rgba(255, 255, 255, .5) 0.625rem);
+  --commandbox-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+  --shadow-focus: 0 3px 0.5625rem rgba(50, 50, 9, 0), 3px 0.25rem 0.5rem rgba(94, 114, 228, .1);
   --shadow-surface: 0 0.25rem 0.5rem rgba(0, 0, 0, .03);
-  --shadow-overlay: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, .16), 0 0 0.125rem 0 rgba(0, 0, 0, .12);
-  --shadow-sidebar: rgba(0, 0, 0, .75) 0 0 0.9375rem -0.3125rem;
-  --shadow-login-panel: rgba(0, 0, 0, .75) 0 0 2.1875rem -0.3125rem;
-  --shadow-input-subtle: 0 0.1875rem 0.125rem rgba(233, 236, 239, .05);
+  --shadow-overlay: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 2px 0 rgba(0, 0, 0, .12);
+  --shadow-sidebar: rgba(0, 0, 0, .75) 0 0 0.9375rem -5px;
+  --shadow-login-panel: rgba(0, 0, 0, .75) 0 0 2.1875rem -5px;
+  --shadow-input-subtle: 0 3px 2px rgba(233, 236, 239, .05);
   --shadow-login-button: rgba(0, 0, 0, .1) 0 0 3.125rem 0;
   --shadow-color: rgba(136, 152, 170, .15);
 
@@ -192,14 +192,14 @@
   --diag-bg: #0f1114;
   --svg-border: #4a4a4a;
   --commandbox-border: #4a4a4a;
-  --zonebadge-empty-bg: repeating-linear-gradient(45deg, rgba(102, 102, 102, .45), rgba(102, 102, 102, .45) 0.3125rem, rgba(55, 55, 55, .45) 0.3125rem, rgba(55, 55, 55, .45) 0.625rem);
-  --commandbox-shadow: inset 0 0.0625rem 0 rgba(0, 0, 0, .2), 0 0.0625rem 0.125rem rgba(255, 255, 255, .05);
-  --shadow-focus: 0 0.1875rem 0.5625rem rgba(50, 50, 9, 0), 0.1875rem 0.25rem 0.5rem rgba(94, 114, 228, .1);
+  --zonebadge-empty-bg: repeating-linear-gradient(45deg, rgba(102, 102, 102, .45), rgba(102, 102, 102, .45) 5px, rgba(55, 55, 55, .45) 5px, rgba(55, 55, 55, .45) 0.625rem);
+  --commandbox-shadow: inset 0 1px 0 rgba(0, 0, 0, .2), 0 1px 2px rgba(255, 255, 255, .05);
+  --shadow-focus: 0 3px 0.5625rem rgba(50, 50, 9, 0), 3px 0.25rem 0.5rem rgba(94, 114, 228, .1);
   --shadow-surface: 0 0.25rem 0.5rem rgba(0, 0, 0, .18);
-  --shadow-overlay: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, .3), 0 0 0.125rem 0 rgba(0, 0, 0, .22);
-  --shadow-sidebar: rgba(0, 0, 0, .65) 0 0 0.9375rem -0.3125rem;
-  --shadow-login-panel: rgba(0, 0, 0, .65) 0 0 2.1875rem -0.3125rem;
-  --shadow-input-subtle: 0 0.1875rem 0.125rem rgba(0, 0, 0, .2);
+  --shadow-overlay: 0 2px 2px 0 rgba(0, 0, 0, .3), 0 0 2px 0 rgba(0, 0, 0, .22);
+  --shadow-sidebar: rgba(0, 0, 0, .65) 0 0 0.9375rem -5px;
+  --shadow-login-panel: rgba(0, 0, 0, .65) 0 0 2.1875rem -5px;
+  --shadow-input-subtle: 0 3px 2px rgba(0, 0, 0, .2);
   --shadow-login-button: rgba(0, 0, 0, .3) 0 0 3.125rem 0;
   --shadow-color: rgba(0, 0, 0, .35);
 }
@@ -321,7 +321,7 @@ input,
   height: 2.5rem;
   padding: .5rem .75rem;
   color: var(--text-muted);
-  border: 0.0625rem solid var(--border-color);
+  border: 1px solid var(--border-color);
   border-radius: .25rem;
   outline: 0;
   background-image: none;
@@ -975,10 +975,10 @@ td>table>tbody>tr>td,
 
     .more {
       display: block;
-      width: 0.0625rem;
+      width: 1px;
       height: 100%;
       overflow: hidden;
-      text-indent: 312.5rem;
+      text-indent: 5000px;
       background-color: var(--white)
     }
   }
@@ -991,7 +991,7 @@ td>table>tbody>tr>td,
 
 .cbi-value-field .cbi-button-add {
   font-weight: bold;
-  padding: 0.0625rem 0.375rem;
+  padding: 1px 0.375rem;
   display: inline-block;
   align-items: center;
 }
@@ -1005,8 +1005,8 @@ td>table>tbody>tr>td,
   overflow-x: auto;
 
   &::-webkit-scrollbar {
-    width: 0.0625rem;
-    height: 0.3125rem;
+    width: 1px;
+    height: 5px;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -1020,7 +1020,7 @@ td>table>tbody>tr>td,
   li[class~="active"],
   li:hover {
     cursor: pointer;
-    border-bottom: 0.18751rem solid var(--primary);
+    border-bottom: 3px solid var(--primary);
     color: var(--primary);
     background-color: var(--surface-color-muted);
     margin-bottom: 0;
@@ -1035,7 +1035,7 @@ td>table>tbody>tr>td,
     font-size: 0.875rem;
     display: inline-block;
     padding: 0.875rem 0rem;
-    border-bottom: 0.18751rem solid rgba(0, 0, 0, 0);
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
     margin: 0;
     transition: all 0.2s;
 
@@ -1046,7 +1046,7 @@ td>table>tbody>tr>td,
     }
 
     &:hover {
-      border-bottom: 0.18751rem solid var(--primary);
+      border-bottom: 3px solid var(--primary);
     }
   }
 }
@@ -1059,8 +1059,8 @@ td>table>tbody>tr>td,
   overflow-x: auto;
 
   &::-webkit-scrollbar {
-    width: 0.0625rem;
-    height: 0.3125rem;
+    width: 1px;
+    height: 5px;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -1078,7 +1078,7 @@ td>table>tbody>tr>td,
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
     padding: 0.5rem 0rem;
-    border-bottom: 0.18751rem solid rgba(0, 0, 0, 0);
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
     margin: 0 0.2rem;
     position: relative;
 
@@ -1090,7 +1090,7 @@ td>table>tbody>tr>td,
 
     &:hover {
       cursor: pointer;
-      border-bottom: 0.18751rem solid var(--primary);
+      border-bottom: 3px solid var(--primary);
       color: var(--primary);
       background-color: var(--surface-color-muted);
       margin-bottom: 0;
@@ -1102,7 +1102,7 @@ td>table>tbody>tr>td,
   }
 
   li[class~="cbi-tab"] {
-    border-bottom: 0.18751rem solid var(--primary);
+    border-bottom: 3px solid var(--primary);
     color: var(--primary);
     background-color: var(--surface-color-muted);
     margin-bottom: 0;
@@ -1279,7 +1279,7 @@ td>table>tbody>tr>td,
   margin: 1.125rem;
   padding: 0.375rem;
   border: thin solid var(--danger);
-  border-radius: 0.1875rem;
+  border-radius: 3px;
   background-color: var(--danger-soft-bg);
 }
 
@@ -1379,7 +1379,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   white-space: nowrap;
   word-break: break-word;
   color: var(--text-muted);
-  border: 0.0625rem solid var(--border-color);
+  border: 1px solid var(--border-color);
   border-radius: .25rem 0 0 .25rem;
   outline: 0;
   background-image: none;
@@ -1418,7 +1418,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
       line-height: 1.5rem;
 
       color: var(--white);
-      border: 0.0625rem solid var(--danger);
+      border: 1px solid var(--danger);
       border-radius: 0 0.25rem 0.25rem 0;
       outline: 0;
 
@@ -1485,7 +1485,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
       color: var(--white);
       background-color: var(--primary);
-      border: 0.0625rem solid var(--primary);
+      border: 1px solid var(--primary);
     }
 
 
@@ -1502,14 +1502,14 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 }
 
 .cbi-dynlist>.item.drag-over {
-  border-top: 0.0625rem solid var(--red);
-  margin-top: -0.0625rem;
+  border-top: 1px solid var(--red);
+  margin-top: -1px;
 }
 
 @supports selector(:has(*)) {
   .cbi-dynlist>.add-item:has(.drag-over) {
-    border-top: 0.0625rem solid var(--red);
-    margin-top: -0.0625rem;
+    border-top: 1px solid var(--red);
+    margin-top: -1px;
   }
 }
 
@@ -1542,7 +1542,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .cbi-dropdown[placeholder*="select"] {
   max-width: 25rem;
   height: auto;
-  margin-top: -0.1875rem;
+  margin-top: -3px;
 }
 
 .cbi-dropdown>ul {
@@ -1614,7 +1614,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   flex-grow: 1;
   flex-shrink: 1;
   min-height: 1.25rem;
-  padding: 0.125rem .25em;
+  padding: 2px .25em;
   white-space: nowrap;
   text-overflow: ellipsis;
 
@@ -1633,7 +1633,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 }
 
 .cbi-dropdown[empty]>ul {
-  max-width: 0.0625rem;
+  max-width: 1px;
 }
 
 .cbi-dropdown>ul>li>form {
@@ -1791,9 +1791,9 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   position: fixed;
   z-index: 900;
   top: 0;
-  right: 625rem;
+  right: 10000px;
   bottom: 0;
-  left: -625rem;
+  left: -10000px;
   overflow-y: scroll;
   transition: opacity .125s ease-in;
   opacity: 0;
@@ -1833,11 +1833,11 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
     color: var(--dark-primary);
     outline: 0;
     border-radius: 0.25rem;
-    border: 0.0625rem solid var(--lighter);
+    border: 1px solid var(--lighter);
     transition: all 0.2s ease;
 
     &:focus {
-      border: 0.0625rem solid var(--primary);
+      border: 1px solid var(--primary);
       box-shadow: var(--shadow-focus);
     }
   }
@@ -2074,7 +2074,7 @@ td>.ifacebadge,
   padding: .8rem;
   color: var(--text-muted);
   border-radius: 0.25rem;
-  border: 0.0625rem solid var(--border-color);
+  border: 1px solid var(--border-color);
   min-width: 16rem;
 }
 
@@ -2119,7 +2119,7 @@ td>.ifacebadge,
 .uci-change-list ins,
 .uci-change-legend-label ins {
   display: block;
-  padding: 0.125rem;
+  padding: 2px;
   text-decoration: none;
   border: thin solid var(--change-add-border);
   background-color: var(--change-add-bg);
@@ -2129,7 +2129,7 @@ td>.ifacebadge,
 .uci-change-legend-label del {
   font-style: normal;
   display: block;
-  padding: 0.125rem;
+  padding: 2px;
   text-decoration: none;
   border: thin solid var(--change-del-border);
   background-color: var(--change-del-bg);
@@ -2139,7 +2139,7 @@ td>.ifacebadge,
 .uci-change-legend-label var {
   font-style: normal;
   display: block;
-  padding: 0.125rem;
+  padding: 2px;
   text-decoration: none;
   border: thin solid var(--change-neutral-border);
   background-color: var(--table-row-even);
@@ -2154,7 +2154,7 @@ td>.ifacebadge,
 }
 
 .uci-change-legend {
-  padding: 0.3125rem;
+  padding: 5px;
 }
 
 .uci-change-legend-label {
@@ -2214,10 +2214,10 @@ td>.ifacebadge,
           ins,
           del {
             position: absolute;
-            left: 0.125rem;
-            top: 0.125rem;
-            right: 0.125rem;
-            bottom: 0.125rem;
+            left: 2px;
+            top: 2px;
+            right: 2px;
+            bottom: 2px;
           }
         }
       }
@@ -2389,7 +2389,7 @@ span[data-tooltip] .label {
 .cbi-tooltip {
   position: absolute;
   z-index: 1000;
-  left: -625rem;
+  left: -10000px;
   box-shadow: var(--shadow-focus);
   border-radius: 0.25rem;
   background: var(--surface-color);
@@ -2446,7 +2446,7 @@ span[data-tooltip] .label {
   text-decoration: none;
   text-transform: uppercase;
   color: var(--white) !important;
-  border-radius: 0.1875rem;
+  border-radius: 3px;
   background-color: var(--label-bg);
   text-shadow: none;
 }
@@ -2593,7 +2593,7 @@ input[name="nslookup"] {
   code {
     overflow: hidden;
     max-width: fit-content;
-    padding: 0.125rem 0.1875rem;
+    padding: 2px 3px;
     white-space: nowrap;
     text-overflow: ellipsis;
 
@@ -2609,7 +2609,7 @@ input[name="nslookup"] {
   }
 
   p:nth-of-type(2) {
-    margin-top: 0.125rem;
+    margin-top: 2px;
   }
 }
 
