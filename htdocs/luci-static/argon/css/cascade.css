@@ -1324,6 +1324,21 @@ select[multiple="multiple"] {
   color: var(--primary);
   transition: all 0.3s;
 }
+.main-left .nav li .menu.menu-icon-svg::before {
+  content: "";
+  width: 1.1rem;
+  height: 1.1rem;
+  font-size: 0;
+  background-color: currentColor;
+  mask-image: var(--menu-icon-url);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-image: var(--menu-icon-url);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
 .main-left .nav li .menu::after {
   position: absolute;
   right: 0.5rem;
@@ -1341,51 +1356,64 @@ select[multiple="multiple"] {
   text-rendering: auto;
   transition: all 0.3s;
 }
-.main-left .nav li .menu[data-title="Status"]:before {
+.main-left .nav li .menu[data-title="Status"]:before,
+.main-left .nav li .menu[data-name="status"]:before {
   content: "\e906";
   color: var(--primary);
 }
-.main-left .nav li .menu[data-title="System"]:before {
+.main-left .nav li .menu[data-title="System"]:before,
+.main-left .nav li .menu[data-name="system"]:before {
   content: "\e90a";
   color: var(--orange);
 }
-.main-left .nav li .menu[data-title="Services"]:before {
+.main-left .nav li .menu[data-title="Services"]:before,
+.main-left .nav li .menu[data-name="services"]:before {
   content: "\e909";
   color: var(--teal);
 }
-.main-left .nav li .menu[data-title="NAS"]:before {
+.main-left .nav li .menu[data-title="NAS"]:before,
+.main-left .nav li .menu[data-name="nas"]:before {
   content: "\e90c";
   color: var(--pink);
 }
-.main-left .nav li .menu[data-title="VPN"]:before {
+.main-left .nav li .menu[data-title="VPN"]:before,
+.main-left .nav li .menu[data-name="vpn"]:before {
   content: "\e90b";
   color: var(--purple);
 }
-.main-left .nav li .menu[data-title="Network"]:before {
+.main-left .nav li .menu[data-title="Network"]:before,
+.main-left .nav li .menu[data-name="network"]:before {
   content: "\e908";
   color: var(--purple);
 }
-.main-left .nav li .menu[data-title="Bandwidth_Monitor"]:before {
+.main-left .nav li .menu[data-title="Bandwidth_Monitor"]:before,
+.main-left .nav li .menu[data-name="bandwidth"]:before {
   content: "\e90d";
   color: var(--green);
 }
-.main-left .nav li .menu[data-title="Docker"]:before {
+.main-left .nav li .menu[data-title="Docker"]:before,
+.main-left .nav li .menu[data-name="docker"]:before {
   content: "\e911";
   color: var(--azure);
 }
-.main-left .nav li .menu[data-title="Statistics"]:before {
+.main-left .nav li .menu[data-title="Statistics"]:before,
+.main-left .nav li .menu[data-name="statistics"]:before {
   content: "\e913";
   color: var(--purple);
 }
-.main-left .nav li .menu[data-title="Control"]:before {
+.main-left .nav li .menu[data-title="Control"]:before,
+.main-left .nav li .menu[data-name="control"]:before {
   content: "\e912";
   color: var(--primary);
 }
-.main-left .nav li .menu[data-title="Asterisk"]:before {
+.main-left .nav li .menu[data-title="Asterisk"]:before,
+.main-left .nav li .menu[data-name="asterisk"]:before {
   content: "\e914";
   color: var(--orange);
 }
 .main-left .nav li a[data-title="Log_out"]::before,
+.main-left .nav li a[data-name="logout"]::before,
+.main-left .nav li a[data-name="log_out"]::before,
 .main-left .nav li .food[data-title="Log_out"]::before {
   content: "\e907";
   color: var(--light);

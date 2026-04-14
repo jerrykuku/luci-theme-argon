@@ -274,6 +274,22 @@
                     transition: all 0.3s;
                 }
 
+                &.menu-icon-svg::before {
+                    content: "";
+                    width: 1.1rem;
+                    height: 1.1rem;
+                    font-size: 0;
+                    background-color: currentColor;
+                    mask-image: var(--menu-icon-url);
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                    mask-size: contain;
+                    -webkit-mask-image: var(--menu-icon-url);
+                    -webkit-mask-repeat: no-repeat;
+                    -webkit-mask-position: center;
+                    -webkit-mask-size: contain;
+                }
+
                 // Dropdown arrow
                 &::after {
                     position: absolute;
@@ -288,63 +304,76 @@
             }
 
             // Menu-specific icons and colors
-            .menu[data-title="Status"]:before {
+            .menu[data-title="Status"]:before,
+            .menu[data-name="status"]:before {
                 content: "\e906";
                 color: var(--primary);
             }
 
-            .menu[data-title="System"]:before {
+            .menu[data-title="System"]:before,
+            .menu[data-name="system"]:before {
                 content: "\e90a";
                 color: var(--orange);
             }
 
-            .menu[data-title="Services"]:before {
+            .menu[data-title="Services"]:before,
+            .menu[data-name="services"]:before {
                 content: "\e909";
                 color: var(--teal);
             }
 
-            .menu[data-title="NAS"]:before {
+            .menu[data-title="NAS"]:before,
+            .menu[data-name="nas"]:before {
                 content: "\e90c";
                 color: var(--pink);
             }
 
-            .menu[data-title="VPN"]:before {
+            .menu[data-title="VPN"]:before,
+            .menu[data-name="vpn"]:before {
                 content: "\e90b";
                 color: var(--purple);
             }
 
-            .menu[data-title="Network"]:before {
+            .menu[data-title="Network"]:before,
+            .menu[data-name="network"]:before {
                 content: "\e908";
                 color: var(--purple);
             }
 
-            .menu[data-title="Bandwidth_Monitor"]:before {
+            .menu[data-title="Bandwidth_Monitor"]:before,
+            .menu[data-name="bandwidth"]:before {
                 content: "\e90d";
                 color: var(--green);
             }
 
-            .menu[data-title="Docker"]:before {
+            .menu[data-title="Docker"]:before,
+            .menu[data-name="docker"]:before {
                 content: "\e911";
                 color: var(--azure);
             }
 
-            .menu[data-title="Statistics"]:before {
+            .menu[data-title="Statistics"]:before,
+            .menu[data-name="statistics"]:before {
                 content: "\e913";
                 color: var(--purple);
             }
 
-            .menu[data-title="Control"]:before {
+            .menu[data-title="Control"]:before,
+            .menu[data-name="control"]:before {
                 content: "\e912";
                 color: var(--primary);
             }
 
-            .menu[data-title="Asterisk"]:before {
+            .menu[data-title="Asterisk"]:before,
+            .menu[data-name="asterisk"]:before {
                 content: "\e914";
                 color: var(--orange);
             }
 
             // Logout link styling
             a[data-title="Log_out"],
+            a[data-name="logout"],
+            a[data-name="log_out"],
             .food[data-title="Log_out"] {
                 &::before {
                     content: "\e907";
