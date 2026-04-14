@@ -4,6 +4,10 @@
 // Based on normalize.css for style reset and standardization
 // ==========================================================================
 
+.font-inherit() {
+    font-family: inherit;
+}
+
 // 1. Global Reset
 // ==========================================================================
 
@@ -58,7 +62,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: inherit;
+    .font-inherit();
     font-weight: normal;
     line-height: 1.1 !important;
     color: inherit;
@@ -140,7 +144,7 @@ strong {
 code,
 kbd,
 samp {
-    font-family: inherit;
+    .font-inherit();
     font-size: inherit;
     padding: 1px 3px;
     color: var(--dark);
@@ -203,7 +207,7 @@ input,
 optgroup,
 select,
 textarea {
-    font-family: inherit;
+    .font-inherit();
     font-size: 100%;
     line-height: 1.15;
     margin: 0;

@@ -2480,23 +2480,23 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .cbi-dynlist > .item > span {
   display: block;
   padding: 0.5rem 0.75rem;
+  box-sizing: border-box;
   min-width: 15.5rem;
   width: 15.5rem;
-  height: 2.5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  user-select: text;
+  transition: box-shadow 0.15s ease;
   white-space: nowrap;
   word-break: break-word;
-  line-height: 1.5em;
   color: var(--text-muted);
   border: 1px solid var(--border-color);
   border-radius: 0.25rem 0 0 0.25rem;
   outline: 0;
   background-image: none;
   box-shadow: none;
-  box-sizing: border-box;
-  transition: box-shadow 0.15s ease;
+  height: 2.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: text;
+  line-height: 1.5em;
 }
 .cbi-dynlist > .add-item {
   display: inline-flex;
@@ -2514,15 +2514,15 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   transition: box-shadow 0.15s ease;
   white-space: nowrap;
   word-break: break-word;
-  font-size: 0.875rem;
-  line-height: 1.5rem;
   color: var(--text-muted);
   border: 1px solid var(--border-color);
   border-radius: 0.25rem 0 0 0.25rem;
-  border-right-width: 0;
   outline: 0;
   background-image: none;
   box-shadow: none;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  border-right-width: 0;
 }
 .cbi-dynlist > .add-item .cbi-button {
   display: flex;
