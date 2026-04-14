@@ -4,6 +4,34 @@
 // Page-specific CSS fixes and customizations for LuCI admin interface
 // ==========================================================================
 
+.textarea-panel-base() {
+    line-height: 1.25;
+    width: 100%;
+    min-height: 15rem;
+    padding: 1rem;
+    resize: none;
+    color: var(--text-muted);
+    border-radius: 0.25rem;
+    border: 1px solid var(--border-color);
+}
+
+.textarea-focus-border() {
+    &:focus-visible {
+        outline: none;
+        box-shadow: none;
+        border: 1px solid var(--primary);
+    }
+}
+
+.panel-padding-16() {
+    padding: 16px;
+}
+
+.boxed-panel-padding-16() {
+    box-sizing: border-box;
+    .panel-padding-16();
+}
+
 // 1. System Administration Pages
 // ==========================================================================
 
@@ -67,22 +95,10 @@
     }
 
     textarea {
-        line-height: 1.25;
+        .textarea-panel-base();
         overflow-y: auto;
-        width: 100%;
-        min-height: 15rem;
         margin: 0 1rem;
-        padding: 1rem;
-        resize: none;
-        color: var(--text-muted);
-        border-radius: 0.25rem;
-        border: 1px solid var(--border-color);
-
-        &:focus-visible {
-            outline: none;
-            box-shadow: none;
-            border: 1px solid var(--primary);
-        }
+        .textarea-focus-border();
     }
 }
 
@@ -90,25 +106,13 @@
 [data-page="admin-system-crontab"] {
     #view p {
         textarea {
-            line-height: 1.25;
+            .textarea-panel-base();
             overflow-y: hidden;
-            width: 100%;
-            min-height: 15rem;
-            padding: 1rem;
-            resize: none;
             background-color: transparent;
             background: var(--surface-color);
             outline: none;
-            color: var(--text-muted);
-            border-radius: 0.25rem;
-            border: 1px solid var(--border-color);
             transition: all 0.2s ease;
-
-            &:focus-visible {
-                outline: none;
-                box-shadow: none;
-                border: 1px solid var(--primary);
-            }
+            .textarea-focus-border();
         }
     }
 }
@@ -320,7 +324,6 @@
 
     #maincontent>.container {
         margin: 0 1.25rem 1rem 1.25rem;
-        margin-bottom: 1rem;
     }
 }
 
@@ -649,8 +652,7 @@
 // Services - Dockerman
 #cbi-dockerd {
     .cbi-section {
-        box-sizing: border-box;
-        padding: 16px;
+        .boxed-panel-padding-16();
     }
 
     .cbi-section.cbi-tblsection {
@@ -662,11 +664,11 @@
 // Services - SmartDNS
 #cbi-smartdns {
     #service_status {
-        padding: 16px;
+        .panel-padding-16();
     }
     
     .cbi-section-node {
-        padding: 16px;
+        .panel-padding-16();
     }
 }
 
@@ -674,8 +676,7 @@
 #cbi-docker {
     .cbi-section {
         .cbi-section-node {
-            box-sizing: border-box;
-            padding: 16px;
+            .boxed-panel-padding-16();
         }
     }
 }

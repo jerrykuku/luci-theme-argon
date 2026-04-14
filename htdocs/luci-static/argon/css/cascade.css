@@ -954,7 +954,6 @@ select[multiple="multiple"] {
   height: 100vh;
   width: 26rem;
   flex-direction: column;
-  background-color: var(--surface-color);
   backdrop-filter: blur(var(--blur-radius));
   background-color: var(--login-form-bg-color);
   box-shadow: var(--shadow-login-panel);
@@ -3532,15 +3531,15 @@ pre.command-output {
 }
 [data-page="admin-system-startup"] textarea {
   line-height: 1.25;
-  overflow-y: auto;
   width: 100%;
   min-height: 15rem;
-  margin: 0 1rem;
   padding: 1rem;
   resize: none;
   color: var(--text-muted);
   border-radius: 0.25rem;
   border: 1px solid var(--border-color);
+  overflow-y: auto;
+  margin: 0 1rem;
 }
 [data-page="admin-system-startup"] textarea:focus-visible {
   outline: none;
@@ -3549,17 +3548,17 @@ pre.command-output {
 }
 [data-page="admin-system-crontab"] #view p textarea {
   line-height: 1.25;
-  overflow-y: hidden;
   width: 100%;
   min-height: 15rem;
   padding: 1rem;
   resize: none;
-  background-color: transparent;
-  background: var(--surface-color);
-  outline: none;
   color: var(--text-muted);
   border-radius: 0.25rem;
   border: 1px solid var(--border-color);
+  overflow-y: hidden;
+  background-color: transparent;
+  background: var(--surface-color);
+  outline: none;
   transition: all 0.2s ease;
 }
 [data-page="admin-system-crontab"] #view p textarea:focus-visible {
@@ -3699,7 +3698,6 @@ pre.command-output {
 }
 [data-page="admin-system-opkg"] #maincontent > .container {
   margin: 0 1.25rem 1rem 1.25rem;
-  margin-bottom: 1rem;
 }
 [data-page="admin-system-package-manager"] .controls div:nth-child(5) > label {
   margin-bottom: 5px;
