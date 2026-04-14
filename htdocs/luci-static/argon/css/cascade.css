@@ -2613,9 +2613,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .cbi-button-apply > ul.preview {
   display: none;
 }
-.cbi-button-apply > ul.preview li {
-  color: var(--white);
-}
+.cbi-button-apply > ul.preview li,
 .cbi-button-apply > ul:first-child li {
   color: var(--white);
 }

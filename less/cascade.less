@@ -1584,18 +1584,13 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
 .cbi-button-apply>ul.preview {
   display: none;
-
-  li {
-    color: var(--white);
-  }
-
 }
 
+.cbi-button-apply>ul.preview,
 .cbi-button-apply>ul:first-child {
   li {
     color: var(--white);
   }
-
 }
 
 // Expand/collapse trigger icon area.
@@ -1637,15 +1632,14 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   white-space: nowrap;
   text-overflow: ellipsis;
 
-}
+  // Visibility helpers for open/closed mode.
+  .hide-open {
+    display: initial;
+  }
 
-// Visibility helpers for open/closed mode.
-.cbi-dropdown>ul>li .hide-open {
-  display: initial;
-}
-
-.cbi-dropdown>ul>li .hide-close {
-  display: none;
+  .hide-close {
+    display: none;
+  }
 }
 
 .cbi-dropdown>ul>li[display]:not([display="0"]) {
