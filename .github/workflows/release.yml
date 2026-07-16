@@ -82,39 +82,61 @@ jobs:
           echo "Release tag: ${tag}"
           echo "Package version: ${version}"
 
-      - name: Download OpenWrt SDK
+      - name: Resolve OpenWrt SDK metadata
+        id: sdk
         env:
           SDK_BASE_URL: ${{ matrix.sdk_base_url }}
           SDK_PATTERN: ${{ matrix.sdk_pattern }}
         run: |
-          sdk_file="$(
+          sdk_line="$(
             curl -fsSL "${SDK_BASE_URL}/sha256sums" |
-              awk '{print $2}' |
-              sed 's/^\*//' |
-              grep -E "${SDK_PATTERN}" |
+              grep -E "[[:space:]]+\\*?${SDK_PATTERN}$" |
               head -n 1
           )"
 
-          if [ -z "${sdk_file}" ]; then
+          if [ -z "${sdk_line}" ]; then
             echo "::error::Unable to find SDK matching '${SDK_PATTERN}' at ${SDK_BASE_URL}."
             exit 1
           fi
 
-          curl -fL "${SDK_BASE_URL}/${sdk_file}" -o "${sdk_file}"
-          curl -fsSL "${SDK_BASE_URL}/sha256sums" |
-            grep -E "[ *]${sdk_file}$" > sha256sums.sdk
-          sha256sum -c sha256sums.sdk
+          sdk_sha256="$(printf '%s\n' "${sdk_line}" | awk '{print $1}')"
+          sdk_file="$(printf '%s\n' "${sdk_line}" | awk '{print $2}' | sed 's/^\*//')"
+
+          echo "sdk_file=${sdk_file}" >> "${GITHUB_OUTPUT}"
+          echo "sdk_sha256=${sdk_sha256}" >> "${GITHUB_OUTPUT}"
+          echo "sdk_cache_key=openwrt-sdk-${{ matrix.package_format }}-${sdk_sha256}" >> "${GITHUB_OUTPUT}"
+
+      - name: Cache OpenWrt SDK archive
+        id: cache-sdk
+        uses: actions/cache@v4
+        with:
+          path: .cache/openwrt-sdk/${{ steps.sdk.outputs.sdk_file }}
+          key: ${{ steps.sdk.outputs.sdk_cache_key }}
+
+      - name: Download OpenWrt SDK
+        env:
+          SDK_BASE_URL: ${{ matrix.sdk_base_url }}
+          SDK_FILE: ${{ steps.sdk.outputs.sdk_file }}
+          SDK_SHA256: ${{ steps.sdk.outputs.sdk_sha256 }}
+        run: |
+          mkdir -p .cache/openwrt-sdk
+
+          if [ ! -f ".cache/openwrt-sdk/${SDK_FILE}" ]; then
+            curl -fL "${SDK_BASE_URL}/${SDK_FILE}" -o ".cache/openwrt-sdk/${SDK_FILE}"
+          fi
+
+          printf '%s  %s\n' "${SDK_SHA256}" ".cache/openwrt-sdk/${SDK_FILE}" | sha256sum -c -
 
           mkdir -p sdk
-          case "${sdk_file}" in
+          case "${SDK_FILE}" in
             *.tar.zst)
-              tar --zstd -xf "${sdk_file}" -C sdk --strip-components=1
+              tar --zstd -xf ".cache/openwrt-sdk/${SDK_FILE}" -C sdk --strip-components=1
               ;;
             *.tar.xz)
-              tar -xJf "${sdk_file}" -C sdk --strip-components=1
+              tar -xJf ".cache/openwrt-sdk/${SDK_FILE}" -C sdk --strip-components=1
               ;;
             *)
-              echo "::error::Unsupported SDK archive: ${sdk_file}"
+              echo "::error::Unsupported SDK archive: ${SDK_FILE}"
               exit 1
               ;;
           esac
