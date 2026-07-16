@@ -1,0 +1,263 @@
+name: Release packages
+
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  TZ: Asia/Shanghai
+  CONFIG_REPOSITORY: jerrykuku/luci-app-argon-config
+
+jobs:
+  build:
+    name: Build ${{ matrix.package_format }} packages
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - package_format: ipk
+            sdk_base_url: https://downloads.openwrt.org/releases/23.05.5/targets/x86/64
+            sdk_pattern: openwrt-sdk-23.05.5-x86-64_.*Linux-x86_64.tar.xz
+          - package_format: apk
+            sdk_base_url: https://downloads.openwrt.org/snapshots/targets/x86/64
+            sdk_pattern: openwrt-sdk-x86-64_.*Linux-x86_64.tar.zst
+
+    steps:
+      - name: Checkout theme
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install build dependencies
+        run: |
+          sudo -E apt-get update
+          sudo -E apt-get install -y \
+            build-essential \
+            bison \
+            clang \
+            curl \
+            file \
+            flex \
+            g++ \
+            g++-multilib \
+            gawk \
+            gcc-multilib \
+            gettext \
+            git \
+            libncurses-dev \
+            libssl-dev \
+            python3 \
+            python3-setuptools \
+            python3-venv \
+            rsync \
+            unzip \
+            wget \
+            xz-utils \
+            zlib1g-dev \
+            zstd
+
+      - name: Resolve release version
+        id: version
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          version="${tag#v}"
+
+          if ! printf '%s' "${version}" | grep -Eq '^[0-9][0-9A-Za-z._~+-]*$'; then
+            echo "::error::Tag '${tag}' cannot be used as an OpenWrt package version."
+            echo "::error::Use a version tag like v2.4.3 or 2.4.3."
+            exit 1
+          fi
+
+          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
+          echo "Release tag: ${tag}"
+          echo "Package version: ${version}"
+
+      - name: Download OpenWrt SDK
+        env:
+          SDK_BASE_URL: ${{ matrix.sdk_base_url }}
+          SDK_PATTERN: ${{ matrix.sdk_pattern }}
+        run: |
+          sdk_file="$(
+            curl -fsSL "${SDK_BASE_URL}/sha256sums" |
+              awk '{print $2}' |
+              sed 's/^\*//' |
+              grep -E "${SDK_PATTERN}" |
+              head -n 1
+          )"
+
+          if [ -z "${sdk_file}" ]; then
+            echo "::error::Unable to find SDK matching '${SDK_PATTERN}' at ${SDK_BASE_URL}."
+            exit 1
+          fi
+
+          curl -fL "${SDK_BASE_URL}/${sdk_file}" -o "${sdk_file}"
+          curl -fsSL "${SDK_BASE_URL}/sha256sums" |
+            grep -E "[ *]${sdk_file}$" > sha256sums.sdk
+          sha256sum -c sha256sums.sdk
+
+          mkdir -p sdk
+          case "${sdk_file}" in
+            *.tar.zst)
+              tar --zstd -xf "${sdk_file}" -C sdk --strip-components=1
+              ;;
+            *.tar.xz)
+              tar -xJf "${sdk_file}" -C sdk --strip-components=1
+              ;;
+            *)
+              echo "::error::Unsupported SDK archive: ${sdk_file}"
+              exit 1
+              ;;
+          esac
+
+      - name: Prepare OpenWrt feeds
+        working-directory: sdk
+        run: |
+          cp feeds.conf.default feeds.conf
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+
+      - name: Prepare local packages
+        env:
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
+          RELEASE_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          mkdir -p sdk/package
+
+          rsync -a --delete \
+            --exclude='.git' \
+            --exclude='sdk' \
+            --exclude='artifacts' \
+            "${GITHUB_WORKSPACE}/" \
+            sdk/package/luci-theme-argon/
+
+          config_ref="master"
+          if git ls-remote --exit-code --tags "https://github.com/${CONFIG_REPOSITORY}.git" "refs/tags/${RELEASE_TAG}" >/dev/null 2>&1; then
+            config_ref="${RELEASE_TAG}"
+          fi
+
+          git clone --depth 1 \
+            --branch "${config_ref}" \
+            "https://github.com/${CONFIG_REPOSITORY}.git" \
+            sdk/package/luci-app-argon-config
+
+          for makefile in \
+            sdk/package/luci-theme-argon/Makefile \
+            sdk/package/luci-app-argon-config/Makefile
+          do
+            sed -i -E "s/^(PKG_VERSION):=.*/\1:=${RELEASE_VERSION}/" "${makefile}"
+            sed -i -E "s/^(PKG_RELEASE):=.*/\1:=1/" "${makefile}"
+          done
+
+      - name: Configure packages
+        working-directory: sdk
+        run: |
+          cat > .config <<'EOF'
+          CONFIG_ALL_NONSHARED=n
+          CONFIG_ALL_KMODS=n
+          CONFIG_ALL=n
+          CONFIG_AUTOREMOVE=n
+          CONFIG_LUCI_LANG_zh_Hans=y
+          CONFIG_PACKAGE_luci-theme-argon=m
+          CONFIG_PACKAGE_luci-app-argon-config=m
+          EOF
+
+          sed -i 's/^[[:space:]]*//' .config
+          make defconfig
+
+      - name: Compile packages
+        working-directory: sdk
+        run: |
+          make package/luci-theme-argon/clean package/luci-app-argon-config/clean
+          make package/luci-theme-argon/compile -j"$(nproc)" V=s
+          make package/luci-app-argon-config/compile -j"$(nproc)" V=s
+
+      - name: Collect packages
+        env:
+          PACKAGE_FORMAT: ${{ matrix.package_format }}
+        run: |
+          mkdir -p "artifacts/${PACKAGE_FORMAT}"
+
+          find sdk/bin/packages -type f \
+            \( -name "luci-theme-argon_*.${PACKAGE_FORMAT}" \
+            -o -name "luci-app-argon-config_*.${PACKAGE_FORMAT}" \
+            -o -name "luci-i18n-argon-config_*.${PACKAGE_FORMAT}" \) \
+            -exec cp -v {} "artifacts/${PACKAGE_FORMAT}/" \;
+
+          theme_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -name "luci-theme-argon_*.${PACKAGE_FORMAT}" | wc -l)"
+          config_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f \( -name "luci-app-argon-config_*.${PACKAGE_FORMAT}" -o -name "luci-i18n-argon-config_*.${PACKAGE_FORMAT}" \) | wc -l)"
+
+          if [ "${theme_count}" -lt 1 ] || [ "${config_count}" -lt 1 ]; then
+            echo "::error::Missing expected packages for ${PACKAGE_FORMAT}."
+            find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -print
+            exit 1
+          fi
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: packages-${{ matrix.package_format }}
+          path: artifacts/${{ matrix.package_format }}/*
+          if-no-files-found: error
+
+  release:
+    name: Publish GitHub Release
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+          pattern: packages-*
+          merge-multiple: true
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: release-assets/*
+
+  sync-docs:
+    name: Sync release docs
+    runs-on: ubuntu-latest
+    needs: release
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Update README and changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export RELEASE_DATE="$(TZ='${{ env.TZ }}' date +%Y.%m.%d)"
+          export PKG_RELEASE_DATE="$(TZ='${{ env.TZ }}' date +%Y%m%d)"
+          bash .github/scripts/update_release_docs.sh "${GITHUB_REF_NAME}"
+
+      - name: Commit updated docs
+        run: |
+          if git diff --quiet -- Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md; then
+            echo "No documentation updates to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md
+          git commit -m "docs: sync release notes for ${GITHUB_REF_NAME}"
+          git push origin HEAD:master

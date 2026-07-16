@@ -1,0 +1,94 @@
+name: Prepare release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version, for example 2.4.4 or v2.4.4"
+        required: true
+        type: string
+      notes_en:
+        description: "Optional English changelog content"
+        required: false
+        type: string
+      notes_zh:
+        description: "Optional Chinese changelog content"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Normalize version
+        id: version
+        run: |
+          tag="${{ inputs.version }}"
+          case "${tag}" in
+            v*) ;;
+            *) tag="v${tag}" ;;
+          esac
+
+          version="${tag#v}"
+          if ! printf '%s' "${version}" | grep -Eq '^[0-9][0-9A-Za-z._~+-]*$'; then
+            echo "::error::Invalid version '${{ inputs.version }}'."
+            exit 1
+          fi
+
+          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
+
+      - name: Ensure tag does not already exist
+        run: |
+          if git rev-parse "${{ steps.version.outputs.tag }}" >/dev/null 2>&1; then
+            echo "::error::Tag '${{ steps.version.outputs.tag }}' already exists locally."
+            exit 1
+          fi
+
+          if git ls-remote --exit-code --tags origin "refs/tags/${{ steps.version.outputs.tag }}" >/dev/null 2>&1; then
+            echo "::error::Tag '${{ steps.version.outputs.tag }}' already exists on origin."
+            exit 1
+          fi
+
+      - name: Resolve release dates
+        id: date
+        run: |
+          echo "release_date=$(TZ='${{ env.TZ }}' date +%Y.%m.%d)" >> "${GITHUB_OUTPUT}"
+          echo "pkg_release_date=$(TZ='${{ env.TZ }}' date +%Y%m%d)" >> "${GITHUB_OUTPUT}"
+
+      - name: Update release files
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          RELEASE_DATE: ${{ steps.date.outputs.release_date }}
+          PKG_RELEASE_DATE: ${{ steps.date.outputs.pkg_release_date }}
+          NOTES_EN: ${{ inputs.notes_en }}
+          NOTES_ZH: ${{ inputs.notes_zh }}
+        run: |
+          bash .github/scripts/prepare_release_commit.sh "${{ steps.version.outputs.tag }}"
+
+      - name: Commit and tag release
+        run: |
+          if git diff --quiet -- Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md; then
+            echo "::error::No release metadata changes were generated."
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md
+          git commit -m "release: ${{ steps.version.outputs.tag }}"
+          git tag -a "${{ steps.version.outputs.tag }}" -m "${{ steps.version.outputs.tag }}"
+          git push origin HEAD:master
+          git push origin "${{ steps.version.outputs.tag }}"
