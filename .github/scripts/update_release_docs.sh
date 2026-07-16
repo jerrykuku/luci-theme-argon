@@ -39,8 +39,8 @@ update_readme() {
 
 	perl -0pi -e "s#releases/download/v[^/]+/luci-theme-argon_[^[:space:])]+\\.ipk#releases/download/${tag}/luci-theme-argon_${version}-1_all.ipk#g" "${file}"
 	perl -0pi -e "s#releases/download/v[^/]+/luci-app-argon-config_[^[:space:])]+\\.ipk#releases/download/${tag}/luci-app-argon-config_${version}-1_all.ipk#g" "${file}"
-	perl -0pi -e "s#releases/download/v[^/]+/luci-theme-argon_[^[:space:])]+\\.apk#releases/download/${tag}/luci-theme-argon_${version}-1.apk#g" "${file}"
-	perl -0pi -e "s#releases/download/v[^/]+/luci-app-argon-config_[^[:space:])]+\\.apk#releases/download/${tag}/luci-app-argon-config_${version}-1.apk#g" "${file}"
+	perl -0pi -e "s#releases/download/v[^/]+/luci-theme-argon[-_][^[:space:])]+\\.apk#releases/download/${tag}/luci-theme-argon-${version}-r1.apk#g" "${file}"
+	perl -0pi -e "s#releases/download/v[^/]+/luci-app-argon-config[-_][^[:space:])]+\\.apk#releases/download/${tag}/luci-app-argon-config-${version}-r1.apk#g" "${file}"
 }
 
 upsert_section() {

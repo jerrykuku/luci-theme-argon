@@ -98,9 +98,9 @@ opkg install ./luci-theme-argon_2.4.3-1_all.ipk ./luci-app-argon-config_2.4.3-1_
 ### 安装 release 包 (`apk`)
 
 ```bash
-wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.3/luci-theme-argon_2.4.3-1.apk
-wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.3/luci-app-argon-config_2.4.3-1.apk
-apk add --allow-untrusted ./luci-theme-argon_2.4.3-1.apk ./luci-app-argon-config_2.4.3-1.apk
+wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.3/luci-theme-argon-2.4.3-r1.apk
+wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.3/luci-app-argon-config-2.4.3-r1.apk
+apk add --allow-untrusted ./luci-theme-argon-2.4.3-r1.apk ./luci-app-argon-config-2.4.3-r1.apk
 ```
 
 请将上面的 `v2.4.3` 和文件名替换为目标 [Release][release] 页面中的实际附件名称。

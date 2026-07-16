@@ -187,17 +187,29 @@ jobs:
         run: |
           mkdir -p "artifacts/${PACKAGE_FORMAT}"
 
-          find sdk/bin/packages -type f \
-            \( -name "luci-theme-argon_*.${PACKAGE_FORMAT}" \
-            -o -name "luci-app-argon-config_*.${PACKAGE_FORMAT}" \
-            -o -name "luci-i18n-argon-config_*.${PACKAGE_FORMAT}" \) \
-            -exec cp -v {} "artifacts/${PACKAGE_FORMAT}/" \;
+          if [ "${PACKAGE_FORMAT}" = "apk" ]; then
+            find sdk/bin/packages -type f \
+              \( -name "luci-theme-argon-*.apk" \
+              -o -name "luci-app-argon-config-*.apk" \
+              -o -name "luci-i18n-argon-config-*.apk" \) \
+              -exec cp -v {} "artifacts/${PACKAGE_FORMAT}/" \;
 
-          theme_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -name "luci-theme-argon_*.${PACKAGE_FORMAT}" | wc -l)"
-          config_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f \( -name "luci-app-argon-config_*.${PACKAGE_FORMAT}" -o -name "luci-i18n-argon-config_*.${PACKAGE_FORMAT}" \) | wc -l)"
+            theme_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -name "luci-theme-argon-*.apk" | wc -l)"
+            config_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f \( -name "luci-app-argon-config-*.apk" -o -name "luci-i18n-argon-config-*.apk" \) | wc -l)"
+          else
+            find sdk/bin/packages -type f \
+              \( -name "luci-theme-argon_*.ipk" \
+              -o -name "luci-app-argon-config_*.ipk" \
+              -o -name "luci-i18n-argon-config_*.ipk" \) \
+              -exec cp -v {} "artifacts/${PACKAGE_FORMAT}/" \;
+
+            theme_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -name "luci-theme-argon_*.ipk" | wc -l)"
+            config_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f \( -name "luci-app-argon-config_*.ipk" -o -name "luci-i18n-argon-config_*.ipk" \) | wc -l)"
+          fi
 
           if [ "${theme_count}" -lt 1 ] || [ "${config_count}" -lt 1 ]; then
             echo "::error::Missing expected packages for ${PACKAGE_FORMAT}."
+            find sdk/bin/packages -maxdepth 3 -type f | sort
             find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -print
             exit 1
           fi

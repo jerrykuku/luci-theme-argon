@@ -98,9 +98,9 @@ opkg install ./luci-theme-argon_2.4.3-1_all.ipk ./luci-app-argon-config_2.4.3-1_
 ### Install release packages (`apk`)
 
 ```bash
-wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.3/luci-theme-argon_2.4.3-1.apk
-wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.3/luci-app-argon-config_2.4.3-1.apk
-apk add --allow-untrusted ./luci-theme-argon_2.4.3-1.apk ./luci-app-argon-config_2.4.3-1.apk
+wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.3/luci-theme-argon-2.4.3-r1.apk
+wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.3/luci-app-argon-config-2.4.3-r1.apk
+apk add --allow-untrusted ./luci-theme-argon-2.4.3-r1.apk ./luci-app-argon-config-2.4.3-r1.apk
 ```
 
 Replace `v2.4.3` and the package filenames above with the assets from the target [Release][release].
