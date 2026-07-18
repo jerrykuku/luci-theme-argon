@@ -4390,6 +4390,14 @@ pre.command-output {
   white-space: normal;
 }
 
+[data-page^="admin-services-openclash"] .cbi-section-node-tabbed > .cbi-tabcontainer {
+  gap: 0;
+}
+[data-page^="admin-services-openclash"] .cbi-section-node-tabbed > .cbi-tabcontainer > .cbi-value {
+  padding-top: 0.4375rem;
+  padding-bottom: 0.4375rem;
+}
+
 [data-page^="admin-services-openclash"] .oc {
   --bg-light: #fff;
   --bg-gray: #fff;
