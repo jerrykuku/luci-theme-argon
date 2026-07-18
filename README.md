@@ -92,7 +92,7 @@ make -j1 V=s
 ```bash
 wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.5/luci-theme-argon_2.4.5-1_all.ipk
 wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.5/luci-app-argon-config_2.4.5-1_all.ipk
-opkg install ./luci-theme-argon_2.4.3-1_all.ipk ./luci-app-argon-config_2.4.3-1_all.ipk
+opkg install ./luci-theme-argon_2.4.5-1_all.ipk ./luci-app-argon-config_2.4.5-1_all.ipk
 ```
 
 ### Install release packages (`apk`)
@@ -100,10 +100,10 @@ opkg install ./luci-theme-argon_2.4.3-1_all.ipk ./luci-app-argon-config_2.4.3-1_
 ```bash
 wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.5/luci-theme-argon-2.4.5-r1.apk
 wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.5/luci-app-argon-config-2.4.5-r1.apk
-apk add --allow-untrusted ./luci-theme-argon-2.4.3-r1.apk ./luci-app-argon-config-2.4.3-r1.apk
+apk add --allow-untrusted ./luci-theme-argon-2.4.5-r1.apk ./luci-app-argon-config-2.4.5-r1.apk
 ```
 
-Replace `v2.4.3` and the package filenames above with the assets from the target [Release][release].
+Replace `v2.4.5` and the package filenames above with the assets from the target [Release][release].
 
 ## Screenshots
 
