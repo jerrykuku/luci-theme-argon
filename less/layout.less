@@ -74,8 +74,8 @@
                 color: #fff;
                 background: var(--primary);
 
-                &::before {
-                    color: #fff !important;
+                .menu-icon {
+                    background-color: currentColor !important;
                 }
 
                 &::after {
@@ -90,36 +90,77 @@
                 color: #fff;
                 background: var(--primary);
 
-                &::before {
-                    color: #fff !important;
+                .menu-icon {
+                    background-color: currentColor !important;
                 }
             }
 
-            // Icon before text
-            &::before {
+            .menu-icon {
                 position: absolute;
+                top: 0.85rem;
                 left: 0.8rem;
-                padding-top: 3px;
-                font-family: 'argon' !important;
-                font-style: normal;
-                font-weight: normal;
-                font-variant: normal;
-                text-transform: none;
-                line-height: 1;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                content: "\e915";
-                color: var(--primary);
+                .icon-mask("../icon/menu/default.svg"; 1rem);
+                -webkit-mask-image: var(--menu-icon-url, url("../icon/menu/default.svg"));
+                mask-image: var(--menu-icon-url, url("../icon/menu/default.svg"));
+                background-color: var(--menu-icon-color, var(--primary));
                 transition: all 0.3s;
             }
         }
 
-        &>.slide>.menu::before {
+        &>.slide>.menu .menu-icon {
             transition: transform .1s ease-in-out;
         }
 
-        &>.slide>.menu.active::before {
+        &>.slide>.menu.active .menu-icon {
             transition: transform .2s ease-in-out;
+        }
+
+        a[data-icon-key="logout"] {
+            --menu-icon-color: #adb5bd;
+        }
+
+        a[data-icon-key="status"] {
+            --menu-icon-color: var(--primary);
+        }
+
+        a[data-icon-key="system"] {
+            --menu-icon-color: #fb6340;
+        }
+
+        a[data-icon-key="services"] {
+            --menu-icon-color: #11cdef;
+        }
+
+        a[data-icon-key="nas"] {
+            --menu-icon-color: #f3a4b5;
+        }
+
+        a[data-icon-key="vpn"] {
+            --menu-icon-color: #8965e0;
+        }
+
+        a[data-icon-key="network"] {
+            --menu-icon-color: #8965e0;
+        }
+
+        a[data-icon-key="bandwidth-monitor"] {
+            --menu-icon-color: #2dce89;
+        }
+
+        a[data-icon-key="docker"] {
+            --menu-icon-color: #6699ff;
+        }
+
+        a[data-icon-key="statistics"] {
+            --menu-icon-color: #8965e0;
+        }
+
+        a[data-icon-key="control"] {
+            --menu-icon-color: var(--primary);
+        }
+
+        a[data-icon-key="asterisk"] {
+            --menu-icon-color: #fb6340;
         }
 
         // Navigation list items
@@ -239,8 +280,8 @@
                     color: #fff;
                     background: var(--primary);
 
-                    &::before {
-                        color: #fff !important;
+                    .menu-icon {
+                        background-color: currentColor !important;
                     }
 
                     &::after {
@@ -255,26 +296,19 @@
                     color: #fff;
                     background: var(--primary);
 
-                    &::before {
-                        color: #fff !important;
+                    .menu-icon {
+                        background-color: currentColor !important;
                     }
                 }
 
-                // Icon before text
-                &::before {
+                .menu-icon {
                     position: absolute;
+                    top: 0.85rem;
                     left: 0.8rem;
-                    padding-top: 3px;
-                    font-family: 'argon' !important;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-variant: normal;
-                    text-transform: none;
-                    line-height: 1;
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
-                    content: "\e915";
-                    color: var(--primary);
+                    .icon-mask("../icon/menu/default.svg"; 1rem);
+                    -webkit-mask-image: var(--menu-icon-url, url("../icon/menu/default.svg"));
+                    mask-image: var(--menu-icon-url, url("../icon/menu/default.svg"));
+                    background-color: var(--menu-icon-color, var(--primary));
                     transition: all 0.3s;
                 }
 
@@ -282,90 +316,16 @@
                 &::after {
                     position: absolute;
                     right: 0.5rem;
-                    top: 0.8rem;
-                    font-family: 'argon' !important;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-variant: normal;
-                    text-transform: none;
-                    line-height: 1;
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
-                    content: '\e90f';
+                    top: 0.9rem;
+                    .icon-mask("../icon/ui/chevron-right.svg"; 0.95rem);
                     color: #ced4da;
-                    text-rendering: auto;
                     transition: all 0.3s;
-                }
-            }
-
-            // Menu-specific icons and colors
-            .menu[data-title="Status"]:before {
-                content: "\e906";
-                color: var(--primary);
-            }
-
-            .menu[data-title="System"]:before {
-                content: "\e90a";
-                color: #fb6340;
-            }
-
-            .menu[data-title="Services"]:before {
-                content: "\e909";
-                color: #11cdef;
-            }
-
-            .menu[data-title="NAS"]:before {
-                content: "\e90c";
-                color: #f3a4b5;
-            }
-
-            .menu[data-title="VPN"]:before {
-                content: "\e90b";
-                color: #8965e0;
-            }
-
-            .menu[data-title="Network"]:before {
-                content: "\e908";
-                color: #8965e0;
-            }
-
-            .menu[data-title="Bandwidth_Monitor"]:before {
-                content: "\e90d";
-                color: #2dce89;
-            }
-
-            .menu[data-title="Docker"]:before {
-                content: "\e911";
-                color: #6699ff;
-            }
-
-            .menu[data-title="Statistics"]:before {
-                content: "\e913";
-                color: #8965e0;
-            }
-
-            .menu[data-title="Control"]:before {
-                content: "\e912";
-                color: var(--primary);
-            }
-
-            .menu[data-title="Asterisk"]:before {
-                content: "\e914";
-                color: #fb6340;
-            }
-
-            // Logout link styling
-            a[data-title="Log_out"],
-            .food[data-title="Log_out"] {
-                &::before {
-                    content: "\e907";
-                    color: #adb5bd;
                 }
             }
         }
     }
 
-    &[style*="overflow: hidden"]>.nav>.slide>.menu::before {
+    &[style*="overflow: hidden"]>.nav>.slide>.menu .menu-icon {
         display: none;
     }
 

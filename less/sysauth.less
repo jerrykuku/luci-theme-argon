@@ -21,14 +21,7 @@
 }
 
 .icon-base() {
-    font-family: 'argon' !important;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    .icon-mask("../icon/ui/user.svg"; 1.5rem);
 }
 
 .login-page {
@@ -199,11 +192,11 @@
 
                     // Icon content
                     &.user-icon::before {
-                        content: "\e971";
+                        .icon-mask-image("../icon/ui/user.svg");
                     }
 
                     &.pass-icon::before {
-                        content: "\e910";
+                        .icon-mask-image("../icon/ui/lock.svg");
                     }
                 }
             }

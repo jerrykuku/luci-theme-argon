@@ -10,11 +10,11 @@
 
 // Internet Explorer Specific Fixes
 @media all and (-ms-high-contrast: none) {
-    .main>.main-left>.nav>.slide>.menu::before {
+    .main>.main-left>.nav>.slide>.menu .menu-icon {
         top: 30.25%;
     }
 
-    .main>.main-left>.nav>li:last-child::before {
+    .main>.main-left>.nav>li:last-child>a:first-child .menu-icon {
         top: 20%;
     }
 
@@ -420,16 +420,8 @@
         display: inline-block !important;
 
         &::before {
-            font-family: 'argon' !important;
-            font-style: normal !important;
-            font-weight: normal !important;
-            font-variant: normal !important;
-            text-transform: none !important;
-            line-height: 1;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            content: "\e20e";
-            font-size: 1.7rem;
+            .icon-mask("../icon/ui/sidebar-toggle.svg"; 1.7rem);
+            color: currentColor;
         }
     }
 

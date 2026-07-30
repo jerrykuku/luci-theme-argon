@@ -26,13 +26,23 @@
     font-display: swap;
 }
 
-/* Icon Font */
-@font-face {
-    font-family: 'argon';
-    src: url('../fonts/argon.woff2') format('woff2'),
-        url('../fonts/argon.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+// SVG icon helpers
+.icon-mask-image(@path) {
+    -webkit-mask-image: url("@{path}");
+    mask-image: url("@{path}");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
 }
 
+.icon-mask(@path; @size: 1rem) {
+    content: "";
+    display: inline-block;
+    width: @size;
+    height: @size;
+    background-color: currentColor;
+    .icon-mask-image(@path);
+}

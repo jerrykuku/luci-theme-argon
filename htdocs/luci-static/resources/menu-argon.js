@@ -186,6 +186,49 @@ const SlideAnimations = {
 	}
 };
 
+const MENU_ICON_BASE = '/luci-static/argon/icon/menu/';
+const DEFAULT_MENU_ICON = `${MENU_ICON_BASE}default.svg`;
+
+const menuIconCache = new Map();
+
+function normalizeIconKey(value) {
+	return String(value || '')
+		.trim()
+		.toLowerCase()
+		.replace(/[\s_]+/g, '-')
+		.replace(/[^a-z0-9-]/g, '');
+}
+
+function getMenuIconCandidates(child) {
+	var candidates = [];
+	var normalizedName = normalizeIconKey(child.name);
+	var normalizedTitle = normalizeIconKey(child.title);
+
+	if (normalizedName) {
+		candidates.push(normalizedName);
+	}
+	if (normalizedTitle && normalizedTitle !== normalizedName) {
+		candidates.push(normalizedTitle);
+	}
+	if (normalizedTitle === 'log-out' || normalizedTitle === 'logout') {
+		candidates.push('logout');
+	}
+
+	return candidates.filter(function(candidate, index, list) {
+		return candidate && list.indexOf(candidate) === index;
+	});
+}
+
+function checkMenuIcon(url) {
+	if (!menuIconCache.has(url)) {
+		menuIconCache.set(url, fetch(url, { method: 'HEAD', cache: 'force-cache' })
+			.then(function(res) { return res.ok; })
+			.catch(function() { return false; }));
+	}
+
+	return menuIconCache.get(url);
+}
+
 /**
  * Argon Theme Menu Module
  * Handles rendering and interaction of the main navigation menu and sidebar
@@ -233,13 +276,55 @@ return baseclass.extend({
 		}
 	},
 
+	applyMenuIcon: function(anchor, child) {
+		var candidates = getMenuIconCandidates(child);
+		var iconSpan = anchor.querySelector('.menu-icon');
+
+		if (!iconSpan) {
+			return;
+		}
+
+		var fallback = function() {
+			anchor.style.setProperty('--menu-icon-url', `url("${DEFAULT_MENU_ICON}")`);
+			anchor.dataset.iconKey = 'default';
+		};
+
+		fallback();
+
+		if (!candidates.length) {
+			return;
+		}
+
+		(function tryCandidate(index) {
+			if (index >= candidates.length) {
+				return;
+			}
+
+			var candidate = candidates[index];
+			var url = `${MENU_ICON_BASE}${candidate}.svg`;
+
+			checkMenuIcon(url).then(function(exists) {
+				if (exists) {
+					anchor.style.setProperty('--menu-icon-url', `url("${url}")`);
+					anchor.dataset.iconKey = candidate;
+				} else {
+					tryCandidate(index + 1);
+				}
+			});
+		})(0);
+	},
+
 	/**
 	 * Handle menu expand/collapse functionality
 	 * Manages the sliding animation and active states of menu items
 	 * @param {Event} ev - Click event from menu item
 	 */
 	handleMenuExpand: function (ev) {
-		var target = ev.target;
+		var target = ev.currentTarget || ev.target.closest('a');
+		if (!target) {
+			return;
+		}
+
 		var slide = target.parentNode;
 		var slideMenu = target.nextElementSibling;
 		var shouldCollapse = false;
@@ -330,9 +415,14 @@ return baseclass.extend({
 					'click': (currentLevel === 1) ? ui.createHandlerFn(this, 'handleMenuExpand') : null,
 					'class': menuClass,
 					'data-title': child.title.replace(/ /g, "_"), // More robust space replacement
-				}, [_(child.title)]),
+				}, [
+					E('span', { 'class': 'menu-icon', 'aria-hidden': 'true' }),
+					E('span', { 'class': 'menu-text' }, [_(child.title)])
+				]),
 				submenu
 			]);
+
+			this.applyMenuIcon(menuItem.querySelector('a'), child);
 			
 			menuContainer.appendChild(menuItem);
 		}
