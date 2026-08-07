@@ -24,6 +24,18 @@
     .icon-mask("../icon/ui/user.svg"; 1.5rem);
 }
 
+.sr-only() {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .login-page {
     display: flex;
     height: 100%;
@@ -49,12 +61,20 @@
         right: 1rem;
         width: 1.5rem;
         height: 1.5rem;
+        padding: 0;
+        border: 0;
+        outline: none;
         z-index: 5000;
         cursor: pointer;
         background: url(../img/volume_high.svg) no-repeat center/contain;
 
         &.mute {
             background-image: url(../img/volume_off.svg);
+        }
+
+        &:focus-visible {
+            border-radius: 0.25rem;
+            box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--primary);
         }
     }
 
@@ -76,7 +96,7 @@
 
         background-color: var(--white);
         backdrop-filter: blur(var(--blur-radius));
-        background-color: rgba(244, 245, 247, var(--blur-opacity));
+        background-color: var(--login-form-bg-color);
         box-shadow: rgba(0, 0, 0, 0.75) 0 0 35px -5px;
 
         // Login form
@@ -127,6 +147,10 @@
                 width: 100%;
                 padding: 20px 50px;
                 box-sizing: border-box;
+
+                .sr-only {
+                    .sr-only();
+                }
 
                 .errorbox {
                     padding-bottom: 2rem;

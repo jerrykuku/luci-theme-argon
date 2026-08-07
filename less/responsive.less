@@ -2,8 +2,10 @@
 
 // ==========================================================================
 // Responsive Styles
-// Mobile-first responsive design for LuCI admin interface
+// Desktop-first responsive design for LuCI admin interface
 // ==========================================================================
+
+@sidebar-collapsed-width: 13rem;
 
 // 1. Browser-Specific Fixes
 // ==========================================================================
@@ -26,7 +28,7 @@
 // 2. Large Desktop Screens (1600px and below)
 // ==========================================================================
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 100rem) {
 
     // Header adjustments
     header>.fill>.container>#logo {
@@ -35,7 +37,7 @@
 
     // Sidebar width
     .main-left {
-        width: calc(0% + 13rem);
+        width: @sidebar-collapsed-width;
     }
 
     // Button and label sizing
@@ -75,16 +77,11 @@
 // 3. Standard Desktop Screens (1366px and below)
 // ==========================================================================
 
-@media screen and (max-width: 1366px) {
+@media screen and (max-width: 85.375rem) {
 
     // Header adjustments
     header>.fill>.container {
         cursor: default;
-    }
-
-    // Sidebar width
-    .main-left {
-        width: calc(0% + 13rem);
     }
 
     // Tab styling
@@ -159,7 +156,7 @@
 // 4. Small Desktop/Large Tablet (1152px and below)
 // ==========================================================================
 
-@media screen and (max-width: 1152px) {
+@media screen and (max-width: 72rem) {
 
     // Header adjustments
     header>.fill>.container>#logo {
@@ -178,10 +175,6 @@
 
     .main>.loading>span {
         top: 25%;
-    }
-
-    .main-left {
-        width: calc(0% + 13rem);
     }
 
     // Login page specific
@@ -211,7 +204,7 @@
     // Password field specific sizing
     .cbi-value input[name^="pw"],
     .cbi-value input[data-update="change"]:nth-child(2) {
-        width: 13rem !important;
+        width: 13rem;
         min-width: 13rem;
     }
 
@@ -377,7 +370,7 @@
 // 5. Tablet Portrait (768px and below)
 // ==========================================================================
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 48rem) {
 
     // Base font size
     body {
@@ -396,7 +389,7 @@
         width: 0;
 
         &.active {
-            width: 13rem;
+            width: @sidebar-collapsed-width;
         }
     }
 
@@ -417,7 +410,7 @@
         padding: 0.1rem;
         position: relative;
         z-index: 99;
-        display: inline-block !important;
+        display: inline-block;
 
         &::before {
             .icon-mask("../icon/ui/sidebar-toggle.svg"; 1.7rem);
@@ -439,7 +432,7 @@
 // 6. Mobile Portrait (600px and below)
 // ==========================================================================
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 37.5rem) {
 
     // Hide mobile elements
     .mobile-hide {
@@ -530,7 +523,7 @@
 // 7. Small Mobile (480px and below)
 // ==========================================================================
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 30rem) {
 
     // Hide mobile elements
     .mobile-hide {
@@ -576,7 +569,7 @@
 // 8. Desktop Scrollbar Styling (600px and above)
 // ==========================================================================
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 37.5rem) {
     ::-webkit-scrollbar {
         width: 10px;
         height: 10px;

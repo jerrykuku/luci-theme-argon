@@ -4,6 +4,38 @@
 // Main layout components for LuCI admin interface
 // ==========================================================================
 
+.menu-item-base() {
+    display: block;
+    position: relative;
+    margin: 0.1rem 0.5rem;
+    padding: 0.675rem 0 0.675rem 2.5rem;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    cursor: default;
+    transition: all 0.2s;
+}
+
+.menu-item-highlight-styles() {
+    color: #fff;
+    background: var(--primary);
+
+    .menu-icon {
+        background-color: currentColor !important;
+    }
+}
+
+.menu-icon-base() {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.8rem;
+    .icon-mask("../icon/menu/default.svg"; 1rem);
+    -webkit-mask-image: var(--menu-icon-url, url("../icon/menu/default.svg"));
+    mask-image: var(--menu-icon-url, url("../icon/menu/default.svg"));
+    background-color: var(--menu-icon-color, var(--primary));
+    transition: all 0.3s;
+}
+
 
 // 1. Main Container Layout
 // ==========================================================================
@@ -59,24 +91,11 @@
 
         // Top-level navigation links
         &>li>a:first-child {
-            display: block;
-            position: relative;
-            margin: 0.1rem 0.5rem;
-            padding: 0.675rem 0 0.675rem 2.5rem;
-            font-size: 1rem;
-            text-decoration: none;
-            border-radius: 0.25rem;
-            cursor: default;
-            transition: all 0.2s;
+            .menu-item-base();
 
             // Active state
             &.active {
-                color: #fff;
-                background: var(--primary);
-
-                .menu-icon {
-                    background-color: currentColor !important;
-                }
+                .menu-item-highlight-styles();
 
                 &::after {
                     transform: rotate(90deg);
@@ -87,23 +106,11 @@
             // Hover state
             &:hover {
                 cursor: pointer;
-                color: #fff;
-                background: var(--primary);
-
-                .menu-icon {
-                    background-color: currentColor !important;
-                }
+                .menu-item-highlight-styles();
             }
 
             .menu-icon {
-                position: absolute;
-                top: 0.85rem;
-                left: 0.8rem;
-                .icon-mask("../icon/menu/default.svg"; 1rem);
-                -webkit-mask-image: var(--menu-icon-url, url("../icon/menu/default.svg"));
-                mask-image: var(--menu-icon-url, url("../icon/menu/default.svg"));
-                background-color: var(--menu-icon-color, var(--primary));
-                transition: all 0.3s;
+                .menu-icon-base();
             }
         }
 
@@ -265,24 +272,11 @@
 
             // Main menu items
             .menu {
-                display: block;
-                position: relative;
-                margin: 0.1rem 0.5rem;
-                padding: 0.675rem 0 0.675rem 2.5rem;
-                font-size: 1rem;
-                text-decoration: none;
-                border-radius: 0.25rem;
-                cursor: default;
-                transition: all 0.2s;
+                .menu-item-base();
 
                 // Active state
                 &.active {
-                    color: #fff;
-                    background: var(--primary);
-
-                    .menu-icon {
-                        background-color: currentColor !important;
-                    }
+                    .menu-item-highlight-styles();
 
                     &::after {
                         transform: rotate(90deg);
@@ -293,23 +287,11 @@
                 // Hover state
                 &:hover {
                     cursor: pointer;
-                    color: #fff;
-                    background: var(--primary);
-
-                    .menu-icon {
-                        background-color: currentColor !important;
-                    }
+                    .menu-item-highlight-styles();
                 }
 
                 .menu-icon {
-                    position: absolute;
-                    top: 0.85rem;
-                    left: 0.8rem;
-                    .icon-mask("../icon/menu/default.svg"; 1rem);
-                    -webkit-mask-image: var(--menu-icon-url, url("../icon/menu/default.svg"));
-                    mask-image: var(--menu-icon-url, url("../icon/menu/default.svg"));
-                    background-color: var(--menu-icon-color, var(--primary));
-                    transition: all 0.3s;
+                    .menu-icon-base();
                 }
 
                 // Dropdown arrow

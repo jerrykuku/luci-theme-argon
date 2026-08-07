@@ -89,26 +89,15 @@
 	{% if ( bgArry.backgroundType == "Video" ): %}
 	<!-- Video Player Start -->
 	<div class="video">
-		<video autoplay loop muted id="video">
+		<video autoplay loop muted playsinline id="video" aria-hidden="true" tabindex="-1">
 			<source src="{{ bgArry.bgUrl }}" type="{{ bgArry.mimeType }}">
 		</video>
 	</div>
-	<div class="volume-control mute"></div>
-	<script>
-		document.querySelector(".volume-control").addEventListener("click", function(){
-			if(this.classList.contains("mute")){
-				this.classList.remove("mute");
-				document.getElementById("video").muted = false;
-			}else{
-				this.classList.add("mute");
-				document.getElementById("video").muted = true;
-			}
-		});
-	</script>
+	<button type="button" class="volume-control mute" aria-label="{{ _('Unmute background video') }}" aria-pressed="false" data-label-mute="{{ _('Mute background video') }}" data-label-unmute="{{ _('Unmute background video') }}"></button>
 	<!-- Video Player End -->
 	{% else %}
 	<!-- Image Background Start -->
-	<div class="main-bg" id="main-bg" style="background-image:url({{ bgArry.bgUrl }})"></div>
+	<div class="main-bg" id="main-bg" data-bg-url="{{ entityencode(bgArry.bgUrl, true) }}"></div>
 	<!-- Image Background End -->
 	{% endif %}
 	<!-- Login Container Start -->
@@ -123,27 +112,24 @@
 			<form class="form-login" method="post" action="{{ http.getenv("REQUEST_URI") }}">
 
 				{%- if (fuser): %}
-				<div class="errorbox">{{ _('Invalid username and/or password! Please try again.') }}</div>
+				<div class="errorbox" role="alert" aria-live="polite">{{ _('Invalid username and/or password! Please try again.') }}</div>
 				{% endif -%}
 
 				<div class="input-container">
 					<div class="input-group user-icon">
-						<input class="cbi-input-user" id="cbi-input-user" type="text" name="luci_username" value="{{ entityencode(duser, true) }}" />
-						<label class="border" for="cbi-input-user"></label>
+						<label class="sr-only" for="cbi-input-user">{{ _('Username') }}</label>
+						<input class="cbi-input-user" id="cbi-input-user" type="text" name="luci_username" value="{{ entityencode(duser, true) }}" autocomplete="username" autocapitalize="none" spellcheck="false" required />
+						<span class="border" aria-hidden="true"></span>
 					</div>
 					<div class="input-group pass-icon">
-						<input class="cbi-input-password" id="cbi-input-password" type="password" name="luci_password" />
-						<label class="border" for="cbi-input-password"></label>
+						<label class="sr-only" for="cbi-input-password">{{ _('Password') }}</label>
+						<input class="cbi-input-password" id="cbi-input-password" type="password" name="luci_password" autocomplete="current-password" required />
+						<span class="border" aria-hidden="true"></span>
 					</div>
 				</div>
 				<div>
-					<input type="submit" value="{{ _('Log in') }}" class="cbi-button cbi-button-apply" />
+					<button type="submit" class="cbi-button cbi-button-apply">{{ _('Log in') }}</button>
 				</div>
 			</form>
 			<!-- Login Form End -->
-			<script type="text/javascript">//<![CDATA[
-				var input = document.getElementsByName('luci_password')[0];
-				if (input)
-					input.focus();
-			//]]></script>
 {% include("themes/" + theme + "/footer_login") %}

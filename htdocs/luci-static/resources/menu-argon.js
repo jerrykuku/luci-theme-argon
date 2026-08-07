@@ -21,6 +21,62 @@ const SlideAnimations = {
 	 */
 	runningAnimations: new WeakMap(),
 
+	resolveDuration: function(duration) {
+		if (typeof duration === 'string')
+			return this.durations[duration] || this.durations.normal;
+		if (typeof duration === 'number' && duration >= 0)
+			return duration;
+		return this.durations.normal;
+	},
+
+	prefersReducedMotion: function() {
+		return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	},
+
+	invokeCallback: function(element, callback) {
+		if (callback && typeof callback === 'function') {
+			try {
+				callback.call(element);
+			} catch (e) {
+				console.error('SlideAnimations callback error:', e);
+			}
+		}
+	},
+
+	completeImmediately: function(element, callback, cleanupFinalStyles) {
+		if (typeof cleanupFinalStyles === 'function')
+			cleanupFinalStyles();
+		this.invokeCallback(element, callback);
+	},
+
+	startTrackedAnimation: function(element, effectiveDuration, callback, cleanupFinalStyles, originalStyles) {
+		const finish = () => this.completeAnimation(element, callback, cleanupFinalStyles);
+		const onTransitionEnd = (ev) => {
+			if (ev.target !== element || ev.propertyName !== 'height')
+				return;
+			finish();
+		};
+		const timeoutId = setTimeout(finish, effectiveDuration + 50);
+
+		this.runningAnimations.set(element, { timeoutId, onTransitionEnd, originalStyles });
+		element.addEventListener('transitionend', onTransitionEnd);
+	},
+
+	completeAnimation: function(element, callback, cleanupFinalStyles) {
+		var animationData = this.runningAnimations.get(element);
+		if (!animationData)
+			return;
+
+		clearTimeout(animationData.timeoutId);
+		element.removeEventListener('transitionend', animationData.onTransitionEnd);
+		this.runningAnimations.delete(element);
+
+		if (typeof cleanupFinalStyles === 'function')
+			cleanupFinalStyles();
+
+		this.invokeCallback(element, callback);
+	},
+
 	/**
 	 * Slide element down (show) with animation
 	 * @param {Element} element - DOM element to animate
@@ -37,9 +93,9 @@ const SlideAnimations = {
 		this.stop(element);
 		
 		// Convert duration string to milliseconds
-		const animDuration = typeof duration === 'string' ? 
-			this.durations[duration] || this.durations.normal : 
-			(duration || this.durations.normal);
+		const animDuration = this.resolveDuration(duration);
+		const reducedMotion = this.prefersReducedMotion();
+		const effectiveDuration = reducedMotion ? 0 : animDuration;
 		
 		// Store original styles
 		const originalStyles = {
@@ -53,7 +109,7 @@ const SlideAnimations = {
 		element.style.display = 'block';
 		element.style.overflow = 'hidden';
 		element.style.height = '0px';
-		element.style.transition = `height ${animDuration}ms ease-out`;
+		element.style.transition = effectiveDuration ? `height ${effectiveDuration}ms ease-out` : '';
 		
 		// Force reflow to ensure initial state is applied
 		element.offsetHeight;
@@ -64,27 +120,19 @@ const SlideAnimations = {
 		// Animate to full height
 		element.style.height = targetHeight + 'px';
 		
-		// Set up cleanup function
-		const cleanup = () => {
+		// Set up finish cleanup
+		const cleanupFinalStyles = () => {
 			element.style.height = originalStyles.height || '';
 			element.style.overflow = originalStyles.overflow || '';
 			element.style.transition = originalStyles.transition || '';
-			
-			// Remove from running animations map
-			this.runningAnimations.delete(element);
-			
-			if (callback && typeof callback === 'function') {
-				try {
-					callback.call(element);
-				} catch (e) {
-					console.error('SlideAnimations callback error:', e);
-				}
-			}
 		};
-		
-		// Store cleanup function for potential cancellation
-		const timeoutId = setTimeout(cleanup, animDuration);
-		this.runningAnimations.set(element, { timeoutId, cleanup });
+
+		if (!effectiveDuration) {
+			this.completeImmediately(element, callback, cleanupFinalStyles);
+			return;
+		}
+
+		this.startTrackedAnimation(element, effectiveDuration, callback, cleanupFinalStyles, originalStyles);
 	},
 
 	/**
@@ -103,9 +151,9 @@ const SlideAnimations = {
 		this.stop(element);
 		
 		// Convert duration string to milliseconds
-		const animDuration = typeof duration === 'string' ? 
-			this.durations[duration] || this.durations.normal : 
-			(duration || this.durations.normal);
+		const animDuration = this.resolveDuration(duration);
+		const reducedMotion = this.prefersReducedMotion();
+		const effectiveDuration = reducedMotion ? 0 : animDuration;
 		
 		// Store original styles
 		const originalStyles = {
@@ -121,7 +169,7 @@ const SlideAnimations = {
 		// Set initial state for animation
 		element.style.overflow = 'hidden';
 		element.style.height = currentHeight + 'px';
-		element.style.transition = `height ${animDuration}ms ease-out`;
+		element.style.transition = effectiveDuration ? `height ${effectiveDuration}ms ease-out` : '';
 		
 		// Force reflow to ensure initial state is applied
 		element.offsetHeight;
@@ -129,28 +177,20 @@ const SlideAnimations = {
 		// Animate to zero height
 		element.style.height = '0px';
 		
-		// Set up cleanup function
-		const cleanup = () => {
+		// Set up finish cleanup
+		const cleanupFinalStyles = () => {
 			element.style.display = 'none';
 			element.style.height = originalStyles.height || '';
 			element.style.overflow = originalStyles.overflow || '';
 			element.style.transition = originalStyles.transition || '';
-			
-			// Remove from running animations map
-			this.runningAnimations.delete(element);
-			
-			if (callback && typeof callback === 'function') {
-				try {
-					callback.call(element);
-				} catch (e) {
-					console.error('SlideAnimations callback error:', e);
-				}
-			}
 		};
-		
-		// Store cleanup function for potential cancellation
-		const timeoutId = setTimeout(cleanup, animDuration);
-		this.runningAnimations.set(element, { timeoutId, cleanup });
+
+		if (!effectiveDuration) {
+			this.completeImmediately(element, callback, cleanupFinalStyles);
+			return;
+		}
+
+		this.startTrackedAnimation(element, effectiveDuration, callback, cleanupFinalStyles, originalStyles);
 	},
 
 	/**
@@ -162,18 +202,14 @@ const SlideAnimations = {
 		
 		const animationData = this.runningAnimations.get(element);
 		if (animationData) {
-			// Clear the timeout
 			clearTimeout(animationData.timeoutId);
-			
-			// Run cleanup immediately
-			animationData.cleanup();
+			element.removeEventListener('transitionend', animationData.onTransitionEnd);
+			this.runningAnimations.delete(element);
+
+			// Keep current rendered frame and restore base style knobs.
+			element.style.transition = animationData.originalStyles.transition || '';
+			element.style.overflow = animationData.originalStyles.overflow || '';
 		}
-		
-		// Clear transition to immediately stop any CSS animation
-		element.style.transition = '';
-		
-		// Force reflow to apply changes immediately
-		element.offsetHeight;
 	},
 
 	/**
