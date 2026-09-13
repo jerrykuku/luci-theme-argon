@@ -2033,15 +2033,18 @@ td > table > tbody > tr > td,
   flex-direction: column;
   gap: 0.875rem;
 }
-.cbi-section-node > [id^="cbi-config-"] {
+.cbi-section-node > [id^="cbi-config-"],
+.cbi-section-node > [id^="cbi-argon-"] {
   display: flex;
   flex-direction: column;
   gap: 0.875rem;
 }
-.cbi-section-node > [id^="cbi-config-"]:first-child {
+.cbi-section-node > [id^="cbi-config-"]:first-child,
+.cbi-section-node > [id^="cbi-argon-"]:first-child {
   padding-top: 1rem;
 }
-.cbi-section-node > [id^="cbi-config-"]:last-child {
+.cbi-section-node > [id^="cbi-config-"]:last-child,
+.cbi-section-node > [id^="cbi-argon-"]:last-child {
   padding-bottom: 1rem;
 }
 .cbi-section .cbi-section-remove:nth-of-type(2n),
