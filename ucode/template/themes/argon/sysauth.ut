@@ -129,8 +129,20 @@
 			<!-- Login Form Start -->
 			<form class="form-login" method="post" action="{{ http.getenv("REQUEST_URI") }}">
 
-				{%- if (fuser): %}
+				{#-
+				 `auth_plugin` is set only on the render that follows an ACCEPTED password
+				 (dispatcher.uc), so it is what separates "the password was wrong" from "the
+				 password was right and a plugin wants more". Gating the credentials alert on
+				 `!auth_plugin` and showing `auth_message` beside it rather than instead of it
+				 covers all four states: a wrong password, a wrong password with a challenge
+				 already pending, the challenge prompt itself, and a failed challenge.
+				-#}
+				{%- if (fuser && !auth_plugin): %}
 				<div class="errorbox">{{ _('Invalid username and/or password! Please try again.') }}</div>
+				{% endif -%}
+
+				{%- if (auth_message): %}
+				<div class="errorbox">{{ auth_message }}</div>
 				{% endif -%}
 
 				<div class="input-container">
@@ -142,10 +154,45 @@
 						<input class="cbi-input-password" id="cbi-input-password" type="password" name="luci_password" />
 						<label class="border" for="cbi-input-password"></label>
 					</div>
+					{%- if (auth_fields): %}
+					{%- for (let field in auth_fields): %}
+					{#- A plugin field carries no icon of its own and this theme cannot infer one,
+					 so it borrows pass-icon: the padlock reads as "a secret you type", and reusing
+					 an existing modifier keeps the icon gutter filled without touching the font or
+					 the compiled CSS. The label, not the placeholder, is what names the field here
+					 - there is no visible label to fall back on, so a plugin that offers only a
+					 format hint (2fa offers "123456") would otherwise render an unnamed box. The
+					 hint stays reachable as the title. -#}
+					<div class="input-group pass-icon">
+						<input class="cbi-input-text" id="{{ field.name }}" type="{{ field.type ?? 'text' }}" name="{{ field.name }}"
+							placeholder="{{ _(field.label ?? field.placeholder ?? field.name) }}"
+							{% if (field.placeholder): %}title="{{ field.placeholder }}"{% endif %}
+							{% if (field.inputmode): %}inputmode="{{ field.inputmode }}"{% endif %}
+							{% if (field.pattern): %}pattern="{{ field.pattern }}"{% endif %}
+							{% if (field.maxlength): %}maxlength="{{ field.maxlength }}"{% endif %}
+							{% if (field.autocomplete): %}autocomplete="{{ field.autocomplete }}"{% endif %}
+							{% if (field.required): %}required{% endif %} />
+						<label class="border" for="{{ field.name }}"></label>
+					</div>
+					{%- endfor %}
+					{%- endif %}
 				</div>
+				{%- if (auth_html): %}
+				<div class="auth-plugin">{{ auth_html }}</div>
+				{% endif -%}
+
 				<div>
 					<input type="submit" value="{{ _('Log in') }}" class="cbi-button cbi-button-apply" />
 				</div>
+				{#- Loaded last so the markup a plugin emitted through `auth_html` is already
+				 in the document when its script runs. -#}
+				{%- if (auth_assets): %}
+				{%- for (let asset in auth_assets): %}
+				{%- if (asset.type == 'script'): %}
+				<script src="{{ asset.src }}"></script>
+				{%- endif %}
+				{%- endfor %}
+				{%- endif %}
 			</form>
 			<!-- Login Form End -->
 			<script type="text/javascript">//<![CDATA[
