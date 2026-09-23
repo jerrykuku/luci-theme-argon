@@ -17,7 +17,7 @@
 -#}
 
 {%
-	import { readfile, access } from 'fs';
+	import { access } from 'fs';
 	import { cursor } from 'uci';
 
 	const boardinfo = ubus.call("system", "board");
@@ -29,20 +29,34 @@
 	http.prepare_content('text/html; charset=UTF-8');
 
 	//Custom settings
-	let mode = 'normal';
-	let bar_color = '#5e72e4';
-	let primary, dark_primary, blur_radius, blur_radius_dark, blur_opacity, blur_opacity_dark;
-	const dark_css = readfile('/www/luci-static/argon/css/dark.css');
-	if (access('/etc/config/argon')) {
-		primary = cfg.get_first('argon', 'global', 'primary');
-		dark_primary = cfg.get_first('argon', 'global', 'dark_primary');
-		blur_radius = cfg.get_first('argon', 'global', 'blur');
-		blur_radius_dark = cfg.get_first('argon', 'global', 'blur_dark');
-		blur_opacity = cfg.get_first('argon', 'global', 'transparency');
-		blur_opacity_dark = cfg.get_first('argon', 'global', 'transparency_dark');
-		mode = cfg.get_first('argon', 'global', 'mode');
-		bar_color = (mode == 'dark') ? dark_primary : primary;
+	function validColor(value, fallback) {
+		return type(value) == 'string' && match(value, /^#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?$/) ? value : fallback;
 	}
+
+	function validNumber(value, fallback, maximum) {
+		return type(value) == 'string' && match(value, /^(0|[1-9][0-9]*)(\.[0-9]+)?$/) && +value <= maximum ? value : fallback;
+	}
+
+	let mode = 'normal';
+	let primary = '#5e72e4';
+	let dark_primary = '#483d8b';
+	let blur_radius = '10';
+	let blur_radius_dark = '10';
+	let blur_opacity = '0.5';
+	let blur_opacity_dark = '0.5';
+	const has_argon_config = access('/etc/config/argon');
+	if (has_argon_config) {
+		primary = validColor(cfg.get_first('argon', 'global', 'primary'), primary);
+		dark_primary = validColor(cfg.get_first('argon', 'global', 'dark_primary'), dark_primary);
+		blur_radius = validNumber(cfg.get_first('argon', 'global', 'blur'), blur_radius, 100);
+		blur_radius_dark = validNumber(cfg.get_first('argon', 'global', 'blur_dark'), blur_radius_dark, 100);
+		blur_opacity = validNumber(cfg.get_first('argon', 'global', 'transparency'), blur_opacity, 1);
+		blur_opacity_dark = validNumber(cfg.get_first('argon', 'global', 'transparency_dark'), blur_opacity_dark, 1);
+		let configured_mode = cfg.get_first('argon', 'global', 'mode');
+		if (configured_mode == 'normal' || configured_mode == 'dark' || configured_mode == 'light')
+			mode = configured_mode;
+	}
+	const bar_color = mode == 'dark' ? dark_primary : primary;
 
 -%}
 <!DOCTYPE html>
@@ -52,16 +66,13 @@
 	{% include("themes/" + theme + "/head_meta", { hostname: hostname, node: node, bar_color: bar_color, media: media }) %}
 
 	<link rel="stylesheet" href="{{ media }}/css/cascade.css{# ?v=PKG_VERSION #}">
+	{% if (mode == 'normal'): %}
+	<link rel="stylesheet" href="{{ media }}/css/dark.css{# ?v=PKG_VERSION #}" media="(prefers-color-scheme: dark)">
+	{% elif (mode == 'dark'): %}
+	<link rel="stylesheet" href="{{ media }}/css/dark.css{# ?v=PKG_VERSION #}">
+	{% endif %}
 	<style title="text/css">
-		{% if (mode == 'normal'): %}
-			@media (prefers-color-scheme: dark) {
-				{{ dark_css }}
-			}
-		{% endif %}
-		{% if (mode == 'dark'): %}
-			{{ dark_css }}
-		{% endif -%}
-		{% if (access('/etc/config/argon')): %}
+		{% if (has_argon_config): %}
 		:root {
 			--primary: {{ primary }};
 			--dark-primary: {{ dark_primary }};

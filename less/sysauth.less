@@ -45,7 +45,8 @@
 
         video {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
         }
     }
 
@@ -58,7 +59,13 @@
         height: 1.5rem;
         z-index: 5000;
         cursor: pointer;
+        border: 0 !important; // Override the dark theme's global button border.
         background: url(../img/volume_high.svg) no-repeat center/contain;
+
+        &:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+        }
 
         &.mute {
             background-image: url(../img/volume_off.svg);
@@ -70,6 +77,13 @@
         .absolute-full();
         background: url(../img/blank.png) no-repeat center/cover;
         transition: all 0.5s ease;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 
     // Login container
@@ -187,6 +201,11 @@
                         box-shadow: 0 3px 2px rgba(233, 236, 239, 0.05);
                         transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
+                        &:focus-visible {
+                            outline: 2px solid var(--primary);
+                            outline-offset: 2px;
+                        }
+
                         &:focus+.border {
                             transform: scaleX(1);
                         }
@@ -227,9 +246,18 @@
                 box-shadow: rgba(0, 0, 0, 0.1) 0 0 50px 0;
                 transition: all 0.3s ease !important;
 
+                @media (prefers-reduced-motion: reduce) {
+                    transition-duration: 0.01ms !important;
+                }
+
                 &:hover,
                 &:focus {
                     opacity: 0.9;
+                }
+
+                &:focus-visible {
+                    outline: 2px solid var(--default);
+                    outline-offset: 3px;
                 }
             }
         }
@@ -248,12 +276,6 @@
             text-align: center;
             line-height: 1.6rem;
             font-size: 0.75rem;
-
-            .ftc {
-                position: absolute;
-                bottom: 30px;
-                width: 100%;
-            }
 
             .luci-link {
                 display: block;

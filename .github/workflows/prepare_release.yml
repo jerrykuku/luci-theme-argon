@@ -23,7 +23,11 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
+  checks:
+    uses: ./.github/workflows/check.yml
+
   prepare:
+    needs: checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master

@@ -67,6 +67,15 @@ Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，
 - 登录页支持本地图片、视频和在线壁纸背景。
 - 可搭配 [luci-app-argon-config][config-link] 实现更完整的主题设置体验。
 
+Unsplash 在线壁纸需要 Unsplash API Access Key。当前 `luci-app-argon-config` 界面尚未提供此设置；选择 Unsplash 后，可通过 UCI 配置：
+
+```sh
+uci set 'argon.@global[0].use_api_key=你的_UNSPLASH_ACCESS_KEY'
+uci commit argon
+```
+
+未配置密钥时，登录页会使用本地背景。Bing 和 Wallhaven 壁纸选项不受影响。
+
 ## 兼容性
 
 目前仅维护 `master` 分支。  

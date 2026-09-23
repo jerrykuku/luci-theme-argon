@@ -38,7 +38,6 @@
   --white: #fff;
   --gray: #8898aa;
   --gray-dark: #32325d;
-  --light: #ced4da;
   --lighter: #e9ecef;
   --success: #2dce89;
   --info: #11cdef;
@@ -48,7 +47,6 @@
   --light: #adb5bd;
   --dark: #212529;
   --default: #172b4d;
-  --white: #fff;
   --darker: black;
   --background-color: #f4f5f7;
   --login-form-bg-color: rgba(244, 245, 247, 0.8);
@@ -58,6 +56,30 @@
   --blur-opacity-dark: 0.5;
   --font-family-sans-serif: "Google Sans", "Microsoft Yahei", "WenQuanYi Micro Hei", "sans-serif", "Helvetica Neue", "Helvetica", "Hiragino Sans GB";
   --dropdown-arrow-icon: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik01LjI5MyA5LjI5M2ExIDEgMCAwIDEgMS40MTQgMEwxMiAxNC41ODZsNS4yOTMtNS4yOTNhMSAxIDAgMSAxIDEuNDE0IDEuNDE0bC02IDZhMSAxIDAgMCAxLTEuNDE0IDBsLTYtNmExIDEgMCAwIDEgMC0xLjQxNCIvPjwvc3ZnPg==");
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-left,
+  .main-right,
+  .main-bg,
+  .darkMask,
+  .login-page .input-group input,
+  .login-page .input-group .border {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
 
 /*

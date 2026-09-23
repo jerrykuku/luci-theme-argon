@@ -67,6 +67,15 @@ It also supports automatic and manual switching between light and dark modes.
 - The login page supports local images, videos, and online wallpapers as backgrounds.
 - Works with [luci-app-argon-config][config-link] for a more complete theme configuration experience.
 
+Unsplash wallpapers require an Unsplash API access key. The current `luci-app-argon-config` UI does not expose this setting; after choosing Unsplash, set it through UCI:
+
+```sh
+uci set 'argon.@global[0].use_api_key=YOUR_UNSPLASH_ACCESS_KEY'
+uci commit argon
+```
+
+Without a key, the login page uses a local background. Bing and Wallhaven wallpaper options are unaffected.
+
 ## Compatibility
 
 Only the `master` branch is maintained now.  

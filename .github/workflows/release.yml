@@ -17,8 +17,12 @@ env:
   CONFIG_REPOSITORY: jerrykuku/luci-app-argon-config
 
 jobs:
+  checks:
+    uses: ./.github/workflows/check.yml
+
   build:
     name: Build ${{ matrix.package_format }} packages
+    needs: checks
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

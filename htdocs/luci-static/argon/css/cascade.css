@@ -33,9 +33,9 @@
   --green: #2dce89;
   --teal: #11cdef;
   --cyan: #2bffc6;
+  --white: #fff;
   --gray: #8898aa;
   --gray-dark: #32325d;
-  --light: #ced4da;
   --lighter: #e9ecef;
   --success: #2dce89;
   --info: #11cdef;
@@ -44,7 +44,6 @@
   --light: #adb5bd;
   --dark: #212529;
   --default: #172b4d;
-  --white: #fff;
   --darker: black;
   --background-color: #f4f5f7;
   --login-form-bg-color: rgba(244, 245, 247, 0.8);
@@ -54,6 +53,28 @@
   --blur-opacity-dark: 0.5;
   --font-family-sans-serif: "Google Sans", "Microsoft Yahei", "WenQuanYi Micro Hei", "sans-serif", "Helvetica Neue", "Helvetica", "Hiragino Sans GB";
   --dropdown-arrow-icon: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik01LjI5MyA5LjI5M2ExIDEgMCAwIDEgMS40MTQgMEwxMiAxNC41ODZsNS4yOTMtNS4yOTNhMSAxIDAgMSAxIDEuNDE0IDEuNDE0bC02IDZhMSAxIDAgMCAxLTEuNDE0IDBsLTYtNmExIDEgMCAwIDEgMC0xLjQxNCIvPjwvc3ZnPg==");
+}
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .main-left,
+  .main-right,
+  .main-bg,
+  .darkMask,
+  .login-page .input-group input,
+  .login-page .input-group .border {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
 /*
  *  Include base and custom css
@@ -692,7 +713,8 @@ select[multiple="multiple"] {
 }
 .login-page .video video {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 .login-page .volume-control {
   position: fixed;
@@ -702,7 +724,12 @@ select[multiple="multiple"] {
   height: 1.5rem;
   z-index: 5000;
   cursor: pointer;
+  border: 0 !important;
   background: url(../img/volume_high.svg) no-repeat center / contain;
+}
+.login-page .volume-control:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
 }
 .login-page .volume-control.mute {
   background-image: url(../img/volume_off.svg);
@@ -715,6 +742,12 @@ select[multiple="multiple"] {
   width: 100vw;
   background: url(../img/blank.png) no-repeat center / cover;
   transition: all 0.5s ease;
+}
+.login-page .main-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .login-page .login-container {
   z-index: 10;
@@ -821,6 +854,10 @@ select[multiple="multiple"] {
   box-shadow: 0 3px 2px rgba(233, 236, 239, 0.05);
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+.login-page .login-container .login-form .form-login .input-group input:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
 .login-page .login-container .login-form .form-login .input-group input:focus + .border {
   transform: scaleX(1);
 }
@@ -852,9 +889,18 @@ select[multiple="multiple"] {
   box-shadow: rgba(0, 0, 0, 0.1) 0 0 50px 0;
   transition: all 0.3s ease !important;
 }
+@media (prefers-reduced-motion: reduce) {
+  .login-page .login-container .login-form .cbi-button-apply {
+    transition-duration: 0.01ms !important;
+  }
+}
 .login-page .login-container .login-form .cbi-button-apply:hover,
 .login-page .login-container .login-form .cbi-button-apply:focus {
   opacity: 0.9;
+}
+.login-page .login-container .login-form .cbi-button-apply:focus-visible {
+  outline: 2px solid var(--default);
+  outline-offset: 3px;
 }
 .login-page .login-container footer {
   position: absolute;
@@ -869,11 +915,6 @@ select[multiple="multiple"] {
   text-align: center;
   line-height: 1.6rem;
   font-size: 0.75rem;
-}
-.login-page .login-container footer .ftc {
-  position: absolute;
-  bottom: 30px;
-  width: 100%;
 }
 .login-page .login-container footer .luci-link {
   display: block;
@@ -1264,6 +1305,13 @@ header .fill .container .flex1 .showSide {
   display: none;
   font-size: 1.4rem;
   color: #fff;
+  border: 0 !important;
+  background: none;
+  cursor: pointer;
+}
+header .fill .container .flex1 .showSide:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 header .fill .container .flex1 .showSide:hover {
   text-decoration: none;
