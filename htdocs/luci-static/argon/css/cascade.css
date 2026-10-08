@@ -2550,7 +2550,6 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   align-items: center;
   flex-grow: 1;
 }
-.cbi-dropdown[empty] > ul > li,
 .cbi-dropdown[optional][open] > ul.dropdown > li[placeholder],
 .cbi-dropdown[multiple][open] > ul.dropdown > li > form {
   display: block;

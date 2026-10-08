@@ -1549,6 +1549,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   border-left: thin solid #ccc;
 }
 
+// Empty selections use .more; list items stay hidden until the menu opens.
 .cbi-dropdown[empty]>ul {
   max-width: 1px;
 }
@@ -1612,7 +1613,6 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
 }
 
-.cbi-dropdown[empty]>ul>li,
 .cbi-dropdown[optional][open]>ul.dropdown>li[placeholder],
 .cbi-dropdown[multiple][open]>ul.dropdown>li>form {
   display: block;
