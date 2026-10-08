@@ -1081,6 +1081,30 @@ input,
     }
 }
 
+// The switch-vlan page uses Bootstrap variables and its own dark-mode marker.
+// Map its palette here so forced and system-following Argon modes both work.
+[data-page="admin-network-switch-vlan"] #switch-vlan-view {
+    --background-color-medium: #252526;
+    --background-color-high: #333;
+    --text-color-high: #ccc;
+    --text-color-low: #adb5bd;
+    --border-color-low: #3c3c3c;
+    --border-color-medium: #515151;
+    --border-color-high: #8898aa;
+    --primary-color-high: var(--dark-primary);
+    --svc-port-selected-bg: #34314b;
+    --svc-port-selected-hover-bg: #413c60;
+    --svc-port-selected-border: #a5b2ff;
+    --svc-port-selected-ring: rgba(165, 178, 255, 0.28);
+    --svc-vlan-untagged: #2dd4bf;
+    --svc-vlan-tagged: #fbbf24;
+    --svc-vlan-untagged-bg: rgba(45, 212, 191, 0.08);
+    --svc-vlan-tagged-bg: rgba(251, 191, 36, 0.1);
+    --svc-vlan-untagged-stripe: rgba(45, 212, 191, 0.16);
+    --svc-vlan-tagged-stripe: rgba(251, 191, 36, 0.18);
+    --svc-vlan-checked-text: #1e1e1e;
+}
+
 [data-page="admin-network-diagnostics"] {
     .cbi-section {
         background: #252526 !important;

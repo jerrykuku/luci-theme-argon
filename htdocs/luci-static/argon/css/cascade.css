@@ -3625,6 +3625,72 @@ pre.command-output {
   border: 1px solid #dee2e6 !important;
   border-radius: 4px;
 }
+[data-page="admin-network-switch-vlan"] #switch-vlan-view {
+  --background-color-medium: #f4f5f7;
+  --background-color-high: #fff;
+  --text-color-high: var(--gray-dark);
+  --text-color-low: #626b7a;
+  --border-color-low: #dee2e6;
+  --border-color-medium: #cbd5e1;
+  --border-color-high: #8898aa;
+  --primary-color-high: var(--primary);
+  --svc-row-bg: var(--background-color-medium);
+  --svc-row-hover-bg: var(--background-color-high);
+  --svc-row-add-bg: var(--background-color-medium);
+  --svc-port-selected-bg: #e8ecff;
+  --svc-port-selected-hover-bg: #dfe4ff;
+  --svc-port-selected-border: var(--primary);
+  --svc-port-selected-ring: rgba(94, 114, 228, 0.28);
+  --svc-vlan-tagged: #8c4800;
+  --svc-vlan-untagged: #06685f;
+  --svc-vlan-checked-text: #fff;
+  color: var(--text-color-high);
+}
+[data-page="admin-network-switch-vlan"] #switch-vlan-view input[type="text"],
+[data-page="admin-network-switch-vlan"] #switch-vlan-view input[type="number"] {
+  background-color: var(--background-color-high) !important;
+}
+[data-page="admin-network-switch-vlan"] #switch-vlan-view input[type="text"]::placeholder,
+[data-page="admin-network-switch-vlan"] #switch-vlan-view input[type="number"]::placeholder {
+  color: var(--text-color-low);
+  opacity: 1;
+}
+[data-page="admin-network-switch-vlan"] #switch-vlan-view input[type="text"]:focus,
+[data-page="admin-network-switch-vlan"] #switch-vlan-view input[type="number"]:focus {
+  border-color: var(--primary-color-high) !important;
+}
+[data-page="admin-network-switch-vlan"] #switch-vlan-view .svc-port-tile.selected:hover {
+  background: var(--svc-port-selected-hover-bg);
+  border-color: var(--svc-port-selected-border);
+}
+[data-page="admin-network-switch-vlan"] #switch-vlan-view .svc-vlan-btn-tagged,
+[data-page="admin-network-switch-vlan"] #switch-vlan-view .svc-vlan-btn-assign-tagged {
+  --svc-role-color: var(--svc-vlan-tagged);
+  --svc-role-bg: var(--svc-vlan-tagged-bg);
+  --svc-role-stripe: var(--svc-vlan-tagged-stripe);
+}
+[data-page="admin-network-switch-vlan"] #switch-vlan-view .svc-vlan-btn-untagged,
+[data-page="admin-network-switch-vlan"] #switch-vlan-view .svc-vlan-btn-assign-untagged {
+  --svc-role-color: var(--svc-vlan-untagged);
+  --svc-role-bg: var(--svc-vlan-untagged-bg);
+  --svc-role-stripe: var(--svc-vlan-untagged-stripe);
+}
+[data-page="admin-network-switch-vlan"] #switch-vlan-view .svc-vlan-btn-tagged:not(:disabled),
+[data-page="admin-network-switch-vlan"] #switch-vlan-view .svc-vlan-btn-untagged:not(:disabled),
+[data-page="admin-network-switch-vlan"] #switch-vlan-view .svc-vlan-assign-btn:not(.svc-vlan-assign-disabled) {
+  color: var(--svc-role-color) !important;
+  border-color: var(--svc-role-color) !important;
+}
+[data-page="admin-network-switch-vlan"] #switch-vlan-view .svc-vlan-assign-btn.svc-vlan-assign-checked {
+  background: var(--svc-role-color);
+  color: var(--svc-vlan-checked-text) !important;
+}
+[data-page="admin-network-switch-vlan"] #switch-vlan-view .svc-vlan-assign-btn.svc-vlan-assign-mixed {
+  background: repeating-linear-gradient(135deg, var(--svc-role-stripe) 0 0.5rem, var(--svc-role-bg) 0.5rem 1rem);
+}
+[data-page="admin-network-switch-vlan"] #switch-vlan-view .svc-vlan-assign-btn.svc-vlan-assign-checked .svc-vlan-btn-prefix {
+  color: inherit;
+}
 [data-page="admin-network-dhcp"] .cbi-value {
   padding: 0;
 }
