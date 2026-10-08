@@ -83,7 +83,7 @@ Support is focused on modern LuCI environments based on [Official OpenWrt][offic
 
 ## Version History
 
-The latest version is v2.4.7 [Click here][en-us-release-log] to view the full version history record.
+The latest version is v2.4.8 [Click here][en-us-release-log] to view the full version history record.
 
 ## Getting started
 

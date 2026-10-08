@@ -83,7 +83,7 @@ uci commit argon
 
 ## 版本历史
 
-当前最新的版本为 v2.4.7 [点击这里][zh-cn-release-log]查看完整的版本历史日志.
+当前最新的版本为 v2.4.8 [点击这里][zh-cn-release-log]查看完整的版本历史日志.
 
 ## 快速开始
 
