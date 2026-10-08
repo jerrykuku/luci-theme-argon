@@ -23,7 +23,7 @@ jobs:
   build:
     name: Build ${{ matrix.package_format }} packages
     needs: checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: Checkout theme
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -92,9 +92,14 @@ jobs:
           SDK_BASE_URL: ${{ matrix.sdk_base_url }}
           SDK_PATTERN: ${{ matrix.sdk_pattern }}
         run: |
+          checksums="$(mktemp)"
+          trap 'rm -f "${checksums}"' EXIT
+          curl --http1.1 -fsSL --retry 5 --retry-all-errors \
+            --connect-timeout 30 --max-time 120 \
+            "${SDK_BASE_URL}/sha256sums" -o "${checksums}"
+
           sdk_line="$(
-            curl -fsSL "${SDK_BASE_URL}/sha256sums" |
-              grep -E "[[:space:]]+\\*?${SDK_PATTERN}$" |
+            grep -E "[[:space:]]+\\*?${SDK_PATTERN}$" "${checksums}" |
               head -n 1
           )"
 
@@ -112,7 +117,7 @@ jobs:
 
       - name: Cache OpenWrt SDK archive
         id: cache-sdk
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: .cache/openwrt-sdk/${{ steps.sdk.outputs.sdk_file }}
           key: ${{ steps.sdk.outputs.sdk_cache_key }}
@@ -124,20 +129,32 @@ jobs:
           SDK_SHA256: ${{ steps.sdk.outputs.sdk_sha256 }}
         run: |
           mkdir -p .cache/openwrt-sdk
+          sdk_archive=".cache/openwrt-sdk/${SDK_FILE}"
+          sdk_partial="${sdk_archive}.part"
+          trap 'rm -f "${sdk_partial}"' EXIT
 
-          if [ ! -f ".cache/openwrt-sdk/${SDK_FILE}" ]; then
-            curl -fL "${SDK_BASE_URL}/${SDK_FILE}" -o ".cache/openwrt-sdk/${SDK_FILE}"
+          if [ -f "${sdk_archive}" ] && ! printf '%s  %s\n' "${SDK_SHA256}" "${sdk_archive}" | sha256sum -c -; then
+            echo "::warning::Cached SDK checksum mismatch; downloading it again."
+            rm -f "${sdk_archive}"
           fi
 
-          printf '%s  %s\n' "${SDK_SHA256}" ".cache/openwrt-sdk/${SDK_FILE}" | sha256sum -c -
+          if [ ! -f "${sdk_archive}" ]; then
+            # Avoid HTTP/2 stream failures and retry interrupted downloads.
+            # Only a checksum-verified archive may enter the SDK cache.
+            curl --http1.1 -fL --retry 5 --retry-all-errors \
+              --connect-timeout 30 --max-time 1800 \
+              "${SDK_BASE_URL}/${SDK_FILE}" -o "${sdk_partial}"
+            printf '%s  %s\n' "${SDK_SHA256}" "${sdk_partial}" | sha256sum -c -
+            mv "${sdk_partial}" "${sdk_archive}"
+          fi
 
           mkdir -p sdk
           case "${SDK_FILE}" in
             *.tar.zst)
-              tar --zstd -xf ".cache/openwrt-sdk/${SDK_FILE}" -C sdk --strip-components=1
+              tar --zstd -xf "${sdk_archive}" -C sdk --strip-components=1
               ;;
             *.tar.xz)
-              tar -xJf ".cache/openwrt-sdk/${SDK_FILE}" -C sdk --strip-components=1
+              tar -xJf "${sdk_archive}" -C sdk --strip-components=1
               ;;
             *)
               echo "::error::Unsupported SDK archive: ${SDK_FILE}"
@@ -289,7 +306,7 @@ jobs:
           fi
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: packages-${{ matrix.package_format }}
           path: artifacts/${{ matrix.package_format }}/*
@@ -297,21 +314,21 @@ jobs:
 
   release:
     name: Publish GitHub Release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: build
     steps:
       - name: Checkout release installation notes
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           path: release-assets
           pattern: packages-*
           merge-multiple: true
 
       - name: Publish release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
@@ -322,11 +339,11 @@ jobs:
 
   sync-docs:
     name: Sync release docs
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: release
     steps:
       - name: Checkout default branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: master
           fetch-depth: 0

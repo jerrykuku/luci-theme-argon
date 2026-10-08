@@ -32,13 +32,13 @@ jobs:
   job_check:
     if: github.repository == ${{ github.repository }}
     name: Check Version
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       argon_version: ${{ steps.check_version.outputs.latest_version }}
       has_update: ${{ steps.check_version.outputs.has_update }}
     steps:
       - name: Checkout
-        uses: actions/checkout@main
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           ref: "master"
@@ -59,7 +59,7 @@ jobs:
 
       - name: Generate new tag & release
         if: steps.check_version.outputs.has_update == 'true'
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -70,7 +70,7 @@ jobs:
     name: Build Argon (master)
     needs: job_check
     if: needs.job_check.outputs.has_update == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Install packages
         run: |
@@ -82,7 +82,7 @@ jobs:
 
       - name: Cache openwrt SDK
         id: cache-sdk
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         with:
           path: sdk
           key: openwrt-sdk-snapshot-x86-64
@@ -131,7 +131,7 @@ jobs:
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
 
       - name: Upload Argon (master) ipks to release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         if: steps.compile.outputs.status == 'success'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
