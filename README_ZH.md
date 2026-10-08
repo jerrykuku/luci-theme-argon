@@ -67,6 +67,8 @@ Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，
 - 登录页支持本地图片、视频和在线壁纸背景。
 - 可搭配 [luci-app-argon-config][config-link] 实现更完整的主题设置体验。
 
+在 **系统 → Argon 主题设置 → 登录页样式** 中，可选择默认的**经典侧栏**或**居中卡片**。两种布局共用壁纸、配色和认证设置。请同时更新主题和配置插件以使用此选项；未配置或不支持的 `login_style` 值会回退到 `classic`。
+
 Unsplash 在线壁纸需要 Unsplash API Access Key。当前 `luci-app-argon-config` 界面尚未提供此设置；选择 Unsplash 后，可通过 UCI 配置：
 
 ```sh
