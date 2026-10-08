@@ -672,6 +672,15 @@
     }
 }
 
+// Status - Channel Analysis
+[data-page="admin-status-channel_analysis"] [data-tab-title]:not([data-tab-active="true"]) {
+    // LuCI measures every band's graph before its tab is activated. Preserve
+    // the width of inactive panes while the shared tab rules collapse height.
+    display: block !important;
+    visibility: hidden;
+    padding: 0;
+}
+
 // Status - IPTables
 [data-page="admin-status-iptables"] {
     .right {

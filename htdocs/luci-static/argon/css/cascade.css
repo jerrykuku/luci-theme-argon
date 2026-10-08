@@ -3791,6 +3791,11 @@ pre.command-output {
 [data-page="admin-status-overview"] #view > div:first-child {
   gap: 0 !important;
 }
+[data-page="admin-status-channel_analysis"] [data-tab-title]:not([data-tab-active="true"]) {
+  display: block !important;
+  visibility: hidden;
+  padding: 0;
+}
 [data-page="admin-status-iptables"] .right {
   margin-bottom: 0 !important;
 }
