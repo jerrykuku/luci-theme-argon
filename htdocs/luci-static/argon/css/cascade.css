@@ -3431,6 +3431,12 @@ pre.command-output {
 [data-page="admin-system-attendedsysupgrade-configuration"] .cbi-map .cbi-map-descr {
   padding-bottom: 0;
 }
+[data-page="admin-system-flash"] .modal .btn {
+  height: auto;
+  min-height: 2.5rem;
+  max-width: 100%;
+  white-space: normal;
+}
 [data-page="admin-system-flash"] .cbi-value {
   padding: 0 1rem;
 }
