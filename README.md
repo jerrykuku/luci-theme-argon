@@ -96,21 +96,52 @@ make menuconfig #choose LUCI->Theme->Luci-theme-argon
 make -j1 V=s
 ```
 
+### Choose the package format
+
+Choose the format used by the firmware's native package manager. The presence of an `apk` command alone does not identify it:
+
+| Firmware package manager | Release assets | Install command |
+| --- | --- | --- |
+| `opkg` (including OpenWrt 23.05, 24.10, and GL.iNet firmware based on these versions) | `.ipk` | `opkg install` |
+| OpenWrt / ImmortalWrt using APK v3 natively (`apk-tools 3.x`) | `.apk` | `apk add --allow-untrusted` |
+
+The APK assets use **APK v3 format**, which `apk-tools 2.x` (including `2.14.0`) cannot read. `--allow-untrusted` only bypasses signature trust checks; it does not add format support. `apk` cannot install IPK files either.
+
+For the GL.iNet / OpenWrt 23.05 environment in [#705](https://github.com/jerrykuku/luci-theme-argon/issues/705), download IPK files and install them with the firmware's existing `opkg`. There is no need to replace the system package manager.
+
+Download `luci-theme-argon`, `luci-app-argon-config`, and any required `luci-i18n-argon-config-<language>` packages from [Releases][release]. Select the same format for all packages and use the actual asset filenames; do not construct version suffixes or rename file extensions.
+
+Put the downloaded files in one empty directory, keeping only one version of each package, then run the appropriate commands from that directory.
+
 ### Install release packages (`ipk`)
 
 ```bash
-wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.7/luci-theme-argon_2.4.7-1_all.ipk
-wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.7/luci-app-argon-config_2.4.7-1_all.ipk
-opkg install ./luci-theme-argon_2.4.7-1_all.ipk ./luci-app-argon-config_2.4.7-1_all.ipk
+opkg update
+opkg install ./luci-theme-argon_*.ipk ./luci-app-argon-config_*.ipk
+```
+
+If you also downloaded language packages in the same format, install them with:
+
+```bash
+opkg install ./luci-i18n-argon-config-*.ipk
 ```
 
 ### Install release packages (`apk`)
 
+Use this only on firmware that natively uses `apk-tools 3.x`. Check the version with `apk --version`.
+
 ```bash
-wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.7/luci-theme-argon-2.4.7-r1.apk
-wget https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.4.7/luci-app-argon-config-2.4.7-r1.apk
-apk add --allow-untrusted ./luci-theme-argon-2.4.7-r1.apk ./luci-app-argon-config-2.4.7-r1.apk
+apk update
+apk add --allow-untrusted ./luci-theme-argon-*.apk ./luci-app-argon-config-*.apk
 ```
+
+If you also downloaded language packages in the same format, install them with:
+
+```bash
+apk add --allow-untrusted ./luci-i18n-argon-config-*.apk
+```
+
+If you encounter `IO ERROR`, first use `ls -l ./*.apk` to check that the files exist, their names are correct, and the downloads are complete, then check `apk --version`. Do not force installation to bypass format or dependency errors.
 
 
 ## Screenshots

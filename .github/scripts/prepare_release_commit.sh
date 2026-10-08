@@ -37,11 +37,6 @@ update_readme() {
 		perl -0pi -e "s#当前最新的版本为 v[^ ]+ \\[点击这里\\]\\[zh-cn-release-log\\]查看完整的版本历史日志\\.#当前最新的版本为 ${tag} [点击这里][zh-cn-release-log]查看完整的版本历史日志.#g" "${file}"
 		;;
 	esac
-
-	perl -0pi -e "s#releases/download/v[^/]+/luci-theme-argon_[^[:space:])]+\\.ipk#releases/download/${tag}/luci-theme-argon_${version}-1_all.ipk#g" "${file}"
-	perl -0pi -e "s#releases/download/v[^/]+/luci-app-argon-config_[^[:space:])]+\\.ipk#releases/download/${tag}/luci-app-argon-config_${version}-1_all.ipk#g" "${file}"
-	perl -0pi -e "s#releases/download/v[^/]+/luci-theme-argon[-_][^[:space:])]+\\.apk#releases/download/${tag}/luci-theme-argon-${version}-r1.apk#g" "${file}"
-	perl -0pi -e "s#releases/download/v[^/]+/luci-app-argon-config[-_][^[:space:])]+\\.apk#releases/download/${tag}/luci-app-argon-config-${version}-r1.apk#g" "${file}"
 }
 
 upsert_section() {
@@ -52,14 +47,14 @@ upsert_section() {
 
 	BODY_CONTENT="$(cat "${body_file}")" HEADING="${heading}" perl -0pi -e '
 		my $heading = $ENV{HEADING};
-		my $body = $ENV{BODY_CONTENT};
+		my $body = $ENV{BODY_CONTENT} . "\n\n";
 		my $pattern = qr/^\Q$heading\E\n.*?(?=^## |\z)/ms;
 
 		if ($_ =~ $pattern) {
 			s/$pattern/$body/ms;
 		}
 		else {
-			s/\A([^\n]*\n)/$1\n$body/s;
+			s/\A([^\n]*\n)\n*/$1\n$body/s;
 		}
 	' "${file}"
 }

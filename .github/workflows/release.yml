@@ -300,6 +300,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Checkout release installation notes
+        uses: actions/checkout@v4
+
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -312,6 +315,7 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
+          body_path: .github/release-installation.md
           generate_release_notes: true
           fail_on_unmatched_files: true
           files: release-assets/*
