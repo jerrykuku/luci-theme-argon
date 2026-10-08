@@ -192,13 +192,43 @@ jobs:
           CONFIG_ALL_KMODS=n
           CONFIG_ALL=n
           CONFIG_AUTOREMOVE=n
-          CONFIG_LUCI_LANG_zh_Hans=y
           CONFIG_PACKAGE_luci-theme-argon=m
           CONFIG_PACKAGE_luci-app-argon-config=m
           EOF
 
           sed -i 's/^[[:space:]]*//' .config
+
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+
+          luci_mk = Path('feeds/luci/luci.mk').read_text()
+          supported = set(re.findall(r'^LUCI_LANG\.([A-Za-z0-9_]+)=', luci_mk, re.M))
+          aliases = dict(re.findall(r'^LUCI_LC_ALIAS\.([A-Za-z0-9_]+)=(\S+)', luci_mk, re.M))
+          languages = sorted({po.parent.name for po in Path('package/luci-app-argon-config/po').glob('*/*.po')})
+
+          if not languages:
+              raise SystemExit('::error::No Argon configuration translations found.')
+          unsupported = set(languages) - supported
+          if unsupported:
+              raise SystemExit(f'::error::Unsupported translation directories: {", ".join(sorted(unsupported))}')
+
+          with Path('.config').open('a') as config, Path('../argon-config-i18n-packages.txt').open('w') as manifest:
+              for language in languages:
+                  package = f'luci-i18n-argon-config-{aliases.get(language, language)}'
+                  config.write(f'CONFIG_LUCI_LANG_{language}=y\nCONFIG_PACKAGE_{package}=m\n')
+                  manifest.write(f'{package}\n')
+                  print(f'Enable translation: {language} -> {package}')
+          PY
+
           make defconfig
+
+          while IFS= read -r package; do
+            if ! grep -Fxq "CONFIG_PACKAGE_${package}=m" .config; then
+              echo "::error::Translation package was not enabled by defconfig: ${package}"
+              exit 1
+            fi
+          done < ../argon-config-i18n-packages.txt
 
       - name: Compile packages
         working-directory: sdk
@@ -221,20 +251,38 @@ jobs:
               -exec cp -v {} "artifacts/${PACKAGE_FORMAT}/" \;
 
             theme_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -name "luci-theme-argon-*.apk" | wc -l)"
-            config_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f \( -name "luci-app-argon-config-*.apk" -o -name "luci-i18n-argon-config-*.apk" \) | wc -l)"
+            config_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -name "luci-app-argon-config-*.apk" | wc -l)"
           else
             find sdk/bin/packages -type f \
               \( -name "luci-theme-argon_*.ipk" \
               -o -name "luci-app-argon-config_*.ipk" \
-              -o -name "luci-i18n-argon-config_*.ipk" \) \
+              -o -name "luci-i18n-argon-config-*.ipk" \) \
               -exec cp -v {} "artifacts/${PACKAGE_FORMAT}/" \;
 
             theme_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -name "luci-theme-argon_*.ipk" | wc -l)"
-            config_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f \( -name "luci-app-argon-config_*.ipk" -o -name "luci-i18n-argon-config_*.ipk" \) | wc -l)"
+            config_count="$(find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -name "luci-app-argon-config_*.ipk" | wc -l)"
           fi
 
+          missing_packages=0
           if [ "${theme_count}" -lt 1 ] || [ "${config_count}" -lt 1 ]; then
-            echo "::error::Missing expected packages for ${PACKAGE_FORMAT}."
+            echo "::error::Missing expected packages for ${PACKAGE_FORMAT} (theme=${theme_count}, config=${config_count})."
+            missing_packages=1
+          fi
+
+          while IFS= read -r package; do
+            if [ "${PACKAGE_FORMAT}" = "apk" ]; then
+              pattern="${package}-*.apk"
+            else
+              pattern="${package}_*.ipk"
+            fi
+
+            if ! find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -name "${pattern}" -print -quit | grep -q .; then
+              echo "::error::Missing translation package for ${PACKAGE_FORMAT}: ${package}"
+              missing_packages=1
+            fi
+          done < argon-config-i18n-packages.txt
+
+          if [ "${missing_packages}" -ne 0 ]; then
             find sdk/bin/packages -maxdepth 3 -type f | sort
             find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -print
             exit 1
