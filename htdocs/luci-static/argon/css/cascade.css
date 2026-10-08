@@ -1488,8 +1488,38 @@ footer > a {
   }
 }
 #maincontent > .alert-message {
-  position: fixed;
-  transform: translate(-50%, -50%);
+  position: static;
+  width: auto;
+  left: auto;
+  top: auto;
+  transform: none;
+  z-index: auto;
+  margin: 0 1.25rem 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  line-height: 1.5;
+}
+#maincontent > .alert-message > div {
+  min-width: 0;
+  margin: 0;
+}
+#maincontent > .alert-message > div:first-child > * {
+  margin: 0;
+}
+#maincontent > .alert-message > div:first-child > * + * {
+  margin-top: 0.75rem;
+}
+#maincontent > .alert-message h4 {
+  padding: 0.5rem 0.75rem;
+}
+#maincontent > .alert-message .btn {
+  max-width: 100%;
+  white-space: normal;
+}
+@media screen and (max-width: 600px) {
+  #maincontent > .alert-message {
+    flex-direction: column;
+  }
 }
 .container .alert,
 .container .alert-message {
