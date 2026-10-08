@@ -1501,10 +1501,6 @@ footer > a {
   transform: translate(-50%, 0);
   width: 100%;
 }
-#mwan3-service-status > .alert-message {
-  left: 0.5rem;
-  transform: none;
-}
 .lg {
   margin: 0;
   padding: 0 !important;
@@ -4484,13 +4480,18 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
 }
 #mwan3-service-status {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: stretch;
   flex-wrap: wrap;
 }
-#mwan3-service-status > .alert-message {
+#mwan3-service-status > div.alert-message {
   position: static;
   transform: none;
+  z-index: auto;
+  height: auto;
+  min-height: 6rem;
+  max-width: calc(100% - 2rem);
+  overflow-wrap: anywhere;
 }
 /* responsive */
 @media all and (-ms-high-contrast: none) {

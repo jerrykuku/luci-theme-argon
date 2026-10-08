@@ -1582,15 +1582,21 @@ div[style*="display:grid;grid-template-columns:repeat"] {
     display: none;
 }
 
-// overview & mwan3
+// MultiWAN cards in the system overview and the mwan3 overview.
 #mwan3-service-status {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: stretch;
     flex-wrap: wrap;
-}
 
-#mwan3-service-status > .alert-message { 
-    position: static;
-    transform: none;
+    // Override mwan3.css even when the view loads it after the theme.
+    >div.alert-message {
+        position: static;
+        transform: none;
+        z-index: auto;
+        height: auto;
+        min-height: 6rem;
+        max-width: calc(100% - 2rem);
+        overflow-wrap: anywhere;
+    }
 }
