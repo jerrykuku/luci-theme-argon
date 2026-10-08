@@ -39,6 +39,7 @@
   --gray: #8898aa;
   --gray-dark: #32325d;
   --lighter: #e9ecef;
+  --table-border: thin solid #ddd;
   --success: #2dce89;
   --info: #11cdef;
   --warning: #fb6340;
@@ -528,19 +529,8 @@ body:not([data-page="admin-dashboard"]) {
   .tr>.th,
   .cbi-section-table-row::before,
   #cbi-wireless>#wifi_assoclist_table>.tr:nth-child(2) {
-    border-top: thin solid #ddd;
+    border-top: var(--table-border);
     padding: 1.1em 1.25rem;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body:not([data-page="admin-dashboard"]) {
-    tr>td,
-    tr>th,
-    .tr>.td,
-    .tr>.th {
-      border-top: thin solid #444 !important;
-    }
   }
 }
 

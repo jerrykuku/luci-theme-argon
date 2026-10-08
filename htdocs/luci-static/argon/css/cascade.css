@@ -37,6 +37,7 @@
   --gray: #8898aa;
   --gray-dark: #32325d;
   --lighter: #e9ecef;
+  --table-border: thin solid #ddd;
   --success: #2dce89;
   --info: #11cdef;
   --warning: #fb6340;
@@ -1664,16 +1665,8 @@ body:not([data-page="admin-dashboard"]) .tr > .td,
 body:not([data-page="admin-dashboard"]) .tr > .th,
 body:not([data-page="admin-dashboard"]) .cbi-section-table-row::before,
 body:not([data-page="admin-dashboard"]) #cbi-wireless > #wifi_assoclist_table > .tr:nth-child(2) {
-  border-top: thin solid #ddd;
+  border-top: var(--table-border);
   padding: 1.1em 1.25rem;
-}
-@media (prefers-color-scheme: dark) {
-  body:not([data-page="admin-dashboard"]) tr > td,
-  body:not([data-page="admin-dashboard"]) tr > th,
-  body:not([data-page="admin-dashboard"]) .tr > .td,
-  body:not([data-page="admin-dashboard"]) .tr > .th {
-    border-top: thin solid #444 !important;
-  }
 }
 #cbi-wireless .td,
 .table[width="100%"] > .tr:first-child > .td,
@@ -3829,6 +3822,20 @@ pre.command-output {
 }
 [data-page="admin-services-ttyd"] #view iframe {
   height: 100%;
+}
+[data-page="admin-docker-overview"] .cbi-section-table {
+  table-layout: fixed;
+}
+[data-page="admin-docker-overview"] .cbi-section-table .th,
+[data-page="admin-docker-overview"] .cbi-section-table .td {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: left !important;
+  vertical-align: top;
+}
+[data-page="admin-docker-overview"] .cbi-section-table .th:first-child {
+  width: 30% !important;
 }
 #cbi-dockerd .cbi-section {
   box-sizing: border-box;
