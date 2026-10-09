@@ -334,7 +334,7 @@ jobs:
           body_path: ${{ needs.metadata.outputs.prerelease == 'true' && '.github/release-preview.md' || '.github/release-installation.md' }}
           prerelease: ${{ needs.metadata.outputs.prerelease == 'true' }}
           make_latest: ${{ needs.metadata.outputs.prerelease == 'true' && 'false' || 'true' }}
-          generate_release_notes: true
+          generate_release_notes: ${{ needs.metadata.outputs.prerelease == 'false' }}
           fail_on_unmatched_files: true
           files: release-assets/*
 
