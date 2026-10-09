@@ -12,9 +12,12 @@ sh -n root/usr/libexec/rpcd/luci.argon_wallpaper
 
 ucode_bin="${UCODE_BIN:-ucode}"
 for template in ucode/template/themes/argon/*.ut; do
-	"$ucode_bin" -T, -s -cno-interp,dynlink=fs,dynlink=uci,dynlink=luci.core \
+	"$ucode_bin" -T, -s -cno-interp,dynlink=fs,dynlink=uci,dynlink=luci.core,dynlink=luci.argon-branding \
 		-o "$tmpdir/$(basename "$template").uc" "$template"
 done
+# Compile an importing entry point: stable ucode has no standalone module flag.
+"$ucode_bin" -L "$(dirname "$ucode_bin")/*.so" -L "$PWD/root/usr/share/ucode/*.uc" -cno-interp,dynlink=fs \
+	-o "$tmpdir/argon-branding.uc" -e 'import { get_branding } from "luci.argon-branding";'
 
 lessc less/cascade.less "$tmpdir/cascade.css"
 cmp htdocs/luci-static/argon/css/cascade.css "$tmpdir/cascade.css"
@@ -27,4 +30,4 @@ else
 fi
 cmp htdocs/luci-static/argon/css/dark.css "$tmpdir/dark.css"
 
-UCODE_BIN="$ucode_bin" node --test tests/theme-behavior.test.js
+UCODE_BIN="$ucode_bin" node --test tests/*.test.js
