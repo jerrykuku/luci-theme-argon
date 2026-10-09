@@ -8,6 +8,12 @@ if [ -z "${tag}" ]; then
 	exit 1
 fi
 
+prerelease="$(python3 "$(dirname "$0")/release_metadata.py" "${tag}" --field prerelease)"
+if [ "${prerelease}" = true ]; then
+	echo "Preview release: keeping stable release documentation unchanged."
+	exit 0
+fi
+
 version="${tag#v}"
 release_date="${RELEASE_DATE:-$(date +%Y.%m.%d)}"
 pkg_release="${PKG_RELEASE_DATE:-$(date +%Y%m%d)}"

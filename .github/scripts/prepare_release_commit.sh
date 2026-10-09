@@ -14,11 +14,13 @@ case "${tag}" in
 	*) tag="v${tag}" ;;
 esac
 
-version="${tag#v}"
-if ! printf '%s' "${version}" | grep -Eq '^[0-9][0-9A-Za-z._~+-]*$'; then
-	echo "Invalid version '${input_version}'." >&2
+metadata_script="$(dirname "$0")/release_metadata.py"
+prerelease="$(python3 "${metadata_script}" "${tag}" --field prerelease)"
+if [ "${prerelease}" = true ]; then
+	echo "For previews, push matching tags to config first, then theme; do not update stable release metadata." >&2
 	exit 1
 fi
+version="${tag#v}"
 
 repo="${GITHUB_REPOSITORY:?GITHUB_REPOSITORY is required}"
 release_url="https://github.com/${repo}/releases/tag/${tag}"

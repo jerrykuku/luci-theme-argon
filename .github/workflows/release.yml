@@ -17,12 +17,33 @@ env:
   CONFIG_REPOSITORY: jerrykuku/luci-app-argon-config
 
 jobs:
+  metadata:
+    name: Resolve release and config revision
+    runs-on: ubuntu-24.04
+    outputs:
+      prerelease: ${{ steps.version.outputs.prerelease }}
+      apk_version: ${{ steps.version.outputs.apk_version }}
+      ipk_version: ${{ steps.version.outputs.ipk_version }}
+      config_sha: ${{ steps.config.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Resolve release version
+        id: version
+        run: python3 .github/scripts/release_metadata.py "$GITHUB_REF_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Pin config source
+        id: config
+        run: |
+          bash .github/scripts/resolve_config.sh \
+            "https://github.com/${CONFIG_REPOSITORY}.git" "$GITHUB_REF_NAME" >> "$GITHUB_OUTPUT"
+
   checks:
     uses: ./.github/workflows/check.yml
 
   build:
     name: Build ${{ matrix.package_format }} packages
-    needs: checks
+    needs: [checks, metadata]
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
@@ -32,8 +53,8 @@ jobs:
             sdk_base_url: https://downloads.openwrt.org/releases/23.05.5/targets/x86/64
             sdk_pattern: openwrt-sdk-23.05.5-x86-64_.*Linux-x86_64.tar.xz
           - package_format: apk
-            sdk_base_url: https://downloads.openwrt.org/snapshots/targets/x86/64
-            sdk_pattern: openwrt-sdk-x86-64_.*Linux-x86_64.tar.zst
+            sdk_base_url: https://downloads.openwrt.org/releases/25.12.5/targets/x86/64
+            sdk_pattern: openwrt-sdk-25.12.5-x86-64_.*Linux-x86_64.tar.zst
 
     steps:
       - name: Checkout theme
@@ -68,23 +89,6 @@ jobs:
             xz-utils \
             zlib1g-dev \
             zstd
-
-      - name: Resolve release version
-        id: version
-        run: |
-          tag="${GITHUB_REF_NAME}"
-          version="${tag#v}"
-
-          if ! printf '%s' "${version}" | grep -Eq '^[0-9][0-9A-Za-z._~+-]*$'; then
-            echo "::error::Tag '${tag}' cannot be used as an OpenWrt package version."
-            echo "::error::Use a version tag like v2.4.3 or 2.4.3."
-            exit 1
-          fi
-
-          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
-          echo "version=${version}" >> "${GITHUB_OUTPUT}"
-          echo "Release tag: ${tag}"
-          echo "Package version: ${version}"
 
       - name: Resolve OpenWrt SDK metadata
         id: sdk
@@ -171,8 +175,8 @@ jobs:
 
       - name: Prepare local packages
         env:
-          RELEASE_TAG: ${{ steps.version.outputs.tag }}
-          RELEASE_VERSION: ${{ steps.version.outputs.version }}
+          RELEASE_VERSION: ${{ matrix.package_format == 'apk' && needs.metadata.outputs.apk_version || needs.metadata.outputs.ipk_version }}
+          CONFIG_SHA: ${{ needs.metadata.outputs.config_sha }}
         run: |
           mkdir -p sdk/package
 
@@ -183,15 +187,10 @@ jobs:
             "${GITHUB_WORKSPACE}/" \
             sdk/package/luci-theme-argon/
 
-          config_ref="master"
-          if git ls-remote --exit-code --tags "https://github.com/${CONFIG_REPOSITORY}.git" "refs/tags/${RELEASE_TAG}" >/dev/null 2>&1; then
-            config_ref="${RELEASE_TAG}"
-          fi
-
-          git clone --depth 1 \
-            --branch "${config_ref}" \
-            "https://github.com/${CONFIG_REPOSITORY}.git" \
-            sdk/package/luci-app-argon-config
+          git init sdk/package/luci-app-argon-config
+          git -C sdk/package/luci-app-argon-config remote add origin "https://github.com/${CONFIG_REPOSITORY}.git"
+          git -C sdk/package/luci-app-argon-config fetch --depth 1 origin "$CONFIG_SHA"
+          git -C sdk/package/luci-app-argon-config checkout --detach FETCH_HEAD
 
           for makefile in \
             sdk/package/luci-theme-argon/Makefile \
@@ -315,7 +314,7 @@ jobs:
   release:
     name: Publish GitHub Release
     runs-on: ubuntu-24.04
-    needs: build
+    needs: [build, metadata]
     steps:
       - name: Checkout release installation notes
         uses: actions/checkout@v7
@@ -332,7 +331,9 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
-          body_path: .github/release-installation.md
+          body_path: ${{ needs.metadata.outputs.prerelease == 'true' && '.github/release-preview.md' || '.github/release-installation.md' }}
+          prerelease: ${{ needs.metadata.outputs.prerelease == 'true' }}
+          make_latest: ${{ needs.metadata.outputs.prerelease == 'true' && 'false' || 'true' }}
           generate_release_notes: true
           fail_on_unmatched_files: true
           files: release-assets/*
@@ -340,7 +341,8 @@ jobs:
   sync-docs:
     name: Sync release docs
     runs-on: ubuntu-24.04
-    needs: release
+    needs: [release, metadata]
+    if: needs.metadata.outputs.prerelease == 'false'
     steps:
       - name: Checkout default branch
         uses: actions/checkout@v7

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Release version, for example 2.4.4 or v2.4.4"
+        description: "Stable release version, e.g. v2.5.0. For previews, push matching config and theme tags."
         required: true
         type: string
       notes_en:
@@ -38,21 +38,21 @@ jobs:
 
       - name: Normalize version
         id: version
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
         run: |
-          tag="${{ inputs.version }}"
+          tag="${INPUT_VERSION}"
           case "${tag}" in
             v*) ;;
             *) tag="v${tag}" ;;
           esac
 
-          version="${tag#v}"
-          if ! printf '%s' "${version}" | grep -Eq '^[0-9][0-9A-Za-z._~+-]*$'; then
-            echo "::error::Invalid version '${{ inputs.version }}'."
+          prerelease="$(python3 .github/scripts/release_metadata.py "$tag" --field prerelease)"
+          if [ "$prerelease" = true ]; then
+            echo "::error::For previews, push matching tags to config first, then theme."
             exit 1
           fi
-
-          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
-          echo "version=${version}" >> "${GITHUB_OUTPUT}"
+          python3 .github/scripts/release_metadata.py "$tag" >> "$GITHUB_OUTPUT"
 
       - name: Ensure tag does not already exist
         run: |
