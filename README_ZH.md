@@ -107,6 +107,8 @@ make -j1 V=s
 
 本项目的 APK 使用 **APK v3 格式**，`apk-tools 2.x`（包括 `2.14.0`）无法读取。`--allow-untrusted` 只跳过签名信任检查，不能解决格式不兼容；`apk` 也不能安装 IPK。
 
+APK 构建使用 OpenWrt **25.12.5 稳定版 SDK**，主题模板保留源码以兼容目标运行时。原始 v2.4.8 APK 使用 snapshot SDK 构建，要求 `ucode>=2026.02.27`，而 OpenWrt 25.12.5 不提供该版本（[#715](https://github.com/jerrykuku/luci-theme-argon/issues/715)）。该附件需要包含本次修复后重新构建；更新仓库代码不会替换已经发布的安装包。请勿绕过依赖检查安装不兼容的字节码。
+
 对于 [#705](https://github.com/jerrykuku/luci-theme-argon/issues/705) 中的 GL.iNet / OpenWrt 23.05 环境，应下载 IPK 并使用固件原有的 `opkg` 安装，无需替换系统包管理器。
 
 从 [Release][release] 下载主题包 `luci-theme-argon`、配置插件包 `luci-app-argon-config`，以及需要的 `luci-i18n-argon-config-<语言>` 语言包。所有包必须选择相同格式，以附件的实际文件名为准，不要自行拼接版本号或修改扩展名。

@@ -107,6 +107,8 @@ Choose the format used by the firmware's native package manager. The presence of
 
 The APK assets use **APK v3 format**, which `apk-tools 2.x` (including `2.14.0`) cannot read. `--allow-untrusted` only bypasses signature trust checks; it does not add format support. `apk` cannot install IPK files either.
 
+APK builds target the OpenWrt **25.12.5 stable SDK** and keep theme templates as source for runtime compatibility. The original v2.4.8 APK was built with a snapshot SDK and requires `ucode>=2026.02.27`, which OpenWrt 25.12.5 does not provide ([#715](https://github.com/jerrykuku/luci-theme-argon/issues/715)). That asset needs to be rebuilt with this fix; updating this repository does not replace already published packages. Do not bypass dependency checks to install incompatible bytecode.
+
 For the GL.iNet / OpenWrt 23.05 environment in [#705](https://github.com/jerrykuku/luci-theme-argon/issues/705), download IPK files and install them with the firmware's existing `opkg`. There is no need to replace the system package manager.
 
 Download `luci-theme-argon`, `luci-app-argon-config`, and any required `luci-i18n-argon-config-<language>` packages from [Releases][release]. Select the same format for all packages and use the actual asset filenames; do not construct version suffixes or rename file extensions.

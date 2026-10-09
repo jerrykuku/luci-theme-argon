@@ -32,8 +32,8 @@ jobs:
             sdk_base_url: https://downloads.openwrt.org/releases/23.05.5/targets/x86/64
             sdk_pattern: openwrt-sdk-23.05.5-x86-64_.*Linux-x86_64.tar.xz
           - package_format: apk
-            sdk_base_url: https://downloads.openwrt.org/snapshots/targets/x86/64
-            sdk_pattern: openwrt-sdk-x86-64_.*Linux-x86_64.tar.zst
+            sdk_base_url: https://downloads.openwrt.org/releases/25.12.5/targets/x86/64
+            sdk_pattern: openwrt-sdk-25.12.5-x86-64_.*Linux-x86_64.tar.zst
 
     steps:
       - name: Checkout theme

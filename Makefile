@@ -12,6 +12,9 @@ PKG_VERSION:=2.4.8
 PKG_RELEASE:=20261008
 
 CONFIG_LUCI_CSSTIDY:=
+# Ship template source across stable and snapshot runtimes. Precompiled
+# bytecode would require the SDK's ucode format (see issue #715).
+LUCI_MINIFY_UT:=0
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
