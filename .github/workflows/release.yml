@@ -15,6 +15,9 @@ concurrency:
 env:
   TZ: Asia/Shanghai
   CONFIG_REPOSITORY: jerrykuku/luci-app-argon-config
+  # Match the original v2.4.8 config; exclude later login layout/branding features.
+  CONFIG_REF: 9bafffa885135fc78fb4c0106196f98d91d4dae7
+  PACKAGE_RELEASE: "2"
 
 jobs:
   checks:
@@ -173,6 +176,7 @@ jobs:
         env:
           RELEASE_TAG: ${{ steps.version.outputs.tag }}
           RELEASE_VERSION: ${{ steps.version.outputs.version }}
+          PACKAGE_FORMAT: ${{ matrix.package_format }}
         run: |
           mkdir -p sdk/package
 
@@ -183,22 +187,24 @@ jobs:
             "${GITHUB_WORKSPACE}/" \
             sdk/package/luci-theme-argon/
 
-          config_ref="master"
-          if git ls-remote --exit-code --tags "https://github.com/${CONFIG_REPOSITORY}.git" "refs/tags/${RELEASE_TAG}" >/dev/null 2>&1; then
-            config_ref="${RELEASE_TAG}"
-          fi
+          git init sdk/package/luci-app-argon-config
+          git -C sdk/package/luci-app-argon-config remote add origin "https://github.com/${CONFIG_REPOSITORY}.git"
+          git -C sdk/package/luci-app-argon-config fetch --depth 1 origin "${CONFIG_REF}"
+          git -C sdk/package/luci-app-argon-config checkout --detach FETCH_HEAD
+          test "$(git -C sdk/package/luci-app-argon-config rev-parse HEAD)" = "${CONFIG_REF}"
 
-          git clone --depth 1 \
-            --branch "${config_ref}" \
-            "https://github.com/${CONFIG_REPOSITORY}.git" \
-            sdk/package/luci-app-argon-config
+          package_version="${RELEASE_VERSION}"
+          if [ "${PACKAGE_FORMAT}" = ipk ]; then
+            # LuCI 23.05 ignores PKG_RELEASE when PKG_VERSION is provided.
+            package_version="${RELEASE_VERSION}-${PACKAGE_RELEASE}"
+          fi
 
           for makefile in \
             sdk/package/luci-theme-argon/Makefile \
             sdk/package/luci-app-argon-config/Makefile
           do
-            sed -i -E "s/^(PKG_VERSION):=.*/\1:=${RELEASE_VERSION}/" "${makefile}"
-            sed -i -E "s/^(PKG_RELEASE):=.*/\1:=1/" "${makefile}"
+            sed -i -E "s/^(PKG_VERSION):=.*/\1:=${package_version}/" "${makefile}"
+            sed -i -E "s/^(PKG_RELEASE):=.*/\1:=${PACKAGE_RELEASE}/" "${makefile}"
           done
 
       - name: Configure packages
@@ -352,7 +358,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          export RELEASE_DATE="$(TZ='${{ env.TZ }}' date +%Y.%m.%d)"
+          export RELEASE_DATE="2026.10.08"
           export PKG_RELEASE_DATE="$(TZ='${{ env.TZ }}' date +%Y%m%d)"
           bash .github/scripts/update_release_docs.sh "${GITHUB_REF_NAME}"
 
