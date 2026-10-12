@@ -1,5 +1,7 @@
 ## 预览版 / Preview
 
+2026-10-12：以 r2 修订重新发布全部安装包，修复 OpenWrt 上自定义 PNG 图标无法上传的问题。已安装本预览版的用户可升级本页的新安装包。
+
 - 登录页新增居中布局，可在 Argon 配置中切换。
 - 支持上传登录页 Logo 和浏览器图标，也可以恢复默认图标。
 
@@ -7,6 +9,8 @@
 
 - Choose the classic or centered login layout in Argon Config.
 - Upload a login logo and browser icon, or restore the defaults.
+
+2026-10-12: All packages were rebuilt as revision 2 to fix custom PNG uploads on OpenWrt. Existing preview installations can upgrade to the new packages on this page.
 
 Install the theme, configuration plugin and language packages from this release together. v2.4.8 remains the stable release.
 

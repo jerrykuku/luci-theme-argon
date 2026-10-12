@@ -24,6 +24,7 @@ jobs:
       prerelease: ${{ steps.version.outputs.prerelease }}
       apk_version: ${{ steps.version.outputs.apk_version }}
       ipk_version: ${{ steps.version.outputs.ipk_version }}
+      package_release: ${{ steps.version.outputs.package_release }}
       config_sha: ${{ steps.config.outputs.sha }}
     steps:
       - uses: actions/checkout@v7
@@ -176,6 +177,7 @@ jobs:
       - name: Prepare local packages
         env:
           RELEASE_VERSION: ${{ matrix.package_format == 'apk' && needs.metadata.outputs.apk_version || needs.metadata.outputs.ipk_version }}
+          PACKAGE_RELEASE: ${{ needs.metadata.outputs.package_release }}
           CONFIG_SHA: ${{ needs.metadata.outputs.config_sha }}
         run: |
           mkdir -p sdk/package
@@ -197,7 +199,7 @@ jobs:
             sdk/package/luci-app-argon-config/Makefile
           do
             sed -i -E "s/^(PKG_VERSION):=.*/\1:=${RELEASE_VERSION}/" "${makefile}"
-            sed -i -E "s/^(PKG_RELEASE):=.*/\1:=1/" "${makefile}"
+            sed -i -E "s/^(PKG_RELEASE):=.*/\1:=${PACKAGE_RELEASE}/" "${makefile}"
           done
 
       - name: Configure packages
