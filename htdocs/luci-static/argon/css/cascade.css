@@ -1701,7 +1701,7 @@ footer > a {
   background: var(--surface-color);
   box-shadow: var(--section-shadow);
 }
-#view > div:first-child {
+#view > div:first-child:not(.cbi-map) {
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -1904,8 +1904,8 @@ footer > a {
   gap: var(--section-gap);
   container-type: inline-size;
 }
-.cbi-map > .cbi-tabmenu + div {
-  margin-top: 0;
+.cbi-map:has(> .cbi-tabmenu:first-child + .cbi-map-tabbed:last-child) {
+  gap: 0;
 }
 .cbi-map-descr {
   font-size: small;
@@ -4394,10 +4394,19 @@ pre.command-output {
 .cbi-section.fade-in .cbi-title {
   position: relative;
 }
+.cbi-section.fade-in .cbi-title > h3 {
+  align-items: center;
+  gap: var(--control-gap);
+  overflow-wrap: anywhere;
+}
 .cbi-section.fade-in .cbi-title > div:last-child {
   position: absolute;
-  inset-inline-end: 1.25rem;
-  top: 0;
+  inset-inline-end: var(--section-inset);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.cbi-section.fade-in .cbi-title:has(> div:last-child .label[data-indicator="poll-status"]) > h3 {
+  padding-inline-end: calc(var(--section-inset) + 2.5rem);
 }
 .cbi-section.fade-in .cbi-title .label[data-indicator="poll-status"] {
   position: relative;
@@ -4426,6 +4435,9 @@ pre.command-output {
 }
 [dir="rtl"] .cbi-section.fade-in .cbi-title .label[data-indicator="poll-status"][data-style=active]::after {
   transform: scaleX(-1);
+}
+.cbi-section.fade-in > .cbi-title + div:has(> em:only-child) {
+  padding: var(--field-gap) var(--section-inset);
 }
 [data-page="admin-status"] #view > div:first-child,
 [data-page="admin-status-overview"] #view > div:first-child {

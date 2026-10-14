@@ -665,11 +665,22 @@
 .cbi-section.fade-in .cbi-title {
     position: relative;
 
+    > h3 {
+        align-items: center;
+        gap: var(--control-gap);
+        overflow-wrap: anywhere;
+    }
+
     // Older LuCI places the indicator in a separate header wrapper.
     > div:last-child {
         position: absolute;
-        inset-inline-end: 1.25rem;
-        top: 0;
+        inset-inline-end: var(--section-inset);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &:has(> div:last-child .label[data-indicator="poll-status"]) > h3 {
+        padding-inline-end: calc(var(--section-inset) + 2.5rem);
     }
 
     // Current LuCI puts the same indicator directly inside the h3.
@@ -705,6 +716,11 @@
             transform: scaleX(-1);
         }
     }
+}
+
+// Empty overview bodies share the title inset; populated tables keep their full width.
+.cbi-section.fade-in > .cbi-title + div:has(> em:only-child) {
+    padding: var(--field-gap) var(--section-inset);
 }
 
 // Status - Overview
