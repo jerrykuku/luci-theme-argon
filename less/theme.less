@@ -1,227 +1,210 @@
 // out: false
-// Shared palette. Component rules consume these tokens in both colour modes.
+// Private LESS primitives: only semantic token declarations consume these values.
+// These are existing sRGB values; no new ramp steps or colour changes.
+@neutral-0: #fff;
+@neutral-50: #f9f9f9;
+@neutral-100: #f6f9fc;
+@neutral-150: #f4f5f7;
+@neutral-200: #eee;
+@neutral-250: #e9ecef;
+@neutral-300: #ddd;
+@neutral-350: #ccc;
+@neutral-400: #adb5bd;
+@neutral-500: #8898aa;
+@neutral-600: #666;
+@neutral-650: #5b5b5b;
+@neutral-700: #515151;
+@neutral-750: #3c3c3c;
+@neutral-800: #333;
+@neutral-850: #252526;
+@neutral-900: #1e1e1e;
+@neutral-950: #181819;
+@neutral-1000: #000;
+@red-500: #f5365c;
+@orange-500: #fb6340;
+@green-500: #2dce89;
+@cyan-500: #11cdef;
+
+// Each role is declared once: light, dark. A single value applies to both.
+// Keep different roles separate even when they currently share a primitive.
+@theme-palette: {
+  // Accent and status
+  primary: var(--light-primary), var(--dark-primary);
+  success: @green-500;
+  info: @cyan-500;
+  warning: @orange-500;
+  danger: @red-500;
+  error-text: #ffd600;
+  error-detail-text: var(--dark-primary);
+
+  // Text roles
+  text-strong: #32325d, @neutral-350;
+  text-color: #525f7f, @neutral-350;
+  muted-text: @neutral-500, @neutral-400;
+  control-text: @neutral-500, @neutral-350;
+  soft-text: #ced4da, @neutral-350;
+  text-on-accent: @neutral-0;
+  text-inverse: @neutral-0;
+  placeholder-color: @neutral-250, @neutral-750;
+  link-color: var(--primary), #a5b2ff;
+  code-text: #212529;
+  log-text: #242424, @neutral-350;
+  overlay-text: #172b4d, @neutral-400;
+
+  // Surfaces
+  background-color: @neutral-150, @neutral-900;
+  main-bg: transparent, @neutral-900;
+  surface-color: @neutral-0, @neutral-900;
+  surface-raised: @neutral-0, @neutral-800;
+  surface-panel: @neutral-0, @neutral-850;
+  surface-muted: @neutral-100, @neutral-850;
+  surface-inset: @neutral-150, @neutral-850;
+  surface-active: #e4e9ee, @neutral-950;
+  surface-contrast: @neutral-250, @neutral-750;
+  row-color: #f4f4f4, @neutral-900;
+  row-alt: @neutral-50, @neutral-850;
+  media-bg: @neutral-1000;
+
+  // Borders and separators
+  border-color: #dee2e6, @neutral-750;
+  border-subtle: @neutral-300, @neutral-850;
+  border-muted: @neutral-250, @neutral-750;
+  border-strong: #cbd5e1, @neutral-700;
+  border-emphasis: @neutral-500, @neutral-400;
+  border-inverse: @neutral-0;
+  separator-color: @neutral-150, @neutral-900;
+  table-border: thin solid var(--border-subtle), 0;
+  overlay-focus: #172b4d, @neutral-400;
+
+  // Intentional component variants
+  header-bg: var(--primary), @neutral-900;
+  menu-color: #5f6368, @neutral-350;
+  main-menu-color: #202124, @neutral-350;
+  sidebar-brand-color: var(--primary), @neutral-350;
+  invalid-bg: #fce6e6, @neutral-900;
+  command-bg: @neutral-200, @neutral-850;
+  input-bg: @neutral-0, transparent;
+  neutral-button-bg: #f0f0f0, var(--primary);
+  neutral-action-bg: @neutral-500, var(--primary);
+  action-muted-solid: @neutral-500, @neutral-400;
+  status-neutral-bg: #32325d;
+  plain-button-bg: #f0f0f0, #707070;
+  plain-button-text: @neutral-500, @neutral-0;
+  tab-color: var(--primary), @neutral-350;
+  tab-item-bg: #dce3e9, #2d2d2d;
+  tab-inactive-color: #404040, @neutral-350;
+  progress-bg: @neutral-250, #282a2c;
+  iface-bg: @neutral-50, transparent;
+  iface-head-bg: @neutral-200, @neutral-600;
+  iface-body-bg: transparent, @neutral-800;
+  iface-border: 0, 1px solid var(--separator-color);
+  badge-bg: @neutral-200, @neutral-800;
+  dropdown-text: @neutral-1000, @neutral-0;
+  dropdown-selected-text: @neutral-1000, @neutral-0;
+  dropdown-selected-bg: #e4e9ee, var(--primary);
+  sidebar-scrollbar: @neutral-100, @neutral-850;
+  login-panel-rgb: ~"244, 245, 247", ~"0, 0, 0";
+  login-input-border: @neutral-0, @neutral-400;
+
+  // Feedback and pending changes
+  positive-bg: var(--primary), darkolivegreen;
+  negative-bg: var(--danger), darkorange;
+  reset-bg: #f0ad4e, darkorange;
+  reset-border: #eea236, darkorange;
+  notice-bg: var(--info), var(--primary);
+  warning-bg: var(--warning), #986400;
+  error-bg: @orange-500, #784f00;
+  warning-heading-bg: transparent, #784f00;
+  warning-heading-color: #8c6900, #ffbf00;
+  change-added-bg: #cfc, #688668;
+  change-added-border: #0f0, #00ad00;
+  change-removed-bg: #fcc, #896565;
+  change-removed-border: #f00, #c60000;
+  change-modified-bg: @neutral-200, @neutral-800;
+  change-modified-border: @neutral-350, @neutral-600;
+
+  // Plugin contracts: VLAN roles, zone RGB values and legacy adapters
+  plugin-card-bg: @neutral-0, @neutral-750;
+  vlan-text-muted: #626b7a, @neutral-400;
+  vlan-selected-bg: #e8ecff, #34314b;
+  vlan-selected-hover-bg: #dfe4ff, #413c60;
+  vlan-selected-border: var(--primary), #a5b2ff;
+  vlan-selected-ring: rgba(94, 114, 228, .28), rgba(165, 178, 255, .28);
+  vlan-tagged-rgb: ~"140, 72, 0", ~"251, 191, 36";
+  vlan-untagged-rgb: ~"6, 104, 95", ~"45, 212, 191";
+  vlan-checked-text: @neutral-0, @neutral-900;
+  zone-positive-rgb: ~"144, 240, 144", ~"73, 126, 73";
+  zone-negative-rgb: ~"240, 144, 144", ~"156, 79, 79";
+  zone-neutral-rgb: ~"238, 238, 238", ~"112, 112, 112";
+  zone-label-color: @neutral-800, @neutral-350;
+  plugin-text-muted: @neutral-500, #a1a1aa;
+  plugin-neutral: @neutral-500, @neutral-650;
+  plugin-scrollbar: @neutral-100, @neutral-650;
+
+  // Appearance effects
+  command-shadow: ~"inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05)", ~"inset 0 1px 0 rgba(0, 0, 0, .2), 0 1px 2px rgba(255, 255, 255, .05)";
+  section-shadow: 0 0 1rem rgba(136, 152, 170, .15), 0 0 .5rem rgba(0, 0, 0, .35);
+  sidebar-shadow: rgba(0, 0, 0, .75) 0 0 15px -5px, 0 0 .5rem rgba(0, 0, 0, .15);
+  dropdown-shadow: 0 0 4px #918e8c, none;
+  file-icon-filter: none, invert(.7);
+  image-filter: none, invert(.9);
+  spinner-filter: none, invert(1);
+};
+
+// Emit only changed values in dark mode. Both mode selectors use this map.
+.theme-palette(@mode) {
+  each(@theme-palette, {
+    @light: extract(@value, 1);
+    @dark: if(length(@value) > 1, extract(@value, 2), @light);
+    // Compare CSS text: LESS otherwise treats different var() calls as equal.
+    @light-css: ~"@{light}";
+    @dark-css: ~"@{dark}";
+    .emit() when (@mode = light) { --@{key}: @light; }
+    .emit() when (@mode = dark) and not (@light-css = @dark-css) { --@{key}: @dark; }
+    .emit();
+  });
+}
+
 :root {
   color-scheme: light;
+  // Runtime settings injected by LuCI; names are part of the configuration API.
   --light-primary: #5e72e4;
   --dark-primary: #483d8b;
-  --primary: var(--light-primary);
-  --header-color: #fff;
-  --header-bg: var(--primary);
-  --menu-bg-color: #fff;
-  --menu-color: #5f6368;
-  --main-menu-color: #202124;
-  --sidebar-brand-color: var(--primary);
-  --red: #f5365c;
-  --orange: #fb6340;
-  --yellow: #ffd600;
-  --green: #2dce89;
-  --teal: #11cdef;
-  --cyan: #2bffc6;
-  --white: #fff;
-  --gray: #8898aa;
-  --gray-dark: #32325d;
-  --lighter: #e9ecef;
-  --success: #2dce89;
-  --info: #11cdef;
-  --warning: #fb6340;
-  --danger: #f5365c;
-  --light: #adb5bd;
-  --dark: #212529;
-  --default: #172b4d;
-  --darker: black;
-  --background-color: #f4f5f7;
-  --main-bg: transparent;
-  --text-color: #525f7f;
-  --log-text: #242424;
-  --invalid-bg: #fce6e6;
-  --command-bg: #eee;
-  --command-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
-  --plugin-card-bg: #fff;
-  --file-icon-filter: none;
-  --control-text: #8898aa;
-  --muted-text: #8898aa;
-  --soft-text: #ced4da;
-  --link-color: var(--primary);
-  --surface-color: #fff;
-  --surface-raised: #fff;
-  --surface-muted: #f6f9fc;
-  --surface-inset: #f4f5f7;
-  --surface-active: #e4e9ee;
-  --row-color: #f4f4f4;
-  --row-alt: #f9f9f9;
-  --neutral-button-bg: #f0f0f0;
-  --neutral-action-bg: #8898aa;
-  --status-neutral-bg: #32325d;
-  --plain-button-bg: #f0f0f0;
-  --plain-button-text: #8898aa;
-  --border-color: #dee2e6;
-  --border-subtle: #ddd;
-  --border-strong: #cbd5e1;
-  --table-border: thin solid var(--border-subtle);
-  --input-bg: #fff;
-  --select-bg: #fff;
-  --heading-bg: #fff;
-  --tab-color: var(--primary);
-  --tab-bg: #fff;
-  --tab-item-bg: #dce3e9;
-  --tab-inactive-color: #404040;
-  --progress-bg: #e9ecef;
-  --iface-bg: #f9f9f9;
-  --iface-head-bg: #eee;
-  --iface-body-bg: transparent;
-  --iface-border: 0;
-  --badge-bg: #eee;
-  --positive-bg: var(--primary);
-  --negative-bg: var(--danger);
-  --reset-bg: #f0ad4e;
-  --reset-border: #eea236;
-  --notice-bg: var(--info);
-  --warning-bg: var(--warning);
-  --error-bg: var(--warning);
-  --warning-heading-bg: transparent;
-  --warning-heading-color: #8c6900;
-  --section-shadow: 0 0 1rem rgba(136, 152, 170, .15);
-  --sidebar-shadow: rgba(0, 0, 0, .75) 0 0 15px -5px;
-  --image-filter: none;
-  --spinner-filter: none;
-  --change-added-bg: #cfc;
-  --change-added-border: #0f0;
-  --change-removed-bg: #fcc;
-  --change-removed-border: #f00;
-  --change-modified-bg: #eee;
-  --change-modified-border: #ccc;
-  --dropdown-bg: #fff;
-  --dropdown-text: #000;
-  --dropdown-selected-text: #000;
-  --dropdown-selected-bg: #e4e9ee;
-  --dropdown-shadow: 0 0 4px #918e8c;
-  --sidebar-scrollbar: #f6f9fc;
-  --sidebar-scrollbar-track: #fff;
-  --login-panel-rgb: 244, 245, 247;
-  --login-input-border: #fff;
   --blur-radius-light: 10px;
   --blur-opacity-light: .5;
   --blur-radius-dark: 10px;
   --blur-opacity-dark: .5;
   --blur-radius: var(--blur-radius-light);
   --blur-opacity: var(--blur-opacity-light);
-  --vlan-text-muted: #626b7a;
-  --vlan-selected-bg: #e8ecff;
-  --vlan-selected-hover-bg: #dfe4ff;
-  --vlan-selected-border: var(--primary);
-  --vlan-selected-ring: rgba(94, 114, 228, .28);
-  --vlan-tagged-rgb: 140, 72, 0;
-  --vlan-untagged-rgb: 6, 104, 95;
-  --vlan-checked-text: #fff;
-  --zone-positive-rgb: 144, 240, 144;
-  --zone-negative-rgb: 240, 144, 144;
-  --zone-neutral-rgb: 238, 238, 238;
-  --zone-label-color: #333;
-  --plugin-text-muted: #8898aa;
-  --plugin-neutral: #8898aa;
-  --plugin-scrollbar: #f6f9fc;
+  .theme-palette(light);
+
+  // Legacy LuCI colour API. New component rules use semantic tokens only.
+  --header-color: var(--text-on-accent);
+  --menu-bg-color: var(--surface-raised);
+  --red: var(--danger);
+  --orange: @orange-500;
+  --yellow: var(--error-text);
+  --green: var(--success);
+  --teal: var(--info);
+  --white: @neutral-0;
+  --gray: var(--muted-text);
+  --gray-dark: var(--text-strong);
+  --lighter: var(--surface-contrast);
+  --light: @neutral-400;
+  --dark: var(--code-text);
+  --default: var(--overlay-text);
+  --darker: var(--media-bg);
+
+  // Non-colour resources are shared between appearances.
   --font-family-sans-serif: "Google Sans", "Microsoft Yahei", "WenQuanYi Micro Hei", "sans-serif", "Helvetica Neue", "Helvetica", "Hiragino Sans GB";
   --dropdown-arrow-icon: url("../icon/arrow.svg");
 }
 
 .dark-palette() {
   color-scheme: dark;
-  --primary: var(--dark-primary);
-  --header-bg: #1e1e1e;
-  --menu-bg-color: #333;
-  --menu-color: #ccc;
-  --main-menu-color: #ccc;
-  --sidebar-brand-color: #ccc;
-  --gray: #adb5bd;
-  --gray-dark: #ccc;
-  --lighter: #3c3c3c;
-  --default: #adb5bd;
-  --background-color: #1e1e1e;
-  --main-bg: #1e1e1e;
-  --text-color: #ccc;
-  --log-text: #ccc;
-  --invalid-bg: #1e1e1e;
-  --command-bg: #252526;
-  --command-shadow: inset 0 1px 0 rgba(0, 0, 0, .2), 0 1px 2px rgba(255, 255, 255, .05);
-  --plugin-card-bg: #3c3c3c;
-  --file-icon-filter: invert(.7);
-  --control-text: #ccc;
-  --muted-text: #adb5bd;
-  --soft-text: #ccc;
-  --link-color: #a5b2ff;
-  --surface-color: #1e1e1e;
-  --surface-raised: #333;
-  --surface-muted: #252526;
-  --surface-inset: #252526;
-  --surface-active: #181819;
-  --row-color: #1e1e1e;
-  --row-alt: #252526;
-  --neutral-button-bg: var(--primary);
-  --neutral-action-bg: var(--primary);
-  --plain-button-bg: #707070;
-  --plain-button-text: #fff;
-  --border-color: #3c3c3c;
-  --border-subtle: #252526;
-  --border-strong: #515151;
-  --table-border: 0;
-  --input-bg: transparent;
-  --select-bg: #1e1e1e;
-  --heading-bg: #333;
-  --tab-color: #ccc;
-  --tab-bg: #252526;
-  --tab-item-bg: #2d2d2d;
-  --tab-inactive-color: #ccc;
-  --progress-bg: #282a2c;
-  --iface-bg: transparent;
-  --iface-head-bg: #666;
-  --iface-body-bg: #333;
-  --iface-border: 1px solid var(--background-color);
-  --badge-bg: #333;
-  --positive-bg: darkolivegreen;
-  --negative-bg: darkorange;
-  --reset-bg: darkorange;
-  --reset-border: darkorange;
-  --notice-bg: var(--primary);
-  --warning-bg: #986400;
-  --error-bg: #784f00;
-  --warning-heading-bg: #784f00;
-  --warning-heading-color: #ffbf00;
-  --section-shadow: 0 0 .5rem rgba(0, 0, 0, .35);
-  --sidebar-shadow: 0 0 .5rem rgba(0, 0, 0, .15);
-  --image-filter: invert(.9);
-  --spinner-filter: invert(1);
-  --change-added-bg: #688668;
-  --change-added-border: #00ad00;
-  --change-removed-bg: #896565;
-  --change-removed-border: #c60000;
-  --change-modified-bg: #333;
-  --change-modified-border: #666;
-  --dropdown-bg: #252526;
-  --dropdown-text: #fff;
-  --dropdown-selected-text: #fff;
-  --dropdown-selected-bg: var(--primary);
-  --dropdown-shadow: none;
-  --sidebar-scrollbar: #252526;
-  --sidebar-scrollbar-track: #333;
-  --login-panel-rgb: 0, 0, 0;
-  --login-input-border: #adb5bd;
+  .theme-palette(dark);
   --blur-radius: var(--blur-radius-dark);
   --blur-opacity: var(--blur-opacity-dark);
-  --vlan-text-muted: #adb5bd;
-  --vlan-selected-bg: #34314b;
-  --vlan-selected-hover-bg: #413c60;
-  --vlan-selected-border: #a5b2ff;
-  --vlan-selected-ring: rgba(165, 178, 255, .28);
-  --vlan-tagged-rgb: 251, 191, 36;
-  --vlan-untagged-rgb: 45, 212, 191;
-  --vlan-checked-text: #1e1e1e;
-  --zone-positive-rgb: 73, 126, 73;
-  --zone-negative-rgb: 156, 79, 79;
-  --zone-neutral-rgb: 112, 112, 112;
-  --zone-label-color: #ccc;
-  --plugin-text-muted: #a1a1aa;
-  --plugin-neutral: #5b5b5b;
-  --plugin-scrollbar: #5b5b5b;
 }
 
 :root[data-argon-mode="dark"] {

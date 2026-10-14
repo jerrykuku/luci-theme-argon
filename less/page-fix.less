@@ -32,7 +32,7 @@
 [data-page="admin-system-admin"] .cbi-map .cbi-map-descr,
 [data-page="admin-system-admin-password"] .cbi-map .cbi-map-descr {
     margin-left: 0;
-    color: var(--gray-dark);
+    color: var(--text-strong);
 }
 
 [data-page="admin-system-admin"],
@@ -191,7 +191,7 @@
         line-height: 1.5;
         margin-bottom: 0;
         letter-spacing: 0.1rem;
-        color: var(--gray-dark);
+        color: var(--text-strong);
         font-weight: bold;
         padding: 1rem 0 1rem 1rem;
     }
@@ -316,7 +316,7 @@
 [data-page="admin-system-opkg"] {
     h2 {
         margin-left: 0;
-        color: var(--gray-dark);
+        color: var(--text-strong);
     }
 
     input[name="filter_i18n"] {
@@ -371,8 +371,8 @@
     }
 
     .cbi-button {
-        background: #fb6340 !important;
-        border-color: #fb6340 !important;
+        background: var(--warning) !important;
+        border-color: var(--warning) !important;
         margin-left: 0 !important;
     }
 
@@ -490,11 +490,11 @@
 [data-page="admin-network-switch-vlan"] #switch-vlan-view {
     --background-color-medium: var(--surface-inset);
     --background-color-high: var(--surface-raised);
-    --text-color-high: var(--gray-dark);
+    --text-color-high: var(--text-strong);
     --text-color-low: var(--vlan-text-muted);
     --border-color-low: var(--border-color);
     --border-color-medium: var(--border-strong);
-    --border-color-high: var(--muted-text);
+    --border-color-high: var(--border-emphasis);
     --primary-color-high: var(--primary);
     --svc-row-bg: var(--background-color-medium);
     --svc-row-hover-bg: var(--background-color-high);
@@ -642,7 +642,7 @@
 
     .cbi-dropdown {
         .open {
-            color: var(--white);
+            color: var(--text-on-accent);
         }
     }
 }
@@ -971,7 +971,7 @@
     input.cbi-input-reload,
     input.cbi-input-save,
     .btn.primary {
-        color: #fff !important;
+        color: var(--text-on-accent) !important;
         border-color: var(--oc-accent) !important;
         background: var(--oc-accent) !important;
     }
@@ -979,20 +979,20 @@
     .cbi-button.cbi-button-remove,
     .cbi-button.cbi-button-negative,
     input.cbi-input-remove {
-        color: #fff !important;
+        color: var(--text-on-accent) !important;
         border-color: var(--danger) !important;
         background: var(--danger) !important;
     }
 
     .cbi-button.cbi-button-reset {
-        color: #fff !important;
+        color: var(--text-on-accent) !important;
         border-color: var(--warning) !important;
         background: var(--warning) !important;
     }
 
     .cbi-button.cbi-button-find,
     input.cbi-input-find {
-        color: #fff !important;
+        color: var(--text-on-accent) !important;
         border-color: var(--oc-neutral) !important;
         background-color: var(--oc-neutral) !important;
     }
@@ -1082,7 +1082,7 @@
     .oc .radio-button input[type="radio"]:checked+label,
     .oc #tab-header>ul.cbi-tabmenu>li.cbi-tab,
     .oc #tab-header>ul.oc-tabmenu>li.oc-tab {
-        color: #fff !important;
+        color: var(--text-on-accent) !important;
         border-color: var(--oc-accent) !important;
         background: var(--oc-accent) !important;
     }
@@ -1325,12 +1325,12 @@
                 background: var(--oc-surface) !important;
 
                 &.cbi-tab {
-                    color: #fff !important;
+                    color: var(--text-on-accent) !important;
                     border-color: var(--oc-accent) !important;
                     background: var(--oc-accent) !important;
 
                     >a {
-                        color: #fff !important;
+                        color: var(--text-on-accent) !important;
                     }
                 }
 
@@ -1484,29 +1484,29 @@
 .node-services-vssr {
     .block,
     .cbi-section-table-row {
-        color: var(--gray-dark);
+        color: var(--text-strong);
         background-color: var(--plugin-card-bg) !important;
         box-shadow: var(--section-shadow);
     }
 
     .block h4,
     .ssr-button {
-        color: var(--gray-dark) !important;
+        color: var(--text-strong) !important;
     }
 
     .status-bar {
-        color: var(--gray-dark);
+        color: var(--text-strong);
         background-color: var(--surface-color);
         box-shadow: var(--section-shadow);
     }
 
     .cbi-section-table-row.fast {
-        color: var(--white);
+        color: var(--text-on-accent);
         background: var(--primary) !important;
     }
 
     .incon:nth-child(2) {
-        border-right: 1px solid var(--background-color);
+        border-right: 1px solid var(--separator-color);
     }
 }
 

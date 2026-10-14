@@ -20,13 +20,18 @@
 // ==========================================================================
 
 .main-left {
+    // Category colours are independent of success/warning status colours.
+    --menu-icon-system: @orange-500;
+    --menu-icon-services: @cyan-500;
+    --menu-icon-network: #8965e0;
+    --menu-icon-muted: @neutral-400;
     width: 15rem;
     height: 100%;
     flex-shrink: 0;
     z-index: 100;
     overflow-x: auto;
     word-break: break-word;
-    background-color: var(--menu-bg-color);
+    background-color: var(--surface-raised);
     box-shadow: var(--sidebar-shadow);
     transition: all 0.2s;
 
@@ -70,19 +75,19 @@
 
             // Active state
             &.active {
-                color: #fff;
+                color: var(--text-on-accent);
                 background: var(--primary);
 
                 &::after {
                     transform: rotate(0deg);
-                    color: #fff !important;
+                    color: var(--text-on-accent) !important;
                 }
             }
 
             // Hover state
             &:hover {
                 cursor: pointer;
-                color: #fff;
+                color: var(--text-on-accent);
                 background: var(--primary);
             }
 
@@ -100,15 +105,15 @@
                 mask: var(--menu-icon) center / contain no-repeat;
             }
 
-            .menu-icon[data-icon="system"] { color: var(--orange); }
-            .menu-icon[data-icon="services"] { color: var(--teal); }
+            .menu-icon[data-icon="system"] { color: var(--menu-icon-system); }
+            .menu-icon[data-icon="services"] { color: var(--menu-icon-services); }
             .menu-icon[data-icon="network"],
-            .menu-icon[data-icon="vpn"] { color: #8965e0; }
-            .menu-icon[data-icon="logout"] { color: var(--light); }
+            .menu-icon[data-icon="vpn"] { color: var(--menu-icon-network); }
+            .menu-icon[data-icon="logout"] { color: var(--menu-icon-muted); }
 
             &.active .menu-icon,
             &:hover .menu-icon {
-                color: var(--white);
+                color: var(--text-on-accent);
             }
         }
 
@@ -242,7 +247,7 @@
     }
 
     &::-webkit-scrollbar-track {
-        background-color: var(--sidebar-scrollbar-track);
+        background-color: var(--surface-raised);
     }
 }
 
@@ -280,10 +285,10 @@
             img.svgmonochrome {
                 filter: var(--image-filter);
             }
-            color: var(--gray-dark) !important;
+            color: var(--text-strong) !important;
 
             h3 {
-                color: var(--gray-dark);
+                color: var(--text-strong);
             }
 
             p {
@@ -329,7 +334,7 @@ header {
     position: relative;
     width: 100%;
     padding: 0;
-    color: var(--header-color);
+    color: var(--text-on-accent);
 
     // Primary background modifier
     &.bg-primary {
@@ -365,7 +370,7 @@ header {
                 .showSide {
                     display: none;
                     font-size: 1.4rem;
-                    color: #fff;
+                    color: var(--text-on-accent);
                     border: 0 !important; // Override the dark theme's global button border.
                     background: none;
                     cursor: pointer;
@@ -385,7 +390,7 @@ header {
                     padding-left: 1rem;
                     font-size: 1.5rem;
                     font-family: "TypoGraphica";
-                    color: #fff;
+                    color: var(--text-on-accent);
                     text-decoration: none;
                     cursor: default;
                     vertical-align: text-bottom;
@@ -423,15 +428,15 @@ header {
             }
 
             span[data-indicator="poll-status"] {
-                color: #fff;
+                color: var(--text-on-accent);
             }
 
             span[data-style="active"] {
-                background-color: var(--green);
+                background-color: var(--success);
             }
 
             span[data-style="inactive"] {
-                color: #ffffff !important;
+                color: var(--text-on-accent) !important;
                 background-color: var(--status-neutral-bg);
             }
         }

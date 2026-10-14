@@ -82,6 +82,8 @@ uci commit argon
 
 亮色、暗色共用 `htdocs/luci-static/argon/css/cascade.css`。在 `less/theme.less` 集中维护颜色变量，各组件只维护一套样式；修改 LESS 后使用 `lessc less/cascade.less htdocs/luci-static/argon/css/cascade.css` 生成 CSS。主题设置中的自动、亮色、暗色模式和自定义主色继续生效。
 
+`theme.less` 的私有 LESS 色值供语义 token 使用；`@theme-palette` 每行维护一个角色，格式为 `角色: 亮色, 暗色;`，只写一个值表示两种模式共用。编译时自动生成暗色差异。文字、背景、边框按角色分别维护，即使当前颜色相同也不相互借用；菜单分类色单独声明。文件末尾的旧色名是 LuCI 兼容别名，组件应引用语义 token。`--light-primary`、`--dark-primary` 和模糊配置仍由主题设置覆盖。
+
 一级菜单前置图标按菜单节点名称匹配 `htdocs/luci-static/argon/icon/<名称>.svg`，例如 `status.svg`、`system.svg`、`network.svg`、`logout.svg`。使用节点名称而非翻译后的标题，文件名区分大小写；名称支持字母、数字、下划线和连字符。添加对应 SVG 后刷新页面即可使用，缺失时显示 `default.svg`。
 
 SVG 以 CSS mask 显示，图标颜色由主题和菜单悬停、选中状态控制。建议使用透明背景、带 `viewBox` 的单色 SVG。此机制与下方的网站图标、登录 Logo 设置独立。

@@ -40,7 +40,7 @@
     .video {
         .absolute-full();
         .flex-center();
-        background-color: var(--darker);
+        background-color: var(--media-bg);
         overflow: hidden;
 
         video {
@@ -121,7 +121,7 @@
                 align-items: center;
                 justify-content: center;
                 margin: 50px auto 100px 50px;
-                color: var(--default);
+                color: var(--overlay-text);
                 text-decoration: none;
 
                 .icon {
@@ -170,7 +170,7 @@
                         left: 10px;
                         z-index: 100;
                         font-size: 1.5rem;
-                        color: var(--default);
+                        color: var(--overlay-text);
                     }
 
                     // Animated border
@@ -192,7 +192,7 @@
                         padding: 0.5rem 0.75rem 0.5rem 3rem;
                         font-size: 1rem;
                         line-height: 1.5em;
-                        color: var(--default);
+                        color: var(--overlay-text);
                         background-color: transparent;
                         background-clip: padding-box;
                         border: 0;
@@ -232,7 +232,7 @@
                 padding: 10px 0;
                 font-size: 15px;
                 font-weight: 600;
-                color: var(--white);
+                color: var(--text-on-accent);
                 text-align: center;
                 letter-spacing: 0.8rem;
                 background-color: var(--primary) !important;
@@ -253,7 +253,7 @@
                 }
 
                 &:focus-visible {
-                    outline: 2px solid var(--default);
+                    outline: 2px solid var(--overlay-focus);
                     outline-offset: 3px;
                 }
             }
@@ -269,7 +269,7 @@
             width: 100%;
             margin-top: auto;
             padding: 0 0 30px;
-            color: var(--gray);
+            color: var(--muted-text);
             text-align: center;
             line-height: 1.6rem;
             font-size: 0.75rem;

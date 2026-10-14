@@ -82,6 +82,8 @@ Without a key, the login page uses a local background. Bing and Wallhaven wallpa
 
 Light and dark modes share `htdocs/luci-static/argon/css/cascade.css`. Maintain palette variables in `less/theme.less` and keep one set of component rules. After editing LESS, run `lessc less/cascade.less htdocs/luci-static/argon/css/cascade.css`. Automatic, forced light, forced dark, and custom primary colors remain supported.
 
+Private LESS colors supply semantic tokens. Each row of `@theme-palette` defines one role as `role: light, dark;`; a single value is shared by both modes. Compilation emits only dark-mode differences. Keep text, surface, and border roles separate even when their colors match, and declare menu category colors independently. Legacy color names at the end of the file are LuCI compatibility aliases; components should consume semantic tokens. Theme settings still override `--light-primary`, `--dark-primary`, and blur parameters.
+
 Top-level menu icons resolve `htdocs/luci-static/argon/icon/<node-name>.svg`, such as `status.svg`, `system.svg`, `network.svg`, or `logout.svg`. Names are case-sensitive menu node identifiers, independent of translated labels, and support letters, digits, underscores, and hyphens. Add the matching SVG and reload the page; missing icons use `default.svg`.
 
 Icons use CSS masks so their colors follow the theme and menu states. Use monochrome SVGs with a transparent background and a `viewBox`. This is separate from the browser icon and login logo settings below.

@@ -144,7 +144,7 @@ input,
 
 
 select {
-  background-color: var(--select-bg);
+  background-color: var(--surface-color);
   padding-right: 1.5rem;
   background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjODg5OGFhIiBkPSJNNS4yOTMgOS4yOTNhMSAxIDAgMCAxIDEuNDE0IDBMMTIgMTQuNTg2bDUuMjkzLTUuMjkzYTEgMSAwIDEgMSAxLjQxNCAxLjQxNGwtNiA2YTEgMSAwIDAgMS0xLjQxNCAwbC02LTZhMSAxIDAgMCAxIDAtMS40MTQiLz48L3N2Zz4=");
   background-size: 1rem;
@@ -179,7 +179,7 @@ select[multiple="multiple"] {
   margin-left: 0.5rem;
 
   * {
-    color: #fff;
+    color: var(--text-on-accent);
   }
 }
 
@@ -200,7 +200,7 @@ select[multiple="multiple"] {
 
 .notice {
   background-color: var(--notice-bg) !important;
-  color: #fff;
+  color: var(--text-on-accent);
 }
 
 .error {
@@ -226,7 +226,7 @@ select[multiple="multiple"] {
 
   &.error {
     background-color: var(--error-bg);
-    color: var(--yellow);
+    color: var(--error-text);
   }
 
   h4 {
@@ -459,8 +459,7 @@ fieldset>fieldset,
   margin: 0;
   margin-bottom: 0;
   padding: 0.8755rem 1.25rem;
-  color: var(--gray-dark);
-  color: var(--gray-dark);
+  color: var(--text-strong);
 
 }
 
@@ -494,7 +493,7 @@ table,
 }
 
 .table .table-titles th {
-  background-color: var(--lighter);
+  background-color: var(--surface-contrast);
 }
 
 table>tbody>tr>td,
@@ -764,7 +763,7 @@ td>table>tbody>tr>td,
 .cbi-button[name="zero"],
 .cbi-button[name="restart"],
 .cbi-button[onclick="hide_empty(this)"] {
-  color: #fff;
+  color: var(--text-on-accent);
   border: thin solid var(--neutral-action-bg);
   background-color: var(--neutral-action-bg);
 }
@@ -782,7 +781,7 @@ td>table>tbody>tr>td,
 .cbi-button[value^="Back"],
 .cbi-button-neutral[onclick="handleConfig(event)"] {
   font-weight: normal;
-  color: #fff !important;
+  color: var(--text-on-accent) !important;
   border: thin solid var(--button-bg, var(--primary));
   background-color: var(--button-bg, var(--primary));
 }
@@ -807,7 +806,7 @@ td>table>tbody>tr>td,
 .cbi-button[value$="Apply"],
 .cbi-button[onclick="addKey(event)"] {
   font-weight: normal;
-  color: #fff !important;
+  color: var(--text-on-accent) !important;
   border: thin solid var(--primary);
 
   background-color: var(--primary);
@@ -824,7 +823,7 @@ td>table>tbody>tr>td,
 .cbi-button[onclick="reboot(this)"],
 .cbi-button-neutral[value="Restart"] {
   font-weight: normal;
-  color: #fff;
+  color: var(--text-on-accent);
   border: thin solid var(--negative-bg);
   background-color: var(--negative-bg);
 }
@@ -838,7 +837,7 @@ td>table>tbody>tr>td,
 .cbi-button[onclick="handleReset(event)"],
 .cbi-button-neutral[value="Disable"] {
   font-weight: normal;
-  color: var(--white);
+  color: var(--text-on-accent);
   border: thin solid var(--reset-border);
   background-color: var(--reset-bg);
 }
@@ -847,7 +846,7 @@ td>table>tbody>tr>td,
 .cbi-button-success,
 .cbi-button-download {
   font-weight: normal;
-  color: var(--white);
+  color: var(--text-on-accent);
   border: thin solid #4cae4c;
   background-color: #5cb85c;
 }
@@ -859,7 +858,7 @@ td>table>tbody>tr>td,
 
   .cbi-dropdown {
     .open {
-      color: var(--white);
+      color: var(--text-on-accent);
     }
 
     .more {
@@ -887,7 +886,7 @@ td>table>tbody>tr>td,
 
 .tabs {
   padding: 0 1rem;
-  background-color: var(--tab-bg);
+  background-color: var(--surface-panel);
   border-radius: 0.25rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, .03);
   white-space: nowrap;
@@ -1101,8 +1100,7 @@ td>table>tbody>tr>td,
   font-size: 0.75rem;
 
   abbr {
-    color: var(--gray-dark);
-    color: var(--gray-dark);
+    color: var(--text-strong);
   }
 
   &:empty {
@@ -1167,8 +1165,8 @@ td>table>tbody>tr>td,
 }
 
 .cbi-input-invalid {
-  color: #f5365c !important;
-  border-color: #f5365c !important;
+  color: var(--danger) !important;
+  border-color: var(--danger) !important;
 }
 
 .cbi-section-error {
@@ -1176,7 +1174,7 @@ td>table>tbody>tr>td,
   line-height: 1.42857143;
   margin: 18px;
   padding: 6px;
-  border: thin solid #f5365c;
+  border: thin solid var(--danger);
   border-radius: 3px;
   background-color: var(--invalid-bg);
 }
@@ -1187,7 +1185,7 @@ td>table>tbody>tr>td,
 
 .cbi-section-error ul li {
   font-weight: bold;
-  color: #f5365c;
+  color: var(--danger);
 }
 
 .td[data-title]::before {
@@ -1298,12 +1296,12 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
       font-size: 1rem;
       line-height: 1.5rem;
 
-      color: #fff;
-      border: 1px solid #f5365c;
+      color: var(--text-on-accent);
+      border: 1px solid var(--danger);
       border-radius: 0 0.25rem 0.25rem 0;
       outline: 0;
 
-      background-color: var(--red);
+      background-color: var(--danger);
       background-image: none;
       box-shadow: none;
       box-sizing: border-box;
@@ -1380,10 +1378,10 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
       outline: 0;
       background-image: none;
-      background-color: var(--gray);
+      background-color: var(--action-muted-solid);
       box-shadow: none;
-      color: var(--white);
-      border-color: var(--gray);
+      color: var(--text-on-accent);
+      border-color: var(--action-muted-solid);
       border-radius: 0.25rem;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
@@ -1396,7 +1394,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
       font-weight: normal;
       font-size: 1.2rem;
 
-      color: #fff;
+      color: var(--text-on-accent);
       background-color: var(--primary);
       border: 1px solid var(--primary);
     }
@@ -1416,7 +1414,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 
 .cbi-dynlist>.item.drag-over,
 .cbi-dynlist>.add-item:has(.drag-over) {
-  border-top: 1px solid var(--red);
+  border-top: 1px solid var(--danger);
   margin-top: -1px;
 }
 
@@ -1477,14 +1475,14 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   display: none;
 
   li {
-    color: #fff;
+    color: var(--text-on-accent);
   }
 
 }
 
 .cbi-button-apply>ul:first-child {
   li {
-    color: #fff;
+    color: var(--text-on-accent);
   }
 
 }
@@ -1575,7 +1573,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   max-width: none;
   max-height: 200px !important;
   border: 0 solid #918e8c;
-  background: var(--dropdown-bg);
+  background: var(--surface-panel);
   box-shadow: var(--dropdown-shadow);
   border-radius: 0.25rem;
   color: var(--main-menu-color);
@@ -1737,10 +1735,10 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
     padding: 0.5rem;
     cursor: auto;
     white-space: pre-wrap;
-    color: var(--dark-primary);
+    color: var(--error-detail-text);
     outline: 0;
     border-radius: 0.25rem;
-    border: 1px solid var(--lighter);
+    border: 1px solid var(--border-muted);
     transition: all 0.2s ease;
 
     &:focus {
@@ -2142,7 +2140,7 @@ td>.ifacebadge,
 
       .cbi-dropdown ul:not(.dropdown) {
         li {
-          color: #fff;
+          color: var(--text-on-accent);
         }
       }
 
@@ -2191,7 +2189,7 @@ td>.ifacebadge,
   background: var(--primary);
 
   * {
-    color: var(--white);
+    color: var(--text-inverse);
   }
 
 }
@@ -2359,7 +2357,7 @@ span[data-tooltip] .label {
   white-space: nowrap;
   text-decoration: none;
   text-transform: uppercase;
-  color: #fff !important;
+  color: var(--text-inverse) !important;
   border-radius: 3px;
   background-color: #bfbfbf;
   text-shadow: none;
@@ -2462,8 +2460,8 @@ input[name="nslookup"] {
   top: -0.25rem;
   right: -0.25rem;
   content: attr(data-errors);
-  background-color: var(--red);
-  color: #fff;
+  background-color: var(--danger);
+  color: var(--text-on-accent);
   width: 0.875rem;
   height: 0.875rem;
   border-radius: 0.875rem;
@@ -2578,7 +2576,7 @@ pre.command-output {
 }
 
 .cbi-dropdown.cbi-button-positive>ul>li[display="0"] {
-  color: #fff;
+  color: var(--text-on-accent);
 }
 
 .cbi-dropdown[open]>ul.dropdown>li[selected] {

@@ -31,7 +31,7 @@ body {
 
 body {
     background-color: var(--background-color);
-    color: var(--gray-dark);
+    color: var(--text-strong);
     -webkit-tap-highlight-color: transparent;
     font-size: 0.875rem;
 }
@@ -68,16 +68,16 @@ h1 {
     font-size: 2rem;
     margin: 0.67em 0;
     padding-bottom: 0.5rem;
-    border-bottom: thin solid var(--lighter);
+    border-bottom: thin solid var(--border-muted);
 }
 
 h2 {
     padding: 1rem 1.25rem;
     font-size: 1.25rem;
     font-weight: bold;
-    color: var(--gray-dark);
+    color: var(--text-strong);
     border-radius: 0.25rem;
-    background: var(--heading-bg);
+    background: var(--surface-raised);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
 }
 
@@ -87,9 +87,9 @@ h3 {
     font-size: 1.1rem;
     font-weight: bold;
     line-height: 1;
-    color: var(--gray-dark);
+    color: var(--text-strong);
     border-radius: 0.25rem;
-    background: var(--heading-bg);
+    background: var(--surface-raised);
     display: block;
     width: 100%;
 }
@@ -143,9 +143,9 @@ samp {
     font-family: inherit;
     font-size: inherit;
     padding: 1px 3px;
-    color: var(--dark);
+    color: var(--code-text);
     border-radius: 0.5rem;
-    background: var(--lighter);
+    background: var(--surface-contrast);
 }
 
 small {
@@ -179,7 +179,7 @@ hr {
     margin: 1rem 0;
     overflow: visible;
     opacity: 0.1;
-    border-color: var(--lighter);
+    border-color: var(--border-muted);
 }
 
 pre {
@@ -298,9 +298,8 @@ input[type="checkbox"]:checked {
 // Select Styles
 select {
     padding: 0.36rem 0.8rem;
-    color: var(--gray-dark);
-    border: thin solid var(--lighter);
-    background-color: var(--white);
+    color: var(--text-strong);
+    border: thin solid var(--border-muted);
     background-image: none;
 }
 
@@ -369,11 +368,11 @@ li {
 
 ::selection {
     background-color: var(--primary);
-    color: var(--white);
+    color: var(--text-on-accent);
 }
 
 ::placeholder {
-    color: var(--lighter);
+    color: var(--placeholder-color);
 }
 
 a:link,
