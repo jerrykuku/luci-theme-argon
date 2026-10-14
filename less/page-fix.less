@@ -723,6 +723,14 @@
     padding: var(--field-gap) var(--section-inset);
 }
 
+// Round the progress table itself so striped last rows follow the card corners.
+.cbi-section.fade-in > .cbi-title + div > .table:last-child:has(.cbi-progressbar) {
+    border-collapse: separate;
+    border-end-start-radius: var(--radius-card);
+    border-end-end-radius: var(--radius-card);
+    overflow: hidden;
+}
+
 // Status - Overview
 [data-page="admin-status"],
 [data-page="admin-status-overview"] {

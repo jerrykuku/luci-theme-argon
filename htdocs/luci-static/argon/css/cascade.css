@@ -4439,6 +4439,12 @@ pre.command-output {
 .cbi-section.fade-in > .cbi-title + div:has(> em:only-child) {
   padding: var(--field-gap) var(--section-inset);
 }
+.cbi-section.fade-in > .cbi-title + div > .table:last-child:has(.cbi-progressbar) {
+  border-collapse: separate;
+  border-end-start-radius: var(--radius-card);
+  border-end-end-radius: var(--radius-card);
+  overflow: hidden;
+}
 [data-page="admin-status"] #view > div:first-child,
 [data-page="admin-status-overview"] #view > div:first-child {
   gap: 0 !important;
