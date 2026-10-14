@@ -1,0 +1,164 @@
+// out: false
+
+// alert
+
+.danger {
+  background-color: var(--danger) !important;
+}
+
+.warning {
+  background-color: var(--warning-bg) !important;
+}
+
+.success {
+  background-color: var(--success) !important;
+}
+
+.notice {
+  background-color: var(--notice-bg) !important;
+  color: var(--text-on-accent);
+}
+
+.error {
+  color: var(--danger);
+}
+
+.alert,
+.alert-message {
+  position: fixed;
+  width: 20rem;
+  z-index: 9000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  padding: var(--field-gap) var(--section-inset);
+  border: 0;
+  border-radius: var(--radius-panel) !important;
+  background-color: var(--surface-raised);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 2px 0 rgba(0, 0, 0, .12);
+  text-shadow: none;
+
+  &.error {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+  }
+
+  h4 {
+    background-color: var(--warning-heading-bg);
+    color: var(--warning-heading-color);
+    padding: 0.25rem 0rem;
+    border-radius: var(--radius-small);
+  }
+
+  .btn {
+    height: auto;
+  }
+}
+
+.modal.alert-message {
+  position: static;
+  width: 90%;
+  min-width: 270px;
+  max-width: 600px;
+  left: auto;
+  top: auto;
+  transform: none;
+  margin: 5em auto;
+}
+
+/* LuCI's ui.js dismisses notification banners by adding the .fade-out
+   class and removing the banner node once a transitionend event fires
+   on it. Without a transitioned opacity on .alert-message the Dismiss
+   button has no visible effect and the banner stays open forever. */
+.alert-message {
+  transform: none;
+  position: static;
+  transition: opacity .4s ease;
+
+  &.fade-out {
+    opacity: 0;
+  }
+
+  &.fade-in {
+    animation: alert-message-fade-in .4s ease;
+  }
+}
+
+.alert-message>h4 {
+  font-size: 110%;
+  font-weight: bold;
+}
+
+.alert-message>* {
+  margin: .5rem 0;
+}
+
+.alert-message .btn {
+  padding: .3rem .6rem;
+}
+
+@keyframes alert-message-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#maincontent > .alert-message {
+  // LuCI inserts notification banners before the view container.
+  position: static;
+  width: auto;
+  left: auto;
+  top: auto;
+  transform: none;
+  z-index: auto;
+  margin: 0 var(--page-gutter) var(--section-gap);
+  flex-wrap: wrap;
+  gap: var(--field-gap);
+  line-height: 1.5;
+
+  > div {
+    min-width: 0;
+    margin: 0;
+  }
+
+  > div:first-child > * {
+    margin: 0;
+
+    + * {
+      margin-top: .75rem;
+    }
+  }
+
+  h4 {
+    padding: .5rem .75rem;
+  }
+
+  .btn {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.container .alert,
+.container .alert-message {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0rem;
+  position: relative;
+  top: 0;
+  transform:translate(-50%, 0);
+  width: 100%;
+}
+
+.lg {
+  margin: 0;
+  padding: 0 !important;
+}

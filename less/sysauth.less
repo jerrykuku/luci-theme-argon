@@ -17,7 +17,8 @@
     top: 0;
     left: 0;
     height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100%;
 }
 
 .icon-base() {
@@ -92,6 +93,7 @@
         margin-left: 5%;
         display: flex;
         height: 100vh;
+        height: 100dvh;
         width: 26rem;
         flex-direction: column;
 
@@ -106,6 +108,7 @@
             top: 0;
             left: 0;
             min-height: 100vh;
+            min-height: 100dvh;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -237,7 +240,7 @@
                 letter-spacing: 0.8rem;
                 background-color: var(--primary) !important;
                 border: none;
-                border-radius: 6px;
+                border-radius: var(--radius-control);
                 outline: none;
                 cursor: pointer;
                 box-shadow: rgba(0, 0, 0, 0.1) 0 0 50px 0;
@@ -303,7 +306,7 @@
         max-width: 100%;
         height: auto;
         margin: auto 0;
-        border-radius: .75rem;
+        border-radius: var(--radius-dialog);
 
         .login-form {
             min-height: 0;

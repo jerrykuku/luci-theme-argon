@@ -84,6 +84,20 @@ uci commit argon
 
 `theme.less` 的私有 LESS 色值供语义 token 使用；`@theme-palette` 每行维护一个角色，格式为 `角色: 亮色, 暗色;`，只写一个值表示两种模式共用。编译时自动生成暗色差异。文字、背景、边框按角色分别维护，即使当前颜色相同也不相互借用；菜单分类色单独声明。文件末尾的旧色名是 LuCI 兼容别名，组件应引用语义 token。`--light-primary`、`--dark-primary` 和模糊配置仍由主题设置覆盖。
 
+`cascade.less` 只组织加载顺序：主题、间距与圆角 → 重置和基础控件 → 登录与页面框架 → `components/` 通用组件 → `page-fix.less` 页面/插件适配 → `responsive.less` 视口适配。新增通用规则应放入对应组件文件；通用组件的移动布局不要通过页面补丁重复定义。表单、按钮、标签页、表格和弹窗分别维护，保留原生表格及 LuCI 表格的兼容布局。
+
+页面边距和间距统一在 `less/spacing.less` 维护：`--page-gutter` 控制页面两侧边距，`--section-inset` 控制卡片内容缩进，`--section-gap`、`--field-gap`、`--control-gap`、`--action-gap` 分别控制区块、表单行、控件组和操作按钮间距。小屏在 `responsive.less` 中将页面和卡片边距统一收紧为 `1rem`。表单行使用 flex，按表单容器的可用宽度切换为上下排列；操作按钮和修改图例可自动换行，长文案保持完整。
+
+圆角统一在 `less/shape.less` 维护。根字号为 16px 时，小标签为 4px，控件和子菜单项为 6px，菜单和小面板为 8px，Card 为 12px，弹窗及居中登录卡片为 16px；亮暗色和各视口共用这些 token。进度条、滚动条使用 `--radius-pill`，圆形角标使用 `--radius-circle`。组合控件的内部接缝保持直角，标签页及贴边卡片标题只保留顶部圆角；不要通过裁切整个 Card 实现圆角，以免截断下拉菜单和提示框。
+
+弹窗布局在 `components/overlays.less` 维护：标题和正文共用缩进，兼容 LuCI 原生 `.right` 与 `.button-row` 操作容器；弹窗内容区变窄时，操作按钮自动纵向排列。应用、确认及危险操作应沿用对应按钮语义类，普通按钮使用中性样式。长弹窗由覆盖层滚动，`cbi-modal` 继续支持较宽的表单。
+
+普通表单控件沿用 18rem 的默认最小宽度，较窄视口使用 16rem，空间不足时允许收缩；备注与输出等原本全宽的区域继续铺满。`forms.less` 的 CSS `min()` 必须使用 LESS 转义，避免编译成 `min-width: 100%`。
+
+菜单、下拉按钮、原生 select、排序及首页折叠控件共用 `chevron-down.svg` 和 `chevron-right.svg`（24×24、2px 圆角描边）。LuCI 原生 Save & Apply 分区按钮只在右侧箭头区域展开选项，主体执行当前应用动作；默认高度为 2.5rem，长文案可换行增高；单选分区按钮不显示多选省略占位，避免撑高。菜单箭头通过旋转同一个 SVG 保留 200ms 展开/收起动画，可在中途反向；系统启用减少动画时直接显示最终方向。
+
+LuCI 的下拉展开样式集中在 `components/dropdowns.less`：分区按钮、设备选择、单选/多选及可输入选项共用 8px 面板圆角、4px 选项圆角、细边框和柔和阴影；普通选项最小高度 2.5rem，选中态、悬停及键盘焦点分别维护。长文案可换行，自定义输入允许收缩，滚动高度与展开位置继续由 LuCI 按可用空间计算。原生 HTML select 的弹出列表由浏览器或系统绘制，保留原生操作方式。
+
 一级菜单前置图标按菜单节点名称匹配 `htdocs/luci-static/argon/icon/<名称>.svg`，例如 `status.svg`、`system.svg`、`network.svg`、`logout.svg`。使用节点名称而非翻译后的标题，文件名区分大小写；名称支持字母、数字、下划线和连字符。添加对应 SVG 后刷新页面即可使用，缺失时显示 `default.svg`。
 
 SVG 以 CSS mask 显示，图标颜色由主题和菜单悬停、选中状态控制。建议使用透明背景、带 `viewBox` 的单色 SVG。此机制与下方的网站图标、登录 Logo 设置独立。

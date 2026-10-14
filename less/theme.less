@@ -99,9 +99,10 @@
   iface-body-bg: transparent, @neutral-800;
   iface-border: 0, 1px solid var(--separator-color);
   badge-bg: @neutral-200, @neutral-800;
-  dropdown-text: @neutral-1000, @neutral-0;
-  dropdown-selected-text: @neutral-1000, @neutral-0;
-  dropdown-selected-bg: #e4e9ee, var(--primary);
+  dropdown-text: var(--text-strong);
+  dropdown-selected-text: var(--text-strong);
+  dropdown-selected-bg: #e8ecff, #34314b;
+  dropdown-hover-bg: var(--surface-active);
   sidebar-scrollbar: @neutral-100, @neutral-850;
   login-panel-rgb: ~"244, 245, 247", ~"0, 0, 0";
   login-input-border: @neutral-0, @neutral-400;
@@ -145,7 +146,7 @@
   command-shadow: ~"inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05)", ~"inset 0 1px 0 rgba(0, 0, 0, .2), 0 1px 2px rgba(255, 255, 255, .05)";
   section-shadow: 0 0 1rem rgba(136, 152, 170, .15), 0 0 .5rem rgba(0, 0, 0, .35);
   sidebar-shadow: rgba(0, 0, 0, .75) 0 0 15px -5px, 0 0 .5rem rgba(0, 0, 0, .15);
-  dropdown-shadow: 0 0 4px #918e8c, none;
+  dropdown-shadow: ~"0 4px 8px rgba(0, 0, 0, .06), 0 12px 24px rgba(0, 0, 0, .12)", ~"0 4px 8px rgba(0, 0, 0, .2), 0 12px 24px rgba(0, 0, 0, .32)";
   file-icon-filter: none, invert(.7);
   image-filter: none, invert(.9);
   spinner-filter: none, invert(1);
@@ -197,7 +198,9 @@
 
   // Non-colour resources are shared between appearances.
   --font-family-sans-serif: "Google Sans", "Microsoft Yahei", "WenQuanYi Micro Hei", "sans-serif", "Helvetica Neue", "Helvetica", "Hiragino Sans GB";
-  --dropdown-arrow-icon: url("../icon/arrow.svg");
+  --chevron-down-icon: url("../icon/chevron-down.svg");
+  --chevron-right-icon: url("../icon/chevron-right.svg");
+  --dropdown-arrow-icon: var(--chevron-down-icon);
 }
 
 .dark-palette() {

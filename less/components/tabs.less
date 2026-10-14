@@ -1,0 +1,112 @@
+// out: false
+
+.tabs,
+.cbi-tabmenu {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  gap: var(--control-gap);
+  white-space: nowrap;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    width: 1px;
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--surface-muted);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--surface-color);
+  }
+
+  > li {
+    flex: 0 0 auto;
+  }
+}
+
+.tabs {
+  padding: 0 var(--section-inset);
+  background-color: var(--surface-panel);
+  border-radius: var(--radius-card);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .03);
+
+  li[class~="active"],
+  li:hover {
+    cursor: pointer;
+    border-bottom: 0.18751rem solid var(--primary);
+    color: var(--primary);
+    background-color: var(--surface-active);
+    margin-bottom: 0;
+
+    a {
+      color: var(--tab-color);
+    }
+  }
+
+  li {
+    font-size: 0.875rem;
+    border-radius: var(--radius-control) var(--radius-control) 0 0;
+    padding: 0.875rem 0rem;
+    border-bottom: 0.18751rem solid rgba(0, 0, 0, 0);
+    margin: 0;
+    transition: all 0.2s;
+
+    a {
+      text-decoration: none;
+      color: var(--tab-inactive-color);
+      padding: 0.5rem 0.8rem;
+    }
+
+  }
+}
+
+.cbi-tabmenu {
+  color: white;
+  padding: var(--control-gap) var(--section-inset) 0;
+
+  li {
+    background: var(--tab-item-bg);
+    font-size: 0.875rem;
+    border-radius: var(--radius-control) var(--radius-control) 0 0;
+    padding: 0.5rem 0rem;
+    border-bottom: 0.18751rem solid rgba(0, 0, 0, 0);
+    margin: 0;
+    position: relative;
+
+    a {
+      text-decoration: none;
+      color: var(--tab-inactive-color);
+      padding: 0.5rem 0.8rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-bottom: 0.18751rem solid var(--primary);
+      color: var(--primary);
+      background-color: var(--surface-active);
+      margin-bottom: 0;
+
+      a {
+        color: var(--text-color);
+      }
+    }
+  }
+
+  li[class~="cbi-tab"] {
+    border-bottom: 0.18751rem solid var(--primary);
+    color: var(--primary);
+    background-color: var(--surface-active);
+    margin-bottom: 0;
+
+    a {
+      color: var(--primary);
+    }
+  }
+}
+
+.cbi-tab-descr {
+  padding: 0 var(--section-inset);
+}

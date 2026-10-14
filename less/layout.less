@@ -25,7 +25,8 @@
     --menu-icon-services: @cyan-500;
     --menu-icon-network: #8965e0;
     --menu-icon-muted: @neutral-400;
-    width: 15rem;
+    --sidebar-width: 15rem;
+    width: var(--sidebar-width);
     height: 100%;
     flex-shrink: 0;
     z-index: 100;
@@ -69,7 +70,7 @@
             padding: 0.675rem 0 0.675rem 2.5rem;
             font-size: 1rem;
             text-decoration: none;
-            border-radius: 0.25rem;
+            border-radius: var(--radius-menu);
             cursor: default;
             transition: all 0.2s;
 
@@ -80,7 +81,7 @@
 
                 &::after {
                     transform: rotate(0deg);
-                    color: var(--text-on-accent) !important;
+                    color: var(--text-on-accent);
                 }
             }
 
@@ -153,7 +154,7 @@
                     li {
                         position: relative;
                         margin: 0;
-                        border-radius: 0.25rem;
+                        border-radius: var(--radius-control);
                         background: none;
                         list-style: none;
 
@@ -221,16 +222,16 @@
             .menu::after {
                 content: "";
                 position: absolute;
-                right: .75rem;
+                inset-inline-end: .75rem;
                 top: 50%;
-                width: .75rem;
-                height: .75rem;
-                margin-top: -.375rem;
+                width: 1rem;
+                height: 1rem;
+                margin-top: -.5rem;
                 background-color: currentColor;
-                -webkit-mask: url(../icon/arrow.svg) center / contain no-repeat;
-                mask: url(../icon/arrow.svg) center / contain no-repeat;
+                -webkit-mask: var(--chevron-down-icon) center / contain no-repeat;
+                mask: var(--chevron-down-icon) center / contain no-repeat;
                 transform: rotate(-90deg);
-                transition: transform .2s ease;
+                pointer-events: none;
             }
 
         }
@@ -257,7 +258,8 @@
 .main-right {
     background-color: var(--main-bg);
     height: 100%;
-    flex-grow: 1;
+    flex: 1 1 0;
+    min-width: 0;
     overflow-x: hidden;
     overflow-y: auto;
     display: flex;
@@ -266,6 +268,7 @@
 
     // Main Content Container
     &>#maincontent {
+        min-width: 0;
         position: relative;
         z-index: 50;
         flex: 1;
@@ -273,11 +276,12 @@
         flex-direction: column;
 
         &>.container {
-            margin: 0 1.25rem 1rem 1.25rem;
+            min-width: 0;
+            margin: 0 var(--page-gutter) var(--section-gap);
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: var(--section-gap);
         }
 
         // Dashboard Specific Styles
@@ -338,7 +342,7 @@ header {
 
     // Primary background modifier
     &.bg-primary {
-        background-color: var(--header-bg) !important;
+        background-color: var(--header-bg);
     }
 
     // Header extension background
@@ -347,31 +351,39 @@ header {
         position: absolute;
         width: 100%;
         height: 2rem;
-        background-color: var(--header-bg) !important;
+        background-color: var(--header-bg);
     }
 
     // Header Content Container
     .fill {
         padding: 0.8rem 0;
         display: flex;
-        border-bottom: 0px solid rgba(255, 255, 255, 0.08) !important;
+        border: 0;
 
         .container {
             width: 100%;
-            height: 2rem;
-            padding: 0 1.25rem;
+            min-width: 0;
+            min-height: 2rem;
+            padding: 0 var(--page-gutter);
             display: flex;
             align-items: center;
 
+            flex-wrap: wrap;
+            gap: var(--control-gap) var(--action-gap);
+
             // Left section (brand and menu toggle)
             .flex1 {
-                flex: 1;
+                display: flex;
+                flex: 1 1 10rem;
+                align-items: center;
+                min-width: 0;
+                gap: var(--action-gap);
 
                 .showSide {
-                    display: none;
+                    flex: 0 0 auto;
                     font-size: 1.4rem;
                     color: var(--text-on-accent);
-                    border: 0 !important; // Override the dark theme's global button border.
+                    border: 0;
                     background: none;
                     cursor: pointer;
 
@@ -387,7 +399,10 @@ header {
 
                 .brand {
                     display: none;
-                    padding-left: 1rem;
+                    min-width: 0;
+                    max-width: 100%;
+                    line-height: 1.4;
+                    overflow-wrap: anywhere;
                     font-size: 1.5rem;
                     font-family: "TypoGraphica";
                     color: var(--text-on-accent);
@@ -399,32 +414,38 @@ header {
 
             // Right section (status indicators)
             .pull-right {
-                margin-top: 0rem;
-                float: right;
+                margin-inline-start: auto;
                 display: flex;
             }
         }
 
         // Status Indicators
         .status {
+            display: flex;
+            flex: 0 1 auto;
+            flex-wrap: wrap;
+            align-items: center;
+            min-width: 0;
+            max-width: 100%;
+            margin-inline-start: auto;
+            gap: var(--control-gap);
+
             span {
                 display: inline-block;
-                margin: 0 0.25rem;
+                max-width: 100%;
                 padding: 0.3rem 0.8rem;
                 font-size: 0.875rem;
                 font-weight: bold;
-                white-space: nowrap;
+                white-space: normal;
+                overflow-wrap: anywhere;
                 text-decoration: none;
                 text-transform: uppercase;
                 text-shadow: none;
-                border-radius: 4px;
+                border-radius: var(--radius-control);
                 cursor: pointer;
                 transition: all 0.3s;
                 box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
 
-                &:last-child {
-                    margin-right: 0;
-                }
             }
 
             span[data-indicator="poll-status"] {
@@ -436,11 +457,23 @@ header {
             }
 
             span[data-style="inactive"] {
-                color: var(--text-on-accent) !important;
+                color: var(--text-on-accent);
                 background-color: var(--status-neutral-bg);
             }
         }
     }
+}
+
+#xhr_poll_status {
+  display: flex;
+
+  * {
+    color: var(--text-on-accent);
+  }
+}
+
+header .showSide {
+    display: none;
 }
 
 // 5. Footer Layout
@@ -463,10 +496,11 @@ footer {
 // 6. View
 // ==========================================================================
 #view {
-    border-radius: 0.25rem;
+    border-radius: var(--radius-card);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    min-width: 0;
+    gap: var(--section-gap);
 
     &>.spinning {
         position: fixed;
@@ -474,7 +508,7 @@ footer {
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         padding: 1rem;
-        border-radius: 0.5rem;
+        border-radius: var(--radius-panel);
         background: var(--surface-color);
         box-shadow: var(--section-shadow);
     }
@@ -482,7 +516,20 @@ footer {
     &>div:first-child {
         display: flex;
         flex-direction: column;
-        gap: 0.875rem;
+        min-width: 0;
+        gap: var(--field-gap);
 
     }
+}
+
+// Rotate one SVG so opening, closing and reversing remain continuous.
+@media (prefers-reduced-motion: no-preference) {
+    .main-left .nav .menu::after {
+        transition: transform .2s ease;
+    }
+}
+
+// Right-facing disclosures follow reading direction; down-facing ones do not.
+[dir="rtl"] .main-left .nav .menu:not(.active)::after {
+    transform: rotate(90deg);
 }

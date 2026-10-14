@@ -1,8 +1,12 @@
 # Argon font icons / 字体图标
 
-`../fonts/argon.woff2` 中全部 **28 个可见图标**已按原始矢量轮廓导出。文件名使用实际服务或功能名称，例如 `status.svg`、`services.svg`、`docker.svg`；Unicode 编码仅保留在对照表中。每个 SVG 都有透明背景、`viewBox` 和 `fill="currentColor"`，可用于 CSS mask 或内联 SVG。
+`../fonts/argon.woff2` 中全部 **28 个可见图标**已按原始矢量轮廓导出。文件名使用实际服务或功能名称，例如 `status.svg`、`services.svg`、`docker.svg`；Unicode 编码仅保留在对照表中。SVG 使用透明背景和 `viewBox`，可用于 CSS mask 或内联 SVG。
 
-All **28 visible icons** from `../fonts/argon.woff2` are exported with their original vector outlines. Filenames use service or function names, such as `status.svg`, `services.svg`, and `docker.svg`; Unicode code points are kept in the mapping. Each SVG has a transparent background, a `viewBox`, and `fill="currentColor"`, suitable for CSS masks or inline SVG.
+All **28 visible icons** from `../fonts/argon.woff2` are exported with their original vector outlines. Filenames use service or function names, such as `status.svg`, `services.svg`, and `docker.svg`; Unicode code points are kept in the mapping. SVGs have transparent backgrounds and view boxes, suitable for CSS masks or inline SVG.
+
+`chevron-down.svg` 和 `chevron-right.svg` 在导出后统一重绘为 24×24、2px 描边、圆端点和圆连接。两者互为旋转，保留原字体编码作为功能对照。CSS mask 跟随控件颜色；作为原生 select 或排序按钮的背景图时，使用 SVG 的中性默认颜色。其余 26 个图标保留字体轮廓。对照表中的 `sourceViewBox` 与 `designOverride` 标记这两处设计替换。
+
+The two chevrons are redesigned on a shared 24×24 grid with a 2px stroke, round caps and joins, preserving their original code point mappings. CSS masks inherit the control color; native select and sorting backgrounds use the SVG's neutral default color. The other 26 icons keep their font outlines. Mapping entries record `sourceViewBox` and `designOverride` for these exceptions.
 
 字体共有 33 个字形；`.notdef`、`uni0000`、`nonmarkingreturn`、`uni0001`、`space` 没有可见轮廓，无需生成空 SVG。[font-icons.json](font-icons.json) 记录完整的编码、字形名、文件名、画布尺寸和源字体 SHA-256。画布保留字体坐标与留白，并扩展至包含越界轮廓，避免裁切。
 

@@ -17,9 +17,16 @@
       "viewBox": [
         0,
         0,
+        24,
+        24
+      ],
+      "sourceViewBox": [
+        0,
+        0,
         1024,
         1024
-      ]
+      ],
+      "designOverride": "Shared 24px outline chevron, 2px stroke with round caps and joins"
     },
     {
       "name": "menu",
@@ -283,9 +290,16 @@
       "viewBox": [
         0,
         0,
+        24,
+        24
+      ],
+      "sourceViewBox": [
+        0,
+        0,
         1024,
         1024
-      ]
+      ],
+      "designOverride": "Shared 24px outline chevron, 2px stroke with round caps and joins"
     },
     {
       "name": "password",

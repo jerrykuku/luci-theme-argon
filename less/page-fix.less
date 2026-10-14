@@ -17,7 +17,6 @@
 // System - System Settings
 [data-page="admin-system-system"] {
     .control-group {
-        gap: .875rem;
         margin: 0.25rem 0;
     }
 
@@ -54,7 +53,7 @@
     #view {
         &>div:first-child {
             div[data-initialized="true"] {
-                margin-top: -0.4375rem;
+                margin-top: 0;
             }
         }
     }
@@ -76,7 +75,7 @@
         padding: 1rem;
         resize: none;
         color: var(--muted-text);
-        border-radius: 0.25rem;
+        border-radius: var(--radius-control);
         border: 1px solid var(--border-color);
 
         &:focus-visible {
@@ -101,7 +100,7 @@
             background: var(--surface-color);
             outline: none;
             color: var(--muted-text);
-            border-radius: 0.25rem;
+            border-radius: var(--radius-control);
             border: 1px solid var(--border-color);
             transition: all 0.2s ease;
 
@@ -175,7 +174,7 @@
     }
 
     .cbi-map-tabbed {
-        border-radius: 0.25rem;
+        border-radius: var(--radius-card);
     }
 
     .cbi-section-node {
@@ -204,16 +203,6 @@
 
     .cbi-page-actions {
         padding: 0rem 1rem 1rem 0rem;
-    }
-
-    .modal {
-        label>input[type="checkbox"] {
-            top: -0.25rem;
-        }
-
-        .btn {
-            white-space: normal !important;
-        }
     }
 
     .modal label>input[type="checkbox"] {
@@ -482,7 +471,7 @@
     #modal_overlay>.modal.cbi-modal>div>p>textarea {
         height: 20em !important;
         border: 1px solid var(--border-color) !important;
-        border-radius: 4px;
+        border-radius: var(--radius-control);
     }
 }
 
@@ -595,7 +584,7 @@
 
     textarea {
         background: transparent;
-        border-radius: 0.25rem;
+        border-radius: var(--radius-control);
         color: var(--muted-text);
         border: 1px solid var(--border-color);
         padding: 0.5rem;
@@ -615,17 +604,17 @@
 
             input {
                 margin: 0 !important;
-                border-right: none !important;
-                border-bottom-right-radius: 0 !important;
-                border-top-right-radius: 0 !important;
+                border-inline-end: none !important;
+                border-end-end-radius: 0 !important;
+                border-start-end-radius: 0 !important;
             }
 
             .cbi-dropdown,
             .cbi-button {
                 height: 2.5rem;
-                border-left: none !important;
-                border-bottom-left-radius: 0 !important;
-                border-top-left-radius: 0 !important;
+                border-inline-start: none !important;
+                border-end-start-radius: 0 !important;
+                border-start-start-radius: 0 !important;
 
                 .more {
                     display: block;
@@ -656,12 +645,12 @@
 
             textarea {
                 padding: 1rem;
-                border-radius: 0.25rem;
+                border-radius: var(--radius-control);
             }
         }
 
         &>h3 {
-            border-radius: 0.25rem 0.25rem 0 0;
+            border-radius: var(--radius-card) var(--radius-card) 0 0;
         }
 
         .cbi-tabmenu+div {
@@ -673,38 +662,47 @@
 // 3. Status Pages
 // ==========================================================================
 
-.cbi-section.fade-in {
-    .cbi-title {
+.cbi-section.fade-in .cbi-title {
+    position: relative;
+
+    // Older LuCI places the indicator in a separate header wrapper.
+    > div:last-child {
+        position: absolute;
+        inset-inline-end: 1.25rem;
+        top: 0;
+    }
+
+    // Current LuCI puts the same indicator directly inside the h3.
+    .label[data-indicator="poll-status"] {
         position: relative;
-        
-        .label {
-            cursor: pointer;
+        flex: 0 0 2.5rem;
+        width: 2.5rem;
+        min-width: 2.5rem !important;
+        min-height: 2rem;
+        padding: 0;
+        font-size: 0;
+        background: none !important;
+        color: var(--soft-text) !important;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            width: 1rem;
+            height: 1rem;
+            background-color: currentColor;
+            -webkit-mask: var(--chevron-right-icon) center / contain no-repeat;
+            mask: var(--chevron-right-icon) center / contain no-repeat;
+            pointer-events: none;
         }
 
-        > div:last-child {
-            position: absolute;
-            right: 1.25rem;
-            top: 0;
+        // Native inactive means Hide (expanded); active means Show (collapsed).
+        &[data-style=inactive]::after {
+            -webkit-mask-image: var(--chevron-down-icon);
+            mask-image: var(--chevron-down-icon);
+        }
 
-            span {
-                font-size: 0;
-                background: none!important;
-                color: var(--soft-text)!important;
-
-                &:after {
-                    transition: all .3s;
-                    font-family: 'argon' !important;
-                    content: '\e90f';
-                    font-size: 1.1rem;
-                    padding: .8755rem 0;
-                    position: absolute;
-                    right: 0;
-                }
-
-                &[data-style=inactive]:after {
-                    transform: rotate(90deg);
-                }
-            }
+        [dir="rtl"] &[data-style=active]::after {
+            transform: scaleX(-1);
         }
     }
 }
@@ -941,7 +939,7 @@
         --tab-hover-dark-bg: var(--oc-accent-a10) !important;
         --scrollbar-thumb: var(--oc-neutral) !important;
         --scrollbar-thumb-hover: var(--oc-text-muted) !important;
-        border-radius: 8px;
+        border-radius: var(--radius-card);
 
         .developer-container,
         .subscription-info-container {
@@ -998,7 +996,7 @@
     }
 
     // Sorting controls are compact icon buttons. A neutral outline keeps the
-    // bundled gray arrow legible on light surfaces without implying disabled.
+    // shared SVG legible on light surfaces without implying disabled.
     #cbi-openclash .cbi-button-up,
     #cbi-openclash .cbi-button-down {
         border-color: var(--oc-neutral) !important;
@@ -1389,7 +1387,7 @@
         color: var(--oc-text-muted);
         border: 1px solid var(--oc-border);
         background-color: var(--oc-control-bg);
-        border-radius: 0.25rem;
+        border-radius: var(--radius-panel);
         font-family: 'Google Sans' !important;
         box-shadow: none;
     }

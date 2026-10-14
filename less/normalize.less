@@ -72,23 +72,23 @@ h1 {
 }
 
 h2 {
-    padding: 1rem 1.25rem;
+    padding: var(--field-gap) var(--section-inset);
     font-size: 1.25rem;
     font-weight: bold;
     color: var(--text-strong);
-    border-radius: 0.25rem;
+    border-radius: var(--radius-card);
     background: var(--surface-raised);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
 }
 
 h3 {
     margin: 0;
-    padding: 0.8755rem 1.25rem;
+    padding: var(--field-gap) var(--section-inset);
     font-size: 1.1rem;
     font-weight: bold;
     line-height: 1;
     color: var(--text-strong);
-    border-radius: 0.25rem;
+    border-radius: var(--radius-card);
     background: var(--surface-raised);
     display: block;
     width: 100%;
@@ -144,7 +144,7 @@ samp {
     font-size: inherit;
     padding: 1px 3px;
     color: var(--code-text);
-    border-radius: 0.5rem;
+    border-radius: var(--radius-small);
     background: var(--surface-contrast);
 }
 
@@ -278,6 +278,7 @@ input[type="checkbox"] {
     appearance: none !important;
     -webkit-appearance: none !important;
     border: 1px solid var(--primary);
+    border-radius: var(--radius-small);
 
     width: 1rem !important;
     height: 1rem !important;
@@ -295,6 +296,11 @@ input[type="checkbox"]:checked {
     background-position: center;
 }
 
+// Radio Styles
+input[type="radio"] {
+    border-radius: var(--radius-circle);
+}
+
 // Select Styles
 select {
     padding: 0.36rem 0.8rem;
@@ -307,6 +313,7 @@ select {
 textarea {
     padding: 0.25rem;
     overflow: auto;
+    border-radius: var(--radius-control);
 
     &:focus-visible {
         outline: none;

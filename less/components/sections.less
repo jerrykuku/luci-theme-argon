@@ -1,0 +1,133 @@
+// out: false
+
+.cbi-section,
+.cbi-section-error,
+#iptables,
+.Firewall form,
+#cbi-network>.cbi-section-node,
+#cbi-wireless>.cbi-section-node,
+#cbi-wireless>#wifi_assoclist_table,
+[data-tab-title],
+[data-page^="admin-system-admin"]:not(.node-main-login) .cbi-map:not(#cbi-dropbear),
+[data-page="admin-system-opkg"] #maincontent>.container {
+  font-family: inherit;
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  min-width: inherit;
+  padding: 0;
+  border: 0;
+
+  border-radius: var(--radius-card);
+  background-color: var(--surface-color);
+  box-shadow: var(--section-shadow);
+
+  &:last-child {
+    margin: 0;
+    border: 0;
+  }
+
+}
+
+.cbi-modal .cbi-section,
+.cbi-section .cbi-section {
+  padding: 0;
+  box-shadow: none;
+}
+
+.cbi-modal .cbi-tabmenu {
+  margin-left: 0;
+}
+
+.cbi-map {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  gap: var(--section-gap);
+  container-type: inline-size;
+}
+
+.cbi-map>.cbi-tabmenu+div {
+  margin-top: 0;
+}
+
+.cbi-map-descr {
+  font-size: small;
+  line-height: 1.5;
+  padding: 0 var(--section-inset);
+}
+
+.cbi-section {
+
+  &>.cbi-section-descr {
+    padding-block: var(--field-gap);
+
+    &:empty {
+      display: none;
+    }
+  }
+
+}
+
+.cbi-section-descr:not(:empty) {
+  font-size: small;
+  line-height: 1.5;
+  padding: 0 var(--section-inset);
+}
+
+.cbi-section-descr:empty {
+  display: none !important;
+}
+
+.cbi-map-descr+fieldset {
+  margin-top: 0;
+}
+
+.cbi-map-descr>abbr {
+  cursor: help;
+  text-decoration: underline;
+}
+
+.cbi-section>legend {
+  display: none !important;
+}
+
+fieldset>fieldset,
+.cbi-section>.cbi-section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.cbi-section>h3:first-child,
+.panel-title {
+  font-size: 1.1rem;
+  line-height: 1;
+  display: block;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 0;
+  padding: var(--field-gap) var(--section-inset);
+  color: var(--text-strong);
+
+}
+
+.cbi-section>h3:first-child,
+.cbi-section>h4:first-child,
+.cbi-section>p:first-child,
+[data-tab-title]>h3:first-child,
+[data-tab-title]>h4:first-child,
+[data-tab-title]>p:first-child {
+  padding: var(--field-gap) var(--section-inset);
+  // These backgrounds meet the card edge, so only the outer corners curve.
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.cbi-section p {
+  padding: var(--field-gap) var(--section-inset);
+}
