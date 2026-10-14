@@ -88,6 +88,8 @@ uci commit argon
 
 页面边距和间距统一在 `less/spacing.less` 维护：`--page-gutter` 控制页面两侧边距，`--section-inset` 控制卡片内容缩进，`--section-gap`、`--field-gap`、`--control-gap`、`--action-gap` 分别控制区块、表单行、控件组和操作按钮间距。小屏在 `responsive.less` 中将页面和卡片边距统一收紧为 `1rem`。表单行使用 flex，按表单容器的可用宽度切换为上下排列；操作按钮和修改图例可自动换行，长文案保持完整。
 
+原生 `.cbi-tabmenu` 与紧随的内容容器由 `components/tabs.less` 统一贴合，兼容带标题和说明的 map、独立视图及首层包装容器。标题、说明和其他可见区块仍按原来的间距 token 排列；不要为单个页面添加负边距，也不要改变 LuCI 标签栏与内容容器的相邻结构。
+
 圆角统一在 `less/shape.less` 维护。根字号为 16px 时，小标签为 4px，控件和子菜单项为 6px，菜单和小面板为 8px，Card 为 12px，弹窗及居中登录卡片为 16px；亮暗色和各视口共用这些 token。进度条、滚动条使用 `--radius-pill`，圆形角标使用 `--radius-circle`。组合控件的内部接缝保持直角，标签页及贴边卡片标题只保留顶部圆角；不要通过裁切整个 Card 实现圆角，以免截断下拉菜单和提示框。
 
 弹窗布局在 `components/overlays.less` 维护：标题和正文共用缩进，兼容 LuCI 原生 `.right` 与 `.button-row` 操作容器；弹窗内容区变窄时，操作按钮自动纵向排列。应用、确认及危险操作应沿用对应按钮语义类，普通按钮使用中性样式。长弹窗由覆盖层滚动，`cbi-modal` 继续支持较宽的表单。

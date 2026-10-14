@@ -110,3 +110,25 @@
 .cbi-tab-descr {
   padding: 0 var(--section-inset);
 }
+
+// Native tab groups can follow a title/description and need not have a map class.
+// Keep normal spacing between visible siblings, and join each tab bar to its pane.
+.cbi-map:has(> .cbi-tabmenu + div),
+#view:has(> .cbi-tabmenu + div),
+#view > div:first-child:not(.cbi-map):has(> .cbi-tabmenu + div) {
+  --tab-flow-gap: var(--section-gap);
+  row-gap: 0;
+
+  > :where(:not(style, script, [hidden], .hidden, [style*="display:none"], [style*="display: none"]))
+    ~ :where(:not(style, script, [hidden], .hidden, [style*="display:none"], [style*="display: none"])) {
+    margin-block-start: var(--tab-flow-gap);
+  }
+
+  > .cbi-tabmenu + div {
+    margin-block-start: 0;
+  }
+}
+
+#view > div:first-child:not(.cbi-map):has(> .cbi-tabmenu + div) {
+  --tab-flow-gap: var(--field-gap);
+}

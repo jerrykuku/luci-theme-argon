@@ -1904,9 +1904,6 @@ footer > a {
   gap: var(--section-gap);
   container-type: inline-size;
 }
-.cbi-map:has(> .cbi-tabmenu:first-child + .cbi-map-tabbed:last-child) {
-  gap: 0;
-}
 .cbi-map-descr {
   font-size: small;
   line-height: 1.5;
@@ -2456,6 +2453,25 @@ td > table > tbody > tr > td,
 }
 .cbi-tab-descr {
   padding: 0 var(--section-inset);
+}
+.cbi-map:has(> .cbi-tabmenu + div),
+#view:has(> .cbi-tabmenu + div),
+#view > div:first-child:not(.cbi-map):has(> .cbi-tabmenu + div) {
+  --tab-flow-gap: var(--section-gap);
+  row-gap: 0;
+}
+.cbi-map:has(> .cbi-tabmenu + div) > :where(:not(style, script, [hidden], .hidden, [style*="display:none"], [style*="display: none"])) ~ :where(:not(style, script, [hidden], .hidden, [style*="display:none"], [style*="display: none"])),
+#view:has(> .cbi-tabmenu + div) > :where(:not(style, script, [hidden], .hidden, [style*="display:none"], [style*="display: none"])) ~ :where(:not(style, script, [hidden], .hidden, [style*="display:none"], [style*="display: none"])),
+#view > div:first-child:not(.cbi-map):has(> .cbi-tabmenu + div) > :where(:not(style, script, [hidden], .hidden, [style*="display:none"], [style*="display: none"])) ~ :where(:not(style, script, [hidden], .hidden, [style*="display:none"], [style*="display: none"])) {
+  margin-block-start: var(--tab-flow-gap);
+}
+.cbi-map:has(> .cbi-tabmenu + div) > .cbi-tabmenu + div,
+#view:has(> .cbi-tabmenu + div) > .cbi-tabmenu + div,
+#view > div:first-child:not(.cbi-map):has(> .cbi-tabmenu + div) > .cbi-tabmenu + div {
+  margin-block-start: 0;
+}
+#view > div:first-child:not(.cbi-map):has(> .cbi-tabmenu + div) {
+  --tab-flow-gap: var(--field-gap);
 }
 :root {
   --form-label-width: 23rem;
@@ -4386,10 +4402,6 @@ pre.command-output {
 [data-page="admin-network-firewall-custom"] #view > h3,
 [data-page="admin-status-routes"] #view > h3 {
   border-radius: var(--radius-card) var(--radius-card) 0 0;
-}
-[data-page="admin-network-firewall-custom"] #view .cbi-tabmenu + div,
-[data-page="admin-status-routes"] #view .cbi-tabmenu + div {
-  margin-top: -0.5rem;
 }
 .cbi-section.fade-in .cbi-title {
   position: relative;
