@@ -78,6 +78,16 @@ uci commit argon
 
 Without a key, the login page uses a local background. Bing and Wallhaven wallpaper options are unaffected.
 
+## Styles and menu icons
+
+Light and dark modes share `htdocs/luci-static/argon/css/cascade.css`. Maintain palette variables in `less/theme.less` and keep one set of component rules. After editing LESS, run `lessc less/cascade.less htdocs/luci-static/argon/css/cascade.css`. Automatic, forced light, forced dark, and custom primary colors remain supported.
+
+Top-level menu icons resolve `htdocs/luci-static/argon/icon/<node-name>.svg`, such as `status.svg`, `system.svg`, `network.svg`, or `logout.svg`. Names are case-sensitive menu node identifiers, independent of translated labels, and support letters, digits, underscores, and hyphens. Add the matching SVG and reload the page; missing icons use `default.svg`.
+
+Icons use CSS masks so their colors follow the theme and menu states. Use monochrome SVGs with a transparent background and a `viewBox`. This is separate from the browser icon and login logo settings below.
+
+All 28 visible icons in `argon.woff2` are exported to this directory using service or function names, such as `status.svg`, `services.svg`, `docker.svg`, and `user.svg`. Menu icons use these original font outlines. See the [font icon index](htdocs/luci-static/argon/icon/README.md) for previews and code point mappings. The source font is retained for existing font-based icons.
+
 ## Custom browser icon and login logo
 
 Under **System → Argon Config → Custom branding**, upload a browser icon and login logo separately, or use one image for both. Each can be restored to its default. PNG images must be 16–1024 pixels per side and at most 1 MiB. Browser icons must be square; login logos retain their aspect ratio in both login layouts.

@@ -22,12 +22,4 @@ done
 lessc less/cascade.less "$tmpdir/cascade.css"
 cmp htdocs/luci-static/argon/css/cascade.css "$tmpdir/cascade.css"
 
-lessc less/dark.less "$tmpdir/dark-expanded.css"
-if command -v cleancss >/dev/null 2>&1; then
-	cleancss -o "$tmpdir/dark.css" "$tmpdir/dark-expanded.css"
-else
-	npx --yes clean-css-cli@5.6.3 -o "$tmpdir/dark.css" "$tmpdir/dark-expanded.css"
-fi
-cmp htdocs/luci-static/argon/css/dark.css "$tmpdir/dark.css"
-
 UCODE_BIN="$ucode_bin" node --test tests/*.test.js

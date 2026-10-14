@@ -95,9 +95,9 @@
         width: 26rem;
         flex-direction: column;
 
-        background-color: var(--white);
+        -webkit-backdrop-filter: blur(var(--blur-radius));
         backdrop-filter: blur(var(--blur-radius));
-        background-color: rgba(244, 245, 247, var(--blur-opacity));
+        background-color: rgba(var(--login-panel-rgb), var(--blur-opacity));
         box-shadow: rgba(0, 0, 0, 0.75) 0 0 35px -5px;
 
         // Login form
@@ -196,7 +196,7 @@
                         background-color: transparent;
                         background-clip: padding-box;
                         border: 0;
-                        border-bottom: 1px solid var(--white);
+                        border-bottom: 1px solid var(--login-input-border);
                         border-radius: 0;
                         outline: none;
                         box-sizing: border-box;

@@ -17,7 +17,7 @@
 -#}
 
 {%
-	import { access } from 'fs';
+	import { access, lsdir, lstat } from 'fs';
 	import { cursor } from 'uci';
 	import { getuid, getspnam } from 'luci.core';
 
@@ -61,24 +61,25 @@
 
 -%}
 <!DOCTYPE html>
-<html lang="{{ dispatcher.lang }}">
+<html lang="{{ dispatcher.lang }}" data-argon-mode="{{ mode }}">
 
 <head>
+	{%
+		const icon_dir = '/www/luci-static/argon/icon/';
+		const menu_icons = filter(lsdir(icon_dir) ?? [], name =>
+			match(name, /^[a-zA-Z0-9_-]+\.svg$/) && lstat(icon_dir + name)?.type == 'file');
+	%}
+	<meta name="argon-menu-icons" content="{{ entityencode(join(' ', menu_icons), true) }}">
 	{% include("themes/" + theme + "/head_meta", { hostname: hostname, node: node, bar_color: bar_color, media: media }) %}
 
 	<link rel="stylesheet" href="{{ media }}/css/cascade.css{# ?v=PKG_VERSION #}">
-	{% if (mode == 'normal'): %}
-	<link rel="stylesheet" href="{{ media }}/css/dark.css{# ?v=PKG_VERSION #}" media="(prefers-color-scheme: dark)">
-	{% elif (mode == 'dark'): %}
-	<link rel="stylesheet" href="{{ media }}/css/dark.css{# ?v=PKG_VERSION #}">
-	{% endif %}
 	<style title="text/css">
 		{% if (has_argon_config): %}
 		:root {
-			--primary: {{ primary }};
+			--light-primary: {{ primary }};
 			--dark-primary: {{ dark_primary }};
-			--blur-radius:{{ blur_radius }}px;
-			--blur-opacity:{{ blur_opacity }};
+			--blur-radius-light:{{ blur_radius }}px;
+			--blur-opacity-light:{{ blur_opacity }};
 			--blur-radius-dark:{{ blur_radius_dark }}px;
 			--blur-opacity-dark:{{ blur_opacity_dark }};
 		}

@@ -78,6 +78,16 @@ uci commit argon
 
 未配置密钥时，登录页会使用本地背景。Bing 和 Wallhaven 壁纸选项不受影响。
 
+## 样式与菜单图标
+
+亮色、暗色共用 `htdocs/luci-static/argon/css/cascade.css`。在 `less/theme.less` 集中维护颜色变量，各组件只维护一套样式；修改 LESS 后使用 `lessc less/cascade.less htdocs/luci-static/argon/css/cascade.css` 生成 CSS。主题设置中的自动、亮色、暗色模式和自定义主色继续生效。
+
+一级菜单前置图标按菜单节点名称匹配 `htdocs/luci-static/argon/icon/<名称>.svg`，例如 `status.svg`、`system.svg`、`network.svg`、`logout.svg`。使用节点名称而非翻译后的标题，文件名区分大小写；名称支持字母、数字、下划线和连字符。添加对应 SVG 后刷新页面即可使用，缺失时显示 `default.svg`。
+
+SVG 以 CSS mask 显示，图标颜色由主题和菜单悬停、选中状态控制。建议使用透明背景、带 `viewBox` 的单色 SVG。此机制与下方的网站图标、登录 Logo 设置独立。
+
+`argon.woff2` 中的全部 28 个可见图标已导出到同一目录，按服务或功能命名，例如 `status.svg`、`services.svg`、`docker.svg`、`user.svg`。菜单图标使用字体中的原始轮廓。可在[字体图标索引](htdocs/luci-static/argon/icon/README.md)中预览并查看编码对照；源字体保留供现有字体图标引用。
+
 ## 自定义网站图标与登录 Logo
 
 在 **系统 → Argon 主题设置 → 自定义图标** 中，可以分别上传网站图标和登录页 Logo，也可以将同一张图片同时用于两处；每项都可恢复默认。支持 PNG 格式，每边 16–1024 像素，最大 1 MiB。网站图标需为正方形；登录 Logo 按原比例缩放，兼容经典侧栏和居中卡片。

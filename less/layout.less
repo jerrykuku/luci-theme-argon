@@ -4,7 +4,6 @@
 // Main layout components for LuCI admin interface
 // ==========================================================================
 
-
 // 1. Main Container Layout
 // ==========================================================================
 
@@ -28,7 +27,7 @@
     overflow-x: auto;
     word-break: break-word;
     background-color: var(--menu-bg-color);
-    box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 15px -5px;
+    box-shadow: var(--sidebar-shadow);
     transition: all 0.2s;
 
     // Sidebar Header
@@ -41,7 +40,7 @@
             margin: 0 2rem;
             font-size: 1.8rem;
             font-family: "TypoGraphica";
-            color: var(--primary);
+            color: var(--sidebar-brand-color);
             text-decoration: none;
             text-align: center;
             cursor: default;
@@ -74,12 +73,8 @@
                 color: #fff;
                 background: var(--primary);
 
-                &::before {
-                    color: #fff !important;
-                }
-
                 &::after {
-                    transform: rotate(90deg);
+                    transform: rotate(0deg);
                     color: #fff !important;
                 }
             }
@@ -89,37 +84,32 @@
                 cursor: pointer;
                 color: #fff;
                 background: var(--primary);
-
-                &::before {
-                    color: #fff !important;
-                }
             }
 
-            // Icon before text
-            &::before {
+            .menu-icon {
+                pointer-events: none;
                 position: absolute;
-                left: 0.8rem;
-                padding-top: 3px;
-                font-family: 'argon' !important;
-                font-style: normal;
-                font-weight: normal;
-                font-variant: normal;
-                text-transform: none;
-                line-height: 1;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                content: "\e915";
+                left: .8rem;
+                top: 50%;
+                width: 1rem;
+                height: 1rem;
+                margin-top: -.5rem;
                 color: var(--primary);
-                transition: all 0.3s;
+                background-color: currentColor;
+                -webkit-mask: var(--menu-icon) center / contain no-repeat;
+                mask: var(--menu-icon) center / contain no-repeat;
             }
-        }
 
-        &>.slide>.menu::before {
-            transition: transform .1s ease-in-out;
-        }
+            .menu-icon[data-icon="system"] { color: var(--orange); }
+            .menu-icon[data-icon="services"] { color: var(--teal); }
+            .menu-icon[data-icon="network"],
+            .menu-icon[data-icon="vpn"] { color: #8965e0; }
+            .menu-icon[data-icon="logout"] { color: var(--light); }
 
-        &>.slide>.menu.active::before {
-            transition: transform .2s ease-in-out;
+            &.active .menu-icon,
+            &:hover .menu-icon {
+                color: var(--white);
+            }
         }
 
         // Navigation list items
@@ -222,151 +212,23 @@
                 }
             }
 
-            // Main menu items
-            .menu {
-                display: block;
-                position: relative;
-                margin: 0.1rem 0.5rem;
-                padding: 0.675rem 0 0.675rem 2.5rem;
-                font-size: 1rem;
-                text-decoration: none;
-                border-radius: 0.25rem;
-                cursor: default;
-                transition: all 0.2s;
-
-                // Active state
-                &.active {
-                    color: #fff;
-                    background: var(--primary);
-
-                    &::before {
-                        color: #fff !important;
-                    }
-
-                    &::after {
-                        transform: rotate(90deg);
-                        color: #fff !important;
-                    }
-                }
-
-                // Hover state
-                &:hover {
-                    cursor: pointer;
-                    color: #fff;
-                    background: var(--primary);
-
-                    &::before {
-                        color: #fff !important;
-                    }
-                }
-
-                // Icon before text
-                &::before {
-                    position: absolute;
-                    left: 0.8rem;
-                    padding-top: 3px;
-                    font-family: 'argon' !important;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-variant: normal;
-                    text-transform: none;
-                    line-height: 1;
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
-                    content: "\e915";
-                    color: var(--primary);
-                    transition: all 0.3s;
-                }
-
-                // Dropdown arrow
-                &::after {
-                    position: absolute;
-                    right: 0.5rem;
-                    top: 0.8rem;
-                    font-family: 'argon' !important;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-variant: normal;
-                    text-transform: none;
-                    line-height: 1;
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
-                    content: '\e90f';
-                    color: #ced4da;
-                    text-rendering: auto;
-                    transition: all 0.3s;
-                }
+            // SVG disclosure arrow; its colour follows the link.
+            .menu::after {
+                content: "";
+                position: absolute;
+                right: .75rem;
+                top: 50%;
+                width: .75rem;
+                height: .75rem;
+                margin-top: -.375rem;
+                background-color: currentColor;
+                -webkit-mask: url(../icon/arrow.svg) center / contain no-repeat;
+                mask: url(../icon/arrow.svg) center / contain no-repeat;
+                transform: rotate(-90deg);
+                transition: transform .2s ease;
             }
 
-            // Menu-specific icons and colors
-            .menu[data-title="Status"]:before {
-                content: "\e906";
-                color: var(--primary);
-            }
-
-            .menu[data-title="System"]:before {
-                content: "\e90a";
-                color: #fb6340;
-            }
-
-            .menu[data-title="Services"]:before {
-                content: "\e909";
-                color: #11cdef;
-            }
-
-            .menu[data-title="NAS"]:before {
-                content: "\e90c";
-                color: #f3a4b5;
-            }
-
-            .menu[data-title="VPN"]:before {
-                content: "\e90b";
-                color: #8965e0;
-            }
-
-            .menu[data-title="Network"]:before {
-                content: "\e908";
-                color: #8965e0;
-            }
-
-            .menu[data-title="Bandwidth_Monitor"]:before {
-                content: "\e90d";
-                color: #2dce89;
-            }
-
-            .menu[data-title="Docker"]:before {
-                content: "\e911";
-                color: #6699ff;
-            }
-
-            .menu[data-title="Statistics"]:before {
-                content: "\e913";
-                color: #8965e0;
-            }
-
-            .menu[data-title="Control"]:before {
-                content: "\e912";
-                color: var(--primary);
-            }
-
-            .menu[data-title="Asterisk"]:before {
-                content: "\e914";
-                color: #fb6340;
-            }
-
-            // Logout link styling
-            a[data-title="Log_out"],
-            .food[data-title="Log_out"] {
-                &::before {
-                    content: "\e907";
-                    color: #adb5bd;
-                }
-            }
         }
-    }
-
-    &[style*="overflow: hidden"]>.nav>.slide>.menu::before {
-        display: none;
     }
 
     // Scrollbar Styling
@@ -376,11 +238,11 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: #f6f9fc;
+        background-color: var(--sidebar-scrollbar);
     }
 
     &::-webkit-scrollbar-track {
-        background-color: #fff;
+        background-color: var(--sidebar-scrollbar-track);
     }
 }
 
@@ -388,6 +250,7 @@
 // ==========================================================================
 
 .main-right {
+    background-color: var(--main-bg);
     height: 100%;
     flex-grow: 1;
     overflow-x: hidden;
@@ -414,6 +277,9 @@
 
         // Dashboard Specific Styles
         .Dashboard {
+            img.svgmonochrome {
+                filter: var(--image-filter);
+            }
             color: var(--gray-dark) !important;
 
             h3 {
@@ -430,7 +296,7 @@
             }
 
             .dashboard-bg {
-                background-color: #fff;
+                background-color: var(--surface-color);
             }
 
             .table {
@@ -467,7 +333,7 @@ header {
 
     // Primary background modifier
     &.bg-primary {
-        background-color: var(--primary) !important;
+        background-color: var(--header-bg) !important;
     }
 
     // Header extension background
@@ -476,7 +342,7 @@ header {
         position: absolute;
         width: 100%;
         height: 2rem;
-        background-color: var(--primary) !important;
+        background-color: var(--header-bg) !important;
     }
 
     // Header Content Container
@@ -566,7 +432,7 @@ header {
 
             span[data-style="inactive"] {
                 color: #ffffff !important;
-                background-color: #32325d;
+                background-color: var(--status-neutral-bg);
             }
         }
     }
@@ -589,7 +455,6 @@ footer {
     }
 }
 
-
 // 6. View
 // ==========================================================================
 #view {
@@ -605,8 +470,8 @@ footer {
         transform: translateX(-50%) translateY(-50%);
         padding: 1rem;
         border-radius: 0.5rem;
-        background: #ffffff;
-        box-shadow: 0 0 1rem 0 rgba(136, 152, 170, .15);
+        background: var(--surface-color);
+        box-shadow: var(--section-shadow);
     }
 
     &>div:first-child {

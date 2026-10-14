@@ -75,9 +75,9 @@
         margin: 0 1rem;
         padding: 1rem;
         resize: none;
-        color: #8898aa;
+        color: var(--muted-text);
         border-radius: 0.25rem;
-        border: 1px solid #dee2e6;
+        border: 1px solid var(--border-color);
 
         &:focus-visible {
             outline: none;
@@ -98,11 +98,11 @@
             padding: 1rem;
             resize: none;
             background-color: transparent;
-            background: var(--white);
+            background: var(--surface-color);
             outline: none;
-            color: #8898aa;
+            color: var(--muted-text);
             border-radius: 0.25rem;
-            border: 1px solid #dee2e6;
+            border: 1px solid var(--border-color);
             transition: all 0.2s ease;
 
             &:focus-visible {
@@ -191,7 +191,7 @@
         line-height: 1.5;
         margin-bottom: 0;
         letter-spacing: 0.1rem;
-        color: #32325d;
+        color: var(--gray-dark);
         font-weight: bold;
         padding: 1rem 0 1rem 1rem;
     }
@@ -199,7 +199,7 @@
     .cbi-section-descr {
         font-weight: 600;
         padding: 1rem 0 1rem 1rem;
-        color: #525f7f;
+        color: var(--text-color);
     }
 
     .cbi-page-actions {
@@ -235,6 +235,9 @@
 
 // System - File Assistant
 [data-page="admin-system-fileassistant"] {
+    .fb-container td[class$="-icon"]::before {
+        filter: var(--file-icon-filter);
+    }
     #upload-toggle {
         display: none !important;
     }
@@ -291,7 +294,7 @@
     }
 
     .fb-container .panel-container {
-        border-bottom-color: #dee2e6;
+        border-bottom-color: var(--border-color);
         display: flex;
 
         .panel-title {
@@ -423,7 +426,37 @@
 // ==========================================================================
 
 // Network - Interfaces
+[data-page="admin-network-network"],
+[data-page="admin-network-firewall-rules"] {
+    .zonebadge[style*="--zone-color-rgb"][style*="144, 240, 144"] {
+        --zone-color-rgb: var(--zone-positive-rgb) !important;
+    }
+
+    .zonebadge[style*="--zone-color-rgb"][style*="240, 144, 144"] {
+        --zone-color-rgb: var(--zone-negative-rgb) !important;
+    }
+
+    .zonebadge[style*="--zone-color-rgb"][style*="238, 238, 238"] {
+        --zone-color-rgb: var(--zone-neutral-rgb) !important;
+    }
+
+    .zonebadge strong {
+        color: var(--zone-label-color);
+    }
+}
+
 [data-page="admin-network-network"] {
+    .ifacebox-head[style*="--zone-color-rgb: 144, 240, 144"] {
+        --zone-color-rgb: var(--zone-positive-rgb) !important;
+    }
+
+    .ifacebox-head[style*="--zone-color-rgb: 240, 144, 144"] {
+        --zone-color-rgb: var(--zone-negative-rgb) !important;
+    }
+
+    .ifacebox-head[style*="--zone-color-rgb: 238, 238, 238"] {
+        --zone-color-rgb: var(--zone-neutral-rgb) !important;
+    }
     .cbi-value-field {
         .cbi-dynlist {
             padding: 0 !important;
@@ -448,31 +481,35 @@
 
     #modal_overlay>.modal.cbi-modal>div>p>textarea {
         height: 20em !important;
-        border: 1px solid #dee2e6 !important;
+        border: 1px solid var(--border-color) !important;
         border-radius: 4px;
     }
 }
 
 // Network - Switch / VLAN (LuCI's page stylesheet loads after the theme)
 [data-page="admin-network-switch-vlan"] #switch-vlan-view {
-    --background-color-medium: #f4f5f7;
-    --background-color-high: #fff;
+    --background-color-medium: var(--surface-inset);
+    --background-color-high: var(--surface-raised);
     --text-color-high: var(--gray-dark);
-    --text-color-low: #626b7a;
-    --border-color-low: #dee2e6;
-    --border-color-medium: #cbd5e1;
-    --border-color-high: #8898aa;
+    --text-color-low: var(--vlan-text-muted);
+    --border-color-low: var(--border-color);
+    --border-color-medium: var(--border-strong);
+    --border-color-high: var(--muted-text);
     --primary-color-high: var(--primary);
     --svc-row-bg: var(--background-color-medium);
     --svc-row-hover-bg: var(--background-color-high);
     --svc-row-add-bg: var(--background-color-medium);
-    --svc-port-selected-bg: #e8ecff;
-    --svc-port-selected-hover-bg: #dfe4ff;
-    --svc-port-selected-border: var(--primary);
-    --svc-port-selected-ring: rgba(94, 114, 228, 0.28);
-    --svc-vlan-tagged: #8c4800;
-    --svc-vlan-untagged: #06685f;
-    --svc-vlan-checked-text: #fff;
+    --svc-port-selected-bg: var(--vlan-selected-bg);
+    --svc-port-selected-hover-bg: var(--vlan-selected-hover-bg);
+    --svc-port-selected-border: var(--vlan-selected-border);
+    --svc-port-selected-ring: var(--vlan-selected-ring);
+    --svc-vlan-tagged: rgb(var(--vlan-tagged-rgb));
+    --svc-vlan-untagged: rgb(var(--vlan-untagged-rgb));
+    --svc-vlan-checked-text: var(--vlan-checked-text);
+    --svc-vlan-untagged-bg: rgba(var(--vlan-untagged-rgb), .08);
+    --svc-vlan-tagged-bg: rgba(var(--vlan-tagged-rgb), .1);
+    --svc-vlan-untagged-stripe: rgba(var(--vlan-untagged-rgb), .16);
+    --svc-vlan-tagged-stripe: rgba(var(--vlan-tagged-rgb), .18);
 
     color: var(--text-color-high);
 
@@ -553,14 +590,14 @@
     .cbi-section {
         padding: 1rem;
         font-family: monospace;
-        background: #fff !important;
+        background: var(--surface-color) !important;
     }
 
     textarea {
         background: transparent;
         border-radius: 0.25rem;
-        color: #8898aa;
-        border: 1px solid #dee2e6;
+        color: var(--muted-text);
+        border: 1px solid var(--border-color);
         padding: 0.5rem;
     }
 
@@ -569,8 +606,8 @@
         flex-direction: row;
 
         .td {
-            background-color: #fff !important;
-            border-bottom: 1px solid #dee2e6 !important;
+            background-color: var(--surface-color) !important;
+            border-bottom: 1px solid var(--border-color) !important;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -596,7 +633,7 @@
                     height: 100%;
                     overflow: hidden;
                     text-indent: 5000px;
-                    background-color: var(--white)
+                    background-color: var(--surface-color)
                 }
             }
         }
@@ -652,7 +689,7 @@
             span {
                 font-size: 0;
                 background: none!important;
-                color: #ced4da!important;
+                color: var(--soft-text)!important;
 
                 &:after {
                     transition: all .3s;
@@ -832,6 +869,11 @@
 
 // Services - OpenClash
 [data-page^="admin-services-openclash"] {
+    img[src$="arrow-clockwise-light.svg"],
+    img[src$="wrench-light.svg"],
+    img[src$="eye-light.svg"] {
+        filter: var(--image-filter);
+    }
     // One adapter contract for OpenClash's current component set.
     // Semantic colours remain owned by OpenClash; primary interactions and
     // neutral surfaces follow Argon's runtime-configurable palette.
@@ -845,14 +887,14 @@
     --oc-accent-a40: transparent;
     --oc-accent-a50: transparent;
     --oc-accent-a60: transparent;
-    --oc-surface: #fff;
-    --oc-surface-muted: #f6f9fc;
-    --oc-control-bg: #fff;
-    --oc-border: #dee2e6;
-    --oc-text: #525f7f;
-    --oc-text-muted: #8898aa;
-    --oc-neutral: #8898aa;
-    --oc-scrollbar: #f6f9fc;
+    --oc-surface: var(--surface-color);
+    --oc-surface-muted: var(--surface-muted);
+    --oc-control-bg: var(--surface-color);
+    --oc-border: var(--border-color);
+    --oc-text: var(--text-color);
+    --oc-text-muted: var(--plugin-text-muted);
+    --oc-neutral: var(--plugin-neutral);
+    --oc-scrollbar: var(--plugin-scrollbar);
 
     @supports (color: color-mix(in srgb, red, blue)) {
         --oc-accent-hover: color-mix(in srgb, var(--oc-accent) 88%, black);
@@ -1437,28 +1479,59 @@
 // 6. Other Pages
 // ==========================================================================
 
+// Older VSSR pages carry their own surface colours. Use the same palette
+// contract as the rest of the theme rather than a separate dark override.
+.node-services-vssr {
+    .block,
+    .cbi-section-table-row {
+        color: var(--gray-dark);
+        background-color: var(--plugin-card-bg) !important;
+        box-shadow: var(--section-shadow);
+    }
+
+    .block h4,
+    .ssr-button {
+        color: var(--gray-dark) !important;
+    }
+
+    .status-bar {
+        color: var(--gray-dark);
+        background-color: var(--surface-color);
+        box-shadow: var(--section-shadow);
+    }
+
+    .cbi-section-table-row.fast {
+        color: var(--white);
+        background: var(--primary) !important;
+    }
+
+    .incon:nth-child(2) {
+        border-right: 1px solid var(--background-color);
+    }
+}
+
 // wireless
 /* wireless overview */
 #cbi-wireless {
     >#wifi_assoclist_table {
         >.tr {
-            box-shadow: inset 1px -1px 0 #ddd, inset -1px -1px 0 #ddd;
+            box-shadow: inset 1px -1px 0 var(--border-subtle), inset -1px -1px 0 var(--border-subtle);
 
             &.placeholder {
                 >.td {
                     right: 2rem;
                     bottom: 2rem;
                     left: 2rem;
-                    border-top: thin solid #ddd !important;
+                    border-top: thin solid var(--border-subtle) !important;
                 }
             }
 
             &.table-titles {
-                box-shadow: inset 1px 0 0 #ddd, inset -1px 0 0 #ddd;
+                box-shadow: inset 1px 0 0 var(--border-subtle), inset -1px 0 0 var(--border-subtle);
 
                 >.th {
-                    border-bottom: thin solid #ddd;
-                    box-shadow: 0 -1px 0 0 #ddd;
+                    border-bottom: thin solid var(--border-subtle);
+                    box-shadow: 0 -1px 0 0 var(--border-subtle);
                 }
             }
         }

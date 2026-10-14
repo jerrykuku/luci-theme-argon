@@ -35,16 +35,56 @@ String.prototype.format = function(...values) {
 	return this.replace(/%s/g, () => values[i++]);
 };
 
-function loadMenu(dispatchpath, container) {
+function loadMenu(dispatchpath, container, icons = '') {
 	return new Function('baseclass', 'ui', 'L', 'E', 'document', '_', menuSource)(
 		{ extend: value => value },
-		{ menu: { getChildren: node => node.children || [] } },
-		{ env: { dispatchpath }, url: (...parts) => parts.join('/') },
+		{ menu: { getChildren: node => node.children || [] }, createHandlerFn: (object, name) => object[name].bind(object) },
+		{ env: { dispatchpath }, url: (...parts) => parts.join('/'), media: (...parts) => '/luci-static/argon/' + parts.join('/') },
 		element,
-		{ querySelector: () => container },
+		{ querySelectorAll: () => [], querySelector: selector => selector == 'meta[name="argon-menu-icons"]'
+			? (icons === null ? null : { getAttribute: () => icons }) : container },
 		value => value
 	);
 }
+
+test('menu icons use exact node names and fall back without requesting missing files', () => {
+	const menu = loadMenu([], null, 'default.svg status.svg system.svg');
+	for (const name of ['status', 'system']) {
+		const icon = menu.renderMenuIcon(name);
+		assert.equal(icon.attrs['data-icon'], name);
+		assert.equal(icon.attrs['aria-hidden'], 'true');
+		assert.match(icon.attrs.style, new RegExp('/icon/' + name + '\\.svg'));
+	}
+	for (const name of ['Status', '状态', 'missing', '../status', 'status.svg', 'status";color:red']) {
+		const icon = menu.renderMenuIcon(name);
+		assert.equal(icon.attrs['data-icon'], 'default');
+		assert.match(icon.attrs.style, /\/icon\/default\.svg/);
+	}
+	assert.equal(loadMenu([], null, null).renderMenuIcon('status').attrs['data-icon'], 'default');
+});
+
+test('translated menu labels keep node-name icons and nested links keep their layout', () => {
+	const container = element('div');
+	const menu = loadMenu([], container, 'default.svg status.svg');
+	const rendered = menu.renderMainMenu({ name: 'admin', children: [{
+		name: 'status', title: '状态', children: [{ name: 'overview', title: '概览' }]
+	}] }, 'admin');
+	const link = rendered.children[0].children[0];
+	assert.equal(link.children[0].attrs['data-icon'], 'status');
+	assert.equal(link.children[1], '状态');
+	assert.equal(rendered.children[0].children[1].children[0].children[0].children[0], '概览');
+});
+
+test('clicking a decorative SVG is handled by its navigation link', () => {
+	const menu = loadMenu([], null);
+	const link = { parentNode: { querySelector: () => null }, nextElementSibling: {}, blur() {} };
+	const icon = { parentNode: link, nextElementSibling: null };
+	let prevented = false, stopped = false;
+	menu.handleMenuExpand({ target: icon, currentTarget: link,
+		preventDefault: () => { prevented = true; }, stopPropagation: () => { stopped = true; } });
+	assert.equal(prevented, true);
+	assert.equal(stopped, true);
+});
 
 test('nested LuCI tabs stay in parent-to-child order', () => {
 	const container = element('div');
@@ -87,6 +127,22 @@ const configSetup = `
 let cfg = { get_first: (packageName, section, key) => settings[key] };
 function access(path) { return hasConfig; }
 `;
+
+test('the SVG catalog includes only safe regular SVG files and tolerates a missing directory', () => {
+	const setup = `
+function lsdir(path) { return settings.files; }
+function lstat(path) {
+  let parts = split(path, '/');
+  return { type: settings.types?.[parts[length(parts) - 1]] ?? 'file' };
+}
+`;
+	const catalog = settings => runUcodeSnippet('ucode/template/themes/argon/header.ut',
+		'const icon_dir =', '\n\t%}', setup, 'menu_icons', settings);
+	assert.deepEqual(catalog({ files: ['status.svg', 'custom-menu.svg', 'favicon.png', '../system.svg',
+		'bad name.svg', 'bad".svg', 'folder.svg', 'linked.svg'], types: { 'folder.svg': 'directory', 'linked.svg': 'symlink' } }),
+		['status.svg', 'custom-menu.svg']);
+	assert.deepEqual(catalog({ files: null }), []);
+});
 const configResult = '{mode, primary, dark_primary, blur_radius, blur_radius_dark, blur_opacity, blur_opacity_dark, bar_color}';
 
 for (const template of ['header.ut', 'header_login.ut']) {
