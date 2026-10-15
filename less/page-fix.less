@@ -145,7 +145,19 @@
         display: block;
     }
 
+    [data-tab="rc"] {
+        > p {
+            margin: 0;
+            padding-inline: var(--section-inset);
+        }
+
+        > .cbi-page-actions {
+            padding: var(--field-gap) var(--section-inset);
+        }
+    }
+
     textarea {
+        display: block;
         direction: ltr;
         unicode-bidi: plaintext;
         text-align: start;

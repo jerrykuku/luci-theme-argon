@@ -4415,7 +4415,15 @@ pre.command-output {
   margin-bottom: 0;
   display: block;
 }
+[data-page="admin-system-startup"] [data-tab="rc"] > p {
+  margin: 0;
+  padding-inline: var(--section-inset);
+}
+[data-page="admin-system-startup"] [data-tab="rc"] > .cbi-page-actions {
+  padding: var(--field-gap) var(--section-inset);
+}
 [data-page="admin-system-startup"] textarea {
+  display: block;
   direction: ltr;
   unicode-bidi: plaintext;
   text-align: start;
