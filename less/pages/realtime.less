@@ -1,7 +1,8 @@
 // out: false
 
 [data-page="admin-status-realtime"],
-[data-page="admin-status-realtime-load"] {
+[data-page="admin-status-realtime-load"],
+[data-page="admin-status-realtime-bandwidth"] {
   // SVG text coordinates and the time axis are technical data, independent
   // of the interface reading direction.
   .cbi-section > div:has(> svg) {
@@ -21,12 +22,19 @@
     vector-effect: non-scaling-stroke;
   }
 
-  .td[id^="lb_load"] {
+  .td[id^="lb_load"],
+  .td[id*="_bw_"] {
     font-variant-numeric: tabular-nums;
   }
 
+  .td[id*="_bw_"] {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
   @media screen and (max-width: 1152px) {
-    .table:has(.td[id^="lb_load"]) {
+    .table:has(.td[id^="lb_load"]),
+    .table:has(.td[id*="_bw_"]) {
       .tr {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);

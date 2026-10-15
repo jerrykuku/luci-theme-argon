@@ -4603,38 +4603,62 @@ pre.command-output {
   direction: rtl;
 }
 [data-page="admin-status-realtime"] .cbi-section > div:has(> svg),
-[data-page="admin-status-realtime-load"] .cbi-section > div:has(> svg) {
+[data-page="admin-status-realtime-load"] .cbi-section > div:has(> svg),
+[data-page="admin-status-realtime-bandwidth"] .cbi-section > div:has(> svg) {
   direction: ltr;
   unicode-bidi: isolate;
 }
 [data-page="admin-status-realtime"] #scale,
-[data-page="admin-status-realtime-load"] #scale {
+[data-page="admin-status-realtime-load"] #scale,
+[data-page="admin-status-realtime-bandwidth"] #scale {
   display: inline-block;
   unicode-bidi: plaintext;
 }
 [data-page="admin-status-realtime"] svg line,
 [data-page="admin-status-realtime-load"] svg line,
+[data-page="admin-status-realtime-bandwidth"] svg line,
 [data-page="admin-status-realtime"] svg polyline,
 [data-page="admin-status-realtime-load"] svg polyline,
+[data-page="admin-status-realtime-bandwidth"] svg polyline,
 [data-page="admin-status-realtime"] svg polygon,
 [data-page="admin-status-realtime-load"] svg polygon,
+[data-page="admin-status-realtime-bandwidth"] svg polygon,
 [data-page="admin-status-realtime"] svg path,
-[data-page="admin-status-realtime-load"] svg path {
+[data-page="admin-status-realtime-load"] svg path,
+[data-page="admin-status-realtime-bandwidth"] svg path {
   vector-effect: non-scaling-stroke;
 }
 [data-page="admin-status-realtime"] .td[id^="lb_load"],
-[data-page="admin-status-realtime-load"] .td[id^="lb_load"] {
+[data-page="admin-status-realtime-load"] .td[id^="lb_load"],
+[data-page="admin-status-realtime-bandwidth"] .td[id^="lb_load"],
+[data-page="admin-status-realtime"] .td[id*="_bw_"],
+[data-page="admin-status-realtime-load"] .td[id*="_bw_"],
+[data-page="admin-status-realtime-bandwidth"] .td[id*="_bw_"] {
   font-variant-numeric: tabular-nums;
+}
+[data-page="admin-status-realtime"] .td[id*="_bw_"],
+[data-page="admin-status-realtime-load"] .td[id*="_bw_"],
+[data-page="admin-status-realtime-bandwidth"] .td[id*="_bw_"] {
+  direction: ltr;
+  unicode-bidi: isolate;
 }
 @media screen and (max-width: 1152px) {
   [data-page="admin-status-realtime"] .table:has(.td[id^="lb_load"]) .tr,
-  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .tr {
+  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .tr,
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id^="lb_load"]) .tr,
+  [data-page="admin-status-realtime"] .table:has(.td[id*="_bw_"]) .tr,
+  [data-page="admin-status-realtime-load"] .table:has(.td[id*="_bw_"]) .tr,
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id*="_bw_"]) .tr {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     padding-block: var(--control-gap);
   }
   [data-page="admin-status-realtime"] .table:has(.td[id^="lb_load"]) .td,
-  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .td {
+  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .td,
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id^="lb_load"]) .td,
+  [data-page="admin-status-realtime"] .table:has(.td[id*="_bw_"]) .td,
+  [data-page="admin-status-realtime-load"] .table:has(.td[id*="_bw_"]) .td,
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id*="_bw_"]) .td {
     display: block;
     min-width: 0;
     padding: 0.25rem var(--section-inset);
@@ -4642,7 +4666,11 @@ pre.command-output {
     text-align: start !important;
   }
   [data-page="admin-status-realtime"] .table:has(.td[id^="lb_load"]) .td:nth-child(even),
-  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .td:nth-child(even) {
+  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .td:nth-child(even),
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id^="lb_load"]) .td:nth-child(even),
+  [data-page="admin-status-realtime"] .table:has(.td[id*="_bw_"]) .td:nth-child(even),
+  [data-page="admin-status-realtime-load"] .table:has(.td[id*="_bw_"]) .td:nth-child(even),
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id*="_bw_"]) .td:nth-child(even) {
     text-align: end !important;
   }
 }

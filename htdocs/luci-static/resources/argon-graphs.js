@@ -17,7 +17,13 @@ return baseclass.extend({
 				if (graphs.has(svg) || svg.hasAttribute('viewBox'))
 					return;
 
-				var width = view.offsetWidth - 2;
+				// An inactive tab may first become measurable after the window
+				// has resized. Read the native plot extent, not today's viewport.
+				var width = 0;
+				svg.querySelectorAll('polyline').forEach(function(line) {
+					for (var i = 0; i < line.points.numberOfItems; i++)
+						width = Math.max(width, line.points.getItem(i).x);
+				});
 				var height = svg.clientHeight;
 				if (width <= 0 || !(height > 0))
 					return;
@@ -60,7 +66,12 @@ return baseclass.extend({
 		};
 
 		new ResizeObserver(schedule).observe(view);
-		new MutationObserver(schedule).observe(view, { childList: true, subtree: true });
+		new MutationObserver(schedule).observe(view, {
+			childList: true,
+			subtree: true,
+			attributes: true,
+			attributeFilter: [ 'data-tab-active', 'hidden', 'points' ]
+		});
 		schedule();
 	}
 });
