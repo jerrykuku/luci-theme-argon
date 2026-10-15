@@ -126,6 +126,31 @@
             vertical-align: middle;
         }
     }
+
+    .td.version,
+    .td.size,
+    .td:first-child {
+        direction: ltr;
+        unicode-bidi: isolate;
+        font-variant-numeric: tabular-nums;
+
+        [dir="rtl"] &::before {
+            direction: rtl;
+        }
+    }
+
+    .modal h5,
+    .modal textarea {
+        direction: ltr;
+        unicode-bidi: plaintext;
+        text-align: start;
+        overflow-wrap: anywhere;
+    }
+
+    .modal textarea {
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        line-height: 1.5;
+    }
 }
 
 // System - Startup Scripts

@@ -4169,6 +4169,38 @@ pre.command-output {
   right: 0;
   vertical-align: middle;
 }
+[data-page="admin-system-package-manager"] .td.version,
+[data-page="admin-system-opkg"] .td.version,
+[data-page="admin-system-package-manager"] .td.size,
+[data-page="admin-system-opkg"] .td.size,
+[data-page="admin-system-package-manager"] .td:first-child,
+[data-page="admin-system-opkg"] .td:first-child {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-variant-numeric: tabular-nums;
+}
+[dir="rtl"] [data-page="admin-system-package-manager"] .td.version::before,
+[dir="rtl"] [data-page="admin-system-opkg"] .td.version::before,
+[dir="rtl"] [data-page="admin-system-package-manager"] .td.size::before,
+[dir="rtl"] [data-page="admin-system-opkg"] .td.size::before,
+[dir="rtl"] [data-page="admin-system-package-manager"] .td:first-child::before,
+[dir="rtl"] [data-page="admin-system-opkg"] .td:first-child::before {
+  direction: rtl;
+}
+[data-page="admin-system-package-manager"] .modal h5,
+[data-page="admin-system-opkg"] .modal h5,
+[data-page="admin-system-package-manager"] .modal textarea,
+[data-page="admin-system-opkg"] .modal textarea {
+  direction: ltr;
+  unicode-bidi: plaintext;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+[data-page="admin-system-package-manager"] .modal textarea,
+[data-page="admin-system-opkg"] .modal textarea {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  line-height: 1.5;
+}
 [data-page="admin-system-startup"] #view > div:first-child div[data-initialized="true"] {
   margin-top: 0;
 }
