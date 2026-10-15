@@ -692,6 +692,21 @@
     .cbi-section-node-tabbed > [data-tab-title] {
         padding-inline: var(--section-inset);
     }
+
+    // These panes contain whole sections which already own their text inset.
+    .cbi-section-node-tabbed > [data-tab="tagsparent"],
+    .cbi-section-node-tabbed > [data-tab="matchtags"],
+    .cbi-section-node-tabbed > [data-tab="settags"],
+    .cbi-section-node-tabbed > [data-tab="vc"],
+    .cbi-section-node-tabbed > [data-tab="uc"] {
+        padding-inline: 0;
+    }
+
+    .cbi-section-descr code,
+    .cbi-value-description code {
+        direction: ltr;
+        unicode-bidi: isolate;
+    }
 }
 
 // Network - Diagnostics

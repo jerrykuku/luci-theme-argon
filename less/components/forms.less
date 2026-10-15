@@ -100,6 +100,12 @@
   }
 }
 
+// SectionValue renders its section directly, without a field wrapper.
+// Give it the available cross-axis width when the form stacks its rows.
+.cbi-value[data-widget="CBI.ContainerValue"] > .cbi-section {
+  width: 100%;
+}
+
 .cbi-value-description {
   line-height: 1.5;
   display: block;

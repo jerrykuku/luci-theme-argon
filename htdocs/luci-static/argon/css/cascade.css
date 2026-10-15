@@ -2562,6 +2562,9 @@ td > table > tbody > tr > td,
 .cbi-value-field div + br {
   display: none;
 }
+.cbi-value[data-widget="CBI.ContainerValue"] > .cbi-section {
+  width: 100%;
+}
 .cbi-value-description {
   line-height: 1.5;
   display: block;
@@ -4588,6 +4591,18 @@ pre.command-output {
 }
 [data-page="admin-network-dhcp"] .cbi-section-node-tabbed > [data-tab-title] {
   padding-inline: var(--section-inset);
+}
+[data-page="admin-network-dhcp"] .cbi-section-node-tabbed > [data-tab="tagsparent"],
+[data-page="admin-network-dhcp"] .cbi-section-node-tabbed > [data-tab="matchtags"],
+[data-page="admin-network-dhcp"] .cbi-section-node-tabbed > [data-tab="settags"],
+[data-page="admin-network-dhcp"] .cbi-section-node-tabbed > [data-tab="vc"],
+[data-page="admin-network-dhcp"] .cbi-section-node-tabbed > [data-tab="uc"] {
+  padding-inline: 0;
+}
+[data-page="admin-network-dhcp"] .cbi-section-descr code,
+[data-page="admin-network-dhcp"] .cbi-value-description code {
+  direction: ltr;
+  unicode-bidi: isolate;
 }
 [data-page="admin-network-diagnostics"] .table {
   box-shadow: none;
