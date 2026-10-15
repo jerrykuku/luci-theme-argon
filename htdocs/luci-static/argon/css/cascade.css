@@ -4708,6 +4708,7 @@ pre.command-output {
   unicode-bidi: isolate;
 }
 [data-page="admin-network-diagnostics"] .table {
+  overflow: visible;
   box-shadow: none;
 }
 [data-page="admin-network-diagnostics"] .cbi-section {
