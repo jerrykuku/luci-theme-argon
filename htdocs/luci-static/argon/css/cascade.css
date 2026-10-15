@@ -4871,6 +4871,9 @@ pre.command-output {
 [data-page="admin-system-attendedsysupgrade-configuration"] .cbi-map .cbi-map-descr {
   padding-bottom: 0;
 }
+[data-page="admin-system-attendedsysupgrade-configuration"] .cbi-map > .cbi-section > .cbi-section-node {
+  padding-block: var(--field-gap);
+}
 [data-page="admin-system-flash"] [data-tab="config"] textarea {
   display: block;
 }
