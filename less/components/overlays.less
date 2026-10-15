@@ -241,21 +241,3 @@ body.modal-overlay-active #modal_overlay {
   pointer-events: auto;
   opacity: 1;
 }
-
-.spinning {
-  position: relative;
-  padding-left: 32px !important;
-}
-
-.spinning::before {
-  filter: var(--spinner-filter);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-
-  left: .2em;
-  width: 32px;
-  content: "";
-  background: url(/luci-static/resources/icons/loading.svg) no-repeat center;
-  background-size: 16px;
-}

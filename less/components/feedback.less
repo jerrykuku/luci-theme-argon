@@ -59,6 +59,7 @@
 .modal.alert-message {
   // LuCI uses this dialog for apply/confirm/rollback status updates.
   --status-accent: var(--link-color);
+  --spinner-accent: var(--status-accent);
   position: static;
   // An explicit width also preserves the modal's container-query layout.
   width: calc(100% - 2 * var(--page-gutter));
@@ -115,7 +116,7 @@
   &.spinning {
     // Reserve an actual column for the icon instead of overlapping the prose.
     display: grid;
-    grid-template-columns: 1.125rem minmax(0, 1fr);
+    grid-template-columns: var(--spinner-size) minmax(0, 1fr);
     align-items: center;
     column-gap: var(--action-gap);
     padding: var(--field-gap) var(--section-inset) !important;
@@ -125,44 +126,21 @@
     }
 
     &::before {
-      content: '';
       position: static;
       inset: auto;
       grid-column: 1;
       grid-row: 1;
-      width: 1.125rem;
-      height: 1.125rem;
-      box-sizing: border-box;
-      border: 2px solid var(--border-color);
-      border-block-start-color: var(--status-accent);
-      border-radius: var(--radius-circle);
-      background: none;
-      filter: none;
-
-      @media (prefers-reduced-motion: no-preference) {
-        animation: argon-status-spin .9s linear infinite;
-      }
     }
   }
 }
 
-@keyframes argon-status-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-// Inline notifications retain their existing loading icon placement.
+// Notification surfaces keep their inset around the shared loading icon.
 .alert-message.spinning:not(.modal) {
+  --spinner-inset: var(--section-inset);
+  --spinner-accent: currentColor;
+  --spinner-track: color-mix(in srgb, currentColor 25%, transparent);
   position: relative;
-
-  &::before {
-    height: 16px;
-    width: 16px;
-    position: absolute;
-    top: 2rem;
-    left: .5rem;
-  }
+  inset: auto;
 }
 
 /* LuCI's ui.js dismisses notification banners by adding the .fade-out
@@ -217,6 +195,43 @@
   flex-wrap: wrap;
   gap: var(--field-gap);
   line-height: 1.5;
+
+  &.spinning {
+    // The icon follows the message when actions wrap below it on narrow screens.
+    display: grid !important;
+    grid-template-columns: var(--spinner-size) minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--action-gap);
+    padding: var(--field-gap) var(--section-inset) !important;
+    position: relative;
+
+    &::before {
+      position: static;
+      inset: auto;
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    > div:first-child {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    > div:last-child {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    @media screen and (max-width: 600px) {
+      grid-template-columns: var(--spinner-size) minmax(0, 1fr);
+
+      > div:last-child {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: end;
+      }
+    }
+  }
 
   > div {
     min-width: 0;
