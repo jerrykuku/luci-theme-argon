@@ -31,6 +31,21 @@
     .cbi-section-node {
         padding: 1rem 0;
     }
+
+    // LuCI supplies strength colours inline; map those states to readable text.
+    [data-name="pw2"] .cbi-value-description {
+        span[style="color:red"] {
+            color: var(--strength-weak-text) !important;
+        }
+
+        span[style="color:orange"] {
+            color: var(--strength-medium-text) !important;
+        }
+
+        span[style="color:green"] {
+            color: var(--strength-strong-text) !important;
+        }
+    }
 }
 
 // System - SSH Keys

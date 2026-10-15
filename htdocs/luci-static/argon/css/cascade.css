@@ -37,6 +37,9 @@
   --danger: #f5365c;
   --error-text: #ffd600;
   --error-detail-text: var(--dark-primary);
+  --strength-weak-text: #b42318;
+  --strength-medium-text: #805600;
+  --strength-strong-text: #166534;
   --text-strong: #32325d;
   --text-color: #525f7f;
   --muted-text: #626f80;
@@ -162,6 +165,9 @@
 :root[data-argon-mode="dark"] {
   color-scheme: dark;
   --primary: var(--dark-primary);
+  --strength-weak-text: #ffb4ab;
+  --strength-medium-text: #f5c24b;
+  --strength-strong-text: #86efac;
   --text-strong: #ccc;
   --text-color: #ccc;
   --muted-text: #adb5bd;
@@ -262,6 +268,9 @@
   :root:not([data-argon-mode="light"]):not([data-argon-mode="dark"]) {
     color-scheme: dark;
     --primary: var(--dark-primary);
+    --strength-weak-text: #ffb4ab;
+    --strength-medium-text: #f5c24b;
+    --strength-strong-text: #86efac;
     --text-strong: #ccc;
     --text-color: #ccc;
     --muted-text: #adb5bd;
@@ -4056,6 +4065,18 @@ pre.command-output {
 [data-page="admin-system-admin"] .cbi-section-node,
 [data-page="admin-system-admin-password"] .cbi-section-node {
   padding: 1rem 0;
+}
+[data-page="admin-system-admin"] [data-name="pw2"] .cbi-value-description span[style="color:red"],
+[data-page="admin-system-admin-password"] [data-name="pw2"] .cbi-value-description span[style="color:red"] {
+  color: var(--strength-weak-text) !important;
+}
+[data-page="admin-system-admin"] [data-name="pw2"] .cbi-value-description span[style="color:orange"],
+[data-page="admin-system-admin-password"] [data-name="pw2"] .cbi-value-description span[style="color:orange"] {
+  color: var(--strength-medium-text) !important;
+}
+[data-page="admin-system-admin"] [data-name="pw2"] .cbi-value-description span[style="color:green"],
+[data-page="admin-system-admin-password"] [data-name="pw2"] .cbi-value-description span[style="color:green"] {
+  color: var(--strength-strong-text) !important;
 }
 [data-page="admin-system-admin-sshkeys"] .cbi-dynlist {
   margin-inline: var(--section-inset);
