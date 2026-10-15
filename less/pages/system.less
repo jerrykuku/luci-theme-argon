@@ -19,22 +19,4 @@
     text-align: start;
   }
 
-  // Data order does not change which side of the RTL control is joined.
-  [data-name="server"] .add-item > input {
-    border-radius: var(--radius-control) 0 0 var(--radius-control);
-
-    [dir="rtl"] & {
-      border-radius: 0 var(--radius-control) var(--radius-control) 0;
-    }
-  }
-
-  [data-name="server"] .add-item > input {
-    border-left-width: 1px;
-    border-right-width: 0;
-
-    [dir="rtl"] & {
-      border-left-width: 0;
-      border-right-width: 1px;
-    }
-  }
 }

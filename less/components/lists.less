@@ -105,10 +105,15 @@
 
       color: var(--muted-text);
       border: 1px solid var(--border-color);
-      border-radius: 0;
-      border-start-start-radius: var(--radius-control);
-      border-end-start-radius: var(--radius-control);
-      border-inline-end-width: 0;
+      // The join follows the list's UI direction, even for LTR data inputs.
+      border-radius: var(--radius-control) 0 0 var(--radius-control);
+      border-right-width: 0;
+
+      [dir="rtl"] &:first-child {
+        border-radius: 0 var(--radius-control) var(--radius-control) 0;
+        border-left-width: 0;
+        border-right-width: 1px;
+      }
       outline: 0;
       background-image: none;
       box-shadow: none;

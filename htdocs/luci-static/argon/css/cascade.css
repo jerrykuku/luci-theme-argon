@@ -2852,13 +2852,16 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   line-height: 1.5rem;
   color: var(--muted-text);
   border: 1px solid var(--border-color);
-  border-radius: 0;
-  border-start-start-radius: var(--radius-control);
-  border-end-start-radius: var(--radius-control);
-  border-inline-end-width: 0;
+  border-radius: var(--radius-control) 0 0 var(--radius-control);
+  border-right-width: 0;
   outline: 0;
   background-image: none;
   box-shadow: none;
+}
+[dir="rtl"] .cbi-dynlist > .add-item input:first-child {
+  border-radius: 0 var(--radius-control) var(--radius-control) 0;
+  border-left-width: 0;
+  border-right-width: 1px;
 }
 .cbi-dynlist > .add-item .cbi-button {
   flex: 0 0 auto;
@@ -4047,20 +4050,6 @@ pre.command-output {
   unicode-bidi: isolate;
   text-align: start;
 }
-[data-page="admin-system-system"] [data-name="server"] .add-item > input {
-  border-radius: var(--radius-control) 0 0 var(--radius-control);
-}
-[dir="rtl"] [data-page="admin-system-system"] [data-name="server"] .add-item > input {
-  border-radius: 0 var(--radius-control) var(--radius-control) 0;
-}
-[data-page="admin-system-system"] [data-name="server"] .add-item > input {
-  border-left-width: 1px;
-  border-right-width: 0;
-}
-[dir="rtl"] [data-page="admin-system-system"] [data-name="server"] .add-item > input {
-  border-left-width: 0;
-  border-right-width: 1px;
-}
 [data-page="admin-system-admin"] .cbi-map h2,
 [data-page="admin-system-admin-password"] .cbi-map h2,
 [data-page="admin-system-admin"] .cbi-map .cbi-map-descr,
@@ -4490,6 +4479,15 @@ pre.command-output {
 [data-page="admin-network-routes"] [data-name="dest"] input {
   direction: ltr;
   unicode-bidi: isolate;
+  text-align: start;
+}
+[data-page="admin-network-dns"] input[type="text"],
+[data-page="admin-network-dns"] .cbi-section-descr code,
+[data-page="admin-network-dns"] .cbi-value-description code {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+[data-page="admin-network-dns"] input[type="text"] {
   text-align: start;
 }
 @media screen and (min-width: 1153px) {
