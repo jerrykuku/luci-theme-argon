@@ -45,7 +45,6 @@
   height: 0;
   opacity: 0;
   margin: 0;
-  padding: 1rem 0;
   display: none !important;
 
   p {
@@ -75,6 +74,8 @@
 
   // Tab content shares the outer card instead of drawing another rounded card.
   > [data-tab-title] {
+    // Form fields need an inset; section headings and tables manage their own.
+    padding-block: var(--field-gap);
     border-radius: inherit;
     box-shadow: none;
   }

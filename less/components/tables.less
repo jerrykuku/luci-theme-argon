@@ -84,6 +84,15 @@ table,
   font-size: 0.75rem;
 }
 
+// Round flush table edges without clipping the card or floating form controls.
+[data-tab-title] > .table:last-child:not(:has(.cbi-dropdown)),
+[data-tab-title] > .table:has(+ .cbi-section-create:empty:last-child):not(:has(.cbi-dropdown)) {
+  border-collapse: separate;
+  border-end-start-radius: inherit;
+  border-end-end-radius: inherit;
+  overflow: hidden;
+}
+
 .table .table-titles th {
   background-color: var(--surface-contrast);
 }

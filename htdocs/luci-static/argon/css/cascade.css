@@ -2033,6 +2033,13 @@ table,
   width: 100%;
   font-size: 0.75rem;
 }
+[data-tab-title] > .table:last-child:not(:has(.cbi-dropdown)),
+[data-tab-title] > .table:has(+ .cbi-section-create:empty:last-child):not(:has(.cbi-dropdown)) {
+  border-collapse: separate;
+  border-end-start-radius: inherit;
+  border-end-end-radius: inherit;
+  overflow: hidden;
+}
 .table .table-titles th {
   background-color: var(--surface-contrast);
 }
@@ -2510,7 +2517,6 @@ td > table > tbody > tr > td,
   height: 0;
   opacity: 0;
   margin: 0;
-  padding: 1rem 0;
   display: none !important;
 }
 [data-tab-title] p {
@@ -2535,6 +2541,7 @@ td > table > tbody > tr > td,
   border-radius: 0 0 var(--radius-card) var(--radius-card);
 }
 .cbi-section-node-tabbed > [data-tab-title] {
+  padding-block: var(--field-gap);
   border-radius: inherit;
   box-shadow: none;
 }
@@ -3696,6 +3703,9 @@ td > .ifacebadge,
   align-items: center;
   padding: 0.875rem 1rem;
 }
+.cbi-section-create:empty {
+  display: none;
+}
 .cbi-section-create > div:first-child > input {
   width: 100%;
   border-inline-end: none;
@@ -4335,8 +4345,8 @@ pre.command-output {
 [data-page="admin-network-dhcp"] .cbi-value {
   padding: 0;
 }
-[data-page="admin-network-dhcp"] [data-tab-active="true"] {
-  padding: 1rem 1rem !important;
+[data-page="admin-network-dhcp"] .cbi-section-node-tabbed > [data-tab-title] {
+  padding-inline: var(--section-inset);
 }
 [data-page="admin-network-diagnostics"] .table {
   box-shadow: none;
@@ -5317,6 +5327,10 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
   }
   .table {
     display: block;
+  }
+  [data-tab-title] > .table:last-child:not(:has(.cbi-dropdown)),
+  [data-tab-title] > .table:has(+ .cbi-section-create:empty:last-child):not(:has(.cbi-dropdown)) {
+    overflow-x: auto;
   }
   .Interfaces .table {
     overflow-x: hidden;

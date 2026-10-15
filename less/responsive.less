@@ -193,6 +193,12 @@
         display: block;
     }
 
+    // Block tables keep their rounded edges while allowing horizontal scrolling.
+    [data-tab-title] > .table:last-child:not(:has(.cbi-dropdown)),
+    [data-tab-title] > .table:has(+ .cbi-section-create:empty:last-child):not(:has(.cbi-dropdown)) {
+        overflow-x: auto;
+    }
+
     .Interfaces .table {
         overflow-x: hidden;
     }

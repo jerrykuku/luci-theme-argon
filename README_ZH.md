@@ -90,6 +90,8 @@ uci commit argon
 
 原生 `.cbi-tabmenu` 与紧随的内容容器由 `components/tabs.less` 统一贴合，兼容带标题和说明的 map、独立视图及首层包装容器。标题、说明和其他可见区块仍按原来的间距 token 排列；不要为单个页面添加负边距，也不要改变 LuCI 标签栏与内容容器的相邻结构。
 
+Tab 外层 section 不再统一添加上下内边距：标题、表格行和操作区各自负责内容留白，只有 `.cbi-section-node-tabbed` 内的表单内容保留 `--field-gap` 内缩。空的 `.cbi-section-create` 不占高度。贴底且不含下拉控件的表格单独处理底角，小屏继续允许横向滚动，避免裁切整个卡片及其浮层。
+
 圆角统一在 `less/shape.less` 维护。根字号为 16px 时，小标签为 4px，控件和子菜单项为 6px，菜单和小面板为 8px，Card 为 12px，弹窗及居中登录卡片为 16px；亮暗色和各视口共用这些 token。进度条、滚动条使用 `--radius-pill`，圆形角标使用 `--radius-circle`。组合控件的内部接缝保持直角，标签页及贴边卡片标题只保留顶部圆角；不要通过裁切整个 Card 实现圆角，以免截断下拉菜单和提示框。
 
 弹窗布局在 `components/overlays.less` 维护：标题和正文共用缩进，兼容 LuCI 原生 `.right` 与 `.button-row` 操作容器；弹窗内容区变窄时，操作按钮自动纵向排列。应用、确认及危险操作应沿用对应按钮语义类，普通按钮使用中性样式。长弹窗由覆盖层滚动，`cbi-modal` 继续支持较宽的表单。
