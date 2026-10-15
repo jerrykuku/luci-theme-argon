@@ -4772,7 +4772,8 @@ pre.command-output {
   opacity: 0;
 }
 [data-page="admin-status-logs"] #syslog,
-[data-page="admin-status-logs-syslog"] #syslog {
+[data-page="admin-status-logs-syslog"] #syslog,
+[data-page="admin-status-logs-dmesg"] #syslog {
   direction: ltr;
   unicode-bidi: plaintext;
   text-align: start;
@@ -4781,9 +4782,18 @@ pre.command-output {
   line-height: 1.5;
 }
 [data-page="admin-status-logs"] #syslog:focus-visible,
-[data-page="admin-status-logs-syslog"] #syslog:focus-visible {
+[data-page="admin-status-logs-syslog"] #syslog:focus-visible,
+[data-page="admin-status-logs-dmesg"] #syslog:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
+}
+[data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> #invertAscendingSort) {
+  display: flex;
+  align-items: center;
+  gap: var(--control-gap);
+}
+[data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> #invertAscendingSort) > label {
+  margin: 0 !important;
 }
 @media screen and (max-width: 600px) {
   #content_syslog > div:has(> #logFacilitySelect),

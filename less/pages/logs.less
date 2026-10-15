@@ -1,7 +1,8 @@
 // out: false
 
 [data-page="admin-status-logs"],
-[data-page="admin-status-logs-syslog"] {
+[data-page="admin-status-logs-syslog"],
+[data-page="admin-status-logs-dmesg"] {
   #syslog {
     direction: ltr;
     unicode-bidi: plaintext;
@@ -13,6 +14,18 @@
     &:focus-visible {
       outline: 2px solid var(--focus-ring);
       outline-offset: 2px;
+    }
+  }
+}
+
+[data-page="admin-status-logs-dmesg"] {
+  #content_syslog > div:has(> #invertAscendingSort) {
+    display: flex;
+    align-items: center;
+    gap: var(--control-gap);
+
+    > label {
+      margin: 0 !important;
     }
   }
 }
