@@ -13,7 +13,7 @@ function fixture(options = {}) {
   setAttribute(name, value) { this.attrs[name] = value; }
   removeAttribute(name) { delete this.attrs[name]; }
   contains(node) { return node === this || this.children.some(c => c?.contains?.(node)); }
-  focus() { state.focus = this; }
+  focus() { state.focus = this; document.activeElement = this; }
  }
  const root = new Node('div', { hidden: true }), html = new Node('html'); html.dataset.argonMode = 'normal';
  const document = Object.assign(new EventTarget(), { documentElement: html, getElementById: () => root, querySelectorAll: () => [] });
@@ -34,9 +34,9 @@ function fixture(options = {}) {
  const api = new Function('baseclass', 'rpc', 'ui', 'document', 'window', 'E', '_', 'getComputedStyle', 'requestAnimationFrame', 'cancelAnimationFrame', source)(
   { extend: x => x }, rpc, { addNotification: (title, node) => state.notifications.push(node) }, document, window,
   (tag, attrs, children) => new Node(tag, attrs, children), x => x,
-  () => ({ getPropertyValue: () => '#123456' }), fn => { state.frames.set(1, fn); return 1; }, id => state.frames.delete(id)
+  () => ({ getPropertyValue: () => '#123456' }), fn => { const id = (state.frameId || 0) + 1; state.frameId = id; state.frames.set(id, fn); return id; }, id => state.frames.delete(id)
  );
- Object.assign(state, { api, root, html, window });
+ Object.assign(state, { api, root, html, window, document });
  state.start = () => api.__init__();
  return state;
 }
@@ -84,8 +84,20 @@ test('Escape and outside focus close the panel, while system changes never write
  const state = fixture(); await state.start(); state.api.open(true);
  const escape = new Event('keydown', { cancelable: true }); escape.key = 'Escape'; state.root.dispatchEvent(escape);
  assert.equal(state.api.panel.hidden, true); assert.equal(state.focus, state.api.trigger); assert.equal(escape.defaultPrevented, true);
- state.api.open(true); const blur = new Event('focusout'); blur.relatedTarget = null; state.root.dispatchEvent(blur);
+ state.api.open(true); const blur = new Event('focusout'); blur.relatedTarget = {}; state.root.dispatchEvent(blur);
  assert.equal(state.api.panel.hidden, true);
  state.preference.matches = true; state.preference.dispatchEvent(new Event('change'));
  assert.equal(state.html.dataset.argonMode, 'normal'); assert.equal(state.calls.filter(c => c[0] === 'set').length, 0);
+});
+
+test('label activation can move focus through the page without closing the choices early', async () => {
+ const state = fixture(); await state.start(); state.api.open(true);
+ const blur = new Event('focusout'); blur.relatedTarget = null; state.root.dispatchEvent(blur);
+ assert.equal(state.api.panel.hidden, false);
+ state.api.radios[0].focus();
+ for (const frame of state.frames.values()) frame(); state.frames.clear();
+ assert.equal(state.api.panel.hidden, false);
+ state.root.dispatchEvent(blur); state.document.activeElement = {};
+ for (const frame of state.frames.values()) frame(); state.frames.clear();
+ assert.equal(state.api.panel.hidden, true);
 });

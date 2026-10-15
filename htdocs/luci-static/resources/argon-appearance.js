@@ -49,6 +49,7 @@ return baseclass.extend({
 		this.radios = Object.keys(this.labels).map(function(mode) {
 			return E('input', {
 				type: 'radio', name: 'argon-appearance-mode', value: mode,
+				'class': 'visually-hidden',
 				disabled: !this.writable || null,
 				change: function(event) {
 					if (event.target.checked)
@@ -59,7 +60,9 @@ return baseclass.extend({
 		this.panel = E('fieldset', { id: 'argon-appearance-options', 'class': 'argon-appearance-panel', hidden: true }, [
 			E('legend', { 'class': 'visually-hidden' }, _('Theme mode')),
 			...this.radios.map(function(radio) {
-				return E('label', {}, [ radio, E('span', {}, this.labels[radio.value]) ]);
+				return E('label', { 'class': 'argon-appearance-option', 'data-mode': radio.value }, [
+					radio, E('span', {}, this.labels[radio.value])
+				]);
 			}.bind(this)),
 			!this.writable ? E('p', {}, _('Read-only')) : ''
 		]);
@@ -78,8 +81,14 @@ return baseclass.extend({
 				this.open(false);
 		}.bind(this));
 		this.root.addEventListener('focusout', function(event) {
-			if (!this.root.contains(event.relatedTarget))
+			if (event.relatedTarget && !this.root.contains(event.relatedTarget))
 				this.open(false);
+			else if (!event.relatedTarget)
+				// A label click briefly blurs its radio before forwarding activation.
+				requestAnimationFrame(function() {
+					if (!this.root.contains(document.activeElement))
+						this.open(false);
+				}.bind(this));
 		}.bind(this));
 	},
 
