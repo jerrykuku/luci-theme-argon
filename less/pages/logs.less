@@ -18,6 +18,26 @@
   }
 }
 
+[data-page="admin-status-logs"],
+[data-page="admin-status-logs-syslog"] {
+  #content_syslog > div:has(> input, > select) {
+    line-height: 2.5rem;
+    margin-block-end: var(--control-gap) !important;
+
+    > label,
+    > input,
+    > select {
+      vertical-align: middle;
+    }
+
+    // Native log filters carry per-input bottom margins; rows own the spacing.
+    > input,
+    > select {
+      margin-block: 0 !important;
+    }
+  }
+}
+
 [data-page="admin-status-logs-dmesg"] {
   #content_syslog > div:has(> #invertAscendingSort) {
     display: flex;
