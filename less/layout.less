@@ -85,6 +85,8 @@
 
             // Hover state
             @media (hover: hover) {
+                transition: background-color .15s ease, color .15s ease;
+
                 &:hover {
                     cursor: pointer;
                     color: var(--text-on-accent);
@@ -117,6 +119,10 @@
             }
 
             @media (hover: hover) {
+                .menu-icon {
+                    transition: color .15s ease;
+                }
+
                 &:hover .menu-icon {
                     color: var(--text-on-accent);
                 }
@@ -528,6 +534,12 @@ footer {
 
     .main-left .nav .menu::after {
         transition: transform .2s ease;
+    }
+
+    @media (hover: hover) {
+        .main-left .nav .slide-menu li::after {
+            transition: width .2s ease;
+        }
     }
 }
 

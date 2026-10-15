@@ -1376,6 +1376,9 @@ select[multiple] {
   color: var(--text-on-accent);
 }
 @media (hover: hover) {
+  .main-left .nav > li > a:first-child {
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
   .main-left .nav > li > a:first-child:hover {
     cursor: pointer;
     color: var(--text-on-accent);
@@ -1412,6 +1415,9 @@ select[multiple] {
   color: var(--text-on-accent);
 }
 @media (hover: hover) {
+  .main-left .nav > li > a:first-child .menu-icon {
+    transition: color 0.15s ease;
+  }
   .main-left .nav > li > a:first-child:hover .menu-icon {
     color: var(--text-on-accent);
   }
@@ -1731,6 +1737,11 @@ footer > a {
   }
   .main-left .nav .menu::after {
     transition: transform 0.2s ease;
+  }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .main-left .nav .slide-menu li::after {
+    transition: width 0.2s ease;
   }
 }
 [dir="rtl"] .main-left .nav .menu:not(.active)::after {
