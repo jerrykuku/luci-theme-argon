@@ -3797,6 +3797,13 @@ td.cbi-value-field var,
 .cbi-dropdown-container {
   position: relative;
 }
+.cbi-filebrowser > p > a {
+  display: inline-block;
+  max-width: 100%;
+  direction: ltr;
+  unicode-bidi: isolate;
+  overflow-wrap: anywhere;
+}
 .cbi-tooltip-container,
 span[data-tooltip],
 span[data-tooltip] .label {
@@ -4506,6 +4513,14 @@ pre.command-output {
     display: flex;
     justify-content: flex-end;
   }
+}
+[data-page="admin-network-firewall-ipsets"] [data-name="entry"] input[type="text"],
+[data-page="admin-network-firewall-ipsets"] .cbi-value-description code {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+[data-page="admin-network-firewall-ipsets"] [data-name="entry"] input[type="text"] {
+  text-align: start;
 }
 [data-page="admin-network-firewall-forwards"] [data-name$="_ip"] input[type="text"],
 [data-page="admin-network-firewall-rules"] [data-name$="_ip"] input[type="text"],
