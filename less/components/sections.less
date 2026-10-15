@@ -54,16 +54,8 @@
   padding: 0 var(--section-inset);
 }
 
-.cbi-section {
-
-  &>.cbi-section-descr {
-    padding-block: var(--field-gap);
-
-    &:empty {
-      display: none;
-    }
-  }
-
+.cbi-section > .cbi-section-descr:not(:empty) {
+  padding-block: var(--field-gap);
 }
 
 .cbi-section-descr:not(:empty) {
@@ -100,7 +92,7 @@ fieldset>fieldset,
 .cbi-section>h3:first-child,
 .panel-title {
   font-size: 1.1rem;
-  line-height: 1;
+  line-height: 1.4;
   display: block;
   width: 100%;
   margin: 0;

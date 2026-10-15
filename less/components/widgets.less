@@ -54,6 +54,34 @@
   border-radius: var(--radius-small);
 }
 
+// LuCI supplies zone colors inline. Map its standard zones in both badge
+// and interface-card markup, including older literal background colors.
+.zonebadge,
+.ifacebox-head {
+  &[style*="--zone-color-rgb"][style*="144, 240, 144"] {
+    --zone-color-rgb: var(--zone-positive-rgb) !important;
+  }
+
+  &[style*="--zone-color-rgb"][style*="240, 144, 144"] {
+    --zone-color-rgb: var(--zone-negative-rgb) !important;
+  }
+
+  &[style*="--zone-color-rgb"][style*="238, 238, 238"] {
+    --zone-color-rgb: var(--zone-neutral-rgb) !important;
+  }
+
+  &[style*="--zone-color-rgb"][style*="144, 240, 144"],
+  &[style*="--zone-color-rgb"][style*="240, 144, 144"],
+  &[style*="--zone-color-rgb"][style*="238, 238, 238"] {
+    background-color: ~"rgb(var(--zone-color-rgb))" !important;
+    color: var(--zone-label-color);
+
+    strong {
+      color: inherit;
+    }
+  }
+}
+
 .zonebadge .ifacebadge {
   margin: .1rem .2rem;
   padding: .2rem .3rem;
@@ -155,7 +183,7 @@ span[data-tooltip] .label {
   white-space: pre;
   padding: 0.5rem;
   opacity: 0;
-  transition: opacity .25s ease-in;
+  transition: opacity .15s ease-in;
 }
 
 // ui.js supplies physical left/top coordinates on the shared body tooltip.
@@ -167,7 +195,7 @@ body > .cbi-tooltip[style*="left:"][style*="top:"] {
 
 .cbi-tooltip-container:hover .cbi-tooltip:not(:empty) {
   inset-inline-start: auto;
-  transition: opacity .25s ease-in;
+  transition: opacity .15s ease-in;
   opacity: 1;
 }
 
@@ -242,7 +270,7 @@ label[data-index][data-depends] {
   content: "";
   top: 0;
   background-color: rgba(0, 0, 0, .56);
-  transition: all 0.2s;
+  transition: opacity .15s ease;
 
   &.active {
     display: block;
@@ -275,7 +303,7 @@ input[name="nslookup"] {
 
 .controls {
   gap: 0.5rem;
-  margin: 0 1.25rem !important;
+  margin: 0 var(--section-inset);
 }
 
 .controls>div {

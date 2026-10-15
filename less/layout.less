@@ -34,7 +34,6 @@
     word-break: break-word;
     background-color: var(--surface-raised);
     box-shadow: var(--sidebar-shadow);
-    transition: all 0.2s;
 
     // Sidebar Header
     .sidenav-header {
@@ -72,7 +71,6 @@
             text-decoration: none;
             border-radius: var(--radius-menu);
             cursor: default;
-            transition: all 0.2s;
 
             // Active state
             &.active {
@@ -86,10 +84,12 @@
             }
 
             // Hover state
-            &:hover {
-                cursor: pointer;
-                color: var(--text-on-accent);
-                background: var(--primary);
+            @media (hover: hover) {
+                &:hover {
+                    cursor: pointer;
+                    color: var(--text-on-accent);
+                    background: var(--primary);
+                }
             }
 
             .menu-icon {
@@ -112,9 +112,14 @@
             .menu-icon[data-icon="vpn"] { color: var(--menu-icon-network); }
             .menu-icon[data-icon="logout"] { color: var(--menu-icon-muted); }
 
-            &.active .menu-icon,
-            &:hover .menu-icon {
+            &.active .menu-icon {
                 color: var(--text-on-accent);
+            }
+
+            @media (hover: hover) {
+                &:hover .menu-icon {
+                    color: var(--text-on-accent);
+                }
             }
         }
 
@@ -175,14 +180,15 @@
                             height: 2px;
                             content: "";
                             background-color: var(--primary);
-                            transition: all 0.2s;
                         }
 
-                        &:hover {
-                            background: none;
+                        @media (hover: hover) {
+                            &:hover {
+                                background: none;
 
-                            &::after {
-                                width: 100%;
+                                &::after {
+                                    width: 100%;
+                                }
                             }
                         }
                     }
@@ -204,16 +210,8 @@
                             height: 2px;
                             content: "";
                             background-color: var(--primary);
-                            transition: all 0.2s;
                         }
 
-                        &:hover {
-                            background: none;
-
-                            &::after {
-                                width: 100%;
-                            }
-                        }
                     }
                 }
             }
@@ -264,7 +262,6 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    transition: all 0.2s;
 
     // Main Content Container
     &>#maincontent {
@@ -402,7 +399,9 @@ header {
                     min-width: 0;
                     max-width: 100%;
                     line-height: 1.4;
-                    overflow-wrap: anywhere;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                     font-size: 1.5rem;
                     font-family: "TypoGraphica";
                     color: var(--text-on-accent);
@@ -443,7 +442,6 @@ header {
                 text-shadow: none;
                 border-radius: var(--radius-control);
                 cursor: pointer;
-                transition: all 0.3s;
                 box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
 
             }
@@ -524,6 +522,10 @@ footer {
 
 // Rotate one SVG so opening, closing and reversing remain continuous.
 @media (prefers-reduced-motion: no-preference) {
+    .main-left {
+        transition: width .2s ease;
+    }
+
     .main-left .nav .menu::after {
         transition: transform .2s ease;
     }

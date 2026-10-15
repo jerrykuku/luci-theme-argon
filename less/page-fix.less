@@ -44,7 +44,78 @@
 // System - SSH Keys
 [data-page="admin-system-admin-sshkeys"] {
     .cbi-dynlist {
-        margin-left: 1rem;
+        margin-inline: var(--section-inset);
+        max-width: calc(100% - 2 * var(--section-inset));
+
+        > .item {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            padding-inline-end: 2.5rem;
+            overflow-wrap: anywhere;
+
+            small,
+            code {
+                white-space: normal;
+                overflow-wrap: anywhere;
+            }
+
+            &::after {
+                position: absolute;
+                inset-inline-end: 0;
+                top: 0;
+                width: 2.5rem;
+                min-height: 2.5rem;
+            }
+        }
+    }
+}
+
+// Native package-manager controls inject their own flex rules after the theme.
+[data-page="admin-system-package-manager"],
+[data-page="admin-system-opkg"] {
+    .controls {
+        min-width: 0;
+        width: 100%;
+        margin: 0;
+        padding: var(--field-gap) var(--section-inset);
+        gap: var(--field-gap);
+        border-radius: var(--radius-card);
+        background: var(--surface-color);
+
+        > div {
+            flex: 1 1 18rem;
+            min-width: 0;
+            padding: 0;
+            gap: var(--control-gap);
+            white-space: normal;
+        }
+
+        > div:first-child {
+            flex-basis: 100%;
+            min-width: 0;
+        }
+
+        > div > label {
+            min-width: 0;
+        }
+
+        .control-group > input {
+            flex: 1 1 0;
+            min-width: 0;
+            width: 0;
+        }
+
+        .pager {
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+        input[type="radio"] {
+            top: 0;
+            right: 0;
+            vertical-align: middle;
+        }
     }
 }
 
@@ -61,9 +132,7 @@
     [data-tab-title] p {
         margin-left: 0;
         margin-bottom: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: block;
     }
 
     textarea {
@@ -71,7 +140,7 @@
         overflow-y: auto;
         width: 100%;
         min-height: 15rem;
-        margin: 0 1rem;
+        margin: 0;
         padding: 1rem;
         resize: none;
         color: var(--muted-text);
@@ -102,7 +171,7 @@
             color: var(--muted-text);
             border-radius: var(--radius-control);
             border: 1px solid var(--border-color);
-            transition: all 0.2s ease;
+            transition: box-shadow .15s ease;
 
             &:focus-visible {
                 outline: none;
@@ -325,28 +394,6 @@
     }
 }
 
-[data-page="admin-system-package-manager"] {
-    .controls {
-        div:nth-child(5) {
-            >label {
-                margin-bottom: 5px;
-            }
-
-            >div {
-                label {
-                    margin-top: 1rem;
-
-                    input {
-                        top: -2px;
-                        right: 0;
-                        vertical-align: middle;
-                    }
-                }
-            }
-        }
-    }
-}
-
 // System - Power Management
 [data-page="admin-system-reboot"] {
     p {
@@ -415,37 +462,7 @@
 // ==========================================================================
 
 // Network - Interfaces
-[data-page="admin-network-network"],
-[data-page="admin-network-firewall-rules"] {
-    .zonebadge[style*="--zone-color-rgb"][style*="144, 240, 144"] {
-        --zone-color-rgb: var(--zone-positive-rgb) !important;
-    }
-
-    .zonebadge[style*="--zone-color-rgb"][style*="240, 144, 144"] {
-        --zone-color-rgb: var(--zone-negative-rgb) !important;
-    }
-
-    .zonebadge[style*="--zone-color-rgb"][style*="238, 238, 238"] {
-        --zone-color-rgb: var(--zone-neutral-rgb) !important;
-    }
-
-    .zonebadge strong {
-        color: var(--zone-label-color);
-    }
-}
-
 [data-page="admin-network-network"] {
-    .ifacebox-head[style*="--zone-color-rgb: 144, 240, 144"] {
-        --zone-color-rgb: var(--zone-positive-rgb) !important;
-    }
-
-    .ifacebox-head[style*="--zone-color-rgb: 240, 144, 144"] {
-        --zone-color-rgb: var(--zone-negative-rgb) !important;
-    }
-
-    .ifacebox-head[style*="--zone-color-rgb: 238, 238, 238"] {
-        --zone-color-rgb: var(--zone-neutral-rgb) !important;
-    }
     .cbi-value-field {
         .cbi-dynlist {
             padding: 0 !important;
@@ -593,6 +610,7 @@
     .tr {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
 
         .td {
             background-color: var(--surface-color) !important;
@@ -600,13 +618,22 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            flex: 1;
+            flex: 1 1 18rem;
+            min-width: 0;
 
             input {
+                flex: 1 1 0;
+                width: 0;
+                min-width: 0;
                 margin: 0 !important;
                 border-inline-end: none !important;
                 border-end-end-radius: 0 !important;
                 border-start-end-radius: 0 !important;
+            }
+
+            .diag-action {
+                flex: 0 0 auto;
+                min-width: 6rem;
             }
 
             .cbi-dropdown,
@@ -626,6 +653,15 @@
                 }
             }
         }
+    }
+
+    .table,
+    .table > tbody {
+        display: block;
+    }
+
+    .diag-action .cbi-dropdown:not([multiple]) > .more {
+        display: none;
     }
 
 
@@ -657,6 +693,11 @@
 
 // 3. Status Pages
 // ==========================================================================
+
+[data-page="admin-status-processes"] .cbi-section-actions {
+    width: 18rem;
+    max-width: 100%;
+}
 
 .cbi-section.fade-in .cbi-title {
     position: relative;
@@ -735,6 +776,29 @@
     }
 }
 
+// Status - Realtime Graphs
+[data-page^="admin-status-realtime"] {
+    .cbi-section > div:has(> svg) {
+        // Native realtime views paint the plot background with inline styles.
+        background: var(--surface-color) !important;
+        border: 0 !important;
+        border-start-start-radius: var(--radius-card);
+        border-start-end-radius: var(--radius-card);
+    }
+
+    #view svg text {
+        fill: var(--text-strong) !important;
+        font-family: inherit !important;
+        font-variant-numeric: tabular-nums;
+        text-shadow: none !important;
+    }
+
+    #view svg line {
+        stroke: var(--border-strong) !important;
+        stroke-width: 1px !important;
+    }
+}
+
 // Status - Channel Analysis
 [data-page="admin-status-channel_analysis"] [data-tab-title]:not([data-tab-active="true"]) {
     // LuCI measures every band's graph before its tab is activated. Preserve
@@ -752,17 +816,66 @@
 }
 
 // Status - NFTables
-[data-page="admin-status-nftables"] {
-    .nft-chain-hook {
-        padding: 0.5rem 1.25rem;
-    }
+@import "pages/nftables.less";
 
-    // Fixed the issue of .alert-message not closing properly.
-    .alert-message { 
-        opacity: 1;
-    }
-    .alert-message.fade-out {
-        opacity: 0;
+// Native log filters have several ungrouped inline controls. Keep each label
+// with its field on narrow screens without changing filtering or log wrapping.
+@media screen and (max-width: 600px) {
+    #content_syslog {
+        > div:has(> #logFacilitySelect),
+        > div:has(> #logTextFilter),
+        > div:has(> #logFromTime) {
+            display: grid;
+            grid-template-columns: max-content 1rem max-content minmax(0, 1fr);
+            align-items: center;
+            gap: var(--control-gap);
+
+            > label,
+            > input,
+            > select {
+                margin: 0 !important;
+            }
+
+            > label {
+                white-space: nowrap;
+            }
+
+            > input:not([type="checkbox"]),
+            > select {
+                min-width: 0;
+                width: 100%;
+            }
+
+            > label[for="logMaxRows"] {
+                grid-column: 1 / 4;
+            }
+
+            > #logMaxRows,
+            > #logToTime {
+                grid-column: 4;
+            }
+        }
+
+        > div:has(> #logFromTime) > label[for="logSeveritySelect"] {
+            grid-column: 1 / 4;
+        }
+
+        > div:has(> #invertSeverity) {
+            display: flex;
+            align-items: center;
+            gap: .25rem;
+
+            > label {
+                margin: 0 !important;
+                white-space: nowrap;
+            }
+
+            > select {
+                flex: 1;
+                min-width: 0;
+                width: 0;
+            }
+        }
     }
 }
 

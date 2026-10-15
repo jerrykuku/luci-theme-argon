@@ -13,7 +13,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  transition: all .2s ease-in-out;
+  transition: box-shadow .15s ease-out;
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
@@ -40,44 +40,12 @@
   appearance: none !important;
 }
 
-.btn:hover,
-.btn:focus,
-.btn:active,
-.cbi-button:hover,
-.cbi-button:focus,
-.cbi-button:active,
-.item:hover::after,
-.item:focus::after,
-.item:active::after,
-.cbi-page-actions .cbi-button-apply+.cbi-button-save:hover,
-.cbi-page-actions .cbi-button-apply+.cbi-button-save:focus,
-.cbi-page-actions .cbi-button-apply+.cbi-button-save:active {
-  text-decoration: none;
-  outline: 0;
-}
-
-.btn:hover,
-.btn:focus,
-.cbi-button:hover,
-.cbi-button:focus,
-.item:hover::after,
-.item:focus::after {
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
-}
-
-.btn:active,
-.cbi-button:active,
-.item:active::after {
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
-}
-
-.cbi-button-up:hover,
-.cbi-button-up:focus {
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
-}
-
-.cbi-button-up:active {
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
+@media (hover: hover) {
+  .btn:hover,
+  .cbi-button:hover,
+  .item:hover::after {
+    box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
+  }
 }
 
 .btn:disabled,
@@ -86,6 +54,24 @@
   pointer-events: none;
   opacity: .5;
   box-shadow: none;
+}
+
+.btn:focus-visible,
+.cbi-button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  button.btn,
+  button.cbi-button,
+  input.cbi-button {
+    transition: scale .15s ease-out, box-shadow .15s ease-out;
+
+    &:not(:disabled):not([aria-disabled="true"]):not([data-static]):active {
+      scale: .96;
+    }
+  }
 }
 
 /* gray */

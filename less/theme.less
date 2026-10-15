@@ -1,6 +1,6 @@
 // out: false
 // Private LESS primitives: only semantic token declarations consume these values.
-// These are existing sRGB values; no new ramp steps or colour changes.
+// Components consume semantic roles rather than the private sRGB primitives.
 @neutral-0: #fff;
 @neutral-50: #f9f9f9;
 @neutral-100: #f6f9fc;
@@ -40,14 +40,15 @@
   // Text roles
   text-strong: #32325d, @neutral-350;
   text-color: #525f7f, @neutral-350;
-  muted-text: @neutral-500, @neutral-400;
-  control-text: @neutral-500, @neutral-350;
+  muted-text: #626f80, @neutral-400;
+  control-text: var(--text-color);
   soft-text: #ced4da, @neutral-350;
   text-on-accent: @neutral-0;
   text-inverse: @neutral-0;
-  placeholder-color: @neutral-250, @neutral-750;
+  placeholder-color: #626f80, @neutral-400;
+  focus-ring: #3446ab, #b7c4ff;
   link-color: var(--primary), #a5b2ff;
-  code-text: #212529;
+  code-text: #212529, @neutral-350;
   log-text: #242424, @neutral-350;
   overlay-text: #172b4d, @neutral-400;
 
@@ -137,7 +138,7 @@
   zone-positive-rgb: ~"144, 240, 144", ~"73, 126, 73";
   zone-negative-rgb: ~"240, 144, 144", ~"156, 79, 79";
   zone-neutral-rgb: ~"238, 238, 238", ~"112, 112, 112";
-  zone-label-color: @neutral-800, @neutral-350;
+  zone-label-color: @neutral-800, @neutral-0;
   plugin-text-muted: @neutral-500, #a1a1aa;
   plugin-neutral: @neutral-500, @neutral-650;
   plugin-scrollbar: @neutral-100, @neutral-650;

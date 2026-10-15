@@ -126,7 +126,7 @@
 					<div class="container">
 						<div class="flex1">
 							<button type="button" class="showSide" aria-label="{{ entityencode(_('Toggle navigation'), true) }}" aria-controls="mainmenu" aria-expanded="false"></button>
-							<a class="brand" href="#">{{ hostname }}</a>
+							<a class="brand" href="#" title="{{ entityencode(hostname, true) }}">{{ hostname }}</a>
 						</div>
 						<div class="status" id="indicators"></div>
 					</div>

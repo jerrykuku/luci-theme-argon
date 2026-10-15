@@ -33,16 +33,15 @@
   border-radius: var(--radius-card);
   box-shadow: 0 4px 8px rgba(0, 0, 0, .03);
 
-  li[class~="active"],
-  li:hover {
+  li[class~="active"] {
     cursor: pointer;
-    border-bottom: 0.18751rem solid var(--primary);
-    color: var(--primary);
+    border-bottom: 0.18751rem solid var(--tab-color);
+    color: var(--text-strong);
     background-color: var(--surface-active);
     margin-bottom: 0;
 
     a {
-      color: var(--tab-color);
+      color: var(--text-strong);
     }
   }
 
@@ -52,14 +51,12 @@
     padding: 0.875rem 0rem;
     border-bottom: 0.18751rem solid rgba(0, 0, 0, 0);
     margin: 0;
-    transition: all 0.2s;
 
     a {
       text-decoration: none;
       color: var(--tab-inactive-color);
       padding: 0.5rem 0.8rem;
     }
-
   }
 }
 
@@ -82,27 +79,29 @@
       padding: 0.5rem 0.8rem;
     }
 
-    &:hover {
-      cursor: pointer;
-      border-bottom: 0.18751rem solid var(--primary);
-      color: var(--primary);
-      background-color: var(--surface-active);
-      margin-bottom: 0;
-
-      a {
-        color: var(--text-color);
-      }
-    }
   }
 
   li[class~="cbi-tab"] {
-    border-bottom: 0.18751rem solid var(--primary);
-    color: var(--primary);
+    border-bottom: 0.18751rem solid var(--tab-color);
+    color: var(--text-strong);
     background-color: var(--surface-active);
     margin-bottom: 0;
 
     a {
-      color: var(--primary);
+      color: var(--text-strong);
+    }
+  }
+}
+
+@media (hover: hover) {
+  .tabs > li:hover,
+  .cbi-tabmenu > li:hover {
+    cursor: pointer;
+    border-bottom-color: var(--tab-color);
+    background-color: var(--surface-active);
+
+    > a {
+      color: var(--text-strong);
     }
   }
 }
