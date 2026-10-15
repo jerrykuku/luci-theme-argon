@@ -170,7 +170,11 @@
     }
 
     textarea {
-        line-height: 1.25;
+        direction: ltr;
+        unicode-bidi: plaintext;
+        text-align: start;
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        line-height: 1.5;
         overflow-y: auto;
         width: 100%;
         min-height: 15rem;
@@ -182,9 +186,23 @@
         border: 1px solid var(--border-color);
 
         &:focus-visible {
-            outline: none;
-            box-shadow: none;
-            border: 1px solid var(--primary);
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+    }
+
+    @media screen and (max-width: 1152px) {
+        .td[data-title] {
+            flex-basis: 50%;
+        }
+
+        .td.cbi-section-actions {
+            flex-basis: 100%;
+
+            > div {
+                display: flex;
+                justify-content: flex-end;
+            }
         }
     }
 }

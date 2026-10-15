@@ -4210,7 +4210,11 @@ pre.command-output {
   display: block;
 }
 [data-page="admin-system-startup"] textarea {
-  line-height: 1.25;
+  direction: ltr;
+  unicode-bidi: plaintext;
+  text-align: start;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  line-height: 1.5;
   overflow-y: auto;
   width: 100%;
   min-height: 15rem;
@@ -4222,9 +4226,20 @@ pre.command-output {
   border: 1px solid var(--border-color);
 }
 [data-page="admin-system-startup"] textarea:focus-visible {
-  outline: none;
-  box-shadow: none;
-  border: 1px solid var(--primary);
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-system-startup"] .td[data-title] {
+    flex-basis: 50%;
+  }
+  [data-page="admin-system-startup"] .td.cbi-section-actions {
+    flex-basis: 100%;
+  }
+  [data-page="admin-system-startup"] .td.cbi-section-actions > div {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 [data-page="admin-system-crontab"] #view p textarea {
   line-height: 1.25;
