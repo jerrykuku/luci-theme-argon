@@ -2677,6 +2677,10 @@ td > table > tbody > tr > td,
   border-end-start-radius: 0;
   margin-inline-start: 0;
 }
+.control-group:has(> input:first-child + .cbi-button) > .cbi-input-password + .cbi-button {
+  flex-basis: 2.5rem;
+  padding-inline: 0;
+}
 #cbi-firewall-zone .cbi-input-select,
 #cbi-network-switch_vlan .cbi-input-select {
   min-width: 11rem;
