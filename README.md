@@ -78,6 +78,12 @@ uci commit argon
 
 Without a key, the login page uses a local background. Bing and Wallhaven wallpaper options are unaffected.
 
+## Template structure
+
+`ucode/template/themes/argon/` retains LuCI's `header`, `header_login`, `out_header_login`, `sysauth`, and both `footer` entry points. Application and login pages share `head.ut` for validated settings, metadata, styles, and conditional application resources.
+
+`sysauth.ut` assembles the login page; `login_background.ut` owns wallpaper selection and image/video rendering, while `login_form.ut` owns authentication messages, fields, plugin content, and script order. Both footers share `page_scripts.ut`; login pages do not load application LuCI modules. Pass local data through the second argument to `include` rather than relying on the caller's local variables.
+
 ## Styles and menu icons
 
 Light and dark modes share `htdocs/luci-static/argon/css/cascade.css`. Maintain palette variables in `less/theme.less` and keep one set of component rules. After editing LESS, run `lessc less/cascade.less htdocs/luci-static/argon/css/cascade.css`. Automatic, forced light, forced dark, and custom primary colors remain supported.

@@ -78,6 +78,12 @@ uci commit argon
 
 未配置密钥时，登录页会使用本地背景。Bing 和 Wallhaven 壁纸选项不受影响。
 
+## 模板结构
+
+`ucode/template/themes/argon/` 保留 LuCI 的 `header`、`header_login`、`out_header_login`、`sysauth` 和两种 `footer` 入口。普通页与登录页共用 `head.ut`，集中维护配置校验、元信息、样式和后台专用资源的加载条件。
+
+`sysauth.ut` 组织登录页面结构，`login_background.ut` 负责壁纸选择及图片/视频，`login_form.ut` 负责认证提示、字段、插件内容和脚本顺序。两种页脚共用 `page_scripts.ut`；登录页不会加载后台的 LuCI 模块。拆分模板时，应通过 `include` 的第二个参数传递局部数据，避免依赖调用方的局部变量。
+
 ## 样式与菜单图标
 
 亮色、暗色共用 `htdocs/luci-static/argon/css/cascade.css`。在 `less/theme.less` 集中维护颜色变量，各组件只维护一套样式；修改 LESS 后使用 `lessc less/cascade.less htdocs/luci-static/argon/css/cascade.css` 生成 CSS。主题设置中的自动、亮色、暗色模式和自定义主色继续生效。

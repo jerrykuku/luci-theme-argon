@@ -136,7 +136,7 @@ function lstat(path) {
   return { type: settings.types?.[parts[length(parts) - 1]] ?? 'file' };
 }
 `;
-	const catalog = settings => runUcodeSnippet('ucode/template/themes/argon/header.ut',
+	const catalog = settings => runUcodeSnippet('ucode/template/themes/argon/head.ut',
 		'const icon_dir =', '\n\t%}', setup, 'menu_icons', settings);
 	assert.deepEqual(catalog({ files: ['status.svg', 'custom-menu.svg', 'favicon.png', '../system.svg',
 		'bad name.svg', 'bad".svg', 'folder.svg', 'linked.svg'], types: { 'folder.svg': 'directory', 'linked.svg': 'symlink' } }),
@@ -145,39 +145,36 @@ function lstat(path) {
 });
 const configResult = '{mode, primary, dark_primary, blur_radius, blur_radius_dark, blur_opacity, blur_opacity_dark, bar_color}';
 
-for (const template of ['header.ut', 'header_login.ut']) {
-	const file = `ucode/template/themes/argon/${template}`;
-	test(`${template} uses safe defaults for missing and invalid settings`, () => {
-		const empty = runUcodeSnippet(file, 'function validColor', '\n-%}', configSetup, configResult);
-		assert.deepEqual(empty, {
-			mode: 'normal', primary: '#5e72e4', dark_primary: '#483d8b',
-			blur_radius: '10', blur_radius_dark: '10',
-			blur_opacity: '0.5', blur_opacity_dark: '0.5', bar_color: '#5e72e4'
-		});
-		assert.deepEqual(runUcodeSnippet(file, 'function validColor', '\n-%}', configSetup, configResult, {}, false), empty);
-		const invalid = runUcodeSnippet(file, 'function validColor', '\n-%}', configSetup, configResult, {
-			primary: 'red;}', blur: '-1', transparency: '2', mode: 'unknown'
-		});
-		assert.deepEqual(invalid, empty);
-		const dark = runUcodeSnippet(file, 'function validColor', '\n-%}', configSetup, configResult, {
-			primary: '#123456', dark_primary: '#abcdef', blur: '0', transparency: '0.7', mode: 'dark'
-		});
-		assert.equal(dark.mode, 'dark');
-		assert.equal(dark.bar_color, '#abcdef');
-		assert.equal(dark.blur_radius, '0');
-		assert.equal(dark.blur_opacity, '0.7');
-		const light = runUcodeSnippet(file, 'function validColor', '\n-%}', configSetup, configResult, {
-			primary: '#123456', mode: 'light'
-		});
-		assert.equal(light.mode, 'light');
-		assert.equal(light.bar_color, '#123456');
+test('shared head uses safe defaults for missing and invalid settings', () => {
+	const empty = runUcodeSnippet('ucode/template/themes/argon/head.ut', 'function validColor', '\n-%}', configSetup, configResult);
+	assert.deepEqual(empty, {
+		mode: 'normal', primary: '#5e72e4', dark_primary: '#483d8b',
+		blur_radius: '10', blur_radius_dark: '10',
+		blur_opacity: '0.5', blur_opacity_dark: '0.5', bar_color: '#5e72e4'
 	});
-}
+	assert.deepEqual(runUcodeSnippet('ucode/template/themes/argon/head.ut', 'function validColor', '\n-%}', configSetup, configResult, {}, false), empty);
+	const invalid = runUcodeSnippet('ucode/template/themes/argon/head.ut', 'function validColor', '\n-%}', configSetup, configResult, {
+		primary: 'red;}', blur: '-1', transparency: '2', mode: 'unknown'
+	});
+	assert.deepEqual(invalid, empty);
+	const dark = runUcodeSnippet('ucode/template/themes/argon/head.ut', 'function validColor', '\n-%}', configSetup, configResult, {
+		primary: '#123456', dark_primary: '#abcdef', blur: '0', transparency: '0.7', mode: 'dark'
+	});
+	assert.equal(dark.mode, 'dark');
+	assert.equal(dark.bar_color, '#abcdef');
+	assert.equal(dark.blur_radius, '0');
+	assert.equal(dark.blur_opacity, '0.7');
+	const light = runUcodeSnippet('ucode/template/themes/argon/head.ut', 'function validColor', '\n-%}', configSetup, configResult, {
+		primary: '#123456', mode: 'light'
+	});
+	assert.equal(light.mode, 'light');
+	assert.equal(light.bar_color, '#123456');
+});
 
 test('login layouts allow supported styles and fall back for old or invalid configs', () => {
 	const selected = (value, hasConfig = true) => runUcodeSnippet(
 		'ucode/template/themes/argon/sysauth.ut',
-		"let login_style = 'classic';", '\n\t// Per-request',
+		"let login_style = 'classic';", '\n\tconst boardinfo',
 		configSetup + '\nlet fs = { access };', 'login_style', { login_style: value }, hasConfig
 	);
 	assert.equal(selected('classic'), 'classic');
@@ -193,7 +190,7 @@ let fs = { lsdir: path => ['photo.jpg', 'my.photo.jpg', 'space name.webp', 'hash
 let http = { urlencode: value => replace(replace(replace(value, ' ', '%20'), '#', '%23'), '?', '%3F') };
 `;
 	const backgrounds = runUcodeSnippet(
-		'ucode/template/themes/argon/sysauth.ut',
+		'ucode/template/themes/argon/login_background.ut',
 		'const imageTypes', '\n\tfunction selectBackground',
 		setup, 'fetchMedia("/www/luci-static/argon/background", "/luci-static/argon/background/")'
 	);
@@ -222,9 +219,9 @@ function fetchMedia() {
 }
 function randomIndex() { return 0; }
 `;
-	const file = 'ucode/template/themes/argon/sysauth.ut';
+	const file = 'ucode/template/themes/argon/login_background.ut';
 	const start = 'function selectBackground';
-	const end = '\n\tconst boardinfo';
+	const end = '\n\tconst bgArry';
 	const selected = settings => runUcodeSnippet(file, start, end, setup, 'selectBackground("/luci-static/argon/background/")', settings);
 	assert.equal(selected({ url: 'https://example.com/image.jpg' }).bgUrl, 'https://example.com/image.jpg');
 	for (const invalid of ['http://example.com/image.jpg', 'https://example.com/a b.jpg', 'javascript:alert(1)', 'https://example.com/"bad'])
@@ -238,7 +235,7 @@ function randomIndex() { return 0; }
 });
 
 test('authentication fields preserve numeric length limits and escape attributes', () => {
-	const source = fs.readFileSync(path.join(root, 'ucode/template/themes/argon/sysauth.ut'), 'utf8');
+	const source = fs.readFileSync(path.join(root, 'ucode/template/themes/argon/login_form.ut'), 'utf8');
 	const first = source.indexOf('{%- if (auth_fields): %}');
 	const last = source.indexOf('{%- if (auth_html): %}', first);
 	assert.ok(first >= 0 && last > first);

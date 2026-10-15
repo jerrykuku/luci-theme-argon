@@ -30,9 +30,6 @@
 </footer>
 </div>
 </div>
-	<script>
-		// thanks for Jo-Philipp Wich <jow@openwrt.org>
-		var luciLocation = {{ ctx.path }};
-	</script>
+{% include('themes/' + theme + '/page_scripts', { is_login: true }) %}
 </body>
 </html>
