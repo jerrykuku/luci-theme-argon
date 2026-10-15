@@ -4095,6 +4095,35 @@ pre.command-output {
 [data-page="admin-system-admin-password"] [data-name="pw2"] .cbi-value-description span[style="color:green"] {
   color: var(--strength-strong-text) !important;
 }
+[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear > :not(h3, .cbi-section-remove) {
+  grid-column: 1 / -1;
+}
+[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear > h3 {
+  grid-column: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear > .cbi-section-remove {
+  grid-column: 2;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+  margin: 0;
+  padding: var(--control-gap) var(--section-inset);
+  padding-inline-start: 0;
+}
+[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear > .cbi-section-remove > .cbi-button {
+  min-height: 2.5rem;
+}
+[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear > .cbi-section-remove ~ .cbi-section-remove {
+  grid-column: 1 / -1;
+  border-block-start: 1px solid var(--border-color);
+}
 [data-page="admin-system-admin-sshkeys"] .cbi-dynlist {
   margin-inline: var(--section-inset);
   max-width: calc(100% - 2 * var(--section-inset));

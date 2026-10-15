@@ -1,0 +1,39 @@
+// out: false
+
+[data-page="admin-system-admin-dropbear"] {
+  #cbi-dropbear-dropbear {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+
+    > :not(h3, .cbi-section-remove) {
+      grid-column: 1 / -1;
+    }
+
+    > h3 {
+      grid-column: 1;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    > .cbi-section-remove {
+      grid-column: 2;
+      display: flex;
+      justify-content: flex-end;
+      min-width: 0;
+      margin: 0;
+      padding: var(--control-gap) var(--section-inset);
+      padding-inline-start: 0;
+
+      > .cbi-button {
+        min-height: 2.5rem;
+      }
+    }
+
+    // Further instances keep their own Delete above their corresponding fields.
+    > .cbi-section-remove ~ .cbi-section-remove {
+      grid-column: 1 / -1;
+      border-block-start: 1px solid var(--border-color);
+    }
+  }
+}
