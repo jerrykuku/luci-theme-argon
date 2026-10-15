@@ -130,11 +130,10 @@
     top: 0;
   }
 
-  ul {
-    li {
-      list-style-type: square;
-      color: var(--text-color);
-    }
+  // Only prose lists get markers; tab bars and dropdowns are controls.
+  > ul:not(.cbi-tabmenu):not(.tabs) > li {
+    list-style-type: square;
+    color: var(--text-color);
   }
 
   p {

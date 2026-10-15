@@ -3269,7 +3269,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .modal label > input[type="checkbox"] {
   top: 0;
 }
-.modal ul li {
+.modal > ul:not(.cbi-tabmenu):not(.tabs) > li {
   list-style-type: square;
   color: var(--text-color);
 }
@@ -4479,6 +4479,11 @@ pre.command-output {
 }
 [data-page="admin-system-poweroffdevice"] .btn.cbi-button.cbi-button-negative {
   align-self: flex-end;
+}
+@media screen and (min-width: 1153px) {
+  [data-page="admin-network-network"] #cbi-network-interface .cbi-section-actions {
+    width: 22rem !important;
+  }
 }
 [data-page="admin-network-network"] .cbi-value-field .cbi-dynlist {
   padding: 0 !important;
