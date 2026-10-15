@@ -110,7 +110,7 @@ Top-level menu icons resolve `htdocs/luci-static/argon/icon/<node-name>.svg`, su
 
 Icons use CSS masks so their colors follow the theme and menu states. Use monochrome SVGs with a transparent background and a `viewBox`. This is separate from the browser icon and login logo settings below.
 
-All 28 visible icons in `argon.woff2` are exported to this directory using service or function names, such as `status.svg`, `services.svg`, `docker.svg`, and `user.svg`. Menu icons use these original font outlines. See the [font icon index](htdocs/luci-static/argon/icon/README.md) for previews and code point mappings. The source font is retained for existing font-based icons.
+All 28 visible icons from the former `argon.woff2` font are exported to this directory using service or function names, such as `status.svg`, `services.svg`, `docker.svg`, and `user.svg`. See the [SVG icon index](htdocs/luci-static/argon/icon/README.md) for previews and original code point mappings. Login field icons and the mobile menu toggle also use SVGs; the original icon font files are no longer shipped.
 
 ## Custom browser icon and login logo
 

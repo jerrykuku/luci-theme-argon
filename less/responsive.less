@@ -370,16 +370,12 @@
         justify-content: center;
 
         &::before {
-            font-family: 'argon';
-            font-style: normal;
-            font-weight: normal;
-            font-variant: normal;
-            text-transform: none;
-            line-height: 1;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            content: "\e20e";
-            font-size: 1.7rem;
+            content: "";
+            width: 1.7rem;
+            height: 1.7rem;
+            background-color: currentColor;
+            -webkit-mask: url('../icon/menu.svg') center / contain no-repeat;
+            mask: url('../icon/menu.svg') center / contain no-repeat;
         }
     }
 

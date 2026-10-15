@@ -1,5 +1,6 @@
 {
-  "source": "../fonts/argon.woff2",
+  "source": "argon.woff2",
+  "sourceIncluded": false,
   "sourceSha256": "a2b317e0113b0e5eb3ffe4ec7559d784564f02e8624ba29bbc44d7afd74585a4",
   "unitsPerEm": 1024,
   "ascent": 960,

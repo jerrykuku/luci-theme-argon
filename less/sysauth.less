@@ -21,17 +21,6 @@
     width: 100%;
 }
 
-.icon-base() {
-    font-family: 'argon' !important;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 .login-page {
     display: flex;
     height: 100%;
@@ -167,13 +156,16 @@
 
                     // Icon styling
                     &::before {
-                        .icon-base();
                         position: absolute;
                         top: 10px;
                         left: 10px;
                         z-index: 100;
-                        font-size: 1.5rem;
-                        color: var(--overlay-text);
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        background-color: var(--overlay-text);
+                        -webkit-mask: var(--login-field-icon) center / contain no-repeat;
+                        mask: var(--login-field-icon) center / contain no-repeat;
+                        pointer-events: none;
                     }
 
                     // Animated border
@@ -218,13 +210,15 @@
                         margin-bottom: 2rem;
                     }
 
-                    // Icon content
+                    // Icons use the same SVG outlines as the former font glyphs.
                     &.user-icon::before {
-                        content: "\e971";
+                        content: "";
+                        --login-field-icon: url('../icon/user.svg');
                     }
 
                     &.pass-icon::before {
-                        content: "\e910";
+                        content: "";
+                        --login-field-icon: url('../icon/password.svg');
                     }
                 }
             }

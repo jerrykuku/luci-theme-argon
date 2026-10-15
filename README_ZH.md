@@ -110,7 +110,7 @@ LuCI 的下拉展开样式集中在 `components/dropdowns.less`：分区按钮�
 
 SVG 以 CSS mask 显示，图标颜色由主题和菜单悬停、选中状态控制。建议使用透明背景、带 `viewBox` 的单色 SVG。此机制与下方的网站图标、登录 Logo 设置独立。
 
-`argon.woff2` 中的全部 28 个可见图标已导出到同一目录，按服务或功能命名，例如 `status.svg`、`services.svg`、`docker.svg`、`user.svg`。菜单图标使用字体中的原始轮廓。可在[字体图标索引](htdocs/luci-static/argon/icon/README.md)中预览并查看编码对照；源字体保留供现有字体图标引用。
+原 `argon.woff2` 中的全部 28 个可见图标已导出到同一目录，按服务或功能命名，例如 `status.svg`、`services.svg`、`docker.svg`、`user.svg`。可在[SVG 图标索引](htdocs/luci-static/argon/icon/README.md)中预览并查看原始编码对照。登录输入框图标和移动端菜单按钮也已使用 SVG，不再附带原图标字体文件。
 
 ## 自定义网站图标与登录 Logo
 

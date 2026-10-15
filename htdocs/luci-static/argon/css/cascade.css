@@ -425,14 +425,6 @@
   font-style: normal;
   font-display: swap;
 }
-/* Icon Font */
-@font-face {
-  font-family: 'argon';
-  src: url('../fonts/argon.woff2') format('woff2'), url('../fonts/argon.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
 * {
   margin: 0;
   padding: 0;
@@ -1109,20 +1101,16 @@ select[multiple] {
   margin-bottom: 1.25rem;
 }
 .login-page .login-container .login-form .form-login .input-group::before {
-  font-family: 'argon' !important;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   position: absolute;
   top: 10px;
   left: 10px;
   z-index: 100;
-  font-size: 1.5rem;
-  color: var(--overlay-text);
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--overlay-text);
+  -webkit-mask: var(--login-field-icon) center / contain no-repeat;
+  mask: var(--login-field-icon) center / contain no-repeat;
+  pointer-events: none;
 }
 .login-page .login-container .login-form .form-login .input-group .border {
   position: absolute;
@@ -1163,10 +1151,12 @@ select[multiple] {
   margin-bottom: 2rem;
 }
 .login-page .login-container .login-form .form-login .input-group.user-icon::before {
-  content: "\e971";
+  content: "";
+  --login-field-icon: url('../icon/user.svg');
 }
 .login-page .login-container .login-form .form-login .input-group.pass-icon::before {
-  content: "\e910";
+  content: "";
+  --login-field-icon: url('../icon/password.svg');
 }
 .login-page .login-container .login-form .cbi-button-apply {
   width: 100% !important;
@@ -6697,16 +6687,12 @@ pre.command-output {
     justify-content: center;
   }
   header .showSide::before {
-    font-family: 'argon';
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "\e20e";
-    font-size: 1.7rem;
+    content: "";
+    width: 1.7rem;
+    height: 1.7rem;
+    background-color: currentColor;
+    -webkit-mask: url('../icon/menu.svg') center / contain no-repeat;
+    mask: url('../icon/menu.svg') center / contain no-repeat;
   }
   header > .fill > .container > .flex1 > .brand {
     display: inline-block;
