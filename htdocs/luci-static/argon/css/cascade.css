@@ -2358,7 +2358,8 @@ td > table > tbody > tr > td,
   overflow-wrap: anywhere;
 }
 .cbi-page-actions {
-  padding: var(--field-gap) var(--section-inset);
+  padding: 0;
+  gap: var(--control-gap);
 }
 .cbi-page-actions .cbi-button-link:first-child {
   margin-inline-end: auto;
@@ -2368,7 +2369,7 @@ td > table > tbody > tr > td,
   flex-wrap: wrap;
   min-width: 0;
   max-width: 100%;
-  gap: var(--action-gap);
+  gap: inherit;
 }
 .cbi-page-actions .cbi-dropdown .open {
   color: var(--text-on-accent);
@@ -4373,9 +4374,6 @@ pre.command-output {
   padding: 1rem 0 1rem 1rem;
   color: var(--text-color);
 }
-[data-page="admin-system-flash"] .cbi-page-actions {
-  padding: 0rem 1rem 1rem 0rem;
-}
 [data-page="admin-system-flash"] .modal label > input[type="checkbox"] {
   vertical-align: text-top;
   top: auto;
@@ -4604,6 +4602,11 @@ pre.command-output {
   [data-page="admin-network-firewall-rules"] .tr[data-title]::before,
   [data-page="admin-network-firewall-snats"] .tr[data-title]::before {
     overflow-wrap: anywhere;
+  }
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-network-network"] .cbi-map-tabbed > .cbi-tblsection > .table > .tbody {
+    display: block;
   }
 }
 @media screen and (min-width: 1153px) {

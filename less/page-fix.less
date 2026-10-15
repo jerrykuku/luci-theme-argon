@@ -368,10 +368,6 @@
         color: var(--text-color);
     }
 
-    .cbi-page-actions {
-        padding: 0rem 1rem 1rem 0rem;
-    }
-
     .modal label>input[type="checkbox"] {
         vertical-align: text-top;
         top: auto;
@@ -565,6 +561,13 @@
 
 // Network - Interfaces
 [data-page="admin-network-network"] {
+    @media screen and (max-width: 1152px) {
+        // A row group otherwise keeps its intrinsic width inside a block table.
+        .cbi-map-tabbed > .cbi-tblsection > .table > .tbody {
+            display: block;
+        }
+    }
+
     @media screen and (min-width: 1153px) {
         #cbi-network-interface .cbi-section-actions {
             // LuCI's inline width does not include the theme's button gaps.

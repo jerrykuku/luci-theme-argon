@@ -212,7 +212,9 @@
 }
 
 .cbi-page-actions {
-  padding: var(--field-gap) var(--section-inset);
+  // The containing view already owns the page gutter and section spacing.
+  padding: 0;
+  gap: var(--control-gap);
 
   .cbi-button-link:first-child {
     margin-inline-end: auto;
@@ -223,7 +225,7 @@
     flex-wrap: wrap;
     min-width: 0;
     max-width: 100%;
-    gap: var(--action-gap);
+    gap: inherit;
   }
 
   .cbi-dropdown {
