@@ -1,4 +1,50 @@
 // out: false
+
+// Network and zone choices share the same compact badges in every view.
+.cbi-dropdown > ul {
+  .zonebadge {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .25rem;
+    min-width: 0;
+    max-width: 100%;
+    padding: .125rem .5rem;
+    line-height: 1.25rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .ifacebadge {
+    flex-wrap: wrap;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 .25rem;
+    line-height: 1.25rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  > li img {
+    flex: 0 0 1rem;
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    object-fit: contain;
+  }
+}
+
+.cbi-dropdown:not(.btn):not(.cbi-button):has(> ul .zonebadge, > ul .ifacebadge, > ul img) {
+  min-height: 2.5rem;
+  padding-block: .25rem;
+
+  > ul:not(.dropdown) > li {
+    min-height: 1.5rem;
+    padding-block: 0;
+  }
+}
+
 // One expanded-menu surface for Dropdown, Combobox and ComboButton.
 .cbi-dropdown[open] > ul.dropdown {
   position: absolute;

@@ -3124,6 +3124,43 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .cbi-dropdown[open] .zonebadge {
   width: auto;
 }
+.cbi-dropdown > ul .zonebadge {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.125rem 0.5rem;
+  line-height: 1.25rem;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.cbi-dropdown > ul .ifacebadge {
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 0.25rem;
+  line-height: 1.25rem;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.cbi-dropdown > ul > li img {
+  flex: 0 0 1rem;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  object-fit: contain;
+}
+.cbi-dropdown:not(.btn):not(.cbi-button):has(> ul .zonebadge, > ul .ifacebadge, > ul img) {
+  min-height: 2.5rem;
+  padding-block: 0.25rem;
+}
+.cbi-dropdown:not(.btn):not(.cbi-button):has(> ul .zonebadge, > ul .ifacebadge, > ul img) > ul:not(.dropdown) > li {
+  min-height: 1.5rem;
+  padding-block: 0;
+}
 .cbi-dropdown[open] > ul.dropdown {
   position: absolute;
   z-index: 1100;
