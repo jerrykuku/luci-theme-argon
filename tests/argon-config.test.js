@@ -15,7 +15,14 @@ String.format = format => format;
 function fixture(options = {}) {
 	const state = { notifications: [], reloads: 0, cleanups: [], events: [], nodes: {}, ...options };
 	const E = (tag, attrs, children) => {
-		const node = { tag, attrs, children };
+		const node = Object.assign(new EventTarget(), {
+			tag, attrs, children,
+			value: attrs?.value || '', disabled: !!attrs?.disabled,
+			classList: { add() {} },
+			setAttribute(key, value) { this.attrs[key] = value; },
+			appendChild(child) { this.children.push(child); },
+			querySelector() { return this.children.find(child => child.tag === 'input'); }
+		});
 		if (attrs && attrs.id)
 			state.nodes[attrs.id] = node;
 		return node;
@@ -36,17 +43,25 @@ function fixture(options = {}) {
 			this.options = [];
 		}
 		section() {
-			const section = { map: this, option: (type, name) => {
+			const section = { map: this, option: (type, name, title) => {
 				const option = {
-					map: this, name, choices: {},
+					map: this, name, title, choices: {},
 					value(key, label) { this.choices[key] = label; },
 					depends(key, value) { this.dependency = [key, value]; },
 					cbid(section) { return 'cbid.argon.' + section + '.' + name; },
+					triggerValidation() { state.events.push('validate-' + name); },
 					super(method, args) {
 						assert.equal(method, 'renderWidget');
+						if (typeof type === 'object') {
+							const input = E('input', { type: 'text', value: args[2] ?? this.default, disabled: this.map.readonly }, []);
+							input.addEventListener('change', () => state.events.push('change-' + name));
+							return E('div', {}, [input]);
+						}
 						return { value: args[2], disabled: this.map.readonly };
 					}
 				};
+				if (typeof type === 'object')
+					Object.assign(option, type);
 				this.options.push(option);
 				return option;
 			} };
@@ -60,6 +75,7 @@ function fixture(options = {}) {
 		render() { return this.sections.map(section => section.render ? section.render() : null); }
 	}
 	const form = { Map, TypedSection() {}, TableSection() {}, Button() {}, Value() {}, ListValue() {} };
+	form.Value.extend = properties => properties;
 	const rpc = { declare(spec) { return () => {
 		if (state[spec.method + 'Error'])
 			return Promise.reject(state[spec.method + 'Error']);
@@ -201,4 +217,56 @@ test('background list excludes instructions, directories, and unsupported files'
  const state = fixture({ files });
  const data = await state.view.load();
  assert.deepEqual(data[2].map(file => file.name), ['背景.JPG', 'video.webm']);
+});
+
+test('both primary color fields synchronize the picker and preserve typed HEX values', async () => {
+	const state = fixture();
+	await state.render();
+	for (const name of ['primary', 'dark_primary']) {
+		const option = state.button(name);
+		const node = option.renderWidget('global', 0, '#aBc');
+		const [input, picker] = node.children;
+		assert.equal(input.value, '#aBc');
+		assert.equal(picker.value, '#aabbcc');
+		assert.equal(picker.attrs['aria-label'], option.title);
+		for (const value of ['#123456', '#ABC', '#000000', '#FFFFFF']) {
+			input.value = value;
+			input.dispatchEvent(new Event('input'));
+			assert.equal(option.validate('global', value), true);
+			assert.equal(input.value, value);
+			assert.equal(picker.value, value.length === 4 ? '#aabbcc' : value.toLowerCase());
+		}
+		for (const value of ['', 'red', '#12', '#gggggg', '#12345678']) {
+			input.value = value;
+			input.dispatchEvent(new Event('input'));
+			assert.notEqual(option.validate('global', value), true);
+			assert.equal(input.value, value);
+			assert.equal(picker.value, '#ffffff');
+		}
+		picker.value = '#13579b';
+		picker.dispatchEvent(new Event('input'));
+		assert.equal(input.value, '#13579b');
+		assert.deepEqual(state.events.slice(-2), ['change-' + name, 'validate-' + name]);
+		picker.value = '#2468ac';
+		picker.dispatchEvent(new Event('change'));
+		assert.equal(input.value, '#2468ac');
+		const initial = option.renderWidget('global', 0, undefined).children;
+		assert.equal(initial[0].value, option.default);
+		assert.equal(initial[1].value, option.default);
+	}
+});
+
+test('read-only color pickers remain disabled and cannot change the saved field', async () => {
+	const state = fixture({ readonly: true });
+	await state.render();
+	for (const name of ['primary', 'dark_primary']) {
+		const [input, picker] = state.button(name).renderWidget('global', 0, '#abc').children;
+		assert.equal(input.disabled, true);
+		assert.equal(picker.disabled, true);
+		picker.value = '#123456';
+		picker.dispatchEvent(new Event('input'));
+		picker.dispatchEvent(new Event('change'));
+		assert.equal(input.value, '#abc');
+	}
+	assert.deepEqual(state.events, []);
 });

@@ -4411,6 +4411,47 @@ pre.command-output {
     max-width: 100%;
   }
 }
+[data-page="admin-system-argon-config"] .argon-color-picker {
+  display: flex;
+  align-items: center;
+  gap: var(--control-gap);
+  width: var(--form-control-min-width);
+  max-width: 100%;
+}
+[data-page="admin-system-argon-config"] .argon-color-picker > input[type="text"] {
+  flex: 1 1 0;
+  min-width: 0;
+  width: 0;
+  margin: 0;
+}
+[data-page="admin-system-argon-config"] .argon-color-picker > .argon-color-swatch {
+  flex: 0 0 2.5rem;
+  width: 2.5rem;
+  min-width: 0;
+  height: 2.5rem;
+  padding: 0.25rem;
+  margin: 0;
+  cursor: pointer;
+}
+[data-page="admin-system-argon-config"] .argon-color-picker > .argon-color-swatch::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+[data-page="admin-system-argon-config"] .argon-color-picker > .argon-color-swatch::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-control) - 0.25rem - 1px);
+}
+[data-page="admin-system-argon-config"] .argon-color-picker > .argon-color-swatch::-moz-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-control) - 0.25rem - 1px);
+}
+[data-page="admin-system-argon-config"] .argon-color-picker > .argon-color-swatch:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+[data-page="admin-system-argon-config"] .argon-color-picker > .argon-color-swatch:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
 [data-page="admin-system-argon-config"] #cbi-filelist > .table:last-child {
   border-collapse: separate;
   border-end-start-radius: inherit;

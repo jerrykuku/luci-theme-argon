@@ -35,6 +35,58 @@ var bg_path = '/www/luci-static/argon/background/';
 var trans_set = [0, 0.1, 0.2, 0.3, 0.4,
 	0.5, 0.6, 0.7, 0.8, 0.9, 1 ];
 
+function expandHex(value) {
+	if (/^#[0-9a-f]{3}$/i.test(value))
+		return value.replace(/[0-9a-f]/gi, function(digit) { return digit + digit; }).toLowerCase();
+	return /^#[0-9a-f]{6}$/i.test(value) ? value.toLowerCase() : null;
+}
+
+var ColorValue = form.Value.extend({
+	validate: function(section_id, value) {
+		return expandHex(value) !== null ||
+			_('Expecting: %s').format(_('valid HEX color value'));
+	},
+
+	renderWidget: function(section_id, option_index, cfgvalue) {
+		// Keep the native Textfield and its binding as the saved form value.
+		var node = this.super('renderWidget', [section_id, option_index, cfgvalue]);
+		var input = node.querySelector('input');
+		var picker = E('input', {
+			'type': 'color',
+			'id': this.cbid(section_id) + '-picker',
+			'class': 'argon-color-swatch',
+			'value': expandHex(input.value) || this.default,
+			'disabled': input.disabled || null,
+			'aria-label': this.title,
+			'title': this.title
+		});
+
+		node.classList.add('argon-color-picker');
+		input.setAttribute('spellcheck', 'false');
+		input.setAttribute('autocapitalize', 'off');
+		input.setAttribute('autocomplete', 'off');
+		node.appendChild(picker);
+
+		var updatePicker = function() {
+			var color = expandHex(input.value);
+			if (color !== null)
+				picker.value = color;
+		};
+		var updateText = L.bind(function() {
+			if (input.disabled || input.readOnly)
+				return;
+			input.value = picker.value;
+			input.dispatchEvent(new Event('change', { bubbles: true }));
+			this.triggerValidation(section_id);
+		}, this);
+		input.addEventListener('input', updatePicker);
+		input.addEventListener('change', updatePicker);
+		picker.addEventListener('input', updateText);
+		picker.addEventListener('change', updateText);
+		return node;
+	}
+});
+
 return view.extend({
 	load: function() {
 		return Promise.all([
@@ -119,15 +171,9 @@ return view.extend({
 		o.default = 'normal';
 		o.rmempty = false;
 
-		o = s.option(form.Value, 'primary', _('[Light mode] Primary Color'), _('A HEX color (default: #5e72e4).'));
+		o = s.option(ColorValue, 'primary', _('[Light mode] Primary Color'), _('A HEX color (default: #5e72e4).'));
 		o.default = '#5e72e4';
 		o.rmempty = false;
-		o.validate = function(section_id, value) {
-			if (section_id)
-				return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(value) ||
-					_('Expecting: %s').format(_('valid HEX color value'));
-			return true;
-		};
 
 		o = s.option(form.ListValue, 'transparency', _('[Light mode] Transparency'),
 			_('0 transparent - 1 opaque (suggest: transparent: 0 or translucent preset: 0.5).'));
@@ -142,16 +188,10 @@ return view.extend({
 		o.default = '10';
 		o.rmempty = false;
 
-		o = s.option(form.Value, 'dark_primary', _('[Dark mode] Primary Color'),
+		o = s.option(ColorValue, 'dark_primary', _('[Dark mode] Primary Color'),
 			_('A HEX Color (default: #483d8b).'));
 		o.default = '#483d8b';
 		o.rmempty = false;
-		o.validate = function(section_id, value) {
-			if (section_id)
-				return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(value) ||
-					_('Expecting: %s').format(_('valid HEX color value'));
-			return true;
-		};
 
 		o = s.option(form.ListValue, 'transparency_dark', _('[Dark mode] Transparency'),
 			_('0 transparent - 1 opaque (suggest: black translucent preset: 0.5).'));
