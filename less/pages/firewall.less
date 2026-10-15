@@ -56,6 +56,15 @@
 [data-page="admin-network-firewall-forwards"],
 [data-page="admin-network-firewall-rules"],
 [data-page="admin-network-firewall-snats"] {
+  .td.cbi-section-actions {
+    text-align: end !important;
+
+    > div {
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
   [data-name$="_ip"],
   [data-name="src_dip"],
   [data-name$="_port"],
@@ -81,6 +90,10 @@
   }
 
   @media screen and (min-width: 1153px) {
+    .td.cbi-section-actions > div {
+      flex-wrap: nowrap;
+    }
+
     .tr[data-title]::before,
     .tr.cbi-section-table-titles.named::before {
       display: none;
@@ -88,6 +101,16 @@
   }
 
   @media screen and (max-width: 1152px) {
+    .cbi-section-table > .tbody {
+      display: block;
+    }
+
+    .td.cbi-section-actions {
+      flex-basis: 100%;
+      max-width: 100%;
+      min-width: 0 !important;
+    }
+
     .td.cbi-section-table-titles {
       display: none;
     }

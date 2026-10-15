@@ -4794,6 +4794,17 @@ pre.command-output {
 [data-page="admin-network-firewall-ipsets"] [data-name="entry"] input[type="text"] {
   text-align: start;
 }
+[data-page="admin-network-firewall-forwards"] .td.cbi-section-actions,
+[data-page="admin-network-firewall-rules"] .td.cbi-section-actions,
+[data-page="admin-network-firewall-snats"] .td.cbi-section-actions {
+  text-align: end !important;
+}
+[data-page="admin-network-firewall-forwards"] .td.cbi-section-actions > div,
+[data-page="admin-network-firewall-rules"] .td.cbi-section-actions > div,
+[data-page="admin-network-firewall-snats"] .td.cbi-section-actions > div {
+  align-items: center;
+  justify-content: flex-end;
+}
 [data-page="admin-network-firewall-forwards"] [data-name$="_ip"] input[type="text"],
 [data-page="admin-network-firewall-rules"] [data-name$="_ip"] input[type="text"],
 [data-page="admin-network-firewall-snats"] [data-name$="_ip"] input[type="text"],
@@ -4841,6 +4852,11 @@ pre.command-output {
   unicode-bidi: isolate;
 }
 @media screen and (min-width: 1153px) {
+  [data-page="admin-network-firewall-forwards"] .td.cbi-section-actions > div,
+  [data-page="admin-network-firewall-rules"] .td.cbi-section-actions > div,
+  [data-page="admin-network-firewall-snats"] .td.cbi-section-actions > div {
+    flex-wrap: nowrap;
+  }
   [data-page="admin-network-firewall-forwards"] .tr[data-title]::before,
   [data-page="admin-network-firewall-rules"] .tr[data-title]::before,
   [data-page="admin-network-firewall-snats"] .tr[data-title]::before,
@@ -4851,6 +4867,18 @@ pre.command-output {
   }
 }
 @media screen and (max-width: 1152px) {
+  [data-page="admin-network-firewall-forwards"] .cbi-section-table > .tbody,
+  [data-page="admin-network-firewall-rules"] .cbi-section-table > .tbody,
+  [data-page="admin-network-firewall-snats"] .cbi-section-table > .tbody {
+    display: block;
+  }
+  [data-page="admin-network-firewall-forwards"] .td.cbi-section-actions,
+  [data-page="admin-network-firewall-rules"] .td.cbi-section-actions,
+  [data-page="admin-network-firewall-snats"] .td.cbi-section-actions {
+    flex-basis: 100%;
+    max-width: 100%;
+    min-width: 0 !important;
+  }
   [data-page="admin-network-firewall-forwards"] .td.cbi-section-table-titles,
   [data-page="admin-network-firewall-rules"] .td.cbi-section-table-titles,
   [data-page="admin-network-firewall-snats"] .td.cbi-section-table-titles {
