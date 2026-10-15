@@ -130,7 +130,7 @@ return view.extend({
 		o.renderWidget = function(section_id, option_index, cfgvalue) {
 			var style = cfgvalue === 'centered' ? 'centered' : 'classic';
 			return E('div', {}, [
-				this.super('renderWidget', [section_id, option_index, style]),
+				form.ListValue.prototype.renderWidget.call(this, section_id, option_index, style),
 				E('img', {
 					'id': this.cbid(section_id) + '-preview',
 					'src': L.resource('argon-config/login-' + style + '.svg'),

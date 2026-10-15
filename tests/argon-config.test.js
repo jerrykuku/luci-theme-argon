@@ -74,8 +74,11 @@ function fixture(options = {}) {
 		}
 		render() { return this.sections.map(section => section.render ? section.render() : null); }
 	}
-	const form = { Map, TypedSection() {}, TableSection() {}, Button() {}, Value() {}, ListValue() {} };
+	const form = { Map, TypedSection() {}, TableSection() {}, Button() {}, Value() {}, ListValue: function() {} };
 	form.Value.extend = properties => properties;
+	form.ListValue.prototype.renderWidget = function(section, index, value) {
+		return { value, disabled: this.map.readonly, choices: Object.keys(this.choices) };
+	};
 	const rpc = { declare(spec) { return () => {
 		if (state[spec.method + 'Error'])
 			return Promise.reject(state[spec.method + 'Error']);
@@ -120,6 +123,7 @@ test('login style selector previews supported values and falls back for old conf
 		const node = option.renderWidget('global', 0, value);
 		assert.equal(node.children[0].value, style);
 		assert.equal(node.children[0].disabled, true);
+		assert.deepEqual(node.children[0].choices, ['classic', 'centered']);
 		assert.equal(node.children[1].attrs.src, '/luci-static/resources/argon-config/login-' + style + '.svg');
 		assert.equal(node.children[1].attrs.alt, option.choices[style]);
 		assert.ok(fs.existsSync(path.join(__dirname, '../htdocs/luci-static/resources/argon-config/login-' + style + '.svg')));
