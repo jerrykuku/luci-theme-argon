@@ -4635,7 +4635,7 @@ pre.command-output {
   border-radius: var(--radius-panel);
 }
 [data-page="admin-system-argon-config"] .argon-branding-content {
-  padding: 0 var(--section-inset) var(--section-inset);
+  padding: var(--field-gap) var(--section-inset) var(--section-inset);
 }
 [data-page="admin-system-argon-config"] .argon-branding-content > p {
   margin: 0 0 var(--field-gap);
