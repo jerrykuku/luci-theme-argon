@@ -119,3 +119,16 @@ fieldset>fieldset,
 .cbi-section p {
   padding: var(--field-gap) var(--section-inset);
 }
+
+// TypedSection renders its empty-state hint directly as an em element.
+.cbi-section > em {
+  display: block;
+  margin: 0;
+  padding: var(--field-gap) var(--section-inset);
+  color: var(--muted-text);
+  font-size: .875rem;
+  font-style: normal;
+  line-height: 1.5;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
