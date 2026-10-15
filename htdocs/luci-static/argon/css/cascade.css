@@ -4251,6 +4251,18 @@ pre.command-output {
   overflow-wrap: anywhere;
   user-select: text;
 }
+[data-page="admin-system-admin-repokeys"] textarea {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  resize: vertical;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-control);
+  background: var(--surface-color);
+  color: var(--control-text);
+  font-size: 0.8125rem;
+}
 [data-page="admin-system-admin-repokeys"] textarea,
 [data-page="admin-system-admin-repokeys"] [data-name="filename"] output {
   direction: ltr;
@@ -4261,11 +4273,58 @@ pre.command-output {
 }
 [data-page="admin-system-admin-repokeys"] [data-name="filename"] output {
   display: block;
+  overflow-wrap: anywhere;
 }
 [data-page="admin-system-admin-repokeys"] [data-name="key"] textarea {
-  min-height: 8rem;
+  min-height: 6.5rem;
+}
+[data-page="admin-system-admin-repokeys"] [data-name="_newkey"] {
+  padding: var(--field-gap) var(--section-inset);
+  line-height: 1.5;
+}
+[data-page="admin-system-admin-repokeys"] [data-name="_newkey"] > output {
+  display: block;
+  flex: 1 1 100%;
+  min-width: 0;
+}
+[data-page="admin-system-admin-repokeys"] [data-name="_newkey"] .cbi-section-descr {
+  padding: 0;
+}
+[data-page="admin-system-admin-repokeys"] [data-name="_newkey"] .cbi-section-node > div[style="height: 20px"] {
+  display: none;
+}
+[data-page="admin-system-admin-repokeys"] [data-name="_newkey"] .right {
+  display: flex;
+  justify-content: flex-end;
+}
+@media screen and (min-width: 1153px) {
+  [data-page="admin-system-admin-repokeys"] .cbi-section-table,
+  [data-page="admin-system-admin-repokeys"] .cbi-section-table > .thead,
+  [data-page="admin-system-admin-repokeys"] .cbi-section-table > .tbody {
+    display: block;
+  }
+  [data-page="admin-system-admin-repokeys"] .cbi-section-table .tr {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr) 6rem;
+    align-items: stretch;
+  }
+  [data-page="admin-system-admin-repokeys"] .cbi-section-table :is(.th, .td) {
+    min-width: 0;
+    width: auto !important;
+  }
+  [data-page="admin-system-admin-repokeys"] .cbi-section-table .td {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  [data-page="admin-system-admin-repokeys"] .cbi-section-table .cbi-section-actions > div {
+    justify-content: flex-end;
+  }
 }
 @media screen and (max-width: 1152px) {
+  [data-page="admin-system-admin-repokeys"] .cbi-section-table > .tbody {
+    display: block;
+  }
   [data-page="admin-system-admin-repokeys"] .td[data-name="filename"],
   [data-page="admin-system-admin-repokeys"] .td[data-name="key"] {
     flex-basis: 100%;
