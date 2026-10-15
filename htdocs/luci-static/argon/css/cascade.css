@@ -3825,8 +3825,8 @@ body > .cbi-tooltip[style*="left:"][style*="top:"] {
   background: inherit;
 }
 .zonebadge-empty {
-  color: #404040;
-  background: repeating-linear-gradient(45deg, rgba(204, 204, 204, 0.5), rgba(204, 204, 204, 0.5) 5px, rgba(255, 255, 255, 0.5) 5px, rgba(255, 255, 255, 0.5) 10px);
+  color: var(--text-strong);
+  background: repeating-linear-gradient(45deg, var(--surface-inset), var(--surface-inset) 5px, var(--surface-contrast) 5px, var(--surface-contrast) 10px);
 }
 .zone-forwards {
   display: flex;
@@ -4489,6 +4489,20 @@ pre.command-output {
 }
 [data-page="admin-network-dns"] input[type="text"] {
   text-align: start;
+}
+[dir="rtl"] [data-page="admin-network-firewall-zones"] .zone-forwards > span {
+  transform: scaleX(-1);
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td[data-name="_info"],
+  [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td.cbi-section-actions {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td.cbi-section-actions > div {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 @media screen and (min-width: 1153px) {
   [data-page="admin-network-network"] #cbi-network-interface .cbi-section-actions {

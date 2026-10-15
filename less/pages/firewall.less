@@ -1,0 +1,22 @@
+// out: false
+
+[data-page="admin-network-firewall-zones"] {
+  [dir="rtl"] & .zone-forwards > span {
+    transform: scaleX(-1);
+  }
+
+  @media screen and (max-width: 1152px) {
+    #cbi-firewall-zone {
+      .td[data-name="_info"],
+      .td.cbi-section-actions {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+
+      .td.cbi-section-actions > div {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
