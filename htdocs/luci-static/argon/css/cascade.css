@@ -4279,9 +4279,30 @@ pre.command-output {
 [data-page="admin-system-partexp-global"] .cbi-section {
   padding: 1rem 0;
 }
-[data-page="admin-system-attendedsysupgrade"] #view .cbi-button {
-  margin-left: 0 !important;
-  margin-top: 1rem !important;
+[data-page="admin-system-attendedsysupgrade"] #view > p,
+[data-page="admin-system-attendedsysupgrade-overview"] #view > p {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--field-gap);
+  margin: 0;
+}
+[data-page="admin-system-attendedsysupgrade"] #view > p > p,
+[data-page="admin-system-attendedsysupgrade-overview"] #view > p > p {
+  margin: 0;
+  padding-inline: var(--section-inset);
+  line-height: 1.5;
+  unicode-bidi: plaintext;
+}
+[data-page="admin-system-attendedsysupgrade"] #view > p > .cbi-button,
+[data-page="admin-system-attendedsysupgrade-overview"] #view > p > .cbi-button {
+  align-self: flex-start;
+  margin-inline: var(--section-inset);
+  max-width: calc(100% - 2 * var(--section-inset));
+  min-height: 2.5rem;
+  height: auto;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 [data-page="admin-system-attendedsysupgrade-configuration"] .cbi-map .cbi-map-descr {
   padding-bottom: 0;

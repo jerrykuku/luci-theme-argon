@@ -264,9 +264,32 @@
 }
 
 // System - Attended Sysupgrade
-[data-page="admin-system-attendedsysupgrade"] #view .cbi-button {
-    margin-left: 0 !important;
-    margin-top: 1rem !important;
+[data-page="admin-system-attendedsysupgrade"],
+[data-page="admin-system-attendedsysupgrade-overview"] {
+    #view > p {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--field-gap);
+        margin: 0;
+
+        > p {
+            margin: 0;
+            padding-inline: var(--section-inset);
+            line-height: 1.5;
+            unicode-bidi: plaintext;
+        }
+
+        > .cbi-button {
+            align-self: flex-start;
+            margin-inline: var(--section-inset);
+            max-width: calc(100% - 2 * var(--section-inset));
+            min-height: 2.5rem;
+            height: auto;
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+    }
 }
 
 [data-page="admin-system-attendedsysupgrade-configuration"] {
