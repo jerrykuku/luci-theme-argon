@@ -90,7 +90,7 @@ uci commit argon
 
 `theme.less` 的私有 LESS 色值供语义 token 使用；`@theme-palette` 每行维护一个角色，格式为 `角色: 亮色, 暗色;`，只写一个值表示两种模式共用。编译时自动生成暗色差异。文字、背景、边框按角色分别维护，即使当前颜色相同也不相互借用；菜单分类色单独声明。文件末尾的旧色名是 LuCI 兼容别名，组件应引用语义 token。`--light-primary`、`--dark-primary` 和模糊配置仍由主题设置覆盖。
 
-`cascade.less` 只组织加载顺序：主题、间距与圆角 → 重置和基础控件 → 登录与页面框架 → `components/` 通用组件 → `page-fix.less` 页面/插件适配 → `responsive.less` 视口适配。新增通用规则应放入对应组件文件；通用组件的移动布局不要通过页面补丁重复定义。表单、按钮、标签页、表格和弹窗分别维护，保留原生表格及 LuCI 表格的兼容布局。
+`cascade.less` 只组织加载顺序：主题、间距与圆角 → 重置和基础控件 → 登录与页面框架 → `components/` 通用组件 → `page-fix.less` 页面/插件适配索引 → `responsive.less` 视口适配。`page-fix.less` 仅按原有覆盖顺序导入 `less/pages/` 中的文件，页面和插件样式在各自文件中维护；`*-legacy.less` 保留旧版 LuCI 的兼容规则。新增通用规则应放入对应组件文件；通用组件的移动布局不要通过页面补丁重复定义。表单、按钮、标签页、表格和弹窗分别维护，保留原生表格及 LuCI 表格的兼容布局。
 
 页面边距和间距统一在 `less/spacing.less` 维护：`--page-gutter` 控制页面两侧边距，`--section-inset` 控制卡片内容缩进，`--section-gap`、`--field-gap`、`--control-gap`、`--action-gap` 分别控制区块、表单行、控件组和操作按钮间距。小屏在 `responsive.less` 中将页面和卡片边距统一收紧为 `1rem`。表单行使用 flex，按表单容器的可用宽度切换为上下排列；操作按钮和修改图例可自动换行，长文案保持完整。
 
@@ -98,7 +98,7 @@ uci commit argon
 
 Tab 外层 section 不再统一添加上下内边距：标题、表格行和操作区各自负责内容留白，只有 `.cbi-section-node-tabbed` 内的表单内容保留 `--field-gap` 内缩。空的 `.cbi-section-create` 不占高度。贴底且不含下拉控件的表格单独处理底角，小屏继续允许横向滚动，避免裁切整个卡片及其浮层。
 
-防火墙状态页的适配集中在 `less/pages/nftables.less`：每条链独立成卡片，保留原生“匹配条件 / 执行动作”两列及规则顺序；窄屏仍逐行对应，表达式与长列表自然换行。计数、备注提示和链跳转继续由 LuCI 提供，不解析或重排防火墙规则。其他原生页面的工具栏、诊断控件和 SSH key 适配位于 `page-fix.less`。
+防火墙状态页的适配集中在 `less/pages/nftables.less`：每条链独立成卡片，保留原生“匹配条件 / 执行动作”两列及规则顺序；窄屏仍逐行对应，表达式与长列表自然换行。计数、备注提示和链跳转继续由 LuCI 提供，不解析或重排防火墙规则。软件管理工具栏、诊断控件和 SSH key 适配分别位于 `less/pages/package-manager.less`、`less/pages/diagnostics.less` 和 `less/pages/sshkeys.less`。
 
 进度数值显示在轨道下方，避免窄屏裁切或与填充色混在一起；实时图表的背景、刻度和网格使用语义色，数据曲线颜色保持原生含义。按钮键盘焦点使用 `--focus-ring`；按压缩放仅用于允许动画的原生按钮，`data-static` 可关闭缩放。高频标签切换保持即时反馈，鼠标悬停效果只在支持悬停的设备启用。
 

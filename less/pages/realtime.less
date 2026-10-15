@@ -134,3 +134,25 @@
     }
   }
 }
+
+[data-page^="admin-status-realtime"] {
+    .cbi-section > div:has(> svg) {
+        // Native realtime views paint the plot background with inline styles.
+        background: var(--surface-color) !important;
+        border: 0 !important;
+        border-start-start-radius: var(--radius-card);
+        border-start-end-radius: var(--radius-card);
+    }
+
+    #view svg text {
+        fill: var(--text-strong) !important;
+        font-family: inherit !important;
+        font-variant-numeric: tabular-nums;
+        text-shadow: none !important;
+    }
+
+    #view svg line {
+        stroke: var(--border-strong) !important;
+        stroke-width: 1px !important;
+    }
+}

@@ -1,0 +1,46 @@
+// out: false
+
+// Network - Interfaces
+[data-page="admin-network-network"] {
+    @media screen and (max-width: 1152px) {
+        // A row group otherwise keeps its intrinsic width inside a block table.
+        .cbi-map-tabbed > .cbi-tblsection > .table > .tbody {
+            display: block;
+        }
+    }
+
+    @media screen and (min-width: 1153px) {
+        #cbi-network-interface .cbi-section-actions {
+            // LuCI's inline width does not include the theme's button gaps.
+            width: 22rem !important;
+        }
+    }
+
+    .cbi-value-field {
+        .cbi-dynlist {
+            padding: 0 !important;
+        }
+    }
+
+    .td>.ifacebadge>.cbi-tooltip-container {
+        display: flex;
+
+        img {
+            vertical-align: middle;
+        }
+    }
+
+    div[data-name="_gen_server_keypair"],
+    div[data-name="_gen_peer_keypair"],
+    div[data-name="_gen_psk"] {
+        .cbi-value-title {
+            height: 2.4rem;
+        }
+    }
+
+    #modal_overlay>.modal.cbi-modal>div>p>textarea {
+        height: 20em !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: var(--radius-control);
+    }
+}
