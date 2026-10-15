@@ -60,6 +60,8 @@ function fixture(options = {}) {
 						return { value: args[2], disabled: this.map.readonly };
 					}
 				};
+				if (type === form.ListValue)
+					Object.setPrototypeOf(option, form.ListValue.prototype);
 				if (typeof type === 'object')
 					Object.assign(option, type);
 				this.options.push(option);
@@ -77,7 +79,12 @@ function fixture(options = {}) {
 	const form = { Map, TypedSection() {}, TableSection() {}, Button() {}, Value() {}, ListValue: function() {} };
 	form.Value.extend = properties => properties;
 	form.ListValue.prototype.renderWidget = function(section, index, value) {
-		return { value, disabled: this.map.readonly, choices: Object.keys(this.choices) };
+		return { value, disabled: this.map.readonly, choices: Object.keys(this.choices), isConnected: true };
+	};
+	form.ListValue.prototype.cfgvalue = function(section, value) {
+		if (arguments.length === 2)
+			this.loadedValue = value;
+		return this.loadedValue ?? state.settings?.[this.name];
 	};
 	const rpc = { declare(spec) { return () => {
 		if (state[spec.method + 'Error'])
@@ -88,12 +95,13 @@ function fixture(options = {}) {
 		list() { return state.listError ? Promise.reject(state.listError) : Promise.resolve(state.files || [{ name: 'background.jpg', type: 'file', size: 10, mtime: 0 }]); },
 		remove(filename) { state.cleanups.push(filename); return Promise.resolve(); }
 	};
-	const L = { bind: (fn, context) => fn.bind(context), resolveDefault: (promise, value) => Promise.resolve(promise).catch(() => value), resource: name => '/luci-static/resources/' + name };
-	state.view = new Function('form', 'fs', 'rpc', 'uci', 'ui', 'view', 'L', 'E', '_', 'cbi_update_table', 'location', 'document', 'branding', source)(
+	const L = { dom: { callClassMethod(node, method, value) { assert.equal(method, 'setValue'); node.value = value; } }, bind: (fn, context) => fn.bind(context), resolveDefault: (promise, value) => Promise.resolve(promise).catch(() => value), resource: name => '/luci-static/resources/' + name };
+	state.window = new EventTarget();
+	state.view = new Function('form', 'fs', 'rpc', 'uci', 'ui', 'view', 'L', 'E', '_', 'cbi_update_table', 'location', 'document', 'branding', 'window', source)(
 		form, fileApi, rpc, { load: () => Promise.resolve(), get: (config, section, key) => state.settings?.[key] }, ui, { extend: value => value }, L, E,
 		value => value, (table, rows) => { state.rows = rows; }, { reload() { state.reloads++; } },
 		{ getElementById: id => state.nodes[id] },
-		{ load: () => Promise.resolve({ result: 0 }), render: () => E('div', {}, []) }
+		{ load: () => Promise.resolve({ result: 0 }), render: () => E('div', {}, []) }, state.window
 	);
 	state.render = async () => state.view.render(await state.view.load());
 	state.button = name => state.map.options.find(option => option.name === name);
@@ -287,4 +295,23 @@ test('read-only color pickers remain disabled and cannot change the saved field'
 		assert.equal(input.value, '#abc');
 	}
 	assert.deepEqual(state.events, []);
+});
+
+test('header mode changes synchronize the form without replacing other unsaved settings', async () => {
+ const state = fixture({ settings: { mode: 'normal', primary: '#123456' } });
+ await state.render();
+ const option = state.button('mode');
+ option.cfgvalue('global', 'light');
+ assert.equal(option.cfgvalue('global'), 'light');
+ const widget = option.renderWidget('global', 0, option.cfgvalue('global'));
+ for (const mode of ['dark', 'light', 'normal']) {
+  state.window.dispatchEvent(new CustomEvent('argon-appearance-saved', { detail: { mode } }));
+  assert.equal(widget.value, mode);
+  assert.equal(option.cfgvalue('global'), mode);
+  assert.equal(state.settings.primary, '#123456');
+  assert.deepEqual(state.events, []);
+ }
+ widget.isConnected = false;
+ state.window.dispatchEvent(new CustomEvent('argon-appearance-saved', { detail: { mode: 'dark' } }));
+ assert.equal(widget.value, 'normal');
 });

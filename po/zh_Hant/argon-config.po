@@ -296,3 +296,15 @@ msgstr "預設兩種模式共用透明度與模糊程度，也可以單獨設定
 
 msgid "Follow light mode"
 msgstr "跟隨淺色模式"
+
+msgid "Read-only"
+msgstr "唯讀"
+
+msgid "Saving theme mode…"
+msgstr "正在儲存佈景主題模式…"
+
+msgid "Theme mode saved."
+msgstr "佈景主題模式已儲存。"
+
+msgid "Unable to save theme mode. Please try again."
+msgstr "無法儲存佈景主題模式，請重試。"

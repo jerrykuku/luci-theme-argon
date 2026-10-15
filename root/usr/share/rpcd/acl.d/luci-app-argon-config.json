@@ -7,6 +7,7 @@
 			},
 			"ubus": {
 				"luci.argon": [ "avail" ],
+				"luci.argon_appearance": [ "get" ],
 				"luci.argon_branding": [ "get" ]
 			},
 			"uci": [ "argon" ]
@@ -18,6 +19,7 @@
 			},
 			"ubus": {
 				"luci.argon": [ "remove", "rename" ],
+				"luci.argon_appearance": [ "set" ],
 				"luci.argon_branding": [ "set", "reset" ]
 			},
 			"uci": [ "argon" ]

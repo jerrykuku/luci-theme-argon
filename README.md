@@ -73,6 +73,8 @@ Choose **Classic sidebar** (default) or **Centered card** under **System → Arg
 
 Unsplash wallpapers require an Unsplash API access key. Select Unsplash and enter the key in the settings page; missing keys fall back to a local background. Fresh installations use local backgrounds, the classic sidebar and the original frosted glass settings (10px blur, 0.5 opacity). Existing options in `/etc/config/argon` are preserved.
 
+Use the theme button at the upper right to choose **Light mode**, **Dark mode**, or **Follow system**. Changes appear immediately and save to `/etc/config/argon` without applying other pending settings. This is a device-wide preference, including the next login page; changing it requires Argon configuration write access. Failed saves show an error and reconcile with the stored mode.
+
 ## Template structure
 
 `ucode/template/themes/argon/` retains LuCI's `header`, `header_login`, `out_header_login`, `sysauth`, and both `footer` entry points. Application and login pages share `head.ut` for validated settings, metadata, styles, and conditional application resources.

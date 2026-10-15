@@ -287,3 +287,15 @@ msgstr ""
 
 msgid "Follow light mode"
 msgstr ""
+
+msgid "Read-only"
+msgstr ""
+
+msgid "Saving theme mode…"
+msgstr ""
+
+msgid "Theme mode saved."
+msgstr ""
+
+msgid "Unable to save theme mode. Please try again."
+msgstr ""

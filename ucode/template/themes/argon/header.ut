@@ -52,7 +52,10 @@
 							<button type="button" class="showSide" aria-label="{{ entityencode(_('Toggle navigation'), true) }}" aria-controls="mainmenu" aria-expanded="false"></button>
 							<a class="brand" href="#" title="{{ entityencode(hostname, true) }}">{{ hostname }}</a>
 						</div>
-						<div class="status" id="indicators"></div>
+						<div class="header-actions">
+							<div class="status" id="indicators"></div>
+							<div id="argon-appearance" hidden></div>
+						</div>
 					</div>
 				</div>
 			</header>

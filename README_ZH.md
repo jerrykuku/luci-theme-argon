@@ -73,6 +73,8 @@ Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，
 
 Unsplash 在线壁纸需要 Unsplash API Access Key。选择 Unsplash 后，在设置页的密钥输入框中填写；未配置密钥时使用本地背景。首次安装默认使用本地背景、经典侧栏和原始毛玻璃参数（模糊 10px、透明度 0.5）。已有 `/etc/config/argon` 的选项会保留。
 
+页面右上角的主题按钮提供**亮色模式、暗色模式、跟随系统**。选择后当前页面立即更新，并独立保存到 `/etc/config/argon`，不会一并应用其他待保存的设置。此设置对整个设备生效，也会用于之后打开的登录页；修改需要 Argon 配置写权限。保存失败会显示错误并核对已保存的模式。
+
 ## 模板结构
 
 `ucode/template/themes/argon/` 保留 LuCI 的 `header`、`header_login`、`out_header_login`、`sysauth` 和两种 `footer` 入口。普通页与登录页共用 `head.ut`，集中维护配置校验、元信息、样式和后台专用资源的加载条件。

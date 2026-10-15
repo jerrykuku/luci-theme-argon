@@ -398,6 +398,10 @@
     header .fill .container {
         flex-wrap: nowrap;
 
+        .header-actions {
+            max-width: calc(100% - 2.5rem - var(--action-gap));
+        }
+
         .flex1 {
             flex: 1 1 0;
             gap: var(--control-gap);
@@ -408,12 +412,12 @@
         }
 
         .status {
-            flex: 0 0 auto;
+            flex: 0 1 auto;
 
             span {
                 font-size: .6875rem;
                 padding: .25rem .5rem;
-                white-space: nowrap;
+                white-space: normal;
             }
         }
     }

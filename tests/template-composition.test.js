@@ -31,8 +31,10 @@ test('application and login compose the same head with their own resource bounda
 				assert.match(html, /\/luci\.js\?v=test-build/);
 				assert.match(html, /L\.require\('menu-argon'\)/);
 				assert.match(html, /L\.require\('argon-sshkeys'\)/);
+				assert.match(html, /id="argon-appearance" hidden/);
+				assert.match(html, /L\.require\('argon-appearance'\)/);
 			} else {
-				assert.doesNotMatch(html, /argon-menu-icons|\/luci\.js|\/cbi\.js|L\.require/);
+				assert.doesNotMatch(html, /argon-menu-icons|argon-appearance|\/luci\.js|\/cbi\.js|L\.require/);
 			}
 		}
 		assert.equal((renderer.render('headers-twice').html.match(/<!DOCTYPE html>/g) || []).length, 1);

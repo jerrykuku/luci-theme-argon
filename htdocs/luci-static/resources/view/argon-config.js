@@ -170,6 +170,22 @@ return view.extend({
 		o.value('dark', _('Dark mode'));
 		o.default = 'normal';
 		o.rmempty = false;
+		// A header shortcut saves independently of this form. Keep the widget and
+		// its comparison value current, while leaving other pending fields alone.
+		o.renderWidget = function(section_id, option_index, cfgvalue) {
+			var option = this;
+			var node = form.ListValue.prototype.renderWidget.call(this, section_id, option_index, cfgvalue);
+			var syncMode = function(event) {
+				if (!node.isConnected) {
+					window.removeEventListener('argon-appearance-saved', syncMode);
+					return;
+				}
+				option.cfgvalue(section_id, event.detail.mode);
+				L.dom.callClassMethod(node, 'setValue', event.detail.mode);
+			};
+			window.addEventListener('argon-appearance-saved', syncMode);
+			return node;
+		};
 
 		o = s.option(ColorValue, 'primary', _('Primary color'), _('A HEX color (default: #5e72e4).'));
 		o.default = '#5e72e4';
