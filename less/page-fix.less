@@ -289,6 +289,20 @@
 
 // System - Flash Firmware
 [data-page="admin-system-flash"] {
+    [data-tab="config"] {
+        textarea {
+            display: block;
+        }
+
+        > .cbi-section-node {
+            padding-bottom: 0;
+        }
+
+        > .cbi-page-actions {
+            padding: var(--field-gap) 1rem;
+        }
+    }
+
     .modal.cbi-modal > ul {
         direction: ltr;
         unicode-bidi: isolate;

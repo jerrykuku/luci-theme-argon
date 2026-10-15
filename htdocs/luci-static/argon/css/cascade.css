@@ -4574,6 +4574,15 @@ pre.command-output {
 [data-page="admin-system-attendedsysupgrade-configuration"] .cbi-map .cbi-map-descr {
   padding-bottom: 0;
 }
+[data-page="admin-system-flash"] [data-tab="config"] textarea {
+  display: block;
+}
+[data-page="admin-system-flash"] [data-tab="config"] > .cbi-section-node {
+  padding-bottom: 0;
+}
+[data-page="admin-system-flash"] [data-tab="config"] > .cbi-page-actions {
+  padding: var(--field-gap) 1rem;
+}
 [data-page="admin-system-flash"] .modal.cbi-modal > ul {
   direction: ltr;
   unicode-bidi: isolate;
