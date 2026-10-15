@@ -1,0 +1,36 @@
+// out: false
+
+[data-page="admin-status"],
+[data-page="admin-status-overview"] {
+  #view > div:first-child {
+    gap: 0 !important;
+  }
+
+  // Native port status uses a 70px grid. Keep room for readable byte counts
+  // and scope this adapter to the overview instead of every inline grid.
+  div[style*="display:grid;grid-template-columns:repeat"] {
+    display: flex !important;
+    justify-content: space-evenly !important;
+    flex-wrap: wrap;
+
+    .ifacebox {
+      flex: 0 0 6.25rem;
+      text-align: center;
+
+      .ifacebox-body {
+        font-size: .75rem;
+        padding: .75rem .5rem;
+
+        .cbi-tooltip-container {
+          font-size: inherit !important;
+          direction: ltr;
+          unicode-bidi: isolate;
+
+          [dir="rtl"] & .cbi-tooltip {
+            direction: rtl;
+          }
+        }
+      }
+    }
+  }
+}

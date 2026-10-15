@@ -90,6 +90,7 @@
   --progress-bg: #e9ecef;
   --iface-bg: #f9f9f9;
   --iface-head-bg: #eee;
+  --iface-head-text: var(--text-strong);
   --iface-body-bg: transparent;
   --iface-border: 0;
   --badge-bg: #eee;
@@ -208,6 +209,7 @@
   --progress-bg: #282a2c;
   --iface-bg: transparent;
   --iface-head-bg: #666;
+  --iface-head-text: #fff;
   --iface-body-bg: #333;
   --iface-border: 1px solid var(--separator-color);
   --badge-bg: #333;
@@ -307,6 +309,7 @@
     --progress-bg: #282a2c;
     --iface-bg: transparent;
     --iface-head-bg: #666;
+    --iface-head-text: #fff;
     --iface-body-bg: #333;
     --iface-border: 1px solid var(--separator-color);
     --badge-bg: #333;
@@ -3161,6 +3164,8 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 }
 .cbi-progressbar::after {
   content: attr(title);
+  direction: ltr;
+  unicode-bidi: isolate;
   position: relative;
   display: block;
   font-size: 0.75rem;
@@ -3647,6 +3652,7 @@ td > .ifacebadge,
 .ifacebox-head {
   padding: 0.25em;
   background: var(--iface-head-bg);
+  color: var(--iface-head-text);
 }
 .ifacebox-head.active {
   background: var(--primary);
@@ -4548,6 +4554,32 @@ pre.command-output {
 [data-page="admin-status-overview"] #view > div:first-child {
   gap: 0 !important;
 }
+[data-page="admin-status"] div[style*="display:grid;grid-template-columns:repeat"],
+[data-page="admin-status-overview"] div[style*="display:grid;grid-template-columns:repeat"] {
+  display: flex !important;
+  justify-content: space-evenly !important;
+  flex-wrap: wrap;
+}
+[data-page="admin-status"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox,
+[data-page="admin-status-overview"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox {
+  flex: 0 0 6.25rem;
+  text-align: center;
+}
+[data-page="admin-status"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body,
+[data-page="admin-status-overview"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body {
+  font-size: 0.75rem;
+  padding: 0.75rem 0.5rem;
+}
+[data-page="admin-status"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body .cbi-tooltip-container,
+[data-page="admin-status-overview"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body .cbi-tooltip-container {
+  font-size: inherit !important;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+[dir="rtl"] [data-page="admin-status"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body .cbi-tooltip-container .cbi-tooltip,
+[dir="rtl"] [data-page="admin-status-overview"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body .cbi-tooltip-container .cbi-tooltip {
+  direction: rtl;
+}
 [data-page^="admin-status-realtime"] .cbi-section > div:has(> svg) {
   background: var(--surface-color) !important;
   border: 0 !important;
@@ -5430,22 +5462,6 @@ pre.command-output {
 .node-status-processes > .main .table .tr .td:nth-child(3) {
   white-space: normal;
 }
-div[style*="display:grid;grid-template-columns:repeat"] {
-  display: flex !important;
-  justify-content: space-evenly !important;
-  flex-wrap: wrap;
-}
-div[style*="display:grid;grid-template-columns:repeat"] .ifacebox {
-  text-align: center;
-  flex-basis: 100px;
-}
-div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body {
-  font-size: 0.7rem;
-  padding: 0.875rem;
-}
-div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body .cbi-tooltip-container {
-  font-size: inherit !important;
-}
 /* firewall */
 #iptables {
   margin: 0;
@@ -5840,13 +5856,6 @@ div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body
   }
 }
 @media screen and (max-width: 480px) {
-  div[style*="display:grid;grid-template-columns:repeat"] .ifacebox {
-    flex-basis: 80px;
-  }
-  div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body {
-    padding: 0.875rem 0.5rem;
-    font-size: 0.6rem;
-  }
   .login-page .login-container {
     margin-left: 0rem !important;
     width: 100%;

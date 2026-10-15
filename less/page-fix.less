@@ -769,12 +769,7 @@
 }
 
 // Status - Overview
-[data-page="admin-status"],
-[data-page="admin-status-overview"] {
-    #view > div:first-child {
-        gap: 0 !important;
-    }
-}
+@import "pages/overview.less";
 
 // Status - Realtime Graphs
 [data-page^="admin-status-realtime"] {
@@ -1711,26 +1706,6 @@
 .node-status-overview>.main fieldset:nth-child(4) .td:nth-child(2),
 .node-status-processes>.main .table .tr .td:nth-child(3) {
     white-space: normal;
-}
-
-div[style*="display:grid;grid-template-columns:repeat"] {
-    display: flex !important;
-    justify-content: space-evenly !important;
-    flex-wrap: wrap;
-
-    .ifacebox {
-        text-align: center;
-        flex-basis: 100px;
-
-        .ifacebox-body {
-            font-size: 0.7rem;
-            padding: 0.875rem;
-
-            .cbi-tooltip-container {
-                font-size: inherit !important;
-            }
-        }
-    }
 }
 
 /* firewall */
