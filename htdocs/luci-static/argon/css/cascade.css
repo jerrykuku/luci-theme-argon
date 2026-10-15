@@ -36,7 +36,6 @@
   --warning: #fb6340;
   --danger: #f5365c;
   --error-text: #ffd600;
-  --error-detail-text: var(--dark-primary);
   --strength-weak-text: #b42318;
   --strength-medium-text: #805600;
   --strength-strong-text: #166534;
@@ -3240,7 +3239,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   padding: 0.5rem;
   cursor: auto;
   white-space: pre-wrap;
-  color: var(--error-detail-text);
+  color: var(--code-text);
   outline: 0;
   border-radius: var(--radius-control);
   border: 1px solid var(--border-muted);
@@ -3250,6 +3249,10 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .modal > textarea:focus {
   border: 1px solid var(--primary);
   box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
+}
+.modal > pre {
+  direction: ltr;
+  unicode-bidi: plaintext;
 }
 .modal > h4 {
   display: block;

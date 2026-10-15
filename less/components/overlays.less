@@ -95,7 +95,7 @@
     padding: 0.5rem;
     cursor: auto;
     white-space: pre-wrap;
-    color: var(--error-detail-text);
+    color: var(--code-text);
     outline: 0;
     border-radius: var(--radius-control);
     border: 1px solid var(--border-muted);
@@ -105,6 +105,11 @@
       border: 1px solid var(--primary);
       box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
     }
+  }
+
+  &>pre {
+    direction: ltr;
+    unicode-bidi: plaintext;
   }
 
   &>h4 {
