@@ -155,6 +155,7 @@
   --section-shadow: 0 0 1rem rgba(136, 152, 170, 0.15);
   --sidebar-shadow: rgba(0, 0, 0, 0.75) 0 0 15px -5px;
   --dropdown-shadow: 0 4px 8px rgba(0, 0, 0, .06), 0 12px 24px rgba(0, 0, 0, .12);
+  --button-hover-shadow: 0 2px 4px rgba(0, 0, 0, .16), 0 4px 12px var(--accent-shadow-color);
   --file-icon-filter: none;
   --image-filter: none;
   --header-color: var(--text-on-accent);
@@ -281,6 +282,7 @@
   --section-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
   --sidebar-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
   --dropdown-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 12px 24px rgba(0, 0, 0, .32);
+  --button-hover-shadow: 0 2px 4px rgba(0, 0, 0, .5), 0 4px 12px var(--accent-shadow-color);
   --file-icon-filter: invert(0.7);
   --image-filter: invert(0.9);
   --blur-radius: var(--blur-radius-dark);
@@ -391,6 +393,7 @@
     --section-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
     --sidebar-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
     --dropdown-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 12px 24px rgba(0, 0, 0, .32);
+    --button-hover-shadow: 0 2px 4px rgba(0, 0, 0, .5), 0 4px 12px var(--accent-shadow-color);
     --file-icon-filter: invert(0.7);
     --image-filter: invert(0.9);
     --blur-radius: var(--blur-radius-dark);
@@ -2333,10 +2336,9 @@ td > table > tbody > tr > td,
   appearance: none !important;
 }
 @media (hover: hover) {
-  .btn:hover,
-  .cbi-button:hover,
-  .item:hover::after {
-    box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
+  :is(.btn, .cbi-button):not(:disabled):not([disabled]):not([aria-disabled="true"]):not([disabled] *, [aria-disabled="true"] *):hover,
+  .cbi-dynlist:not([disabled]):not([aria-disabled="true"]) > .item:hover::after {
+    box-shadow: var(--button-hover-shadow);
   }
 }
 .btn:disabled,
@@ -2392,7 +2394,7 @@ td > table > tbody > tr > td,
 .cbi-button-neutral[onclick="handleConfig(event)"] {
   font-weight: normal;
   color: var(--accent-text) !important;
-  border: thin solid var(--accent-border);
+  border: thin solid var(--button-bg, var(--primary));
   background-color: var(--button-bg, var(--primary));
 }
 .cbi-page-actions .cbi-button-save,
@@ -2415,7 +2417,7 @@ td > table > tbody > tr > td,
 .cbi-button[onclick="addKey(event)"] {
   font-weight: normal;
   color: var(--accent-text) !important;
-  border: thin solid var(--accent-border);
+  border: thin solid var(--primary);
   background-color: var(--primary);
 }
 /* red */
@@ -3042,7 +3044,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   font-size: 1.2rem;
   color: var(--accent-text);
   background-color: var(--primary);
-  border: 1px solid var(--accent-border);
+  border: 1px solid var(--primary);
 }
 .cbi-dynlist > .add-item:not([ondrop]) > input {
   overflow: hidden;

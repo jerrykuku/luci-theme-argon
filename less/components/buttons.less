@@ -41,10 +41,9 @@
 }
 
 @media (hover: hover) {
-  .btn:hover,
-  .cbi-button:hover,
-  .item:hover::after {
-    box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
+  :is(.btn, .cbi-button):not(:disabled):not([disabled]):not([aria-disabled="true"]):not([disabled] *, [aria-disabled="true"] *):hover,
+  .cbi-dynlist:not([disabled]):not([aria-disabled="true"]) > .item:hover::after {
+    box-shadow: var(--button-hover-shadow);
   }
 }
 
@@ -104,7 +103,8 @@
 .cbi-button-neutral[onclick="handleConfig(event)"] {
   font-weight: normal;
   color: var(--accent-text) !important;
-  border: thin solid var(--accent-border);
+  // Button edges follow their fill; the brighter accent border is for controls.
+  border: thin solid var(--button-bg, var(--primary));
   background-color: var(--button-bg, var(--primary));
 }
 
@@ -129,7 +129,7 @@
 .cbi-button[onclick="addKey(event)"] {
   font-weight: normal;
   color: var(--accent-text) !important;
-  border: thin solid var(--accent-border);
+  border: thin solid var(--primary);
 
   background-color: var(--primary);
 }
