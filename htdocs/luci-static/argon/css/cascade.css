@@ -4604,74 +4604,139 @@ pre.command-output {
 }
 [data-page="admin-status-realtime"] .cbi-section > div:has(> svg),
 [data-page="admin-status-realtime-load"] .cbi-section > div:has(> svg),
-[data-page="admin-status-realtime-bandwidth"] .cbi-section > div:has(> svg) {
+[data-page="admin-status-realtime-bandwidth"] .cbi-section > div:has(> svg),
+[data-page="admin-status-realtime-connections"] .cbi-section > div:has(> svg) {
   direction: ltr;
   unicode-bidi: isolate;
 }
 [data-page="admin-status-realtime"] #scale,
 [data-page="admin-status-realtime-load"] #scale,
-[data-page="admin-status-realtime-bandwidth"] #scale {
+[data-page="admin-status-realtime-bandwidth"] #scale,
+[data-page="admin-status-realtime-connections"] #scale {
   display: inline-block;
   unicode-bidi: plaintext;
 }
 [data-page="admin-status-realtime"] svg line,
 [data-page="admin-status-realtime-load"] svg line,
 [data-page="admin-status-realtime-bandwidth"] svg line,
+[data-page="admin-status-realtime-connections"] svg line,
 [data-page="admin-status-realtime"] svg polyline,
 [data-page="admin-status-realtime-load"] svg polyline,
 [data-page="admin-status-realtime-bandwidth"] svg polyline,
+[data-page="admin-status-realtime-connections"] svg polyline,
 [data-page="admin-status-realtime"] svg polygon,
 [data-page="admin-status-realtime-load"] svg polygon,
 [data-page="admin-status-realtime-bandwidth"] svg polygon,
+[data-page="admin-status-realtime-connections"] svg polygon,
 [data-page="admin-status-realtime"] svg path,
 [data-page="admin-status-realtime-load"] svg path,
-[data-page="admin-status-realtime-bandwidth"] svg path {
+[data-page="admin-status-realtime-bandwidth"] svg path,
+[data-page="admin-status-realtime-connections"] svg path {
   vector-effect: non-scaling-stroke;
 }
-[data-page="admin-status-realtime"] .td[id^="lb_load"],
-[data-page="admin-status-realtime-load"] .td[id^="lb_load"],
-[data-page="admin-status-realtime-bandwidth"] .td[id^="lb_load"],
+[data-page="admin-status-realtime"] .td[id^="lb_"],
+[data-page="admin-status-realtime-load"] .td[id^="lb_"],
+[data-page="admin-status-realtime-bandwidth"] .td[id^="lb_"],
+[data-page="admin-status-realtime-connections"] .td[id^="lb_"],
 [data-page="admin-status-realtime"] .td[id*="_bw_"],
 [data-page="admin-status-realtime-load"] .td[id*="_bw_"],
-[data-page="admin-status-realtime-bandwidth"] .td[id*="_bw_"] {
+[data-page="admin-status-realtime-bandwidth"] .td[id*="_bw_"],
+[data-page="admin-status-realtime-connections"] .td[id*="_bw_"] {
   font-variant-numeric: tabular-nums;
 }
 [data-page="admin-status-realtime"] .td[id*="_bw_"],
 [data-page="admin-status-realtime-load"] .td[id*="_bw_"],
-[data-page="admin-status-realtime-bandwidth"] .td[id*="_bw_"] {
+[data-page="admin-status-realtime-bandwidth"] .td[id*="_bw_"],
+[data-page="admin-status-realtime-connections"] .td[id*="_bw_"] {
   direction: ltr;
   unicode-bidi: isolate;
 }
 @media screen and (max-width: 1152px) {
-  [data-page="admin-status-realtime"] .table:has(.td[id^="lb_load"]) .tr,
-  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .tr,
-  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id^="lb_load"]) .tr,
+  [data-page="admin-status-realtime"] .table:has(.td[id^="lb_"]) .tr,
+  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_"]) .tr,
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id^="lb_"]) .tr,
+  [data-page="admin-status-realtime-connections"] .table:has(.td[id^="lb_"]) .tr,
   [data-page="admin-status-realtime"] .table:has(.td[id*="_bw_"]) .tr,
   [data-page="admin-status-realtime-load"] .table:has(.td[id*="_bw_"]) .tr,
-  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id*="_bw_"]) .tr {
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id*="_bw_"]) .tr,
+  [data-page="admin-status-realtime-connections"] .table:has(.td[id*="_bw_"]) .tr {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     padding-block: var(--control-gap);
   }
-  [data-page="admin-status-realtime"] .table:has(.td[id^="lb_load"]) .td,
-  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .td,
-  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id^="lb_load"]) .td,
+  [data-page="admin-status-realtime"] .table:has(.td[id^="lb_"]) .td,
+  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_"]) .td,
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id^="lb_"]) .td,
+  [data-page="admin-status-realtime-connections"] .table:has(.td[id^="lb_"]) .td,
   [data-page="admin-status-realtime"] .table:has(.td[id*="_bw_"]) .td,
   [data-page="admin-status-realtime-load"] .table:has(.td[id*="_bw_"]) .td,
-  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id*="_bw_"]) .td {
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id*="_bw_"]) .td,
+  [data-page="admin-status-realtime-connections"] .table:has(.td[id*="_bw_"]) .td {
     display: block;
     min-width: 0;
     padding: 0.25rem var(--section-inset);
     border: 0;
     text-align: start !important;
   }
-  [data-page="admin-status-realtime"] .table:has(.td[id^="lb_load"]) .td:nth-child(even),
-  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .td:nth-child(even),
-  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id^="lb_load"]) .td:nth-child(even),
+  [data-page="admin-status-realtime"] .table:has(.td[id^="lb_"]) .td:nth-child(even),
+  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_"]) .td:nth-child(even),
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id^="lb_"]) .td:nth-child(even),
+  [data-page="admin-status-realtime-connections"] .table:has(.td[id^="lb_"]) .td:nth-child(even),
   [data-page="admin-status-realtime"] .table:has(.td[id*="_bw_"]) .td:nth-child(even),
   [data-page="admin-status-realtime-load"] .table:has(.td[id*="_bw_"]) .td:nth-child(even),
-  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id*="_bw_"]) .td:nth-child(even) {
+  [data-page="admin-status-realtime-bandwidth"] .table:has(.td[id*="_bw_"]) .td:nth-child(even),
+  [data-page="admin-status-realtime-connections"] .table:has(.td[id*="_bw_"]) .td:nth-child(even) {
     text-align: end !important;
+  }
+}
+[data-page="admin-status-realtime-connections"] #settings-row {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--control-gap);
+  padding: var(--field-gap) var(--section-inset);
+}
+[data-page="admin-status-realtime-connections"] #settings-row > span {
+  min-width: 0;
+  max-width: 100%;
+}
+[data-page="admin-status-realtime-connections"] #settings-row > .filter {
+  flex: 1 1 16rem !important;
+}
+[data-page="admin-status-realtime-connections"] #settings-row > .right {
+  flex: 0 1 auto !important;
+  margin-inline-start: auto;
+}
+[data-page="admin-status-realtime-connections"] #settings-row button {
+  min-height: 2.5rem;
+  height: auto;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+[data-page="admin-status-realtime-connections"] #filter-connections {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
+}
+[data-page="admin-status-realtime-connections"] #connections .th {
+  text-align: start !important;
+}
+[data-page="admin-status-realtime-connections"] #connections .td {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: match-parent !important;
+  font-variant-numeric: tabular-nums;
+}
+[dir="rtl"] [data-page="admin-status-realtime-connections"] #connections .td::before {
+  direction: rtl;
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-status-realtime-connections"] #connections .tr:not(.table-titles):not(.placeholder) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  [data-page="admin-status-realtime-connections"] #connections .td:nth-child(n + 3) {
+    grid-column: 1 / -1;
   }
 }
 [data-page^="admin-status-realtime"] .cbi-section > div:has(> svg) {

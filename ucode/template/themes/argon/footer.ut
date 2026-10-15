@@ -40,7 +40,12 @@
 	</script>
 <script type="text/javascript">L.require('menu-argon')</script>
 <script type="text/javascript">
-	if (document.body.matches('[data-page="admin-status-realtime"], [data-page="admin-status-realtime-load"], [data-page="admin-status-realtime-bandwidth"]'))
+	if ([
+		'admin-status-realtime',
+		'admin-status-realtime-load',
+		'admin-status-realtime-bandwidth',
+		'admin-status-realtime-connections'
+	].includes(document.body.dataset.page))
 		L.require('argon-graphs');
 </script>
 </body>

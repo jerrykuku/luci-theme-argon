@@ -2,7 +2,8 @@
 
 [data-page="admin-status-realtime"],
 [data-page="admin-status-realtime-load"],
-[data-page="admin-status-realtime-bandwidth"] {
+[data-page="admin-status-realtime-bandwidth"],
+[data-page="admin-status-realtime-connections"] {
   // SVG text coordinates and the time axis are technical data, independent
   // of the interface reading direction.
   .cbi-section > div:has(> svg) {
@@ -22,7 +23,7 @@
     vector-effect: non-scaling-stroke;
   }
 
-  .td[id^="lb_load"],
+  .td[id^="lb_"],
   .td[id*="_bw_"] {
     font-variant-numeric: tabular-nums;
   }
@@ -33,7 +34,7 @@
   }
 
   @media screen and (max-width: 1152px) {
-    .table:has(.td[id^="lb_load"]),
+    .table:has(.td[id^="lb_"]),
     .table:has(.td[id*="_bw_"]) {
       .tr {
         display: grid;
@@ -51,6 +52,71 @@
 
       .td:nth-child(even) {
         text-align: end !important;
+      }
+    }
+  }
+}
+
+[data-page="admin-status-realtime-connections"] {
+  #settings-row {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--control-gap);
+    padding: var(--field-gap) var(--section-inset);
+
+    > span {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    > .filter {
+      flex: 1 1 16rem !important;
+    }
+
+    > .right {
+      flex: 0 1 auto !important;
+      margin-inline-start: auto;
+    }
+
+    button {
+      min-height: 2.5rem;
+      height: auto;
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  #filter-connections {
+    direction: ltr;
+    unicode-bidi: isolate;
+    text-align: start;
+  }
+
+  #connections {
+    .th {
+      text-align: start !important;
+    }
+
+    .td {
+      direction: ltr;
+      unicode-bidi: isolate;
+      text-align: match-parent !important;
+      font-variant-numeric: tabular-nums;
+
+      [dir="rtl"] &::before {
+        direction: rtl;
+      }
+    }
+
+    @media screen and (max-width: 1152px) {
+      .tr:not(.table-titles):not(.placeholder) {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+
+      .td:nth-child(n + 3) {
+        grid-column: 1 / -1;
       }
     }
   }
