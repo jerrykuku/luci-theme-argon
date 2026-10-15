@@ -109,11 +109,16 @@ export function dark_palette(color, custom) {
 		}
 	}
 	let link = tone(seed, 0.82, 0.65);
+	// Field edges keep more chroma than the pale keyboard focus ring.
+	let control_focus = tone(seed, 0.69, 0.95);
 	return {
 		primary: fill,
 		on_primary: contrast('#ffffff', fill) >= contrast('#000000', fill) ? '#ffffff' : '#000000',
 		link: link,
 		focus: tone(seed, 0.90, 0.4),
+		control_focus: control_focus,
+		progress: tone(seed, 0.74, 0.8),
+		control_ring: sprintf('rgba(%d, %d, %d, .18)', int(substr(control_focus, 1, 2), 16), int(substr(control_focus, 3, 2), 16), int(substr(control_focus, 5, 2), 16)),
 		selected: tone(seed, 0.31, 0.35),
 		hover: tone(seed, 0.37, 0.4),
 		shadow: sprintf('rgba(%d, %d, %d, .1)', int(substr(link, 1, 2), 16), int(substr(link, 3, 2), 16), int(substr(link, 5, 2), 16)),

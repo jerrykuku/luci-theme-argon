@@ -136,6 +136,39 @@
 }
 
 [data-page^="admin-status-realtime"] {
+    // Native inline series colors also appear on the legend's underline.
+    svg :is(#rx, #udp) { --chart-series: var(--chart-series-1); }
+    svg :is(#tx, #tcp) { --chart-series: var(--chart-series-2); }
+    svg :is(#load01, #other) { --chart-series: var(--chart-series-3); }
+    svg #load05 { --chart-series: var(--chart-series-4); }
+    svg #load15 { --chart-series: var(--chart-series-5); }
+
+    svg :is(#rx, #udp, #tx, #tcp, #load01, #other, #load05, #load15) {
+        stroke: var(--chart-series) !important;
+        fill: var(--chart-series) !important;
+        fill-opacity: var(--chart-area-opacity) !important;
+    }
+
+    strong:is([style*="solid blue"], [style*="solid #0000ff"], [style*="solid #00f"]) {
+        border-bottom-color: var(--chart-series-1) !important;
+    }
+
+    strong:is([style*="solid green"], [style*="solid #008000"]) {
+        border-bottom-color: var(--chart-series-2) !important;
+    }
+
+    strong:is([style*="solid red"], [style*="solid #ff0000"], [style*="solid #f00"]) {
+        border-bottom-color: var(--chart-series-3) !important;
+    }
+
+    strong:is([style*="solid #ff6600"], [style*="solid #f60"]) {
+        border-bottom-color: var(--chart-series-4) !important;
+    }
+
+    strong:is([style*="solid #ffaa00"], [style*="solid #fa0"]) {
+        border-bottom-color: var(--chart-series-5) !important;
+    }
+
     .cbi-section > div:has(> svg) {
         // Native realtime views paint the plot background with inline styles.
         background: var(--surface-color) !important;

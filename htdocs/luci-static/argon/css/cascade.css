@@ -27,6 +27,9 @@
   --dark-on-primary: #ffffff;
   --dark-link-color: #b0c1ff;
   --dark-focus-ring: #d3ddff;
+  --dark-control-focus: #7a91ff;
+  --dark-progress-fill: #8fa4ff;
+  --dark-control-ring: rgba(122, 145, 255, 0.18);
   --dark-selected-bg: #262e4f;
   --dark-selected-hover-bg: #333d64;
   --dark-accent-ring: rgba(176, 193, 255, 0.28);
@@ -63,6 +66,7 @@
   --focus-ring: #3446ab;
   --control-focus: var(--primary);
   --link-color: var(--primary);
+  --help-text: var(--primary);
   --code-text: #212529;
   --data-token-text: #0069d6;
   --log-text: #242424;
@@ -80,6 +84,8 @@
   --row-alt: #f9f9f9;
   --media-bg: #000;
   --border-color: #dee2e6;
+  --control-border: var(--border-color);
+  --control-subtle-border: var(--border-muted);
   --border-subtle: #ddd;
   --border-muted: #e9ecef;
   --border-strong: #cbd5e1;
@@ -95,6 +101,8 @@
   --invalid-bg: #fce6e6;
   --command-bg: #eee;
   --input-bg: #fff;
+  --select-bg: var(--surface-color);
+  --dropdown-control-bg: transparent;
   --neutral-button-bg: #f0f0f0;
   --neutral-action-bg: #8898aa;
   --action-muted-solid: #8898aa;
@@ -105,12 +113,20 @@
   --tab-item-bg: #dce3e9;
   --tab-inactive-color: #404040;
   --progress-bg: #e9ecef;
+  --progress-fill: var(--primary);
+  --chart-series-1: #0000ff;
+  --chart-series-2: #008000;
+  --chart-series-3: #ff0000;
+  --chart-series-4: #ff6600;
+  --chart-series-5: #ffaa00;
+  --chart-area-opacity: 0.4;
   --iface-bg: #f9f9f9;
   --iface-head-bg: #eee;
   --iface-head-text: var(--text-strong);
   --iface-body-bg: transparent;
   --iface-border: 0;
   --badge-bg: #eee;
+  --label-bg: #bfbfbf;
   --dropdown-text: var(--text-strong);
   --dropdown-selected-text: var(--text-strong);
   --dropdown-selected-bg: #e8ecff;
@@ -120,14 +136,24 @@
   --login-text: #101828;
   --login-input-border: #fff;
   --positive-bg: var(--primary);
+  --danger-bg: var(--danger);
+  --success-bg: var(--success);
+  --feedback-text: inherit;
   --negative-bg: var(--danger);
   --reset-bg: #f0ad4e;
   --reset-border: #eea236;
+  --reset-action-bg: var(--danger);
+  --success-action-bg: #5cb85c;
+  --success-action-border: #4cae4c;
+  --warning-action-bg: var(--warning);
+  --warning-badge-bg: #f0ad4e;
   --notice-bg: var(--info);
   --warning-bg: var(--warning);
   --error-bg: #fb6340;
   --warning-heading-bg: transparent;
   --warning-heading-color: #8c6900;
+  --feedback-heading-bg: var(--warning-heading-bg);
+  --feedback-heading-text: var(--warning-heading-color);
   --change-added-bg: #cfc;
   --change-added-border: #0f0;
   --change-removed-bg: #fcc;
@@ -156,6 +182,7 @@
   --sidebar-shadow: rgba(0, 0, 0, 0.75) 0 0 15px -5px;
   --dropdown-shadow: 0 4px 8px rgba(0, 0, 0, .06), 0 12px 24px rgba(0, 0, 0, .12);
   --button-hover-shadow: 0 2px 4px rgba(0, 0, 0, .16), 0 4px 12px var(--accent-shadow-color);
+  --control-focus-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
   --file-icon-filter: none;
   --image-filter: none;
   --header-color: var(--text-on-accent);
@@ -181,10 +208,13 @@
 :root[data-argon-mode="dark"] {
   color-scheme: dark;
   --primary: var(--dark-primary);
+  --warning: #f6c177;
+  --danger: #ffa9ae;
+  --error-text: var(--danger);
   --strength-weak-text: #ffb4ab;
   --strength-medium-text: #f5c24b;
   --strength-strong-text: #86efac;
-  --text-strong: #ccc;
+  --text-strong: #e6e6e6;
   --text-color: #ccc;
   --muted-text: #adb5bd;
   --soft-text: #ccc;
@@ -195,24 +225,27 @@
   --notice-text: var(--accent-text);
   --placeholder-color: #adb5bd;
   --focus-ring: var(--dark-focus-ring);
-  --control-focus: var(--focus-ring);
+  --control-focus: var(--dark-control-focus);
   --link-color: var(--dark-link-color);
+  --help-text: var(--dark-link-color);
   --code-text: #ccc;
   --data-token-text: var(--link-color);
   --log-text: #ccc;
   --overlay-text: #adb5bd;
-  --background-color: #1e1e1e;
-  --main-bg: #1e1e1e;
-  --surface-color: #1e1e1e;
+  --background-color: #181819;
+  --main-bg: var(--background-color);
+  --surface-color: #252526;
   --surface-raised: #333;
-  --surface-panel: #252526;
-  --surface-muted: #252526;
-  --surface-inset: #252526;
-  --surface-active: #181819;
+  --surface-panel: #2d2d2d;
+  --surface-muted: #2d2d2d;
+  --surface-inset: #1e1e1e;
+  --surface-active: #3c3c3c;
   --surface-contrast: #3c3c3c;
-  --row-color: #1e1e1e;
-  --row-alt: #252526;
+  --row-color: var(--surface-color);
+  --row-alt: #2d2d2d;
   --border-color: #3c3c3c;
+  --control-border: #808080;
+  --control-subtle-border: var(--control-border);
   --border-subtle: #252526;
   --border-muted: #3c3c3c;
   --border-strong: #515151;
@@ -226,39 +259,59 @@
   --sidebar-brand-color: #ccc;
   --invalid-bg: #1e1e1e;
   --command-bg: #252526;
-  --input-bg: transparent;
+  --input-bg: #1e1e1e;
+  --select-bg: var(--input-bg);
+  --dropdown-control-bg: var(--input-bg);
   --neutral-button-bg: var(--primary);
   --neutral-action-bg: var(--primary);
-  --action-muted-solid: #adb5bd;
+  --action-muted-solid: #5b5b5b;
   --plain-button-bg: #707070;
   --plain-button-text: #fff;
   --tab-color: var(--link-color);
   --tab-item-bg: #2d2d2d;
   --tab-inactive-color: #ccc;
-  --progress-bg: #282a2c;
+  --progress-bg: var(--surface-inset);
+  --progress-fill: var(--dark-progress-fill);
+  --chart-series-1: #85adff;
+  --chart-series-2: #64d9a3;
+  --chart-series-3: #ffa9ae;
+  --chart-series-4: #ffb789;
+  --chart-series-5: #f6c177;
+  --chart-area-opacity: 0.18;
   --iface-bg: transparent;
   --iface-head-bg: #666;
   --iface-head-text: #fff;
   --iface-body-bg: #333;
   --iface-border: 1px solid var(--separator-color);
   --badge-bg: #333;
+  --label-bg: #5b5b5b;
   --dropdown-selected-bg: var(--dark-selected-bg);
   --sidebar-scrollbar: #252526;
   --login-panel-rgb: 0, 0, 0;
   --login-text: #adb5bd;
   --login-input-border: #adb5bd;
-  --negative-bg: darkorange;
-  --reset-bg: darkorange;
-  --reset-border: darkorange;
+  --danger-bg: #c73850;
+  --success-bg: #028453;
+  --feedback-text: var(--text-on-accent);
+  --negative-bg: var(--danger-bg);
+  --reset-bg: var(--warning-bg);
+  --reset-border: var(--warning-bg);
+  --reset-action-bg: var(--reset-bg);
+  --success-action-bg: var(--success-bg);
+  --success-action-border: var(--success-bg);
+  --warning-action-bg: var(--warning-bg);
+  --warning-badge-bg: var(--warning-bg);
   --notice-bg: var(--primary);
-  --warning-bg: #986400;
-  --error-bg: #784f00;
+  --warning-bg: #906521;
+  --error-bg: #49252d;
   --warning-heading-bg: #784f00;
-  --warning-heading-color: #ffbf00;
-  --change-added-bg: #688668;
-  --change-added-border: #00ad00;
-  --change-removed-bg: #896565;
-  --change-removed-border: #c60000;
+  --warning-heading-color: var(--warning);
+  --feedback-heading-bg: transparent;
+  --feedback-heading-text: inherit;
+  --change-added-bg: #1f3e30;
+  --change-added-border: var(--success);
+  --change-removed-bg: #49252d;
+  --change-removed-border: var(--danger);
   --change-modified-bg: #333;
   --change-modified-border: #666;
   --plugin-card-bg: #3c3c3c;
@@ -283,6 +336,7 @@
   --sidebar-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
   --dropdown-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 12px 24px rgba(0, 0, 0, .32);
   --button-hover-shadow: 0 2px 4px rgba(0, 0, 0, .5), 0 4px 12px var(--accent-shadow-color);
+  --control-focus-shadow: 0 0 0 2px var(--dark-control-ring);
   --file-icon-filter: invert(0.7);
   --image-filter: invert(0.9);
   --blur-radius: var(--blur-radius-dark);
@@ -292,10 +346,13 @@
   :root:not([data-argon-mode="light"]):not([data-argon-mode="dark"]) {
     color-scheme: dark;
     --primary: var(--dark-primary);
+    --warning: #f6c177;
+    --danger: #ffa9ae;
+    --error-text: var(--danger);
     --strength-weak-text: #ffb4ab;
     --strength-medium-text: #f5c24b;
     --strength-strong-text: #86efac;
-    --text-strong: #ccc;
+    --text-strong: #e6e6e6;
     --text-color: #ccc;
     --muted-text: #adb5bd;
     --soft-text: #ccc;
@@ -306,24 +363,27 @@
     --notice-text: var(--accent-text);
     --placeholder-color: #adb5bd;
     --focus-ring: var(--dark-focus-ring);
-    --control-focus: var(--focus-ring);
+    --control-focus: var(--dark-control-focus);
     --link-color: var(--dark-link-color);
+    --help-text: var(--dark-link-color);
     --code-text: #ccc;
     --data-token-text: var(--link-color);
     --log-text: #ccc;
     --overlay-text: #adb5bd;
-    --background-color: #1e1e1e;
-    --main-bg: #1e1e1e;
-    --surface-color: #1e1e1e;
+    --background-color: #181819;
+    --main-bg: var(--background-color);
+    --surface-color: #252526;
     --surface-raised: #333;
-    --surface-panel: #252526;
-    --surface-muted: #252526;
-    --surface-inset: #252526;
-    --surface-active: #181819;
+    --surface-panel: #2d2d2d;
+    --surface-muted: #2d2d2d;
+    --surface-inset: #1e1e1e;
+    --surface-active: #3c3c3c;
     --surface-contrast: #3c3c3c;
-    --row-color: #1e1e1e;
-    --row-alt: #252526;
+    --row-color: var(--surface-color);
+    --row-alt: #2d2d2d;
     --border-color: #3c3c3c;
+    --control-border: #808080;
+    --control-subtle-border: var(--control-border);
     --border-subtle: #252526;
     --border-muted: #3c3c3c;
     --border-strong: #515151;
@@ -337,39 +397,59 @@
     --sidebar-brand-color: #ccc;
     --invalid-bg: #1e1e1e;
     --command-bg: #252526;
-    --input-bg: transparent;
+    --input-bg: #1e1e1e;
+    --select-bg: var(--input-bg);
+    --dropdown-control-bg: var(--input-bg);
     --neutral-button-bg: var(--primary);
     --neutral-action-bg: var(--primary);
-    --action-muted-solid: #adb5bd;
+    --action-muted-solid: #5b5b5b;
     --plain-button-bg: #707070;
     --plain-button-text: #fff;
     --tab-color: var(--link-color);
     --tab-item-bg: #2d2d2d;
     --tab-inactive-color: #ccc;
-    --progress-bg: #282a2c;
+    --progress-bg: var(--surface-inset);
+    --progress-fill: var(--dark-progress-fill);
+    --chart-series-1: #85adff;
+    --chart-series-2: #64d9a3;
+    --chart-series-3: #ffa9ae;
+    --chart-series-4: #ffb789;
+    --chart-series-5: #f6c177;
+    --chart-area-opacity: 0.18;
     --iface-bg: transparent;
     --iface-head-bg: #666;
     --iface-head-text: #fff;
     --iface-body-bg: #333;
     --iface-border: 1px solid var(--separator-color);
     --badge-bg: #333;
+    --label-bg: #5b5b5b;
     --dropdown-selected-bg: var(--dark-selected-bg);
     --sidebar-scrollbar: #252526;
     --login-panel-rgb: 0, 0, 0;
     --login-text: #adb5bd;
     --login-input-border: #adb5bd;
-    --negative-bg: darkorange;
-    --reset-bg: darkorange;
-    --reset-border: darkorange;
+    --danger-bg: #c73850;
+    --success-bg: #028453;
+    --feedback-text: var(--text-on-accent);
+    --negative-bg: var(--danger-bg);
+    --reset-bg: var(--warning-bg);
+    --reset-border: var(--warning-bg);
+    --reset-action-bg: var(--reset-bg);
+    --success-action-bg: var(--success-bg);
+    --success-action-border: var(--success-bg);
+    --warning-action-bg: var(--warning-bg);
+    --warning-badge-bg: var(--warning-bg);
     --notice-bg: var(--primary);
-    --warning-bg: #986400;
-    --error-bg: #784f00;
+    --warning-bg: #906521;
+    --error-bg: #49252d;
     --warning-heading-bg: #784f00;
-    --warning-heading-color: #ffbf00;
-    --change-added-bg: #688668;
-    --change-added-border: #00ad00;
-    --change-removed-bg: #896565;
-    --change-removed-border: #c60000;
+    --warning-heading-color: var(--warning);
+    --feedback-heading-bg: transparent;
+    --feedback-heading-text: inherit;
+    --change-added-bg: #1f3e30;
+    --change-added-border: var(--success);
+    --change-removed-bg: #49252d;
+    --change-removed-border: var(--danger);
     --change-modified-bg: #333;
     --change-modified-border: #666;
     --plugin-card-bg: #3c3c3c;
@@ -394,6 +474,7 @@
     --sidebar-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
     --dropdown-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 12px 24px rgba(0, 0, 0, .32);
     --button-hover-shadow: 0 2px 4px rgba(0, 0, 0, .5), 0 4px 12px var(--accent-shadow-color);
+    --control-focus-shadow: 0 0 0 2px var(--dark-control-ring);
     --file-icon-filter: invert(0.7);
     --image-filter: invert(0.9);
     --blur-radius: var(--blur-radius-dark);
@@ -545,7 +626,7 @@ a {
 abbr {
   cursor: help;
   text-decoration: underline;
-  color: var(--primary);
+  color: var(--help-text);
 }
 abbr[title] {
   border-bottom: none;
@@ -696,7 +777,7 @@ textarea {
   outline: none;
 }
 textarea:focus-visible {
-  border: 1px solid var(--primary);
+  border: 1px solid var(--control-focus);
 }
 fieldset {
   padding: 0.35em 0.75em 0.625em;
@@ -971,7 +1052,7 @@ input,
   height: 2.5rem;
   padding: 0.5rem 0.75rem;
   color: var(--control-text);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--control-border);
   border-radius: var(--radius-control);
   outline: 0;
   background-image: none;
@@ -979,7 +1060,7 @@ input,
   transition: box-shadow 0.15s ease;
 }
 select {
-  background-color: var(--surface-color);
+  background-color: var(--select-bg);
   padding-inline-end: 2.5rem;
   background-image: var(--chevron-down-icon);
   background-size: 1rem;
@@ -990,11 +1071,16 @@ select {
 input:not(.cbi-button) {
   background-color: var(--input-bg);
 }
+.cbi-dropdown:not(.btn):not(.cbi-button) {
+  background-color: var(--dropdown-control-bg);
+}
 select:not([multiple="multiple"]):focus,
 input:not(.cbi-button):focus,
+textarea:focus,
 .cbi-dropdown:focus {
+  --control-border: var(--control-focus);
   border-color: var(--control-focus);
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
+  box-shadow: var(--control-focus-shadow);
 }
 .cbi-dropdown,
 select[multiple="multiple"] {
@@ -1665,7 +1751,7 @@ header .fill .status span[data-indicator="poll-status"] {
   color: var(--text-on-accent);
 }
 header .fill .status span[data-style="active"] {
-  background-color: var(--success);
+  background-color: var(--success-bg);
 }
 header .fill .status span[data-style="inactive"] {
   color: var(--text-on-accent);
@@ -1778,13 +1864,16 @@ span.spinning {
   }
 }
 .danger {
-  background-color: var(--danger) !important;
+  background-color: var(--danger-bg) !important;
+  color: var(--feedback-text);
 }
 .warning {
   background-color: var(--warning-bg) !important;
+  color: var(--feedback-text);
 }
 .success {
-  background-color: var(--success) !important;
+  background-color: var(--success-bg) !important;
+  color: var(--feedback-text);
 }
 .notice {
   background-color: var(--notice-bg) !important;
@@ -1816,8 +1905,8 @@ span.spinning {
 }
 .alert h4,
 .alert-message h4 {
-  background-color: var(--warning-heading-bg);
-  color: var(--warning-heading-color);
+  background-color: var(--feedback-heading-bg);
+  color: var(--feedback-heading-text);
   padding: 0.25rem 0rem;
   border-radius: var(--radius-small);
 }
@@ -2436,6 +2525,10 @@ td > table > tbody > tr > td,
   background-color: var(--negative-bg);
 }
 /* yellow */
+.cbi-button-reset {
+  border-color: var(--reset-action-bg);
+  background-color: var(--reset-action-bg);
+}
 .btn[value="Dismiss"],
 .cbi-button[value="Terminate"],
 .cbi-button[value="Reset"],
@@ -2453,8 +2546,8 @@ td > table > tbody > tr > td,
 .cbi-button-download {
   font-weight: normal;
   color: var(--text-on-accent);
-  border: thin solid #4cae4c;
-  background-color: #5cb85c;
+  border: thin solid var(--success-action-border);
+  background-color: var(--success-action-bg);
 }
 .cbi-button-up,
 .cbi-button-down {
@@ -2756,7 +2849,7 @@ td > table > tbody > tr > td,
 }
 .cbi-value-field.cbi-dropdown-open .cbi-dropdown {
   border-color: var(--control-focus);
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
+  box-shadow: var(--control-focus-shadow);
 }
 .cbi-value-field .cbi-dropdown,
 .cbi-value-field .cbi-input-select,
@@ -2950,12 +3043,12 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   font-size: 1rem;
   line-height: 1.5rem;
   color: var(--text-on-accent);
-  border: 1px solid var(--danger);
+  border: 1px solid var(--danger-bg);
   border-radius: 0;
   border-start-end-radius: var(--radius-control);
   border-end-end-radius: var(--radius-control);
   outline: 0;
-  background-color: var(--danger);
+  background-color: var(--danger-bg);
   background-image: none;
   box-shadow: none;
   box-sizing: border-box;
@@ -3004,7 +3097,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   font-size: 0.875rem;
   line-height: 1.5rem;
   color: var(--muted-text);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--control-border);
   border-radius: var(--radius-control) 0 0 var(--radius-control);
   border-right-width: 0;
   outline: 0;
@@ -3370,7 +3463,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   position: absolute;
   top: 0;
   height: 0.5rem;
-  background-color: var(--primary);
+  background-color: var(--progress-fill);
   border-radius: inherit;
 }
 .cbi-progressbar::after {
@@ -3444,11 +3537,14 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .modal > pre:focus,
 .modal > textarea:focus {
   border: 1px solid var(--control-focus);
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
+  box-shadow: var(--control-focus-shadow);
 }
 .modal > pre {
   direction: ltr;
   unicode-bidi: plaintext;
+}
+.modal > textarea {
+  border-color: var(--control-subtle-border);
 }
 .modal > h4 {
   display: block;
@@ -3485,7 +3581,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   border-radius: var(--radius-small);
 }
 .modal .label.warning {
-  background-color: #f0ad4e !important;
+  background-color: var(--warning-badge-bg) !important;
 }
 .modal .btn {
   padding: 0.45rem 0.8rem;
@@ -3659,9 +3755,9 @@ td > .ifacebadge,
   min-height: 14rem;
   padding: 0.8rem;
   color: var(--control-text);
-  background-color: var(--surface-color);
+  background-color: var(--input-bg);
   border-radius: var(--radius-control);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--control-border);
   min-width: 0;
   max-width: 100%;
 }
@@ -3858,7 +3954,7 @@ td > .ifacebadge,
   background: var(--primary);
 }
 .ifacebox-head.active * {
-  color: var(--text-inverse);
+  color: var(--accent-text);
 }
 .ifacebox-body {
   background-color: var(--iface-body-bg);
@@ -4036,7 +4132,7 @@ body > .cbi-tooltip[style*="left:"][style*="top:"] {
   text-transform: uppercase;
   color: var(--text-inverse) !important;
   border-radius: var(--radius-small);
-  background-color: #bfbfbf;
+  background-color: var(--label-bg);
   text-shadow: none;
 }
 label > input[type="checkbox"],
@@ -4120,7 +4216,7 @@ input[name="nslookup"] {
   top: -0.25rem;
   right: -0.25rem;
   content: attr(data-errors);
-  background-color: var(--danger);
+  background-color: var(--danger-bg);
   color: var(--text-on-accent);
   width: 0.875rem;
   height: 0.875rem;
@@ -4405,9 +4501,9 @@ pre.command-output {
   max-width: 100%;
   resize: vertical;
   padding: 0.5rem 0.75rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--control-border);
   border-radius: var(--radius-control);
-  background: var(--surface-color);
+  background: var(--input-bg);
   color: var(--control-text);
   font-size: 0.8125rem;
 }
@@ -4699,7 +4795,8 @@ pre.command-output {
   resize: none;
   color: var(--muted-text);
   border-radius: var(--radius-control);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--control-border);
+  background-color: var(--input-bg);
 }
 @media screen and (max-width: 1152px) {
   [data-page="admin-system-startup"] .td[data-title] {
@@ -4725,10 +4822,10 @@ pre.command-output {
   padding: 1rem;
   resize: none;
   background-color: transparent;
-  background: var(--surface-color);
+  background: var(--input-bg);
   color: var(--muted-text);
   border-radius: var(--radius-control);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--control-border);
   transition: box-shadow 0.15s ease;
 }
 [data-page="admin-system-crontabhelper"] .crontab-row .dropdown-container {
@@ -4917,8 +5014,9 @@ pre.command-output {
   left: 1rem;
 }
 [data-page="admin-system-reboot"] .cbi-button {
-  background: var(--warning) !important;
-  border-color: var(--warning) !important;
+  background: var(--warning-action-bg) !important;
+  border-color: var(--warning-action-bg) !important;
+  color: var(--text-on-accent) !important;
   margin-left: 0 !important;
 }
 [data-page="admin-system-reboot"] .cbi-button.cbi-button-action.important {
@@ -5130,7 +5228,7 @@ pre.command-output {
 }
 [data-page="admin-network-network"] #modal_overlay > .modal.cbi-modal > div > p > textarea {
   height: 20em !important;
-  border: 1px solid var(--border-color) !important;
+  border: 1px solid var(--control-border) !important;
   border-radius: var(--radius-control);
 }
 [data-page="admin-network-switch-vlan"] #switch-vlan-view {
@@ -5252,7 +5350,7 @@ pre.command-output {
   background: transparent;
   border-radius: var(--radius-control);
   color: var(--muted-text);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--control-border);
   padding: 0.5rem;
 }
 [data-page="admin-network-diagnostics"] .tr {
@@ -5645,6 +5743,41 @@ pre.command-output {
     grid-column: 1 / -1;
   }
 }
+[data-page^="admin-status-realtime"] svg :is(#rx, #udp) {
+  --chart-series: var(--chart-series-1);
+}
+[data-page^="admin-status-realtime"] svg :is(#tx, #tcp) {
+  --chart-series: var(--chart-series-2);
+}
+[data-page^="admin-status-realtime"] svg :is(#load01, #other) {
+  --chart-series: var(--chart-series-3);
+}
+[data-page^="admin-status-realtime"] svg #load05 {
+  --chart-series: var(--chart-series-4);
+}
+[data-page^="admin-status-realtime"] svg #load15 {
+  --chart-series: var(--chart-series-5);
+}
+[data-page^="admin-status-realtime"] svg :is(#rx, #udp, #tx, #tcp, #load01, #other, #load05, #load15) {
+  stroke: var(--chart-series) !important;
+  fill: var(--chart-series) !important;
+  fill-opacity: var(--chart-area-opacity) !important;
+}
+[data-page^="admin-status-realtime"] strong:is([style*="solid blue"], [style*="solid #0000ff"], [style*="solid #00f"]) {
+  border-bottom-color: var(--chart-series-1) !important;
+}
+[data-page^="admin-status-realtime"] strong:is([style*="solid green"], [style*="solid #008000"]) {
+  border-bottom-color: var(--chart-series-2) !important;
+}
+[data-page^="admin-status-realtime"] strong:is([style*="solid red"], [style*="solid #ff0000"], [style*="solid #f00"]) {
+  border-bottom-color: var(--chart-series-3) !important;
+}
+[data-page^="admin-status-realtime"] strong:is([style*="solid #ff6600"], [style*="solid #f60"]) {
+  border-bottom-color: var(--chart-series-4) !important;
+}
+[data-page^="admin-status-realtime"] strong:is([style*="solid #ffaa00"], [style*="solid #fa0"]) {
+  border-bottom-color: var(--chart-series-5) !important;
+}
 [data-page^="admin-status-realtime"] .cbi-section > div:has(> svg) {
   background: var(--surface-color) !important;
   border: 0 !important;
@@ -6020,7 +6153,7 @@ pre.command-output {
   --oc-accent-a60: transparent;
   --oc-surface: var(--surface-color);
   --oc-surface-muted: var(--surface-muted);
-  --oc-control-bg: var(--surface-color);
+  --oc-control-bg: var(--input-bg);
   --oc-border: var(--border-color);
   --oc-text: var(--text-color);
   --oc-text-muted: var(--plugin-text-muted);
@@ -6111,13 +6244,13 @@ pre.command-output {
 [data-page^="admin-services-openclash"] .cbi-button.cbi-button-negative,
 [data-page^="admin-services-openclash"] input.cbi-input-remove {
   color: var(--text-on-accent) !important;
-  border-color: var(--danger) !important;
-  background: var(--danger) !important;
+  border-color: var(--danger-bg) !important;
+  background: var(--danger-bg) !important;
 }
 [data-page^="admin-services-openclash"] .cbi-button.cbi-button-reset {
   color: var(--text-on-accent) !important;
-  border-color: var(--warning) !important;
-  background: var(--warning) !important;
+  border-color: var(--warning-action-bg) !important;
+  background: var(--warning-action-bg) !important;
 }
 [data-page^="admin-services-openclash"] .cbi-button.cbi-button-find,
 [data-page^="admin-services-openclash"] input.cbi-input-find {
@@ -6158,7 +6291,7 @@ pre.command-output {
 [data-page^="admin-services-openclash"] .oc .select-class,
 [data-page^="admin-services-openclash"] .oc .custom-option-input {
   color: var(--oc-text) !important;
-  border-color: var(--oc-border) !important;
+  border-color: var(--control-border) !important;
   background-color: var(--oc-control-bg) !important;
 }
 [data-page^="admin-services-openclash"] input[type="text"]:focus,
@@ -6174,7 +6307,7 @@ pre.command-output {
 [data-page^="admin-services-openclash"] .oc .sub-info-url-form-textarea:focus,
 [data-page^="admin-services-openclash"] .oc .select-class:focus,
 [data-page^="admin-services-openclash"] .oc .custom-option-input:focus {
-  border-color: var(--oc-accent) !important;
+  border-color: var(--control-focus) !important;
   box-shadow: 0 0 0 2px var(--oc-accent-a10) !important;
   outline: 0 !important;
 }

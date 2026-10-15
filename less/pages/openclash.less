@@ -22,7 +22,7 @@
     --oc-accent-a60: transparent;
     --oc-surface: var(--surface-color);
     --oc-surface-muted: var(--surface-muted);
-    --oc-control-bg: var(--surface-color);
+    --oc-control-bg: var(--input-bg);
     --oc-border: var(--border-color);
     --oc-text: var(--text-color);
     --oc-text-muted: var(--plugin-text-muted);
@@ -113,14 +113,14 @@
     .cbi-button.cbi-button-negative,
     input.cbi-input-remove {
         color: var(--text-on-accent) !important;
-        border-color: var(--danger) !important;
-        background: var(--danger) !important;
+        border-color: var(--danger-bg) !important;
+        background: var(--danger-bg) !important;
     }
 
     .cbi-button.cbi-button-reset {
         color: var(--text-on-accent) !important;
-        border-color: var(--warning) !important;
-        background: var(--warning) !important;
+        border-color: var(--warning-action-bg) !important;
+        background: var(--warning-action-bg) !important;
     }
 
     .cbi-button.cbi-button-find,
@@ -169,7 +169,7 @@
     .oc .select-class,
     .oc .custom-option-input {
         color: var(--oc-text) !important;
-        border-color: var(--oc-border) !important;
+        border-color: var(--control-border) !important;
         background-color: var(--oc-control-bg) !important;
     }
 
@@ -186,7 +186,7 @@
     .oc .sub-info-url-form-textarea:focus,
     .oc .select-class:focus,
     .oc .custom-option-input:focus {
-        border-color: var(--oc-accent) !important;
+        border-color: var(--control-focus) !important;
         box-shadow: 0 0 0 2px var(--oc-accent-a10) !important;
         outline: 0 !important;
     }

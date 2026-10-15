@@ -25,7 +25,7 @@
     position: absolute;
     top: 0;
     height: .5rem;
-    background-color: var(--primary);
+    background-color: var(--progress-fill);
     border-radius: inherit;
   }
 
@@ -103,13 +103,17 @@
 
     &:focus {
       border: 1px solid var(--control-focus);
-      box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
+      box-shadow: var(--control-focus-shadow);
     }
   }
 
   &>pre {
     direction: ltr;
     unicode-bidi: plaintext;
+  }
+
+  &>textarea {
+    border-color: var(--control-subtle-border);
   }
 
   &>h4 {
@@ -155,7 +159,7 @@
   }
 
   .label.warning {
-    background-color: #f0ad4e !important;
+    background-color: var(--warning-badge-bg) !important;
   }
 
   .btn {

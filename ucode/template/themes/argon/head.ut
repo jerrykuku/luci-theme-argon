@@ -88,6 +88,9 @@
 			--dark-on-primary: {{ palette.on_primary }};
 			--dark-link-color: {{ palette.link }};
 			--dark-focus-ring: {{ palette.focus }};
+			--dark-control-focus: {{ palette.control_focus }};
+			--dark-progress-fill: {{ palette.progress }};
+			--dark-control-ring: {{ palette.control_ring }};
 			--dark-selected-bg: {{ palette.selected }};
 			--dark-selected-hover-bg: {{ palette.hover }};
 			--dark-accent-ring: {{ palette.ring }};

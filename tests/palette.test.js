@@ -27,18 +27,23 @@ test('generated dark roles remain readable across saturated, neutral and extreme
 	for (let n = 0; n < 80; n++) seeds.push('#' + ((n * 104729 + 139967) % 0x1000000).toString(16).padStart(6, '0'));
 	const palettes = evaluate('map(values, color => [dark_palette(color, false), dark_palette(color, true)])', seeds);
 	palettes.forEach((variants, index) => variants.forEach((p, custom) => {
-		for (const role of ['primary', 'on_primary', 'link', 'focus', 'selected', 'hover'])
+		for (const role of ['primary', 'on_primary', 'link', 'focus', 'control_focus', 'progress', 'selected', 'hover'])
 			assert.match(p[role], /^#[0-9a-f]{6}$/, role);
 		assert.ok(contrast(p.on_primary, p.primary) >= 4.5, 'button text ' + seeds[index]);
 		if (custom) assert.equal(p.primary, seeds[index]);
 		else assert.ok(contrast('#ffffff', p.primary) >= 4.6);
-		for (const surface of ['#1e1e1e', '#252526', '#333333', p.selected, p.hover])
+		for (const surface of ['#181819', '#1e1e1e', '#252526', '#2d2d2d', '#333333', p.selected, p.hover])
 			assert.ok(contrast(p.link, surface) >= 4.5, 'link on ' + surface + ' from ' + seeds[index]);
 		assert.ok(contrast(p.focus, '#333333') >= 3);
+		assert.ok(contrast(p.control_focus, '#333333') >= 3, 'field focus from ' + seeds[index]);
+		assert.ok(contrast(p.progress, '#1e1e1e') >= 3, 'progress fill from ' + seeds[index]);
+		assert.notEqual(p.control_focus, p.focus, 'field border must differ from keyboard ring');
+		const controlRgb = p.control_focus.slice(1).match(/../g).map(v => parseInt(v, 16));
+		assert.equal(p.control_ring, 'rgba(' + controlRgb.join(', ') + ', .18)');
 		assert.ok(contrast('#cccccc', p.selected) >= 4.5);
 		assert.ok(contrast('#cccccc', p.hover) >= 4.5);
 	}));
-	for (const index of [0, 1, 10]) for (const role of ['primary', 'link', 'focus', 'selected', 'hover']) {
+	for (const index of [0, 1, 10]) for (const role of ['primary', 'link', 'focus', 'control_focus', 'progress', 'selected', 'hover']) {
 		const rgb = palettes[index][0][role].slice(1).match(/../g);
 		assert.equal(new Set(rgb).size, 1, 'neutral gained a hue');
 	}

@@ -10,7 +10,7 @@ input,
   height: 2.5rem;
   padding: .5rem .75rem;
   color: var(--control-text);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--control-border);
   border-radius: var(--radius-control);
   outline: 0;
   background-image: none;
@@ -19,7 +19,7 @@ input,
 }
 
 select {
-  background-color: var(--surface-color);
+  background-color: var(--select-bg);
   padding-inline-end: 2.5rem;
   background-image: var(--chevron-down-icon);
   background-size: 1rem;
@@ -32,12 +32,18 @@ input:not(.cbi-button) {
   background-color: var(--input-bg);
 }
 
+.cbi-dropdown:not(.btn):not(.cbi-button) {
+  background-color: var(--dropdown-control-bg);
+}
+
 select:not([multiple="multiple"]):focus,
 input:not(.cbi-button):focus,
+textarea:focus,
 .cbi-dropdown:focus {
+  // Page-specific field borders also consume this locally focused role.
+  --control-border: var(--control-focus);
   border-color: var(--control-focus);
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
-  ;
+  box-shadow: var(--control-focus-shadow);
 }
 
 .cbi-dropdown,

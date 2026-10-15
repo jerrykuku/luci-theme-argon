@@ -81,6 +81,9 @@ test('automatic palette and shared glass are emitted on application and anonymou
 			assert.match(html, /--blur-opacity-dark:0.3/);
 			assert.doesNotMatch(html, /--dark-primary: #ff00ff/);
 			assert.match(html, /--dark-link-color: #[0-9a-f]{6}/);
+			assert.match(html, /--dark-control-focus: #[0-9a-f]{6}/);
+			assert.match(html, /--dark-progress-fill: #[0-9a-f]{6}/);
+			assert.match(html, /--dark-control-ring: rgba\([\d, .]+\)/);
 			assert.match(html, /name="theme-color" media="\(prefers-color-scheme: dark\)"/);
 			assert.ok(html.indexOf('--dark-primary:') < html.indexOf('</head>'));
 			const custom = renderer.render(entry, { settings: { dark_primary_mode: 'custom', dark_primary: '#ffffff',

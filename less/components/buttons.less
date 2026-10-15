@@ -151,6 +151,11 @@
 }
 
 /* yellow */
+.cbi-button-reset {
+  border-color: var(--reset-action-bg);
+  background-color: var(--reset-action-bg);
+}
+
 .btn[value="Dismiss"],
 .cbi-button[value="Terminate"],
 .cbi-button[value="Reset"],
@@ -169,8 +174,8 @@
 .cbi-button-download {
   font-weight: normal;
   color: var(--text-on-accent);
-  border: thin solid #4cae4c;
-  background-color: #5cb85c;
+  border: thin solid var(--success-action-border);
+  background-color: var(--success-action-bg);
 }
 
 // Inputs cannot host pseudo-elements, so sorting controls use the SVG background.
