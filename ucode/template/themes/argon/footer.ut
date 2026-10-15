@@ -39,5 +39,9 @@
 		var luciLocation = {{ ctx.path }};
 	</script>
 <script type="text/javascript">L.require('menu-argon')</script>
+<script type="text/javascript">
+	if (document.body.matches('[data-page="admin-status-realtime"], [data-page="admin-status-realtime-load"]'))
+		L.require('argon-graphs');
+</script>
 </body>
 </html>

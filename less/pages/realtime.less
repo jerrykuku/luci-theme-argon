@@ -1,0 +1,49 @@
+// out: false
+
+[data-page="admin-status-realtime"],
+[data-page="admin-status-realtime-load"] {
+  // SVG text coordinates and the time axis are technical data, independent
+  // of the interface reading direction.
+  .cbi-section > div:has(> svg) {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  #scale {
+    display: inline-block;
+    unicode-bidi: plaintext;
+  }
+
+  svg line,
+  svg polyline,
+  svg polygon,
+  svg path {
+    vector-effect: non-scaling-stroke;
+  }
+
+  .td[id^="lb_load"] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media screen and (max-width: 1152px) {
+    .table:has(.td[id^="lb_load"]) {
+      .tr {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        padding-block: var(--control-gap);
+      }
+
+      .td {
+        display: block;
+        min-width: 0;
+        padding: .25rem var(--section-inset);
+        border: 0;
+        text-align: start !important;
+      }
+
+      .td:nth-child(even) {
+        text-align: end !important;
+      }
+    }
+  }
+}

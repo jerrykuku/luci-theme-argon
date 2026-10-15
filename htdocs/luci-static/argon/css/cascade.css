@@ -4602,6 +4602,50 @@ pre.command-output {
 [dir="rtl"] [data-page="admin-status-overview"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body .cbi-tooltip-container .cbi-tooltip {
   direction: rtl;
 }
+[data-page="admin-status-realtime"] .cbi-section > div:has(> svg),
+[data-page="admin-status-realtime-load"] .cbi-section > div:has(> svg) {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+[data-page="admin-status-realtime"] #scale,
+[data-page="admin-status-realtime-load"] #scale {
+  display: inline-block;
+  unicode-bidi: plaintext;
+}
+[data-page="admin-status-realtime"] svg line,
+[data-page="admin-status-realtime-load"] svg line,
+[data-page="admin-status-realtime"] svg polyline,
+[data-page="admin-status-realtime-load"] svg polyline,
+[data-page="admin-status-realtime"] svg polygon,
+[data-page="admin-status-realtime-load"] svg polygon,
+[data-page="admin-status-realtime"] svg path,
+[data-page="admin-status-realtime-load"] svg path {
+  vector-effect: non-scaling-stroke;
+}
+[data-page="admin-status-realtime"] .td[id^="lb_load"],
+[data-page="admin-status-realtime-load"] .td[id^="lb_load"] {
+  font-variant-numeric: tabular-nums;
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-status-realtime"] .table:has(.td[id^="lb_load"]) .tr,
+  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    padding-block: var(--control-gap);
+  }
+  [data-page="admin-status-realtime"] .table:has(.td[id^="lb_load"]) .td,
+  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .td {
+    display: block;
+    min-width: 0;
+    padding: 0.25rem var(--section-inset);
+    border: 0;
+    text-align: start !important;
+  }
+  [data-page="admin-status-realtime"] .table:has(.td[id^="lb_load"]) .td:nth-child(even),
+  [data-page="admin-status-realtime-load"] .table:has(.td[id^="lb_load"]) .td:nth-child(even) {
+    text-align: end !important;
+  }
+}
 [data-page^="admin-status-realtime"] .cbi-section > div:has(> svg) {
   background: var(--surface-color) !important;
   border: 0 !important;
