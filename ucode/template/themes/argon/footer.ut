@@ -40,6 +40,9 @@
 	</script>
 <script type="text/javascript">L.require('menu-argon')</script>
 <script type="text/javascript">
+	if ([ 'admin-status', 'admin-status-overview' ].includes(document.body.dataset.page))
+		L.require('argon-overview');
+
 	if ([
 		'admin-status-realtime',
 		'admin-status-realtime-load',

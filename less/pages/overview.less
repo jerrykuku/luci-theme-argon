@@ -6,15 +6,17 @@
     gap: 0 !important;
   }
 
-  // Native port status uses a 70px grid. Keep room for readable byte counts
-  // and scope this adapter to the overview instead of every inline grid.
+  // Native port status uses a 70px grid. Keep the counters readable and wrap
+  // whole cards when multiple physical ports are present.
   div[style*="display:grid;grid-template-columns:repeat"] {
     display: flex !important;
     justify-content: space-evenly !important;
     flex-wrap: wrap;
 
     .ifacebox {
-      flex: 0 0 6.25rem;
+      flex: 0 1 8.5rem;
+      min-width: 8rem !important;
+      max-width: 100% !important;
       text-align: center;
 
       .ifacebox-body {
@@ -31,6 +33,55 @@
           }
         }
       }
+
+      > .ifacebox-body:last-child {
+        padding: .5rem .625rem;
+      }
+    }
+  }
+
+  .argon-port-traffic {
+    display: grid;
+    gap: .375rem;
+    margin: 0;
+    direction: ltr;
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+      line-height: 1.5;
+    }
+
+    dt {
+      display: inline-flex;
+      align-items: center;
+      gap: .25rem;
+      color: var(--muted-text);
+      font-size: .6875rem;
+
+      &::before {
+        content: "";
+        width: .75rem;
+        height: .75rem;
+        background-color: currentColor;
+        mask: var(--chevron-down-icon) center / contain no-repeat;
+        -webkit-mask: var(--chevron-down-icon) center / contain no-repeat;
+      }
+    }
+
+    [data-direction="tx"] dt::before {
+      transform: rotate(180deg);
+    }
+
+    dd {
+      margin: 0;
+      color: var(--text-strong);
+      font-size: .75rem;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }
   }
 }

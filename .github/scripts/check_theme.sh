@@ -6,8 +6,9 @@ cd "$(dirname "$0")/../.."
 tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir"' EXIT HUP INT TERM
 
-node --check htdocs/luci-static/resources/menu-argon.js
-node --check htdocs/luci-static/resources/argon-graphs.js
+for script in htdocs/luci-static/resources/*.js; do
+	node --check "$script"
+done
 sh -n root/etc/uci-defaults/30_luci-theme-argon
 sh -n root/usr/libexec/rpcd/luci.argon_wallpaper
 

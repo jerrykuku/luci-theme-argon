@@ -4914,7 +4914,9 @@ pre.command-output {
 }
 [data-page="admin-status"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox,
 [data-page="admin-status-overview"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox {
-  flex: 0 0 6.25rem;
+  flex: 0 1 8.5rem;
+  min-width: 8rem !important;
+  max-width: 100% !important;
   text-align: center;
 }
 [data-page="admin-status"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body,
@@ -4931,6 +4933,55 @@ pre.command-output {
 [dir="rtl"] [data-page="admin-status"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body .cbi-tooltip-container .cbi-tooltip,
 [dir="rtl"] [data-page="admin-status-overview"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox .ifacebox-body .cbi-tooltip-container .cbi-tooltip {
   direction: rtl;
+}
+[data-page="admin-status"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox > .ifacebox-body:last-child,
+[data-page="admin-status-overview"] div[style*="display:grid;grid-template-columns:repeat"] .ifacebox > .ifacebox-body:last-child {
+  padding: 0.5rem 0.625rem;
+}
+[data-page="admin-status"] .argon-port-traffic,
+[data-page="admin-status-overview"] .argon-port-traffic {
+  display: grid;
+  gap: 0.375rem;
+  margin: 0;
+  direction: ltr;
+}
+[data-page="admin-status"] .argon-port-traffic > div,
+[data-page="admin-status-overview"] .argon-port-traffic > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+[data-page="admin-status"] .argon-port-traffic dt,
+[data-page="admin-status-overview"] .argon-port-traffic dt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--muted-text);
+  font-size: 0.6875rem;
+}
+[data-page="admin-status"] .argon-port-traffic dt::before,
+[data-page="admin-status-overview"] .argon-port-traffic dt::before {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: currentColor;
+  mask: var(--chevron-down-icon) center / contain no-repeat;
+  -webkit-mask: var(--chevron-down-icon) center / contain no-repeat;
+}
+[data-page="admin-status"] .argon-port-traffic [data-direction="tx"] dt::before,
+[data-page="admin-status-overview"] .argon-port-traffic [data-direction="tx"] dt::before {
+  transform: rotate(180deg);
+}
+[data-page="admin-status"] .argon-port-traffic dd,
+[data-page="admin-status-overview"] .argon-port-traffic dd {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 [data-page="admin-status-realtime"] .cbi-section > div:has(> svg),
 [data-page="admin-status-realtime-load"] .cbi-section > div:has(> svg),
