@@ -4496,6 +4496,28 @@ pre.command-output {
   width: 18rem;
   max-width: 100%;
 }
+[data-page="admin-status-processes"] .th:nth-child(3),
+[data-page="admin-status-processes"] .td:nth-child(3) {
+  text-align: start;
+}
+[data-page="admin-status-processes"] .td:nth-child(3) > span {
+  display: block;
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  line-height: 1.5;
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-status-processes"] .td:nth-child(1),
+  [data-page="admin-status-processes"] .td:nth-child(2) {
+    flex-basis: 50%;
+  }
+  [data-page="admin-status-processes"] .td:nth-child(3) {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
 .cbi-section.fade-in .cbi-title {
   position: relative;
 }
