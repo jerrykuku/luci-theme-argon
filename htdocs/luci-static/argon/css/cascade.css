@@ -4721,18 +4721,32 @@ pre.command-output {
 [data-page="admin-network-dns"] input[type="text"] {
   text-align: start;
 }
+[data-page="admin-network-firewall-zones"] #cbi-firewall-defaults > .cbi-section-node:last-child {
+  padding-block-end: var(--field-gap);
+}
+[data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td.cbi-section-actions > div {
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+[data-page="admin-network-firewall-zones"] #cbi-firewall-zone .cbi-input-select {
+  min-width: 6.5rem;
+}
 [dir="rtl"] [data-page="admin-network-firewall-zones"] .zone-forwards > span {
   transform: scaleX(-1);
 }
 @media screen and (max-width: 1152px) {
+  [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .table > .tbody {
+    display: block;
+  }
   [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td[data-name="_info"],
   [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td.cbi-section-actions {
     flex-basis: 100%;
     max-width: 100%;
   }
-  [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td.cbi-section-actions > div {
-    display: flex;
-    justify-content: flex-end;
+  [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td.cbi-section-actions {
+    min-width: 0 !important;
+    text-align: end !important;
   }
 }
 [data-page="admin-network-firewall-ipsets"] [data-name="entry"] input[type="text"],
