@@ -4918,6 +4918,21 @@ pre.command-output {
 [data-page="admin-network-dhcp"] .cbi-value {
   padding: 0;
 }
+[data-page="admin-network-dhcp"] [data-tab="__leases__"] > .cbi-section-node > .cbi-value:last-child {
+  border-end-start-radius: var(--radius-card);
+  border-end-end-radius: var(--radius-card);
+}
+[data-page="admin-network-dhcp"] [data-tab="__leases__"] > .cbi-section-node > .cbi-value:last-child > .table:last-child {
+  border-collapse: separate;
+  border-end-start-radius: inherit;
+  border-end-end-radius: inherit;
+  overflow: hidden;
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-network-dhcp"] [data-tab="__leases__"] > .cbi-section-node > .cbi-value:last-child > .table:last-child {
+    overflow-x: auto;
+  }
+}
 [data-page="admin-network-dhcp"] .cbi-section-node-tabbed > [data-tab-title] {
   padding-inline: var(--section-inset);
 }
