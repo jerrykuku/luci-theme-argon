@@ -1,0 +1,40 @@
+// out: false
+
+[data-page="admin-system-system"] {
+  .control-group,
+  .cbi-dynlist {
+    margin: .25rem 0;
+  }
+
+  #localtime,
+  [data-name="hostname"] input,
+  [data-name="log_size"] input,
+  [data-name="log_ip"] input,
+  [data-name="log_port"] input,
+  [data-name="log_file"] input,
+  [data-name="server"] input,
+  [data-name="server"] .item > span {
+    direction: ltr;
+    unicode-bidi: isolate;
+    text-align: start;
+  }
+
+  // Data order does not change which side of the RTL control is joined.
+  [data-name="server"] .add-item > input {
+    border-radius: var(--radius-control) 0 0 var(--radius-control);
+
+    [dir="rtl"] & {
+      border-radius: 0 var(--radius-control) var(--radius-control) 0;
+    }
+  }
+
+  [data-name="server"] .add-item > input {
+    border-left-width: 1px;
+    border-right-width: 0;
+
+    [dir="rtl"] & {
+      border-left-width: 0;
+      border-right-width: 1px;
+    }
+  }
+}

@@ -13,6 +13,9 @@
 
   &>.item {
     display: inline-flex;
+    // Native DynamicList removes an item only in its physical right hit area.
+    direction: ltr;
+    unicode-bidi: isolate;
     flex-wrap: nowrap;
     position: relative;
     min-width: 0;
@@ -163,6 +166,12 @@
 .cbi-dynlist>.add-item:has(.drag-over) {
   border-top: 1px solid var(--danger);
   margin-top: -1px;
+}
+
+.cbi-dynlist > .item:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-control);
 }
 
 .cbi-dynlist[name="sshkeys"]>.item {
