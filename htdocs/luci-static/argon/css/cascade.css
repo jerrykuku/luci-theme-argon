@@ -50,6 +50,7 @@
   --focus-ring: #3446ab;
   --link-color: var(--primary);
   --code-text: #212529;
+  --data-token-text: #0069d6;
   --log-text: #242424;
   --overlay-text: #172b4d;
   --background-color: #f4f5f7;
@@ -175,6 +176,7 @@
   --focus-ring: #b7c4ff;
   --link-color: #a5b2ff;
   --code-text: #ccc;
+  --data-token-text: #a5b2ff;
   --log-text: #ccc;
   --overlay-text: #adb5bd;
   --background-color: #1e1e1e;
@@ -278,6 +280,7 @@
     --focus-ring: #b7c4ff;
     --link-color: #a5b2ff;
     --code-text: #ccc;
+    --data-token-text: #a5b2ff;
     --log-text: #ccc;
     --overlay-text: #adb5bd;
     --background-color: #1e1e1e;
@@ -3785,7 +3788,7 @@ div.cbi-value var,
 td.cbi-value-field var,
 .td.cbi-value-field var {
   font-style: italic;
-  color: #0069d6;
+  color: var(--data-token-text);
 }
 .cbi-optionals {
   padding: 1rem 1rem 0 1rem;
@@ -4505,16 +4508,51 @@ pre.command-output {
   }
 }
 [data-page="admin-network-firewall-forwards"] [data-name$="_ip"] input[type="text"],
+[data-page="admin-network-firewall-rules"] [data-name$="_ip"] input[type="text"],
 [data-page="admin-network-firewall-forwards"] [data-name="src_dip"] input[type="text"],
+[data-page="admin-network-firewall-rules"] [data-name="src_dip"] input[type="text"],
 [data-page="admin-network-firewall-forwards"] [data-name$="_port"] input[type="text"],
+[data-page="admin-network-firewall-rules"] [data-name$="_port"] input[type="text"],
 [data-page="admin-network-firewall-forwards"] [data-name="src_dport"] input[type="text"],
+[data-page="admin-network-firewall-rules"] [data-name="src_dport"] input[type="text"],
 [data-page="admin-network-firewall-forwards"] [data-name$="_ip"] .cbi-dropdown > ul,
+[data-page="admin-network-firewall-rules"] [data-name$="_ip"] .cbi-dropdown > ul,
 [data-page="admin-network-firewall-forwards"] [data-name="src_dip"] .cbi-dropdown > ul,
+[data-page="admin-network-firewall-rules"] [data-name="src_dip"] .cbi-dropdown > ul,
 [data-page="admin-network-firewall-forwards"] [data-name$="_port"] .cbi-dropdown > ul,
-[data-page="admin-network-firewall-forwards"] [data-name="src_dport"] .cbi-dropdown > ul {
+[data-page="admin-network-firewall-rules"] [data-name$="_port"] .cbi-dropdown > ul,
+[data-page="admin-network-firewall-forwards"] [data-name="src_dport"] .cbi-dropdown > ul,
+[data-page="admin-network-firewall-rules"] [data-name="src_dport"] .cbi-dropdown > ul {
   direction: ltr;
   unicode-bidi: isolate;
   text-align: start;
+}
+[data-page="admin-network-firewall-rules"] .td[data-name="_match"] small,
+[data-page="admin-network-firewall-rules"] .td[data-name="_target"] small {
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+[data-page="admin-network-firewall-rules"] .td[data-name="_match"] var:not(.cbi-tooltip-container),
+[data-page="admin-network-firewall-rules"] .td[data-name="_target"] var:not(.cbi-tooltip-container) {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+@media screen and (min-width: 1153px) {
+  [data-page="admin-network-firewall-rules"] .tr[data-title]::before,
+  [data-page="admin-network-firewall-rules"] .tr.cbi-section-table-titles.named::before {
+    display: none;
+  }
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-network-firewall-rules"] .td.cbi-section-table-titles {
+    display: none;
+  }
+  [data-page="admin-network-firewall-rules"] .td[data-name="_match"] {
+    flex-basis: 100%;
+  }
+  [data-page="admin-network-firewall-rules"] .tr[data-title]::before {
+    overflow-wrap: anywhere;
+  }
 }
 @media screen and (min-width: 1153px) {
   [data-page="admin-network-network"] #cbi-network-interface .cbi-section-actions {

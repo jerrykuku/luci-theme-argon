@@ -201,7 +201,25 @@ return baseclass.extend({
 	 * Load menu data and trigger rendering
 	 */
 	__init__: function () {
+		this.patchDynamicListFocus();
 		ui.menu.load().then(L.bind(this.render, this));
+	},
+
+	patchDynamicListFocus: function () {
+		var prototype = ui.Dropdown && ui.Dropdown.prototype;
+		var setFocus = prototype && prototype.setFocus;
+		if (typeof setFocus !== 'function' || setFocus.argonDynamicListGuard)
+			return;
+
+		var guardedFocus = function (node, item) {
+			// A DynamicList change handler can consume a newly created option
+			// before Dropdown.createItems() tries to scroll and focus it.
+			if (item && !item.parentNode && node && node.closest('.cbi-dynlist'))
+				return;
+			return setFocus.apply(this, arguments);
+		};
+		guardedFocus.argonDynamicListGuard = true;
+		prototype.setFocus = guardedFocus;
 	},
 
 	/**

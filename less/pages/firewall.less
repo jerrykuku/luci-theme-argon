@@ -21,7 +21,8 @@
   }
 }
 
-[data-page="admin-network-firewall-forwards"] {
+[data-page="admin-network-firewall-forwards"],
+[data-page="admin-network-firewall-rules"] {
   [data-name$="_ip"],
   [data-name="src_dip"],
   [data-name$="_port"],
@@ -31,6 +32,42 @@
       direction: ltr;
       unicode-bidi: isolate;
       text-align: start;
+    }
+  }
+}
+
+[data-page="admin-network-firewall-rules"] {
+  .td[data-name="_match"],
+  .td[data-name="_target"] {
+    small {
+      font-size: .75rem;
+      line-height: 1.5;
+    }
+
+    var:not(.cbi-tooltip-container) {
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+  }
+
+  @media screen and (min-width: 1153px) {
+    .tr[data-title]::before,
+    .tr.cbi-section-table-titles.named::before {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1152px) {
+    .td.cbi-section-table-titles {
+      display: none;
+    }
+
+    .td[data-name="_match"] {
+      flex-basis: 100%;
+    }
+
+    .tr[data-title]::before {
+      overflow-wrap: anywhere;
     }
   }
 }
