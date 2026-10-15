@@ -4480,6 +4480,15 @@ pre.command-output {
 [data-page="admin-system-poweroffdevice"] .btn.cbi-button.cbi-button-negative {
   align-self: flex-end;
 }
+[data-page="admin-network-routes"] [data-name="target"] input,
+[data-page="admin-network-routes"] [data-name="gateway"] input,
+[data-page="admin-network-routes"] [data-name="source"] input,
+[data-page="admin-network-routes"] [data-name="src"] input,
+[data-page="admin-network-routes"] [data-name="dest"] input {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
+}
 @media screen and (min-width: 1153px) {
   [data-page="admin-network-network"] #cbi-network-interface .cbi-section-actions {
     width: 22rem !important;
