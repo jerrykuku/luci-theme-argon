@@ -20,3 +20,17 @@
     }
   }
 }
+
+[data-page="admin-network-firewall-forwards"] {
+  [data-name$="_ip"],
+  [data-name="src_dip"],
+  [data-name$="_port"],
+  [data-name="src_dport"] {
+    input[type="text"],
+    .cbi-dropdown > ul {
+      direction: ltr;
+      unicode-bidi: isolate;
+      text-align: start;
+    }
+  }
+}

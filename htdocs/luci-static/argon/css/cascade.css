@@ -4504,6 +4504,18 @@ pre.command-output {
     justify-content: flex-end;
   }
 }
+[data-page="admin-network-firewall-forwards"] [data-name$="_ip"] input[type="text"],
+[data-page="admin-network-firewall-forwards"] [data-name="src_dip"] input[type="text"],
+[data-page="admin-network-firewall-forwards"] [data-name$="_port"] input[type="text"],
+[data-page="admin-network-firewall-forwards"] [data-name="src_dport"] input[type="text"],
+[data-page="admin-network-firewall-forwards"] [data-name$="_ip"] .cbi-dropdown > ul,
+[data-page="admin-network-firewall-forwards"] [data-name="src_dip"] .cbi-dropdown > ul,
+[data-page="admin-network-firewall-forwards"] [data-name$="_port"] .cbi-dropdown > ul,
+[data-page="admin-network-firewall-forwards"] [data-name="src_dport"] .cbi-dropdown > ul {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
+}
 @media screen and (min-width: 1153px) {
   [data-page="admin-network-network"] #cbi-network-interface .cbi-section-actions {
     width: 22rem !important;
