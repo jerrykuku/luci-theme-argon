@@ -4125,8 +4125,10 @@ pre.command-output {
   border-block-start: 1px solid var(--border-color);
 }
 [data-page="admin-system-admin-sshkeys"] .cbi-dynlist {
+  width: 100%;
   margin-inline: var(--section-inset);
-  max-width: calc(100% - 2 * var(--section-inset));
+  max-width: min(48rem, calc(100% - 2 * var(--section-inset)));
+  gap: var(--field-gap);
 }
 [data-page="admin-system-admin-sshkeys"] .cbi-dynlist > .item {
   display: block;
@@ -4144,8 +4146,110 @@ pre.command-output {
   position: absolute;
   inset-inline-end: 0;
   top: 0;
-  width: 2.5rem;
+}
+[data-page="admin-system-admin-sshkeys"] .cbi-dynlist > .item.argon-key-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.25rem var(--control-gap);
+  direction: inherit;
+  width: 100%;
+  max-width: 100%;
+  padding: var(--field-gap);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  background: var(--surface-panel);
+  overflow-wrap: anywhere;
+}
+[data-page="admin-system-admin-sshkeys"] .cbi-dynlist > .item.argon-key-item > strong,
+[data-page="admin-system-admin-sshkeys"] .cbi-dynlist > .item.argon-key-item > small {
+  grid-column: 1;
+  min-width: 0;
+  line-height: 1.5;
+  unicode-bidi: plaintext;
+}
+[data-page="admin-system-admin-sshkeys"] .cbi-dynlist > .item.argon-key-item > strong {
+  color: var(--text-strong);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+[data-page="admin-system-admin-sshkeys"] .cbi-dynlist > .item.argon-key-item > small {
+  font-size: 0.75rem;
+  color: var(--muted-text);
+}
+[data-page="admin-system-admin-sshkeys"] .cbi-dynlist > .item.argon-key-item > br,
+[data-page="admin-system-admin-sshkeys"] .cbi-dynlist > .item.argon-key-item::after {
+  display: none;
+}
+[data-page="admin-system-admin-sshkeys"] .cbi-dynlist > .item.argon-key-item > .argon-key-delete {
+  grid-column: 2;
+  grid-row: 1 / span 2;
   min-height: 2.5rem;
+  pointer-events: auto;
+}
+[data-page="admin-system-admin-sshkeys"] .cbi-dynlist > .add-item {
+  max-width: 100%;
+}
+[data-page="admin-system-admin-sshkeys"] .argon-key-details {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin-block-start: var(--control-gap);
+  pointer-events: auto;
+}
+[data-page="admin-system-admin-sshkeys"] .argon-key-details > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--control-gap);
+  width: fit-content;
+  min-height: 2.5rem;
+  color: var(--link-color);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  list-style: none;
+}
+[data-page="admin-system-admin-sshkeys"] .argon-key-details > summary::-webkit-details-marker {
+  display: none;
+}
+[data-page="admin-system-admin-sshkeys"] .argon-key-details > summary::before {
+  content: "";
+  flex: 0 0 1rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  mask: var(--chevron-right-icon) center / contain no-repeat;
+  -webkit-mask: var(--chevron-right-icon) center / contain no-repeat;
+  transform: rotate(0deg);
+}
+[dir="rtl"] [data-page="admin-system-admin-sshkeys"] .argon-key-details > summary::before {
+  transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-page="admin-system-admin-sshkeys"] .argon-key-details > summary::before {
+    transition: transform 0.15s ease;
+  }
+}
+[data-page="admin-system-admin-sshkeys"] .argon-key-details > summary:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-small);
+}
+[data-page="admin-system-admin-sshkeys"] .argon-key-details[open] > summary::before {
+  transform: rotate(90deg);
+}
+[data-page="admin-system-admin-sshkeys"] .argon-key-details > pre {
+  margin: 0;
+  padding: 0.75rem;
+  direction: ltr;
+  unicode-bidi: plaintext;
+  text-align: start;
+  color: var(--code-text);
+  background: var(--surface-inset);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-control);
+  font: 0.75rem/1.5 ui-monospace, SFMono-Regular, Consolas, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  user-select: text;
 }
 [data-page="admin-system-admin-repokeys"] textarea,
 [data-page="admin-system-admin-repokeys"] [data-name="filename"] output {

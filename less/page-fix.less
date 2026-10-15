@@ -52,34 +52,7 @@
 @import "pages/dropbear.less";
 
 // System - SSH Keys
-[data-page="admin-system-admin-sshkeys"] {
-    .cbi-dynlist {
-        margin-inline: var(--section-inset);
-        max-width: calc(100% - 2 * var(--section-inset));
-
-        > .item {
-            display: block;
-            width: 100%;
-            max-width: 100%;
-            padding-inline-end: 2.5rem;
-            overflow-wrap: anywhere;
-
-            small,
-            code {
-                white-space: normal;
-                overflow-wrap: anywhere;
-            }
-
-            &::after {
-                position: absolute;
-                inset-inline-end: 0;
-                top: 0;
-                width: 2.5rem;
-                min-height: 2.5rem;
-            }
-        }
-    }
-}
+@import "pages/sshkeys.less";
 
 @import "pages/repokeys.less";
 
