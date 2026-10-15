@@ -192,8 +192,11 @@ body:not([data-page="admin-dashboard"]) {
   }
 }
 
-div>table>tbody>tr:nth-of-type(2n),
-div>.table>.tr:nth-of-type(2n) {
+// Count data rows only: inline headings and separate thead groups must start
+// with the same stripe, distinct from the muted table heading.
+div>table>tbody>tr:nth-child(2n of :has(> td):not(.table-titles, .cbi-section-table-titles, .cbi-section-table-descr)),
+div>.table>.tbody>.tr:nth-child(2n of :has(> .td):not(.table-titles, .cbi-section-table-titles, .cbi-section-table-descr)),
+div>.table>.tr:nth-child(2n of :has(> .td):not(.table-titles, .cbi-section-table-titles, .cbi-section-table-descr)) {
   background-color: var(--row-alt);
 }
 

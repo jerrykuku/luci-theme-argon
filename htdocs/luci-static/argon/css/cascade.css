@@ -2372,8 +2372,9 @@ body:not([data-page="admin-dashboard"]) #cbi-wireless > #wifi_assoclist_table > 
 .cbi-section-table-row .td .cbi-checkbox input[type="checkbox"] {
   margin: 0;
 }
-div > table > tbody > tr:nth-of-type(2n),
-div > .table > .tr:nth-of-type(2n) {
+div > table > tbody > tr:nth-child(2n of :has(> td):not(.table-titles, .cbi-section-table-titles, .cbi-section-table-descr)),
+div > .table > .tbody > .tr:nth-child(2n of :has(> .td):not(.table-titles, .cbi-section-table-titles, .cbi-section-table-descr)),
+div > .table > .tr:nth-child(2n of :has(> .td):not(.table-titles, .cbi-section-table-titles, .cbi-section-table-descr)) {
   background-color: var(--row-alt);
 }
 /* fix multiple table */
@@ -3143,10 +3144,10 @@ header .header-actions {
   background-color: var(--surface-muted);
 }
 .cbi-rowstyle-1 {
-  background-color: var(--row-alt);
+  background-color: var(--row-color);
 }
 .cbi-rowstyle-2 {
-  background-color: var(--row-color);
+  background-color: var(--row-alt);
 }
 .cbi-rowstyle-2 .cbi-button-up,
 .cbi-rowstyle-2 .cbi-button-down,
@@ -6054,7 +6055,7 @@ pre.command-output {
 [data-page="admin-status-nftables"] .nft-rules .td {
   background: var(--surface-color);
 }
-[data-page="admin-status-nftables"] .nft-rules .tr:nth-child(2n) > .td {
+[data-page="admin-status-nftables"] .nft-rules > .tr:nth-child(2n of :has(> .td)) > .td {
   background: var(--row-alt);
 }
 [data-page="admin-status-nftables"] .nft-rules .tr:last-child > .td:first-child {
