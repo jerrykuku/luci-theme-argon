@@ -4611,11 +4611,18 @@ pre.command-output {
   background: var(--surface-color) !important;
 }
 [data-page="admin-network-diagnostics"] textarea {
+  direction: ltr;
+  unicode-bidi: plaintext;
+  line-height: 1.5;
   background: transparent;
   border-radius: var(--radius-control);
   color: var(--muted-text);
   border: 1px solid var(--border-color);
   padding: 0.5rem;
+}
+[data-page="admin-network-diagnostics"] textarea:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 [data-page="admin-network-diagnostics"] .tr {
   display: flex;
@@ -4632,17 +4639,29 @@ pre.command-output {
   min-width: 0;
 }
 [data-page="admin-network-diagnostics"] .tr .td input {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
   flex: 1 1 0;
   width: 0;
   min-width: 0;
   margin: 0 !important;
-  border-inline-end: none !important;
-  border-end-end-radius: 0 !important;
-  border-start-end-radius: 0 !important;
+  border-left-width: 1px !important;
+  border-right-width: 0 !important;
+  border-radius: var(--radius-control) 0 0 var(--radius-control) !important;
+}
+[dir="rtl"] [data-page="admin-network-diagnostics"] .tr .td input {
+  border-left-width: 0 !important;
+  border-right-width: 1px !important;
+  border-radius: 0 var(--radius-control) var(--radius-control) 0 !important;
 }
 [data-page="admin-network-diagnostics"] .tr .td .diag-action {
+  display: flex;
   flex: 0 0 auto;
   min-width: 6rem;
+}
+[data-page="admin-network-diagnostics"] .tr .td .diag-action > .cbi-button {
+  flex: 1 1 auto;
 }
 [data-page="admin-network-diagnostics"] .tr .td .cbi-dropdown,
 [data-page="admin-network-diagnostics"] .tr .td .cbi-button {
