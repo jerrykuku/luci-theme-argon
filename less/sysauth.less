@@ -87,17 +87,18 @@
         flex: 1 0 auto;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         width: 100%;
         min-width: 0;
-        padding-block: 2rem;
+        padding-block: 0;
 
         .brand {
             display: flex;
+            flex: 0 0 auto;
             align-items: center;
             gap: var(--login-logo-gap);
             width: 100%;
-            padding: 0 var(--login-inset) 1.5rem;
+            padding: 3.125rem var(--login-inset) 0;
             color: var(--login-text);
             text-decoration: none;
 
@@ -123,6 +124,8 @@
             gap: 1.5rem;
             width: 100%;
             min-width: 0;
+            margin-block: auto;
+            padding-block: 2rem;
             padding-inline: var(--login-inset);
 
             .errorbox {
@@ -154,7 +157,7 @@
                     width: 1.5rem;
                     height: 1.5rem;
                     translate: 0 -50%;
-                    background-color: var(--login-text);
+                    background-color: var(--overlay-text);
                     -webkit-mask: var(--login-field-icon) center / contain no-repeat;
                     mask: var(--login-field-icon) center / contain no-repeat;
                     pointer-events: none;
@@ -179,16 +182,16 @@
                     padding-inline-start: 3rem;
                     font-size: 1rem;
                     line-height: 1.5;
-                    color: var(--login-text);
+                    color: var(--overlay-text);
                     background: transparent;
                     border: 0;
                     border-bottom: 1px solid var(--login-input-border);
                     border-radius: 0;
                     outline: none;
-                    box-shadow: none;
+                    box-shadow: 0 3px 2px rgba(233, 236, 239, .05);
 
                     &::placeholder {
-                        color: var(--login-text);
+                        color: var(--placeholder-color);
                         opacity: 1;
                     }
 
@@ -202,7 +205,7 @@
                     inset-inline: 0;
                     bottom: 0;
                     height: 2px;
-                    background-color: var(--focus-ring);
+                    background-color: var(--primary);
                     transform: scaleX(0);
                     pointer-events: none;
 
@@ -310,7 +313,12 @@
 
         .brand {
             justify-content: center;
-            padding-block: 2rem 1.5rem;
+            padding: 2rem 1.5rem 1.5rem;
+        }
+
+        .form-login {
+            margin-block: 0;
+            padding-block: 0;
         }
     }
 

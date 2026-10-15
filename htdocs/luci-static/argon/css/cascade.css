@@ -104,7 +104,7 @@
   --sidebar-scrollbar: #f6f9fc;
   --login-panel-rgb: 244, 245, 247;
   --login-text: #101828;
-  --login-input-border: #626f80;
+  --login-input-border: #fff;
   --positive-bg: var(--primary);
   --negative-bg: var(--danger);
   --reset-bg: #f0ad4e;
@@ -1056,17 +1056,18 @@ select[multiple] {
   flex: 1 0 auto;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   min-width: 0;
-  padding-block: 2rem;
+  padding-block: 0;
 }
 .login-page .login-form .brand {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   gap: var(--login-logo-gap);
   width: 100%;
-  padding: 0 var(--login-inset) 1.5rem;
+  padding: 3.125rem var(--login-inset) 0;
   color: var(--login-text);
   text-decoration: none;
 }
@@ -1089,6 +1090,8 @@ select[multiple] {
   gap: 1.5rem;
   width: 100%;
   min-width: 0;
+  margin-block: auto;
+  padding-block: 2rem;
   padding-inline: var(--login-inset);
 }
 .login-page .login-form .form-login .errorbox {
@@ -1118,7 +1121,7 @@ select[multiple] {
   width: 1.5rem;
   height: 1.5rem;
   translate: 0 -50%;
-  background-color: var(--login-text);
+  background-color: var(--overlay-text);
   -webkit-mask: var(--login-field-icon) center / contain no-repeat;
   mask: var(--login-field-icon) center / contain no-repeat;
   pointer-events: none;
@@ -1140,16 +1143,16 @@ select[multiple] {
   padding-inline-start: 3rem;
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--login-text);
+  color: var(--overlay-text);
   background: transparent;
   border: 0;
   border-bottom: 1px solid var(--login-input-border);
   border-radius: 0;
   outline: none;
-  box-shadow: none;
+  box-shadow: 0 3px 2px rgba(233, 236, 239, 0.05);
 }
 .login-page .login-form .form-login .input-group input::placeholder {
-  color: var(--login-text);
+  color: var(--placeholder-color);
   opacity: 1;
 }
 .login-page .login-form .form-login .input-group input:focus + .border {
@@ -1160,7 +1163,7 @@ select[multiple] {
   inset-inline: 0;
   bottom: 0;
   height: 2px;
-  background-color: var(--focus-ring);
+  background-color: var(--primary);
   transform: scaleX(0);
   pointer-events: none;
 }
@@ -1253,7 +1256,11 @@ select[multiple] {
 }
 .login-page[data-login-style="centered"] .login-form .brand {
   justify-content: center;
-  padding-block: 2rem 1.5rem;
+  padding: 2rem 1.5rem 1.5rem;
+}
+.login-page[data-login-style="centered"] .login-form .form-login {
+  margin-block: 0;
+  padding-block: 0;
 }
 @media screen and (max-width: 480px) {
   .login-page[data-login-style="centered"] {
