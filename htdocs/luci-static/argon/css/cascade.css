@@ -4104,6 +4104,27 @@ pre.command-output {
   width: 2.5rem;
   min-height: 2.5rem;
 }
+[data-page="admin-system-admin-repokeys"] textarea,
+[data-page="admin-system-admin-repokeys"] [data-name="filename"] output {
+  direction: ltr;
+  unicode-bidi: plaintext;
+  text-align: start;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  line-height: 1.5;
+}
+[data-page="admin-system-admin-repokeys"] [data-name="filename"] output {
+  display: block;
+}
+[data-page="admin-system-admin-repokeys"] [data-name="key"] textarea {
+  min-height: 8rem;
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-system-admin-repokeys"] .td[data-name="filename"],
+  [data-page="admin-system-admin-repokeys"] .td[data-name="key"] {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
 [data-page="admin-system-package-manager"] .controls,
 [data-page="admin-system-opkg"] .controls {
   min-width: 0;

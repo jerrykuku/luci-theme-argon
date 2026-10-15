@@ -1,0 +1,28 @@
+// out: false
+
+[data-page="admin-system-admin-repokeys"] {
+  textarea,
+  [data-name="filename"] output {
+    direction: ltr;
+    unicode-bidi: plaintext;
+    text-align: start;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    line-height: 1.5;
+  }
+
+  [data-name="filename"] output {
+    display: block;
+  }
+
+  [data-name="key"] textarea {
+    min-height: 8rem;
+  }
+
+  @media screen and (max-width: 1152px) {
+    .td[data-name="filename"],
+    .td[data-name="key"] {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+  }
+}
