@@ -4709,6 +4709,9 @@ pre.command-output {
 [data-page="admin-status-nftables"] .nft-rules .nft-list {
   max-width: 100%;
   vertical-align: baseline;
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
 }
 [data-page="admin-status-nftables"] .nft-rules .nft-set-items,
 [data-page="admin-status-nftables"] .nft-rules .nft-list-items {
@@ -4721,6 +4724,14 @@ pre.command-output {
 [data-page="admin-status-nftables"] .nft-rules .nft-counter {
   font-variant-numeric: tabular-nums;
 }
+[dir="rtl"] [data-page="admin-status-nftables"] .nft-rules .cbi-tooltip {
+  direction: rtl;
+}
+[data-page="admin-status-nftables"] .nft-rules strong,
+[data-page="admin-status-nftables"] .nft-rules .nft-counter > var {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
 [data-page="admin-status-nftables"] .nft-rules .td > div:has(> span:first-child + span.ifacebadge) {
   display: grid;
   grid-template-columns: 8em minmax(0, 1fr);
@@ -4732,6 +4743,9 @@ pre.command-output {
 }
 [data-page="admin-status-nftables"] .nft-rules .td > div:has(> span:first-child + span.ifacebadge) > span:first-child {
   padding-block: 0.25rem;
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: match-parent;
 }
 [data-page="admin-status-nftables"] .nft-rules .td > div:has(> span:first-child + span.ifacebadge) > .ifacebadge {
   justify-self: start;

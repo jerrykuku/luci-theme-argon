@@ -124,6 +124,9 @@
     .nft-list {
       max-width: 100%;
       vertical-align: baseline;
+      direction: ltr;
+      unicode-bidi: isolate;
+      text-align: start;
     }
 
     .nft-set-items,
@@ -137,6 +140,20 @@
 
     .nft-counter {
       font-variant-numeric: tabular-nums;
+    }
+
+    // Hidden native tooltips are placed outside the logical start edge.
+    // Keep that positioning direction tied to the page, not a data token.
+    [dir="rtl"] & .cbi-tooltip {
+      direction: rtl;
+    }
+
+    // Keep addresses, identifiers and byte units in their data order even
+    // when translated descriptions and the two columns follow RTL.
+    strong,
+    .nft-counter > var {
+      direction: ltr;
+      unicode-bidi: isolate;
     }
 
     // Verdict maps have one native div per key/action pair. Give every key
@@ -153,6 +170,9 @@
 
       > span:first-child {
         padding-block: .25rem;
+        direction: ltr;
+        unicode-bidi: isolate;
+        text-align: match-parent;
       }
 
       > .ifacebadge {
