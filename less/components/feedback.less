@@ -57,14 +57,112 @@
 }
 
 .modal.alert-message {
+  // LuCI uses this dialog for apply/confirm/rollback status updates.
+  --status-accent: var(--link-color);
   position: static;
-  width: 90%;
-  min-width: 270px;
-  max-width: 600px;
+  // An explicit width also preserves the modal's container-query layout.
+  width: calc(100% - 2 * var(--page-gutter));
+  min-width: 0;
+  max-width: 32rem;
+  min-height: 3.5rem;
   left: auto;
   top: auto;
   transform: none;
-  margin: 5em auto;
+  margin: clamp(1rem, 4vh, 2rem) auto;
+  padding: var(--field-gap) var(--section-inset);
+  gap: var(--field-gap);
+  border: 1px solid transparent;
+  border-inline-start: 3px solid var(--status-accent);
+  border-radius: var(--radius-dialog) !important;
+  background-color: var(--surface-raised) !important;
+  color: var(--text-strong);
+  box-shadow: var(--section-shadow);
+  font-size: .875rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.6;
+
+  &.warning {
+    --status-accent: var(--warning-heading-color);
+  }
+
+  &.error,
+  &.danger {
+    --status-accent: var(--danger);
+  }
+
+  &.success {
+    --status-accent: var(--success);
+  }
+
+  > * {
+    min-width: 0;
+    margin: 0;
+  }
+
+  > h4 {
+    padding: 0;
+    background: none;
+    color: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &.spinning {
+    // Reserve an actual column for the icon instead of overlapping the prose.
+    display: grid;
+    grid-template-columns: 1.125rem minmax(0, 1fr);
+    align-items: center;
+    column-gap: var(--action-gap);
+    padding: var(--field-gap) var(--section-inset) !important;
+
+    > * {
+      grid-column: 2;
+    }
+
+    &::before {
+      content: '';
+      position: static;
+      inset: auto;
+      grid-column: 1;
+      grid-row: 1;
+      width: 1.125rem;
+      height: 1.125rem;
+      box-sizing: border-box;
+      border: 2px solid var(--border-color);
+      border-block-start-color: var(--status-accent);
+      border-radius: var(--radius-circle);
+      background: none;
+      filter: none;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: argon-status-spin .9s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes argon-status-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Inline notifications retain their existing loading icon placement.
+.alert-message.spinning:not(.modal) {
+  position: relative;
+
+  &::before {
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    top: 2rem;
+    left: .5rem;
+  }
 }
 
 /* LuCI's ui.js dismisses notification banners by adding the .fade-out
