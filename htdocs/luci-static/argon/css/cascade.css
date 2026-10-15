@@ -4771,6 +4771,20 @@ pre.command-output {
 [data-page="admin-status-nftables"] .alert-message.fade-out {
   opacity: 0;
 }
+[data-page="admin-status-logs"] #syslog,
+[data-page="admin-status-logs-syslog"] #syslog {
+  direction: ltr;
+  unicode-bidi: plaintext;
+  text-align: start;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+}
+[data-page="admin-status-logs"] #syslog:focus-visible,
+[data-page="admin-status-logs-syslog"] #syslog:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
 @media screen and (max-width: 600px) {
   #content_syslog > div:has(> #logFacilitySelect),
   #content_syslog > div:has(> #logTextFilter),
