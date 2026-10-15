@@ -4242,8 +4242,12 @@ pre.command-output {
   }
 }
 [data-page="admin-system-crontab"] #view p textarea {
-  line-height: 1.25;
-  overflow-y: hidden;
+  direction: ltr;
+  unicode-bidi: plaintext;
+  text-align: start;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  line-height: 1.5;
+  overflow-y: auto;
   width: 100%;
   min-height: 15rem;
   padding: 1rem;
@@ -4257,9 +4261,8 @@ pre.command-output {
   transition: box-shadow 0.15s ease;
 }
 [data-page="admin-system-crontab"] #view p textarea:focus-visible {
-  outline: none;
-  box-shadow: none;
-  border: 1px solid var(--primary);
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 [data-page="admin-system-crontabhelper"] .crontab-row .dropdown-container {
   display: flex;
