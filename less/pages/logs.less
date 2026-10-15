@@ -19,7 +19,8 @@
 }
 
 [data-page="admin-status-logs"],
-[data-page="admin-status-logs-syslog"] {
+[data-page="admin-status-logs-syslog"],
+[data-page="admin-status-logs-dmesg"] {
   #content_syslog > div:has(> input, > select) {
     line-height: 2.5rem;
     margin-block-end: var(--control-gap) !important;
@@ -34,18 +35,6 @@
     > input,
     > select {
       margin-block: 0 !important;
-    }
-  }
-}
-
-[data-page="admin-status-logs-dmesg"] {
-  #content_syslog > div:has(> #invertAscendingSort) {
-    display: flex;
-    align-items: center;
-    gap: var(--control-gap);
-
-    > label {
-      margin: 0 !important;
     }
   }
 }

@@ -5342,31 +5342,29 @@ pre.command-output {
   outline-offset: 2px;
 }
 [data-page="admin-status-logs"] #content_syslog > div:has(> input, > select),
-[data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select) {
+[data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select),
+[data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> input, > select) {
   line-height: 2.5rem;
   margin-block-end: var(--control-gap) !important;
 }
 [data-page="admin-status-logs"] #content_syslog > div:has(> input, > select) > label,
 [data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select) > label,
+[data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> input, > select) > label,
 [data-page="admin-status-logs"] #content_syslog > div:has(> input, > select) > input,
 [data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select) > input,
+[data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> input, > select) > input,
 [data-page="admin-status-logs"] #content_syslog > div:has(> input, > select) > select,
-[data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select) > select {
+[data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select) > select,
+[data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> input, > select) > select {
   vertical-align: middle;
 }
 [data-page="admin-status-logs"] #content_syslog > div:has(> input, > select) > input,
 [data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select) > input,
+[data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> input, > select) > input,
 [data-page="admin-status-logs"] #content_syslog > div:has(> input, > select) > select,
-[data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select) > select {
+[data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select) > select,
+[data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> input, > select) > select {
   margin-block: 0 !important;
-}
-[data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> #invertAscendingSort) {
-  display: flex;
-  align-items: center;
-  gap: var(--control-gap);
-}
-[data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> #invertAscendingSort) > label {
-  margin: 0 !important;
 }
 @media screen and (max-width: 600px) {
   #content_syslog > div:has(> #logFacilitySelect),
