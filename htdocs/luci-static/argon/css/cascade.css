@@ -4718,19 +4718,33 @@ pre.command-output {
   unicode-bidi: isolate;
   text-align: start;
 }
+[data-page="admin-status-realtime-connections"] #connections {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-end-start-radius: var(--radius-card);
+  border-end-end-radius: var(--radius-card);
+  overflow: hidden;
+}
 [data-page="admin-status-realtime-connections"] #connections .th {
   text-align: start !important;
 }
 [data-page="admin-status-realtime-connections"] #connections .td {
   direction: ltr;
   unicode-bidi: isolate;
-  text-align: match-parent !important;
+  text-align: start !important;
   font-variant-numeric: tabular-nums;
+}
+[dir="rtl"] [data-page="admin-status-realtime-connections"] #connections .td {
+  text-align: end !important;
 }
 [dir="rtl"] [data-page="admin-status-realtime-connections"] #connections .td::before {
   direction: rtl;
+  text-align: start;
 }
 @media screen and (max-width: 1152px) {
+  [data-page="admin-status-realtime-connections"] #connections {
+    overflow-x: auto;
+  }
   [data-page="admin-status-realtime-connections"] #connections .tr:not(.table-titles):not(.placeholder) {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);

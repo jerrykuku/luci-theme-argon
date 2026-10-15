@@ -94,6 +94,12 @@
   }
 
   #connections {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-end-start-radius: var(--radius-card);
+    border-end-end-radius: var(--radius-card);
+    overflow: hidden;
+
     .th {
       text-align: start !important;
     }
@@ -101,15 +107,22 @@
     .td {
       direction: ltr;
       unicode-bidi: isolate;
-      text-align: match-parent !important;
+      text-align: start !important;
       font-variant-numeric: tabular-nums;
+
+      [dir="rtl"] & {
+        text-align: end !important;
+      }
 
       [dir="rtl"] &::before {
         direction: rtl;
+        text-align: start;
       }
     }
 
     @media screen and (max-width: 1152px) {
+      overflow-x: auto;
+
       .tr:not(.table-titles):not(.placeholder) {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
