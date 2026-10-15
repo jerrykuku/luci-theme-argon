@@ -7,11 +7,12 @@
 include $(TOPDIR)/rules.mk
 
 LUCI_TITLE:=Argon Theme
-LUCI_DEPENDS:=+luci-base +USE_APK:wget-any +!USE_APK:wget +jsonfilter
+LUCI_DEPENDS:=+luci-base +USE_APK:wget-any +!USE_APK:wget +jsonfilter +ucode-mod-math
 # Keep existing translation package names and the argon-config message domain.
 LUCI_BASENAME:=argon-config
 PKG_VERSION:=3.0.0
 PKG_RELEASE:=20261015
+PKG_LICENSE:=Apache-2.0 MIT
 
 CONFIG_LUCI_CSSTIDY:=
 # Ship template source across stable and snapshot runtimes. Precompiled

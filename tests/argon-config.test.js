@@ -90,7 +90,7 @@ function fixture(options = {}) {
 	};
 	const L = { bind: (fn, context) => fn.bind(context), resolveDefault: (promise, value) => Promise.resolve(promise).catch(() => value), resource: name => '/luci-static/resources/' + name };
 	state.view = new Function('form', 'fs', 'rpc', 'uci', 'ui', 'view', 'L', 'E', '_', 'cbi_update_table', 'location', 'document', 'branding', source)(
-		form, fileApi, rpc, { load: () => Promise.resolve() }, ui, { extend: value => value }, L, E,
+		form, fileApi, rpc, { load: () => Promise.resolve(), get: (config, section, key) => state.settings?.[key] }, ui, { extend: value => value }, L, E,
 		value => value, (table, rows) => { state.rows = rows; }, { reload() { state.reloads++; } },
 		{ getElementById: id => state.nodes[id] },
 		{ load: () => Promise.resolve({ result: 0 }), render: () => E('div', {}, []) }
@@ -211,6 +211,20 @@ test('read-only settings reject save, upload and delete handlers', async () => {
  assert.deepEqual(state.events, []);
  assert.deepEqual(state.cleanups, []);
  assert.equal(state.reloads, 0);
+});
+
+test('dark appearance selectors default to automatic/shared and retain hidden custom values', async () => {
+	for (const settings of [{}, { dark_primary: '#abc', blur: '5', blur_dark: '20' },
+		{ dark_primary: '#abc', dark_primary_mode: 'auto', dark_glass_mode: 'inherit', blur_dark: '20' }]) {
+		const state = fixture({ settings });
+		await state.render();
+		assert.equal(state.button('dark_primary_mode').cfgvalue('global'), settings.dark_primary_mode || (settings.dark_primary ? 'custom' : 'auto'));
+		assert.equal(state.button('dark_glass_mode').cfgvalue('global'), settings.dark_glass_mode || (settings.blur_dark ? 'custom' : 'inherit'));
+		for (const [name, selector] of [['dark_primary', 'dark_primary_mode'], ['blur_dark', 'dark_glass_mode'], ['transparency_dark', 'dark_glass_mode']]) {
+			assert.deepEqual(state.button(name).dependency, [selector, 'custom']);
+			assert.equal(state.button(name).retain, true);
+		}
+	}
 });
 
 

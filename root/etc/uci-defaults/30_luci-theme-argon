@@ -8,6 +8,7 @@ if [ -f /etc/argon-config-migration/argon ]; then
 fi
 
 # Preserve configured values and migrate the old Bing switch only when needed.
+[ -e /etc/config/argon ] || touch /etc/config/argon || exit 1
 if ! uci -q get 'argon.@global[0]' >/dev/null; then
 	uci -q add argon global >/dev/null
 fi
@@ -21,6 +22,26 @@ if [ -n "$old_bing" ]; then
 		fi
 	fi
 	uci -q delete 'argon.@global[0].bing_background'
+fi
+# Missing selectors identify old installations; preserve their separate choices.
+if ! uci -q get 'argon.@global[0].dark_primary_mode' >/dev/null; then
+	if [ -n "$(uci -q get 'argon.@global[0].dark_primary')" ]; then
+		uci set 'argon.@global[0].dark_primary_mode=custom'
+	else
+		uci set 'argon.@global[0].dark_primary_mode=auto'
+	fi
+fi
+if ! uci -q get 'argon.@global[0].dark_glass_mode' >/dev/null; then
+	light_blur="$(uci -q get 'argon.@global[0].blur')"
+	light_opacity="$(uci -q get 'argon.@global[0].transparency')"
+	dark_blur="$(uci -q get 'argon.@global[0].blur_dark')"
+	dark_opacity="$(uci -q get 'argon.@global[0].transparency_dark')"
+	if [ "${dark_blur:-${light_blur:-10}}" != "${light_blur:-10}" ] ||
+		[ "${dark_opacity:-${light_opacity:-0.5}}" != "${light_opacity:-0.5}" ]; then
+		uci set 'argon.@global[0].dark_glass_mode=custom'
+	else
+		uci set 'argon.@global[0].dark_glass_mode=inherit'
+	fi
 fi
 while read -r option value; do
 	uci -q get "argon.@global[0].$option" >/dev/null ||

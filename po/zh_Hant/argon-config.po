@@ -266,3 +266,33 @@ msgstr "使用 Unsplash 桌布時必須填寫。"
 
 msgid "Unable to load custom branding. Reload this page or reinstall the theme."
 msgstr "無法載入自訂圖示。請重新載入頁面或重新安裝主題。"
+
+msgid "Primary color"
+msgstr "主色"
+
+msgid "Login panel opacity"
+msgstr "登入面板透明度"
+
+msgid "Login panel blur"
+msgstr "登入面板模糊程度"
+
+msgid "Dark mode colors"
+msgstr "深色配色"
+
+msgid "Automatically generate dark colors from the primary color, or choose a custom dark color."
+msgstr "根據主色自動產生深色配色，也可以自訂深色主色。"
+
+msgid "Automatic"
+msgstr "自動產生"
+
+msgid "Custom"
+msgstr "自訂"
+
+msgid "Dark mode login panel"
+msgstr "深色登入面板"
+
+msgid "Use the same opacity and blur in both modes, or customize the dark login panel."
+msgstr "預設兩種模式共用透明度與模糊程度，也可以單獨設定深色面板。"
+
+msgid "Follow light mode"
+msgstr "跟隨淺色模式"

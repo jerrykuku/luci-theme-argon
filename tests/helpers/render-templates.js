@@ -75,6 +75,7 @@ print(sprintf('%J', { html, contentTypes }));
 		render(entry, fixture = {}) {
 			return JSON.parse(execFileSync(process.env.UCODE_BIN || 'ucode', [
 				'-L', path.join(path.dirname(process.env.UCODE_BIN || 'ucode'), '*.so'),
+				'-L', path.resolve(__dirname, '../../root/usr/share/ucode/*.uc'),
 				'-Dentry=' + JSON.stringify(entry), '-Dfixture=' + JSON.stringify(fixture), script
 			], { encoding: 'utf8' }));
 		},

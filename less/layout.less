@@ -74,12 +74,12 @@
 
             // Active state
             &.active {
-                color: var(--text-on-accent);
+                color: var(--accent-text);
                 background: var(--primary);
 
                 &::after {
                     transform: rotate(0deg);
-                    color: var(--text-on-accent);
+                    color: var(--accent-text);
                 }
             }
 
@@ -89,7 +89,7 @@
 
                 &:hover {
                     cursor: pointer;
-                    color: var(--text-on-accent);
+                    color: var(--accent-text);
                     background: var(--primary);
                 }
             }
@@ -102,7 +102,7 @@
                 width: 1rem;
                 height: 1rem;
                 margin-top: -.5rem;
-                color: var(--primary);
+                color: var(--link-color);
                 background-color: currentColor;
                 -webkit-mask: var(--menu-icon) center / contain no-repeat;
                 mask: var(--menu-icon) center / contain no-repeat;
@@ -115,7 +115,7 @@
             .menu-icon[data-icon="logout"] { color: var(--menu-icon-muted); }
 
             &.active .menu-icon {
-                color: var(--text-on-accent);
+                color: var(--accent-text);
             }
 
             @media (hover: hover) {
@@ -124,7 +124,7 @@
                 }
 
                 &:hover .menu-icon {
-                    color: var(--text-on-accent);
+                    color: var(--accent-text);
                 }
             }
         }
@@ -185,7 +185,7 @@
                             width: 0;
                             height: 2px;
                             content: "";
-                            background-color: var(--primary);
+                            background-color: var(--link-color);
                         }
 
                         @media (hover: hover) {
@@ -215,7 +215,7 @@
                             width: 100%;
                             height: 2px;
                             content: "";
-                            background-color: var(--primary);
+                            background-color: var(--link-color);
                         }
 
                     }

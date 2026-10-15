@@ -266,3 +266,33 @@ msgstr "使用 Unsplash 壁纸时必须填写。"
 
 msgid "Unable to load custom branding. Reload this page or reinstall the theme."
 msgstr "无法加载自定义图标。请刷新页面或重新安装主题。"
+
+msgid "Primary color"
+msgstr "主色"
+
+msgid "Login panel opacity"
+msgstr "登录面板透明度"
+
+msgid "Login panel blur"
+msgstr "登录面板模糊程度"
+
+msgid "Dark mode colors"
+msgstr "暗色配色"
+
+msgid "Automatically generate dark colors from the primary color, or choose a custom dark color."
+msgstr "根据主色自动生成暗色配色，也可以自定义暗色主色。"
+
+msgid "Automatic"
+msgstr "自动生成"
+
+msgid "Custom"
+msgstr "自定义"
+
+msgid "Dark mode login panel"
+msgstr "暗色登录面板"
+
+msgid "Use the same opacity and blur in both modes, or customize the dark login panel."
+msgstr "默认两种模式共用透明度和模糊程度，也可以单独设置暗色面板。"
+
+msgid "Follow light mode"
+msgstr "跟随亮色模式"

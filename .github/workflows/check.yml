@@ -35,7 +35,7 @@ jobs:
           git -C "$RUNNER_TEMP/argon-ucode" checkout FETCH_HEAD
           cmake -S "$RUNNER_TEMP/argon-ucode" -B "$RUNNER_TEMP/argon-ucode/build" \
             -DUBUS_SUPPORT=OFF -DUCI_SUPPORT=OFF -DULOOP_SUPPORT=OFF -DFFI_SUPPORT=OFF
-          cmake --build "$RUNNER_TEMP/argon-ucode/build" --target ucode fs_lib -j2
+          cmake --build "$RUNNER_TEMP/argon-ucode/build" --target ucode fs_lib math_lib -j2
 
       - name: Check templates, scripts, styles, and behavior
         run: |

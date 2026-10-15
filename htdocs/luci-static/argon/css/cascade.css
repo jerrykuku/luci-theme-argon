@@ -23,7 +23,15 @@
 :root {
   color-scheme: light;
   --light-primary: #5e72e4;
-  --dark-primary: #483d8b;
+  --dark-primary: #5a6cc5;
+  --dark-on-primary: #ffffff;
+  --dark-link-color: #b0c1ff;
+  --dark-focus-ring: #d3ddff;
+  --dark-selected-bg: #262e4f;
+  --dark-selected-hover-bg: #333d64;
+  --dark-accent-ring: rgba(176, 193, 255, 0.28);
+  --dark-accent-shadow: rgba(176, 193, 255, 0.1);
+  --dark-checkmark-icon: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 8 8\'%3e%3cpath fill=\'%23fff\' d=\'M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z\'/%3e%3c/svg%3e');
   --blur-radius-light: 10px;
   --blur-opacity-light: 0.5;
   --blur-radius-dark: 10px;
@@ -45,9 +53,15 @@
   --control-text: var(--text-color);
   --soft-text: #ced4da;
   --text-on-accent: #fff;
+  --accent-text: var(--text-on-accent);
+  --accent-border: var(--primary);
+  --accent-shadow-color: rgba(94, 114, 228, 0.1);
+  --neutral-action-text: var(--text-on-accent);
+  --notice-text: var(--text-on-accent);
   --text-inverse: #fff;
   --placeholder-color: #626f80;
   --focus-ring: #3446ab;
+  --control-focus: var(--primary);
   --link-color: var(--primary);
   --code-text: #212529;
   --data-token-text: #0069d6;
@@ -126,6 +140,7 @@
   --vlan-selected-hover-bg: #dfe4ff;
   --vlan-selected-border: var(--primary);
   --vlan-selected-ring: rgba(94, 114, 228, 0.28);
+  --checkmark-icon: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 8 8\'%3e%3cpath fill=\'%23fff\' d=\'M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z\'/%3e%3c/svg%3e');
   --vlan-tagged-rgb: 140, 72, 0;
   --vlan-untagged-rgb: 6, 104, 95;
   --vlan-checked-text: #fff;
@@ -172,11 +187,17 @@
   --text-color: #ccc;
   --muted-text: #adb5bd;
   --soft-text: #ccc;
+  --accent-text: var(--dark-on-primary);
+  --accent-border: var(--dark-link-color);
+  --accent-shadow-color: var(--dark-accent-shadow);
+  --neutral-action-text: var(--accent-text);
+  --notice-text: var(--accent-text);
   --placeholder-color: #adb5bd;
-  --focus-ring: #b7c4ff;
-  --link-color: #a5b2ff;
+  --focus-ring: var(--dark-focus-ring);
+  --control-focus: var(--focus-ring);
+  --link-color: var(--dark-link-color);
   --code-text: #ccc;
-  --data-token-text: #a5b2ff;
+  --data-token-text: var(--link-color);
   --log-text: #ccc;
   --overlay-text: #adb5bd;
   --background-color: #1e1e1e;
@@ -210,7 +231,7 @@
   --action-muted-solid: #adb5bd;
   --plain-button-bg: #707070;
   --plain-button-text: #fff;
-  --tab-color: #ccc;
+  --tab-color: var(--link-color);
   --tab-item-bg: #2d2d2d;
   --tab-inactive-color: #ccc;
   --progress-bg: #282a2c;
@@ -220,12 +241,11 @@
   --iface-body-bg: #333;
   --iface-border: 1px solid var(--separator-color);
   --badge-bg: #333;
-  --dropdown-selected-bg: #34314b;
+  --dropdown-selected-bg: var(--dark-selected-bg);
   --sidebar-scrollbar: #252526;
   --login-panel-rgb: 0, 0, 0;
   --login-text: #adb5bd;
   --login-input-border: #adb5bd;
-  --positive-bg: darkolivegreen;
   --negative-bg: darkorange;
   --reset-bg: darkorange;
   --reset-border: darkorange;
@@ -242,10 +262,11 @@
   --change-modified-border: #666;
   --plugin-card-bg: #3c3c3c;
   --vlan-text-muted: #adb5bd;
-  --vlan-selected-bg: #34314b;
-  --vlan-selected-hover-bg: #413c60;
-  --vlan-selected-border: #a5b2ff;
-  --vlan-selected-ring: rgba(165, 178, 255, 0.28);
+  --vlan-selected-bg: var(--dark-selected-bg);
+  --vlan-selected-hover-bg: var(--dark-selected-hover-bg);
+  --vlan-selected-border: var(--link-color);
+  --vlan-selected-ring: var(--dark-accent-ring);
+  --checkmark-icon: var(--dark-checkmark-icon);
   --vlan-tagged-rgb: 251, 191, 36;
   --vlan-untagged-rgb: 45, 212, 191;
   --vlan-checked-text: #1e1e1e;
@@ -276,11 +297,17 @@
     --text-color: #ccc;
     --muted-text: #adb5bd;
     --soft-text: #ccc;
+    --accent-text: var(--dark-on-primary);
+    --accent-border: var(--dark-link-color);
+    --accent-shadow-color: var(--dark-accent-shadow);
+    --neutral-action-text: var(--accent-text);
+    --notice-text: var(--accent-text);
     --placeholder-color: #adb5bd;
-    --focus-ring: #b7c4ff;
-    --link-color: #a5b2ff;
+    --focus-ring: var(--dark-focus-ring);
+    --control-focus: var(--focus-ring);
+    --link-color: var(--dark-link-color);
     --code-text: #ccc;
-    --data-token-text: #a5b2ff;
+    --data-token-text: var(--link-color);
     --log-text: #ccc;
     --overlay-text: #adb5bd;
     --background-color: #1e1e1e;
@@ -314,7 +341,7 @@
     --action-muted-solid: #adb5bd;
     --plain-button-bg: #707070;
     --plain-button-text: #fff;
-    --tab-color: #ccc;
+    --tab-color: var(--link-color);
     --tab-item-bg: #2d2d2d;
     --tab-inactive-color: #ccc;
     --progress-bg: #282a2c;
@@ -324,12 +351,11 @@
     --iface-body-bg: #333;
     --iface-border: 1px solid var(--separator-color);
     --badge-bg: #333;
-    --dropdown-selected-bg: #34314b;
+    --dropdown-selected-bg: var(--dark-selected-bg);
     --sidebar-scrollbar: #252526;
     --login-panel-rgb: 0, 0, 0;
     --login-text: #adb5bd;
     --login-input-border: #adb5bd;
-    --positive-bg: darkolivegreen;
     --negative-bg: darkorange;
     --reset-bg: darkorange;
     --reset-border: darkorange;
@@ -346,10 +372,11 @@
     --change-modified-border: #666;
     --plugin-card-bg: #3c3c3c;
     --vlan-text-muted: #adb5bd;
-    --vlan-selected-bg: #34314b;
-    --vlan-selected-hover-bg: #413c60;
-    --vlan-selected-border: #a5b2ff;
-    --vlan-selected-ring: rgba(165, 178, 255, 0.28);
+    --vlan-selected-bg: var(--dark-selected-bg);
+    --vlan-selected-hover-bg: var(--dark-selected-hover-bg);
+    --vlan-selected-border: var(--link-color);
+    --vlan-selected-ring: var(--dark-accent-ring);
+    --checkmark-icon: var(--dark-checkmark-icon);
     --vlan-tagged-rgb: 251, 191, 36;
     --vlan-untagged-rgb: 45, 212, 191;
     --vlan-checked-text: #1e1e1e;
@@ -635,7 +662,7 @@ button:-moz-focusring {
 input[type="checkbox"] {
   appearance: none !important;
   -webkit-appearance: none !important;
-  border: 1px solid var(--primary);
+  border: 1px solid var(--accent-border);
   border-radius: var(--radius-small);
   width: 1rem !important;
   height: 1rem !important;
@@ -643,8 +670,8 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 input[type="checkbox"]:checked {
-  border: 1px solid var(--primary);
-  background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 8 8\'%3e%3cpath fill=\'%23fff\' d=\'M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z\'/%3e%3c/svg%3e') !important;
+  border: 1px solid var(--accent-border);
+  background-image: var(--checkmark-icon) !important;
   background-color: var(--primary);
   background-size: 70%;
   background-repeat: no-repeat;
@@ -702,7 +729,7 @@ li {
 }
 ::selection {
   background-color: var(--primary);
-  color: var(--text-on-accent);
+  color: var(--accent-text);
 }
 ::placeholder {
   color: var(--placeholder-color);
@@ -963,8 +990,8 @@ input:not(.cbi-button) {
 select:not([multiple="multiple"]):focus,
 input:not(.cbi-button):focus,
 .cbi-dropdown:focus {
-  border-color: var(--primary);
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
+  border-color: var(--control-focus);
+  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
 }
 .cbi-dropdown,
 select[multiple="multiple"] {
@@ -1160,7 +1187,7 @@ select[multiple] {
   inset-inline: 0;
   bottom: 0;
   height: 2px;
-  background-color: var(--primary);
+  background-color: var(--control-focus);
   transform: scaleX(0);
   pointer-events: none;
 }
@@ -1185,7 +1212,7 @@ select[multiple] {
   letter-spacing: 0.1rem;
   white-space: normal;
   overflow-wrap: anywhere;
-  color: var(--text-on-accent);
+  color: var(--accent-text);
   background-color: var(--primary) !important;
   border: 0;
   border-radius: var(--radius-control);
@@ -1322,12 +1349,12 @@ select[multiple] {
   cursor: default;
 }
 .main-left .nav > li > a:first-child.active {
-  color: var(--text-on-accent);
+  color: var(--accent-text);
   background: var(--primary);
 }
 .main-left .nav > li > a:first-child.active::after {
   transform: rotate(0deg);
-  color: var(--text-on-accent);
+  color: var(--accent-text);
 }
 @media (hover: hover) {
   .main-left .nav > li > a:first-child {
@@ -1335,7 +1362,7 @@ select[multiple] {
   }
   .main-left .nav > li > a:first-child:hover {
     cursor: pointer;
-    color: var(--text-on-accent);
+    color: var(--accent-text);
     background: var(--primary);
   }
 }
@@ -1347,7 +1374,7 @@ select[multiple] {
   width: 1rem;
   height: 1rem;
   margin-top: -0.5rem;
-  color: var(--primary);
+  color: var(--link-color);
   background-color: currentColor;
   -webkit-mask: var(--menu-icon) center / contain no-repeat;
   mask: var(--menu-icon) center / contain no-repeat;
@@ -1366,14 +1393,14 @@ select[multiple] {
   color: var(--menu-icon-muted);
 }
 .main-left .nav > li > a:first-child.active .menu-icon {
-  color: var(--text-on-accent);
+  color: var(--accent-text);
 }
 @media (hover: hover) {
   .main-left .nav > li > a:first-child .menu-icon {
     transition: color 0.15s ease;
   }
   .main-left .nav > li > a:first-child:hover .menu-icon {
-    color: var(--text-on-accent);
+    color: var(--accent-text);
   }
 }
 .main-left .nav li {
@@ -1423,7 +1450,7 @@ select[multiple] {
   width: 0;
   height: 2px;
   content: "";
-  background-color: var(--primary);
+  background-color: var(--link-color);
 }
 @media (hover: hover) {
   .main-left .nav li.slide .slide-menu li:hover {
@@ -1447,7 +1474,7 @@ select[multiple] {
   width: 100%;
   height: 2px;
   content: "";
-  background-color: var(--primary);
+  background-color: var(--link-color);
 }
 .main-left .nav li .menu::after {
   content: "";
@@ -1758,7 +1785,7 @@ span.spinning {
 }
 .notice {
   background-color: var(--notice-bg) !important;
-  color: var(--text-on-accent);
+  color: var(--notice-text);
 }
 .error {
   color: var(--danger);
@@ -2309,7 +2336,7 @@ td > table > tbody > tr > td,
   .btn:hover,
   .cbi-button:hover,
   .item:hover::after {
-    box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
+    box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
   }
 }
 .btn:disabled,
@@ -2347,7 +2374,7 @@ td > table > tbody > tr > td,
 .cbi-button[name="zero"],
 .cbi-button[name="restart"],
 .cbi-button[onclick="hide_empty(this)"] {
-  color: var(--text-on-accent);
+  color: var(--neutral-action-text);
   border: thin solid var(--neutral-action-bg);
   background-color: var(--neutral-action-bg);
 }
@@ -2364,8 +2391,8 @@ td > table > tbody > tr > td,
 .cbi-button[value^="Back"],
 .cbi-button-neutral[onclick="handleConfig(event)"] {
   font-weight: normal;
-  color: var(--text-on-accent) !important;
-  border: thin solid var(--button-bg, var(--primary));
+  color: var(--accent-text) !important;
+  border: thin solid var(--accent-border);
   background-color: var(--button-bg, var(--primary));
 }
 .cbi-page-actions .cbi-button-save,
@@ -2387,8 +2414,8 @@ td > table > tbody > tr > td,
 .cbi-button[value$="Apply"],
 .cbi-button[onclick="addKey(event)"] {
   font-weight: normal;
-  color: var(--text-on-accent) !important;
-  border: thin solid var(--primary);
+  color: var(--accent-text) !important;
+  border: thin solid var(--accent-border);
   background-color: var(--primary);
 }
 /* red */
@@ -2477,7 +2504,7 @@ td > table > tbody > tr > td,
   gap: inherit;
 }
 .cbi-page-actions .cbi-dropdown .open {
-  color: var(--text-on-accent);
+  color: var(--accent-text);
 }
 .a-to-btn {
   text-decoration: none;
@@ -2726,8 +2753,8 @@ td > table > tbody > tr > td,
   line-height: 1.25;
 }
 .cbi-value-field.cbi-dropdown-open .cbi-dropdown {
-  border-color: var(--primary);
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
+  border-color: var(--control-focus);
+  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
 }
 .cbi-value-field .cbi-dropdown,
 .cbi-value-field .cbi-input-select,
@@ -3013,9 +3040,9 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   padding: 0.5rem 0 !important;
   font-weight: normal;
   font-size: 1.2rem;
-  color: var(--text-on-accent);
+  color: var(--accent-text);
   background-color: var(--primary);
-  border: 1px solid var(--primary);
+  border: 1px solid var(--accent-border);
 }
 .cbi-dynlist > .add-item:not([ondrop]) > input {
   overflow: hidden;
@@ -3079,10 +3106,10 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   display: none;
 }
 .cbi-button-apply > ul.preview li {
-  color: var(--text-on-accent);
+  color: var(--accent-text);
 }
 .cbi-button-apply > ul:first-child li {
-  color: var(--text-on-accent);
+  color: var(--accent-text);
 }
 .cbi-dropdown > .open {
   display: flex;
@@ -3206,7 +3233,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   display: initial;
 }
 .cbi-dropdown.cbi-button-positive > ul:not(.dropdown) > li[display="0"] {
-  color: var(--text-on-accent);
+  color: var(--accent-text);
 }
 .cbi-dropdown[disabled] {
   pointer-events: none;
@@ -3414,8 +3441,8 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 }
 .modal > pre:focus,
 .modal > textarea:focus {
-  border: 1px solid var(--primary);
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
+  border: 1px solid var(--control-focus);
+  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
 }
 .modal > pre {
   direction: ltr;
@@ -3489,7 +3516,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .modal .button-row > .btn:focus-visible,
 .modal .right:has( > :is(.btn, .cbi-button)) > .cbi-button:focus-visible,
 .modal .button-row > .cbi-button:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--control-focus);
   outline-offset: 2px;
 }
 .modal .right:has( > :is(.btn, .cbi-button)) > [class="btn"],
@@ -3956,7 +3983,7 @@ span[data-tooltip] .label {
   position: absolute;
   z-index: 1000;
   inset-inline-start: -10000px;
-  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
+  box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
   border-radius: var(--radius-panel);
   background: var(--surface-color);
   white-space: pre;
@@ -5289,7 +5316,7 @@ pre.command-output {
   display: none;
 }
 [data-page="admin-network-diagnostics"] .cbi-dropdown .open {
-  color: var(--text-on-accent);
+  color: var(--accent-text);
 }
 [data-page="admin-network-firewall-custom"] #view p,
 [data-page="admin-status-routes"] #view p {
@@ -6074,7 +6101,7 @@ pre.command-output {
 [data-page^="admin-services-openclash"] input.cbi-input-reload,
 [data-page^="admin-services-openclash"] input.cbi-input-save,
 [data-page^="admin-services-openclash"] .btn.primary {
-  color: var(--text-on-accent) !important;
+  color: var(--accent-text) !important;
   border-color: var(--oc-accent) !important;
   background: var(--oc-accent) !important;
 }
@@ -6169,7 +6196,7 @@ pre.command-output {
 [data-page^="admin-services-openclash"] .oc .radio-button input[type="radio"]:checked + label,
 [data-page^="admin-services-openclash"] .oc #tab-header > ul.cbi-tabmenu > li.cbi-tab,
 [data-page^="admin-services-openclash"] .oc #tab-header > ul.oc-tabmenu > li.oc-tab {
-  color: var(--text-on-accent) !important;
+  color: var(--accent-text) !important;
   border-color: var(--oc-accent) !important;
   background: var(--oc-accent) !important;
 }
@@ -6359,12 +6386,12 @@ pre.command-output {
   background: var(--oc-surface) !important;
 }
 [data-page^="admin-services-openclash"] #cbi-openclash [id^="tab-header-openclash-"] > ul.cbi-tabmenu > li.cbi-tab {
-  color: var(--text-on-accent) !important;
+  color: var(--accent-text) !important;
   border-color: var(--oc-accent) !important;
   background: var(--oc-accent) !important;
 }
 [data-page^="admin-services-openclash"] #cbi-openclash [id^="tab-header-openclash-"] > ul.cbi-tabmenu > li.cbi-tab > a {
-  color: var(--text-on-accent) !important;
+  color: var(--accent-text) !important;
 }
 [data-page^="admin-services-openclash"] #cbi-openclash [id^="tab-header-openclash-"] > ul.cbi-tabmenu > li:not(.cbi-tab):hover,
 [data-page^="admin-services-openclash"] #cbi-openclash [id^="tab-header-openclash-"] > ul.cbi-tabmenu > li:not(.cbi-tab):focus {
@@ -6492,7 +6519,7 @@ pre.command-output {
   box-shadow: var(--section-shadow);
 }
 .node-services-vssr .cbi-section-table-row.fast {
-  color: var(--text-on-accent);
+  color: var(--accent-text);
   background: var(--primary) !important;
 }
 .node-services-vssr .incon:nth-child(2) {

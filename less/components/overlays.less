@@ -102,8 +102,8 @@
     transition: box-shadow .15s ease;
 
     &:focus {
-      border: 1px solid var(--primary);
-      box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
+      border: 1px solid var(--control-focus);
+      box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
     }
   }
 
@@ -186,7 +186,7 @@
       overflow-wrap: anywhere;
 
       &:focus-visible {
-        outline: 2px solid var(--primary);
+        outline: 2px solid var(--control-focus);
         outline-offset: 2px;
       }
     }

@@ -65,7 +65,30 @@ test('login partials retain image/video, branding and authentication scope and s
 		assert.match(image, /data-login-style="classic"/);
 		assert.match(image, /class="main-bg"/);
 		assert.match(image, /img\/bg1.jpg/);
-		assert.doesNotMatch(image, /<video|--light-primary:/);
+		assert.doesNotMatch(image, /<video/);
+		assert.match(image, /--dark-primary: #5a6cc5/);
 		assert.match(renderer.render('sysauth', { fuser: 'root' }).html, /Invalid username and\/or password/);
+	} finally { renderer.close(); }
+});
+
+test('automatic palette and shared glass are emitted on application and anonymous login before styles paint', () => {
+	const renderer = createRenderer(templates);
+	try {
+		for (const entry of ['application', 'sysauth']) {
+			const { html } = renderer.render(entry, { settings: { primary: '#008800', dark_primary_mode: 'auto',
+				dark_primary: '#ff00ff', dark_glass_mode: 'inherit', blur: '0', blur_dark: '20', transparency: '0.3', transparency_dark: '0.9' } });
+			assert.match(html, /--blur-radius-dark:0px/);
+			assert.match(html, /--blur-opacity-dark:0.3/);
+			assert.doesNotMatch(html, /--dark-primary: #ff00ff/);
+			assert.match(html, /--dark-link-color: #[0-9a-f]{6}/);
+			assert.match(html, /name="theme-color" media="\(prefers-color-scheme: dark\)"/);
+			assert.ok(html.indexOf('--dark-primary:') < html.indexOf('</head>'));
+			const custom = renderer.render(entry, { settings: { dark_primary_mode: 'custom', dark_primary: '#ffffff',
+				dark_glass_mode: 'custom', blur: '0', blur_dark: '20', transparency: '0.3', transparency_dark: '0.9' } }).html;
+			assert.match(custom, /--dark-primary: #ffffff/);
+			assert.match(custom, /--dark-on-primary: #000000/);
+			assert.match(custom, /--blur-radius-dark:20px/);
+			assert.match(custom, /--blur-opacity-dark:0.9/);
+		}
 	} finally { renderer.close(); }
 });

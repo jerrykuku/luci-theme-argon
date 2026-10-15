@@ -171,27 +171,59 @@ return view.extend({
 		o.default = 'normal';
 		o.rmempty = false;
 
-		o = s.option(ColorValue, 'primary', _('[Light mode] Primary Color'), _('A HEX color (default: #5e72e4).'));
+		o = s.option(ColorValue, 'primary', _('Primary color'), _('A HEX color (default: #5e72e4).'));
 		o.default = '#5e72e4';
 		o.rmempty = false;
 
-		o = s.option(form.ListValue, 'transparency', _('[Light mode] Transparency'),
+		o = s.option(form.ListValue, 'transparency', _('Login panel opacity'),
 			_('0 transparent - 1 opaque (suggest: transparent: 0 or translucent preset: 0.5).'));
 		for (var i of trans_set)
 			o.value(i);
 		o.default = '0.5';
 		o.rmempty = false;
 
-		o = s.option(form.Value, 'blur', _('[Light mode] Frosted Glass Radius'),
+		o = s.option(form.Value, 'blur', _('Login panel blur'),
 			_('Larger value will more blurred (suggest: clear: 1 or blur preset: 10).'));
 		o.datatype = 'and(ufloat,range(0,100))';
 		o.default = '10';
 		o.rmempty = false;
 
+		o = s.option(form.ListValue, 'dark_primary_mode', _('Dark mode colors'),
+			_('Automatically generate dark colors from the primary color, or choose a custom dark color.'));
+		o.value('auto', _('Automatic'));
+		o.value('custom', _('Custom'));
+		o.default = 'auto';
+		o.rmempty = false;
+		o.cfgvalue = function(section_id) {
+			var mode = uci.get('argon', section_id, 'dark_primary_mode');
+			return mode === 'auto' || mode === 'custom' ? mode :
+				(expandHex(uci.get('argon', section_id, 'dark_primary')) ? 'custom' : 'auto');
+		};
+
 		o = s.option(ColorValue, 'dark_primary', _('[Dark mode] Primary Color'),
 			_('A HEX Color (default: #483d8b).'));
 		o.default = '#483d8b';
 		o.rmempty = false;
+		o.depends('dark_primary_mode', 'custom');
+		o.retain = true;
+
+		o = s.option(form.ListValue, 'dark_glass_mode', _('Dark mode login panel'),
+			_('Use the same opacity and blur in both modes, or customize the dark login panel.'));
+		o.value('inherit', _('Follow light mode'));
+		o.value('custom', _('Custom'));
+		o.default = 'inherit';
+		o.rmempty = false;
+		o.cfgvalue = function(section_id) {
+			var mode = uci.get('argon', section_id, 'dark_glass_mode');
+			if (mode === 'inherit' || mode === 'custom')
+				return mode;
+			var blur = uci.get('argon', section_id, 'blur') || '10';
+			var opacity = uci.get('argon', section_id, 'transparency') || '0.5';
+			var darkBlur = uci.get('argon', section_id, 'blur_dark');
+			var darkOpacity = uci.get('argon', section_id, 'transparency_dark');
+			return (darkBlur != null && +darkBlur !== +blur) ||
+				(darkOpacity != null && +darkOpacity !== +opacity) ? 'custom' : 'inherit';
+		};
 
 		o = s.option(form.ListValue, 'transparency_dark', _('[Dark mode] Transparency'),
 			_('0 transparent - 1 opaque (suggest: black translucent preset: 0.5).'));
@@ -199,12 +231,16 @@ return view.extend({
 			o.value(i);
 		o.default = '0.5';
 		o.rmempty = false;
+		o.depends('dark_glass_mode', 'custom');
+		o.retain = true;
 
 		o = s.option(form.Value, 'blur_dark', _('[Dark mode] Frosted Glass Radius'),
 			_('Larger value will more blurred (suggest: clear: 1 or blur preset: 10).'));
 		o.datatype = 'and(ufloat,range(0,100))';
 		o.default = '10';
 		o.rmempty = false;
+		o.depends('dark_glass_mode', 'custom');
+		o.retain = true;
 
 		o = s.option(form.Button, '_save', _('Save settings'));
 		o.inputstyle = 'apply';

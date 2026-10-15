@@ -44,7 +44,7 @@
   .btn:hover,
   .cbi-button:hover,
   .item:hover::after {
-    box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, 0.1);
+    box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px var(--accent-shadow-color);
   }
 }
 
@@ -85,7 +85,7 @@
 .cbi-button[name="zero"],
 .cbi-button[name="restart"],
 .cbi-button[onclick="hide_empty(this)"] {
-  color: var(--text-on-accent);
+  color: var(--neutral-action-text);
   border: thin solid var(--neutral-action-bg);
   background-color: var(--neutral-action-bg);
 }
@@ -103,8 +103,8 @@
 .cbi-button[value^="Back"],
 .cbi-button-neutral[onclick="handleConfig(event)"] {
   font-weight: normal;
-  color: var(--text-on-accent) !important;
-  border: thin solid var(--button-bg, var(--primary));
+  color: var(--accent-text) !important;
+  border: thin solid var(--accent-border);
   background-color: var(--button-bg, var(--primary));
 }
 
@@ -128,8 +128,8 @@
 .cbi-button[value$="Apply"],
 .cbi-button[onclick="addKey(event)"] {
   font-weight: normal;
-  color: var(--text-on-accent) !important;
-  border: thin solid var(--primary);
+  color: var(--accent-text) !important;
+  border: thin solid var(--accent-border);
 
   background-color: var(--primary);
 }
@@ -230,7 +230,7 @@
 
   .cbi-dropdown {
     .open {
-      color: var(--text-on-accent);
+      color: var(--accent-text);
     }
   }
 }

@@ -24,7 +24,7 @@ class ConfigMigrationTests(unittest.TestCase):
 import json, os, sys
 from pathlib import Path
 p = Path(os.environ['FIXTURE_CONFIG'])
-state = json.loads(p.read_text()) if p.exists() else None
+state = json.loads(p.read_text()) if p.exists() and p.read_text().strip() else None
 args = [a for a in sys.argv[1:] if a != '-q']
 op = args.pop(0)
 if op == 'get':
@@ -66,7 +66,26 @@ if op != 'get': p.write_text(json.dumps(state))
         self.assertEqual(state['online_wallpaper'], 'none')
         self.assertEqual(state['blur'], '10')
         self.assertEqual(state['transparency'], '0.5')
+        self.assertEqual(state['dark_primary_mode'], 'auto')
+        self.assertEqual(state['dark_glass_mode'], 'inherit')
         self.assertEqual(self.initialize(), state)
+
+    def test_old_dark_overrides_are_preserved_and_modes_are_idempotent(self):
+        original = dict(primary='#008800', dark_primary='#abcdef', blur='8',
+                        transparency='0.4', blur_dark='20', transparency_dark='0.8')
+        state = self.initialize(original)
+        self.assertEqual(state['dark_primary_mode'], 'custom')
+        self.assertEqual(state['dark_glass_mode'], 'custom')
+        for key, value in original.items():
+            self.assertEqual(state[key], value)
+        self.assertEqual(self.initialize(), state)
+        shared = self.initialize(dict(blur='8', blur_dark='8', transparency='0', transparency_dark='0'))
+        self.assertEqual(shared['dark_glass_mode'], 'inherit')
+        explicit = self.initialize(dict(original, dark_primary_mode='auto', dark_glass_mode='inherit'))
+        self.assertEqual(explicit['dark_primary_mode'], 'auto')
+        self.assertEqual(explicit['dark_glass_mode'], 'inherit')
+        self.assertEqual(explicit['dark_primary'], original['dark_primary'])
+        self.assertEqual(explicit['blur_dark'], original['blur_dark'])
 
     def test_existing_options_and_private_keys_are_preserved(self):
         original = dict(login_style='centered', primary='#abcdef', blur='0',

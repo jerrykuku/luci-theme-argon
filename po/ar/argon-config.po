@@ -265,3 +265,33 @@ msgstr ""
 
 msgid "Unable to load custom branding. Reload this page or reinstall the theme."
 msgstr ""
+
+msgid "Primary color"
+msgstr ""
+
+msgid "Login panel opacity"
+msgstr ""
+
+msgid "Login panel blur"
+msgstr ""
+
+msgid "Dark mode colors"
+msgstr ""
+
+msgid "Automatically generate dark colors from the primary color, or choose a custom dark color."
+msgstr ""
+
+msgid "Automatic"
+msgstr ""
+
+msgid "Custom"
+msgstr ""
+
+msgid "Dark mode login panel"
+msgstr ""
+
+msgid "Use the same opacity and blur in both modes, or customize the dark login panel."
+msgstr ""
+
+msgid "Follow light mode"
+msgstr ""

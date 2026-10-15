@@ -67,6 +67,8 @@ It also supports automatic and manual switching between light and dark modes.
 - The login page supports local images, videos, and online wallpapers as backgrounds.
 - Version 3.0 includes theme settings, background uploads, and custom branding in the theme package.
 
+Dark colors are generated automatically from the primary color on new installations. Choose **Dark mode colors → Custom** to supply a separate seed; links, focus and selection colors follow it. Existing dark primary colors remain custom after upgrading. Login panel opacity and blur are shared by default; **Dark mode login panel → Custom** retains separate values, including existing overrides. Switching to automatic or shared settings keeps the custom values for later use.
+
 Choose **Classic sidebar** (default) or **Centered card** under **System → Argon Config → Login page style**. Both layouts use the same wallpaper, color and authentication settings. Missing or unsupported `login_style` values fall back to `classic`.
 
 Unsplash wallpapers require an Unsplash API access key. Select Unsplash and enter the key in the settings page; missing keys fall back to a local background. Fresh installations use local backgrounds, the classic sidebar and the original frosted glass settings (10px blur, 0.5 opacity). Existing options in `/etc/config/argon` are preserved.

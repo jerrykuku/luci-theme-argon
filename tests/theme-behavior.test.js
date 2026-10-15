@@ -113,6 +113,8 @@ function runUcodeSnippet(file, start, end, setup, result, settings = {}, hasConf
 	writeFileSync(script, `${setup}\n${source.slice(first, last)}\nprint(sprintf("%J", ${result}));\n`);
 	try {
 		const output = execFileSync(process.env.UCODE_BIN || 'ucode', [
+			'-L', path.join(path.dirname(process.env.UCODE_BIN || 'ucode'), '*.so'),
+			'-L', path.join(root, 'root/usr/share/ucode/*.uc'),
 			`-Dsettings=${JSON.stringify(settings)}`,
 			`-DhasConfig=${JSON.stringify(hasConfig)}`,
 			script
@@ -124,6 +126,7 @@ function runUcodeSnippet(file, start, end, setup, result, settings = {}, hasConf
 }
 
 const configSetup = `
+import { dark_palette, appearance_modes } from 'luci.argon-palette';
 let cfg = { get_first: (packageName, section, key) => settings[key] };
 function access(path) { return hasConfig; }
 `;
@@ -148,7 +151,7 @@ const configResult = '{mode, primary, dark_primary, blur_radius, blur_radius_dar
 test('shared head uses safe defaults for missing and invalid settings', () => {
 	const empty = runUcodeSnippet('ucode/template/themes/argon/head.ut', 'function validColor', '\n-%}', configSetup, configResult);
 	assert.deepEqual(empty, {
-		mode: 'normal', primary: '#5e72e4', dark_primary: '#483d8b',
+		mode: 'normal', primary: '#5e72e4', dark_primary: '#5a6cc5',
 		blur_radius: '10', blur_radius_dark: '10',
 		blur_opacity: '0.5', blur_opacity_dark: '0.5', bar_color: '#5e72e4'
 	});
