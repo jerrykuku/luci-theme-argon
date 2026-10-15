@@ -671,9 +671,9 @@ textarea {
   padding: 0.25rem;
   overflow: auto;
   border-radius: var(--radius-control);
+  outline: none;
 }
 textarea:focus-visible {
-  outline: none;
   border: 1px solid var(--primary);
 }
 fieldset {
@@ -4431,10 +4431,6 @@ pre.command-output {
   border-radius: var(--radius-control);
   border: 1px solid var(--border-color);
 }
-[data-page="admin-system-startup"] textarea:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
-}
 @media screen and (max-width: 1152px) {
   [data-page="admin-system-startup"] .td[data-title] {
     flex-basis: 50%;
@@ -4460,15 +4456,10 @@ pre.command-output {
   resize: none;
   background-color: transparent;
   background: var(--surface-color);
-  outline: none;
   color: var(--muted-text);
   border-radius: var(--radius-control);
   border: 1px solid var(--border-color);
   transition: box-shadow 0.15s ease;
-}
-[data-page="admin-system-crontab"] #view p textarea:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
 }
 [data-page="admin-system-crontabhelper"] .crontab-row .dropdown-container {
   display: flex;
@@ -4525,10 +4516,6 @@ pre.command-output {
   text-align: start;
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   line-height: 1.5;
-}
-[data-page="admin-system-flash"] textarea:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
 }
 [data-page="admin-system-flash"] .modal .btn {
   height: auto;
@@ -4931,10 +4918,6 @@ pre.command-output {
   color: var(--muted-text);
   border: 1px solid var(--border-color);
   padding: 0.5rem;
-}
-[data-page="admin-network-diagnostics"] textarea:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
 }
 [data-page="admin-network-diagnostics"] .tr {
   display: flex;
@@ -5526,12 +5509,6 @@ pre.command-output {
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-variant-numeric: tabular-nums;
   line-height: 1.5;
-}
-[data-page="admin-status-logs"] #syslog:focus-visible,
-[data-page="admin-status-logs-syslog"] #syslog:focus-visible,
-[data-page="admin-status-logs-dmesg"] #syslog:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
 }
 [data-page="admin-status-logs"] #content_syslog > div:has(> input, > select),
 [data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select),

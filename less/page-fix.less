@@ -160,11 +160,6 @@
         color: var(--muted-text);
         border-radius: var(--radius-control);
         border: 1px solid var(--border-color);
-
-        &:focus-visible {
-            outline: 2px solid var(--focus-ring);
-            outline-offset: 2px;
-        }
     }
 
     @media screen and (max-width: 1152px) {
@@ -199,16 +194,10 @@
             resize: none;
             background-color: transparent;
             background: var(--surface-color);
-            outline: none;
             color: var(--muted-text);
             border-radius: var(--radius-control);
             border: 1px solid var(--border-color);
             transition: box-shadow .15s ease;
-
-            &:focus-visible {
-                outline: 2px solid var(--focus-ring);
-                outline-offset: 2px;
-            }
         }
     }
 }
@@ -291,11 +280,6 @@
         text-align: start;
         font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
         line-height: 1.5;
-
-        &:focus-visible {
-            outline: 2px solid var(--focus-ring);
-            outline-offset: 2px;
-        }
     }
 
     // Upgrade options use button-styled labels with multiline text.
@@ -713,11 +697,6 @@
         color: var(--muted-text);
         border: 1px solid var(--border-color);
         padding: 0.5rem;
-
-        &:focus-visible {
-            outline: 2px solid var(--focus-ring);
-            outline-offset: 2px;
-        }
     }
 
     .tr {
