@@ -83,13 +83,10 @@ return baseclass.extend({
 		this.root.addEventListener('focusout', function(event) {
 			if (event.relatedTarget && !this.root.contains(event.relatedTarget))
 				this.open(false);
-			else if (!event.relatedTarget)
-				// A label click briefly blurs its radio before forwarding activation.
-				requestAnimationFrame(function() {
-					if (!this.root.contains(document.activeElement))
-						this.open(false);
-				}.bind(this));
+			// A pointer press on a label can leave focus on the page until release.
+			// With no destination, wait for label activation or the outside click.
 		}.bind(this));
+		window.addEventListener('blur', function() { this.open(false); }.bind(this));
 	},
 
 	open: function(show, restoreFocus) {

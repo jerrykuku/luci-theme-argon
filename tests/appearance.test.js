@@ -90,14 +90,14 @@ test('Escape and outside focus close the panel, while system changes never write
  assert.equal(state.html.dataset.argonMode, 'normal'); assert.equal(state.calls.filter(c => c[0] === 'set').length, 0);
 });
 
-test('label activation can move focus through the page without closing the choices early', async () => {
+test('holding an option keeps choices open until native label activation completes', async () => {
  const state = fixture(); await state.start(); state.api.open(true);
  const blur = new Event('focusout'); blur.relatedTarget = null; state.root.dispatchEvent(blur);
+ state.document.activeElement = {};
+ for (const frame of state.frames.values()) frame(); state.frames.clear();
  assert.equal(state.api.panel.hidden, false);
  state.api.radios[0].focus();
- for (const frame of state.frames.values()) frame(); state.frames.clear();
  assert.equal(state.api.panel.hidden, false);
- state.root.dispatchEvent(blur); state.document.activeElement = {};
- for (const frame of state.frames.values()) frame(); state.frames.clear();
+ state.window.dispatchEvent(new Event('blur'));
  assert.equal(state.api.panel.hidden, true);
 });
