@@ -14,18 +14,17 @@ concurrency:
 
 env:
   TZ: Asia/Shanghai
-  CONFIG_REPOSITORY: jerrykuku/luci-app-argon-config
 
 jobs:
   metadata:
-    name: Resolve release and config revision
+    name: Resolve release version
     runs-on: ubuntu-24.04
     outputs:
       prerelease: ${{ steps.version.outputs.prerelease }}
       apk_version: ${{ steps.version.outputs.apk_version }}
       ipk_version: ${{ steps.version.outputs.ipk_version }}
       package_release: ${{ steps.version.outputs.package_release }}
-      config_sha: ${{ steps.config.outputs.sha }}
+      docs_branch: ${{ steps.branch.outputs.name }}
     steps:
       - uses: actions/checkout@v7
 
@@ -33,11 +32,13 @@ jobs:
         id: version
         run: python3 .github/scripts/release_metadata.py "$GITHUB_REF_NAME" >> "$GITHUB_OUTPUT"
 
-      - name: Pin config source
-        id: config
+      - name: Select documentation branch
+        id: branch
         run: |
-          bash .github/scripts/resolve_config.sh \
-            "https://github.com/${CONFIG_REPOSITORY}.git" "$GITHUB_REF_NAME" >> "$GITHUB_OUTPUT"
+          case "$GITHUB_REF_NAME" in
+            v3.*|3.*) echo 'name=3.0' >> "$GITHUB_OUTPUT" ;;
+            *) echo 'name=master' >> "$GITHUB_OUTPUT" ;;
+          esac
 
   checks:
     uses: ./.github/workflows/check.yml
@@ -178,7 +179,6 @@ jobs:
         env:
           RELEASE_VERSION: ${{ matrix.package_format == 'apk' && needs.metadata.outputs.apk_version || needs.metadata.outputs.ipk_version }}
           PACKAGE_RELEASE: ${{ needs.metadata.outputs.package_release }}
-          CONFIG_SHA: ${{ needs.metadata.outputs.config_sha }}
         run: |
           mkdir -p sdk/package
 
@@ -186,13 +186,11 @@ jobs:
             --exclude='.git' \
             --exclude='sdk' \
             --exclude='artifacts' \
+            --exclude='/compat' \
             "${GITHUB_WORKSPACE}/" \
             sdk/package/luci-theme-argon/
 
-          git init sdk/package/luci-app-argon-config
-          git -C sdk/package/luci-app-argon-config remote add origin "https://github.com/${CONFIG_REPOSITORY}.git"
-          git -C sdk/package/luci-app-argon-config fetch --depth 1 origin "$CONFIG_SHA"
-          git -C sdk/package/luci-app-argon-config checkout --detach FETCH_HEAD
+          cp -a compat/luci-app-argon-config sdk/package/luci-app-argon-config
 
           for makefile in \
             sdk/package/luci-theme-argon/Makefile \
@@ -223,7 +221,7 @@ jobs:
           luci_mk = Path('feeds/luci/luci.mk').read_text()
           supported = set(re.findall(r'^LUCI_LANG\.([A-Za-z0-9_]+)=', luci_mk, re.M))
           aliases = dict(re.findall(r'^LUCI_LC_ALIAS\.([A-Za-z0-9_]+)=(\S+)', luci_mk, re.M))
-          languages = sorted({po.parent.name for po in Path('package/luci-app-argon-config/po').glob('*/*.po')})
+          languages = sorted({po.parent.name for po in Path('package/luci-theme-argon/po').glob('*/*.po')})
 
           if not languages:
               raise SystemExit('::error::No Argon configuration translations found.')
@@ -346,10 +344,10 @@ jobs:
     needs: [release, metadata]
     if: needs.metadata.outputs.prerelease == 'false'
     steps:
-      - name: Checkout default branch
+      - name: Checkout release documentation branch
         uses: actions/checkout@v7
         with:
-          ref: master
+          ref: ${{ needs.metadata.outputs.docs_branch }}
           fetch-depth: 0
 
       - name: Update README and changelog
@@ -361,14 +359,16 @@ jobs:
           bash .github/scripts/update_release_docs.sh "${GITHUB_REF_NAME}"
 
       - name: Commit updated docs
+        env:
+          DOCS_BRANCH: ${{ needs.metadata.outputs.docs_branch }}
         run: |
-          if git diff --quiet -- Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md; then
+          if git diff --quiet -- Makefile compat/luci-app-argon-config/Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md; then
             echo "No documentation updates to commit."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md
+          git add Makefile compat/luci-app-argon-config/Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md
           git commit -m "docs: sync release notes for ${GITHUB_REF_NAME}"
-          git push origin HEAD:master
+          git push origin "HEAD:${DOCS_BRANCH}"

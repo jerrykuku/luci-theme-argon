@@ -1,5 +1,43 @@
 #!/bin/sh
 
+# The empty legacy package saves its conffile before releasing file ownership.
+if [ -f /etc/argon-config-migration/argon ]; then
+	cp -p /etc/argon-config-migration/argon /etc/config/argon || exit 1
+	rm -f /etc/argon-config-migration/argon
+	rmdir /etc/argon-config-migration 2>/dev/null || true
+fi
+
+# Preserve configured values and migrate the old Bing switch only when needed.
+if ! uci -q get 'argon.@global[0]' >/dev/null; then
+	uci -q add argon global >/dev/null
+fi
+old_bing="$(uci -q get 'argon.@global[0].bing_background')"
+if [ -n "$old_bing" ]; then
+	if ! uci -q get 'argon.@global[0].online_wallpaper' >/dev/null; then
+		if [ "$old_bing" = 1 ]; then
+			uci set 'argon.@global[0].online_wallpaper=bing'
+		else
+			uci set 'argon.@global[0].online_wallpaper=none'
+		fi
+	fi
+	uci -q delete 'argon.@global[0].bing_background'
+fi
+while read -r option value; do
+	uci -q get "argon.@global[0].$option" >/dev/null ||
+		uci set "argon.@global[0].$option=$value"
+done <<'DEFAULTS'
+login_style classic
+primary #5e72e4
+dark_primary #483d8b
+blur 10
+blur_dark 10
+transparency 0.5
+transparency_dark 0.5
+mode normal
+online_wallpaper none
+DEFAULTS
+uci commit argon
+
 if [ "$PKG_UPGRADE" != 1 ]; then
 	uci get luci.themes.Argon >/dev/null 2>&1 || \
 	uci batch <<-EOF

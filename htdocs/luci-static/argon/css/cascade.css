@@ -4340,6 +4340,69 @@ pre.command-output {
     max-width: 100%;
   }
 }
+[data-page="admin-system-argon-config"] #cbi-filelist > .table:last-child {
+  border-collapse: separate;
+  border-end-start-radius: inherit;
+  border-end-end-radius: inherit;
+  overflow: hidden;
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-system-argon-config"] #cbi-filelist > .table:last-child {
+    overflow-x: auto;
+  }
+}
+[data-page="admin-system-argon-config"] .argon-login-preview {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-block-start: var(--field-gap);
+  border-radius: var(--radius-panel);
+}
+[data-page="admin-system-argon-config"] .argon-branding-content {
+  padding: 0 var(--section-inset) var(--section-inset);
+}
+[data-page="admin-system-argon-config"] .argon-branding-content > p {
+  margin: 0 0 var(--field-gap);
+  padding: 0;
+  line-height: 1.5;
+}
+[data-page="admin-system-argon-config"] .argon-branding-content > .cbi-button + p {
+  margin: var(--field-gap) 0 0;
+}
+[data-page="admin-system-argon-config"] .argon-branding-content .cbi-button {
+  max-width: 100%;
+  height: auto;
+  white-space: normal;
+}
+[data-page="admin-system-argon-config"] .argon-branding-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--section-gap);
+  margin-block-end: var(--field-gap);
+}
+[data-page="admin-system-argon-config"] .argon-branding-card {
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+[data-page="admin-system-argon-config"] .argon-branding-card h4 {
+  margin: 0 0 var(--control-gap);
+  padding: 0;
+}
+[data-page="admin-system-argon-config"] .argon-branding-row,
+[data-page="admin-system-argon-config"] .argon-branding-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--control-gap);
+  min-width: 0;
+}
+[data-page="admin-system-argon-config"] .argon-branding-row {
+  gap: var(--field-gap);
+}
+[data-page="admin-system-argon-config"] .argon-branding-row > img {
+  object-fit: contain;
+  flex-shrink: 0;
+}
 [data-page="admin-system-package-manager"] .controls,
 [data-page="admin-system-opkg"] .controls {
   min-width: 0;

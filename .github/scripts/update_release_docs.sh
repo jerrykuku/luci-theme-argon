@@ -63,8 +63,8 @@ upsert_section() {
 	' "${file}"
 }
 
-sed -i -E "s/^(PKG_VERSION):=.*/\\1:=${version}/" Makefile
-sed -i -E "s/^(PKG_RELEASE):=.*/\\1:=${pkg_release}/" Makefile
+sed -i -E "s/^(PKG_VERSION):=.*/\\1:=${version}/" Makefile compat/luci-app-argon-config/Makefile
+sed -i -E "s/^(PKG_RELEASE):=.*/\\1:=${pkg_release}/" Makefile compat/luci-app-argon-config/Makefile
 
 update_readme "README.md" "en"
 update_readme "README_ZH.md" "zh"

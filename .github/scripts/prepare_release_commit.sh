@@ -17,7 +17,7 @@ esac
 metadata_script="$(dirname "$0")/release_metadata.py"
 prerelease="$(python3 "${metadata_script}" "${tag}" --field prerelease)"
 if [ "${prerelease}" = true ]; then
-	echo "For previews, push matching tags to config first, then theme; do not update stable release metadata." >&2
+	echo "For previews, tag the theme repository directly; do not update stable release metadata." >&2
 	exit 1
 fi
 version="${tag#v}"
@@ -71,8 +71,8 @@ format_notes() {
 	fi
 }
 
-sed -i -E "s/^(PKG_VERSION):=.*/\\1:=${version}/" Makefile
-sed -i -E "s/^(PKG_RELEASE):=.*/\\1:=${pkg_release}/" Makefile
+sed -i -E "s/^(PKG_VERSION):=.*/\\1:=${version}/" Makefile compat/luci-app-argon-config/Makefile
+sed -i -E "s/^(PKG_RELEASE):=.*/\\1:=${pkg_release}/" Makefile compat/luci-app-argon-config/Makefile
 
 update_readme "README.md" "en"
 update_readme "README_ZH.md" "zh"

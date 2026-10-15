@@ -1,18 +1,12 @@
 ## 预览版 / Preview
 
-2026-10-12：以 r2 修订重新发布全部安装包，修复 OpenWrt 上自定义 PNG 图标无法上传的问题。已安装本预览版的用户可升级本页的新安装包。
+- Argon 设置已集成到主题：配色、登录样式、背景和自定义图标在同一版本中维护。
+- 新安装只需主题和所需语言包。
+- 已安装旧配置插件时，先安装同一发行版的 `luci-app-argon-config` 空兼容包，再单独升级主题，以保留配置并交接文件。不要合并为同一次安装或强制覆盖。
 
-- 登录页新增居中布局，可在 Argon 配置中切换。
-- 支持上传登录页 Logo 和浏览器图标，也可以恢复默认图标。
-
-请同时安装本页的主题、配置插件和所需语言包。v2.4.8 仍为稳定版。
-
-- Choose the classic or centered login layout in Argon Config.
-- Upload a login logo and browser icon, or restore the defaults.
-
-2026-10-12: All packages were rebuilt as revision 2 to fix custom PNG uploads on OpenWrt. Existing preview installations can upgrade to the new packages on this page.
-
-Install the theme, configuration plugin and language packages from this release together. v2.4.8 remains the stable release.
+- Argon settings, wallpaper uploads, login layouts, and branding are included in the theme.
+- Fresh installations need only the theme and desired language packages.
+- If the older configuration plugin is installed, install this release's empty `luci-app-argon-config` compatibility package first, then upgrade the theme in a separate command to preserve configuration and transfer file ownership.
 
 | 固件包管理器 / Package manager | 安装包 / Package |
 | --- | --- |

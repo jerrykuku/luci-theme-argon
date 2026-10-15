@@ -61,38 +61,28 @@ test('preview preparation and documentation sync cannot overwrite stable metadat
 	const env = { ...process.env, GITHUB_REPOSITORY: '', GITHUB_TOKEN: '' };
 	const prepare = spawnSync('bash', [path.join(scripts, 'prepare_release_commit.sh'), 'v2.5.0-beta.1'], { cwd: dir, env });
 	assert.equal(prepare.status, 1);
-	assert.match(prepare.stderr.toString(), /matching tags/);
+	assert.match(prepare.stderr.toString(), /tag the theme repository directly/);
 	const sync = spawnSync('bash', [path.join(scripts, 'update_release_docs.sh'), 'v2.5.0-beta.1'], { cwd: dir, env });
 	assert.equal(sync.status, 0, sync.stderr.toString());
 	for (const file of files) assert.equal(readFileSync(path.join(dir, file), 'utf8'), 'stable v2.4.8\n');
 });
 
-test('config source resolves matching lightweight and annotated tags, and never falls back for previews', t => {
-	const dir = mkdtempSync(path.join(tmpdir(), 'argon-preview-config-'));
-	t.after(() => rmSync(dir, { recursive: true, force: true }));
-	const git = (...args) => execFileSync('git', ['-C', dir, ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
-	git('init', '-b', 'master');
-	git('config', 'user.name', 'Release test');
-	git('config', 'user.email', 'release-test@example.invalid');
-	git('commit', '--allow-empty', '-m', 'config preview');
-	const tagged = git('rev-parse', 'HEAD');
-	git('tag', 'v2.5.0-beta.1');
-	git('tag', '-a', 'v2.5.0-rc.1', '-m', 'annotated preview');
-	git('tag', 'v2.5.0');
-	git('commit', '--allow-empty', '-m', 'later master');
-	const master = git('rev-parse', 'HEAD');
-	const resolve = (tag, remote = dir) => spawnSync('bash', [path.join(scripts, 'resolve_config.sh'), remote, tag], { encoding: 'utf8' });
-	for (const tag of ['v2.5.0-beta.1', 'v2.5.0-rc.1', 'v2.5.0']) {
-		const result = resolve(tag);
-		assert.equal(result.status, 0, result.stderr);
-		assert.equal(result.stdout.trim(), `sha=${tagged}`);
-	}
-	assert.equal(resolve('v2.6.0').stdout.trim(), `sha=${master}`);
-	const missing = resolve('v2.5.0-beta.2');
-	assert.notEqual(missing.status, 0);
-	assert.match(missing.stdout, /matching config tag/);
-	assert.doesNotMatch(missing.stdout, /sha=/);
-	const unavailable = resolve('v2.6.0', path.join(dir, 'missing.git'));
-	assert.notEqual(unavailable.status, 0);
-	assert.doesNotMatch(unavailable.stdout, /sha=/);
+
+
+test('stable release preparation updates the theme and compatibility recipe together', t => {
+ const dir = mkdtempSync(path.join(tmpdir(), 'argon-integrated-release-'));
+ t.after(() => rmSync(dir, { recursive: true, force: true }));
+ require('node:fs').mkdirSync(path.join(dir, 'compat/luci-app-argon-config'), { recursive: true });
+ for (const file of ['Makefile', 'compat/luci-app-argon-config/Makefile'])
+  writeFileSync(path.join(dir, file), 'PKG_VERSION:=3.0.0\nPKG_RELEASE:=1\n');
+ for (const file of ['README.md', 'README_ZH.md', 'RELEASE.md', 'RELEASE_ZH.md'])
+  writeFileSync(path.join(dir, file), '# Release fixture\n');
+ const result = spawnSync('bash', [path.join(scripts, 'prepare_release_commit.sh'), 'v3.0.1'], {
+  cwd: dir, encoding: 'utf8', env: { ...process.env, GITHUB_REPOSITORY: 'example/argon', PKG_RELEASE_DATE: '20261015' }
+ });
+ assert.equal(result.status, 0, result.stderr);
+ for (const file of ['Makefile', 'compat/luci-app-argon-config/Makefile']) {
+  assert.match(readFileSync(path.join(dir, file), 'utf8'), /PKG_VERSION:=3\.0\.1/);
+  assert.match(readFileSync(path.join(dir, file), 'utf8'), /PKG_RELEASE:=20261015/);
+ }
 });

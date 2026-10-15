@@ -6,11 +6,11 @@ cd "$(dirname "$0")/../.."
 tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir"' EXIT HUP INT TERM
 
-for script in htdocs/luci-static/resources/*.js; do
-	node --check "$script"
+find htdocs/luci-static/resources -type f -name '*.js' -print |
+	while IFS= read -r script; do node --check "$script"; done
+for script in root/etc/uci-defaults/* root/usr/libexec/rpcd/*; do
+	sh -n "$script"
 done
-sh -n root/etc/uci-defaults/30_luci-theme-argon
-sh -n root/usr/libexec/rpcd/luci.argon_wallpaper
 
 ucode_bin="${UCODE_BIN:-ucode}"
 for template in ucode/template/themes/argon/*.ut; do
@@ -25,3 +25,4 @@ lessc less/cascade.less "$tmpdir/cascade.css"
 cmp htdocs/luci-static/argon/css/cascade.css "$tmpdir/cascade.css"
 
 UCODE_BIN="$ucode_bin" node --test tests/*.test.js
+python3 -m unittest discover -s tests -p 'test_*.py'

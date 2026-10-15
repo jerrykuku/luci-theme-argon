@@ -4,8 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Stable release version, e.g. v2.5.0. For previews, push matching config and theme tags."
+        description: "Stable release version, e.g. v2.5.0. For previews, tag this repository directly."
         required: true
+        type: string
+      branch:
+        description: "Source branch to prepare and tag"
+        required: true
+        default: '3.0'
         type: string
       notes_en:
         description: "Optional English changelog content"
@@ -30,10 +35,10 @@ jobs:
     needs: checks
     runs-on: ubuntu-24.04
     steps:
-      - name: Checkout master
+      - name: Checkout release source
         uses: actions/checkout@v7
         with:
-          ref: master
+          ref: ${{ inputs.branch }}
           fetch-depth: 0
 
       - name: Normalize version
@@ -49,7 +54,7 @@ jobs:
 
           prerelease="$(python3 .github/scripts/release_metadata.py "$tag" --field prerelease)"
           if [ "$prerelease" = true ]; then
-            echo "::error::For previews, push matching tags to config first, then theme."
+            echo "::error::For previews, tag this repository directly."
             exit 1
           fi
           python3 .github/scripts/release_metadata.py "$tag" >> "$GITHUB_OUTPUT"
@@ -83,16 +88,18 @@ jobs:
           bash .github/scripts/prepare_release_commit.sh "${{ steps.version.outputs.tag }}"
 
       - name: Commit and tag release
+        env:
+          RELEASE_BRANCH: ${{ inputs.branch }}
         run: |
-          if git diff --quiet -- Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md; then
+          if git diff --quiet -- Makefile compat/luci-app-argon-config/Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md; then
             echo "::error::No release metadata changes were generated."
             exit 1
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md
+          git add Makefile compat/luci-app-argon-config/Makefile README.md README_ZH.md RELEASE.md RELEASE_ZH.md
           git commit -m "release: ${{ steps.version.outputs.tag }}"
           git tag -a "${{ steps.version.outputs.tag }}" -m "${{ steps.version.outputs.tag }}"
-          git push origin HEAD:master
+          git push origin "HEAD:${RELEASE_BRANCH}"
           git push origin "${{ steps.version.outputs.tag }}"

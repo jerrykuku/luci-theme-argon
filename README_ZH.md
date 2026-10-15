@@ -65,18 +65,11 @@ Argon 是**一款干净整洁的 OpenWrt LuCI 主题**，
 - 支持浅色 / 深色模式自动或手动切换。
 - 支持自定义主题主色，以及毛玻璃的模糊与透明度。
 - 登录页支持本地图片、视频和在线壁纸背景。
-- 可搭配 [luci-app-argon-config][config-link] 实现更完整的主题设置体验。
+- 3.0 已内置主题设置、背景上传和自定义 Logo 管理，无需另装配置插件。
 
-在 **系统 → Argon 主题设置 → 登录页样式** 中，可选择默认的**经典侧栏**或**居中卡片**。两种布局共用壁纸、配色和认证设置。请同时更新主题和配置插件以使用此选项；未配置或不支持的 `login_style` 值会回退到 `classic`。
+在 **系统 → Argon 主题设置 → 登录页样式** 中，可选择默认的**经典侧栏**或**居中卡片**。两种布局共用壁纸、配色和认证设置。未配置或不支持的 `login_style` 值会回退到 `classic`。
 
-Unsplash 在线壁纸需要 Unsplash API Access Key。当前 `luci-app-argon-config` 界面尚未提供此设置；选择 Unsplash 后，可通过 UCI 配置：
-
-```sh
-uci set 'argon.@global[0].use_api_key=你的_UNSPLASH_ACCESS_KEY'
-uci commit argon
-```
-
-未配置密钥时，登录页会使用本地背景。Bing 和 Wallhaven 壁纸选项不受影响。
+Unsplash 在线壁纸需要 Unsplash API Access Key。选择 Unsplash 后，在设置页的密钥输入框中填写；未配置密钥时使用本地背景。首次安装默认使用本地背景、经典侧栏和原始毛玻璃参数（模糊 10px、透明度 0.5）。已有 `/etc/config/argon` 的选项会保留。
 
 ## 模板结构
 
@@ -122,9 +115,9 @@ SVG 以 CSS mask 显示，图标颜色由主题和菜单悬停、选中状态控
 
 在 **系统 → Argon 主题设置 → 自定义图标** 中，可以分别上传网站图标和登录页 Logo，也可以将同一张图片同时用于两处；每项都可恢复默认。支持 PNG 格式，每边 16–1024 像素，最大 1 MiB。网站图标需为正方形；登录 Logo 按原比例缩放，兼容经典侧栏和居中卡片。
 
-请同时更新主题和配置插件。上传或恢复后立即生效，无需保存其他设置；已打开的页面需要刷新才能更新图标。自定义网站图标也用于手机桌面图标和 manifest，已添加到桌面的快捷方式可能需要重新添加。
+上传或恢复后立即生效，无需保存其他设置；已打开的页面需要刷新才能更新图标。自定义网站图标也用于手机桌面图标和 manifest，已添加到桌面的快捷方式可能需要重新添加。
 
-自定义文件保存在 `/www/luci-static/argon/branding/`，不会覆盖主题内置图标。配置插件通过 `keep.d` 将此目录纳入保留配置升级的备份；不保留配置时不会保留自定义图标。
+自定义文件保存在 `/www/luci-static/argon/branding/`，不会覆盖主题内置图标。主题通过 `keep.d` 将此目录及背景上传目录纳入保留配置升级的备份；不保留配置时不会保留自定义图标。
 
 ## 兼容性
 
@@ -161,15 +154,33 @@ APK 构建使用 OpenWrt **25.12.5 稳定版 SDK**，主题模板保留源码以
 
 对于 [#705](https://github.com/jerrykuku/luci-theme-argon/issues/705) 中的 GL.iNet / OpenWrt 23.05 环境，应下载 IPK 并使用固件原有的 `opkg` 安装，无需替换系统包管理器。
 
-从 [Release][release] 下载主题包 `luci-theme-argon`、配置插件包 `luci-app-argon-config`，以及需要的 `luci-i18n-argon-config-<语言>` 语言包。所有包必须选择相同格式，以附件的实际文件名为准，不要自行拼接版本号或修改扩展名。
+从 [Release][release] 下载主题包 `luci-theme-argon`，以及需要的 `luci-i18n-argon-config-<语言>` 语言包。设置功能已内置；`luci-app-argon-config` 仅供旧版安装迁移使用。所有包必须选择相同格式，以附件的实际文件名为准，不要自行拼接版本号或修改扩展名。
 
 将文件放在同一个空目录中，每个包只保留一个版本，然后在该目录执行下面对应的命令。
+
+### 从独立配置插件迁移到 3.0
+
+已安装旧版 `luci-app-argon-config` 时，先安装同一次发行的空兼容包，再升级主题。请分两次执行，避免两个包同时拥有同一文件：
+
+```sh
+# opkg 固件
+opkg install ./luci-app-argon-config_*.ipk
+opkg install ./luci-theme-argon_*.ipk
+
+# APK v3 固件
+apk add --allow-untrusted ./luci-app-argon-config-*.apk
+apk add --allow-untrusted ./luci-theme-argon-*.apk
+```
+
+兼容包会临时备份旧配置，主题安装时恢复，保留原配色、壁纸来源和登录样式。现有语言包名称、`/etc/config/argon` 和 `/admin/system/argon-config` 地址保持兼容。不要通过强制覆盖跳过文件交接。未安装旧插件的用户直接安装主题即可。
+
+源码构建通常只需选择 `luci-theme-argon`；需要构建迁移兼容包时，在 LuCI 应用中同时选择本仓库 `compat/luci-app-argon-config/` 提供的兼容包；OpenWrt 会发现这个嵌套包。发布 CI 会从同一提交构建这两个包和 16 种语言包。
 
 ### 安装 release 包 (`ipk`)
 
 ```bash
 opkg update
-opkg install ./luci-theme-argon_*.ipk ./luci-app-argon-config_*.ipk
+opkg install ./luci-theme-argon_*.ipk
 ```
 
 如已下载相同格式的语言包，再执行：
@@ -184,7 +195,7 @@ opkg install ./luci-i18n-argon-config-*.ipk
 
 ```bash
 apk update
-apk add --allow-untrusted ./luci-theme-argon-*.apk ./luci-app-argon-config-*.apk
+apk add --allow-untrusted ./luci-theme-argon-*.apk
 ```
 
 如已下载相同格式的语言包，再执行：

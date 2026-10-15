@@ -65,18 +65,11 @@ It also supports automatic and manual switching between light and dark modes.
 - Supports automatic or manual switching between light and dark modes.
 - Supports custom theme colors, along with adjustable blur and transparency effects.
 - The login page supports local images, videos, and online wallpapers as backgrounds.
-- Works with [luci-app-argon-config][config-link] for a more complete theme configuration experience.
+- Version 3.0 includes theme settings, background uploads, and custom branding in the theme package.
 
-Choose **Classic sidebar** (default) or **Centered card** under **System → Argon Config → Login page style**. Both layouts use the same wallpaper, color and authentication settings. Update both the theme and configuration plugin to use the selector; missing or unsupported `login_style` values fall back to `classic`.
+Choose **Classic sidebar** (default) or **Centered card** under **System → Argon Config → Login page style**. Both layouts use the same wallpaper, color and authentication settings. Missing or unsupported `login_style` values fall back to `classic`.
 
-Unsplash wallpapers require an Unsplash API access key. The current `luci-app-argon-config` UI does not expose this setting; after choosing Unsplash, set it through UCI:
-
-```sh
-uci set 'argon.@global[0].use_api_key=YOUR_UNSPLASH_ACCESS_KEY'
-uci commit argon
-```
-
-Without a key, the login page uses a local background. Bing and Wallhaven wallpaper options are unaffected.
+Unsplash wallpapers require an Unsplash API access key. Select Unsplash and enter the key in the settings page; missing keys fall back to a local background. Fresh installations use local backgrounds, the classic sidebar and the original frosted glass settings (10px blur, 0.5 opacity). Existing options in `/etc/config/argon` are preserved.
 
 ## Template structure
 
@@ -122,9 +115,9 @@ All 28 visible icons from the former `argon.woff2` font are exported to this dir
 
 Under **System → Argon Config → Custom branding**, upload a browser icon and login logo separately, or use one image for both. Each can be restored to its default. PNG images must be 16–1024 pixels per side and at most 1 MiB. Browser icons must be square; login logos retain their aspect ratio in both login layouts.
 
-Update both the theme and configuration plugin. Uploads and resets apply immediately without saving other settings; reload open pages to update their icons. The custom browser icon also supplies the touch icon and web manifest. Existing home-screen shortcuts may need to be added again.
+Uploads and resets apply immediately without saving other settings; reload open pages to update their icons. The custom browser icon also supplies the touch icon and web manifest. Existing home-screen shortcuts may need to be added again.
 
-Files are stored in `/www/luci-static/argon/branding/` without replacing packaged assets. The configuration plugin includes this directory in `keep.d` backups for upgrades that preserve configuration. Upgrades without configuration preservation reset the icons.
+Files are stored in `/www/luci-static/argon/branding/` without replacing packaged assets. The theme includes this directory and uploaded backgrounds in `keep.d` backups for upgrades that preserve configuration. Upgrades without configuration preservation reset the icons.
 
 ## Compatibility
 
@@ -161,15 +154,33 @@ APK builds target the OpenWrt **25.12.5 stable SDK** and keep theme templates as
 
 For the GL.iNet / OpenWrt 23.05 environment in [#705](https://github.com/jerrykuku/luci-theme-argon/issues/705), download IPK files and install them with the firmware's existing `opkg`. There is no need to replace the system package manager.
 
-Download `luci-theme-argon`, `luci-app-argon-config`, and any required `luci-i18n-argon-config-<language>` packages from [Releases][release]. Select the same format for all packages and use the actual asset filenames; do not construct version suffixes or rename file extensions.
+Download `luci-theme-argon` and any required `luci-i18n-argon-config-<language>` packages from [Releases][release]. Select the same format for all packages and use the actual asset filenames; do not construct version suffixes or rename file extensions.
 
 Put the downloaded files in one empty directory, keeping only one version of each package, then run the appropriate commands from that directory.
+
+### Upgrade from the separate configuration plugin
+
+If an older `luci-app-argon-config` is installed, install the empty compatibility package from the same release first, then upgrade the theme in a separate command. This releases the old package's files before the theme takes ownership:
+
+```sh
+# Firmware using opkg
+opkg install ./luci-app-argon-config_*.ipk
+opkg install ./luci-theme-argon_*.ipk
+
+# Firmware using APK v3
+apk add --allow-untrusted ./luci-app-argon-config-*.apk
+apk add --allow-untrusted ./luci-theme-argon-*.apk
+```
+
+The compatibility package temporarily saves the old configuration; the integrated theme restores it during installation. Existing colors, wallpaper source, login style, translation package names, `/etc/config/argon`, and `/admin/system/argon-config` remain compatible. Do not force file overwrites. Fresh installations need only the theme and desired language packages.
+
+Source builds normally select only `luci-theme-argon`. To build the migration package, also select the nested `compat/luci-app-argon-config/` package under LuCI applications; OpenWrt discovers it in the theme repository. Release CI builds both packages and all 16 translations from one commit.
 
 ### Install release packages (`ipk`)
 
 ```bash
 opkg update
-opkg install ./luci-theme-argon_*.ipk ./luci-app-argon-config_*.ipk
+opkg install ./luci-theme-argon_*.ipk
 ```
 
 If you also downloaded language packages in the same format, install them with:
@@ -184,7 +195,7 @@ Use this only on firmware that natively uses `apk-tools 3.x`. Check the version 
 
 ```bash
 apk update
-apk add --allow-untrusted ./luci-theme-argon-*.apk ./luci-app-argon-config-*.apk
+apk add --allow-untrusted ./luci-theme-argon-*.apk
 ```
 
 If you also downloaded language packages in the same format, install them with:

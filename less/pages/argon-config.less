@@ -1,0 +1,78 @@
+// out: false
+
+[data-page="admin-system-argon-config"] {
+  // This file list contains plain actions, so rounding the final table is safe.
+  #cbi-filelist > .table:last-child {
+    border-collapse: separate;
+    border-end-start-radius: inherit;
+    border-end-end-radius: inherit;
+    overflow: hidden;
+
+    @media screen and (max-width: 1152px) {
+      overflow-x: auto;
+    }
+  }
+
+  .argon-login-preview {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-block-start: var(--field-gap);
+    border-radius: var(--radius-panel);
+  }
+
+  .argon-branding-content {
+    padding: 0 var(--section-inset) var(--section-inset);
+
+    > p {
+      margin: 0 0 var(--field-gap);
+      padding: 0;
+      line-height: 1.5;
+    }
+
+    > .cbi-button + p {
+      margin: var(--field-gap) 0 0;
+    }
+
+    .cbi-button {
+      max-width: 100%;
+      height: auto;
+      white-space: normal;
+    }
+  }
+
+  .argon-branding-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--section-gap);
+    margin-block-end: var(--field-gap);
+  }
+
+  .argon-branding-card {
+    flex: 1 1 18rem;
+    min-width: 0;
+
+    h4 {
+      margin: 0 0 var(--control-gap);
+      padding: 0;
+    }
+  }
+
+  .argon-branding-row,
+  .argon-branding-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--control-gap);
+    min-width: 0;
+  }
+
+  .argon-branding-row {
+    gap: var(--field-gap);
+
+    > img {
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+  }
+}
