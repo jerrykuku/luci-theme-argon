@@ -180,12 +180,12 @@
 				<div class="input-container">
 					<div class="input-group user-icon">
 						<label class="visually-hidden" for="cbi-input-user">{{ _('Username') }}</label>
-						<input class="cbi-input-user" id="cbi-input-user" type="text" name="luci_username" value="{{ entityencode(duser, true) }}" />
+						<input class="cbi-input-user" id="cbi-input-user" type="text" name="luci_username" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="{{ entityencode(_('Username'), true) }}" value="{{ entityencode(duser, true) }}" />
 						<span class="border" aria-hidden="true"></span>
 					</div>
 					<div class="input-group pass-icon">
 						<label class="visually-hidden" for="cbi-input-password">{{ _('Password') }}</label>
-						<input class="cbi-input-password" id="cbi-input-password" type="password" name="luci_password" />
+						<input class="cbi-input-password" id="cbi-input-password" type="password" name="luci_password" autocomplete="current-password" placeholder="{{ entityencode(_('Password'), true) }}" />
 						<span class="border" aria-hidden="true"></span>
 					</div>
 					{%- if (auth_fields): %}
