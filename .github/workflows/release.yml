@@ -24,6 +24,8 @@ jobs:
       apk_version: ${{ steps.version.outputs.apk_version }}
       ipk_version: ${{ steps.version.outputs.ipk_version }}
       package_release: ${{ steps.version.outputs.package_release }}
+      apk_i18n_version: ${{ steps.version.outputs.apk_i18n_version }}
+      ipk_i18n_version: ${{ steps.version.outputs.ipk_i18n_version }}
       docs_branch: ${{ steps.branch.outputs.name }}
     steps:
       - uses: actions/checkout@v7
@@ -302,6 +304,18 @@ jobs:
             find "artifacts/${PACKAGE_FORMAT}" -maxdepth 1 -type f -print
             exit 1
           fi
+
+      - name: Verify translation package versions
+        env:
+          PACKAGE_FORMAT: ${{ matrix.package_format }}
+          EXPECTED_VERSION: ${{ matrix.package_format == 'apk' && needs.metadata.outputs.apk_i18n_version || needs.metadata.outputs.ipk_i18n_version }}
+        run: |
+          python3 .github/scripts/check_translation_versions.py \
+            --format "${PACKAGE_FORMAT}" \
+            --directory "artifacts/${PACKAGE_FORMAT}" \
+            --manifest argon-config-i18n-packages.txt \
+            --expected-version "${EXPECTED_VERSION}" \
+            --apk-tool "${GITHUB_WORKSPACE}/sdk/staging_dir/host/bin/apk"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7

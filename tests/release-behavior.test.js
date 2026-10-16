@@ -33,7 +33,7 @@ test('stable versions retain their package versions and preview suffixes use nat
 	}
 });
 
-test('rebuilt beta.1 packages upgrade the original revision in both package formats', () => {
+test('rebuilt packages upgrade the original revision in both package formats', () => {
 	for (const tag of ['v2.5.0-beta.1', '2.5.0-beta.1']) {
 		const result = metadata(tag);
 		assert.equal(result.prerelease, 'true');
@@ -43,6 +43,37 @@ test('rebuilt beta.1 packages upgrade the original revision in both package form
 	}
 	assert.equal(metadata('v2.5.0-beta.2').package_release, '1');
 	assert.equal(metadata('v2.5.0-beta.2').ipk_version, '2.5.0~beta2-1');
+	for (const tag of ['v3.0.0', '3.0.0']) {
+		const result = metadata(tag);
+		assert.equal(result.prerelease, 'false');
+		assert.equal(result.package_release, '2');
+		assert.equal(result.apk_version, '3.0.0');
+		assert.equal(result.ipk_version, '3.0.0-2');
+		assert.equal(result.apk_i18n_version, '3.0.0-r2');
+		assert.equal(result.ipk_i18n_version, 'v3.0.0-2');
+	}
+	assert.equal(metadata('v3.0.1').package_release, '1');
+});
+
+test('translation versions follow the recipe without Git history and retain IPK migration ordering', t => {
+	const dir = mkdtempSync(path.join(tmpdir(), 'argon-translation-versions-'));
+	t.after(() => rmSync(dir, { recursive: true, force: true }));
+	require('node:fs').mkdirSync(path.join(dir, 'feeds/luci'), { recursive: true });
+	writeFileSync(path.join(dir, 'rules.mk'), '');
+	writeFileSync(path.join(dir, 'feeds/luci/luci.mk'), 'print-version:\n\t@printf "%s\\n" "$(PKG_PO_VERSION)"\n');
+	const recipe = path.resolve(__dirname, '../Makefile');
+	for (const tag of ['v3.0.0', 'v3.0.1', 'v3.0.2', 'v3.1.0-beta.1', 'v2.5.0-beta.1']) {
+		const result = metadata(tag);
+		for (const format of ['ipk', 'apk']) {
+			const actual = execFileSync('make', ['--no-print-directory', '-s', '-f', recipe, 'print-version',
+				`TOPDIR=${dir}`, `CONFIG_USE_APK=${format === 'apk' ? 'y' : ''}`,
+				`PKG_VERSION=${result[`${format}_version`]}`, `PKG_RELEASE=${result.package_release}`
+			], { cwd: dir, encoding: 'utf8' }).trim();
+			assert.equal(actual, result[`${format}_i18n_version`], `${tag}/${format}`);
+		}
+		assert.equal(result.ipk_i18n_version, `v${result.ipk_version}`);
+		assert.equal(result.apk_i18n_version, `${result.apk_version}-r${result.package_release}`);
+	}
 });
 
 test('invalid and unsupported tags fail before producing release outputs', () => {

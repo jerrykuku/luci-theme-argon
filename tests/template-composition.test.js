@@ -66,7 +66,7 @@ test('login partials retain image/video, branding and authentication scope and s
 		const image = renderer.render('sysauth', { configExists: false, backgrounds: [] }).html;
 		assert.match(image, /data-login-style="classic"/);
 		assert.match(image, /class="main-bg"/);
-		assert.match(image, /img\/bg1.jpg/);
+		assert.match(image, /img\/bg1.webp/);
 		assert.doesNotMatch(image, /<video/);
 		assert.match(image, /--dark-primary: #5a6cc5/);
 		assert.match(renderer.render('sysauth', { fuser: 'root' }).html, /Invalid username and\/or password/);

@@ -33,7 +33,7 @@
 	}
 
 	function selectBackground(themeDir) {
-		let bgUrl = media + "/img/bg1.jpg";
+		let bgUrl = media + "/img/bg1.webp";
 		let backgroundType = "Image";
 		let mimeType = "";
 
@@ -66,7 +66,7 @@
 	{% if ( bgArry.backgroundType == "Video" ): %}
 	<!-- Video Player Start -->
 	<div class="video">
-		<video loop muted playsinline id="video" poster="{{ media }}/img/bg1.jpg">
+		<video loop muted playsinline id="video" poster="{{ media }}/img/bg1.webp">
 			<source src="{{ entityencode(bgArry.bgUrl, true) }}" type="{{ bgArry.mimeType }}">
 		</video>
 	</div>
@@ -105,6 +105,6 @@
 	<!-- Video Player End -->
 	{% else %}
 	<!-- Image Background Start -->
-	<div class="main-bg" id="main-bg"><img src="{{ entityencode(bgArry.bgUrl, true) }}" data-fallback="{{ media }}/img/bg1.jpg" onerror="this.onerror=null;this.src=this.dataset.fallback" alt=""></div>
+	<div class="main-bg" id="main-bg"><img src="{{ entityencode(bgArry.bgUrl, true) }}" data-fallback="{{ media }}/img/bg1.webp" onerror="this.onerror=null;this.src=this.dataset.fallback" alt=""></div>
 	<!-- Image Background End -->
 	{% endif %}

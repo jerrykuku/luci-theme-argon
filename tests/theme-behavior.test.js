@@ -229,7 +229,7 @@ function randomIndex() { return 0; }
 	assert.equal(selected({ url: 'https://example.com/image.jpg' }).bgUrl, 'https://example.com/image.jpg');
 	for (const invalid of ['http://example.com/image.jpg', 'https://example.com/a b.jpg', 'javascript:alert(1)', 'https://example.com/"bad'])
 		assert.equal(selected({ url: invalid }).bgUrl, '/luci-static/argon/background/local.jpg');
-	assert.equal(selected({ url: 'http://example.com/image.jpg', empty: true }).bgUrl, '/luci-static/argon/img/bg1.jpg');
+	assert.equal(selected({ url: 'http://example.com/image.jpg', empty: true }).bgUrl, '/luci-static/argon/img/bg1.webp');
 	assert.deepEqual(selected({ url: '', video: true }), {
 		bgUrl: '/luci-static/argon/background/local.mp4',
 		backgroundType: 'Video',

@@ -5,12 +5,20 @@
 - Improve desktop and mobile layouts, shared controls, tables, tabs, dialogs and most third-party LuCI applications.
 - Replace icon fonts with SVG menu/control icons and complete Argon Config translations.
 - Refresh the English/Chinese README, desktop demo, screenshots and development guides.
+- Fix translation package versions and upgrade ordering; verify every language package before publication.
+- Reduce package size with a WebP login background and optimized WOFF2 fonts, retaining all font characters and rendering instructions.
 
 - 将 Argon Config、背景上传和自定义图标集成到主题，提供旧版配置插件迁移包。
 - 提供经典侧栏、居中卡片两套登录布局，持久化亮色／暗色／跟随系统切换，以及自动暗色配色。
 - 优化桌面与手机布局、通用控件、表格、标签页、弹窗和大多数第三方 LuCI 应用的适配。
 - 使用 SVG 菜单／控件图标替代图标字体，补全 Argon Config 翻译。
 - 更新中英文 README、桌面演示动画、截图和开发说明。
+- 修复语言包版本及升级顺序，发布前逐包核验全部语言包版本。
+- 使用 WebP 登录背景并精简 WOFF2 字体，保留全部字符和渲染指令，减小安装包体积。
+
+This v3.0.0 rebuild uses package revision **2**: IPK `3.0.0-2`, APK `3.0.0-r2`. Translation versions are `v3.0.0-2` (IPK) and `3.0.0-r2` (APK), allowing normal upgrades from the original `unknown` / `0` language packages.
+
+本次 v3.0.0 重发采用安装包修订号 **2**：IPK 为 `3.0.0-2`，APK 为 `3.0.0-r2`。语言包分别为 `v3.0.0-2`（IPK）和 `3.0.0-r2`（APK），可从原 `unknown`／`0` 语言包正常升级。
 
 ## Installation / 安装说明
 

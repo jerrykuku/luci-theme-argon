@@ -19,6 +19,8 @@ make package/luci-theme-argon/compile V=s
 
 发行 CI 使用 OpenWrt 23.05.5 SDK 构建 IPK、25.12.5 SDK 构建 APK v3。Ucode 模板保留源码，避免绑定某个运行时的字节码格式。
 
+语言包通过 `PKG_PO_VERSION` 跟随主题发行版本，APK 包含 `-r<修订号>`。IPK 语言包固定使用 `v` 前缀（如 `v3.0.1`），使已安装的 v3.0.0 `unknown` 语言包可以直接正常升级；后续版本须保留该前缀。发布前会逐个读取语言包内部元数据，版本不符时阻止上传和发布。
+
 ## 目录
 
 | 位置 | 用途 |

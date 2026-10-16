@@ -5,7 +5,7 @@ import argparse
 import re
 
 # Rebuilds published under the same tag must upgrade existing installations.
-PACKAGE_REVISIONS = {"2.5.0-beta.1": 2}
+PACKAGE_REVISIONS = {"2.5.0-beta.1": 2, "3.0.0": 2}
 
 
 def resolve(tag):
@@ -18,17 +18,22 @@ def resolve(tag):
     base, stage, number = match.groups()
     version = tag.removeprefix("v")
     revision = PACKAGE_REVISIONS.get(version, 1)
+    apk_version = f"{base}_{stage}{number}" if stage else base
+    # A tilde sorts before the final version in opkg. LuCI 23.05 ignores
+    # PKG_RELEASE, so include the package revision in PKG_VERSION there.
+    ipk_version = (f"{base}~{stage}{number}-{revision}" if stage else
+                   f"{base}-{revision}" if revision > 1 else base)
     return {
         "tag": tag,
         "version": version,
         "prerelease": "true" if stage else "false",
         "package_release": str(revision),
         # APK only accepts named suffixes separated by an underscore.
-        "apk_version": f"{base}_{stage}{number}" if stage else base,
-        # A tilde sorts before the final version in opkg. LuCI 23.05 ignores
-        # PKG_RELEASE, so include the package revision in PKG_VERSION there.
-        "ipk_version": (f"{base}~{stage}{number}-{revision}" if stage else
-                        f"{base}-{revision}" if revision > 1 else base),
+        "apk_version": apk_version,
+        "ipk_version": ipk_version,
+        "apk_i18n_version": f"{apk_version}-r{revision}",
+        # Retain the prefix: it sorts above the broken v3.0.0 "unknown" IPKs.
+        "ipk_i18n_version": f"v{ipk_version}",
     }
 
 
