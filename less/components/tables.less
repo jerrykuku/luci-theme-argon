@@ -30,6 +30,23 @@
   padding: .5em;
   text-align: center;
   vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+// Let descriptive data yield space to the action column before controls wrap.
+.td:not(.cbi-section-actions) .nowrap {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.td .ifacebadge {
+  max-width: 100%;
+
+  > span {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
 }
 
 .th {
@@ -84,13 +101,62 @@ table,
   font-size: 0.75rem;
 }
 
-// Round flush table edges without clipping the card or floating form controls.
-[data-tab-title] > .table:last-child:not(:has(.cbi-dropdown)),
-[data-tab-title] > .table:has(+ .cbi-section-create:empty:last-child):not(:has(.cbi-dropdown)) {
+// A flush table, its final row group, row and edge cells share the card's
+// bottom corners. Rounding the painted layers keeps dropdowns/tooltips free
+// to extend beyond the card without clipping them with overflow: hidden.
+:is(.cbi-section, [data-tab-title]) > .table:last-child,
+:is(.cbi-section, [data-tab-title]) > .table:has(+ .cbi-section-create:empty:last-child),
+:is(.cbi-section, [data-tab-title]) > :not(.table):last-child > .table:only-child,
+#view > .table {
   border-collapse: separate;
-  border-end-start-radius: inherit;
-  border-end-end-radius: inherit;
-  overflow: hidden;
+  border-spacing: 0;
+  overflow: visible;
+  border-end-start-radius: var(--radius-card);
+  border-end-end-radius: var(--radius-card);
+
+  > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child,
+  > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child,
+  > :is(tr, .tr):last-child {
+    border-end-start-radius: inherit;
+    border-end-end-radius: inherit;
+  }
+
+  > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):first-child,
+  > :is(tr, .tr):last-child > :is(td, th, .td, .th):first-child {
+    border-end-start-radius: inherit;
+  }
+
+  > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):last-child,
+  > :is(tr, .tr):last-child > :is(td, th, .td, .th):last-child {
+    border-end-end-radius: inherit;
+  }
+}
+
+// Status widgets often replace a table inside a single dynamic wrapper.
+// When that wrapper fills its card, the first painted row shares its top edge.
+:is(.cbi-section, [data-tab-title]) > :not(.table):only-child > .table:only-child {
+  border-start-start-radius: var(--radius-card);
+  border-start-end-radius: var(--radius-card);
+
+  > :is(thead, tbody, .thead, .tbody):first-child,
+  > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child,
+  > :is(tr, .tr):first-child {
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
+  }
+
+  > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child > :is(td, th, .td, .th),
+  > :is(tr, .tr):first-child > :is(td, th, .td, .th) {
+    border-top: 0;
+
+    &:first-child {
+      border-start-start-radius: inherit;
+    }
+
+    &:last-child {
+      border-start-end-radius: inherit;
+    }
+  }
 }
 
 .table .table-titles th {

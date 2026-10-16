@@ -109,6 +109,8 @@
 .cbi-value-description {
   line-height: 1.5;
   display: block;
+  white-space: normal;
+  overflow-wrap: anywhere;
   padding: .5rem 0;
   color: var(--muted-text);
   font-size: 0.75rem;
@@ -318,25 +320,36 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   width: auto !important;
 }
 
-.td.cbi-section-actions {
-  text-align: right !important;
+.td.cbi-section-actions,
+.td:has(> :is(.btn, .cbi-button):only-child) {
+  // Let the controls determine the minimum column width, including their gaps.
+  // LuCI also writes a measured width inline, which can preserve a wrapped size.
+  width: 1% !important;
+  white-space: nowrap;
+  text-align: end !important;
   vertical-align: middle;
 }
 
-.td.cbi-section-actions>* {
+.td.cbi-section-actions > :not(.btn, .cbi-button) {
   display: inline-flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  width: max-content;
+  margin-inline-start: auto;
   gap: var(--control-gap);
 }
 
-.td.cbi-section-actions>*>*,
-.td.cbi-section-actions>*>form>* {
+.td.cbi-section-actions > :not(.btn, .cbi-button) > *,
+.td.cbi-section-actions > :not(.btn, .cbi-button) > form > * {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
 }
 
-.td.cbi-section-actions>*>form {
+.td.cbi-section-actions > :not(.btn, .cbi-button) > form {
   display: inline-flex;
+  gap: inherit;
   margin: 0;
 }
 

@@ -1,13 +1,3 @@
-<!-- markdownlint-configure-file {
-  "MD013": {
-    "code_blocks": false,
-    "tables": false,
-    "line_length":200
-  },
-  "MD033": false,
-  "MD041": false
-} -->
-
 [license]: /LICENSE
 [license-badge]: https://img.shields.io/github/license/jerrykuku/luci-theme-argon?style=flat-square&a=1
 [prs]: https://github.com/jerrykuku/luci-theme-argon/pulls
@@ -20,18 +10,11 @@
 [download-badge]: https://img.shields.io/github/downloads/jerrykuku/luci-theme-argon/total?style=flat-square
 [contact]: https://t.me/jerryk6
 [contact-badge]: https://img.shields.io/badge/Contact-telegram-blue?style=flat-square
-[en-us-link]: /README.md
-[zh-cn-link]: /README_ZH.md
-[en-us-release-log]: /RELEASE.md
-[zh-cn-release-log]: /RELEASE_ZH.md
-[config-link]: https://github.com/jerrykuku/luci-app-argon-config/releases
-[official]: https://github.com/openwrt/openwrt
-[immortalwrt]: https://github.com/immortalwrt/immortalwrt
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon_title4.svg">
 
-# A brand new OpenWrt LuCI theme
+# A brand new OpenWrt LuCI theme · v3
 
 Argon is **a clean and tidy OpenWrt LuCI theme** that allows<br/>
 users to customize their login interface with images or videos.  
@@ -44,177 +27,79 @@ It also supports automatic and manual switching between light and dark modes.
 [![download][download-badge]][download]
 [![contact][contact-badge]][contact]
 
-**English** |
-[简体中文][zh-cn-link]
+**English** · [简体中文](README_ZH.md)
 
-[Key Features](#key-features) •
-[Compatibility](#compatibility) •
-[Version History](#version-history) •
-[Getting started](#getting-started) •
-[Screenshots](#screenshots) •
-[Contributors](#contributors) •
-[Credits](#credits)
+[![Argon 3.0 desktop demo: two login layouts, light and dark modes, and built-in settings](Screenshots/argon-3-demo.gif)](Screenshots/argon-3-demo.mp4)
 
-<img src="https://raw.githubusercontent.com/jerrykuku/staff/master/argon2.gif">
+[Watch the desktop demo · MP4](Screenshots/argon-3-demo.mp4)
+
 </div>
 
-## Key Features
+## What's new in 3.0
 
-- Clean and modern Argon-style interface design.
-- Fully adapted for both desktop and mobile displays.
-- Supports automatic or manual switching between light and dark modes.
-- Supports custom theme colors, along with adjustable blur and transparency effects.
-- The login page supports local images, videos, and online wallpapers as backgrounds.
-- Version 3.0 includes theme settings, background uploads, and custom branding in the theme package.
+- **Built-in Argon Config.** Manage the theme without a separate plugin.
+- **Broad third-party app support.** Refined layouts, forms and tables for most third-party LuCI apps, with desktop/mobile and light/dark adaptations.
+- **Two login layouts.** Choose the classic sidebar or centered card.
+- **Light and dark.** Switch from the header or follow your system, with customizable accent colors.
+- **Your own look.** Adjust login glass effects, set image or video backgrounds, and upload a browser icon and login logo.
+- **Desktop and mobile.** Responsive layouts across screen sizes.
 
-Dark colors are generated automatically from the primary color on new installations. Choose **Dark mode colors → Custom** to supply a separate seed; links, focus and selection colors follow it. Existing dark primary colors remain custom after upgrading. Login panel opacity and blur are shared by default; **Dark mode login panel → Custom** retains separate values, including existing overrides. Switching to automatic or shared settings keeps the custom values for later use.
+## Install
 
-Choose **Classic sidebar** (default) or **Centered card** under **System → Argon Config → Login page style**. Both layouts use the same wallpaper, color and authentication settings. Missing or unsupported `login_style` values fall back to `classic`.
+**In 3.0, the theme and configuration features are one package: `luci-theme-argon`. Fresh installations need only this package.** Download the format matching your firmware's native package manager from [Releases](https://github.com/jerrykuku/luci-theme-argon/releases). If the old standalone configuration plugin is installed, follow the migration steps below first.
 
-Unsplash wallpapers require an Unsplash API access key. Select Unsplash and enter the key in the settings page; missing keys fall back to a local background. Fresh installations use local backgrounds, the classic sidebar and the original frosted glass settings (10px blur, 0.5 opacity). Existing options in `/etc/config/argon` are preserved.
-
-Use the theme button at the upper right to choose **Light mode**, **Dark mode**, or **Follow system**. Changes appear immediately and save to `/etc/config/argon` without applying other pending settings. This is a device-wide preference, including the next login page; changing it requires Argon configuration write access. Failed saves show an error and reconcile with the stored mode.
-
-## Template structure
-
-`ucode/template/themes/argon/` retains LuCI's `header`, `header_login`, `out_header_login`, `sysauth`, and both `footer` entry points. Application and login pages share `head.ut` for validated settings, metadata, styles, and conditional application resources.
-
-`sysauth.ut` assembles the login page; `login_background.ut` owns wallpaper selection and image/video rendering, while `login_form.ut` owns authentication messages, fields, plugin content, and script order. Both footers share `page_scripts.ut`; login pages do not load application LuCI modules. Pass local data through the second argument to `include` rather than relying on the caller's local variables.
-
-## Styles and menu icons
-
-Light and dark modes share `htdocs/luci-static/argon/css/cascade.css`. Maintain palette variables in `less/theme.less` and keep one set of component rules. After editing LESS, run `lessc less/cascade.less htdocs/luci-static/argon/css/cascade.css`. Automatic, forced light, forced dark, and custom primary colors remain supported.
-
-Private LESS colors supply semantic tokens. Each row of `@theme-palette` defines one role as `role: light, dark;`; a single value is shared by both modes. Compilation emits only dark-mode differences. Keep text, surface, and border roles separate even when their colors match, and declare menu category colors independently. Legacy color names at the end of the file are LuCI compatibility aliases; components should consume semantic tokens. Theme settings still override `--light-primary`, `--dark-primary`, and blur parameters.
-
-`cascade.less` organizes imports: theme, spacing and shapes → resets and base controls → login and application layout → shared `components/` → the page/plugin import index in `page-fix.less` → viewport adaptations in `responsive.less`. `page-fix.less` only imports files from `less/pages/` in their established cascade order. Maintain page and plugin rules in their own files; `*-legacy.less` files retain compatibility rules for older LuCI views. Add general rules to their component file instead of repeating mobile component rules in page patches. Forms, buttons, tabs, tables, and overlays have their own modules. Native tables and LuCI table compatibility are preserved.
-
-Maintain spacing in `less/spacing.less`: `--page-gutter` sets page margins, `--section-inset` aligns card content, and `--section-gap`, `--field-gap`, `--control-gap`, and `--action-gap` space sections, form rows, control groups, and actions. On small screens, `responsive.less` reduces both page margins and card insets to `1rem`. Flex form rows stack according to their container width; action buttons and change legends wrap while preserving long labels.
-
-`components/tabs.less` joins each native `.cbi-tabmenu` to its following content container in maps with headings and descriptions, standalone views, and their first wrapper. Headings, descriptions, and other visible sections retain their spacing tokens. Avoid page-specific negative margins, and preserve LuCI's adjacent tab bar and content structure.
-
-Outer tab sections leave vertical insets to headings, table rows, and action groups. Only form content inside `.cbi-section-node-tabbed` keeps `--field-gap` padding. Empty `.cbi-section-create` containers take no space. Final tables without dropdown controls handle their own bottom corners and retain horizontal scrolling on small screens, leaving the card and its overlays unclipped.
-
-Firewall status adaptations live in `less/pages/nftables.less`. Each chain has its own card, retaining the native match/action columns and rule order. Narrow screens preserve row correspondence while expressions and long lists wrap. LuCI still supplies counters, comment tooltips, and chain links; the theme neither parses nor reorders firewall rules. Package-manager toolbars, diagnostics, and SSH key adaptations live in `less/pages/package-manager.less`, `less/pages/diagnostics.less`, and `less/pages/sshkeys.less`, respectively.
-
-Progress values sit below their tracks so narrow screens and fill colors do not obscure them. Realtime plot backgrounds, labels, and grid lines use semantic colors while data series retain their native colors. Buttons use `--focus-ring` for keyboard focus. Press scaling applies only to native buttons when motion is allowed; `data-static` opts out. Frequent tab switches remain immediate, and hover effects require a hover-capable device.
-
-Maintain corner shapes in `less/shape.less`. With a 16px root font, small labels use 4px, controls and submenu options 6px, menus and small panels 8px, cards 12px, and dialogs and the centered login card 16px. Both themes and all viewports share these tokens. Progress bars and scrollbar thumbs use `--radius-pill`; circular badges use `--radius-circle`. Keep joined control seams square, curve only the top corners of tabs and edge-aligned card headings, and avoid clipping the entire card because dropdowns and tooltips can extend outside it.
-
-Modal layout lives in `components/overlays.less`: titles and paragraphs share an inset, and both native LuCI `.right` and `.button-row` action groups receive spacing. Actions stack when the dialog content is narrow. Keep semantic button classes for apply, positive, and destructive actions; plain actions use neutral styling. Long dialogs scroll through the overlay, while `cbi-modal` retains room for wider forms.
-
-Ordinary form controls retain their 18rem minimum, reduced to 16rem at narrower viewports, and can shrink to fit the field. Notes and output areas keep their intended full width. Escape the CSS `min()` in `forms.less` so LESS does not compile it to `min-width: 100%`.
-
-Menus, dropdown buttons, native selects, sorting controls, and overview disclosures share `chevron-down.svg` and `chevron-right.svg`, using a 24×24 grid and 2px round strokes. Native LuCI Save & Apply buttons open choices only from their arrow region; the body executes the selected apply action. Their default height is 2.5rem, with room to grow for wrapped labels; the unused overflow summary stays hidden for these single-action buttons. Menu chevrons rotate the same SVG over 200ms when opening or closing, allowing smooth reversal, and show the final direction immediately under reduced motion.
-
-Expanded LuCI dropdowns live in `components/dropdowns.less`. Split buttons, device selectors, single/multiple selection, and editable choices share an 8px panel radius, 4px option radius, a thin border, and soft shadows. Ordinary rows are at least 2.5rem high; selected, hover, and keyboard-focus states remain distinct. Long labels wrap, custom inputs shrink, and LuCI keeps control of viewport-aware placement and scroll height. Native HTML select popups retain their browser or system rendering and behavior.
-
-Top-level menu icons resolve `htdocs/luci-static/argon/icon/<node-name>.svg`, such as `status.svg`, `system.svg`, `network.svg`, or `logout.svg`. Names are case-sensitive menu node identifiers, independent of translated labels, and support letters, digits, underscores, and hyphens. Add the matching SVG and reload the page; missing icons use `default.svg`.
-
-Icons use CSS masks so their colors follow the theme and menu states. Use monochrome SVGs with a transparent background and a `viewBox`. This is separate from the browser icon and login logo settings below.
-
-All 28 visible icons from the former `argon.woff2` font are exported to this directory using service or function names, such as `status.svg`, `services.svg`, `docker.svg`, and `user.svg`. See the [SVG icon index](htdocs/luci-static/argon/icon/README.md) for previews and original code point mappings. Login field icons and the mobile menu toggle also use SVGs; the original icon font files are no longer shipped.
-
-## Custom browser icon and login logo
-
-Under **System → Argon Config → Custom branding**, upload a browser icon and login logo separately, or use one image for both. Each can be restored to its default. PNG images must be 16–1024 pixels per side and at most 1 MiB. Browser icons must be square; login logos retain their aspect ratio in both login layouts.
-
-Uploads and resets apply immediately without saving other settings; reload open pages to update their icons. The custom browser icon also supplies the touch icon and web manifest. Existing home-screen shortcuts may need to be added again.
-
-Files are stored in `/www/luci-static/argon/branding/` without replacing packaged assets. The theme includes this directory and uploaded backgrounds in `keep.d` backups for upgrades that preserve configuration. Upgrades without configuration preservation reset the icons.
-
-## Compatibility
-
-Only the `master` branch is maintained now.  
-Support is focused on modern LuCI environments based on [Official OpenWrt][official] and [ImmortalWrt][immortalwrt].
-
-## Version History
-
-The latest version is v2.4.8 [Click here][en-us-release-log] to view the full version history record.
-
-## Getting started
-
-### Build from source
-
-```bash
-cd openwrt/package
-git clone https://github.com/jerrykuku/luci-theme-argon.git
-make menuconfig #choose LUCI->Theme->Luci-theme-argon
-make -j1 V=s
-```
-
-### Choose the package format
-
-Choose the format used by the firmware's native package manager. The presence of an `apk` command alone does not identify it:
-
-| Firmware package manager | Release assets | Install command |
+| Package manager | Package | Install |
 | --- | --- | --- |
-| `opkg` (including OpenWrt 23.05, 24.10, and GL.iNet firmware based on these versions) | `.ipk` | `opkg install` |
-| OpenWrt / ImmortalWrt using APK v3 natively (`apk-tools 3.x`) | `.apk` | `apk add --allow-untrusted` |
+| `opkg` | `.ipk` | `opkg install ./luci-theme-argon_*.ipk` |
+| APK v3 (`apk-tools 3.x`) | `.apk` | `apk add --allow-untrusted ./luci-theme-argon-*.apk` |
 
-The APK assets use **APK v3 format**, which `apk-tools 2.x` (including `2.14.0`) cannot read. `--allow-untrusted` only bypasses signature trust checks; it does not add format support. `apk` cannot install IPK files either.
+Run `opkg update` or `apk update` first. APK v2 cannot read these APK packages; keep your firmware's native package manager.
 
-APK builds target the OpenWrt **25.12.5 stable SDK** and keep theme templates as source for runtime compatibility. The original v2.4.8 APK was built with a snapshot SDK and requires `ucode>=2026.02.27`, which OpenWrt 25.12.5 does not provide ([#715](https://github.com/jerrykuku/luci-theme-argon/issues/715)). That asset needs to be rebuilt with this fix; updating this repository does not replace already published packages. Do not bypass dependency checks to install incompatible bytecode.
+For translations, install the matching `luci-i18n-argon-config-<language>` package from the same release and in the same format.
 
-For the GL.iNet / OpenWrt 23.05 environment in [#705](https://github.com/jerrykuku/luci-theme-argon/issues/705), download IPK files and install them with the firmware's existing `opkg`. There is no need to replace the system package manager.
+Select **Argon** under **System → System → Language and Style → Design**.
 
-Download `luci-theme-argon` and any required `luci-i18n-argon-config-<language>` packages from [Releases][release]. Select the same format for all packages and use the actual asset filenames; do not construct version suffixes or rename file extensions.
+<details>
+<summary>Already have the old luci-app-argon-config? Migrate to 3.0</summary>
 
-Put the downloaded files in one empty directory, keeping only one version of each package, then run the appropriate commands from that directory.
+This applies only when the old standalone configuration plugin is installed. Otherwise, skip this section.
 
-### Upgrade from the separate configuration plugin
+The settings page, colors, backgrounds and branding are all included in the theme. The release's `luci-app-argon-config` is an **empty migration package using the old package name**. It preserves existing settings and hands its files over to the theme.
 
-If an older `luci-app-argon-config` is installed, install the empty compatibility package from the same release first, then upgrade the theme in a separate command. This releases the old package's files before the theme takes ownership:
+1. Download both `luci-app-argon-config` and `luci-theme-argon` from the **same 3.0 release in the theme repository**, in the same format.
+2. Put both files in one directory on the router and open a terminal there. **Do not uninstall the old plugin first.** Choose the command pair for your firmware; run the second command only after the first succeeds.
 
 ```sh
-# Firmware using opkg
+# opkg
 opkg install ./luci-app-argon-config_*.ipk
 opkg install ./luci-theme-argon_*.ipk
 
-# Firmware using APK v3
+# APK v3
 apk add --allow-untrusted ./luci-app-argon-config-*.apk
 apk add --allow-untrusted ./luci-theme-argon-*.apk
 ```
 
-The compatibility package temporarily saves the old configuration; the integrated theme restores it during installation. Existing colors, wallpaper source, login style, translation package names, `/etc/config/argon`, and `/admin/system/argon-config` remain compatible. Do not force file overwrites. Fresh installations need only the theme and desired language packages.
+The first command replaces the old plugin with the empty migration package. The second installs the integrated theme and restores your settings. Continue configuring it under **System → Argon Config**.
 
-Source builds normally select only `luci-theme-argon`. To build the migration package, also select the nested `compat/luci-app-argon-config/` package under LuCI applications; OpenWrt discovers it in the theme repository. Release CI builds both packages and all 16 translations from one commit.
+</details>
 
-### Install release packages (`ipk`)
+## Customize
 
-```bash
-opkg update
-opkg install ./luci-theme-argon_*.ipk
-```
+Open **System → Argon Config** for login layouts, colors, glass effects, wallpapers and branding. The header's appearance button switches between **Light mode**, **Dark mode** and **Follow system**; the choice also applies to the login page.
 
-If you also downloaded language packages in the same format, install them with:
-
-```bash
-opkg install ./luci-i18n-argon-config-*.ipk
-```
-
-### Install release packages (`apk`)
-
-Use this only on firmware that natively uses `apk-tools 3.x`. Check the version with `apk --version`.
-
-```bash
-apk update
-apk add --allow-untrusted ./luci-theme-argon-*.apk
-```
-
-If you also downloaded language packages in the same format, install them with:
-
-```bash
-apk add --allow-untrusted ./luci-i18n-argon-config-*.apk
-```
-
-If you encounter `IO ERROR`, first use `ls -l ./*.apk` to check that the files exist, their names are correct, and the downloads are complete, then check `apk --version`. Do not force installation to bypass format or dependency errors.
-
+Local image and video backgrounds are supported, along with Bing, Unsplash and Wallhaven wallpapers. Unsplash requires an API access key. Browser icons and login logos accept PNG files, 16–1024 pixels per side, up to 1 MiB; browser icons must be square.
 
 ## Screenshots
 
-![desktop](/Screenshots/screenshot_pc.jpg)
-![mobile](/Screenshots/screenshot_phone.jpg)
+Light and dark views of the overview and both login layouts, on desktop and mobile.
+
+![Light mode: desktop overview, classic and centered login](Screenshots/preview-light.png)
+
+![Mobile light mode: classic login, centered login and overview](Screenshots/mobile-light.png)
+
+![Dark mode: desktop overview, classic and centered login](Screenshots/preview-dark.png)
+
+![Mobile dark mode: classic login, centered login and overview](Screenshots/mobile-dark.png)
 
 ## Contributors
 
@@ -224,12 +109,10 @@ If you encounter `IO ERROR`, first use `ls -l ./*.apk` to check that the files e
 
 Made with [contrib.rocks](https://contrib.rocks).
 
-## Related Projects
+## Development
 
-- [luci-app-argon-config](https://github.com/jerrykuku/luci-app-argon-config): Configuration plugin for the Argon theme
-- [openwrt-package](https://github.com/jerrykuku/openwrt-package): My OpenWrt package collection
-- [CasaOS](https://github.com/IceWhaleTech/CasaOS): A simple, elegant open-source personal cloud system and my current primary project
+See the [development guide](docs/DEVELOPMENT.md) for source builds, LESS, templates, icons and checks.
 
-## Credits
+[Releases](https://github.com/jerrykuku/luci-theme-argon/releases) · [Version history](RELEASE.md) · [Contributors](https://github.com/jerrykuku/luci-theme-argon/graphs/contributors) · [Report an issue](https://github.com/jerrykuku/luci-theme-argon/issues)
 
-[luci-theme-material](https://github.com/LuttyYang/luci-theme-material/)
+Licensed under [Apache-2.0](LICENSE). Thanks to [luci-theme-material](https://github.com/LuttyYang/luci-theme-material/).

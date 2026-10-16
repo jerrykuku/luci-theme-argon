@@ -191,12 +191,12 @@
     // Table responsive behavior
     .table {
         display: block;
+        // Grid-based lists also need a shrinkable track for their row content.
+        grid-template-columns: minmax(0, 1fr);
     }
 
-    // Block tables keep their rounded edges while allowing horizontal scrolling.
-    [data-tab-title] > .table:last-child:not(:has(.cbi-dropdown)),
-    [data-tab-title] > .table:has(+ .cbi-section-create:empty:last-child):not(:has(.cbi-dropdown)) {
-        overflow-x: auto;
+    .table > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot) {
+        display: block;
     }
 
     .Interfaces .table {
@@ -210,6 +210,8 @@
     // Table row adjustments
     .tr {
         display: flex;
+        min-width: 0;
+        max-width: 100%;
         flex-direction: row;
         flex-wrap: wrap;
     }
@@ -233,10 +235,28 @@
     .th,
     .td {
         display: inline-block;
+        min-width: 0;
+        max-width: 100%;
         align-self: flex-start;
         flex: 2 2 10%;
         text-overflow: ellipsis;
         word-wrap: break-word;
+    }
+
+    .td[data-title] {
+        flex-basis: 50%;
+
+        &::before {
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+    }
+
+    .td .ifacebadge {
+        max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+
     }
 
     .td select,
@@ -281,8 +301,39 @@
         text-align: center;
     }
 
-    .td.cbi-section-actions {
+    .td.cbi-section-actions,
+    .td:has(> :is(.btn, .cbi-button):only-child) {
+        // Use the row's available width before wrapping individual actions.
+        flex: 1 1 100%;
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: 100%;
         vertical-align: bottom;
+
+        > :not(.btn, .cbi-button) {
+            flex-wrap: wrap;
+            max-width: 100%;
+        }
+
+        .btn,
+        .cbi-button {
+            max-width: 100%;
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+    }
+
+    // In stacked rows the final action group (or an odd final data cell)
+    // spans the last line and owns both bottom corners.
+    .table .tr:last-child > .td:first-child {
+        border-end-start-radius: 0;
+    }
+
+    .table .tr:last-child > .td[data-title]:nth-child(odd):nth-last-child(2),
+    .table .tr:last-child > .td[data-title]:nth-child(odd):last-child,
+    .table .tr:last-child > .td.cbi-section-actions:last-child,
+    .table .tr:last-child > .td:has(> :is(.btn, .cbi-button):only-child):last-child {
+        border-end-start-radius: inherit;
     }
 
     // Hide table headers on mobile
@@ -342,9 +393,26 @@
         inset-inline-start: 0;
         z-index: 100;
         width: 0;
+        overflow-x: hidden;
 
         &.active {
             width: var(--sidebar-width);
+        }
+
+        // Keep the original reveal animation without reflowing its contents.
+        > .sidenav-header,
+        > .nav {
+            width: var(--sidebar-width);
+        }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .main-left {
+            transition: width .2s cubic-bezier(.2, 0, 0, 1);
+
+            &.active {
+                transition-duration: .3s;
+            }
         }
     }
 

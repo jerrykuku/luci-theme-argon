@@ -116,6 +116,44 @@ fieldset>fieldset,
   border-end-end-radius: 0;
 }
 
+// Anonymous removable sections share one heading before their first instance.
+// Keep its first Delete beside that heading, in normal source order.
+.cbi-section:has(> h3:first-child + .cbi-section-remove + .cbi-section-node) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+
+  > :not(h3, .cbi-section-remove) {
+    grid-column: 1 / -1;
+  }
+
+  > h3 {
+    grid-column: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  > .cbi-section-remove {
+    grid-column: 2;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 0;
+    margin: 0;
+    padding: var(--control-gap) var(--section-inset);
+    padding-inline-start: 0;
+
+    > .cbi-button {
+      min-height: 2.5rem;
+    }
+  }
+
+  // Further actions stay above the fields belonging to their own instance.
+  > .cbi-section-remove ~ .cbi-section-remove {
+    grid-column: 1 / -1;
+    border-block-start: 1px solid var(--border-color);
+  }
+}
+
 .cbi-section p {
   padding: var(--field-gap) var(--section-inset);
 }

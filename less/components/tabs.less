@@ -93,6 +93,18 @@
   }
 }
 
+// Keep hover and selection feedback smooth in both native tab styles.
+@media (prefers-reduced-motion: no-preference) {
+  .tabs > li,
+  .cbi-tabmenu > li {
+    transition: background-color .15s ease-out, border-bottom-color .15s ease-out;
+
+    > a {
+      transition: color .15s ease-out;
+    }
+  }
+}
+
 @media (hover: hover) {
   .tabs > li:hover,
   .cbi-tabmenu > li:hover {

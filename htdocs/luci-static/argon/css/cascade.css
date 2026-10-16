@@ -2027,6 +2027,7 @@ span.spinning {
   z-index: auto;
   margin: 0 var(--page-gutter) var(--section-gap);
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--field-gap);
   line-height: 1.5;
 }
@@ -2082,6 +2083,7 @@ span.spinning {
 @media screen and (max-width: 600px) {
   #maincontent > .alert-message {
     flex-direction: column;
+    align-items: stretch;
   }
 }
 .container .alert,
@@ -2204,6 +2206,35 @@ fieldset > fieldset,
   border-end-start-radius: 0;
   border-end-end-radius: 0;
 }
+.cbi-section:has(> h3:first-child + .cbi-section-remove + .cbi-section-node) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+.cbi-section:has(> h3:first-child + .cbi-section-remove + .cbi-section-node) > :not(h3, .cbi-section-remove) {
+  grid-column: 1 / -1;
+}
+.cbi-section:has(> h3:first-child + .cbi-section-remove + .cbi-section-node) > h3 {
+  grid-column: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.cbi-section:has(> h3:first-child + .cbi-section-remove + .cbi-section-node) > .cbi-section-remove {
+  grid-column: 2;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+  margin: 0;
+  padding: var(--control-gap) var(--section-inset);
+  padding-inline-start: 0;
+}
+.cbi-section:has(> h3:first-child + .cbi-section-remove + .cbi-section-node) > .cbi-section-remove > .cbi-button {
+  min-height: 2.5rem;
+}
+.cbi-section:has(> h3:first-child + .cbi-section-remove + .cbi-section-node) > .cbi-section-remove ~ .cbi-section-remove {
+  grid-column: 1 / -1;
+  border-block-start: 1px solid var(--border-color);
+}
 .cbi-section p {
   padding: var(--field-gap) var(--section-inset);
 }
@@ -2241,6 +2272,19 @@ fieldset > fieldset,
   padding: 0.5em;
   text-align: center;
   vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+.td:not(.cbi-section-actions) .nowrap {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.td .ifacebadge {
+  max-width: 100%;
+}
+.td .ifacebadge > span {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 .th {
   font-weight: bold;
@@ -2285,12 +2329,72 @@ table,
   width: 100%;
   font-size: 0.75rem;
 }
-[data-tab-title] > .table:last-child:not(:has(.cbi-dropdown)),
-[data-tab-title] > .table:has(+ .cbi-section-create:empty:last-child):not(:has(.cbi-dropdown)) {
+:is(.cbi-section, [data-tab-title]) > .table:last-child,
+:is(.cbi-section, [data-tab-title]) > .table:has(+ .cbi-section-create:empty:last-child),
+:is(.cbi-section, [data-tab-title]) > :not(.table):last-child > .table:only-child,
+#view > .table {
   border-collapse: separate;
+  border-spacing: 0;
+  overflow: visible;
+  border-end-start-radius: var(--radius-card);
+  border-end-end-radius: var(--radius-card);
+}
+:is(.cbi-section, [data-tab-title]) > .table:last-child > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child,
+:is(.cbi-section, [data-tab-title]) > .table:has(+ .cbi-section-create:empty:last-child) > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child,
+:is(.cbi-section, [data-tab-title]) > :not(.table):last-child > .table:only-child > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child,
+#view > .table > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child,
+:is(.cbi-section, [data-tab-title]) > .table:last-child > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child,
+:is(.cbi-section, [data-tab-title]) > .table:has(+ .cbi-section-create:empty:last-child) > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child,
+:is(.cbi-section, [data-tab-title]) > :not(.table):last-child > .table:only-child > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child,
+#view > .table > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child,
+:is(.cbi-section, [data-tab-title]) > .table:last-child > :is(tr, .tr):last-child,
+:is(.cbi-section, [data-tab-title]) > .table:has(+ .cbi-section-create:empty:last-child) > :is(tr, .tr):last-child,
+:is(.cbi-section, [data-tab-title]) > :not(.table):last-child > .table:only-child > :is(tr, .tr):last-child,
+#view > .table > :is(tr, .tr):last-child {
   border-end-start-radius: inherit;
   border-end-end-radius: inherit;
-  overflow: hidden;
+}
+:is(.cbi-section, [data-tab-title]) > .table:last-child > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):first-child,
+:is(.cbi-section, [data-tab-title]) > .table:has(+ .cbi-section-create:empty:last-child) > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):first-child,
+:is(.cbi-section, [data-tab-title]) > :not(.table):last-child > .table:only-child > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):first-child,
+#view > .table > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):first-child,
+:is(.cbi-section, [data-tab-title]) > .table:last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):first-child,
+:is(.cbi-section, [data-tab-title]) > .table:has(+ .cbi-section-create:empty:last-child) > :is(tr, .tr):last-child > :is(td, th, .td, .th):first-child,
+:is(.cbi-section, [data-tab-title]) > :not(.table):last-child > .table:only-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):first-child,
+#view > .table > :is(tr, .tr):last-child > :is(td, th, .td, .th):first-child {
+  border-end-start-radius: inherit;
+}
+:is(.cbi-section, [data-tab-title]) > .table:last-child > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):last-child,
+:is(.cbi-section, [data-tab-title]) > .table:has(+ .cbi-section-create:empty:last-child) > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):last-child,
+:is(.cbi-section, [data-tab-title]) > :not(.table):last-child > .table:only-child > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):last-child,
+#view > .table > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot):last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):last-child,
+:is(.cbi-section, [data-tab-title]) > .table:last-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):last-child,
+:is(.cbi-section, [data-tab-title]) > .table:has(+ .cbi-section-create:empty:last-child) > :is(tr, .tr):last-child > :is(td, th, .td, .th):last-child,
+:is(.cbi-section, [data-tab-title]) > :not(.table):last-child > .table:only-child > :is(tr, .tr):last-child > :is(td, th, .td, .th):last-child,
+#view > .table > :is(tr, .tr):last-child > :is(td, th, .td, .th):last-child {
+  border-end-end-radius: inherit;
+}
+:is(.cbi-section, [data-tab-title]) > :not(.table):only-child > .table:only-child {
+  border-start-start-radius: var(--radius-card);
+  border-start-end-radius: var(--radius-card);
+}
+:is(.cbi-section, [data-tab-title]) > :not(.table):only-child > .table:only-child > :is(thead, tbody, .thead, .tbody):first-child,
+:is(.cbi-section, [data-tab-title]) > :not(.table):only-child > .table:only-child > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child,
+:is(.cbi-section, [data-tab-title]) > :not(.table):only-child > .table:only-child > :is(tr, .tr):first-child {
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+}
+:is(.cbi-section, [data-tab-title]) > :not(.table):only-child > .table:only-child > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child > :is(td, th, .td, .th),
+:is(.cbi-section, [data-tab-title]) > :not(.table):only-child > .table:only-child > :is(tr, .tr):first-child > :is(td, th, .td, .th) {
+  border-top: 0;
+}
+:is(.cbi-section, [data-tab-title]) > :not(.table):only-child > .table:only-child > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child > :is(td, th, .td, .th):first-child,
+:is(.cbi-section, [data-tab-title]) > :not(.table):only-child > .table:only-child > :is(tr, .tr):first-child > :is(td, th, .td, .th):first-child {
+  border-start-start-radius: inherit;
+}
+:is(.cbi-section, [data-tab-title]) > :not(.table):only-child > .table:only-child > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child > :is(td, th, .td, .th):last-child,
+:is(.cbi-section, [data-tab-title]) > :not(.table):only-child > .table:only-child > :is(tr, .tr):first-child > :is(td, th, .td, .th):last-child {
+  border-start-end-radius: inherit;
 }
 .table .table-titles th {
   background-color: var(--surface-contrast);
@@ -2511,6 +2615,7 @@ td > table > tbody > tr > td,
 }
 /* red */
 .btn.danger,
+.btn.btn-danger,
 .cbi-section-remove > .cbi-button,
 .cbi-button-remove,
 .cbi-button-reset,
@@ -2682,33 +2787,50 @@ header .header-actions {
   position: absolute;
   inset-block-start: calc(100% + var(--control-gap));
   inset-inline-end: 0;
-  width: 12rem;
+  width: 11rem;
   max-width: calc(100vw - 2 * var(--page-gutter));
   min-width: 0;
   max-height: calc(100dvh - 5rem);
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: calc(var(--radius-menu) - var(--radius-small) - 1px);
+  padding: calc(var(--radius-card) - var(--radius-small) - 1px);
   margin: 0;
   color: var(--dropdown-text);
   background: var(--surface-panel);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-menu);
+  border-radius: var(--radius-card);
   box-shadow: var(--dropdown-shadow);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   text-align: start;
+  opacity: 1;
+  transition: opacity 0.15s ease-out;
+}
+@media (prefers-reduced-motion: no-preference) {
+  #argon-appearance .argon-appearance-panel {
+    transform: translateY(0);
+    transition: opacity 0.2s cubic-bezier(0.2, 0, 0, 1), transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
 }
 #argon-appearance .argon-appearance-panel .argon-appearance-option {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.625rem;
-  min-height: 2.5rem;
+  gap: 0.5rem;
+  min-height: 2.125rem;
   margin: 0;
-  padding: 0.5rem 0.625rem;
+  padding: 0.375rem 0.5rem;
   border-radius: var(--radius-small);
   line-height: 1.5;
   cursor: pointer;
+  transition: background-color 0.15s ease-out;
+}
+#argon-appearance .argon-appearance-panel .argon-appearance-option + .argon-appearance-option {
+  margin-block-start: 0.25rem;
+}
+@media (pointer: coarse) {
+  #argon-appearance .argon-appearance-panel .argon-appearance-option {
+    min-height: 2.5rem;
+  }
 }
 #argon-appearance .argon-appearance-panel .argon-appearance-option::before,
 #argon-appearance .argon-appearance-panel .argon-appearance-option::after {
@@ -2717,8 +2839,8 @@ header .header-actions {
   background-color: currentColor;
 }
 #argon-appearance .argon-appearance-panel .argon-appearance-option::before {
-  width: 1.125rem;
-  height: 1.125rem;
+  width: 1rem;
+  height: 1rem;
   mask: url('../icon/monitor.svg') center / contain no-repeat;
 }
 #argon-appearance .argon-appearance-panel .argon-appearance-option[data-mode="light"]::before {
@@ -2785,6 +2907,18 @@ header .header-actions {
   #argon-appearance .argon-appearance-option::after {
     forced-color-adjust: none;
     background-color: CanvasText;
+  }
+}
+@starting-style {
+  #argon-appearance .argon-appearance-panel {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @starting-style {
+    #argon-appearance .argon-appearance-panel {
+      transform: translateY(-0.375rem);
+    }
   }
 }
 .tabs,
@@ -2867,6 +3001,16 @@ header .header-actions {
 }
 .cbi-tabmenu li[class~="cbi-tab"] a {
   color: var(--text-strong);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tabs > li,
+  .cbi-tabmenu > li {
+    transition: background-color 0.15s ease-out, border-bottom-color 0.15s ease-out;
+  }
+  .tabs > li > a,
+  .cbi-tabmenu > li > a {
+    transition: color 0.15s ease-out;
+  }
 }
 @media (hover: hover) {
   .tabs > li:hover,
@@ -2987,6 +3131,8 @@ header .header-actions {
 .cbi-value-description {
   line-height: 1.5;
   display: block;
+  white-space: normal;
+  overflow-wrap: anywhere;
   padding: 0.5rem 0;
   color: var(--muted-text);
   font-size: 0.75rem;
@@ -3157,22 +3303,31 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 .cbi-section-table .cbi-section-table-titles .cbi-section-table-cell {
   width: auto !important;
 }
-.td.cbi-section-actions {
-  text-align: right !important;
+.td.cbi-section-actions,
+.td:has( > :is(.btn, .cbi-button):only-child) {
+  width: 1% !important;
+  white-space: nowrap;
+  text-align: end !important;
   vertical-align: middle;
 }
-.td.cbi-section-actions > * {
+.td.cbi-section-actions > :not(.btn, .cbi-button) {
   display: inline-flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  width: max-content;
+  margin-inline-start: auto;
   gap: var(--control-gap);
 }
-.td.cbi-section-actions > * > *,
-.td.cbi-section-actions > * > form > * {
+.td.cbi-section-actions > :not(.btn, .cbi-button) > *,
+.td.cbi-section-actions > :not(.btn, .cbi-button) > form > * {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
 }
-.td.cbi-section-actions > * > form {
+.td.cbi-section-actions > :not(.btn, .cbi-button) > form {
   display: inline-flex;
+  gap: inherit;
   margin: 0;
 }
 .td .cbi-checkbox {
@@ -3525,26 +3680,40 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   min-width: 0;
   max-width: 100%;
   padding: 0.125rem 0.5rem;
-  line-height: 1.25rem;
+  line-height: 1.5;
   white-space: normal;
   overflow-wrap: anywhere;
 }
 .cbi-dropdown > ul .ifacebadge {
   flex-wrap: wrap;
+  gap: 0.375rem;
   min-width: 0;
   max-width: 100%;
   margin: 0;
   padding: 0 0.25rem;
-  line-height: 1.25rem;
+  line-height: 1.5;
   white-space: normal;
   overflow-wrap: anywhere;
 }
 .cbi-dropdown > ul > li img {
-  flex: 0 0 1rem;
-  width: 1rem;
-  height: 1rem;
+  flex: 0 0 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
   margin: 0;
   object-fit: contain;
+}
+.cbi-dropdown > ul > li:has(> img),
+.cbi-dropdown > ul > li > label:has(> img) {
+  column-gap: 0.5rem;
+  min-width: 0;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.cbi-dropdown > ul > li:has(> img) > span,
+.cbi-dropdown > ul > li > label:has(> img) > span {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 .cbi-dropdown:not(.btn):not(.cbi-button):has(> ul .zonebadge, > ul .ifacebadge, > ul img) {
   min-height: 2.5rem;
@@ -3575,7 +3744,7 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   color: var(--dropdown-text);
   font-size: 0.875rem;
   font-weight: 400;
-  line-height: 1.25rem;
+  line-height: 1.5;
   text-align: start;
 }
 .cbi-dropdown[open] > ul.dropdown > li {
@@ -3594,6 +3763,14 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   flex: 1 1 auto;
   min-width: 0;
   margin-inline-start: 0.5rem;
+}
+.cbi-dropdown[open] > ul.dropdown > li:has(> img),
+.cbi-dropdown[open] > ul.dropdown > li > label:has(> img) {
+  align-items: flex-start;
+}
+.cbi-dropdown[open] > ul.dropdown > li:has(> img) > img,
+.cbi-dropdown[open] > ul.dropdown > li > label:has(> img) > img {
+  margin-block-start: max(0px, calc((1.5em - 1.25rem) / 2));
 }
 .cbi-dropdown[open] > ul.dropdown > li input.create-item-input {
   width: 100%;
@@ -3814,6 +3991,44 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
   max-width: 90%;
   max-height: none;
 }
+.modal:has(> .alert-message + .right:last-child):not(:has(.cbi-map, .table, table, pre, textarea)) {
+  max-width: 32rem;
+}
+.modal > .alert-message {
+  --dialog-feedback-accent: var(--link-color);
+  position: static;
+  inset: auto;
+  transform: none;
+  width: auto;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid transparent;
+  border-inline-start: 3px solid var(--dialog-feedback-accent);
+  border-radius: var(--radius-panel) !important;
+  background-color: color-mix(in srgb, var(--dialog-feedback-accent) 10%, var(--surface-color)) !important;
+  color: var(--text-strong);
+  box-shadow: none;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.modal > .alert-message.warning {
+  --dialog-feedback-accent: var(--warning-heading-color);
+}
+.modal > .alert-message.error,
+.modal > .alert-message.danger {
+  --dialog-feedback-accent: var(--danger);
+}
+.modal > .alert-message.success {
+  --dialog-feedback-accent: var(--success);
+}
+.modal > .alert-message > :first-child {
+  margin-block-start: 0;
+}
+.modal > .alert-message > :last-child {
+  margin-block-end: 0;
+}
 .modal .cbi-map {
   margin-bottom: 0;
 }
@@ -3924,6 +4139,9 @@ td > .ifacebadge,
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+code {
+  overflow-wrap: anywhere;
 }
 .cbi-input-textarea {
   font-family: inherit;
@@ -4211,10 +4429,27 @@ td > .ifacebadge,
 .cbi-section-create {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
+  row-gap: var(--control-gap);
   padding: 0.875rem 1rem;
+}
+.cbi-section-create:has(> button:first-child) {
+  column-gap: var(--control-gap);
+}
+.cbi-section-create > .btn,
+.cbi-section-create > .cbi-button {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .cbi-section-create:empty {
   display: none;
+}
+.cbi-section-create > div:first-child {
+  min-width: 0;
+  max-width: 100%;
 }
 .cbi-section-create > div:first-child > input {
   width: 100%;
@@ -4493,6 +4728,27 @@ pre.command-output {
   unicode-bidi: isolate;
   text-align: start;
 }
+[data-page="admin-system-syscontrol-log"] .cbi-section > pre:only-child {
+  margin: 0;
+  padding: var(--field-gap) var(--section-inset);
+  max-height: min(32rem, 65vh);
+  overflow: auto;
+  overscroll-behavior: contain;
+  border-radius: inherit;
+  color: var(--log-text);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  direction: ltr;
+  unicode-bidi: plaintext;
+  text-align: start;
+}
+[data-page="admin-system-syscontrol-shutdown"] .cbi-section > .cbi-section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--control-gap);
+  padding: 0 var(--section-inset) var(--field-gap);
+}
 [data-page="admin-system-admin"] .cbi-map h2,
 [data-page="admin-system-admin-password"] .cbi-map h2,
 [data-page="admin-system-admin"] .cbi-map .cbi-map-descr,
@@ -4515,35 +4771,6 @@ pre.command-output {
 [data-page="admin-system-admin"] [data-name="pw2"] .cbi-value-description span[style="color:green"],
 [data-page="admin-system-admin-password"] [data-name="pw2"] .cbi-value-description span[style="color:green"] {
   color: var(--strength-strong-text) !important;
-}
-[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-}
-[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear > :not(h3, .cbi-section-remove) {
-  grid-column: 1 / -1;
-}
-[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear > h3 {
-  grid-column: 1;
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear > .cbi-section-remove {
-  grid-column: 2;
-  display: flex;
-  justify-content: flex-end;
-  min-width: 0;
-  margin: 0;
-  padding: var(--control-gap) var(--section-inset);
-  padding-inline-start: 0;
-}
-[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear > .cbi-section-remove > .cbi-button {
-  min-height: 2.5rem;
-}
-[data-page="admin-system-admin-dropbear"] #cbi-dropbear-dropbear > .cbi-section-remove ~ .cbi-section-remove {
-  grid-column: 1 / -1;
-  border-block-start: 1px solid var(--border-color);
 }
 [data-page="admin-system-admin-sshkeys"] .cbi-dynlist {
   width: 100%;
@@ -4979,13 +5206,6 @@ pre.command-output {
   [data-page="admin-system-startup"] .td[data-title] {
     flex-basis: 50%;
   }
-  [data-page="admin-system-startup"] .td.cbi-section-actions {
-    flex-basis: 100%;
-  }
-  [data-page="admin-system-startup"] .td.cbi-section-actions > div {
-    display: flex;
-    justify-content: flex-end;
-  }
 }
 [data-page="admin-system-crontab"] #view p textarea {
   direction: ltr;
@@ -5017,8 +5237,340 @@ pre.command-output {
   align-items: center;
   gap: 0.5rem;
 }
+[data-page="admin-system-partexp"] .cbi-section,
 [data-page="admin-system-partexp-global"] .cbi-section {
-  padding: 1rem 0;
+  padding: var(--field-gap) 0;
+}
+[data-page="admin-system-partexp"] .info-note,
+[data-page="admin-system-partexp-global"] .info-note {
+  margin: 0;
+  padding: 0;
+}
+[data-page="admin-system-partexp"] #state-container,
+[data-page="admin-system-partexp-global"] #state-container {
+  padding-block: var(--field-gap);
+  border-radius: var(--radius-card);
+  background: var(--surface-color);
+  box-shadow: var(--section-shadow);
+}
+[data-page="admin-system-partexp"] #state-container > .cbi-section,
+[data-page="admin-system-partexp-global"] #state-container > .cbi-section {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+[data-page="admin-system-partexp"] #partexp-form,
+[data-page="admin-system-partexp-global"] #partexp-form {
+  --form-control-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--field-gap);
+}
+[data-page="admin-system-partexp"] #partexp-form > .cbi-value[style*="display: block"],
+[data-page="admin-system-partexp-global"] #partexp-form > .cbi-value[style*="display: block"] {
+  display: flex !important;
+}
+[data-page="admin-system-partexp"] #log-section,
+[data-page="admin-system-partexp-global"] #log-section {
+  margin-top: 0 !important;
+  padding-block-start: var(--section-gap);
+}
+[data-page="admin-system-partexp"] #log-view,
+[data-page="admin-system-partexp-global"] #log-view {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: 18rem;
+  padding: 0.8rem;
+  resize: vertical;
+  direction: ltr;
+  unicode-bidi: plaintext;
+  text-align: start;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--log-text);
+  background: var(--input-bg);
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-control);
+}
+[data-page^="admin-system-diskman"] .dkm-card {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--section-shadow);
+}
+[data-page^="admin-system-diskman"] .dkm-card-header {
+  flex-wrap: wrap;
+  gap: var(--control-gap);
+  border-bottom-color: var(--border-color);
+}
+[data-page^="admin-system-diskman"] .dkm-card-title,
+[data-page^="admin-system-diskman"] .dkm-item-value {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+[data-page^="admin-system-diskman"] .dkm-card-actions {
+  flex-wrap: wrap;
+  max-width: 100%;
+  gap: var(--control-gap);
+  margin-inline-start: auto;
+}
+[data-page^="admin-system-diskman"] .dkm-card-actions select {
+  min-width: 0;
+  max-width: 100%;
+}
+[data-page^="admin-system-diskman"] .dkm-card-body {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr));
+}
+[data-page^="admin-system-diskman"] .dkm-item-label,
+[data-page^="admin-system-diskman"] .dm-part-free {
+  color: var(--muted-text);
+}
+[data-page^="admin-system-diskman"] .dm-part-bar {
+  background: var(--surface-muted);
+}
+[data-page="admin-system-filemanager"] #view > #file-manager-container {
+  gap: 0;
+}
+[data-page="admin-system-filemanager"] .file-manager-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--control-gap);
+  margin-block-end: var(--section-gap);
+}
+[data-page="admin-system-filemanager"] .file-manager-header h2 {
+  grid-column: 1 / -1;
+}
+[data-page="admin-system-filemanager"] .file-manager-header input {
+  min-width: 0;
+  max-width: none;
+  margin: 0 !important;
+  font-size: 1rem;
+}
+[data-page="admin-system-filemanager"] .file-manager-header button {
+  margin: 0 !important;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+[data-page="admin-system-filemanager"] #tab-group {
+  padding: var(--control-gap) var(--section-inset) 0;
+  border-start-start-radius: var(--radius-card);
+  border-start-end-radius: var(--radius-card);
+  background: var(--surface-color);
+}
+[data-page="admin-system-filemanager"] #tab-group .cbi-tabmenu > li {
+  margin: 0;
+}
+[data-page="admin-system-filemanager"] #tab-group .cbi-tabmenu > li:not(.cbi-tab-active) {
+  border-bottom-color: transparent;
+  background: var(--tab-item-bg);
+}
+[data-page="admin-system-filemanager"] #tab-group .cbi-tabmenu > li:not(.cbi-tab-active) > a {
+  color: var(--tab-inactive-color);
+}
+@media (hover: hover) {
+  [data-page="admin-system-filemanager"] #tab-group .cbi-tabmenu > li:not(.cbi-tab-active):hover {
+    border-bottom-color: var(--tab-color);
+    background: var(--surface-active);
+  }
+  [data-page="admin-system-filemanager"] #tab-group .cbi-tabmenu > li:not(.cbi-tab-active):hover > a {
+    color: var(--text-strong);
+  }
+}
+[data-page="admin-system-filemanager"] .cbi-tabcontainer-content {
+  min-width: 0;
+  padding: var(--field-gap) var(--section-inset);
+  border-end-start-radius: var(--radius-card);
+  border-end-end-radius: var(--radius-card);
+  background: var(--surface-color);
+  box-shadow: var(--section-shadow);
+}
+[data-page="admin-system-filemanager"] #file-list-container,
+[data-page="admin-system-filemanager"] #content-editor {
+  margin-top: 0 !important;
+}
+[data-page="admin-system-filemanager"] #file-list-container {
+  width: 100% !important;
+  min-width: 0;
+  max-width: 100%;
+  border-color: var(--border-color);
+  border-radius: var(--radius-control);
+  background: var(--surface-color);
+  overscroll-behavior: contain;
+}
+[data-page="admin-system-filemanager"] #file-list-container.resizeable {
+  resize: vertical;
+}
+[data-page="admin-system-filemanager"] th {
+  background: var(--surface-muted);
+  color: var(--text-strong);
+  border-color: var(--border-color);
+}
+[data-page="admin-system-filemanager"] #file-table {
+  display: table;
+  min-width: 45rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+[data-page="admin-system-filemanager"] #file-table thead {
+  display: table-header-group;
+}
+[data-page="admin-system-filemanager"] #file-table tbody {
+  display: table-row-group;
+}
+[data-page="admin-system-filemanager"] #file-table th,
+[data-page="admin-system-filemanager"] #file-table td {
+  text-align: start !important;
+  border-color: var(--border-color);
+}
+[data-page="admin-system-filemanager"] #file-table th {
+  background: var(--surface-muted);
+  color: var(--text-strong);
+}
+[data-page="admin-system-filemanager"] #file-table tr:hover {
+  background-color: var(--surface-active) !important;
+}
+[data-page="admin-system-filemanager"] #file-table th[data-field="actions"],
+[data-page="admin-system-filemanager"] #file-table td:has(> .select-checkbox) {
+  min-width: 12rem !important;
+  padding-inline: 0.75rem;
+}
+[data-page="admin-system-filemanager"] #file-table th[data-field="actions"] {
+  width: 12rem !important;
+}
+[data-page="admin-system-filemanager"] #file-table .select-checkbox {
+  vertical-align: middle;
+}
+[data-page="admin-system-filemanager"] .download-button,
+[data-page="admin-system-filemanager"] .edit-button,
+[data-page="admin-system-filemanager"] .duplicate-button,
+[data-page="admin-system-filemanager"] .delete-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: 0;
+  margin-inline-start: 0.25rem;
+  border-radius: var(--radius-control);
+  font-size: 0;
+  vertical-align: middle;
+}
+[data-page="admin-system-filemanager"] .download-button::before,
+[data-page="admin-system-filemanager"] .edit-button::before,
+[data-page="admin-system-filemanager"] .duplicate-button::before,
+[data-page="admin-system-filemanager"] .delete-button::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  background: currentColor;
+  -webkit-mask: var(--file-action-icon) center / contain no-repeat;
+  mask: var(--file-action-icon) center / contain no-repeat;
+}
+[data-page="admin-system-filemanager"] .download-button:hover,
+[data-page="admin-system-filemanager"] .edit-button:hover,
+[data-page="admin-system-filemanager"] .duplicate-button:hover,
+[data-page="admin-system-filemanager"] .delete-button:hover {
+  background: var(--surface-active);
+}
+[data-page="admin-system-filemanager"] .edit-button {
+  --file-action-icon: url('../icon/edit.svg');
+}
+[data-page="admin-system-filemanager"] .duplicate-button {
+  --file-action-icon: url('../icon/copy.svg');
+}
+[data-page="admin-system-filemanager"] .delete-button {
+  --file-action-icon: url('../icon/delete.svg');
+}
+[data-page="admin-system-filemanager"] .download-button {
+  --file-action-icon: url('../icon/download.svg');
+}
+[data-page="admin-system-filemanager"] .sort-button {
+  height: 2rem;
+  border-color: var(--border-color);
+  background: var(--surface-color);
+  color: var(--link-color);
+}
+[data-page="admin-system-filemanager"] .sort-button:hover {
+  background: var(--surface-active);
+  color: var(--link-color);
+  border-color: var(--border-color);
+}
+[data-page="admin-system-filemanager"] .sort-button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+[data-page="admin-system-filemanager"] .directory-link,
+[data-page="admin-system-filemanager"] .download-button,
+[data-page="admin-system-filemanager"] .edit-button,
+[data-page="admin-system-filemanager"] .duplicate-button,
+[data-page="admin-system-filemanager"] .status-link {
+  color: var(--link-color);
+}
+[data-page="admin-system-filemanager"] .delete-button {
+  color: var(--danger);
+}
+[data-page="admin-system-filemanager"] #content-editor,
+[data-page="admin-system-filemanager"] .editor-container,
+[data-page="admin-system-filemanager"] #content-help {
+  min-width: 0;
+  max-width: 100%;
+}
+[data-page="admin-system-filemanager"] .editor-content {
+  min-width: 0;
+}
+[data-page="admin-system-filemanager"] .editor-container,
+[data-page="admin-system-filemanager"] #content-help {
+  width: 100% !important;
+  resize: vertical !important;
+}
+[data-page="admin-system-filemanager"] #content-settings > div:first-child {
+  margin-top: 0 !important;
+}
+[data-page="admin-system-filemanager"] #settings-form label {
+  overflow-wrap: anywhere;
+}
+[data-page="admin-system-filemanager"] #status-bar,
+[data-page="admin-system-filemanager"] .line-numbers {
+  background: var(--surface-muted);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+[data-page="admin-system-filemanager"] #status-bar {
+  flex-wrap: wrap;
+  gap: var(--control-gap);
+}
+[data-page="admin-system-filemanager"] #status-info {
+  flex: 1 1 16rem;
+  flex-wrap: wrap;
+  min-width: 0;
+  gap: var(--control-gap);
+}
+[data-page="admin-system-filemanager"] #status-info > span,
+[data-page="admin-system-filemanager"] #status-info > input {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+[data-page="admin-system-filemanager"] #status-info > input {
+  margin: 0 !important;
+}
+[data-page="admin-system-filemanager"] #status-progress {
+  display: flex;
+  flex: 1 1 12rem;
+  justify-content: flex-end;
+  min-width: 0;
+  width: auto;
+}
+[data-page="admin-system-filemanager"] #status-progress:empty {
+  display: none;
+}
+[data-page="admin-system-filemanager"] #editor-textarea {
+  background: var(--input-bg);
+  color: var(--text-color);
 }
 [data-page="admin-system-attendedsysupgrade"] #view > p,
 [data-page="admin-system-attendedsysupgrade-overview"] #view > p {
@@ -5248,11 +5800,6 @@ pre.command-output {
 [data-page="admin-network-firewall-zones"] #cbi-firewall-defaults > .cbi-section-node:last-child {
   padding-block-end: var(--field-gap);
 }
-[data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td.cbi-section-actions > div {
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: flex-end;
-}
 [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .cbi-input-select {
   min-width: 6.5rem;
 }
@@ -5260,17 +5807,9 @@ pre.command-output {
   transform: scaleX(-1);
 }
 @media screen and (max-width: 1152px) {
-  [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .table > .tbody {
-    display: block;
-  }
-  [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td[data-name="_info"],
-  [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td.cbi-section-actions {
+  [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td[data-name="_info"] {
     flex-basis: 100%;
     max-width: 100%;
-  }
-  [data-page="admin-network-firewall-zones"] #cbi-firewall-zone .td.cbi-section-actions {
-    min-width: 0 !important;
-    text-align: end !important;
   }
 }
 [data-page="admin-network-firewall-ipsets"] [data-name="entry"] input[type="text"],
@@ -5280,17 +5819,6 @@ pre.command-output {
 }
 [data-page="admin-network-firewall-ipsets"] [data-name="entry"] input[type="text"] {
   text-align: start;
-}
-[data-page="admin-network-firewall-forwards"] .td.cbi-section-actions,
-[data-page="admin-network-firewall-rules"] .td.cbi-section-actions,
-[data-page="admin-network-firewall-snats"] .td.cbi-section-actions {
-  text-align: end !important;
-}
-[data-page="admin-network-firewall-forwards"] .td.cbi-section-actions > div,
-[data-page="admin-network-firewall-rules"] .td.cbi-section-actions > div,
-[data-page="admin-network-firewall-snats"] .td.cbi-section-actions > div {
-  align-items: center;
-  justify-content: flex-end;
 }
 [data-page="admin-network-firewall-forwards"] [data-name$="_ip"] input[type="text"],
 [data-page="admin-network-firewall-rules"] [data-name$="_ip"] input[type="text"],
@@ -5339,11 +5867,6 @@ pre.command-output {
   unicode-bidi: isolate;
 }
 @media screen and (min-width: 1153px) {
-  [data-page="admin-network-firewall-forwards"] .td.cbi-section-actions > div,
-  [data-page="admin-network-firewall-rules"] .td.cbi-section-actions > div,
-  [data-page="admin-network-firewall-snats"] .td.cbi-section-actions > div {
-    flex-wrap: nowrap;
-  }
   [data-page="admin-network-firewall-forwards"] .tr[data-title]::before,
   [data-page="admin-network-firewall-rules"] .tr[data-title]::before,
   [data-page="admin-network-firewall-snats"] .tr[data-title]::before,
@@ -5354,18 +5877,6 @@ pre.command-output {
   }
 }
 @media screen and (max-width: 1152px) {
-  [data-page="admin-network-firewall-forwards"] .cbi-section-table > .tbody,
-  [data-page="admin-network-firewall-rules"] .cbi-section-table > .tbody,
-  [data-page="admin-network-firewall-snats"] .cbi-section-table > .tbody {
-    display: block;
-  }
-  [data-page="admin-network-firewall-forwards"] .td.cbi-section-actions,
-  [data-page="admin-network-firewall-rules"] .td.cbi-section-actions,
-  [data-page="admin-network-firewall-snats"] .td.cbi-section-actions {
-    flex-basis: 100%;
-    max-width: 100%;
-    min-width: 0 !important;
-  }
   [data-page="admin-network-firewall-forwards"] .td.cbi-section-table-titles,
   [data-page="admin-network-firewall-rules"] .td.cbi-section-table-titles,
   [data-page="admin-network-firewall-snats"] .td.cbi-section-table-titles {
@@ -5380,16 +5891,6 @@ pre.command-output {
   [data-page="admin-network-firewall-rules"] .tr[data-title]::before,
   [data-page="admin-network-firewall-snats"] .tr[data-title]::before {
     overflow-wrap: anywhere;
-  }
-}
-@media screen and (max-width: 1152px) {
-  [data-page="admin-network-network"] .cbi-map-tabbed > .cbi-tblsection > .table > .tbody {
-    display: block;
-  }
-}
-@media screen and (min-width: 1153px) {
-  [data-page="admin-network-network"] #cbi-network-interface .cbi-section-actions {
-    width: 22rem !important;
   }
 }
 [data-page="admin-network-network"] .cbi-value-field .cbi-dynlist {
@@ -5610,10 +6111,6 @@ pre.command-output {
 [data-page="admin-network-firewall-custom"] #view > h3,
 [data-page="admin-status-routes"] #view > h3 {
   border-radius: var(--radius-card) var(--radius-card) 0 0;
-}
-[data-page="admin-status-processes"] .cbi-section-actions {
-  width: 18rem;
-  max-width: 100%;
 }
 [data-page="admin-status-processes"] .th:nth-child(3),
 [data-page="admin-status-processes"] .td:nth-child(3) {
@@ -6259,14 +6756,17 @@ pre.command-output {
   overflow: auto;
   font-size: 12px !important;
 }
-[data-page="admin-services-ttyd"] .container {
+[data-page="admin-services-ttyd"] #maincontent > .container,
+[data-page="admin-services-ttyd-ttyd"] #maincontent > .container {
   display: flex;
   flex-direction: column;
 }
-[data-page="admin-services-ttyd"] #view {
+[data-page="admin-services-ttyd"] #view,
+[data-page="admin-services-ttyd-ttyd"] #view {
   flex: 1;
 }
-[data-page="admin-services-ttyd"] #view iframe {
+[data-page="admin-services-ttyd"] #view iframe,
+[data-page="admin-services-ttyd-ttyd"] #view iframe {
   height: 100%;
 }
 [data-page="admin-docker-overview"] .cbi-section-table {
@@ -6664,9 +7164,6 @@ pre.command-output {
 [data-page^="admin-services-openclash"] .oc .card-controls {
   align-self: center;
 }
-[data-page^="admin-services-openclash"] .oc .core-main-controls {
-  justify-content: center !important;
-}
 [data-page^="admin-services-openclash"] .oc .plugin-toggle-container {
   margin-left: inherit !important;
 }
@@ -6817,6 +7314,86 @@ pre.command-output {
 /* openvpn bug fix */
 .OpenVPN a {
   line-height: initial !important;
+}
+[data-page^="admin-vpn-easytier"] #maincontent {
+  --card-bg: var(--surface-color);
+  --card-shadow: transparent;
+  --text-primary: var(--text-strong);
+  --text-secondary: var(--muted-text);
+  --tab-active: var(--link-color);
+  --tab-hover: var(--surface-active);
+  --gradient-bg: var(--surface-color);
+  --hover-bg: var(--surface-active);
+  --upload-bg: var(--surface-color);
+  --upload-border: var(--border-color);
+  --upload-hover: var(--surface-active);
+  --log-bg: var(--surface-color);
+  --log-text: var(--text-color);
+  --log-border: var(--border-color);
+  --log-header-bg: var(--surface-muted);
+  --log-hover: var(--surface-active);
+  --log-info: var(--link-color);
+  --log-warn: var(--warning);
+  --log-error: var(--danger);
+  --info: var(--primary);
+  --error: var(--danger);
+}
+[data-page^="admin-vpn-easytier"] #maincontent .et-quick-actions,
+[data-page^="admin-vpn-easytier"] #maincontent .et-status-card,
+[data-page^="admin-vpn-easytier"] #maincontent .et-conninfo-container,
+[data-page^="admin-vpn-easytier"] #maincontent .web-card,
+[data-page^="admin-vpn-easytier"] #maincontent .upload-card,
+[data-page^="admin-vpn-easytier"] #maincontent .log-container {
+  min-width: 0;
+  max-width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  box-shadow: var(--section-shadow);
+}
+[data-page^="admin-vpn-easytier"] #maincontent .et-tabs-container {
+  min-width: 0;
+  max-width: 100%;
+  overscroll-behavior-inline: contain;
+}
+[data-page^="admin-vpn-easytier"] #maincontent .et-tab {
+  flex: 0 0 auto;
+}
+[data-page^="admin-vpn-easytier"] #maincontent .et-refresh-btn {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--accent-text);
+}
+[data-page^="admin-vpn-easytier"] #maincontent .et-error {
+  color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 10%, var(--surface-color));
+  border-color: color-mix(in srgb, var(--danger) 35%, var(--border-color));
+}
+[data-page^="admin-vpn-easytier"] #maincontent .modal:not(.cbi-modal) {
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: var(--page-gutter);
+  border: 0;
+  border-radius: 0 !important;
+  box-shadow: none;
+  container-type: normal;
+}
+[data-page^="admin-vpn-easytier"] #maincontent .modal-content {
+  min-width: 0;
+  max-width: 100%;
+  border-radius: var(--radius-dialog);
+}
+[data-page^="admin-vpn-easytier"] #maincontent .modal-buttons {
+  flex-wrap: wrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-page^="admin-vpn-easytier"] #maincontent *,
+  [data-page^="admin-vpn-easytier"] #maincontent *::before,
+  [data-page^="admin-vpn-easytier"] #maincontent *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 .node-services-vssr .block,
 .node-services-vssr .cbi-section-table-row {
@@ -7072,10 +7649,10 @@ pre.command-output {
   }
   .table {
     display: block;
+    grid-template-columns: minmax(0, 1fr);
   }
-  [data-tab-title] > .table:last-child:not(:has(.cbi-dropdown)),
-  [data-tab-title] > .table:has(+ .cbi-section-create:empty:last-child):not(:has(.cbi-dropdown)) {
-    overflow-x: auto;
+  .table > :is(thead, tbody, tfoot, .thead, .tbody, .tfoot) {
+    display: block;
   }
   .Interfaces .table {
     overflow-x: hidden;
@@ -7085,6 +7662,8 @@ pre.command-output {
   }
   .tr {
     display: flex;
+    min-width: 0;
+    max-width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
   }
@@ -7103,10 +7682,24 @@ pre.command-output {
   .th,
   .td {
     display: inline-block;
+    min-width: 0;
+    max-width: 100%;
     align-self: flex-start;
     flex: 2 2 10%;
     text-overflow: ellipsis;
     word-wrap: break-word;
+  }
+  .td[data-title] {
+    flex-basis: 50%;
+  }
+  .td[data-title]::before {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .td .ifacebadge {
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .td select,
   .td input[type="text"] {
@@ -7143,8 +7736,35 @@ pre.command-output {
     flex-basis: 50%;
     text-align: center;
   }
-  .td.cbi-section-actions {
+  .td.cbi-section-actions,
+  .td:has( > :is(.btn, .cbi-button):only-child) {
+    flex: 1 1 100%;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100%;
     vertical-align: bottom;
+  }
+  .td.cbi-section-actions > :not(.btn, .cbi-button),
+  .td:has( > :is(.btn, .cbi-button):only-child) > :not(.btn, .cbi-button) {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+  .td.cbi-section-actions .btn,
+  .td:has( > :is(.btn, .cbi-button):only-child) .btn,
+  .td.cbi-section-actions .cbi-button,
+  .td:has( > :is(.btn, .cbi-button):only-child) .cbi-button {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .table .tr:last-child > .td:first-child {
+    border-end-start-radius: 0;
+  }
+  .table .tr:last-child > .td[data-title]:nth-child(odd):nth-last-child(2),
+  .table .tr:last-child > .td[data-title]:nth-child(odd):last-child,
+  .table .tr:last-child > .td.cbi-section-actions:last-child,
+  .table .tr:last-child > .td:has( > :is(.btn, .cbi-button):only-child):last-child {
+    border-end-start-radius: inherit;
   }
   .tr.table-titles,
   .tr.cbi-section-table-titles,
@@ -7188,8 +7808,13 @@ pre.command-output {
     inset-inline-start: 0;
     z-index: 100;
     width: 0;
+    overflow-x: hidden;
   }
   .main-left.active {
+    width: var(--sidebar-width);
+  }
+  .main-left > .sidenav-header,
+  .main-left > .nav {
     width: var(--sidebar-width);
   }
   .main-right {
@@ -7222,6 +7847,14 @@ pre.command-output {
   }
   .main > .main-left > .nav > .slide > .slide-menu > li > a {
     font-size: 0.875rem;
+  }
+}
+@media screen and (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .main-left {
+    transition: width 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+  .main-left.active {
+    transition-duration: 0.3s;
   }
 }
 @media screen and (max-width: 600px) {

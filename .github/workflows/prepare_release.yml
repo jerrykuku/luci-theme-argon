@@ -10,7 +10,7 @@ on:
       branch:
         description: "Source branch to prepare and tag"
         required: true
-        default: '3.0'
+        default: 'master'
         type: string
       notes_en:
         description: "Optional English changelog content"

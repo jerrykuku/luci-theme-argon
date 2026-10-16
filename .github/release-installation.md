@@ -1,3 +1,17 @@
+## Argon 3.0
+
+- Integrate Argon Config, wallpaper uploads and custom branding into the theme package, with a compatibility package for existing installations.
+- Add classic-sidebar and centered-card login layouts, persistent light/dark/system appearance switching, and automatic dark accent colors.
+- Improve desktop and mobile layouts, shared controls, tables, tabs, dialogs and most third-party LuCI applications.
+- Replace icon fonts with SVG menu/control icons and complete Argon Config translations.
+- Refresh the English/Chinese README, desktop demo, screenshots and development guides.
+
+- 将 Argon Config、背景上传和自定义图标集成到主题，提供旧版配置插件迁移包。
+- 提供经典侧栏、居中卡片两套登录布局，持久化亮色／暗色／跟随系统切换，以及自动暗色配色。
+- 优化桌面与手机布局、通用控件、表格、标签页、弹窗和大多数第三方 LuCI 应用的适配。
+- 使用 SVG 菜单／控件图标替代图标字体，补全 Argon Config 翻译。
+- 更新中英文 README、桌面演示动画、截图和开发说明。
+
 ## Installation / 安装说明
 
 | Firmware / 固件 | Package / 安装包 |

@@ -10,28 +10,44 @@
     min-width: 0;
     max-width: 100%;
     padding: .125rem .5rem;
-    line-height: 1.25rem;
+    line-height: 1.5;
     white-space: normal;
     overflow-wrap: anywhere;
   }
 
   .ifacebadge {
     flex-wrap: wrap;
+    gap: .375rem;
     min-width: 0;
     max-width: 100%;
     margin: 0;
     padding: 0 .25rem;
-    line-height: 1.25rem;
+    line-height: 1.5;
     white-space: normal;
     overflow-wrap: anywhere;
   }
 
   > li img {
-    flex: 0 0 1rem;
-    width: 1rem;
-    height: 1rem;
+    flex: 0 0 1.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
     margin: 0;
     object-fit: contain;
+  }
+
+  // Native device choices are either direct children or inside a multiselect label.
+  > li:has(> img),
+  > li > label:has(> img) {
+    column-gap: .5rem;
+    min-width: 0;
+    line-height: 1.5;
+    white-space: normal;
+    overflow-wrap: anywhere;
+
+    > span {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
   }
 }
 
@@ -68,7 +84,7 @@
   color: var(--dropdown-text);
   font-size: .875rem;
   font-weight: 400;
-  line-height: 1.25rem;
+  line-height: 1.5;
   text-align: start;
 
   > li {
@@ -87,6 +103,16 @@
       flex: 1 1 auto;
       min-width: 0;
       margin-inline-start: .5rem;
+    }
+
+    // Keep wrapped descriptions in one text column, with the icon on its first line.
+    &:has(> img),
+    > label:has(> img) {
+      align-items: flex-start;
+
+      > img {
+        margin-block-start: ~"max(0px, calc((1.5em - 1.25rem) / 2))";
+      }
     }
 
     input.create-item-input {

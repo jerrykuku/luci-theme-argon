@@ -219,6 +219,54 @@
     max-height: none;
   }
 
+  // Brief notices, including LuCI's session-expiry prompt, need less space
+  // than forms and data tables. Match the native message/action structure.
+  &:has(> .alert-message + .right:last-child):not(:has(.cbi-map, .table, table, pre, textarea)) {
+    max-width: 32rem;
+  }
+
+  > .alert-message {
+    // Inline feedback is part of the dialog, rather than an elevated toast.
+    --dialog-feedback-accent: var(--link-color);
+    position: static;
+    inset: auto;
+    transform: none;
+    width: auto;
+    margin: 0;
+    padding: .75rem 1rem;
+    border: 1px solid transparent;
+    border-inline-start: 3px solid var(--dialog-feedback-accent);
+    border-radius: var(--radius-panel) !important;
+    background-color: color-mix(in srgb, var(--dialog-feedback-accent) 10%, var(--surface-color)) !important;
+    color: var(--text-strong);
+    box-shadow: none;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+
+    &.warning {
+      --dialog-feedback-accent: var(--warning-heading-color);
+    }
+
+    &.error,
+    &.danger {
+      --dialog-feedback-accent: var(--danger);
+    }
+
+    &.success {
+      --dialog-feedback-accent: var(--success);
+    }
+
+    > :first-child {
+      margin-block-start: 0;
+    }
+
+    > :last-child {
+      margin-block-end: 0;
+    }
+  }
+
   .cbi-map {
     margin-bottom: 0;
   }

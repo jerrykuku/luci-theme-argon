@@ -127,13 +127,31 @@
 .cbi-section-create {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
+  row-gap: var(--control-gap);
   padding: .875rem 1rem;
+
+  &:has(> button:first-child) {
+    column-gap: var(--control-gap);
+  }
+
+  > .btn,
+  > .cbi-button {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 
   &:empty {
     display: none;
   }
 
   &>div:first-child {
+    min-width: 0;
+    max-width: 100%;
+
     &>input {
       width: 100%;
       border-inline-end: none;

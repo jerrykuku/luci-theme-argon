@@ -1,5 +1,7 @@
 # Argon SVG icons / SVG 图标
 
+`copy.svg` 和 `download.svg` 是文件管理操作使用的补充图标，采用24×24画布、2px描边，并通过CSS mask跟随控件颜色；不属于原字体导出清单。
+
 原 `argon.woff2` 中全部 **28 个可见图标**已按原始矢量轮廓导出，字体文件已从主题移除。文件名使用实际服务或功能名称，例如 `status.svg`、`services.svg`、`docker.svg`；Unicode 编码仅保留在对照表中。SVG 使用透明背景和 `viewBox`，可用于 CSS mask 或内联 SVG。
 
 All **28 visible icons** from the former `argon.woff2` font are exported with their original vector outlines; the font files have been removed from the theme. Filenames use service or function names, such as `status.svg`, `services.svg`, and `docker.svg`; Unicode code points are kept in the mapping. SVGs have transparent backgrounds and view boxes, suitable for CSS masks or inline SVG.

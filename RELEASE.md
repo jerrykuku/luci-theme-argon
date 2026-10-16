@@ -1,5 +1,13 @@
 # Update log for master branch
 
+## v3.0.0 [ 2026.10.16 ]
+
+- Integrate Argon Config, wallpaper uploads and custom branding into the theme package, with a compatibility package for existing installations.
+- Add classic-sidebar and centered-card login layouts, persistent light/dark/system appearance switching, and automatic dark accent colors.
+- Improve desktop and mobile layouts, shared controls, tables, tabs, dialogs and most third-party LuCI applications.
+- Replace icon fonts with SVG menu/control icons and complete Argon Config translations.
+- Refresh the English/Chinese README, desktop demo, screenshots and development guides.
+
 ## v2.4.8 [ 2026.10.08 ]
 
 ### v2.4.8 r2 rebuild / 修订版重发
