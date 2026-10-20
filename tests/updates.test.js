@@ -34,7 +34,7 @@ function fixture(options = {}) {
 	state.confirm = () => state.nodes.filter(n => n.tag === 'button' && n.children === 'Update now').at(-1).click();
 	state.tick = () => Promise.all(Array.from(state.watchers, fn => fn()));
 	state.button = () => state.nodes.find(n => n.tag === 'button');
-	state.status = () => state.nodes.find(n => n.role === 'status').textContent;
+	state.status = () => state.nodes.find(n => n.role === 'status').children[1].textContent;
 	return state;
 }
 function checked(current, latest = '3.0.0-r2', manager = 'apk') {
@@ -262,4 +262,72 @@ test('monitoring follows a new job started while the previous terminal status wa
 	assert.equal(f.watchers.size, 1);
 	assert.equal(f.installButton().disabled, true);
 	assert.equal(f.status(), 'Downloading the update...');
+});
+
+
+test('historical successful installs render as up to date after reloading, without pending update actions', async () => {
+	for (const manager of ['apk', 'opkg']) {
+		const current = manager === 'apk' ? '3.0.0-r2' : '3.0.0-2';
+		const initial = { ...checked(current, current, manager), can_upgrade: false,
+			upgrade: { phase: 'complete', active: false, version: current, log: 'Installed' } };
+		const f = fixture({ initial, check: initial });
+		await f.render();
+		assert.equal(f.status(), 'Your theme is up to date.');
+		assert.equal(f.find('button', 'Reload page').hidden, true);
+		assert.equal(f.installButton().hidden, true);
+		assert.equal(f.find('a', 'Download package').hidden, true);
+		assert.equal(f.nodes.find(n => n.role === 'status').attrs['data-state'], 'current');
+		assert.equal(f.nodes.find(n => n.attrs.class === 'argon-update-status-icon').hidden, false);
+		assert.ok(f.nodes.filter(n => n.tag === 'details').every(n => !n.open));
+		await f.button().click();
+		assert.equal(f.status(), 'Your theme is up to date.');
+		assert.ok(f.nodes.filter(n => n.tag === 'details').every(n => !n.open));
+		assert.equal(f.find('button', 'Reload page').hidden, true);
+	}
+});
+
+test('a previous completed job cannot conceal a newly available release', async () => {
+	const f = fixture({ initial: { ...checked('3.0.0-r2', '3.0.0-r3'),
+		upgrade: { phase: 'complete', active: false, version: '3.0.0-r2' } } });
+	await f.render();
+	assert.equal(f.status(), 'Update available.');
+	assert.equal(f.installButton().hidden, false);
+	assert.equal(f.find('button', 'Reload page').hidden, true);
+	assert.equal(f.find('a', 'Download package').hidden, false);
+});
+
+test('completion collapses notes once and requires a reload for a job observed in this document', async () => {
+	const current = '3.0.0-r2';
+	const f = fixture({ initial: { ...checked(current),
+		upgrade: { phase: 'installing', active: true, version: current } } });
+	await f.render();
+	const details = f.nodes.filter(n => n.tag === 'details');
+	details.forEach(n => { n.open = true; });
+	const upgrade = { phase: 'complete', active: false, version: current, log: 'Installed' };
+	f.initial = { ...checked(current), can_upgrade: false, upgrade };
+	f.progress = { result: 0, current_version: current, upgrade };
+	await f.tick();
+	assert.match(f.status(), /^Update installed/);
+	assert.equal(f.find('button', 'Reload page').hidden, false);
+	assert.ok(details.every(n => !n.open));
+	assert.equal(f.find('a', 'Download package').hidden, true);
+});
+
+test('recovering a failed local read does not treat a historical installation as a new one', async () => {
+	const f = fixture({ getError: true, check: { ...checked('3.0.0-r2'), can_upgrade: false,
+		upgrade: { phase: 'complete', active: false, version: '3.0.0-r2' } } });
+	await f.render(); await f.button().click();
+	assert.equal(f.status(), 'Your theme is up to date.');
+	assert.equal(f.find('button', 'Reload page').hidden, true);
+});
+
+test('failed refreshes remove the success icon while preserving the last checked versions', async () => {
+	const f = fixture({ initial: checked('3.0.0-r2'), checkError: true });
+	await f.render();
+	const icon = f.nodes.find(n => n.attrs.class === 'argon-update-status-icon');
+	assert.equal(icon.hidden, false);
+	await f.button().click();
+	assert.match(f.status(), /^Unable to check for updates/);
+	assert.equal(icon.hidden, true);
+	assert.equal(f.nodes.find(n => n.role === 'status').attrs['data-state'], 'error');
 });

@@ -5031,6 +5031,29 @@ pre.command-output {
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
+[data-page="admin-system-argon-config"] .argon-update-status {
+  display: flex;
+  align-items: center;
+  gap: var(--control-gap);
+  color: var(--text-strong);
+}
+[data-page="admin-system-argon-config"] .argon-update-status[data-state="current"],
+[data-page="admin-system-argon-config"] .argon-update-status[data-state="complete"] {
+  font-weight: 600;
+}
+[data-page="admin-system-argon-config"] .argon-update-status-icon {
+  display: inline-flex;
+  flex: 0 0 1.25rem;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--success);
+  border-radius: 50%;
+  color: var(--success);
+  font-size: 0.8125rem;
+  line-height: 1;
+}
 [data-page="admin-system-argon-config"] .argon-update-actions {
   display: flex;
   flex-wrap: wrap;

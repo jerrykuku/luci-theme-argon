@@ -54,6 +54,9 @@ return baseclass.extend({
 	},
 
 	render: function(state, map) {
+		var loadedVersion = state && state.current_version;
+		var observedInstallation = !!(state && state.upgrade && state.upgrade.active);
+		var lastPhase = state && state.upgrade && state.upgrade.phase;
 		var busy = false;
 		var monitoring = false;
 		var confirming = false;
@@ -61,7 +64,9 @@ return baseclass.extend({
 		var attached = false;
 		var current = E('dd');
 		var latest = E('dd');
-		var status = E('p', { 'class': 'argon-update-status', 'role': 'status', 'aria-live': 'polite', 'aria-atomic': 'true' });
+		var statusIcon = E('span', { 'class': 'argon-update-status-icon', 'aria-hidden': 'true', 'hidden': true }, '✓');
+		var statusText = E('span');
+		var status = E('p', { 'class': 'argon-update-status', 'role': 'status', 'aria-live': 'polite', 'aria-atomic': 'true' }, [statusIcon, statusText]);
 		var checked = E('p', { 'class': 'argon-update-checked' });
 		var notes = E('pre', { 'class': 'argon-update-notes' });
 		var details = E('details', { 'class': 'argon-update-details', 'hidden': true }, [
@@ -71,7 +76,7 @@ return baseclass.extend({
 		var downloadLink = E('a', { 'class': 'cbi-button cbi-button-neutral', 'hidden': true, 'target': '_blank', 'rel': 'noopener noreferrer' }, _('Download package'));
 		var button = E('button', { 'type': 'button', 'class': 'cbi-button cbi-button-action', 'click': check }, _('Check for updates'));
 		var installButton = E('button', { 'type': 'button', 'class': 'cbi-button cbi-button-action', 'hidden': true, 'click': confirmInstall }, _('Update now'));
-		var reloadButton = E('button', { 'type': 'button', 'class': 'cbi-button cbi-button-action', 'hidden': true,
+		var reloadButton = E('button', { 'type': 'button', 'class': 'cbi-button cbi-button-neutral', 'hidden': true,
 			'click': function() { window.location.reload(); } }, _('Reload page'));
 		var installHint = E('p', { 'class': 'argon-update-checked', 'hidden': true },
 			_('Automatic installation is unavailable. Download the package to update manually.'));
@@ -80,39 +85,60 @@ return baseclass.extend({
 			E('summary', {}, _('Installation log')), installLog
 		]);
 		var content = E('div', { 'class': 'argon-update-content' }, [
+			status,
 			E('dl', { 'class': 'argon-update-versions' }, [
 				E('div', {}, [E('dt', {}, _('Current version')), current]),
 				E('div', {}, [E('dt', {}, _('Latest stable version')), latest])
 			]),
 			E('div', { 'class': 'argon-update-actions' }, [button, installButton, reloadButton, releaseLink, downloadLink]),
-			status, installHint, checked, logDetails, details
+			installHint, checked, logDetails, details
 		]);
+
+		function needsReload() {
+			return !!(state && state.upgrade && state.upgrade.phase === 'complete' &&
+				(observedInstallation || loadedVersion && state.current_version !== loadedVersion));
+		}
+
+		function showStatus(message, kind) {
+			statusText.textContent = message;
+			status.setAttribute('data-state', kind || 'idle');
+			statusIcon.hidden = kind !== 'current' && kind !== 'complete';
+		}
 
 		function mayInstall() {
 			var remote = release(state);
 			var local = version(state && state.current_version);
 			return !!(remote && remote.file && remote.parsed && local && compare(local, remote.parsed) < 0 &&
-				state.can_upgrade && map && !map.readonly);
+				state.can_upgrade && map && !map.readonly && !needsReload());
 		}
 
 		function refresh() {
 			var remote = release(state);
 			var local = version(state && state.current_version);
 			var job = state && state.upgrade || {};
+			if (job.active)
+				observedInstallation = true;
 			var active = !!job.active || monitoring;
-			var available = remote && remote.parsed && local && compare(local, remote.parsed) < 0;
+			var order = remote && remote.parsed && local ? compare(local, remote.parsed) : null;
+			var available = order !== null && order < 0;
+			var reloadNeeded = needsReload();
+			if (job.phase === 'complete' && lastPhase !== 'complete') {
+				details.open = false;
+				logDetails.open = false;
+			}
+			lastPhase = job.phase;
 			current.textContent = state && state.current_version || _('Unknown version');
 			latest.textContent = remote ? remote.version : _('Not checked yet.');
 			button.disabled = busy || active || confirming;
-			button.className = 'cbi-button ' + (available || job.phase === 'complete' ? 'cbi-button-neutral' : 'cbi-button-action');
+			button.className = 'cbi-button ' + (remote ? 'cbi-button-neutral' : 'cbi-button-action');
 			installButton.hidden = !mayInstall();
 			installButton.disabled = busy || active || confirming;
-			installHint.hidden = !(available && !state.can_upgrade && map && !map.readonly && !active);
-			reloadButton.hidden = job.phase !== 'complete' || active;
+			installHint.hidden = !(available && !state.can_upgrade && map && !map.readonly && !active && !reloadNeeded);
+			reloadButton.hidden = !reloadNeeded || active;
 			button.textContent = busy ? _('Checking for updates...') : _('Check for updates');
 			content.setAttribute('aria-busy', String(busy));
 			releaseLink.href = remote ? releases + '/tag/' + encodeURIComponent(remote.tag) : releases + '/latest';
-			downloadLink.hidden = !(remote && remote.file);
+			downloadLink.hidden = !(remote && remote.file) || active || reloadNeeded || order !== null && order >= 0;
 			if (!downloadLink.hidden)
 				downloadLink.href = releases + '/download/' + encodeURIComponent(remote.tag) + '/' + encodeURIComponent(remote.file);
 			checked.hidden = !(remote && Number.isSafeInteger(state.checked_at) && state.checked_at > 0);
@@ -123,21 +149,20 @@ return baseclass.extend({
 				state.notes.slice(0, 32768) + (state.notes.length > 32768 ? '\n…' : '') : _('No release notes were published.');
 			logDetails.hidden = typeof job.log !== 'string' || !job.log.trim();
 			installLog.textContent = typeof job.log === 'string' ? job.log.slice(-8192) : '';
-			if (active || job.phase === 'failed' || job.phase === 'complete')
-				status.textContent = jobMessage(job);
+			if (active || job.phase === 'failed' || reloadNeeded)
+				showStatus(jobMessage(job), active ? 'working' : reloadNeeded ? 'complete' : 'error');
 			else if (busy)
-				status.textContent = _('Checking for updates...');
+				showStatus(_('Checking for updates...'), 'working');
 			else if (!state || state.result !== 0)
-				status.textContent = _('Unable to check for updates. Check the router\'s connection to GitHub and try again.');
+				showStatus(_('Unable to check for updates. Check the router\'s connection to GitHub and try again.'), 'error');
 			else if (!remote)
-				status.textContent = _('Not checked yet.');
+				showStatus(_('Not checked yet.'));
 			else if (!local || !remote.parsed)
-				status.textContent = _('Unable to compare this version. View the release for details.');
-			else {
-				var order = compare(local, remote.parsed);
-				status.textContent = order < 0 ? _('Update available.') : order === 0 ?
-					_('Your theme is up to date.') : _('The installed version is newer than the latest stable release.');
-			}
+				showStatus(_('Unable to compare this version. View the release for details.'));
+			else
+				showStatus(order < 0 ? _('Update available.') : order === 0 ?
+					_('Your theme is up to date.') : _('The installed version is newer than the latest stable release.'),
+					order === 0 ? 'current' : available ? 'available' : 'idle');
 		}
 
 		function jobMessage(job) {
@@ -193,7 +218,7 @@ return baseclass.extend({
 					refresh();
 				});
 			}).catch(function() {
-				status.textContent = _('Unable to read update progress. Reconnecting...');
+				showStatus(_('Unable to read update progress. Reconnecting...'), 'error');
 			});
 		}
 
@@ -216,9 +241,9 @@ return baseclass.extend({
 				if (result.result !== 0) {
 					stopMonitoring();
 					refresh();
-					status.textContent = result.result === 3 ? _('Release information has changed or expired. Check for updates again.') :
+					showStatus(result.result === 3 ? _('Release information has changed or expired. Check for updates again.') :
 						result.result === 5 ? _('The installed version has changed. Check for updates again.') :
-						_('Unable to start the update. Check for updates and try again.');
+						_('Unable to start the update. Check for updates and try again.'), 'error');
 					if (result.result === 3 || result.result === 5) {
 						state.can_upgrade = false;
 						installButton.hidden = true;
@@ -236,7 +261,7 @@ return baseclass.extend({
 				starting = false;
 				// A lost reply does not mean the worker failed to start. Poll before
 				// allowing another installation request.
-				status.textContent = _('Unable to read update progress. Reconnecting...');
+				showStatus(_('Unable to read update progress. Reconnecting...'), 'error');
 			});
 		}
 
@@ -275,13 +300,15 @@ return baseclass.extend({
 				state = result;
 				busy = false;
 				refresh();
-				details.open = true;
+				var remote = release(state);
+				var local = version(state.current_version);
+				details.open = !!(remote && remote.parsed && local && compare(local, remote.parsed) < 0 && !needsReload());
 				if (state.upgrade && state.upgrade.active)
 					monitor();
 			}).catch(function() {
 				busy = false;
 				refresh();
-				status.textContent = _('Unable to check for updates. Check the router\'s connection to GitHub and try again.');
+				showStatus(_('Unable to check for updates. Check the router\'s connection to GitHub and try again.'), 'error');
 			});
 		}
 		if (state && state.upgrade && state.upgrade.active)
