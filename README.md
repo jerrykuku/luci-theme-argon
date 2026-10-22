@@ -38,9 +38,8 @@ It also supports automatic and manual switching between light and dark modes.
 ## What's new in 3.1
 
 - **Online theme updates.** Check stable releases and install with the firmware's native APK or OPKG, preserving Argon settings and verifying package SHA256 and size.
-- **Static update sources.** Cloudflare Pages with GitHub Pages fallback, shared requests and caching; routers do not call the GitHub API to check versions.
 - **Layout fixes.** Improve dashboard actions, overview layouts, dynamic lists and custom IP/MAC inputs across narrow screens, light/dark modes and RTL layouts.
-- **Template compatibility.** Ship ucode source and disable the theme's template precompilation step.
+- **Compatibility improvements.** Improve compatibility with stable OpenWrt firmware.
 
 Users on v3.0.0 or earlier must install v3.1.0 manually once to get online updates. See the [release notes](RELEASE.md).
 
@@ -98,11 +97,9 @@ Open **System → Argon Config** for login layouts, colors, glass effects, wallp
 
 Local image and video backgrounds are supported, along with Bing, Unsplash and Wallhaven wallpapers. Unsplash requires an API access key. Browser icons and login logos accept PNG files, 16–1024 pixels per side, up to 1 MiB; browser icons must be square.
 
-Under **Theme updates**, check the latest stable release, read its release notes and download the package matching your firmware's package manager. Checks read a static manifest from the configured Cloudflare Pages primary source, falling back to GitHub Pages without calling the GitHub API. Successful results are cached for five minutes; failed checks have a one-minute cooldown, and concurrent checks share one request.
+Under **Theme updates**, check the latest stable release, read its release notes and download the package matching your firmware's package manager.
 
 When a newer version is available, choose **Update now** and confirm to install the theme using the firmware’s native APK or OPKG package manager, preserving your Argon configuration. The page shows download, verification and installation status plus installation logs, and resumes monitoring after a page refresh. Reload the page after installation. Automatic installation requires a matching release package and SHA256 digest and does not perform downgrades. It updates the main theme package; separate translation packages remain managed by the system package manager.
-
-Packages are still downloaded from GitHub Releases. See the [development guide](docs/DEVELOPMENT.md#static-update-feed-deployment) to deploy and configure the update sources.
 
 When building firmware, stop including the old standalone `luci-app-argon-config` plugin alongside the theme: its files conflict with the integrated settings. See [Build with OpenWrt](docs/DEVELOPMENT.md#build-with-openwrt) for existing build scripts.
 

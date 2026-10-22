@@ -5,16 +5,14 @@
 ### Argon 3.1.0
 
 - Add stable release checks and online theme installation under **System → Argon Config → Theme updates**, using the firmware's native APK or OPKG package manager and preserving Argon settings.
-- Check versions through Cloudflare Pages with GitHub Pages fallback, shared concurrent requests, a five-minute success cache and a one-minute cooldown after both sources fail. Routers no longer call the GitHub API to check versions.
 - Verify package SHA256 and size before installation, reject downgrades, and show installation progress and logs with monitoring that resumes after a page refresh.
 - Fix dashboard action spacing, overview layouts, dynamic lists and custom IP/MAC input borders across narrow screens, light/dark modes and RTL layouts.
-- Keep ucode templates as source and disable this package's template precompilation step for compatibility across stable runtimes.
+- Improve compatibility with stable OpenWrt firmware.
 
 - 在**系统 → Argon 配置 → 主题更新**中检查稳定版并在线安装，通过固件原生 APK 或 OPKG 包管理器升级，保留 Argon 设置。
-- 使用 Cloudflare Pages 主源与 GitHub Pages 备用源检查版本，共享并发请求，成功缓存五分钟，双源均失败后冷却一分钟；路由器检查版本不再调用 GitHub API。
 - 安装前校验安装包 SHA256 和大小，拒绝降级，显示安装进度和日志，刷新页面后继续跟踪安装状态。
 - 修复 Dashboard 操作区间距、概览布局、动态列表及自定义 IP/MAC 输入框边框，兼顾窄屏、亮暗色和 RTL 布局。
-- 保留 ucode 模板源码，关闭本包的模板预编译步骤，兼容不同稳定版运行时。
+- 改善稳定版 OpenWrt 固件上的兼容性。
 
 **First upgrade:** users on v3.0.0 or earlier must install v3.1.0 manually once. Later releases can be installed through Theme updates. Online installation updates the theme package; install separate translation packages in the usual way.
 
