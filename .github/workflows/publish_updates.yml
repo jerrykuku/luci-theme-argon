@@ -1,0 +1,120 @@
+name: Publish update feeds
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
+    secrets:
+      CF_PAGES_DEPLOY_HOOK:
+        required: false
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: argon-update-feeds
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    name: Prepare the latest stable update feed
+    runs-on: ubuntu-24.04
+    outputs:
+      publish: ${{ steps.release.outputs.publish }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Resolve the published stable release
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REQUESTED_TAG: ${{ inputs.tag }}
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/releases/latest" > official-release.json
+          python3 - <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, '.github/scripts')
+          from release_metadata import resolve
+
+          release = json.loads(Path('official-release.json').read_text())
+          tag = release['tag_name']
+          if resolve(tag)['prerelease'] != 'false' or release['draft'] or release['prerelease']:
+              raise SystemExit('The latest release must be a published stable version.')
+          requested = os.environ['REQUESTED_TAG']
+          publish = not requested or requested == tag
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'publish={str(publish).lower()}\ntag={tag}\n')
+          if not publish:
+              print('A newer release is already latest; leave the update feed unchanged.')
+          PY
+
+      - name: Download the exact published theme packages
+        if: steps.release.outputs.publish == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
+        run: |
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern 'luci-theme-argon*' --dir published-packages
+
+      - name: Verify release assets and generate the shared Pages artifact
+        if: steps.release.outputs.publish == 'true'
+        run: |
+          python3 .github/scripts/generate_update_site.py site \
+            --release official-release.json --packages published-packages \
+            --repository "$GITHUB_REPOSITORY" --output update-site
+
+      - name: Upload the shared update feed
+        if: steps.release.outputs.publish == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: argon-update-site
+          path: update-site/
+          include-hidden-files: true
+          if-no-files-found: error
+
+      - name: Package the same files for GitHub Pages
+        if: steps.release.outputs.publish == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: update-site/
+
+  github-pages:
+    name: Deploy the fallback feed to GitHub Pages
+    needs: prepare
+    if: needs.prepare.outputs.publish == 'true'
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  cloudflare-source:
+    name: Publish the Cloudflare source branch and optional deploy hook
+    needs: prepare
+    if: needs.prepare.outputs.publish == 'true'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: argon-update-site
+          path: update-site
+
+      - name: Publish the verified feed, then trigger Cloudflare if configured
+        env:
+          CF_PAGES_DEPLOY_HOOK: ${{ secrets.CF_PAGES_DEPLOY_HOOK }}
+        run: python3 .github/scripts/publish_update_branch.py --site update-site

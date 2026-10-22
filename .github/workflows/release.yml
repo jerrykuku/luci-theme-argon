@@ -180,6 +180,8 @@ jobs:
         env:
           RELEASE_VERSION: ${{ matrix.package_format == 'apk' && needs.metadata.outputs.apk_version || needs.metadata.outputs.ipk_version }}
           PACKAGE_RELEASE: ${{ needs.metadata.outputs.package_release }}
+          ARGON_UPDATE_PRIMARY_URL: ${{ vars.ARGON_UPDATE_PRIMARY_URL }}
+          ARGON_UPDATE_FALLBACK_URL: ${{ vars.ARGON_UPDATE_FALLBACK_URL }}
         run: |
           mkdir -p sdk/package
 
@@ -192,6 +194,11 @@ jobs:
             sdk/package/luci-theme-argon/
 
           cp -a compat/luci-app-argon-config sdk/package/luci-app-argon-config
+
+          python3 .github/scripts/generate_update_site.py sources \
+            --primary "$ARGON_UPDATE_PRIMARY_URL" \
+            --fallback "${ARGON_UPDATE_FALLBACK_URL:-https://jerrykuku.github.io/luci-theme-argon/updates/stable.json}" \
+            --output sdk/package/luci-theme-argon/root/usr/share/argon/update-sources.json
 
           for makefile in \
             sdk/package/luci-theme-argon/Makefile \
@@ -350,6 +357,19 @@ jobs:
           generate_release_notes: ${{ needs.metadata.outputs.prerelease == 'false' }}
           fail_on_unmatched_files: true
           files: release-assets/*
+
+  update-feeds:
+    name: Publish stable update feeds
+    needs: [release, metadata]
+    if: needs.metadata.outputs.prerelease == 'false' && vars.ARGON_UPDATES_ENABLED == 'true'
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/publish_updates.yml
+    with:
+      tag: ${{ github.ref_name }}
+    secrets: inherit
 
   sync-docs:
     name: Sync release docs
