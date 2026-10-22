@@ -95,6 +95,8 @@ apk add --allow-untrusted ./luci-theme-argon-*.apk
 
 安装包仍从 GitHub Release 下载。更新源的部署和首次配置见[开发说明](docs/DEVELOPMENT_ZH.md#静态更新源部署)。
 
+自行编译固件时，不要再同时引入旧版独立 `luci-app-argon-config` 插件；它会与主题内置文件冲突。已有自动编译脚本的调整方式见[源码构建说明](docs/DEVELOPMENT_ZH.md#源码构建)。
+
 ## 效果展示
 
 亮暗两色，展示桌面与手机端的首页和两套登录界面。

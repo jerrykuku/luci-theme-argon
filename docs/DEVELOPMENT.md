@@ -17,6 +17,10 @@ make package/luci-theme-argon/compile V=s
 
 Theme settings are included. Select the nested `compat/luci-app-argon-config` package under LuCI applications only when building the migration package. Existing translation names remain `luci-i18n-argon-config-*`.
 
+Firmware and GitHub Actions build scripts should stop cloning the old standalone `luci-app-argon-config` repository and deselect that plugin. The old `1.0-r20261008` plugin duplicates the configuration, RPC services, settings page and icons now owned by the theme, causing APK's `trying to overwrite ... owned by luci-theme-argon` errors. New firmware only needs the theme. If the old package name is required, use this repository's empty migration package and keep exactly one definition of that package in the build tree. After updating an existing build tree, run `make defconfig` and clean the old plugin's build outputs before rebuilding.
+
+The older `does not support ucode template precompilation` log line is LuCI's skip message, separate from the file conflict. This package disables precompilation and ships `.ut` source to avoid SDK/target ucode bytecode incompatibilities; other LuCI packages can retain precompilation.
+
 Release CI builds IPK with the OpenWrt 23.05.5 SDK and APK v3 with the 25.12.5 SDK. Ucode templates ship as source to avoid tying packages to one runtime's bytecode format.
 
 Translations use `PKG_PO_VERSION` to follow the theme release, including `-r<revision>` for APK. IPK translations retain a `v` prefix (for example, `v3.0.1`) so ordinary installation upgrades the broken v3.0.0 `unknown` version. Keep that prefix in future IPK releases. CI reads each translation's internal package metadata and blocks artifact upload and publication if the version is wrong.

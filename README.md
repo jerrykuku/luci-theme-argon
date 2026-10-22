@@ -95,6 +95,8 @@ When a newer version is available, choose **Update now** and confirm to install 
 
 Packages are still downloaded from GitHub Releases. See the [development guide](docs/DEVELOPMENT.md#static-update-feed-deployment) to deploy and configure the update sources.
 
+When building firmware, stop including the old standalone `luci-app-argon-config` plugin alongside the theme: its files conflict with the integrated settings. See [Build with OpenWrt](docs/DEVELOPMENT.md#build-with-openwrt) for existing build scripts.
+
 ## Screenshots
 
 Light and dark views of the overview and both login layouts, on desktop and mobile.

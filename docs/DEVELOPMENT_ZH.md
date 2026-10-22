@@ -17,6 +17,10 @@ make package/luci-theme-argon/compile V=s
 
 主题设置已内置。仅在需要构建旧插件迁移包时，在 LuCI 应用中额外选择嵌套的 `compat/luci-app-argon-config` 包。语言包继续使用 `luci-i18n-argon-config-*` 名称。
 
+固件或 GitHub Actions 构建脚本应移除旧版独立 `luci-app-argon-config` 仓库的克隆步骤，并取消旧插件选项。旧版 `1.0-r20261008` 插件会重复安装主题已内置的配置、RPC、设置页及图标，导致 APK 报 `trying to overwrite ... owned by luci-theme-argon`。新固件只需选择主题；需要保留旧包名时，使用本仓库的空迁移包，整个构建树中只保留一份该包定义。已有构建缓存时，更新包定义后重新运行 `make defconfig`，并清理旧插件的编译产物再编译。
+
+旧构建日志中的 `does not support ucode template precompilation` 是 LuCI 的跳过提示，不是上述文件冲突的原因。本包关闭模板预编译并保留 `.ut` 源码，避免 SDK 与目标设备的 ucode 字节码格式不一致；无需关闭其他 LuCI 包的预编译。
+
 发行 CI 使用 OpenWrt 23.05.5 SDK 构建 IPK、25.12.5 SDK 构建 APK v3。Ucode 模板保留源码，避免绑定某个运行时的字节码格式。
 
 语言包通过 `PKG_PO_VERSION` 跟随主题发行版本，APK 包含 `-r<修订号>`。IPK 语言包固定使用 `v` 前缀（如 `v3.0.1`），使已安装的 v3.0.0 `unknown` 语言包可以直接正常升级；后续版本须保留该前缀。发布前会逐个读取语言包内部元数据，版本不符时阻止上传和发布。
