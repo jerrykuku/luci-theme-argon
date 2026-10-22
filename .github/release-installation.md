@@ -1,24 +1,20 @@
-## Argon 3.0
+## Argon 3.1.0
 
-- Integrate Argon Config, wallpaper uploads and custom branding into the theme package, with a compatibility package for existing installations.
-- Add classic-sidebar and centered-card login layouts, persistent light/dark/system appearance switching, and automatic dark accent colors.
-- Improve desktop and mobile layouts, shared controls, tables, tabs, dialogs and most third-party LuCI applications.
-- Replace icon fonts with SVG menu/control icons and complete Argon Config translations.
-- Refresh the English/Chinese README, desktop demo, screenshots and development guides.
-- Fix translation package versions and upgrade ordering; verify every language package before publication.
-- Reduce package size with a WebP login background and optimized WOFF2 fonts, retaining all font characters and rendering instructions.
+- Add stable release checks and online theme installation under **System → Argon Config → Theme updates**, using the firmware's native APK or OPKG package manager and preserving Argon settings.
+- Check versions through Cloudflare Pages with GitHub Pages fallback, shared concurrent requests, a five-minute success cache and a one-minute cooldown after both sources fail. Routers no longer call the GitHub API to check versions.
+- Verify package SHA256 and size before installation, reject downgrades, and show installation progress and logs with monitoring that resumes after a page refresh.
+- Fix dashboard action spacing, overview layouts, dynamic lists and custom IP/MAC input borders across narrow screens, light/dark modes and RTL layouts.
+- Keep ucode templates as source and disable this package's template precompilation step for compatibility across stable runtimes.
 
-- 将 Argon Config、背景上传和自定义图标集成到主题，提供旧版配置插件迁移包。
-- 提供经典侧栏、居中卡片两套登录布局，持久化亮色／暗色／跟随系统切换，以及自动暗色配色。
-- 优化桌面与手机布局、通用控件、表格、标签页、弹窗和大多数第三方 LuCI 应用的适配。
-- 使用 SVG 菜单／控件图标替代图标字体，补全 Argon Config 翻译。
-- 更新中英文 README、桌面演示动画、截图和开发说明。
-- 修复语言包版本及升级顺序，发布前逐包核验全部语言包版本。
-- 使用 WebP 登录背景并精简 WOFF2 字体，保留全部字符和渲染指令，减小安装包体积。
+- 在**系统 → Argon 配置 → 主题更新**中检查稳定版并在线安装，通过固件原生 APK 或 OPKG 包管理器升级，保留 Argon 设置。
+- 使用 Cloudflare Pages 主源与 GitHub Pages 备用源检查版本，共享并发请求，成功缓存五分钟，双源均失败后冷却一分钟；路由器检查版本不再调用 GitHub API。
+- 安装前校验安装包 SHA256 和大小，拒绝降级，显示安装进度和日志，刷新页面后继续跟踪安装状态。
+- 修复 Dashboard 操作区间距、概览布局、动态列表及自定义 IP/MAC 输入框边框，兼顾窄屏、亮暗色和 RTL 布局。
+- 保留 ucode 模板源码，关闭本包的模板预编译步骤，兼容不同稳定版运行时。
 
-This v3.0.0 rebuild uses package revision **2**: IPK `3.0.0-2`, APK `3.0.0-r2`. Translation versions are `v3.0.0-2` (IPK) and `3.0.0-r2` (APK), allowing normal upgrades from the original `unknown` / `0` language packages.
+**First upgrade:** users on v3.0.0 or earlier must install v3.1.0 manually once. Later releases can be installed through Theme updates. Online installation updates the theme package; install separate translation packages in the usual way.
 
-本次 v3.0.0 重发采用安装包修订号 **2**：IPK 为 `3.0.0-2`，APK 为 `3.0.0-r2`。语言包分别为 `v3.0.0-2`（IPK）和 `3.0.0-r2`（APK），可从原 `unknown`／`0` 语言包正常升级。
+**首次升级：** v3.0.0 及更早版本用户需先手动安装一次 v3.1.0，之后可使用主题更新功能在线升级。在线安装仅更新主题主包，独立语言包仍按原方式安装。
 
 ## Installation / 安装说明
 

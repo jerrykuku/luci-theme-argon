@@ -1,5 +1,13 @@
 # Update log for master branch
 
+## v3.1.0 [ 2026.10.22 ]
+
+- Add stable release checks and native APK/OPKG theme installation with configuration preservation, SHA256 and size verification, installation logs and monitoring after a page refresh.
+- Use Cloudflare Pages with GitHub Pages fallback for version checks, shared requests, caching and failure cooldowns without router-side GitHub API calls.
+- Fix dashboard action spacing, overview layouts, dynamic lists and custom IP/MAC inputs across narrow screens, light/dark modes and RTL layouts.
+- Keep ucode templates as source and disable the theme's template precompilation step.
+- Users on v3.0.0 or earlier must install v3.1.0 manually once to get online updates; separate translation packages remain managed by the system package manager.
+
 ## v3.0.0 [ 2026.10.16 ]
 
 ### Argon 3.0

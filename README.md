@@ -35,7 +35,16 @@ It also supports automatic and manual switching between light and dark modes.
 
 </div>
 
-## What's new in 3.0
+## What's new in 3.1
+
+- **Online theme updates.** Check stable releases and install with the firmware's native APK or OPKG, preserving Argon settings and verifying package SHA256 and size.
+- **Static update sources.** Cloudflare Pages with GitHub Pages fallback, shared requests and caching; routers do not call the GitHub API to check versions.
+- **Layout fixes.** Improve dashboard actions, overview layouts, dynamic lists and custom IP/MAC inputs across narrow screens, light/dark modes and RTL layouts.
+- **Template compatibility.** Ship ucode source and disable the theme's template precompilation step.
+
+Users on v3.0.0 or earlier must install v3.1.0 manually once to get online updates. See the [release notes](RELEASE.md).
+
+## 3.0 highlights
 
 - **Built-in Argon Config.** Manage the theme without a separate plugin.
 - **Broad third-party app support.** Refined layouts, forms and tables for most third-party LuCI apps, with desktop/mobile and light/dark adaptations.

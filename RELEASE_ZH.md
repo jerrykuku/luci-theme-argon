@@ -1,5 +1,13 @@
 # Master 分支的更新日志
 
+## v3.1.0 [ 2026.10.22 ]
+
+- 新增稳定版检查及原生 APK/OPKG 在线安装，保留 Argon 配置，校验 SHA256 和大小，显示安装日志，刷新页面后继续跟踪安装状态。
+- 使用 Cloudflare Pages 主源与 GitHub Pages 备用源检查版本，共享请求、缓存成功结果并限制失败重试，路由器不调用 GitHub API。
+- 修复 Dashboard 操作区间距、概览布局、动态列表及自定义 IP/MAC 输入框，兼顾窄屏、亮暗色和 RTL 布局。
+- 保留 ucode 模板源码，关闭主题的模板预编译步骤。
+- v3.0.0 及更早版本用户需先手动安装一次 v3.1.0，之后可在线升级；独立语言包仍由系统包管理器管理。
+
 ## v3.0.0 [ 2026.10.16 ]
 
 - GitHub Release: https://github.com/jerrykuku/luci-theme-argon/releases/tag/v3.0.0
