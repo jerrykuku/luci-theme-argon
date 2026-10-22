@@ -2,17 +2,29 @@
 
 ## v3.1.0 [ 2026.10.22 ]
 
-### Argon 3.1.0
+### Added / 新功能
 
 - Add stable release checks and online theme installation under **System → Argon Config → Theme updates**, using the firmware's native APK or OPKG package manager and preserving Argon settings.
 - Verify package SHA256 and size before installation, reject downgrades, and show installation progress and logs with monitoring that resumes after a page refresh.
-- Fix dashboard action spacing, overview layouts, dynamic lists and custom IP/MAC input borders across narrow screens, light/dark modes and RTL layouts.
+
+- 新增稳定版检查与在线安装，可在**系统 → Argon 配置 → 主题更新**中通过固件原生 APK 或 OPKG 包管理器升级，并保留 Argon 设置。
+- 新增安装包校验、降级保护、安装进度和日志，刷新页面后可继续跟踪安装状态。
+
+### Changed / 改进
+
 - Improve compatibility with stable OpenWrt firmware.
 
-- 在**系统 → Argon 配置 → 主题更新**中检查稳定版并在线安装，通过固件原生 APK 或 OPKG 包管理器升级，保留 Argon 设置。
-- 安装前校验安装包 SHA256 和大小，拒绝降级，显示安装进度和日志，刷新页面后继续跟踪安装状态。
-- 修复 Dashboard 操作区间距、概览布局、动态列表及自定义 IP/MAC 输入框边框，兼顾窄屏、亮暗色和 RTL 布局。
 - 改善稳定版 OpenWrt 固件上的兼容性。
+
+### Fixed / 修复
+
+- Fix dashboard action spacing and overview layouts.
+- Fix dynamic list controls and custom IP/MAC input borders across narrow screens, light/dark modes and RTL layouts.
+
+- 修复 Dashboard 操作区间距和概览布局。
+- 修复动态列表控件及自定义 IP/MAC 输入框边框，兼顾窄屏、亮暗色和 RTL 布局。
+
+### Upgrade notes / 升级说明
 
 **First upgrade:** users on v3.0.0 or earlier must install v3.1.0 manually once. Later releases can be installed through Theme updates. Online installation updates the theme package; install separate translation packages in the usual way.
 
@@ -37,7 +49,7 @@ Download the theme and required language packages in the **same format**. Use th
 
 主题和需要的语言包应选择**相同格式**，以本页附件实际文件名为准。GL.iNet / OpenWrt 23.05 请下载 IPK 并使用固件原有的 `opkg` 安装。
 
-### Argon 3.0 settings integration / 设置集成
+#### Argon 3.0 settings integration / 设置集成
 
 Settings are included in `luci-theme-argon`. Fresh installations need only the theme and desired `luci-i18n-argon-config-*` translations.
 
