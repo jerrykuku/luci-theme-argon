@@ -7205,7 +7205,7 @@ pre.command-output {
   --oc-text: var(--text-color);
   --oc-text-muted: var(--plugin-text-muted);
   --oc-neutral: var(--plugin-neutral);
-  --oc-scrollbar: var(--plugin-scrollbar);
+  --oc-scrollbar: var(--oc-accent);
 }
 [data-page^="admin-services-openclash"] img[src$="arrow-clockwise-light.svg"],
 [data-page^="admin-services-openclash"] img[src$="wrench-light.svg"],
@@ -7256,8 +7256,8 @@ pre.command-output {
   --primary-a60: var(--oc-accent-a60) !important;
   --radio-hover-bg: var(--oc-accent-a10) !important;
   --tab-hover-dark-bg: var(--oc-accent-a10) !important;
-  --scrollbar-thumb: var(--oc-neutral) !important;
-  --scrollbar-thumb-hover: var(--oc-text-muted) !important;
+  --scrollbar-thumb: var(--oc-scrollbar) !important;
+  --scrollbar-thumb-hover: var(--oc-accent-hover) !important;
   border-radius: var(--radius-card);
 }
 [data-page^="admin-services-openclash"] .oc .developer-container,
@@ -7270,6 +7270,22 @@ pre.command-output {
 }
 [data-page^="admin-services-openclash"] .oc .config-upload-content {
   background: var(--oc-surface) !important;
+}
+[data-page^="admin-services-openclash"] textarea::-webkit-scrollbar-thumb,
+[data-page^="admin-services-openclash"] .oc::-webkit-scrollbar-thumb,
+[data-page^="admin-services-openclash"] .oc *::-webkit-scrollbar-thumb,
+[data-page^="admin-services-openclash"] .oc .cm-editor .cm-scroller::-webkit-scrollbar-thumb,
+[data-page^="admin-services-openclash"] .oc #debug-rendered::-webkit-scrollbar-thumb,
+[data-page^="admin-services-openclash"] .oc #debug-rendered pre::-webkit-scrollbar-thumb {
+  background-color: var(--oc-scrollbar) !important;
+}
+[data-page^="admin-services-openclash"] textarea::-webkit-scrollbar-thumb:hover,
+[data-page^="admin-services-openclash"] .oc::-webkit-scrollbar-thumb:hover,
+[data-page^="admin-services-openclash"] .oc *::-webkit-scrollbar-thumb:hover,
+[data-page^="admin-services-openclash"] .oc .cm-editor .cm-scroller::-webkit-scrollbar-thumb:hover,
+[data-page^="admin-services-openclash"] .oc #debug-rendered::-webkit-scrollbar-thumb:hover,
+[data-page^="admin-services-openclash"] .oc #debug-rendered pre::-webkit-scrollbar-thumb:hover {
+  background-color: var(--oc-accent-hover) !important;
 }
 [data-page^="admin-services-openclash"] .cbi-button.cbi-button-add,
 [data-page^="admin-services-openclash"] .cbi-button.cbi-button-apply,
@@ -7435,6 +7451,7 @@ pre.command-output {
 [data-page^="admin-services-openclash"] .oc .config-upload-btn-large:hover {
   transform: none !important;
 }
+[data-page^="admin-services-openclash"] b.oc-txt-good,
 [data-page^="admin-services-openclash"] b[style*="color:green"],
 [data-page^="admin-services-openclash"] b[style*="color: green"],
 [data-page^="admin-services-openclash"] b[color="green"] {
@@ -7468,6 +7485,19 @@ pre.command-output {
 [data-page^="admin-services-openclash"] .cbi-section-node-tabbed > .cbi-tabcontainer > .cbi-value {
   padding-top: 0.4375rem;
   padding-bottom: 0.4375rem;
+}
+[data-page^="admin-services-openclash"][data-page="admin-services-openclash-settings"] [id="container.openclash.config.version_update"] {
+  padding-inline: var(--section-inset);
+}
+[data-page^="admin-services-openclash"][data-page="admin-services-openclash-settings"] [id="container.openclash.config.version_update"] > .oc {
+  border-radius: 0;
+  overflow: visible;
+}
+[data-page^="admin-services-openclash"][data-page="admin-services-openclash-settings"] [id="container.openclash.config.version_update"] #selectPopup.select-popup-tab {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
 }
 [data-page^="admin-services-openclash"][data-page="admin-services-openclash-config"] .cbi-map > .cbi-section > .cbi-section-node:not(.cbi-section-node-tabbed),
 [data-page^="admin-services-openclash"][data-page="admin-services-openclash-config-subscribe"] .cbi-map > .cbi-section > .cbi-section-node:not(.cbi-section-node-tabbed),
@@ -7591,6 +7621,35 @@ pre.command-output {
 }
 [data-page^="admin-services-openclash"] #tab-content .dom {
   padding: 0 1rem 1rem 1rem;
+}
+[data-page^="admin-services-openclash"][data-page="admin-services-openclash-log"] #tab.oc {
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+[data-page^="admin-services-openclash"][data-page="admin-services-openclash-log"] #tab.oc > #tab-header {
+  padding: var(--field-gap) 0;
+  border: 0;
+  background: transparent;
+}
+[data-page^="admin-services-openclash"][data-page="admin-services-openclash-log"] #tab.oc > #tab-header > ul.oc-tabmenu {
+  background: transparent;
+}
+[data-page^="admin-services-openclash"][data-page="admin-services-openclash-log"] #tab.oc + .oc {
+  border-radius: 0;
+}
+[data-page^="admin-services-openclash"][data-page="admin-services-openclash-log"] #tab-content > .dom {
+  padding: 0;
+}
+[data-page^="admin-services-openclash"][data-page="admin-services-openclash-log"] .oc .select-popup-footer.log-footer {
+  margin: 0;
+  padding: var(--field-gap) 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 [data-page^="admin-services-openclash"] #cbi-openclash-dns_servers .cbi-section-table-row > .cbi-section-table-cell:last-child {
   min-width: 7.25rem;
