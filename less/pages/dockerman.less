@@ -30,3 +30,41 @@
     }
 
 }
+
+// Dockerman appends its own overlay styles after the theme. Scope these rules
+// to its pages so positioning wins without changing the native show/hide state.
+[data-page="admin-docker"],
+[data-page^="admin-docker-"] {
+    #docker_apply_overlay {
+        position: fixed;
+        inset: 0;
+        padding: var(--page-gutter);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        > .alert-message {
+            position: static;
+            inset: auto;
+            transform: none;
+            width: 100%;
+            max-width: 60rem;
+            max-height: calc(100vh - 2 * var(--page-gutter));
+            max-height: calc(100dvh - 2 * var(--page-gutter));
+            min-width: 0;
+            margin: auto;
+            overflow: auto;
+
+            > span {
+                flex: 1 1 0;
+                min-width: 0;
+                max-width: 100%;
+            }
+        }
+    }
+
+    &.apply-overlay-active #docker_apply_overlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
