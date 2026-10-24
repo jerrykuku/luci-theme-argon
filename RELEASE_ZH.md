@@ -1,5 +1,10 @@
 # Master 分支的更新日志
 
+## v3.1.3 [ 2026.10.24 ]
+
+- GitHub Release: https://github.com/ssr20001/luci-theme-argon/releases/tag/v3.1.3
+- 详细更新内容请以 Release 页面为准。
+
 ## v3.1.2 [ 2026.10.24 ]
 
 - GitHub Release: https://github.com/ssr20001/luci-theme-argon/releases/tag/v3.1.2
