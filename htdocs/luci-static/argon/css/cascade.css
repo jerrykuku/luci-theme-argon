@@ -2107,7 +2107,6 @@ span.spinning {
 #cbi-wireless > .cbi-section-node,
 #cbi-wireless > #wifi_assoclist_table,
 [data-tab-title],
-[data-page^="admin-system-admin"]:not(.node-main-login) .cbi-map:not(#cbi-dropbear),
 [data-page="admin-system-opkg"] #maincontent > .container {
   font-family: inherit;
   font-weight: normal;
@@ -2128,7 +2127,6 @@ span.spinning {
 #cbi-wireless > .cbi-section-node:last-child,
 #cbi-wireless > #wifi_assoclist_table:last-child,
 [data-tab-title]:last-child,
-[data-page^="admin-system-admin"]:not(.node-main-login) .cbi-map:not(#cbi-dropbear):last-child,
 [data-page="admin-system-opkg"] #maincontent > .container:last-child {
   margin: 0;
   border: 0;
@@ -4777,6 +4775,57 @@ pre.command-output {
   gap: var(--control-gap);
   padding: 0 var(--section-inset) var(--field-gap);
 }
+[data-page="admin-system-admin"] .cbi-section > .cbi-section-node:not(.cbi-section-node-tabbed):where(:has(> .cbi-value, > [id] > .cbi-value)),
+[data-page="admin-system-admin-password"] .cbi-section > .cbi-section-node:not(.cbi-section-node-tabbed):where(:has(> .cbi-value, > [id] > .cbi-value)),
+[data-page="admin-system-admin-pwpolicy"] .cbi-section > .cbi-section-node:not(.cbi-section-node-tabbed):where(:has(> .cbi-value, > [id] > .cbi-value)),
+[data-page="admin-system-admin-uhttpd"] .cbi-section > .cbi-section-node:not(.cbi-section-node-tabbed):where(:has(> .cbi-value, > [id] > .cbi-value)) {
+  padding-block: var(--field-gap);
+}
+[data-page="admin-system-admin"] .cbi-section > .cbi-section-descr:not(:empty) ~ .cbi-section-node:not(.cbi-section-node-tabbed),
+[data-page="admin-system-admin-password"] .cbi-section > .cbi-section-descr:not(:empty) ~ .cbi-section-node:not(.cbi-section-node-tabbed),
+[data-page="admin-system-admin-pwpolicy"] .cbi-section > .cbi-section-descr:not(:empty) ~ .cbi-section-node:not(.cbi-section-node-tabbed),
+[data-page="admin-system-admin-uhttpd"] .cbi-section > .cbi-section-descr:not(:empty) ~ .cbi-section-node:not(.cbi-section-node-tabbed) {
+  padding-block-start: 0;
+}
+[data-page="admin-system-admin"] .cbi-section > .cbi-value,
+[data-page="admin-system-admin-password"] .cbi-section > .cbi-value,
+[data-page="admin-system-admin-pwpolicy"] .cbi-section > .cbi-value,
+[data-page="admin-system-admin-uhttpd"] .cbi-section > .cbi-value {
+  padding-block: var(--field-gap);
+}
+[data-page="admin-system-admin"] .cbi-section > .cbi-value ~ .cbi-value,
+[data-page="admin-system-admin-password"] .cbi-section > .cbi-value ~ .cbi-value,
+[data-page="admin-system-admin-pwpolicy"] .cbi-section > .cbi-value ~ .cbi-value,
+[data-page="admin-system-admin-uhttpd"] .cbi-section > .cbi-value ~ .cbi-value,
+[data-page="admin-system-admin"] .cbi-section > .cbi-section-descr:not(:empty) ~ .cbi-value,
+[data-page="admin-system-admin-password"] .cbi-section > .cbi-section-descr:not(:empty) ~ .cbi-value,
+[data-page="admin-system-admin-pwpolicy"] .cbi-section > .cbi-section-descr:not(:empty) ~ .cbi-value,
+[data-page="admin-system-admin-uhttpd"] .cbi-section > .cbi-section-descr:not(:empty) ~ .cbi-value {
+  padding-block-start: 0;
+}
+[data-page="admin-system-admin"] .cbi-section > .cbi-section-create,
+[data-page="admin-system-admin-password"] .cbi-section > .cbi-section-create,
+[data-page="admin-system-admin-pwpolicy"] .cbi-section > .cbi-section-create,
+[data-page="admin-system-admin-uhttpd"] .cbi-section > .cbi-section-create {
+  padding: var(--field-gap) var(--section-inset);
+}
+[data-page="admin-system-admin-pwpolicy"] #view > .cbi-map {
+  min-width: 0;
+  border-radius: var(--radius-card);
+  background-color: var(--surface-color);
+  box-shadow: var(--section-shadow);
+  gap: 0;
+}
+[data-page="admin-system-admin-pwpolicy"] #view > .cbi-map > h2 {
+  margin: 0;
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+  box-shadow: none;
+}
+[data-page="admin-system-admin-pwpolicy"] #view > .cbi-map > .cbi-section {
+  background: none;
+  box-shadow: none;
+}
 [data-page="admin-system-admin"] .cbi-map h2,
 [data-page="admin-system-admin-password"] .cbi-map h2,
 [data-page="admin-system-admin"] .cbi-map .cbi-map-descr,
@@ -4800,10 +4849,17 @@ pre.command-output {
 [data-page="admin-system-admin-password"] [data-name="pw2"] .cbi-value-description span[style="color:green"] {
   color: var(--strength-strong-text) !important;
 }
+[data-page="admin-system-admin-sshkeys"] #view > div:has(> .cbi-section-node > .cbi-dynlist) > .cbi-section-node {
+  min-width: 0;
+  border-radius: var(--radius-card);
+  background-color: var(--surface-color);
+  box-shadow: var(--section-shadow);
+  padding: var(--field-gap) var(--section-inset);
+}
 [data-page="admin-system-admin-sshkeys"] .cbi-dynlist {
   width: 100%;
-  margin-inline: var(--section-inset);
-  max-width: min(48rem, calc(100% - 2 * var(--section-inset)));
+  margin: 0;
+  max-width: min(48rem, 100%);
   gap: var(--field-gap);
 }
 [data-page="admin-system-admin-sshkeys"] .cbi-dynlist > .item {
@@ -4926,6 +4982,23 @@ pre.command-output {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   user-select: text;
+}
+[data-page="admin-system-admin-repokeys"] .cbi-section-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: inherit;
+}
+[data-page="admin-system-admin-repokeys"] .cbi-section-table > .thead,
+[data-page="admin-system-admin-repokeys"] .cbi-section-table > .thead > .tr {
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+  background: var(--surface-muted);
+}
+[data-page="admin-system-admin-repokeys"] .cbi-section-table > .thead > .tr > .th:first-child {
+  border-start-start-radius: inherit;
+}
+[data-page="admin-system-admin-repokeys"] .cbi-section-table .cbi-section-table-row {
+  margin-block: 0;
 }
 [data-page="admin-system-admin-repokeys"] textarea {
   width: 100%;
@@ -5210,6 +5283,44 @@ pre.command-output {
   object-fit: contain;
   flex-shrink: 0;
 }
+[data-page="admin-system-package-manager"] #view > #packages,
+[data-page="admin-system-opkg"] #view > #packages {
+  min-width: 0;
+  border-radius: var(--radius-card);
+  background-color: var(--surface-color);
+  box-shadow: var(--section-shadow);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: visible;
+}
+[data-page="admin-system-package-manager"] #view > #packages > :is(thead, tbody, .thead, .tbody):first-child,
+[data-page="admin-system-opkg"] #view > #packages > :is(thead, tbody, .thead, .tbody):first-child,
+[data-page="admin-system-package-manager"] #view > #packages > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child,
+[data-page="admin-system-opkg"] #view > #packages > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child,
+[data-page="admin-system-package-manager"] #view > #packages > :is(tr, .tr):first-child,
+[data-page="admin-system-opkg"] #view > #packages > :is(tr, .tr):first-child {
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+}
+[data-page="admin-system-package-manager"] #view > #packages > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child > :is(td, th, .td, .th):first-child,
+[data-page="admin-system-opkg"] #view > #packages > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child > :is(td, th, .td, .th):first-child,
+[data-page="admin-system-package-manager"] #view > #packages > :is(tr, .tr):first-child > :is(td, th, .td, .th):first-child,
+[data-page="admin-system-opkg"] #view > #packages > :is(tr, .tr):first-child > :is(td, th, .td, .th):first-child {
+  border-start-start-radius: inherit;
+}
+[data-page="admin-system-package-manager"] #view > #packages > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child > :is(td, th, .td, .th):last-child,
+[data-page="admin-system-opkg"] #view > #packages > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child > :is(td, th, .td, .th):last-child,
+[data-page="admin-system-package-manager"] #view > #packages > :is(tr, .tr):first-child > :is(td, th, .td, .th):last-child,
+[data-page="admin-system-opkg"] #view > #packages > :is(tr, .tr):first-child > :is(td, th, .td, .th):last-child {
+  border-start-end-radius: inherit;
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-system-package-manager"] #view > #packages :is(.table-titles, .cbi-section-table-titles) + .tr,
+  [data-page="admin-system-opkg"] #view > #packages :is(.table-titles, .cbi-section-table-titles) + .tr {
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
+  }
+}
 [data-page="admin-system-package-manager"] .controls,
 [data-page="admin-system-opkg"] .controls {
   min-width: 0;
@@ -5334,7 +5445,17 @@ pre.command-output {
     flex-basis: 50%;
   }
 }
+[data-page="admin-system-crontab"] #view > p:has(> textarea) {
+  min-width: 0;
+  border-radius: var(--radius-card);
+  background-color: var(--surface-color);
+  box-shadow: var(--section-shadow);
+  margin: 0;
+  padding: var(--field-gap) var(--section-inset);
+  line-height: 0;
+}
 [data-page="admin-system-crontab"] #view p textarea {
+  display: block;
   direction: ltr;
   unicode-bidi: plaintext;
   text-align: start;
@@ -6043,6 +6164,9 @@ pre.command-output {
   top: 0.1rem;
   left: 1rem;
 }
+[data-page="admin-system-reboot"] #view > hr {
+  display: none;
+}
 [data-page="admin-system-reboot"] .cbi-button {
   background: var(--warning-action-bg) !important;
   border-color: var(--warning-action-bg) !important;
@@ -6313,6 +6437,14 @@ pre.command-output {
   direction: ltr;
   unicode-bidi: isolate;
 }
+[data-page="admin-network-diagnostics"] #view > .cbi-map > .table {
+  min-width: 0;
+  border-radius: var(--radius-card);
+  background-color: var(--surface-color);
+  box-shadow: var(--section-shadow);
+  padding: var(--control-gap);
+  border-collapse: separate;
+}
 [data-page="admin-network-diagnostics"] .table {
   overflow: visible;
   box-shadow: none;
@@ -6339,7 +6471,7 @@ pre.command-output {
 }
 [data-page="admin-network-diagnostics"] .tr .td {
   background-color: var(--surface-color) !important;
-  border-bottom: 1px solid var(--border-color) !important;
+  border-bottom: 0 !important;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -6467,6 +6599,35 @@ pre.command-output {
 }
 #view > .Dashboard [data-tab="layout"] .cbi-page-actions {
   padding: var(--field-gap) var(--section-inset);
+}
+[data-page="admin-status-processes"] #view > .table {
+  min-width: 0;
+  border-radius: var(--radius-card);
+  background-color: var(--surface-color);
+  box-shadow: var(--section-shadow);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: visible;
+}
+[data-page="admin-status-processes"] #view > .table > :is(thead, tbody, .thead, .tbody):first-child,
+[data-page="admin-status-processes"] #view > .table > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child,
+[data-page="admin-status-processes"] #view > .table > :is(tr, .tr):first-child {
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+}
+[data-page="admin-status-processes"] #view > .table > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child > :is(td, th, .td, .th):first-child,
+[data-page="admin-status-processes"] #view > .table > :is(tr, .tr):first-child > :is(td, th, .td, .th):first-child {
+  border-start-start-radius: inherit;
+}
+[data-page="admin-status-processes"] #view > .table > :is(thead, tbody, .thead, .tbody):first-child > :is(tr, .tr):first-child > :is(td, th, .td, .th):last-child,
+[data-page="admin-status-processes"] #view > .table > :is(tr, .tr):first-child > :is(td, th, .td, .th):last-child {
+  border-start-end-radius: inherit;
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-status-processes"] #view > .table :is(.table-titles, .cbi-section-table-titles) + .tr {
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
+  }
 }
 [data-page="admin-status-processes"] .th:nth-child(3),
 [data-page="admin-status-processes"] .td:nth-child(3) {
@@ -7013,9 +7174,35 @@ pre.command-output {
 [data-page="admin-status-nftables"] .alert-message.fade-out {
   opacity: 0;
 }
+[data-page="admin-status-logs"] #content_syslog,
+[data-page="admin-status-logs-syslog"] #content_syslog,
+[data-page="admin-status-logs-dmesg"] #content_syslog {
+  min-width: 0;
+  border-radius: var(--radius-card);
+  background-color: var(--surface-color);
+  box-shadow: var(--section-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--field-gap);
+  padding: var(--field-gap) var(--section-inset);
+}
+[data-page="admin-status-logs"] #content_syslog > div,
+[data-page="admin-status-logs-syslog"] #content_syslog > div,
+[data-page="admin-status-logs-dmesg"] #content_syslog > div {
+  margin-block: 0 !important;
+}
+[data-page="admin-status-logs"] #content_syslog > div:has(> .cbi-button),
+[data-page="admin-status-logs-syslog"] #content_syslog > div:has(> .cbi-button),
+[data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> .cbi-button) {
+  padding-block: 0 !important;
+}
 [data-page="admin-status-logs"] #syslog,
 [data-page="admin-status-logs-syslog"] #syslog,
 [data-page="admin-status-logs-dmesg"] #syslog {
+  display: block;
+  margin: 0;
+  border: 1px solid var(--control-border);
+  background-color: var(--input-bg);
   direction: ltr;
   unicode-bidi: plaintext;
   text-align: start;
@@ -7027,7 +7214,7 @@ pre.command-output {
 [data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select),
 [data-page="admin-status-logs-dmesg"] #content_syslog > div:has(> input, > select) {
   line-height: 2.5rem;
-  margin-block-end: var(--control-gap) !important;
+  margin-block-end: 0 !important;
 }
 [data-page="admin-status-logs"] #content_syslog > div:has(> input, > select) > label,
 [data-page="admin-status-logs-syslog"] #content_syslog > div:has(> input, > select) > label,
