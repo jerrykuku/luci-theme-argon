@@ -7119,6 +7119,29 @@ pre.command-output {
 [data-page="admin-services-nlbw-display"] .cbi-section > .right {
   margin: 15px 15px 0px 0px;
 }
+[data-page="admin-services-wol"] #cbi-luci-wol-defaults-_info {
+  padding-bottom: var(--field-gap);
+  line-height: 1.5;
+}
+[data-page="admin-services-wol"] #cbi-luci-wol-defaults-_info > output {
+  width: 100%;
+  min-width: 0;
+}
+[data-page="admin-services-wol"] #cbi-luci-wol-defaults-_info output p {
+  padding: 0;
+}
+[data-page="admin-services-wol"] #cbi-luci-wol-defaults-_info .control-group {
+  margin-block-start: var(--control-gap);
+}
+[data-page="admin-services-wol"] .cbi-section:has(> #wol-output-text) {
+  padding-bottom: var(--field-gap);
+}
+[data-page="admin-services-wol"] #wol-output-text {
+  display: block;
+  width: calc(100% - var(--section-inset) - var(--section-inset)) !important;
+  margin-inline: var(--section-inset);
+  resize: vertical;
+}
 [data-page="admin-services-ddns"] #syslog {
   overflow: auto;
   font-size: 12px !important;
