@@ -1,5 +1,20 @@
 # Update log for master branch
 
+## v3.1.1 [ 2026.10.28 ]
+
+### Fixed
+
+- Fix mobile sidebar controls that could fail to open, including in Chrome.
+- Keep overview port counters and Wi-Fi signal/noise readings readable in narrow layouts and with larger text.
+- Prevent wireless client Disconnect menu buttons from wrapping vertically; improve the layout of network names, MAC addresses and host details.
+- Refresh stylesheet cache keys when CSS changes, including source rebuilds using the same package version.
+- Correct card layouts and spacing on system logs, processes, package management, cron, SSH access, public keys, diagnostics and reboot pages.
+- Improve OpenClash update/log pages, Wake on LAN settings/output and Tailscale status/device tables, including both Services and VPN menu paths.
+
+### Upgrade notes
+
+Users on v3.1.0 can upgrade through **System → Argon Config → Theme updates**. Users on v3.0.0 or earlier must install v3.1.1 manually once. Online installation updates the theme package and preserves settings; install separate translation packages in the usual way.
+
 ## v3.1.0 [ 2026.10.22 ]
 
 ### Added / 新功能

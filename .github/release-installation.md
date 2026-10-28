@@ -1,30 +1,24 @@
-## Added / 新功能
-
-- Add stable release checks and online theme installation under **System → Argon Config → Theme updates**, using the firmware's native APK or OPKG package manager and preserving Argon settings.
-- Verify package SHA256 and size before installation, reject downgrades, and show installation progress and logs with monitoring that resumes after a page refresh.
-
-- 新增稳定版检查与在线安装，可在**系统 → Argon 配置 → 主题更新**中通过固件原生 APK 或 OPKG 包管理器升级，并保留 Argon 设置。
-- 新增安装包校验、降级保护、安装进度和日志，刷新页面后可继续跟踪安装状态。
-
-## Changed / 改进
-
-- Improve compatibility with stable OpenWrt firmware.
-
-- 改善稳定版 OpenWrt 固件上的兼容性。
-
 ## Fixed / 修复
 
-- Fix dashboard action spacing and overview layouts.
-- Fix dynamic list controls and custom IP/MAC input borders across narrow screens, light/dark modes and RTL layouts.
+- Fix mobile sidebar controls that could fail to open, including in Chrome.
+- Keep overview port counters and Wi-Fi signal/noise readings readable in narrow layouts and with larger text.
+- Prevent wireless client Disconnect menu buttons from wrapping vertically; improve the layout of network names, MAC addresses and host details.
+- Refresh stylesheet cache keys when CSS changes, including source rebuilds using the same package version.
+- Correct card layouts and spacing on system logs, processes, package management, cron, SSH access, public keys, diagnostics and reboot pages.
+- Improve OpenClash update/log pages, Wake on LAN settings/output and Tailscale status/device tables, including both Services and VPN menu paths.
 
-- 修复 Dashboard 操作区间距和概览布局。
-- 修复动态列表控件及自定义 IP/MAC 输入框边框，兼顾窄屏、亮暗色和 RTL 布局。
+- 修复手机侧栏菜单可能无法打开的问题，包括 Chrome 浏览器下的点击响应。
+- 改善概览端口收发计数与 Wi-Fi 信号／噪声显示，兼顾窄屏和大字号。
+- 修复无线客户端 Disconnect 菜单按钮文字竖排，优化网络名称、MAC 地址与主机信息布局。
+- CSS 更新时自动变更缓存标识，覆盖使用相同包版本号重新编译的情况。
+- 修正系统日志、进程、软件包管理、计划任务、SSH 管理、公钥、网络诊断及重启页面的卡片布局和间距。
+- 改善 OpenClash 更新／日志、网络唤醒设置／输出及 Tailscale 状态／设备表格，兼容 Services 与 VPN 两种菜单路径。
 
 ## Upgrade notes / 升级说明
 
-**First upgrade:** users on v3.0.0 or earlier must install v3.1.0 manually once. Later releases can be installed through Theme updates. Online installation updates the theme package; install separate translation packages in the usual way.
+Users on v3.1.0 can upgrade through **System → Argon Config → Theme updates**. Users on v3.0.0 or earlier must install v3.1.1 manually once. Online installation updates the theme package and preserves settings; install separate translation packages in the usual way.
 
-**首次升级：** v3.0.0 及更早版本用户需先手动安装一次 v3.1.0，之后可使用主题更新功能在线升级。在线安装仅更新主题主包，独立语言包仍按原方式安装。
+v3.1.0 用户可通过**系统 → Argon 配置 → 主题更新**升级。v3.0.0 及更早版本用户需先手动安装一次 v3.1.1。在线安装更新主题主包并保留设置；独立语言包仍按原方式安装。
 
 ## Installation / 安装说明
 
