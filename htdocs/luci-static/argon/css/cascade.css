@@ -4759,6 +4759,10 @@ pre.command-output {
 [data-page="admin-system-system"] .cbi-dynlist {
   margin: 0.25rem 0;
 }
+[data-page="admin-system-system"] [data-name="notes"] .cbi-value-field > div:has(> .cbi-input-textarea) {
+  width: var(--form-control-min-width) !important;
+  max-width: 100%;
+}
 [data-page="admin-system-system"] #localtime,
 [data-page="admin-system-system"] [data-name="hostname"] input,
 [data-page="admin-system-system"] [data-name="log_size"] input,
@@ -7368,19 +7372,52 @@ pre.command-output {
 [data-page="admin-services-ttyd-ttyd"] #view iframe {
   height: 100%;
 }
-[data-page="admin-docker-overview"] .cbi-section-table {
+[data-page="admin-docker-overview"] .cbi-section-table,
+[data-page="admin-services-dockerman-overview"] .cbi-section-table {
   table-layout: fixed;
 }
 [data-page="admin-docker-overview"] .cbi-section-table .th,
-[data-page="admin-docker-overview"] .cbi-section-table .td {
+[data-page="admin-services-dockerman-overview"] .cbi-section-table .th,
+[data-page="admin-docker-overview"] .cbi-section-table .td,
+[data-page="admin-services-dockerman-overview"] .cbi-section-table .td {
   min-width: 0;
   white-space: normal;
   overflow-wrap: anywhere;
-  text-align: left !important;
+  text-align: start !important;
   vertical-align: top;
 }
-[data-page="admin-docker-overview"] .cbi-section-table .th:first-child {
+[data-page="admin-docker-overview"] .cbi-section-table .th:first-child,
+[data-page="admin-services-dockerman-overview"] .cbi-section-table .th:first-child {
   width: 30% !important;
+}
+[data-page="admin-services-dockerman-containers"] .td:last-child:has(> div > .cbi-button + .cbi-button) {
+  width: 16rem;
+  min-width: 16rem;
+  white-space: normal;
+  text-align: end;
+}
+[data-page="admin-services-dockerman-containers"] .td:last-child:has(> div > .cbi-button + .cbi-button) > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  max-width: 16rem;
+  margin-inline-start: auto;
+  gap: var(--control-gap);
+}
+[data-page="admin-services-dockerman-containers"] .td:last-child:has(> div > .cbi-button + .cbi-button) > div > * {
+  flex: 0 0 auto;
+}
+@media screen and (max-width: 1152px) {
+  [data-page="admin-services-dockerman-containers"] .td:last-child:has(> div > .cbi-button + .cbi-button) {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+  [data-page="admin-services-dockerman-containers"] .td:last-child:has(> div > .cbi-button + .cbi-button) > div {
+    max-width: 100%;
+  }
 }
 #cbi-dockerd .cbi-section {
   box-sizing: border-box;
