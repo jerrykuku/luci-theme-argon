@@ -7873,10 +7873,6 @@ pre.command-output {
 [data-page^="admin-services-openclash"] .oc .plugin-toggle-container {
   margin-left: inherit !important;
 }
-[data-page^="admin-services-openclash"] .oc .core-status-toggle {
-  flex: 0 !important;
-  min-width: auto !important;
-}
 [data-page^="admin-services-openclash"] .cbi-tabmenu > li {
   border-right: none !important;
   margin: 0 0.4rem 0 0 !important;
