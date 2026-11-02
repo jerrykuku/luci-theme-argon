@@ -2,8 +2,9 @@
 
 ## v3.1.2 [ 2026.11.02 ]
 
-- GitHub Release: https://github.com/jerrykuku/luci-theme-argon/releases/tag/v3.1.2
-- 详细更新内容请以 Release 页面为准。
+- 修复端口卡片换行和高度不一致，兼容 ImmortalWrt。
+- 修复 OpenList2 按钮文字不可见和 OpenClash 状态日志溢出。
+- 优化 Dockerman、Passwall 和系统备注框布局。
 
 ## v3.1.1 [ 2026.10.28 ]
 
