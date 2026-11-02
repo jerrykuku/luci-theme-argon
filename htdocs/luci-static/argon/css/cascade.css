@@ -6741,12 +6741,15 @@ pre.command-output {
 [data-page="admin-status-overview"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr)) !important;
+  align-items: stretch !important;
+  justify-items: stretch !important;
   gap: var(--field-gap);
   margin: 0 !important;
   padding: var(--field-gap) var(--section-inset);
 }
 [data-page="admin-status"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox,
 [data-page="admin-status-overview"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox {
+  width: auto !important;
   min-width: 0 !important;
   max-width: 100% !important;
   margin: 0 !important;
