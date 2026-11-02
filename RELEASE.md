@@ -2,9 +2,28 @@
 
 ## v3.1.2 [ 2026.11.02 ]
 
+### 修复
+
+- 修复端口卡片换行和高度不一致，兼容 ImmortalWrt。
+- 修复 OpenList2 按钮文字不可见和 OpenClash 状态日志溢出。
+- 优化 Dockerman、Passwall 和系统备注框布局。
+
+### Fixed
+
 - Fix port card wrapping and alignment, including ImmortalWrt.
 - Fix invisible OpenList2 button text and overflowing OpenClash status logs.
 - Improve Dockerman, Passwall and system notes layouts.
+
+v3.1.0 及以上可在线升级。安装说明：[中文](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.2/README_ZH.md#安装) · [English](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.2/README.md#install)
+
+
+### What's Changed
+* Fix: center Docker upgrade dialogs and align Passwall update buttons by @ssr20001 in https://github.com/jerrykuku/luci-theme-argon/pull/725
+
+### New Contributors
+* @ssr20001 made their first contribution in https://github.com/jerrykuku/luci-theme-argon/pull/725
+
+**Full Changelog**: https://github.com/jerrykuku/luci-theme-argon/compare/v3.1.1...v3.1.2
 
 ## v3.1.1 [ 2026.10.28 ]
 
