@@ -3,7 +3,7 @@
   "repository": "jerrykuku/luci-theme-argon",
   "tag": "v3.1.2",
   "published_at": "2026-11-02T07:12:02Z",
-  "notes": "## 修复\n\n- 修复端口卡片换行和高度不一致，兼容 ImmortalWrt。\n- 修复 OpenList2 按钮文字不可见和 OpenClash 状态日志溢出。\n- 优化 Dockerman、Passwall 和系统备注框布局。\n\n## Fixed\n\n- Fix port card wrapping and alignment, including ImmortalWrt.\n- Fix invisible OpenList2 button text and overflowing OpenClash status logs.\n- Improve Dockerman, Passwall and system notes layouts.\n\nv3.1.0 及以上可在线升级。安装说明：[中文](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.2/README_ZH.md#安装) · [English](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.2/README.md#install)\n\n\n## What's Changed\n* Fix: center Docker upgrade dialogs and align Passwall update buttons by @ssr20001 in https://github.com/jerrykuku/luci-theme-argon/pull/725\n\n## New Contributors\n* @ssr20001 made their first contribution in https://github.com/jerrykuku/luci-theme-argon/pull/725\n\n**Full Changelog**: https://github.com/jerrykuku/luci-theme-argon/compare/v3.1.1...v3.1.2",
+  "notes": "## 修复\n\n- 修复端口卡片换行和高度不一致，兼容 ImmortalWrt。\n- 修复 OpenList2 按钮文字不可见和 OpenClash 状态日志溢出。\n- 优化 Dockerman、Passwall 和系统备注框布局。\n\n## Fixed\n\n- Fix port card wrapping and alignment, including ImmortalWrt.\n- Fix invisible OpenList2 button text and overflowing OpenClash status logs.\n- Improve Dockerman, Passwall and system notes layouts.\n\nv3.1.0 及以上可在线升级。安装说明：[中文](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.2/README_ZH.md#安装) · [English](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.2/README.md#install)\n",
   "ipk": "luci-theme-argon_3.1.2_all.ipk",
   "ipk_sha256": "28dfa0e589c164f2e8d38c895268a52d1a8fa23f57e4c3a2497374f390b0ae2b",
   "ipk_size": 297810,
