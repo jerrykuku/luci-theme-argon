@@ -2,8 +2,9 @@
 
 ## v3.1.3 [ 2026.11.06 ]
 
-- GitHub Release: https://github.com/jerrykuku/luci-theme-argon/releases/tag/v3.1.3
-- 详细更新内容请以 Release 页面为准。
+- 修复部分固件升级后 Argon 翻译丢失，保留已有翻译，并在后续在线升级时同步语言包（#737）。
+- 修复部分固件因下载器缺少 HTTPS 支持而无法获取在线壁纸的问题（#738）。
+- 修复网桥 VLAN 下拉菜单文字逐字竖排的问题（#738）。
 
 ## v3.1.2 [ 2026.11.02 ]
 
