@@ -52,14 +52,14 @@ jobs:
               print('A newer release is already latest; leave the update feed unchanged.')
           PY
 
-      - name: Download the exact published theme packages
+      - name: Download the exact published theme and language packages
         if: steps.release.outputs.publish == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ steps.release.outputs.tag }}
         run: |
           gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" \
-            --pattern 'luci-theme-argon*' --dir published-packages
+            --pattern 'luci-theme-argon*' --pattern 'luci-i18n-argon-config-*' --dir published-packages
 
       - name: Verify release assets and generate the shared Pages artifact
         if: steps.release.outputs.publish == 'true'

@@ -37,6 +37,20 @@ define Package/luci-theme-argon/conffiles
 /etc/config/argon
 endef
 
+# Some firmware builds bundle translations into the theme instead of separate
+# language packages. Preserve them even when an older updater installs us alone.
+define Package/luci-theme-argon/preinst
+#!/bin/sh
+root="$${IPKG_INSTROOT}"
+for catalog in "$$root"/usr/lib/lua/luci/i18n/argon-config.*.lmo "$$root"/usr/lib/lua/luci/i18n/argon.*.lmo; do
+	[ -f "$$catalog" ] && [ ! -L "$$catalog" ] || continue
+	umask 077
+	mkdir -p "$$root/etc/argon-config-migration/i18n" || exit 1
+	cp -p "$$catalog" "$$root/etc/argon-config-migration/i18n/$${catalog##*/}" || exit 1
+done
+exit 0
+endef
+
 include $(TOPDIR)/feeds/luci/luci.mk
 
 # call BuildPackage - OpenWrt buildroot signature

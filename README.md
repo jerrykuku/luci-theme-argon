@@ -99,7 +99,9 @@ Local image and video backgrounds are supported, along with Bing, Unsplash and W
 
 Under **Theme updates**, check the latest stable release, read its release notes and download the package matching your firmware's package manager.
 
-When a newer version is available, choose **Update now** and confirm to install the theme using the firmware’s native APK or OPKG package manager, preserving your Argon configuration. The page shows download, verification and installation status plus installation logs, and resumes monitoring after a page refresh. Reload the page after installation. Automatic installation requires a matching release package and SHA256 digest and does not perform downgrades. It updates the main theme package; separate translation packages remain managed by the system package manager.
+When a newer version is available, choose **Update now** and confirm to install the theme using the firmware’s native APK or OPKG package manager, preserving your Argon configuration. The page shows download, verification and installation status plus installation logs, and resumes monitoring after a page refresh. Reload the page after installation. The updater downloads and verifies the theme and matching packages for your existing Argon translations before installing them. It also installs the configured LuCI language when that translation is available. Automatic installation requires matching release packages and SHA256 digests and does not downgrade the theme. If verified metadata is missing for an existing translation, update the theme and language packages manually from the same release.
+
+Translations bundled into a firmware's theme package, such as KWRT's Chinese catalog, are preserved during the first upgrade to official packages, including upgrades started by an older updater. A separately installed language package can then take ownership of the catalog.
 
 When building firmware, stop including the old standalone `luci-app-argon-config` plugin alongside the theme: its files conflict with the integrated settings. See [Build with OpenWrt](docs/DEVELOPMENT.md#build-with-openwrt) for existing build scripts.
 
