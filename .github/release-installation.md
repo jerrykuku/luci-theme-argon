@@ -1,13 +1,13 @@
 ## 修复
 
-- 修复端口卡片换行和高度不一致，兼容 ImmortalWrt。
-- 修复 OpenList2 按钮文字不可见和 OpenClash 状态日志溢出。
-- 优化 Dockerman、Passwall 和系统备注框布局。
+- 修复部分固件升级后 Argon 翻译丢失，保留已有翻译，并在后续在线升级时同步语言包（#737）。
+- 修复部分固件因下载器缺少 HTTPS 支持而无法获取在线壁纸的问题（#738）。
+- 修复网桥 VLAN 下拉菜单文字逐字竖排的问题（#738）。
 
 ## Fixed
 
-- Fix port card wrapping and alignment, including ImmortalWrt.
-- Fix invisible OpenList2 button text and overflowing OpenClash status logs.
-- Improve Dockerman, Passwall and system notes layouts.
+- Preserve bundled Argon translations during upgrades and synchronize language packages in subsequent online updates (#737).
+- Fix online wallpapers failing on firmware that selects a downloader without HTTPS support (#738).
+- Keep bridge VLAN dropdown labels readable instead of wrapping one character per line (#738).
 
-v3.1.0 及以上可在线升级。安装说明：[中文](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.2/README_ZH.md#安装) · [English](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.2/README.md#install)
+v3.1.0 及以上可在线升级。安装说明：[中文](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.3/README_ZH.md#安装) · [English](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.3/README.md#install)
