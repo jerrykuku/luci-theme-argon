@@ -2317,6 +2317,10 @@ fieldset > fieldset,
 .cbi-tblsection {
   overflow-x: auto;
 }
+.cbi-tblsection:has(.cbi-dropdown),
+.cbi-tblsection .table:has(.cbi-dropdown) {
+  overflow: visible;
+}
 table {
   border-spacing: 0;
   border-collapse: collapse;
