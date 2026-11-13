@@ -1991,6 +1991,7 @@ span.spinning {
 .alert-message {
   transform: none;
   position: static;
+  z-index: auto;
   transition: opacity 0.4s ease;
 }
 .alert-message.fade-out {
