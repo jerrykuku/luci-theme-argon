@@ -2317,8 +2317,8 @@ fieldset > fieldset,
 .cbi-tblsection {
   overflow-x: auto;
 }
-.cbi-tblsection:has(.cbi-dropdown),
-.cbi-tblsection .table:has(.cbi-dropdown) {
+.cbi-tblsection:is(:has(.cbi-dropdown), .argon-dropdown-section),
+.cbi-tblsection .table:is(:has(.cbi-dropdown), .argon-dropdown-section) {
   overflow: visible;
 }
 table {
@@ -2870,18 +2870,11 @@ header .header-actions {
   min-width: 0;
   overflow-wrap: anywhere;
 }
-#argon-appearance .argon-appearance-panel .argon-appearance-option:has(input:checked) {
-  color: var(--dropdown-selected-text);
-  background: var(--dropdown-selected-bg);
-}
-#argon-appearance .argon-appearance-panel .argon-appearance-option:has(input:checked)::after {
-  visibility: visible;
-}
-#argon-appearance .argon-appearance-panel .argon-appearance-option:has(input:focus-visible) {
+#argon-appearance .argon-appearance-panel .argon-appearance-option:focus-within {
   outline: 2px solid var(--focus-ring);
   outline-offset: -2px;
 }
-#argon-appearance .argon-appearance-panel .argon-appearance-option:has(input:disabled) {
+#argon-appearance .argon-appearance-panel .argon-appearance-option[aria-disabled="true"] {
   cursor: default;
   opacity: 0.6;
 }
@@ -2899,7 +2892,7 @@ header .header-actions {
   #argon-appearance .argon-appearance-trigger:hover {
     background-color: var(--surface-active);
   }
-  #argon-appearance .argon-appearance-option:has(input:not(:disabled)):not(:has(input:checked)):hover {
+  #argon-appearance .argon-appearance-option:not([aria-disabled="true"]):hover {
     background: var(--dropdown-hover-bg);
   }
 }
@@ -2918,6 +2911,17 @@ header .header-actions {
     forced-color-adjust: none;
     background-color: CanvasText;
   }
+}
+#argon-appearance[data-mode="light"] .argon-appearance-option[data-mode="light"],
+#argon-appearance[data-mode="dark"] .argon-appearance-option[data-mode="dark"],
+#argon-appearance[data-mode="normal"] .argon-appearance-option[data-mode="normal"] {
+  color: var(--dropdown-selected-text);
+  background: var(--dropdown-selected-bg);
+}
+#argon-appearance[data-mode="light"] .argon-appearance-option[data-mode="light"]::after,
+#argon-appearance[data-mode="dark"] .argon-appearance-option[data-mode="dark"]::after,
+#argon-appearance[data-mode="normal"] .argon-appearance-option[data-mode="normal"]::after {
+  visibility: visible;
 }
 @starting-style {
   #argon-appearance .argon-appearance-panel {
@@ -3221,11 +3225,11 @@ header .header-actions {
 .control-group > * {
   max-width: 100%;
 }
-.control-group:has(> input:first-child + .cbi-button) {
+.control-group:is(:has(> input:first-child + .cbi-button), .argon-joined-control) {
   flex-wrap: nowrap;
   gap: 0;
 }
-.control-group:has(> input:first-child + .cbi-button) > input {
+.control-group:is(:has(> input:first-child + .cbi-button), .argon-joined-control) > input {
   flex: 0 1 15.5rem;
   min-width: 0;
   border-inline-end-width: 0;
@@ -3233,14 +3237,14 @@ header .header-actions {
   border-end-end-radius: 0;
   margin-inline-end: 0;
 }
-.control-group:has(> input:first-child + .cbi-button) > input + .cbi-button {
+.control-group:is(:has(> input:first-child + .cbi-button), .argon-joined-control) > input + .cbi-button {
   flex: 0 0 auto;
   border-inline-start-width: 0;
   border-start-start-radius: 0;
   border-end-start-radius: 0;
   margin-inline-start: 0;
 }
-.control-group:has(> input:first-child + .cbi-button) > .cbi-input-password + .cbi-button {
+.control-group:is(:has(> input:first-child + .cbi-button), .argon-joined-control) > .cbi-input-password + .cbi-button {
   flex-basis: 2.5rem;
   padding-inline: 0;
 }
@@ -6786,8 +6790,8 @@ pre.command-output {
 [data-page="admin-status-overview"] #view > div:first-child {
   gap: 0 !important;
 }
-[data-page="admin-status"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]),
-[data-page="admin-status-overview"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) {
+[data-page="admin-status"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid),
+[data-page="admin-status-overview"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr)) !important;
   align-items: stretch !important;
@@ -6796,40 +6800,40 @@ pre.command-output {
   margin: 0 !important;
   padding: var(--field-gap) var(--section-inset);
 }
-[data-page="admin-status"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox,
-[data-page="admin-status-overview"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox {
+[data-page="admin-status"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox,
+[data-page="admin-status-overview"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox {
   width: auto !important;
   min-width: 0 !important;
   max-width: 100% !important;
   margin: 0 !important;
   text-align: center;
 }
-[data-page="admin-status"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox > .ifacebox-head:first-child,
-[data-page="admin-status-overview"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox > .ifacebox-head:first-child {
+[data-page="admin-status"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox > .ifacebox-head:first-child,
+[data-page="admin-status-overview"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox > .ifacebox-head:first-child {
   overflow-wrap: anywhere;
 }
-[data-page="admin-status"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox .ifacebox-body,
-[data-page="admin-status-overview"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox .ifacebox-body {
+[data-page="admin-status"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox .ifacebox-body,
+[data-page="admin-status-overview"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox .ifacebox-body {
   font-size: 0.75rem;
   padding: 0.75rem 0.5rem;
 }
-[data-page="admin-status"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox .ifacebox-body .cbi-tooltip-container,
-[data-page="admin-status-overview"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox .ifacebox-body .cbi-tooltip-container {
+[data-page="admin-status"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox .ifacebox-body .cbi-tooltip-container,
+[data-page="admin-status-overview"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox .ifacebox-body .cbi-tooltip-container {
   font-size: inherit !important;
   direction: ltr;
   unicode-bidi: isolate;
 }
-[dir="rtl"] [data-page="admin-status"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox .ifacebox-body .cbi-tooltip-container .cbi-tooltip,
-[dir="rtl"] [data-page="admin-status-overview"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox .ifacebox-body .cbi-tooltip-container .cbi-tooltip {
+[dir="rtl"] [data-page="admin-status"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox .ifacebox-body .cbi-tooltip-container .cbi-tooltip,
+[dir="rtl"] [data-page="admin-status-overview"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox .ifacebox-body .cbi-tooltip-container .cbi-tooltip {
   direction: rtl;
 }
-[data-page="admin-status"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox > .ifacebox-body:nth-child(2),
-[data-page="admin-status-overview"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox > .ifacebox-body:nth-child(2) {
+[data-page="admin-status"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox > .ifacebox-body:nth-child(2),
+[data-page="admin-status-overview"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox > .ifacebox-body:nth-child(2) {
   flex-grow: 1;
   overflow-wrap: anywhere;
 }
-[data-page="admin-status"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox > .ifacebox-body:last-child,
-[data-page="admin-status-overview"] #view div:has(> .ifacebox > .ifacebox-body > img[src*="/icons/port_"]) > .ifacebox > .ifacebox-body:last-child {
+[data-page="admin-status"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox > .ifacebox-body:last-child,
+[data-page="admin-status-overview"] #view div:is(:has(> .ifacebox > .ifacebox-body > img[src*=\"/icons/port_\"]), .argon-port-grid) > .ifacebox > .ifacebox-body:last-child {
   padding: 0.5rem 0.625rem;
 }
 [data-page="admin-status"] .argon-port-traffic,
@@ -9206,6 +9210,12 @@ pre.command-output {
   }
 }
 @media screen and (min-width: 600px) {
+  @supports (-moz-appearance: none) {
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) transparent;
+    }
+  }
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;

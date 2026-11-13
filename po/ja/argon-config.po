@@ -163,8 +163,8 @@ msgid "Grant UCI access for luci-theme-argon"
 msgstr "luci-theme-argon に UCI へのアクセスを許可"
 
 #: htdocs/luci-static/resources/view/argon-config.js:114
-msgid "Here you can set the blur and transparency of the login page of argon theme, and manage the background pictures and videos. Chrome is recommended."
-msgstr "Argon テーマのログインページのぼかしと透明度を設定し、背景画像や動画を管理できます。Chrome の使用を推奨します。"
+msgid "Here you can set the blur and transparency of the login page of argon theme, and manage the background pictures and videos."
+msgstr "Argon テーマのログインページのぼかしと透明度を設定し、背景画像や動画を管理できます。"
 
 #: htdocs/luci-static/resources/argon/branding.js:60
 msgid "Invalid PNG image or dimensions."
