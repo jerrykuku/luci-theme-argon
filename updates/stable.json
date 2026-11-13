@@ -1,143 +1,143 @@
 {
   "schema": 1,
   "repository": "jerrykuku/luci-theme-argon",
-  "tag": "v3.1.3",
-  "published_at": "2026-11-06T09:27:23Z",
-  "notes": "## 修复\n\n- 修复部分固件升级后 Argon 翻译丢失，保留已有翻译，并在后续在线升级时同步语言包（#737）。\n- 修复部分固件因下载器缺少 HTTPS 支持而无法获取在线壁纸的问题（#738）。\n- 修复网桥 VLAN 下拉菜单文字逐字竖排的问题（#738）。\n\n## Fixed\n\n- Preserve bundled Argon translations during upgrades and synchronize language packages in subsequent online updates (#737).\n- Fix online wallpapers failing on firmware that selects a downloader without HTTPS support (#738).\n- Keep bridge VLAN dropdown labels readable instead of wrapping one character per line (#738).\n\nv3.1.0 及以上可在线升级。安装说明：[中文](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.3/README_ZH.md#安装) · [English](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.3/README.md#install)\n",
-  "ipk": "luci-theme-argon_3.1.3_all.ipk",
-  "ipk_sha256": "3455efc994a0ff5397deabf388055e8139eaac36040df66ed583cf06ad4103d4",
-  "ipk_size": 298361,
-  "apk": "luci-theme-argon-3.1.3-r1.apk",
-  "apk_sha256": "75d6960715b10d96a38d55c05a57d437948de4701c313d9fa13ea37b2787bce3",
-  "apk_size": 300753,
+  "tag": "v3.1.4",
+  "published_at": "2026-11-13T10:48:54Z",
+  "notes": "## 修复与改进\n\n- 修复提示条遮挡下拉菜单、表格下拉选项显示不完整的问题（#740、#741）。\n- 适配新版 LuCI 仪表盘，修复布局及组件配置交互（#742）。\n- 改善 Firefox ESR 的主题切换、组合控件、下拉菜单及端口统计显示（#739）。\n- 增加视频背景播放/暂停与键盘跳转导航，优化实时图表更新性能。\n\n## Fixes and improvements\n\n- Fix inline alerts obscuring dropdowns and clipped dropdown options in tables (#740, #741).\n- Support newer LuCI dashboard layouts and configurable widget interactions (#742).\n- Improve Firefox ESR appearance controls, joined inputs, dropdowns and port statistics (#739).\n- Add background video playback controls and a keyboard skip link, and reduce realtime chart layout work.\n\nv3.1.0 及以上可在线升级。安装说明：[中文](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.4/README_ZH.md#安装) · [English](https://github.com/jerrykuku/luci-theme-argon/blob/v3.1.4/README.md#install)\n\n\n**Full Changelog**: https://github.com/jerrykuku/luci-theme-argon/compare/v3.1.3...v3.1.4",
+  "ipk": "luci-theme-argon_3.1.4_all.ipk",
+  "ipk_sha256": "d3ec569cca856c34c9a639d32d7c7b774319027891a79736fc439b1d92ed6e3e",
+  "ipk_size": 299937,
+  "apk": "luci-theme-argon-3.1.4-r1.apk",
+  "apk_sha256": "7c9cfc8ab119d33856294f0959f2c267fd20471d5a2326218f3b316a6bd82ca1",
+  "apk_size": 302482,
   "translations": {
     "ar": {
-      "ipk": "luci-i18n-argon-config-ar_v3.1.3_all.ipk",
-      "ipk_sha256": "453af334ae65ef2228b60b8baa09ac4db0786a9f6ec74f7cbf084f58c9161f7c",
-      "ipk_size": 4703,
-      "apk": "luci-i18n-argon-config-ar-3.1.3-r1.apk",
-      "apk_sha256": "f57766d3676661b4c1cd71319d34c05da3c3a410bc23162de028a115397af0ef",
-      "apk_size": 4441
+      "ipk": "luci-i18n-argon-config-ar_v3.1.4_all.ipk",
+      "ipk_sha256": "5f2d9304f62f2cda843cb3db99bd7e97429b06769868eeacba7153ac336ed4d7",
+      "ipk_size": 4731,
+      "apk": "luci-i18n-argon-config-ar-3.1.4-r1.apk",
+      "apk_sha256": "a6214209a63e5bb64923d02149f93525c513dc39f9c0ebaa96c9d7d9180d3d6b",
+      "apk_size": 4492
     },
     "de": {
-      "ipk": "luci-i18n-argon-config-de_v3.1.3_all.ipk",
-      "ipk_sha256": "24ad0422442518a49fddb394ba4f6598a134e6076be050446d0ebdfb3aec6f24",
-      "ipk_size": 4603,
-      "apk": "luci-i18n-argon-config-de-3.1.3-r1.apk",
-      "apk_sha256": "10974bee502825d1b2fe64b4f4105b0a76843566a0f439f6231e8624a1d1b530",
-      "apk_size": 4360
+      "ipk": "luci-i18n-argon-config-de_v3.1.4_all.ipk",
+      "ipk_sha256": "18924dcbbe6ef0b9161106d02db1a8556de9267496bc6c53598bc81654d7baba",
+      "ipk_size": 4658,
+      "apk": "luci-i18n-argon-config-de-3.1.4-r1.apk",
+      "apk_sha256": "52736e0ad5fb4e83a890e58e1249523a216cc61b9f11ecdf9366092a97029052",
+      "apk_size": 4404
     },
     "es": {
-      "ipk": "luci-i18n-argon-config-es_v3.1.3_all.ipk",
-      "ipk_sha256": "9c863c53e76683a1b58fd6e6043707fea778eafa84fff00c6e90351eacd4540b",
-      "ipk_size": 4485,
-      "apk": "luci-i18n-argon-config-es-3.1.3-r1.apk",
-      "apk_sha256": "0e04b1df82b378a1a53ba9a50a20e78e8dfac43ac4ae4058c699c56dce992504",
-      "apk_size": 4233
+      "ipk": "luci-i18n-argon-config-es_v3.1.4_all.ipk",
+      "ipk_sha256": "e3acfb934c29960b2a7dc207b0dc10b24438110fd649112fa216e2a7d5acc1b5",
+      "ipk_size": 4520,
+      "apk": "luci-i18n-argon-config-es-3.1.4-r1.apk",
+      "apk_sha256": "f9a373c71d33c548ece0c63c2ad70e947f45deaf50ff018a42e6500144956ddf",
+      "apk_size": 4269
     },
     "fr": {
-      "ipk": "luci-i18n-argon-config-fr_v3.1.3_all.ipk",
-      "ipk_sha256": "3f2ca7a7fe29dd2e9753ce9664972b1efca3b6683b188a85d813cd4ad565b10b",
-      "ipk_size": 4555,
-      "apk": "luci-i18n-argon-config-fr-3.1.3-r1.apk",
-      "apk_sha256": "1e9ea6088189c94994ae7f626cebfabf8dc5ef669f9a1e61a86d45eb4d7b55b6",
-      "apk_size": 4283
+      "ipk": "luci-i18n-argon-config-fr_v3.1.4_all.ipk",
+      "ipk_sha256": "9c5ead478d764ac7ad49f7d863732f5f69092857add2e50864238170433a4065",
+      "ipk_size": 4588,
+      "apk": "luci-i18n-argon-config-fr-3.1.4-r1.apk",
+      "apk_sha256": "0a474237047e49fe0b9e08639e11e67a00d5c9a98a7cdb10d227b3c6789a6027",
+      "apk_size": 4323
     },
     "it": {
-      "ipk": "luci-i18n-argon-config-it_v3.1.3_all.ipk",
-      "ipk_sha256": "f3b78925dc88a14bd001b19176f4359b3f4a41f29ab284e83d250634402a62c5",
-      "ipk_size": 4404,
-      "apk": "luci-i18n-argon-config-it-3.1.3-r1.apk",
-      "apk_sha256": "17ed927571ad5574fb24215ecd7b523e9b87c9b908e6c1823526483f82fe3e9e",
-      "apk_size": 4163
+      "ipk": "luci-i18n-argon-config-it_v3.1.4_all.ipk",
+      "ipk_sha256": "25b2567f77a284796f94ff431fb4f14b3d9de566def7426eec0c6e0f22003f2b",
+      "ipk_size": 4441,
+      "apk": "luci-i18n-argon-config-it-3.1.4-r1.apk",
+      "apk_sha256": "ae9387add15458ab3504f4a93f243e8d896e31e6c5a24f6e015f3a017a921663",
+      "apk_size": 4208
     },
     "ja": {
-      "ipk": "luci-i18n-argon-config-ja_v3.1.3_all.ipk",
-      "ipk_sha256": "87f5a033a589921b3664deced1e66c4b95899b661ad9c7c3ce6fd0394b956baa",
-      "ipk_size": 4618,
-      "apk": "luci-i18n-argon-config-ja-3.1.3-r1.apk",
-      "apk_sha256": "06fbd8f269fdcac3642ee5ce92ae28cbe9eabc7c5752d00f7e62cdde503ed722",
-      "apk_size": 4372
+      "ipk": "luci-i18n-argon-config-ja_v3.1.4_all.ipk",
+      "ipk_sha256": "9bf5f9e5728972996533d6f92f63aa608d35c8df237aa0081d742c1e1712f4e3",
+      "ipk_size": 4673,
+      "apk": "luci-i18n-argon-config-ja-3.1.4-r1.apk",
+      "apk_sha256": "2c600916748725096865448169537eedc28ba61e79c8490d415a667beeaaf36e",
+      "apk_size": 4423
     },
     "ko": {
-      "ipk": "luci-i18n-argon-config-ko_v3.1.3_all.ipk",
-      "ipk_sha256": "a938baeeb12f482fb2dfbc9325f9ef2d2ed9eccb6f84b18b53ea1fd8a45dcbfe",
-      "ipk_size": 4476,
-      "apk": "luci-i18n-argon-config-ko-3.1.3-r1.apk",
-      "apk_sha256": "1cefb9b1fe9eb9150df622145ecba4e4ae76d39cd369a927e471d6b56d4933cd",
-      "apk_size": 4229
+      "ipk": "luci-i18n-argon-config-ko_v3.1.4_all.ipk",
+      "ipk_sha256": "d12cf5f8cb69f433eaf6855e43b7546451550e7e52729ea961b800e78d26b984",
+      "ipk_size": 4528,
+      "apk": "luci-i18n-argon-config-ko-3.1.4-r1.apk",
+      "apk_sha256": "8576829f15ac287dfa77a7ce792424018a06f33de371f13751d9ca7cdf586444",
+      "apk_size": 4281
     },
     "nl": {
-      "ipk": "luci-i18n-argon-config-nl_v3.1.3_all.ipk",
-      "ipk_sha256": "00513cd1339cbdafddf5e7bbb0076d00a69aa8351e003c9f1c34428abc0e625c",
-      "ipk_size": 4430,
-      "apk": "luci-i18n-argon-config-nl-3.1.3-r1.apk",
-      "apk_sha256": "517fbdce298f5113c0796b2a6e3fb72745c479df153de727c8dc0725cb22a9f1",
-      "apk_size": 4184
+      "ipk": "luci-i18n-argon-config-nl_v3.1.4_all.ipk",
+      "ipk_sha256": "b8f150bf59aacba35d903008a2e7eae7ad06997de26e1fff5a7a5cc5c485e2e4",
+      "ipk_size": 4472,
+      "apk": "luci-i18n-argon-config-nl-3.1.4-r1.apk",
+      "apk_sha256": "ead7b3f5c7bdafd8555fd4111d7fc81f63e12c6d720bed1e14d9d2eb95d240c3",
+      "apk_size": 4231
     },
     "pl": {
-      "ipk": "luci-i18n-argon-config-pl_v3.1.3_all.ipk",
-      "ipk_sha256": "b5e0185490109d2fb5446fe24c6fb21d6c6529af465a751f0065187ae418c982",
-      "ipk_size": 4638,
-      "apk": "luci-i18n-argon-config-pl-3.1.3-r1.apk",
-      "apk_sha256": "556ad0dfa78ec9c40d4fbdb228ad26df7101be161a18641a163406f97dc4e538",
-      "apk_size": 4389
+      "ipk": "luci-i18n-argon-config-pl_v3.1.4_all.ipk",
+      "ipk_sha256": "6daad63b8b35cec8ed66b0cef4588fa989f90f5a72f89d25cb7207aa2fee8aab",
+      "ipk_size": 4677,
+      "apk": "luci-i18n-argon-config-pl-3.1.4-r1.apk",
+      "apk_sha256": "36205e54c408d13826db8391301d176298bd01561bb486c735d592c141e774f5",
+      "apk_size": 4430
     },
     "pt-br": {
-      "ipk": "luci-i18n-argon-config-pt-br_v3.1.3_all.ipk",
-      "ipk_sha256": "89f3e9eefc27cc1404ce553791b833fb59182365ff8037c2e9b15fe799719d0a",
-      "ipk_size": 4493,
-      "apk": "luci-i18n-argon-config-pt-br-3.1.3-r1.apk",
-      "apk_sha256": "5663558c04a2ed92307ddb41d93dce9c72ee1430a4b9c82471b4c540370f7e16",
-      "apk_size": 4228
+      "ipk": "luci-i18n-argon-config-pt-br_v3.1.4_all.ipk",
+      "ipk_sha256": "228146cf403f94d354a972f1b3f0ca3e6f137de7e80c54097f505c9cef21ad0a",
+      "ipk_size": 4525,
+      "apk": "luci-i18n-argon-config-pt-br-3.1.4-r1.apk",
+      "apk_sha256": "8b4cb88a14c0a2439d9f1e7cc5c511826ed47cbe85c3503f64d54eeaef6045f5",
+      "apk_size": 4263
     },
     "ru": {
-      "ipk": "luci-i18n-argon-config-ru_v3.1.3_all.ipk",
-      "ipk_sha256": "c5d1ce430e2b6380a087e982a4decd02d2e9826312df86ed06eecf586b8cd877",
-      "ipk_size": 4942,
-      "apk": "luci-i18n-argon-config-ru-3.1.3-r1.apk",
-      "apk_sha256": "3eb3d9ac66a6b83d3191b645d2daf541123e9c4d40c2806061843abf5dcc5777",
-      "apk_size": 4711
+      "ipk": "luci-i18n-argon-config-ru_v3.1.4_all.ipk",
+      "ipk_sha256": "a0a4cbdabc1a2a685525f52386b9164d164fe073ecb9c6bfb869ef4bb6852b6d",
+      "ipk_size": 4990,
+      "apk": "luci-i18n-argon-config-ru-3.1.4-r1.apk",
+      "apk_sha256": "4b97ed40b98fc673f58263ab80ab95b5d4e3a9e7c6f8becf5d0f79970ccedc74",
+      "apk_size": 4756
     },
     "tr": {
-      "ipk": "luci-i18n-argon-config-tr_v3.1.3_all.ipk",
-      "ipk_sha256": "57c88ac2823513b610c3dd3403c4ec59adeb70a1c89d715527cedfb0f944c206",
-      "ipk_size": 4430,
-      "apk": "luci-i18n-argon-config-tr-3.1.3-r1.apk",
-      "apk_sha256": "2cd7f90961ad330c522aab66fb4104ffdaebf2f1c6782c683e6e200daa291755",
-      "apk_size": 4173
+      "ipk": "luci-i18n-argon-config-tr_v3.1.4_all.ipk",
+      "ipk_sha256": "89aaf9484e8bd6a4465b5760a50a8fdb311334feb0006eaa7cbec18714170b97",
+      "ipk_size": 4474,
+      "apk": "luci-i18n-argon-config-tr-3.1.4-r1.apk",
+      "apk_sha256": "4ace2b4def222e3720b166af2607c3a355a8c76e285945e047a71531f5e1422c",
+      "apk_size": 4221
     },
     "uk": {
-      "ipk": "luci-i18n-argon-config-uk_v3.1.3_all.ipk",
-      "ipk_sha256": "da38a80102adf8ce13f71880827f1bbfec2b064de7234241de8b542b78589882",
-      "ipk_size": 4970,
-      "apk": "luci-i18n-argon-config-uk-3.1.3-r1.apk",
-      "apk_sha256": "c27a5eccdc0f3e23eac3736d832f003a379d072aa8566177b99317aff1fe1513",
-      "apk_size": 4718
+      "ipk": "luci-i18n-argon-config-uk_v3.1.4_all.ipk",
+      "ipk_sha256": "1d82473e14620834a3be484f8dba8921fdf21d264320a64774df1404cad59b88",
+      "ipk_size": 5021,
+      "apk": "luci-i18n-argon-config-uk-3.1.4-r1.apk",
+      "apk_sha256": "3da6468968eb7ede2e5a5be764adb155dfdf11589f34d318b56f980917bb4e14",
+      "apk_size": 4773
     },
     "vi": {
-      "ipk": "luci-i18n-argon-config-vi_v3.1.3_all.ipk",
-      "ipk_sha256": "6bab9edf5af7dddb19741fe6cbd648713a0a5b0c4460914b9d923b1ba8bd94ce",
-      "ipk_size": 4453,
-      "apk": "luci-i18n-argon-config-vi-3.1.3-r1.apk",
-      "apk_sha256": "456591efec3646335ce6416f301733daeeb986612c8ea1fb30f3bb8b8fb29772",
-      "apk_size": 4188
+      "ipk": "luci-i18n-argon-config-vi_v3.1.4_all.ipk",
+      "ipk_sha256": "2eef3778ba48e523d6e27d74dcefaf7bb4b94a7fe91117b8817a7f92d2da6bed",
+      "ipk_size": 4498,
+      "apk": "luci-i18n-argon-config-vi-3.1.4-r1.apk",
+      "apk_sha256": "af581fb49475b06175d3a4267aab8238ee2a043ff25e2a2abc0f1d7c9dade277",
+      "apk_size": 4236
     },
     "zh-cn": {
-      "ipk": "luci-i18n-argon-config-zh-cn_v3.1.3_all.ipk",
-      "ipk_sha256": "4ba5e4213d02427dfb30ec0ea9e99c330814616543b349e64d75ea075c04f5e9",
-      "ipk_size": 4260,
-      "apk": "luci-i18n-argon-config-zh-cn-3.1.3-r1.apk",
-      "apk_sha256": "1152ca9350b4e1499ee2975d144a2e9291d45aa8e5d254ccaf6877a28a5509e7",
-      "apk_size": 4010
+      "ipk": "luci-i18n-argon-config-zh-cn_v3.1.4_all.ipk",
+      "ipk_sha256": "7a4b74bcef5b661669aa1454ca580f9b75e597b608684107725ebc21ce56896b",
+      "ipk_size": 4310,
+      "apk": "luci-i18n-argon-config-zh-cn-3.1.4-r1.apk",
+      "apk_sha256": "84cfcc87e2ce7d5b157d64fa496139a3386fba6b6ee0eca88ff2f0e9283e7657",
+      "apk_size": 4056
     },
     "zh-tw": {
-      "ipk": "luci-i18n-argon-config-zh-tw_v3.1.3_all.ipk",
-      "ipk_sha256": "1fe2f1c45668e91e76b45b17b6cc5762b3ae28458ff134239032cf1edfe46974",
-      "ipk_size": 4321,
-      "apk": "luci-i18n-argon-config-zh-tw-3.1.3-r1.apk",
-      "apk_sha256": "f72779457cb7ba028c37af41972ff98e89be544d03d7b14d8d8f7226454a6ca6",
-      "apk_size": 4045
+      "ipk": "luci-i18n-argon-config-zh-tw_v3.1.4_all.ipk",
+      "ipk_sha256": "3a77d405cc3d2a9a256b3873976517c37f470acb79c3d23f00e0ee0b8ed7f3cd",
+      "ipk_size": 4357,
+      "apk": "luci-i18n-argon-config-zh-tw-3.1.4-r1.apk",
+      "apk_sha256": "40db8a4d8d6a519ef943d63647ef130dd46a687c57045be41812751727a7295c",
+      "apk_size": 4084
     }
   }
 }
