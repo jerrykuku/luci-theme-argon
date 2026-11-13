@@ -536,3 +536,15 @@ msgstr "Abbrechen"
 #: htdocs/luci-static/resources/argon/updates.js
 msgid "Try again after %s."
 msgstr "Versuchen Sie es nach %s erneut."
+
+#: ucode/template/themes/argon/login_background.ut
+msgid "Play background video"
+msgstr "Hintergrundvideo abspielen"
+
+#: ucode/template/themes/argon/login_background.ut
+msgid "Pause background video"
+msgstr "Hintergrundvideo pausieren"
+
+#: ucode/template/themes/argon/header.ut
+msgid "Skip to content"
+msgstr "Zum Inhalt springen"

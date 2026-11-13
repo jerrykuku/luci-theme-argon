@@ -536,3 +536,15 @@ msgstr "Annulla"
 #: htdocs/luci-static/resources/argon/updates.js
 msgid "Try again after %s."
 msgstr "Riprovare dopo le %s."
+
+#: ucode/template/themes/argon/login_background.ut
+msgid "Play background video"
+msgstr "Riproduci il video di sfondo"
+
+#: ucode/template/themes/argon/login_background.ut
+msgid "Pause background video"
+msgstr "Metti in pausa il video di sfondo"
+
+#: ucode/template/themes/argon/header.ut
+msgid "Skip to content"
+msgstr "Vai al contenuto"

@@ -536,3 +536,15 @@ msgstr "Отмена"
 #: htdocs/luci-static/resources/argon/updates.js
 msgid "Try again after %s."
 msgstr "Повторите попытку после %s."
+
+#: ucode/template/themes/argon/login_background.ut
+msgid "Play background video"
+msgstr "Воспроизвести фоновое видео"
+
+#: ucode/template/themes/argon/login_background.ut
+msgid "Pause background video"
+msgstr "Приостановить фоновое видео"
+
+#: ucode/template/themes/argon/header.ut
+msgid "Skip to content"
+msgstr "Перейти к содержимому"

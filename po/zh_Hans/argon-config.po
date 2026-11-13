@@ -538,3 +538,15 @@ msgstr "取消"
 #: htdocs/luci-static/resources/argon/updates.js
 msgid "Try again after %s."
 msgstr "请在 %s 后重试。"
+
+#: ucode/template/themes/argon/login_background.ut
+msgid "Play background video"
+msgstr "播放背景视频"
+
+#: ucode/template/themes/argon/login_background.ut
+msgid "Pause background video"
+msgstr "暂停背景视频"
+
+#: ucode/template/themes/argon/header.ut
+msgid "Skip to content"
+msgstr "跳至主要内容"
