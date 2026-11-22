@@ -10,29 +10,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: htdocs/luci-static/resources/view/argon-config.js:245
+#: htdocs/luci-static/resources/view/argon-config.js:193 htdocs/luci-static/resources/view/argon-config.js:293
 msgid "0 transparent - 1 opaque (suggest: black translucent preset: 0.5)."
 msgstr "0 — прозрачно, 1 — непрозрачно (рекомендуется: чёрный полупрозрачный, предустановка: 0.5)."
 
-#: htdocs/luci-static/resources/view/argon-config.js:195
+#: htdocs/luci-static/resources/view/argon-config.js:176 htdocs/luci-static/resources/view/argon-config.js:243
 msgid "0 transparent - 1 opaque (suggest: transparent: 0 or translucent preset: 0.5)."
 msgstr "0 — прозрачно, 1 — непрозрачно (рекомендуется: прозрачный 0 или полупрозрачный, предустановка: 0.5)."
 
-#: htdocs/luci-static/resources/view/argon-config.js:220
+#: htdocs/luci-static/resources/view/argon-config.js:268
 msgid "A HEX Color (default: #483d8b)."
 msgstr "HEX-цвет (по умолчанию: #483d8b)."
 
-#: htdocs/luci-static/resources/view/argon-config.js:190
+#: htdocs/luci-static/resources/view/argon-config.js:238
 msgid "A HEX color (default: #5e72e4)."
 msgstr "HEX-цвет (по умолчанию: #5e72e4)."
 
-#: htdocs/luci-static/resources/view/argon-config.js:315
+#: htdocs/luci-static/resources/view/argon-config.js:363
 msgid "Action"
 msgstr "Действие"
+
+#: htdocs/luci-static/resources/view/argon-config.js:184
+msgid "Admin page glass blur"
+msgstr "Размытие матового стекла страниц администрирования"
 
 #: htdocs/luci-static/resources/view/argon-config.js:170
 msgid "Admin page glass effect"
 msgstr "Эффект матового стекла страниц администрирования"
+
+#: htdocs/luci-static/resources/view/argon-config.js:175
+msgid "Admin page glass opacity"
+msgstr "Непрозрачность матового стекла страниц администрирования"
 
 #: htdocs/luci-static/resources/view/argon-config.js:166
 msgid "Admin page wallpaper"
@@ -42,7 +50,7 @@ msgstr "Обои страниц администрирования"
 msgid "Another update is running. Please try again."
 msgstr "Выполняется другое обновление. Повторите попытку позже."
 
-#: htdocs/luci-static/resources/view/argon-config.js:125
+#: htdocs/luci-static/resources/view/argon-config.js:130
 msgid "Applies the next time you open the login page."
 msgstr "Применяется при следующем открытии страницы входа."
 
@@ -50,23 +58,23 @@ msgstr "Применяется при следующем открытии стр
 msgid "Argon Config"
 msgstr "Настройки Argon"
 
-#: htdocs/luci-static/resources/view/argon-config.js:113
+#: htdocs/luci-static/resources/view/argon-config.js:115
 msgid "Argon theme configuration"
 msgstr "Конфигурация темы Argon"
 
-#: htdocs/luci-static/resources/view/argon-config.js:209
+#: htdocs/luci-static/resources/view/argon-config.js:257
 msgid "Automatic"
 msgstr "Автоматически"
 
-#: htdocs/luci-static/resources/view/argon-config.js:208
+#: htdocs/luci-static/resources/view/argon-config.js:256
 msgid "Automatically generate dark colors from the primary color, or choose a custom dark color."
 msgstr "Автоматически создавать тёмные цвета на основе основного цвета или выбрать свой тёмный цвет."
 
-#: htdocs/luci-static/resources/view/argon-config.js:343
+#: htdocs/luci-static/resources/view/argon-config.js:391
 msgid "Background file list"
 msgstr "Список файлов фона"
 
-#: htdocs/luci-static/resources/view/argon-config.js:155
+#: htdocs/luci-static/resources/view/argon-config.js:160
 msgid "Bing"
 msgstr "Bing"
 
@@ -74,11 +82,11 @@ msgstr "Bing"
 msgid "Browser icon"
 msgstr "Значок браузера"
 
-#: htdocs/luci-static/resources/view/argon-config.js:154
+#: htdocs/luci-static/resources/view/argon-config.js:159
 msgid "Built-in"
 msgstr "Встроенные"
 
-#: htdocs/luci-static/resources/view/argon-config.js:122
+#: htdocs/luci-static/resources/view/argon-config.js:127
 msgid "Centered card"
 msgstr "Карточка по центру"
 
@@ -86,12 +94,11 @@ msgstr "Карточка по центру"
 msgid "Changes apply immediately. Reload open pages to update their icons."
 msgstr "Изменения применяются сразу. Перезагрузите открытые страницы, чтобы обновить их значки."
 
-#: htdocs/luci-static/resources/view/argon-config.js:121
+#: htdocs/luci-static/resources/view/argon-config.js:126
 msgid "Classic sidebar"
 msgstr "Классическая боковая панель"
 
-#: htdocs/luci-static/resources/view/argon-config.js:210
-#: htdocs/luci-static/resources/view/argon-config.js:229
+#: htdocs/luci-static/resources/view/argon-config.js:258 htdocs/luci-static/resources/view/argon-config.js:277
 msgid "Custom"
 msgstr "Пользовательский"
 
@@ -99,21 +106,19 @@ msgstr "Пользовательский"
 msgid "Custom branding"
 msgstr "Пользовательские значки"
 
-#: htdocs/luci-static/resources/argon-appearance.js:43
-#: htdocs/luci-static/resources/view/argon-config.js:170
+#: htdocs/luci-static/resources/argon-appearance.js:43 htdocs/luci-static/resources/view/argon-config.js:218
 msgid "Dark mode"
 msgstr "Тёмная тема"
 
-#: htdocs/luci-static/resources/view/argon-config.js:207
+#: htdocs/luci-static/resources/view/argon-config.js:255
 msgid "Dark mode colors"
 msgstr "Цвета тёмного режима"
 
-#: htdocs/luci-static/resources/view/argon-config.js:226
+#: htdocs/luci-static/resources/view/argon-config.js:274
 msgid "Dark mode login panel"
 msgstr "Панель входа в тёмном режиме"
 
-#: htdocs/luci-static/resources/argon-sshkeys.js:33
-#: htdocs/luci-static/resources/view/argon-config.js:338
+#: htdocs/luci-static/resources/argon-sshkeys.js:33 htdocs/luci-static/resources/view/argon-config.js:386
 msgid "Delete"
 msgstr "Удалить"
 
@@ -121,40 +126,39 @@ msgstr "Удалить"
 msgid "Delete key"
 msgstr "Удалить ключ"
 
-#: htdocs/luci-static/resources/view/argon-config.js:47
+#: htdocs/luci-static/resources/view/argon-config.js:48
 msgid "Expecting: %s"
 msgstr "Ожидалось: %s"
 
-#: htdocs/luci-static/resources/view/argon-config.js:333
+#: htdocs/luci-static/resources/view/argon-config.js:381
 msgid "Failed to delete file: %s."
 msgstr "Не удалось удалить файл: %s."
 
-#: htdocs/luci-static/resources/view/argon-config.js:103
+#: htdocs/luci-static/resources/view/argon-config.js:104
 msgid "Failed to list background files: %s."
 msgstr "Не удалось получить список файлов фона: %s."
 
-#: htdocs/luci-static/resources/view/argon-config.js:95
+#: htdocs/luci-static/resources/view/argon-config.js:96
 msgid "Failed to read available space: %s."
 msgstr "Не удалось определить свободное место: %s."
 
-#: htdocs/luci-static/resources/view/argon-config.js:297
+#: htdocs/luci-static/resources/view/argon-config.js:345
 msgid "Failed to upload file: %s."
 msgstr "Не удалось загрузить файл: %s."
 
-#: htdocs/luci-static/resources/view/argon-config.js:312
+#: htdocs/luci-static/resources/view/argon-config.js:360
 msgid "Filename"
 msgstr "Имя файла"
 
-#: htdocs/luci-static/resources/view/argon-config.js:284
+#: htdocs/luci-static/resources/view/argon-config.js:332
 msgid "Files will be uploaded to <code>%s</code>."
 msgstr "Файлы будут загружены в <code>%s</code>."
 
-#: htdocs/luci-static/resources/view/argon-config.js:228
+#: htdocs/luci-static/resources/view/argon-config.js:276
 msgid "Follow light mode"
 msgstr "Как в светлом режиме"
 
-#: htdocs/luci-static/resources/argon-appearance.js:43
-#: htdocs/luci-static/resources/view/argon-config.js:168
+#: htdocs/luci-static/resources/argon-appearance.js:43 htdocs/luci-static/resources/view/argon-config.js:216
 msgid "Follow system"
 msgstr "Как в системе"
 
@@ -170,7 +174,7 @@ msgstr "Предоставить доступ к UCI для luci-app-argon-confi
 msgid "Grant UCI access for luci-theme-argon"
 msgstr "Разрешить luci-theme-argon доступ к UCI"
 
-#: htdocs/luci-static/resources/view/argon-config.js:114
+#: htdocs/luci-static/resources/view/argon-config.js:116
 msgid "Here you can set the blur and transparency of the login page of argon theme, and manage the background pictures and videos."
 msgstr "Здесь можно настроить размытие и прозрачность страницы логина темы Argon, управлять фоновыми изображениями и видео."
 
@@ -186,13 +190,11 @@ msgstr "Неверный логин и/или пароль! Попробуйте
 msgid "JavaScript required!"
 msgstr "Требуется JavaScript!"
 
-#: htdocs/luci-static/resources/view/argon-config.js:202
-#: htdocs/luci-static/resources/view/argon-config.js:254
+#: htdocs/luci-static/resources/view/argon-config.js:185 htdocs/luci-static/resources/view/argon-config.js:202 htdocs/luci-static/resources/view/argon-config.js:250 htdocs/luci-static/resources/view/argon-config.js:302
 msgid "Larger value will more blurred (suggest: clear: 1 or blur preset: 10)."
 msgstr "Выше цифра, сильнее размыто (от чёткого: 1 к размытому: 10)."
 
-#: htdocs/luci-static/resources/argon-appearance.js:43
-#: htdocs/luci-static/resources/view/argon-config.js:169
+#: htdocs/luci-static/resources/argon-appearance.js:43 htdocs/luci-static/resources/view/argon-config.js:217
 msgid "Light mode"
 msgstr "Светлая тема"
 
@@ -204,19 +206,19 @@ msgstr "Войти"
 msgid "Login logo"
 msgstr "Логотип входа"
 
-#: htdocs/luci-static/resources/view/argon-config.js:124
+#: htdocs/luci-static/resources/view/argon-config.js:129
 msgid "Login page style"
 msgstr "Стиль страницы входа"
 
-#: htdocs/luci-static/resources/view/argon-config.js:201
+#: htdocs/luci-static/resources/view/argon-config.js:249
 msgid "Login panel blur"
 msgstr "Размытие панели входа"
 
-#: htdocs/luci-static/resources/view/argon-config.js:194
+#: htdocs/luci-static/resources/view/argon-config.js:242
 msgid "Login panel opacity"
 msgstr "Непрозрачность панели входа"
 
-#: htdocs/luci-static/resources/view/argon-config.js:313
+#: htdocs/luci-static/resources/view/argon-config.js:361
 msgid "Modified date"
 msgstr "Дата изменения"
 
@@ -224,7 +226,7 @@ msgstr "Дата изменения"
 msgid "Mute background video"
 msgstr "Отключить звук фонового видео"
 
-#: htdocs/luci-static/resources/view/argon-config.js:340
+#: htdocs/luci-static/resources/view/argon-config.js:388
 msgid "No files found."
 msgstr "Файлы не найдены."
 
@@ -236,12 +238,11 @@ msgstr "Пароль не установлен!"
 msgid "PNG images, 16–1024 pixels per side, up to 1 MiB. Browser icons must be square."
 msgstr "Изображения PNG, 16–1024 пикселей на сторону, до 1 MiB. Значки браузера должны быть квадратными."
 
-#: ucode/template/themes/argon/login_form.ut:27
-#: ucode/template/themes/argon/login_form.ut:28
+#: ucode/template/themes/argon/login_form.ut:27 ucode/template/themes/argon/login_form.ut:28
 msgid "Password"
 msgstr "Пароль"
 
-#: htdocs/luci-static/resources/view/argon-config.js:190
+#: htdocs/luci-static/resources/view/argon-config.js:238
 msgid "Primary color"
 msgstr "Основной цвет"
 
@@ -257,7 +258,7 @@ msgstr "Только чтение"
 msgid "Received bytes"
 msgstr "Принято байт"
 
-#: htdocs/luci-static/resources/view/argon-config.js:162
+#: htdocs/luci-static/resources/view/argon-config.js:210
 msgid "Required when using Unsplash wallpapers."
 msgstr "Требуется для использования обоев Unsplash."
 
@@ -265,11 +266,11 @@ msgstr "Требуется для использования обоев Unsplash
 msgid "Restore default"
 msgstr "Восстановить по умолчанию"
 
-#: htdocs/luci-static/resources/view/argon-config.js:263
+#: htdocs/luci-static/resources/view/argon-config.js:311
 msgid "Save current settings"
 msgstr "Сохранить текущие настройки"
 
-#: htdocs/luci-static/resources/view/argon-config.js:261
+#: htdocs/luci-static/resources/view/argon-config.js:309
 msgid "Save settings"
 msgstr "Сохранить настройки"
 
@@ -277,18 +278,15 @@ msgstr "Сохранить настройки"
 msgid "Saving theme mode…"
 msgstr "Сохранение режима темы…"
 
-#: htdocs/luci-static/resources/view/argon-config.js:314
+#: htdocs/luci-static/resources/view/argon-config.js:362
 msgid "Size"
 msgstr "Размер"
 
-#: htdocs/luci-static/resources/view/argon-config.js:116
+#: htdocs/luci-static/resources/view/argon-config.js:121
 msgid "Theme configuration"
 msgstr "Конфигурация темы"
 
-#: htdocs/luci-static/resources/argon-appearance.js:46
-#: htdocs/luci-static/resources/argon-appearance.js:61
-#: htdocs/luci-static/resources/argon-appearance.js:111
-#: htdocs/luci-static/resources/view/argon-config.js:167
+#: htdocs/luci-static/resources/argon-appearance.js:46 htdocs/luci-static/resources/argon-appearance.js:61 htdocs/luci-static/resources/argon-appearance.js:111 htdocs/luci-static/resources/view/argon-config.js:215
 msgid "Theme mode"
 msgstr "Режим темы"
 
@@ -320,11 +318,11 @@ msgstr "Не удалось сохранить пользовательские 
 msgid "Unable to save theme mode. Please try again."
 msgstr "Не удалось сохранить режим темы. Повторите попытку."
 
-#: htdocs/luci-static/resources/view/argon-config.js:156
+#: htdocs/luci-static/resources/view/argon-config.js:161
 msgid "Unsplash"
 msgstr "Unsplash"
 
-#: htdocs/luci-static/resources/view/argon-config.js:161
+#: htdocs/luci-static/resources/view/argon-config.js:209
 msgid "Unsplash API access key"
 msgstr "Ключ доступа к API Unsplash"
 
@@ -332,11 +330,11 @@ msgstr "Ключ доступа к API Unsplash"
 msgid "Upload PNG..."
 msgstr "Загрузить PNG…"
 
-#: htdocs/luci-static/resources/view/argon-config.js:283
+#: htdocs/luci-static/resources/view/argon-config.js:331
 msgid "Upload background"
 msgstr "Загрузить фон"
 
-#: htdocs/luci-static/resources/view/argon-config.js:277
+#: htdocs/luci-static/resources/view/argon-config.js:325
 msgid "Upload background (available space: %1024.2mB)"
 msgstr "Загрузить фон (доступно: %1024.2mB)"
 
@@ -344,28 +342,27 @@ msgstr "Загрузить фон (доступно: %1024.2mB)"
 msgid "Upload for both..."
 msgstr "Загрузить для обоих…"
 
-#: htdocs/luci-static/resources/view/argon-config.js:286
+#: htdocs/luci-static/resources/view/argon-config.js:334
 msgid "Upload..."
 msgstr "Загрузить..."
 
-#: htdocs/luci-static/resources/view/argon-config.js:227
+#: htdocs/luci-static/resources/view/argon-config.js:275
 msgid "Use the same opacity and blur in both modes, or customize the dark login panel."
 msgstr "Использовать одинаковую непрозрачность и размытие в обоих режимах или настроить тёмную панель входа отдельно."
 
-#: ucode/template/themes/argon/login_form.ut:22
-#: ucode/template/themes/argon/login_form.ut:23
+#: ucode/template/themes/argon/login_form.ut:22 ucode/template/themes/argon/login_form.ut:23
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: htdocs/luci-static/resources/view/argon-config.js:157
+#: htdocs/luci-static/resources/view/argon-config.js:162
 msgid "Wallhaven"
 msgstr "Wallhaven"
 
-#: htdocs/luci-static/resources/view/argon-config.js:153
+#: htdocs/luci-static/resources/view/argon-config.js:158
 msgid "Wallpaper source"
 msgstr "Обои"
 
-#: htdocs/luci-static/resources/view/argon-config.js:279
+#: htdocs/luci-static/resources/view/argon-config.js:327
 msgid "You can upload files such as gif/jpg/mp4/png/webm/webp files, to change the login page background."
 msgstr "Вы можете загрузить файлы gif/jpg/mp4/png/webm/webp, чтобы изменить фон страницы входа."
 
@@ -373,19 +370,27 @@ msgstr "Вы можете загрузить файлы gif/jpg/mp4/png/webm/web
 msgid "You must enable JavaScript in your browser or LuCI will not work properly."
 msgstr "Для корректной работы LuCI необходимо включить JavaScript в браузере ."
 
-#: htdocs/luci-static/resources/view/argon-config.js:253
+#: htdocs/luci-static/resources/view/argon-config.js:201
+msgid "[Dark mode] Admin glass blur"
+msgstr "[Тёмная тема] Размытие матового стекла страниц администрирования"
+
+#: htdocs/luci-static/resources/view/argon-config.js:192
+msgid "[Dark mode] Admin glass opacity"
+msgstr "[Тёмная тема] Непрозрачность матового стекла страниц администрирования"
+
+#: htdocs/luci-static/resources/view/argon-config.js:301
 msgid "[Dark mode] Frosted Glass Radius"
 msgstr "[Тёмная тема] Радиус матового стекла"
 
-#: htdocs/luci-static/resources/view/argon-config.js:219
+#: htdocs/luci-static/resources/view/argon-config.js:267
 msgid "[Dark mode] Primary Color"
 msgstr "[Тёмная тема] Основной цвет"
 
-#: htdocs/luci-static/resources/view/argon-config.js:244
+#: htdocs/luci-static/resources/view/argon-config.js:292
 msgid "[Dark mode] Transparency"
 msgstr "[Тёмная тема] Прозрачность"
 
-#: htdocs/luci-static/resources/view/argon-config.js:47
+#: htdocs/luci-static/resources/view/argon-config.js:48
 msgid "valid HEX color value"
 msgstr "корректное значение HEX-цвета"
 
@@ -556,3 +561,4 @@ msgstr "Приостановить фоновое видео"
 #: ucode/template/themes/argon/header.ut
 msgid "Skip to content"
 msgstr "Перейти к содержимому"
+

@@ -105,7 +105,7 @@ body.argon-wallpaper {
     // so the surfaces need a per-appearance floor (--wallpaper-alpha-floor)
     // that stays readable over bright and dark wallpapers. (~"" keeps CSS
     // max() out of lessc.)
-    --wallpaper-surface-alpha: ~"max(var(--blur-opacity), var(--wallpaper-alpha-floor, 0.75))";
+    --wallpaper-surface-alpha: ~"max(var(--wallpaper-opacity, var(--blur-opacity)), var(--wallpaper-alpha-floor, 0.75))";
 
     .background-controls {
         inset-block-start: auto;
@@ -133,16 +133,16 @@ body.argon-wallpaper {
     .modal,
     .alert-message {
         background-color: rgba(var(--wallpaper-surface-rgb), var(--wallpaper-surface-alpha));
-        -webkit-backdrop-filter: blur(var(--blur-radius));
-        backdrop-filter: blur(var(--blur-radius));
+        -webkit-backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
+        backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
     }
 
     // Translucent surfaces keep their palette colors; stripes and muted fills expose the glass.
     // The pane itself frosts the gutters and the corners of the rounded
     // surfaces, so no sharp wallpaper shows between the header and the cards.
     #maincontent {
-        -webkit-backdrop-filter: blur(var(--blur-radius));
-        backdrop-filter: blur(var(--blur-radius));
+        -webkit-backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
+        backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
         --surface-color: rgba(var(--wallpaper-surface-rgb), var(--wallpaper-surface-alpha));
         --surface-raised: rgba(var(--wallpaper-raised-rgb), var(--wallpaper-surface-alpha));
         --input-bg: rgba(var(--wallpaper-input-rgb), var(--wallpaper-surface-alpha));

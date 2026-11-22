@@ -172,6 +172,40 @@ return view.extend({
 		o.rmempty = false;
 		o.depends('main_background', '1');
 
+		o = s.option(form.ListValue, 'main_transparency', _('Admin page glass opacity'),
+			_('0 transparent - 1 opaque (suggest: transparent: 0 or translucent preset: 0.5).'));
+		for (var i of trans_set)
+			o.value(i);
+		o.default = '0.5';
+		o.rmempty = false;
+		o.depends({ main_background: '1', main_glass: '1' });
+		o.retain = true;
+
+		o = s.option(form.Value, 'main_blur', _('Admin page glass blur'),
+			_('Larger value will more blurred (suggest: clear: 1 or blur preset: 10).'));
+		o.datatype = 'and(ufloat,range(0,100))';
+		o.default = '10';
+		o.rmempty = false;
+		o.depends({ main_background: '1', main_glass: '1' });
+		o.retain = true;
+
+		o = s.option(form.ListValue, 'main_transparency_dark', _('[Dark mode] Admin glass opacity'),
+			_('0 transparent - 1 opaque (suggest: black translucent preset: 0.5).'));
+		for (var i of trans_set)
+			o.value(i);
+		o.default = '0.5';
+		o.rmempty = false;
+		o.depends({ main_background: '1', main_glass: '1' });
+		o.retain = true;
+
+		o = s.option(form.Value, 'main_blur_dark', _('[Dark mode] Admin glass blur'),
+			_('Larger value will more blurred (suggest: clear: 1 or blur preset: 10).'));
+		o.datatype = 'and(ufloat,range(0,100))';
+		o.default = '10';
+		o.rmempty = false;
+		o.depends({ main_background: '1', main_glass: '1' });
+		o.retain = true;
+
 		o = s.option(form.Value, 'use_api_key', _('Unsplash API access key'),
 			_('Required when using Unsplash wallpapers.'));
 		o.password = true;

@@ -41,6 +41,12 @@
   --blur-opacity-dark: 0.5;
   --blur-radius: var(--blur-radius-light);
   --blur-opacity: var(--blur-opacity-light);
+  --wallpaper-blur-radius-light: 10px;
+  --wallpaper-opacity-light: 0.5;
+  --wallpaper-blur-radius-dark: 10px;
+  --wallpaper-opacity-dark: 0.5;
+  --wallpaper-blur-radius: var(--wallpaper-blur-radius-light);
+  --wallpaper-opacity: var(--wallpaper-opacity-light);
   --primary: var(--light-primary);
   --success: #2dce89;
   --info: #11cdef;
@@ -349,6 +355,8 @@
   --image-filter: invert(0.9);
   --blur-radius: var(--blur-radius-dark);
   --blur-opacity: var(--blur-opacity-dark);
+  --wallpaper-blur-radius: var(--wallpaper-blur-radius-dark);
+  --wallpaper-opacity: var(--wallpaper-opacity-dark);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-argon-mode="light"]):not([data-argon-mode="dark"]) {
@@ -491,6 +499,8 @@
     --image-filter: invert(0.9);
     --blur-radius: var(--blur-radius-dark);
     --blur-opacity: var(--blur-opacity-dark);
+    --wallpaper-blur-radius: var(--wallpaper-blur-radius-dark);
+    --wallpaper-opacity: var(--wallpaper-opacity-dark);
   }
 }
 :root {
@@ -1214,7 +1224,7 @@ body.argon-wallpaper .volume-control.mute {
   --background-control-icon: url(../img/volume_off.svg);
 }
 body.argon-wallpaper {
-  --wallpaper-surface-alpha: max(var(--blur-opacity), var(--wallpaper-alpha-floor, 0.75));
+  --wallpaper-surface-alpha: max(var(--wallpaper-opacity, var(--blur-opacity)), var(--wallpaper-alpha-floor, 0.75));
 }
 body.argon-wallpaper .background-controls {
   inset-block-start: auto;
@@ -1233,12 +1243,12 @@ body.argon-wallpaper #maincontent > footer,
 body.argon-wallpaper .modal,
 body.argon-wallpaper .alert-message {
   background-color: rgba(var(--wallpaper-surface-rgb), var(--wallpaper-surface-alpha));
-  -webkit-backdrop-filter: blur(var(--blur-radius));
-  backdrop-filter: blur(var(--blur-radius));
+  -webkit-backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
+  backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
 }
 body.argon-wallpaper #maincontent {
-  -webkit-backdrop-filter: blur(var(--blur-radius));
-  backdrop-filter: blur(var(--blur-radius));
+  -webkit-backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
+  backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
   --surface-color: rgba(var(--wallpaper-surface-rgb), var(--wallpaper-surface-alpha));
   --surface-raised: rgba(var(--wallpaper-raised-rgb), var(--wallpaper-surface-alpha));
   --input-bg: rgba(var(--wallpaper-input-rgb), var(--wallpaper-surface-alpha));

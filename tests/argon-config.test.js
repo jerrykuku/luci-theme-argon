@@ -47,7 +47,7 @@ function fixture(options = {}) {
 				const option = {
 					map: this, name, title, choices: {},
 					value(key, label) { this.choices[key] = label; },
-					depends(key, value) { this.dependency = [key, value]; },
+					depends(key, value) { this.dependency = value === undefined ? [key] : [key, value]; },
 					cbid(section) { return 'cbid.argon.' + section + '.' + name; },
 					triggerValidation() { state.events.push('validate-' + name); },
 					super(method, args) {
@@ -208,6 +208,15 @@ test('integrated defaults keep local wallpapers and expose a masked Unsplash key
  assert.equal(state.button('use_api_key').password, true);
  assert.deepEqual(state.button('use_api_key').dependency, ['online_wallpaper', 'unsplash']);
  for (const name of ['blur', 'blur_dark'])
+  assert.equal(state.button(name).datatype, 'and(ufloat,range(0,100))');
+ assert.deepEqual(state.button('main_glass').dependency, ['main_background', '1']);
+ for (const name of ['main_transparency', 'main_blur', 'main_transparency_dark', 'main_blur_dark']) {
+  assert.deepEqual(state.button(name).dependency, [{ main_background: '1', main_glass: '1' }]);
+  assert.equal(state.button(name).retain, true);
+ }
+ for (const name of ['main_transparency', 'main_transparency_dark'])
+  assert.equal(state.button(name).default, '0.5');
+ for (const name of ['main_blur', 'main_blur_dark'])
   assert.equal(state.button(name).datatype, 'and(ufloat,range(0,100))');
 });
 

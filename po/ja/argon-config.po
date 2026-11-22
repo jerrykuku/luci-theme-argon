@@ -10,29 +10,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: htdocs/luci-static/resources/view/argon-config.js:245
+#: htdocs/luci-static/resources/view/argon-config.js:193 htdocs/luci-static/resources/view/argon-config.js:293
 msgid "0 transparent - 1 opaque (suggest: black translucent preset: 0.5)."
 msgstr "0 は透明、1 は不透明です（推奨：黒の半透明は 0.5）。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:195
+#: htdocs/luci-static/resources/view/argon-config.js:176 htdocs/luci-static/resources/view/argon-config.js:243
 msgid "0 transparent - 1 opaque (suggest: transparent: 0 or translucent preset: 0.5)."
 msgstr "0 は透明、1 は不透明です（推奨：透明は 0、半透明は 0.5）。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:220
+#: htdocs/luci-static/resources/view/argon-config.js:268
 msgid "A HEX Color (default: #483d8b)."
 msgstr "16 進数のカラーコード（既定値：#483d8b）。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:190
+#: htdocs/luci-static/resources/view/argon-config.js:238
 msgid "A HEX color (default: #5e72e4)."
 msgstr "16 進数のカラーコード（既定値：#5e72e4）。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:315
+#: htdocs/luci-static/resources/view/argon-config.js:363
 msgid "Action"
 msgstr "操作"
+
+#: htdocs/luci-static/resources/view/argon-config.js:184
+msgid "Admin page glass blur"
+msgstr "管理ページのすりガラスのぼかし"
 
 #: htdocs/luci-static/resources/view/argon-config.js:170
 msgid "Admin page glass effect"
 msgstr "管理ページのすりガラス効果"
+
+#: htdocs/luci-static/resources/view/argon-config.js:175
+msgid "Admin page glass opacity"
+msgstr "管理ページのすりガラスの不透明度"
 
 #: htdocs/luci-static/resources/view/argon-config.js:166
 msgid "Admin page wallpaper"
@@ -42,7 +50,7 @@ msgstr "管理ページの壁紙"
 msgid "Another update is running. Please try again."
 msgstr "別の更新が進行中です。後でもう一度お試しください。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:125
+#: htdocs/luci-static/resources/view/argon-config.js:130
 msgid "Applies the next time you open the login page."
 msgstr "次にログインページを開いたときに適用されます。"
 
@@ -50,23 +58,23 @@ msgstr "次にログインページを開いたときに適用されます。"
 msgid "Argon Config"
 msgstr "Argon 設定"
 
-#: htdocs/luci-static/resources/view/argon-config.js:113
+#: htdocs/luci-static/resources/view/argon-config.js:115
 msgid "Argon theme configuration"
 msgstr "Argon テーマ設定"
 
-#: htdocs/luci-static/resources/view/argon-config.js:209
+#: htdocs/luci-static/resources/view/argon-config.js:257
 msgid "Automatic"
 msgstr "自動"
 
-#: htdocs/luci-static/resources/view/argon-config.js:208
+#: htdocs/luci-static/resources/view/argon-config.js:256
 msgid "Automatically generate dark colors from the primary color, or choose a custom dark color."
 msgstr "メインカラーからダークモードの配色を自動生成するか、ダークモードの色を指定します。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:343
+#: htdocs/luci-static/resources/view/argon-config.js:391
 msgid "Background file list"
 msgstr "背景ファイル一覧"
 
-#: htdocs/luci-static/resources/view/argon-config.js:155
+#: htdocs/luci-static/resources/view/argon-config.js:160
 msgid "Bing"
 msgstr "Bing"
 
@@ -74,11 +82,11 @@ msgstr "Bing"
 msgid "Browser icon"
 msgstr "ブラウザーアイコン"
 
-#: htdocs/luci-static/resources/view/argon-config.js:154
+#: htdocs/luci-static/resources/view/argon-config.js:159
 msgid "Built-in"
 msgstr "内蔵"
 
-#: htdocs/luci-static/resources/view/argon-config.js:122
+#: htdocs/luci-static/resources/view/argon-config.js:127
 msgid "Centered card"
 msgstr "中央カード"
 
@@ -86,12 +94,11 @@ msgstr "中央カード"
 msgid "Changes apply immediately. Reload open pages to update their icons."
 msgstr "変更はすぐに適用されます。開いているページを再読み込みしてアイコンを更新してください。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:121
+#: htdocs/luci-static/resources/view/argon-config.js:126
 msgid "Classic sidebar"
 msgstr "クラシックサイドバー"
 
-#: htdocs/luci-static/resources/view/argon-config.js:210
-#: htdocs/luci-static/resources/view/argon-config.js:229
+#: htdocs/luci-static/resources/view/argon-config.js:258 htdocs/luci-static/resources/view/argon-config.js:277
 msgid "Custom"
 msgstr "カスタム"
 
@@ -99,21 +106,19 @@ msgstr "カスタム"
 msgid "Custom branding"
 msgstr "カスタムアイコン"
 
-#: htdocs/luci-static/resources/argon-appearance.js:43
-#: htdocs/luci-static/resources/view/argon-config.js:170
+#: htdocs/luci-static/resources/argon-appearance.js:43 htdocs/luci-static/resources/view/argon-config.js:218
 msgid "Dark mode"
 msgstr "ダークモード"
 
-#: htdocs/luci-static/resources/view/argon-config.js:207
+#: htdocs/luci-static/resources/view/argon-config.js:255
 msgid "Dark mode colors"
 msgstr "ダークモードの配色"
 
-#: htdocs/luci-static/resources/view/argon-config.js:226
+#: htdocs/luci-static/resources/view/argon-config.js:274
 msgid "Dark mode login panel"
 msgstr "ダークモードのログインパネル"
 
-#: htdocs/luci-static/resources/argon-sshkeys.js:33
-#: htdocs/luci-static/resources/view/argon-config.js:338
+#: htdocs/luci-static/resources/argon-sshkeys.js:33 htdocs/luci-static/resources/view/argon-config.js:386
 msgid "Delete"
 msgstr "削除"
 
@@ -121,40 +126,39 @@ msgstr "削除"
 msgid "Delete key"
 msgstr "鍵を削除"
 
-#: htdocs/luci-static/resources/view/argon-config.js:47
+#: htdocs/luci-static/resources/view/argon-config.js:48
 msgid "Expecting: %s"
 msgstr "必要な値：%s"
 
-#: htdocs/luci-static/resources/view/argon-config.js:333
+#: htdocs/luci-static/resources/view/argon-config.js:381
 msgid "Failed to delete file: %s."
 msgstr "ファイルを削除できませんでした：%s。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:103
+#: htdocs/luci-static/resources/view/argon-config.js:104
 msgid "Failed to list background files: %s."
 msgstr "背景ファイルの一覧を取得できませんでした：%s。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:95
+#: htdocs/luci-static/resources/view/argon-config.js:96
 msgid "Failed to read available space: %s."
 msgstr "空き容量を取得できませんでした：%s。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:297
+#: htdocs/luci-static/resources/view/argon-config.js:345
 msgid "Failed to upload file: %s."
 msgstr "ファイルをアップロードできませんでした：%s。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:312
+#: htdocs/luci-static/resources/view/argon-config.js:360
 msgid "Filename"
 msgstr "ファイル名"
 
-#: htdocs/luci-static/resources/view/argon-config.js:284
+#: htdocs/luci-static/resources/view/argon-config.js:332
 msgid "Files will be uploaded to <code>%s</code>."
 msgstr "ファイルは <code>%s</code> にアップロードされます。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:228
+#: htdocs/luci-static/resources/view/argon-config.js:276
 msgid "Follow light mode"
 msgstr "ライトモードに合わせる"
 
-#: htdocs/luci-static/resources/argon-appearance.js:43
-#: htdocs/luci-static/resources/view/argon-config.js:168
+#: htdocs/luci-static/resources/argon-appearance.js:43 htdocs/luci-static/resources/view/argon-config.js:216
 msgid "Follow system"
 msgstr "システム設定に従う"
 
@@ -170,7 +174,7 @@ msgstr "luci-app-argon-config に UCI へのアクセスを許可"
 msgid "Grant UCI access for luci-theme-argon"
 msgstr "luci-theme-argon に UCI へのアクセスを許可"
 
-#: htdocs/luci-static/resources/view/argon-config.js:114
+#: htdocs/luci-static/resources/view/argon-config.js:116
 msgid "Here you can set the blur and transparency of the login page of argon theme, and manage the background pictures and videos."
 msgstr "Argon テーマのログインページのぼかしと透明度を設定し、背景画像や動画を管理できます。"
 
@@ -186,13 +190,11 @@ msgstr "ユーザー名とパスワードのどちらかもしくは両方が間
 msgid "JavaScript required!"
 msgstr "JavaScript が必要です!"
 
-#: htdocs/luci-static/resources/view/argon-config.js:202
-#: htdocs/luci-static/resources/view/argon-config.js:254
+#: htdocs/luci-static/resources/view/argon-config.js:185 htdocs/luci-static/resources/view/argon-config.js:202 htdocs/luci-static/resources/view/argon-config.js:250 htdocs/luci-static/resources/view/argon-config.js:302
 msgid "Larger value will more blurred (suggest: clear: 1 or blur preset: 10)."
 msgstr "値が大きいほどぼかしが強くなります（推奨：鮮明にする場合は 1、ぼかす場合は 10）。"
 
-#: htdocs/luci-static/resources/argon-appearance.js:43
-#: htdocs/luci-static/resources/view/argon-config.js:169
+#: htdocs/luci-static/resources/argon-appearance.js:43 htdocs/luci-static/resources/view/argon-config.js:217
 msgid "Light mode"
 msgstr "ライトモード"
 
@@ -204,19 +206,19 @@ msgstr "ログイン"
 msgid "Login logo"
 msgstr "ログインロゴ"
 
-#: htdocs/luci-static/resources/view/argon-config.js:124
+#: htdocs/luci-static/resources/view/argon-config.js:129
 msgid "Login page style"
 msgstr "ログインページのスタイル"
 
-#: htdocs/luci-static/resources/view/argon-config.js:201
+#: htdocs/luci-static/resources/view/argon-config.js:249
 msgid "Login panel blur"
 msgstr "ログインパネルのぼかし"
 
-#: htdocs/luci-static/resources/view/argon-config.js:194
+#: htdocs/luci-static/resources/view/argon-config.js:242
 msgid "Login panel opacity"
 msgstr "ログインパネルの不透明度"
 
-#: htdocs/luci-static/resources/view/argon-config.js:313
+#: htdocs/luci-static/resources/view/argon-config.js:361
 msgid "Modified date"
 msgstr "更新日時"
 
@@ -224,7 +226,7 @@ msgstr "更新日時"
 msgid "Mute background video"
 msgstr "背景動画をミュート"
 
-#: htdocs/luci-static/resources/view/argon-config.js:340
+#: htdocs/luci-static/resources/view/argon-config.js:388
 msgid "No files found."
 msgstr "ファイルが見つかりません。"
 
@@ -236,12 +238,11 @@ msgstr "パスワードが設定されていません！"
 msgid "PNG images, 16–1024 pixels per side, up to 1 MiB. Browser icons must be square."
 msgstr "PNG 画像、各辺 16–1024 ピクセル、最大 1 MiB。ブラウザーアイコンは正方形にしてください。"
 
-#: ucode/template/themes/argon/login_form.ut:27
-#: ucode/template/themes/argon/login_form.ut:28
+#: ucode/template/themes/argon/login_form.ut:27 ucode/template/themes/argon/login_form.ut:28
 msgid "Password"
 msgstr "パスワード"
 
-#: htdocs/luci-static/resources/view/argon-config.js:190
+#: htdocs/luci-static/resources/view/argon-config.js:238
 msgid "Primary color"
 msgstr "メインカラー"
 
@@ -257,7 +258,7 @@ msgstr "読み取り専用"
 msgid "Received bytes"
 msgstr "受信バイト数"
 
-#: htdocs/luci-static/resources/view/argon-config.js:162
+#: htdocs/luci-static/resources/view/argon-config.js:210
 msgid "Required when using Unsplash wallpapers."
 msgstr "Unsplash の壁紙を使用する場合に必要です。"
 
@@ -265,11 +266,11 @@ msgstr "Unsplash の壁紙を使用する場合に必要です。"
 msgid "Restore default"
 msgstr "既定値に戻す"
 
-#: htdocs/luci-static/resources/view/argon-config.js:263
+#: htdocs/luci-static/resources/view/argon-config.js:311
 msgid "Save current settings"
 msgstr "現在の設定を保存"
 
-#: htdocs/luci-static/resources/view/argon-config.js:261
+#: htdocs/luci-static/resources/view/argon-config.js:309
 msgid "Save settings"
 msgstr "設定を保存"
 
@@ -277,18 +278,15 @@ msgstr "設定を保存"
 msgid "Saving theme mode…"
 msgstr "テーマモードを保存しています…"
 
-#: htdocs/luci-static/resources/view/argon-config.js:314
+#: htdocs/luci-static/resources/view/argon-config.js:362
 msgid "Size"
 msgstr "サイズ"
 
-#: htdocs/luci-static/resources/view/argon-config.js:116
+#: htdocs/luci-static/resources/view/argon-config.js:121
 msgid "Theme configuration"
 msgstr "テーマ設定"
 
-#: htdocs/luci-static/resources/argon-appearance.js:46
-#: htdocs/luci-static/resources/argon-appearance.js:61
-#: htdocs/luci-static/resources/argon-appearance.js:111
-#: htdocs/luci-static/resources/view/argon-config.js:167
+#: htdocs/luci-static/resources/argon-appearance.js:46 htdocs/luci-static/resources/argon-appearance.js:61 htdocs/luci-static/resources/argon-appearance.js:111 htdocs/luci-static/resources/view/argon-config.js:215
 msgid "Theme mode"
 msgstr "テーマモード"
 
@@ -320,11 +318,11 @@ msgstr "カスタムアイコンを保存できません。"
 msgid "Unable to save theme mode. Please try again."
 msgstr "テーマモードを保存できません。もう一度お試しください。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:156
+#: htdocs/luci-static/resources/view/argon-config.js:161
 msgid "Unsplash"
 msgstr "Unsplash"
 
-#: htdocs/luci-static/resources/view/argon-config.js:161
+#: htdocs/luci-static/resources/view/argon-config.js:209
 msgid "Unsplash API access key"
 msgstr "Unsplash API アクセスキー"
 
@@ -332,11 +330,11 @@ msgstr "Unsplash API アクセスキー"
 msgid "Upload PNG..."
 msgstr "PNG をアップロード…"
 
-#: htdocs/luci-static/resources/view/argon-config.js:283
+#: htdocs/luci-static/resources/view/argon-config.js:331
 msgid "Upload background"
 msgstr "背景をアップロード"
 
-#: htdocs/luci-static/resources/view/argon-config.js:277
+#: htdocs/luci-static/resources/view/argon-config.js:325
 msgid "Upload background (available space: %1024.2mB)"
 msgstr "背景をアップロード（空き容量：%1024.2mB）"
 
@@ -344,28 +342,27 @@ msgstr "背景をアップロード（空き容量：%1024.2mB）"
 msgid "Upload for both..."
 msgstr "両方にアップロード…"
 
-#: htdocs/luci-static/resources/view/argon-config.js:286
+#: htdocs/luci-static/resources/view/argon-config.js:334
 msgid "Upload..."
 msgstr "アップロード..."
 
-#: htdocs/luci-static/resources/view/argon-config.js:227
+#: htdocs/luci-static/resources/view/argon-config.js:275
 msgid "Use the same opacity and blur in both modes, or customize the dark login panel."
 msgstr "両モードで同じ不透明度とぼかしを使用するか、ダークモードのログインパネルを個別に設定します。"
 
-#: ucode/template/themes/argon/login_form.ut:22
-#: ucode/template/themes/argon/login_form.ut:23
+#: ucode/template/themes/argon/login_form.ut:22 ucode/template/themes/argon/login_form.ut:23
 msgid "Username"
 msgstr "ユーザー名"
 
-#: htdocs/luci-static/resources/view/argon-config.js:157
+#: htdocs/luci-static/resources/view/argon-config.js:162
 msgid "Wallhaven"
 msgstr "Wallhaven"
 
-#: htdocs/luci-static/resources/view/argon-config.js:153
+#: htdocs/luci-static/resources/view/argon-config.js:158
 msgid "Wallpaper source"
 msgstr "壁紙の取得元"
 
-#: htdocs/luci-static/resources/view/argon-config.js:279
+#: htdocs/luci-static/resources/view/argon-config.js:327
 msgid "You can upload files such as gif/jpg/mp4/png/webm/webp files, to change the login page background."
 msgstr "gif/jpg/mp4/png/webm/webp 形式のファイルをアップロードして、ログインページの背景を変更できます。"
 
@@ -373,19 +370,27 @@ msgstr "gif/jpg/mp4/png/webm/webp 形式のファイルをアップロードし�
 msgid "You must enable JavaScript in your browser or LuCI will not work properly."
 msgstr "JavaScriptが有効でない場合、LuCIは正しく動作しません。"
 
-#: htdocs/luci-static/resources/view/argon-config.js:253
+#: htdocs/luci-static/resources/view/argon-config.js:201
+msgid "[Dark mode] Admin glass blur"
+msgstr "[ダークモード] 管理ページのすりガラスのぼかし"
+
+#: htdocs/luci-static/resources/view/argon-config.js:192
+msgid "[Dark mode] Admin glass opacity"
+msgstr "[ダークモード] 管理ページのすりガラスの不透明度"
+
+#: htdocs/luci-static/resources/view/argon-config.js:301
 msgid "[Dark mode] Frosted Glass Radius"
 msgstr "[ダークモード] すりガラス効果のぼかし半径"
 
-#: htdocs/luci-static/resources/view/argon-config.js:219
+#: htdocs/luci-static/resources/view/argon-config.js:267
 msgid "[Dark mode] Primary Color"
 msgstr "[ダークモード] メインカラー"
 
-#: htdocs/luci-static/resources/view/argon-config.js:244
+#: htdocs/luci-static/resources/view/argon-config.js:292
 msgid "[Dark mode] Transparency"
 msgstr "[ダークモード] 透明度"
 
-#: htdocs/luci-static/resources/view/argon-config.js:47
+#: htdocs/luci-static/resources/view/argon-config.js:48
 msgid "valid HEX color value"
 msgstr "有効な 16 進数のカラーコード"
 
@@ -556,3 +561,4 @@ msgstr "背景動画を一時停止"
 #: ucode/template/themes/argon/header.ut
 msgid "Skip to content"
 msgstr "コンテンツへスキップ"
+
