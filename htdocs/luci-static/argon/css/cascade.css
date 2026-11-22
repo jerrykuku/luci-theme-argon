@@ -1246,6 +1246,9 @@ body.argon-wallpaper .alert-message {
   -webkit-backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
   backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
 }
+body.argon-wallpaper .main-right > #maincontent > .container {
+  border-radius: var(--radius-card);
+}
 body.argon-wallpaper #maincontent {
   -webkit-backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
   backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));

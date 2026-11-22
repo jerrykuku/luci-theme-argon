@@ -137,6 +137,13 @@ body.argon-wallpaper {
         backdrop-filter: blur(var(--wallpaper-blur-radius, var(--blur-radius)));
     }
 
+    // The pane floats like the cards inside it: the title strip and the cards
+    // use --radius-card, so a square pane corner reads as a sharp edge over
+    // the frost behind it.
+    .main-right > #maincontent > .container {
+        border-radius: var(--radius-card);
+    }
+
     // Translucent surfaces keep their palette colors; stripes and muted fills expose the glass.
     // The pane itself frosts the gutters and the corners of the rounded
     // surfaces, so no sharp wallpaper shows between the header and the cards.
