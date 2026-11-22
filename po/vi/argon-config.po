@@ -30,6 +30,10 @@ msgstr "Mã màu HEX (mặc định: #5e72e4)."
 msgid "Action"
 msgstr "Thao tác"
 
+#: htdocs/luci-static/resources/view/argon-config.js:166
+msgid "Admin page wallpaper"
+msgstr "Hình nền trang quản trị"
+
 #: htdocs/luci-static/resources/argon/branding.js:62
 msgid "Another update is running. Please try again."
 msgstr "Một bản cập nhật khác đang chạy. Vui lòng thử lại sau."

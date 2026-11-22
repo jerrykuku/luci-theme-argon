@@ -1,0 +1,23 @@
+// out: false
+// Admin shell background layer (body.argon-wallpaper). Reuses the login
+// background markup (login_background.ut) and its shared control styles.
+
+body.argon-wallpaper {
+    // Anchor the video controls below the header actions.
+    .background-controls {
+        inset-block-start: auto;
+        inset-block-end: var(--field-gap);
+    }
+
+    // Let the wallpaper show through the content area; cards reuse the login
+    // panel glass so text stays readable in both modes.
+    .main-right {
+        background-color: transparent;
+    }
+
+    .cbi-section {
+        background-color: rgba(var(--login-panel-rgb), calc(var(--blur-opacity) + 0.2));
+        -webkit-backdrop-filter: blur(var(--blur-radius));
+        backdrop-filter: blur(var(--blur-radius));
+    }
+}

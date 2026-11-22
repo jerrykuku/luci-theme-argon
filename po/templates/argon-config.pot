@@ -23,6 +23,10 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
+#: htdocs/luci-static/resources/view/argon-config.js:166
+msgid "Admin page wallpaper"
+msgstr ""
+
 #: htdocs/luci-static/resources/argon/branding.js:62
 msgid "Another update is running. Please try again."
 msgstr ""

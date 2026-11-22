@@ -75,6 +75,24 @@ test('stylesheet URLs track source rebuilds and preserved timestamps on applicat
 	} finally { renderer.close(); }
 });
 
+test('admin pages reuse the login wallpaper layer only when enabled', () => {
+	const renderer = createRenderer(templates);
+	try {
+		const off = renderer.render('application', { backgrounds: ['photo.jpg'] }).html;
+		assert.doesNotMatch(off, /argon-wallpaper|class="main-bg"|<video/);
+		const on = renderer.render('application', { settings: { main_background: '1' }, backgrounds: ['photo.jpg'] }).html;
+		assert.match(on, /argon-wallpaper/);
+		assert.match(on, /class="main-bg"/);
+		assert.match(on, /photo\.jpg/);
+		assert.ok(on.indexOf('skip-link') < on.indexOf('class="main-bg"'));
+		const video = renderer.render('application', { settings: { main_background: '1' }, backgrounds: ['clip.mp4'] }).html;
+		assert.match(video, /<video loop muted playsinline id="video"/);
+		assert.match(video, /playback-control/);
+		assert.match(video, /volume-control mute/);
+		assert.ok(video.indexOf('skip-link') < video.indexOf('background-controls'));
+	} finally { renderer.close(); }
+});
+
 test('login partials retain image/video, branding and authentication scope and script order', () => {
 	const renderer = createRenderer(templates);
 	try {

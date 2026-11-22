@@ -30,6 +30,10 @@ msgstr "Колір у форматі HEX (типово: #5e72e4)."
 msgid "Action"
 msgstr "Дія"
 
+#: htdocs/luci-static/resources/view/argon-config.js:166
+msgid "Admin page wallpaper"
+msgstr "Шпалери сторінок адміністрування"
+
 #: htdocs/luci-static/resources/argon/branding.js:62
 msgid "Another update is running. Please try again."
 msgstr "Триває інше оновлення. Спробуйте пізніше."

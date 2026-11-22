@@ -163,6 +163,10 @@ return view.extend({
 		o.default = 'none';
 		o.rmempty = false;
 
+		o = s.option(form.Flag, 'main_background', _('Admin page wallpaper'));
+		o.default = '0';
+		o.rmempty = false;
+
 		o = s.option(form.Value, 'use_api_key', _('Unsplash API access key'),
 			_('Required when using Unsplash wallpapers.'));
 		o.password = true;

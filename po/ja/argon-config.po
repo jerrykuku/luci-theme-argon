@@ -30,6 +30,10 @@ msgstr "16 進数のカラーコード（既定値：#5e72e4）。"
 msgid "Action"
 msgstr "操作"
 
+#: htdocs/luci-static/resources/view/argon-config.js:166
+msgid "Admin page wallpaper"
+msgstr "管理ページの壁紙"
+
 #: htdocs/luci-static/resources/argon/branding.js:62
 msgid "Another update is running. Please try again."
 msgstr "別の更新が進行中です。後でもう一度お試しください。"

@@ -30,6 +30,10 @@ msgstr "16진수 색상 코드(기본값: #5e72e4)."
 msgid "Action"
 msgstr "작업"
 
+#: htdocs/luci-static/resources/view/argon-config.js:166
+msgid "Admin page wallpaper"
+msgstr "관리 페이지 배경 화면"
+
 #: htdocs/luci-static/resources/argon/branding.js:62
 msgid "Another update is running. Please try again."
 msgstr "다른 업데이트가 진행 중입니다. 나중에 다시 시도하세요."

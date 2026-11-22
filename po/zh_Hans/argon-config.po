@@ -32,6 +32,10 @@ msgstr "十六进制颜色值（默认：#5e72e4）。"
 msgid "Action"
 msgstr "操作"
 
+#: htdocs/luci-static/resources/view/argon-config.js:166
+msgid "Admin page wallpaper"
+msgstr "管理页壁纸"
+
 #: htdocs/luci-static/resources/argon/branding.js:62
 msgid "Another update is running. Please try again."
 msgstr "有其他更新正在进行，请稍后重试。"

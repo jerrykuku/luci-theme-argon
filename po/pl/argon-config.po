@@ -30,6 +30,10 @@ msgstr "Kolor zapisany za pomocą kodu HEX (domyślnie: #5e72e4)."
 msgid "Action"
 msgstr "Akcja"
 
+#: htdocs/luci-static/resources/view/argon-config.js:166
+msgid "Admin page wallpaper"
+msgstr "Tapeta stron administracyjnych"
+
 #: htdocs/luci-static/resources/argon/branding.js:62
 msgid "Another update is running. Please try again."
 msgstr "Trwa inna aktualizacja. Spróbuj ponownie później."
