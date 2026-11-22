@@ -12,7 +12,3 @@ config global
 	option online_wallpaper 'none'
 	option main_background '0'
 	option main_glass '1'
-	option main_transparency '0.5'
-	option main_blur '10'
-	option main_transparency_dark '0.5'
-	option main_blur_dark '10'

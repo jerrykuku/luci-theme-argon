@@ -13,8 +13,7 @@ test('application and login compose the same head with their own resource bounda
 		for (const entry of ['application', 'sysauth']) {
 			const { html, contentTypes } = renderer.render(entry, {
 				hostname: 'Test Router', node: { title: 'Settings', css: 'extra.css' }, css: '.fixture { color: red; }',
-				settings: { mode: 'dark', primary: '#123456', dark_primary: '#abcdef', blur: '0', transparency: '0.7',
-					main_transparency: '0.3', main_blur: '7', main_transparency_dark: '0.8', main_blur_dark: '12' }
+				settings: { mode: 'dark', primary: '#123456', dark_primary: '#abcdef', blur: '0', transparency: '0.7' }
 			});
 			assert.deepEqual(contentTypes, ['text/html; charset=UTF-8']);
 			assert.equal((html.match(/<!DOCTYPE html>/g) || []).length, 1);
@@ -24,10 +23,6 @@ test('application and login compose the same head with their own resource bounda
 			assert.match(html, /--light-primary: #123456/);
 			assert.match(html, /--blur-radius-light:0px/);
 			assert.match(html, /--blur-opacity-light:0.7/);
-			assert.match(html, /--wallpaper-blur-radius-light:7px/);
-			assert.match(html, /--wallpaper-opacity-light:0.3/);
-			assert.match(html, /--wallpaper-blur-radius-dark:12px/);
-			assert.match(html, /--wallpaper-opacity-dark:0.8/);
 			assert.ok(html.indexOf('/css/cascade.css') < html.indexOf('/extra.css'));
 			assert.ok(html.indexOf('/extra.css') < html.indexOf('.fixture { color: red; }'));
 			assert.match(html, /var luciLocation =/);

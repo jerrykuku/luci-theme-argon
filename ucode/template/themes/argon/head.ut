@@ -41,14 +41,10 @@
 	let blur_radius_dark = '10';
 	let blur_opacity = '0.5';
 	let blur_opacity_dark = '0.5';
-	let main_blur = '10';
-	let main_blur_dark = '10';
-	let main_opacity = '0.5';
-	let main_opacity_dark = '0.5';
 	const has_argon_config = access('/etc/config/argon');
 	let dark_settings = {};
 	if (has_argon_config) {
-		for (let key in ['dark_primary_mode', 'dark_primary', 'dark_glass_mode', 'blur', 'blur_dark', 'transparency', 'transparency_dark', 'main_blur', 'main_blur_dark', 'main_transparency', 'main_transparency_dark'])
+		for (let key in ['dark_primary_mode', 'dark_primary', 'dark_glass_mode', 'blur', 'blur_dark', 'transparency', 'transparency_dark'])
 			dark_settings[key] = cfg.get_first('argon', 'global', key);
 		primary = validColor(cfg.get_first('argon', 'global', 'primary'), primary);
 		dark_primary = validColor(cfg.get_first('argon', 'global', 'dark_primary'), dark_primary);
@@ -56,10 +52,6 @@
 		blur_radius_dark = validNumber(cfg.get_first('argon', 'global', 'blur_dark'), blur_radius_dark, 100);
 		blur_opacity = validNumber(cfg.get_first('argon', 'global', 'transparency'), blur_opacity, 1);
 		blur_opacity_dark = validNumber(cfg.get_first('argon', 'global', 'transparency_dark'), blur_opacity_dark, 1);
-		main_blur = validNumber(cfg.get_first('argon', 'global', 'main_blur'), main_blur, 100);
-		main_blur_dark = validNumber(cfg.get_first('argon', 'global', 'main_blur_dark'), main_blur_dark, 100);
-		main_opacity = validNumber(cfg.get_first('argon', 'global', 'main_transparency'), main_opacity, 1);
-		main_opacity_dark = validNumber(cfg.get_first('argon', 'global', 'main_transparency_dark'), main_opacity_dark, 1);
 		let configured_mode = cfg.get_first('argon', 'global', 'mode');
 		if (configured_mode == 'normal' || configured_mode == 'dark' || configured_mode == 'light')
 			mode = configured_mode;
@@ -116,10 +108,6 @@
 			--blur-opacity-light:{{ blur_opacity }};
 			--blur-radius-dark:{{ blur_radius_dark }}px;
 			--blur-opacity-dark:{{ blur_opacity_dark }};
-			--wallpaper-blur-radius-light:{{ main_blur }}px;
-			--wallpaper-opacity-light:{{ main_opacity }};
-			--wallpaper-blur-radius-dark:{{ main_blur_dark }}px;
-			--wallpaper-opacity-dark:{{ main_opacity_dark }};
 		}
 	</style>
 	<!-- Stylesheets -->
