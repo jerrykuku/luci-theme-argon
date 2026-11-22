@@ -11,3 +11,4 @@ config global
 	option mode 'normal'
 	option online_wallpaper 'none'
 	option main_background '0'
+	option main_glass '1'

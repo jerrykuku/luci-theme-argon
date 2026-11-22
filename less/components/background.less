@@ -1,23 +1,135 @@
 // out: false
-// Admin shell background layer (body.argon-wallpaper). Reuses the login
-// background markup (login_background.ut) and its shared control styles.
+// Background layer shared by the login page and the admin wallpaper mode.
+
+// Wallpaper stays behind the whole page when a short viewport needs scrolling.
+.main-bg,
+.video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.main-bg {
+    background: url(../img/blank.png) no-repeat center/cover;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--media-bg);
+    overflow: hidden;
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.background-controls {
+    position: fixed;
+    inset-block-start: var(--field-gap);
+    inset-inline-end: var(--field-gap);
+    display: flex;
+    gap: var(--control-gap);
+    z-index: 5000;
+
+    > button {
+        display: grid;
+        place-items: center;
+        min-width: 2.5rem;
+        min-height: 2.5rem;
+        padding: .5rem;
+        cursor: pointer;
+        background: var(--surface-panel);
+        color: var(--text-strong);
+
+        &::before {
+            content: '';
+            width: 1rem;
+            height: 1rem;
+            background-color: currentColor;
+            mask: var(--background-control-icon) center / contain no-repeat;
+            -webkit-mask: var(--background-control-icon) center / contain no-repeat;
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+
+        @media (forced-colors: active) {
+            &::before {
+                forced-color-adjust: none;
+                background-color: ButtonText;
+            }
+        }
+    }
+}
+
+.playback-control {
+    --background-control-icon: url(../icon/play.svg);
+
+    &.playing {
+        --background-control-icon: url(../icon/pause.svg);
+    }
+}
+
+.volume-control {
+    --background-control-icon: url(../img/volume_high.svg);
+
+    &.mute {
+        --background-control-icon: url(../img/volume_off.svg);
+    }
+}
 
 body.argon-wallpaper {
-    // Anchor the video controls below the header actions.
     .background-controls {
         inset-block-start: auto;
         inset-block-end: var(--field-gap);
+        // Under the modal overlay (900) so open dialogs cover the controls.
+        z-index: 800;
     }
 
-    // Let the wallpaper show through the content area; cards reuse the login
-    // panel glass so text stays readable in both modes.
     .main-right {
         background-color: transparent;
     }
 
-    .cbi-section {
-        background-color: rgba(var(--login-panel-rgb), calc(var(--blur-opacity) + 0.2));
+    .main-left,
+    .main-right > header,
+    .main-right > #maincontent > .container,
+    #maincontent > footer,
+    .modal,
+    .alert-message {
+        background-color: rgba(var(--login-panel-rgb), var(--blur-opacity));
         -webkit-backdrop-filter: blur(var(--blur-radius));
         backdrop-filter: blur(var(--blur-radius));
+    }
+
+    .main-right > header::after {
+        background-color: transparent;
+    }
+
+    // Translucent surfaces keep their palette colors; stripes and muted fills expose the glass.
+    #maincontent {
+        --surface-color: rgba(var(--wallpaper-surface-rgb), calc(var(--blur-opacity) + 0.1));
+        --surface-raised: rgba(var(--wallpaper-raised-rgb), calc(var(--blur-opacity) + 0.1));
+        --input-bg: rgba(var(--wallpaper-input-rgb), calc(var(--blur-opacity) + 0.1));
+        --tab-item-bg: transparent;
+        --row-alt: transparent;
+        --row-color: transparent;
+        --surface-muted: transparent;
+        --surface-contrast: transparent;
+        --iface-body-bg: transparent;
+        --iface-head-bg: transparent;
     }
 }

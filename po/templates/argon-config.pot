@@ -24,6 +24,9 @@ msgid "Action"
 msgstr ""
 
 #: htdocs/luci-static/resources/view/argon-config.js:166
+#: htdocs/luci-static/resources/view/argon-config.js:170
+msgid "Admin page glass effect"
+msgstr ""
 msgid "Admin page wallpaper"
 msgstr ""
 

@@ -31,6 +31,9 @@ msgid "Action"
 msgstr "작업"
 
 #: htdocs/luci-static/resources/view/argon-config.js:166
+#: htdocs/luci-static/resources/view/argon-config.js:170
+msgid "Admin page glass effect"
+msgstr "관리 페이지 유리 효과"
 msgid "Admin page wallpaper"
 msgstr "관리 페이지 배경 화면"
 

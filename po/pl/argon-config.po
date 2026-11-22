@@ -31,6 +31,9 @@ msgid "Action"
 msgstr "Akcja"
 
 #: htdocs/luci-static/resources/view/argon-config.js:166
+#: htdocs/luci-static/resources/view/argon-config.js:170
+msgid "Admin page glass effect"
+msgstr "Efekt mlecznego szkła stron administracyjnych"
 msgid "Admin page wallpaper"
 msgstr "Tapeta stron administracyjnych"
 

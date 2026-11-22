@@ -83,6 +83,8 @@ test('admin pages reuse the login wallpaper layer only when enabled', () => {
 		const on = renderer.render('application', { settings: { main_background: '1' }, backgrounds: ['photo.jpg'] }).html;
 		assert.match(on, /argon-wallpaper/);
 		assert.match(on, /class="main-bg"/);
+		const solid = renderer.render('application', { settings: { main_background: '1', main_glass: '0' }, backgrounds: ['photo.jpg'] }).html;
+		assert.doesNotMatch(solid, /argon-wallpaper|class="main-bg"/);
 		assert.match(on, /photo\.jpg/);
 		assert.ok(on.indexOf('skip-link') < on.indexOf('class="main-bg"'));
 		const video = renderer.render('application', { settings: { main_background: '1' }, backgrounds: ['clip.mp4'] }).html;
