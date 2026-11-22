@@ -23,10 +23,11 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-#: htdocs/luci-static/resources/view/argon-config.js:166
 #: htdocs/luci-static/resources/view/argon-config.js:170
 msgid "Admin page glass effect"
 msgstr ""
+
+#: htdocs/luci-static/resources/view/argon-config.js:166
 msgid "Admin page wallpaper"
 msgstr ""
 

@@ -30,10 +30,11 @@ msgstr "16 進数のカラーコード（既定値：#5e72e4）。"
 msgid "Action"
 msgstr "操作"
 
-#: htdocs/luci-static/resources/view/argon-config.js:166
 #: htdocs/luci-static/resources/view/argon-config.js:170
 msgid "Admin page glass effect"
 msgstr "管理ページのすりガラス効果"
+
+#: htdocs/luci-static/resources/view/argon-config.js:166
 msgid "Admin page wallpaper"
 msgstr "管理ページの壁紙"
 

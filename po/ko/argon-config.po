@@ -30,10 +30,11 @@ msgstr "16진수 색상 코드(기본값: #5e72e4)."
 msgid "Action"
 msgstr "작업"
 
-#: htdocs/luci-static/resources/view/argon-config.js:166
 #: htdocs/luci-static/resources/view/argon-config.js:170
 msgid "Admin page glass effect"
 msgstr "관리 페이지 유리 효과"
+
+#: htdocs/luci-static/resources/view/argon-config.js:166
 msgid "Admin page wallpaper"
 msgstr "관리 페이지 배경 화면"
 

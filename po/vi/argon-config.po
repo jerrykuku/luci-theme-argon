@@ -30,10 +30,11 @@ msgstr "Mã màu HEX (mặc định: #5e72e4)."
 msgid "Action"
 msgstr "Thao tác"
 
-#: htdocs/luci-static/resources/view/argon-config.js:166
 #: htdocs/luci-static/resources/view/argon-config.js:170
 msgid "Admin page glass effect"
 msgstr "Hiệu ứng kính trang quản trị"
+
+#: htdocs/luci-static/resources/view/argon-config.js:166
 msgid "Admin page wallpaper"
 msgstr "Hình nền trang quản trị"
 

@@ -32,10 +32,11 @@ msgstr "Uma cor HEX (padrão: #5e72e4)."
 msgid "Action"
 msgstr "Ação"
 
-#: htdocs/luci-static/resources/view/argon-config.js:166
 #: htdocs/luci-static/resources/view/argon-config.js:170
 msgid "Admin page glass effect"
 msgstr "Efeito de vidro das páginas de administração"
+
+#: htdocs/luci-static/resources/view/argon-config.js:166
 msgid "Admin page wallpaper"
 msgstr "Papel de parede das páginas de administração"
 

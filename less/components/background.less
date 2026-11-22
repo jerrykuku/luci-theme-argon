@@ -1,98 +1,111 @@
 // out: false
 // Background layer shared by the login page and the admin wallpaper mode.
 
-// Wallpaper stays behind the whole page when a short viewport needs scrolling.
-.main-bg,
-.video {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.main-bg {
-    background: url(../img/blank.png) no-repeat center/cover;
-
-    img {
-        display: block;
+// The wallpaper markup is rendered inside .login-page on the login page and
+// under body.argon-wallpaper in the admin area. Every shared selector is
+// scoped to those roots, so an ordinary view element reusing one of these
+// class names is never turned into a background layer.
+.login-page,
+body.argon-wallpaper {
+    // Wallpaper stays behind the whole page when a short viewport needs scrolling.
+    .main-bg,
+    .video {
+        position: fixed;
+        inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
     }
-}
 
-.video {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--media-bg);
-    overflow: hidden;
+    .main-bg {
+        background: url(../img/blank.png) no-repeat center/cover;
 
-    video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
-}
 
-.background-controls {
-    position: fixed;
-    inset-block-start: var(--field-gap);
-    inset-inline-end: var(--field-gap);
-    display: flex;
-    gap: var(--control-gap);
-    z-index: 5000;
+    .video {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--media-bg);
+        overflow: hidden;
 
-    > button {
-        display: grid;
-        place-items: center;
-        min-width: 2.5rem;
-        min-height: 2.5rem;
-        padding: .5rem;
-        cursor: pointer;
-        background: var(--surface-panel);
-        color: var(--text-strong);
-
-        &::before {
-            content: '';
-            width: 1rem;
-            height: 1rem;
-            background-color: currentColor;
-            mask: var(--background-control-icon) center / contain no-repeat;
-            -webkit-mask: var(--background-control-icon) center / contain no-repeat;
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
+    }
 
-        &:focus-visible {
-            outline: 2px solid var(--focus-ring);
-            outline-offset: 2px;
-        }
+    .background-controls {
+        position: fixed;
+        inset-block-start: var(--field-gap);
+        inset-inline-end: var(--field-gap);
+        display: flex;
+        gap: var(--control-gap);
+        z-index: 5000;
 
-        @media (forced-colors: active) {
+        > button {
+            display: grid;
+            place-items: center;
+            min-width: 2.5rem;
+            min-height: 2.5rem;
+            padding: .5rem;
+            cursor: pointer;
+            background: var(--surface-panel);
+            color: var(--text-strong);
+
             &::before {
-                forced-color-adjust: none;
-                background-color: ButtonText;
+                content: '';
+                width: 1rem;
+                height: 1rem;
+                background-color: currentColor;
+                mask: var(--background-control-icon) center / contain no-repeat;
+                -webkit-mask: var(--background-control-icon) center / contain no-repeat;
+            }
+
+            &:focus-visible {
+                outline: 2px solid var(--focus-ring);
+                outline-offset: 2px;
+            }
+
+            @media (forced-colors: active) {
+                &::before {
+                    forced-color-adjust: none;
+                    background-color: ButtonText;
+                }
             }
         }
     }
-}
 
-.playback-control {
-    --background-control-icon: url(../icon/play.svg);
+    .playback-control {
+        --background-control-icon: url(../icon/play.svg);
 
-    &.playing {
-        --background-control-icon: url(../icon/pause.svg);
+        &.playing {
+            --background-control-icon: url(../icon/pause.svg);
+        }
     }
-}
 
-.volume-control {
-    --background-control-icon: url(../img/volume_high.svg);
+    .volume-control {
+        --background-control-icon: url(../img/volume_high.svg);
 
-    &.mute {
-        --background-control-icon: url(../img/volume_off.svg);
+        &.mute {
+            --background-control-icon: url(../img/volume_off.svg);
+        }
     }
 }
 
 body.argon-wallpaper {
+    // The admin glass follows the login panel opacity, which the user may set
+    // to zero. Text over the wallpaper keeps its appearance-specific palette,
+    // so the surfaces need a floor that stays readable over bright and dark
+    // wallpapers in both appearances. (~"" keeps CSS max() out of lessc.)
+    --wallpaper-surface-alpha: ~"max(var(--blur-opacity), 0.75)";
+
     .background-controls {
         inset-block-start: auto;
         inset-block-end: var(--field-gap);
@@ -104,26 +117,30 @@ body.argon-wallpaper {
         background-color: transparent;
     }
 
+    // The header text is always --text-on-accent, which no translucent light
+    // surface can carry, so the header keeps its opaque surface. Dropping the
+    // blur also keeps the header out of the stacking business: with a
+    // backdrop-filter (or a z-index) on the header, the container's glass
+    // context paints over header dropdowns such as the theme switcher.
+    .main-right > header {
+        background-color: var(--header-bg);
+    }
+
     .main-left,
-    .main-right > header,
     .main-right > #maincontent > .container,
     #maincontent > footer,
     .modal,
     .alert-message {
-        background-color: rgba(var(--login-panel-rgb), var(--blur-opacity));
+        background-color: rgba(var(--wallpaper-surface-rgb), var(--wallpaper-surface-alpha));
         -webkit-backdrop-filter: blur(var(--blur-radius));
         backdrop-filter: blur(var(--blur-radius));
     }
 
-    .main-right > header::after {
-        background-color: transparent;
-    }
-
     // Translucent surfaces keep their palette colors; stripes and muted fills expose the glass.
     #maincontent {
-        --surface-color: rgba(var(--wallpaper-surface-rgb), calc(var(--blur-opacity) + 0.1));
-        --surface-raised: rgba(var(--wallpaper-raised-rgb), calc(var(--blur-opacity) + 0.1));
-        --input-bg: rgba(var(--wallpaper-input-rgb), calc(var(--blur-opacity) + 0.1));
+        --surface-color: rgba(var(--wallpaper-surface-rgb), var(--wallpaper-surface-alpha));
+        --surface-raised: rgba(var(--wallpaper-raised-rgb), var(--wallpaper-surface-alpha));
+        --input-bg: rgba(var(--wallpaper-input-rgb), var(--wallpaper-surface-alpha));
         --tab-item-bg: transparent;
         --row-alt: transparent;
         --row-color: transparent;

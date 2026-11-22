@@ -32,10 +32,11 @@ msgstr "十六进制颜色值（默认：#5e72e4）。"
 msgid "Action"
 msgstr "操作"
 
-#: htdocs/luci-static/resources/view/argon-config.js:166
 #: htdocs/luci-static/resources/view/argon-config.js:170
 msgid "Admin page glass effect"
 msgstr "管理页毛玻璃"
+
+#: htdocs/luci-static/resources/view/argon-config.js:166
 msgid "Admin page wallpaper"
 msgstr "管理页壁纸"
 
