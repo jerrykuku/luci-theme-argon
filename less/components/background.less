@@ -102,9 +102,10 @@ body.argon-wallpaper {
 body.argon-wallpaper {
     // The admin glass follows the login panel opacity, which the user may set
     // to zero. Text over the wallpaper keeps its appearance-specific palette,
-    // so the surfaces need a floor that stays readable over bright and dark
-    // wallpapers in both appearances. (~"" keeps CSS max() out of lessc.)
-    --wallpaper-surface-alpha: ~"max(var(--blur-opacity), 0.75)";
+    // so the surfaces need a per-appearance floor (--wallpaper-alpha-floor)
+    // that stays readable over bright and dark wallpapers. (~"" keeps CSS
+    // max() out of lessc.)
+    --wallpaper-surface-alpha: ~"max(var(--blur-opacity), var(--wallpaper-alpha-floor, 0.75))";
 
     .background-controls {
         inset-block-start: auto;
@@ -137,7 +138,11 @@ body.argon-wallpaper {
     }
 
     // Translucent surfaces keep their palette colors; stripes and muted fills expose the glass.
+    // The pane itself frosts the gutters and the corners of the rounded
+    // surfaces, so no sharp wallpaper shows between the header and the cards.
     #maincontent {
+        -webkit-backdrop-filter: blur(var(--blur-radius));
+        backdrop-filter: blur(var(--blur-radius));
         --surface-color: rgba(var(--wallpaper-surface-rgb), var(--wallpaper-surface-alpha));
         --surface-raised: rgba(var(--wallpaper-raised-rgb), var(--wallpaper-surface-alpha));
         --input-bg: rgba(var(--wallpaper-input-rgb), var(--wallpaper-surface-alpha));

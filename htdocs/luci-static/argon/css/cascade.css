@@ -136,6 +136,7 @@
   --wallpaper-surface-rgb: 255, 255, 255;
   --wallpaper-raised-rgb: 255, 255, 255;
   --wallpaper-input-rgb: 255, 255, 255;
+  --wallpaper-alpha-floor: 0.5;
   --login-text: #101828;
   --login-input-border: #fff;
   --positive-bg: var(--primary);
@@ -294,6 +295,7 @@
   --wallpaper-surface-rgb: 37, 37, 38;
   --wallpaper-raised-rgb: 51, 51, 51;
   --wallpaper-input-rgb: 30, 30, 30;
+  --wallpaper-alpha-floor: 0.75;
   --login-text: #adb5bd;
   --login-input-border: #adb5bd;
   --danger-bg: #c73850;
@@ -435,6 +437,7 @@
     --wallpaper-surface-rgb: 37, 37, 38;
     --wallpaper-raised-rgb: 51, 51, 51;
     --wallpaper-input-rgb: 30, 30, 30;
+    --wallpaper-alpha-floor: 0.75;
     --login-text: #adb5bd;
     --login-input-border: #adb5bd;
     --danger-bg: #c73850;
@@ -1211,7 +1214,7 @@ body.argon-wallpaper .volume-control.mute {
   --background-control-icon: url(../img/volume_off.svg);
 }
 body.argon-wallpaper {
-  --wallpaper-surface-alpha: max(var(--blur-opacity), 0.75);
+  --wallpaper-surface-alpha: max(var(--blur-opacity), var(--wallpaper-alpha-floor, 0.75));
 }
 body.argon-wallpaper .background-controls {
   inset-block-start: auto;
@@ -1234,6 +1237,8 @@ body.argon-wallpaper .alert-message {
   backdrop-filter: blur(var(--blur-radius));
 }
 body.argon-wallpaper #maincontent {
+  -webkit-backdrop-filter: blur(var(--blur-radius));
+  backdrop-filter: blur(var(--blur-radius));
   --surface-color: rgba(var(--wallpaper-surface-rgb), var(--wallpaper-surface-alpha));
   --surface-raised: rgba(var(--wallpaper-raised-rgb), var(--wallpaper-surface-alpha));
   --input-bg: rgba(var(--wallpaper-input-rgb), var(--wallpaper-surface-alpha));
