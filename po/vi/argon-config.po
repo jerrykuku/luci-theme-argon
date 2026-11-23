@@ -308,6 +308,10 @@ msgstr "Hiện hoặc ẩn menu điều hướng"
 msgid "Transmitted bytes"
 msgstr "Số byte đã gửi"
 
+#: htdocs/luci-static/resources/view/argon-config.js:171
+msgid "Turning this off also hides the admin wallpaper and restores the default admin appearance."
+msgstr "Tắt tùy chọn này cũng sẽ ẩn hình nền trang quản trị và khôi phục giao diện quản trị mặc định."
+
 #: htdocs/luci-static/resources/argon/branding.js:110
 msgid "Unable to load custom branding. Reload this page or reinstall the theme."
 msgstr "Không thể tải biểu tượng tùy chỉnh. Hãy tải lại trang này hoặc cài đặt lại giao diện."

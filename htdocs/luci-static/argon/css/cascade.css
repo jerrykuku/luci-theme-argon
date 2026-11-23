@@ -136,7 +136,7 @@
   --wallpaper-surface-rgb: 255, 255, 255;
   --wallpaper-raised-rgb: 255, 255, 255;
   --wallpaper-input-rgb: 255, 255, 255;
-  --wallpaper-alpha-floor: 0.5;
+  --wallpaper-alpha-floor: 0.8;
   --login-text: #101828;
   --login-input-border: #fff;
   --positive-bg: var(--primary);
@@ -1122,42 +1122,34 @@ select[multiple] {
 [dir="rtl"] select:not([multiple]) {
   background-position: left 0.5rem center;
 }
-.login-page .main-bg,
-body.argon-wallpaper .main-bg,
-.login-page .video,
-body.argon-wallpaper .video {
+.argon-background-media {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
 }
-.login-page .main-bg,
-body.argon-wallpaper .main-bg {
+.main-bg.argon-background-media {
   background: url(../img/blank.png) no-repeat center / cover;
 }
-.login-page .main-bg img,
-body.argon-wallpaper .main-bg img {
+.main-bg.argon-background-media img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.login-page .video,
-body.argon-wallpaper .video {
+.video.argon-background-media {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--media-bg);
   overflow: hidden;
 }
-.login-page .video video,
-body.argon-wallpaper .video video {
+.video.argon-background-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.login-page .background-controls,
-body.argon-wallpaper .background-controls {
+.argon-background-controls {
   position: fixed;
   inset-block-start: var(--field-gap);
   inset-inline-end: var(--field-gap);
@@ -1165,8 +1157,7 @@ body.argon-wallpaper .background-controls {
   gap: var(--control-gap);
   z-index: 5000;
 }
-.login-page .background-controls > button,
-body.argon-wallpaper .background-controls > button {
+.argon-background-controls > button {
   display: grid;
   place-items: center;
   min-width: 2.5rem;
@@ -1176,8 +1167,7 @@ body.argon-wallpaper .background-controls > button {
   background: var(--surface-panel);
   color: var(--text-strong);
 }
-.login-page .background-controls > button::before,
-body.argon-wallpaper .background-controls > button::before {
+.argon-background-controls > button::before {
   content: '';
   width: 1rem;
   height: 1rem;
@@ -1185,38 +1175,32 @@ body.argon-wallpaper .background-controls > button::before {
   mask: var(--background-control-icon) center / contain no-repeat;
   -webkit-mask: var(--background-control-icon) center / contain no-repeat;
 }
-.login-page .background-controls > button:focus-visible,
-body.argon-wallpaper .background-controls > button:focus-visible {
+.argon-background-controls > button:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
 @media (forced-colors: active) {
-  .login-page .background-controls > button::before,
-  body.argon-wallpaper .background-controls > button::before {
+  .argon-background-controls > button::before {
     forced-color-adjust: none;
     background-color: ButtonText;
   }
 }
-.login-page .playback-control,
-body.argon-wallpaper .playback-control {
+.argon-background-controls .playback-control {
   --background-control-icon: url(../icon/play.svg);
 }
-.login-page .playback-control.playing,
-body.argon-wallpaper .playback-control.playing {
+.argon-background-controls .playback-control.playing {
   --background-control-icon: url(../icon/pause.svg);
 }
-.login-page .volume-control,
-body.argon-wallpaper .volume-control {
+.argon-background-controls .volume-control {
   --background-control-icon: url(../img/volume_high.svg);
 }
-.login-page .volume-control.mute,
-body.argon-wallpaper .volume-control.mute {
+.argon-background-controls .volume-control.mute {
   --background-control-icon: url(../img/volume_off.svg);
 }
 body.argon-wallpaper {
-  --wallpaper-surface-alpha: max(var(--blur-opacity), var(--wallpaper-alpha-floor, 0.75));
+  --wallpaper-surface-alpha: max(var(--blur-opacity), var(--wallpaper-alpha-floor, 0.8));
 }
-body.argon-wallpaper .background-controls {
+body.argon-wallpaper .argon-background-controls {
   inset-block-start: auto;
   inset-block-end: var(--field-gap);
   z-index: 800;

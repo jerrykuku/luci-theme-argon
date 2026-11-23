@@ -310,6 +310,10 @@ msgstr "Mostrar ou ocultar a navegação"
 msgid "Transmitted bytes"
 msgstr "Bytes transmitidos"
 
+#: htdocs/luci-static/resources/view/argon-config.js:171
+msgid "Turning this off also hides the admin wallpaper and restores the default admin appearance."
+msgstr "Desativar esta opção também oculta o plano de fundo das páginas de administração e restaura a aparência padrão da administração."
+
 #: htdocs/luci-static/resources/argon/branding.js:110
 msgid "Unable to load custom branding. Reload this page or reinstall the theme."
 msgstr "Não foi possível carregar os ícones personalizados. Recarregue esta página ou reinstale o tema."

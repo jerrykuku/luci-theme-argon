@@ -310,6 +310,10 @@ msgstr "展開或收合導覽"
 msgid "Transmitted bytes"
 msgstr "已傳輸位元組"
 
+#: htdocs/luci-static/resources/view/argon-config.js:171
+msgid "Turning this off also hides the admin wallpaper and restores the default admin appearance."
+msgstr "關閉此項也會隱藏管理頁壁紙，並還原管理頁的預設外觀。"
+
 #: htdocs/luci-static/resources/argon/branding.js:110
 msgid "Unable to load custom branding. Reload this page or reinstall the theme."
 msgstr "無法載入自訂圖示。請重新載入頁面或重新安裝主題。"

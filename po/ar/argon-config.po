@@ -308,6 +308,10 @@ msgstr "إظهار أو إخفاء التنقل"
 msgid "Transmitted bytes"
 msgstr "البايتات المرسلة"
 
+#: htdocs/luci-static/resources/view/argon-config.js:171
+msgid "Turning this off also hides the admin wallpaper and restores the default admin appearance."
+msgstr "إيقاف هذا يخفي أيضًا خلفية صفحة الإدارة ويعيد المظهر الافتراضي لصفحة الإدارة."
+
 #: htdocs/luci-static/resources/argon/branding.js:110
 msgid "Unable to load custom branding. Reload this page or reinstall the theme."
 msgstr "تعذر تحميل الأيقونات المخصصة. أعد تحميل هذه الصفحة أو أعد تثبيت السمة."

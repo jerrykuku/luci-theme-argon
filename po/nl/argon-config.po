@@ -308,6 +308,10 @@ msgstr "Navigatie tonen of verbergen"
 msgid "Transmitted bytes"
 msgstr "Verzonden bytes"
 
+#: htdocs/luci-static/resources/view/argon-config.js:171
+msgid "Turning this off also hides the admin wallpaper and restores the default admin appearance."
+msgstr "Als u dit uitschakelt, wordt ook de achtergrond van de beheerpagina’s verborgen en wordt de standaardweergave van het beheer hersteld."
+
 #: htdocs/luci-static/resources/argon/branding.js:110
 msgid "Unable to load custom branding. Reload this page or reinstall the theme."
 msgstr "Aangepaste pictogrammen kunnen niet worden geladen. Herlaad deze pagina of installeer het thema opnieuw."

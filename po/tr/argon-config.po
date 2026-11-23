@@ -308,6 +308,10 @@ msgstr "Gezinmeyi göster veya gizle"
 msgid "Transmitted bytes"
 msgstr "İletilen baytlar"
 
+#: htdocs/luci-static/resources/view/argon-config.js:171
+msgid "Turning this off also hides the admin wallpaper and restores the default admin appearance."
+msgstr "Bunu kapatmak, yönetim sayfası duvar kağıdını da gizler ve varsayılan yönetim görünümüne döner."
+
 #: htdocs/luci-static/resources/argon/branding.js:110
 msgid "Unable to load custom branding. Reload this page or reinstall the theme."
 msgstr "Özel simgeler yüklenemedi. Bu sayfayı yenileyin veya temayı yeniden yükleyin."
