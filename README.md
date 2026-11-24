@@ -35,13 +35,13 @@ It also supports automatic and manual switching between light and dark modes.
 
 </div>
 
-## What's new in 3.1
+## What's new in 3.2
 
-- **Online theme updates.** Check stable releases and install with the firmware's native APK or OPKG, preserving Argon settings and verifying package SHA256 and size.
-- **Layout fixes.** Improve dashboard actions, overview layouts, dynamic lists and custom IP/MAC inputs across narrow screens, light/dark modes and RTL layouts.
-- **Compatibility improvements.** Improve compatibility with stable OpenWrt firmware.
+- Admin pages can use a local or online wallpaper. The glass effect has its own switch.
+- Sign-in loads a smaller stylesheet. Online wallpapers refresh in the background and fall back to your local media if the image fails.
+- Keyboard navigation, high-contrast controls and wireless details work better on small screens.
 
-Users on v3.0.0 or earlier must install v3.1.3 manually once to get online updates. Users on v3.1.0 or later can upgrade through Theme updates. See the [release notes](RELEASE.md).
+From v3.1.0 or later, open **System → Argon Config → Theme updates**, select **Check for updates**, then **Update now**. On v3.0.0 or earlier, install v3.2.0 manually once to enable future online updates. See the [release notes](RELEASE.md).
 
 ## 3.0 highlights
 

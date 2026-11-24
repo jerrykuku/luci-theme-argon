@@ -1,5 +1,12 @@
 # Update log for master branch
 
+## v3.2.0 [ 2026.11.24 ]
+
+- Use image or video wallpapers on admin pages and toggle the glass effect independently. Existing admin layouts keep their default appearance.
+- Load only the styles needed for sign-in and refresh online wallpapers in the background. Failed image requests fall back to an uploaded image or video.
+- Improve narrow-screen wireless details, keyboard navigation, forced colors and text contrast with custom theme colors. Browsers refresh Argon scripts and styles after upgrades.
+- Store Unsplash and Wallhaven keys separately. Existing Unsplash configurations migrate automatically. Unassigned keys stay local in `legacy_wallpaper_api_key`. Tagged Wallhaven sources use `wallhaven_api_key`.
+
 ## v3.1.4 [ 2026.11.13 ]
 
 - Fix inline alerts obscuring dropdowns and clipped dropdown options in tables (#740, #741).
