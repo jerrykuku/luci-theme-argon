@@ -95,7 +95,9 @@ apk add --allow-untrusted ./luci-theme-argon-*.apk
 
 打开 **系统 → Argon 主题设置**，调整登录布局、配色、毛玻璃、壁纸和图标。页面右上角可切换**亮色模式、暗色模式、跟随系统**，也会应用于登录页。
 
-背景支持本地图片、视频，以及 Bing、Unsplash、Wallhaven 在线壁纸；Unsplash 需填写 API Access Key。网站图标和登录 Logo 支持 PNG，每边 16–1024 像素、最大 1 MiB，网站图标需为正方形。
+背景支持本地图片、视频，以及 Bing、Unsplash、Wallhaven 在线壁纸；Unsplash 需填写 API Access Key，切换壁纸源会保留密钥。首次使用在线源时，页面先显示本地背景，路由器在后台获取壁纸地址。下次打开页面即可使用已缓存的地址。网站图标和登录 Logo 支持 PNG，每边 16–1024 像素、最大 1 MiB，网站图标需为正方形。
+
+升级时，如果原壁纸源是 Unsplash 或其合集，旧密钥会迁移到 `unsplash_api_key`。归属不明的旧值会保留在本地 `legacy_wallpaper_api_key` 中。确认密钥由哪个服务签发后，再为该服务填写。通过 UCI 配置的 Wallhaven 标签源使用独立的 `wallhaven_api_key`。
 
 在**主题更新**中手动检查最新稳定版、查看更新日志，并下载与固件包管理器匹配的安装包。
 

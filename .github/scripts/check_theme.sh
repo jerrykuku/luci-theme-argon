@@ -23,8 +23,10 @@ done
 "$ucode_bin" -L "$(dirname "$ucode_bin")/*.so" -L "$PWD/root/usr/share/ucode/*.uc" -cno-interp,dynlink=math \
 	-o "$tmpdir/argon-palette.uc" -e 'import { dark_palette } from "luci.argon-palette";'
 
-lessc less/cascade.less "$tmpdir/cascade.css"
-cmp htdocs/luci-static/argon/css/cascade.css "$tmpdir/cascade.css"
+sh tools/build-theme-assets.sh "$tmpdir/argon"
+for asset in css/base.css css/admin.css css/cascade.css js-version; do
+	cmp "htdocs/luci-static/argon/$asset" "$tmpdir/argon/$asset"
+done
 
 UCODE_BIN="$ucode_bin" node --test tests/*.test.js
 python3 -m unittest discover -s tests -p 'test_*.py'

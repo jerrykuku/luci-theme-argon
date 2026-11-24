@@ -95,7 +95,9 @@ The first command replaces the old plugin with the empty migration package. The 
 
 Open **System → Argon Config** for login layouts, colors, glass effects, wallpapers and branding. The header's appearance button switches between **Light mode**, **Dark mode** and **Follow system**; the choice also applies to the login page.
 
-Local image and video backgrounds are supported, along with Bing, Unsplash and Wallhaven wallpapers. Unsplash requires an API access key. Browser icons and login logos accept PNG files, 16–1024 pixels per side, up to 1 MiB; browser icons must be square.
+Local image and video backgrounds are supported, along with Bing, Unsplash and Wallhaven wallpapers. Unsplash requires an API access key, which is retained when you switch providers. On the first visit with an empty wallpaper cache, the page shows a local background while the router fetches the online image URL for subsequent visits. Browser icons and login logos accept PNG files, 16–1024 pixels per side, up to 1 MiB; browser icons must be square.
+
+On upgrade, an old shared key is migrated to `unsplash_api_key` when the configured source is Unsplash or an Unsplash collection. Otherwise the old value is kept locally as `legacy_wallpaper_api_key`. Confirm which service issued it before re-entering it. Tagged Wallhaven sources configured through UCI use `wallhaven_api_key`.
 
 Under **Theme updates**, check the latest stable release, read its release notes and download the package matching your firmware's package manager.
 
